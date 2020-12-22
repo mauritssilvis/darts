@@ -27,6 +27,11 @@ class Paths(list):
   def stats(self):
     return self._stats
 
+  def print(self):
+    print("Paths:")
+    for num, path in enumerate(super().copy()):
+      print(f"#{num + 1}: {path}")
+
   def _find(self):
     # Initialize recursion
     steps = [sorted(base_steps, reverse=True) for base_steps in self._steps]
