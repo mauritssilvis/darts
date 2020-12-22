@@ -1,7 +1,16 @@
+from path import Path
+
 class Paths(list):
   """Find the possible paths to a goal taking user-defined steps"""
 
   def __init__(self, steps, links, goal):
+    # Check input
+    if len(steps) != len(links):
+      raise ValueError("The lists of steps and links should have equal length.")
+
+    if links[0]:
+      raise ValueError("First step cannot be linked.")
+
     # Store settings
     self._steps = steps
     self._links = links
@@ -23,14 +32,20 @@ class Paths(list):
     # Find paths
     self._find()
 
+    # Initialize list of walks
+    self._walks = []
+
+    # Determine number of possible walks
+    self._count_walks()
+
   @property
   def stats(self):
     return self._stats
 
   def print(self):
     print("Paths:")
-    for num, path in enumerate(self):
-      print(f"#{num + 1}: {path}")
+    for num, path, walks in zip(range(len(self)), self, self._walks):
+      print(f"#{num + 1}: {path}: {walks['txt']} = {walks['num']}")
 
   def _find(self):
     # Initialize recursion
@@ -38,7 +53,7 @@ class Paths(list):
     links = self._links
     goal = self._goal
     step_bound = max([max(cur_steps) for cur_steps in steps])
-    path = []
+    path = Path([], links)
     stats = self._stats
 
     # Recursion
@@ -57,7 +72,7 @@ class Paths(list):
         # Final step reached
         if path_sum == goal:
             # Goal reached
-            super().append(list(path))
+            super().append(Path(path.copy(), path.links))
         else:
             # Should not occur
             stats["fails"] += 1
@@ -124,3 +139,9 @@ class Paths(list):
         ceiling += max_step
 
     return ceiling
+
+  # Number of possible walks
+  def _count_walks(self):
+    for path in self:
+      path.count_walks()
+      self._walks.append(path.walks)
