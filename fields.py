@@ -1,9 +1,11 @@
+from natsort import natsorted
+
 class Fields(dict):
   """Fields with names and scores"""
 
   @property
   def names(self):
-    return sorted(self.keys())
+    return natsorted(self.keys())
 
   @property
   def scores(self):
