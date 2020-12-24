@@ -30,6 +30,9 @@ class Fields(dict):
     self.update(fields)
 
   def print(self):
+    print("| Name  | Score |")
+    print("| ----: | ----: |")
+
     for name in self.names:
       score = self[name]
-      print(f"{name:>3}: {score:2}")
+      print(f"| {name:>5} | {score:5} |")
