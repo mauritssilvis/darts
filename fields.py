@@ -26,3 +26,8 @@ class Fields(dict):
 
   def add(self, fields):
     self.update(fields)
+
+  def print(self):
+    for name in self.names:
+      score = self[name]
+      print(f"{name:>3}: {score:2}")
