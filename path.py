@@ -5,16 +5,8 @@ class Path(list):
 
   def __init__(self, path=[], links=[], walks={}):
     self.extend(path)
-    self._links = links
-    self._walks = walks
-
-  @property
-  def links(self):
-    return self._links
-
-  @property
-  def walks(self):
-    return self._walks
+    self.links = links
+    self.walks = walks
 
   # Count possible walks
   def count_walks(self):
@@ -31,7 +23,7 @@ class Path(list):
       walks_txt.append(txt)
 
     # Store result
-    self._walks = {
+    self.walks = {
       "num": int(walks_num),
       "txt": " * ".join(walks_txt),
     }
@@ -40,7 +32,7 @@ class Path(list):
   def _get_subpaths(self):
     subpaths = []
 
-    for step, link in zip(self, self._links):
+    for step, link in zip(self, self.links):
       if not link:
         subpaths.append([])
       subpaths[-1].append(step)
