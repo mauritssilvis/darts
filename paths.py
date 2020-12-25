@@ -32,20 +32,15 @@ class Paths(list):
     # Find paths
     self._find()
 
-    # Initialize list of walks
-    self._walks = []
-
-    # Determine number of possible walks
-    self._count_walks()
-
   @property
   def stats(self):
     return self._stats
 
   def print(self):
     print("Paths:")
-    for num, path, walks in zip(range(len(self)), self, self._walks):
-      print(f"#{num + 1}: {path}: {walks['txt']} = {walks['num']}")
+    for num, path in zip(range(len(self)), self):
+      walks = path.walks()
+      print(f"#{num + 1}: {path}: {walks.txt} = {walks.num}")
 
   def _find(self):
     # Initialize recursion
@@ -139,9 +134,3 @@ class Paths(list):
         ceiling += max_step
 
     return ceiling
-
-  # Number of possible walks
-  def _count_walks(self):
-    for path in self:
-      path.count_walks()
-      self._walks.append(path.walks)
