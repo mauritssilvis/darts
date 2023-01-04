@@ -7,6 +7,7 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
@@ -51,6 +52,27 @@ class CartesianPathFinderTests {
                 () -> Assertions.assertEquals(2, numPaths),
                 () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps())),
                 () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps()))
+        );
+    }
+
+    @Test
+    void findASpecificLongPath() {
+        Set<Integer> step = Set.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<Set<Integer>> steps = List.of(step, step, step, step, step, step, step, step, step);
+        int target = 9 * 9;
+
+        PathFinder pathFinder = new CartesianPathFinder();
+        Set<Path> paths = pathFinder.find(steps, target);
+
+        int numPaths = paths.stream()
+                .mapToInt(Path::getMultiplicity)
+                .sum();
+
+        Iterator<Path> iterator = paths.iterator();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, numPaths),
+                () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), iterator.next().getSteps())
         );
     }
 
