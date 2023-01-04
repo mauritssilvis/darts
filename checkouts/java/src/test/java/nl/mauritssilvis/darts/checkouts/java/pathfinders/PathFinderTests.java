@@ -5,8 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.CartesianPathFinder;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.PathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
