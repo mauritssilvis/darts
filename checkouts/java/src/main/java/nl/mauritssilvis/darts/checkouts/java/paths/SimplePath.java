@@ -6,7 +6,6 @@
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class SimplePath implements Path {
@@ -14,7 +13,7 @@ public class SimplePath implements Path {
     private final List<Boolean> links;
 
     public SimplePath(List<Integer> steps) {
-        this.steps = Collections.unmodifiableList(steps);
+        this.steps = List.copyOf(steps);
 
         Boolean[] flags = new Boolean[steps.size()];
         Arrays.fill(flags, false);
