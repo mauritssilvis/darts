@@ -34,6 +34,26 @@ class CartesianPathFinderTests {
         );
     }
 
+    @CartesianTest
+    @CartesianTest.MethodFactory("withTwoSpecificShortPaths")
+    void findTwoSpecificShortPaths(List<Set<Integer>> steps, int target, Set<List<Integer>> lists) {
+        PathFinder pathFinder = new CartesianPathFinder();
+
+        Set<Path> paths = pathFinder.find(steps, target);
+
+        int numPaths = paths.stream()
+                .mapToInt(Path::getMultiplicity)
+                .sum();
+
+        Iterator<Path> iterator = paths.iterator();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, numPaths),
+                () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps())),
+                () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps()))
+        );
+    }
+
     static ArgumentSets withASpecificShortPath() {
         return ArgumentSets
                 .argumentsForFirstParameter(
@@ -46,6 +66,21 @@ class CartesianPathFinderTests {
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(3, 2, 5)
+                );
+    }
+
+    static ArgumentSets withTwoSpecificShortPaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        List.of(Set.of(3, 2), Set.of(3, 2), Set.of(5)),
+                        List.of(Set.of(3, 2), Set.of(2, 4, 3), Set.of(2, 5)),
+                        List.of(Set.of(0, 3, 10, 2), Set.of(3, 2, 4), Set.of(1, 5))
+                )
+                .argumentsForNextParameter(
+                        10
+                )
+                .argumentsForNextParameter(
+                        (Object) Set.of(List.of(3, 2, 5), List.of(2, 3, 5))
                 );
     }
 }
