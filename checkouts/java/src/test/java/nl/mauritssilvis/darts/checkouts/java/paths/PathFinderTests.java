@@ -43,10 +43,15 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withOneShortPath")
     void findOneShortPath(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
         Set<Path> paths = pathFinder.find(steps, target);
+
+        int numPaths = paths.stream()
+                .mapToInt(Path::getMultiplicity)
+                .sum();
+
         Iterator<Path> iterator = paths.iterator();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, paths.size()),
+                () -> Assertions.assertEquals(1, numPaths),
                 () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size())
         );
     }
@@ -55,10 +60,15 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withTwoShortPaths")
     void findTwoShortPaths(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
         Set<Path> paths = pathFinder.find(steps, target);
+
+        int numPaths = paths.stream()
+                .mapToInt(Path::getMultiplicity)
+                .sum();
+
         Iterator<Path> iterator = paths.iterator();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(2, paths.size()),
+                () -> Assertions.assertEquals(2, numPaths),
                 () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size()),
                 () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size())
         );
@@ -129,6 +139,7 @@ class PathFinderTests {
                         getPathFinders()
                 )
                 .argumentsForNextParameter(
+                        List.of(Set.of(1, 3), Set.of(1, 3)),
                         List.of(Set.of(2, 3), Set.of(2, 1)),
                         List.of(Set.of(1, 4), Set.of(0, 3)),
                         List.of(Set.of(0), Set.of(1, 2), Set.of(2, 3)),
