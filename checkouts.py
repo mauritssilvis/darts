@@ -13,6 +13,7 @@ class Checkouts(list):
     self.scores_sets = self.get_scores_sets()
 
     self.paths = Paths(self.scores_sets, self.links, self.goal)
+    # self.throws = self.get_throws()
 
     # TODO: Convert paths to throws
 

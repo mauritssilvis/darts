@@ -1,0 +1,2 @@
+class Throws(list):
+  pass
