@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.*;
 
-public class NaivePathFinder implements PathFinder {
+public class CartesianPathFinder implements PathFinder {
     @Override
     public Set<Path> find(List<Set<Integer>> steps, int target) {
         boolean hasEmptySteps = steps.stream()
