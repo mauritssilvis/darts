@@ -9,5 +9,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface PathFinder {
-    Set<List<Integer>> find(List<Set<Integer>> steps, int target);
+    Set<Path> find(List<Set<Integer>> steps, int target);
 }

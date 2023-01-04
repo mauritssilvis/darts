@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class NaivePathFinder implements PathFinder {
     @Override
-    public Set<List<Integer>> find(List<Set<Integer>> steps, int target) {
+    public Set<Path> find(List<Set<Integer>> steps, int target) {
         return null;
     }
 }

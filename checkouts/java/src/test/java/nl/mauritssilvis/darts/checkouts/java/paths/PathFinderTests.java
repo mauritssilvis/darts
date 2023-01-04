@@ -18,7 +18,7 @@ class PathFinderTests {
         List<Set<Integer>> steps = new ArrayList<>();
         int target = 0;
 
-        Set<List<Integer>> paths = pathFinder.find(steps, target);
+        Set<Path> paths = pathFinder.find(steps, target);
 
         Assertions.assertEquals(0, paths.size());
     }
@@ -26,7 +26,7 @@ class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withEmptySteps")
     void handleEmptySteps(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
-        Set<List<Integer>> paths = pathFinder.find(steps, target);
+        Set<Path> paths = pathFinder.find(steps, target);
 
         Assertions.assertEquals(0, paths.size());
     }
@@ -34,7 +34,7 @@ class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withUnreachableTargets")
     void handleUnreachableTargets(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
-        Set<List<Integer>> paths = pathFinder.find(steps, target);
+        Set<Path> paths = pathFinder.find(steps, target);
 
         Assertions.assertEquals(0, paths.size());
     }
@@ -42,25 +42,25 @@ class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withOneShortPath")
     void findOneShortPath(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
-        Set<List<Integer>> paths = pathFinder.find(steps, target);
-        Iterator<List<Integer>> iterator = paths.iterator();
+        Set<Path> paths = pathFinder.find(steps, target);
+        Iterator<Path> iterator = paths.iterator();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, paths.size()),
-                () -> Assertions.assertEquals(steps.size(), iterator.next().size())
+                () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size())
         );
     }
 
     @CartesianTest
     @CartesianTest.MethodFactory("withTwoShortPaths")
     void findTwoShortPaths(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
-        Set<List<Integer>> paths = pathFinder.find(steps, target);
-        Iterator<List<Integer>> iterator = paths.iterator();
+        Set<Path> paths = pathFinder.find(steps, target);
+        Iterator<Path> iterator = paths.iterator();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, paths.size()),
-                () -> Assertions.assertEquals(steps.size(), iterator.next().size()),
-                () -> Assertions.assertEquals(steps.size(), iterator.next().size())
+                () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size()),
+                () -> Assertions.assertEquals(steps.size(), iterator.next().getSteps().size())
         );
     }
 
