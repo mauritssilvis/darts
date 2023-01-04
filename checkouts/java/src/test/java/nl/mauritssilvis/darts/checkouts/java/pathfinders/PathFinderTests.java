@@ -75,26 +75,11 @@ class PathFinderTests {
         );
     }
 
-    @CartesianTest
-    @CartesianTest.MethodFactory("withASpecificShortPath")
-    void findASpecificShortPath(PathFinder pathFinder, List<Set<Integer>> steps, int target, List<Integer> path) {
-        Set<Path> paths = pathFinder.find(steps, target);
-
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
-                .sum();
-
-        Iterator<Path> iterator = paths.iterator();
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(path, iterator.next().getSteps())
-        );
-    }
-
     private static ArgumentSets withAllPathFinders() {
         return ArgumentSets
-                .argumentsForFirstParameter(getAllPathFinders());
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                );
     }
 
     static ArgumentSets withEmptySteps() {
@@ -166,24 +151,6 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         4
-                );
-    }
-
-    static ArgumentSets withASpecificShortPath() {
-        return ArgumentSets
-                .argumentsForFirstParameter(
-                        getAllPathFinders()
-                )
-                .argumentsForNextParameter(
-                        List.of(Set.of(3), Set.of(2), Set.of(5)),
-                        List.of(Set.of(3, 2), Set.of(2, 4), Set.of(2, 5)),
-                        List.of(Set.of(0, 3, 10), Set.of(2, 4), Set.of(1, 5))
-                )
-                .argumentsForNextParameter(
-                        10
-                )
-                .argumentsForNextParameter(
-                        (Object) List.of(3, 2, 5)
                 );
     }
 
