@@ -10,7 +10,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 class PathFinderTests {
     @CartesianTest
@@ -66,10 +69,14 @@ class PathFinderTests {
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
+        int totalLength = paths.stream()
+                .mapToInt(Path::getLength)
+                .sum();
+
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
                 () -> Assertions.assertEquals(steps.size(), paths.get(0).getLength()),
-                () -> Assertions.assertEquals(steps.size(), paths.get(1).getLength())
+                () -> Assertions.assertEquals(steps.size(), totalLength / paths.size())
         );
     }
 
