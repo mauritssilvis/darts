@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 

@@ -8,7 +8,10 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
