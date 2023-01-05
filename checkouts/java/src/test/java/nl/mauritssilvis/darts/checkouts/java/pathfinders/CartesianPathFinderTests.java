@@ -8,6 +8,8 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
@@ -15,10 +17,11 @@ import java.util.List;
 import java.util.Set;
 
 class CartesianPathFinderTests {
-    @CartesianTest
-    @CartesianTest.MethodFactory("withASpecificShortPath")
-    void findASpecificShortPath(List<Set<Integer>> steps, int target, List<Integer> path) {
+    @ParameterizedTest
+    @MethodSource("withASpecificLength10Path")
+    void findASpecificShortPath(List<Set<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
+        int target = 10;
 
         List<Path> paths = pathFinder.find(steps, target);
 
@@ -28,7 +31,7 @@ class CartesianPathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(path, paths.get(0).getSteps())
+                () -> Assertions.assertEquals(List.of(3, 2, 5), paths.get(0).getSteps())
         );
     }
 
@@ -69,18 +72,12 @@ class CartesianPathFinderTests {
         );
     }
 
-    static ArgumentSets withASpecificShortPath() {
-        return ArgumentSets
-                .argumentsForFirstParameter(
-                        List.of(Set.of(3), Set.of(2), Set.of(5)),
+    static Collection<List<Set<Integer>>> withASpecificLength10Path() {
+        return List.of(
+                List.of(Set.of(3), Set.of(2), Set.of(5)),
+                List.of(Set.of(3, 2), Set.of(2, 4), Set.of(2, 5)),
                         List.of(Set.of(3, 2), Set.of(2, 4), Set.of(2, 5)),
                         List.of(Set.of(0, 3, 10), Set.of(2, 4), Set.of(1, 5))
-                )
-                .argumentsForNextParameter(
-                        10
-                )
-                .argumentsForNextParameter(
-                        (Object) List.of(3, 2, 5)
                 );
     }
 
