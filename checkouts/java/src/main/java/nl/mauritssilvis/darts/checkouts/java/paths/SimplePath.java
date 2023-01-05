@@ -26,6 +26,11 @@ public class SimplePath implements Path {
     }
 
     @Override
+    public int getLength() {
+        return steps.size();
+    }
+
+    @Override
     public List<Boolean> getLinks() {
         return links;
     }

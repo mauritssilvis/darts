@@ -53,7 +53,7 @@ class PathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSteps().size())
+                () -> Assertions.assertEquals(steps.size(), paths.get(0).getLength())
         );
     }
 
@@ -68,8 +68,8 @@ class PathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSteps().size()),
-                () -> Assertions.assertEquals(steps.size(), paths.get(1).getSteps().size())
+                () -> Assertions.assertEquals(steps.size(), paths.get(0).getLength()),
+                () -> Assertions.assertEquals(steps.size(), paths.get(1).getLength())
         );
     }
 
