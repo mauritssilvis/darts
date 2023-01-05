@@ -11,24 +11,23 @@ import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
-    public List<Path> find(List<Set<Integer>> steps, int target) {
+    public List<Path> find(List<List<Integer>> steps, int target) {
         boolean hasEmptySteps = steps.stream()
-                .anyMatch(Set::isEmpty);
+                .anyMatch(List::isEmpty);
 
         return hasEmptySteps ? new ArrayList<>() : new Finder(steps, target).find();
     }
 
     private static class Finder {
-        private final List<Set<Integer>> steps;
+        private final List<List<Integer>> steps;
         private final int target;
         private final List<Integer> path;
         private final List<Path> paths;
 
-        Finder(List<Set<Integer>> steps, int target) {
+        Finder(List<List<Integer>> steps, int target) {
             this.steps = steps;
             this.target = target;
 

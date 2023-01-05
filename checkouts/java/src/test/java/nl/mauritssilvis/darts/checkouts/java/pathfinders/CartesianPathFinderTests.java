@@ -13,13 +13,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
-    void findASpecificShortPath(List<Set<Integer>> steps) {
+    void findASpecificShortPath(List<List<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
         int target = 10;
 
@@ -36,9 +36,10 @@ class CartesianPathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withTwoSpecificShortPaths")
-    void findTwoSpecificShortPaths(List<Set<Integer>> steps, int target, Set<List<Integer>> lists) {
+    @CartesianTest.MethodFactory("withTwoSpecificLength10Paths")
+    void findTwoSpecificShortPaths(List<List<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
+        int target = 10;
 
         List<Path> paths = pathFinder.find(steps, target);
 
@@ -46,17 +47,20 @@ class CartesianPathFinderTests {
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
+        List<List<Integer>> lists = paths.stream()
+                .map(Path::getSteps)
+                .toList();
+
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertTrue(lists.contains(paths.get(0).getSteps())),
-                () -> Assertions.assertTrue(lists.contains(paths.get(1).getSteps()))
+                () -> Assertions.assertEquals(List.of(List.of(3, 2, 5), List.of(2, 3, 5)), lists)
         );
     }
 
     @Test
     void findASpecificLongPath() {
-        Set<Integer> step = Set.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        List<Set<Integer>> steps = List.of(step, step, step, step, step, step, step, step, step);
+        List<Integer> step = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<List<Integer>> steps = List.of(step, step, step, step, step, step, step, step, step);
         int target = 9 * 9;
 
         PathFinder pathFinder = new CartesianPathFinder();
@@ -72,27 +76,20 @@ class CartesianPathFinderTests {
         );
     }
 
-    static Collection<List<Set<Integer>>> withASpecificLength10Path() {
+    static Collection<List<List<Integer>>> withASpecificLength10Path() {
         return List.of(
-                List.of(Set.of(3), Set.of(2), Set.of(5)),
-                List.of(Set.of(3, 2), Set.of(2, 4), Set.of(2, 5)),
-                        List.of(Set.of(3, 2), Set.of(2, 4), Set.of(2, 5)),
-                        List.of(Set.of(0, 3, 10), Set.of(2, 4), Set.of(1, 5))
-                );
+                List.of(List.of(3), List.of(2), List.of(5)),
+                List.of(List.of(3, 2), List.of(2, 4), List.of(2, 5)),
+                List.of(List.of(0, 3, 10), List.of(2, 4), List.of(1, 5))
+        );
     }
 
-    static ArgumentSets withTwoSpecificShortPaths() {
+    static ArgumentSets withTwoSpecificLength10Paths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        List.of(Set.of(3, 2), Set.of(3, 2), Set.of(5)),
-                        List.of(Set.of(3, 2), Set.of(2, 4, 3), Set.of(2, 5)),
-                        List.of(Set.of(0, 3, 10, 2), Set.of(3, 2, 4), Set.of(1, 5))
-                )
-                .argumentsForNextParameter(
-                        10
-                )
-                .argumentsForNextParameter(
-                        (Object) Set.of(List.of(3, 2, 5), List.of(2, 3, 5))
+                        List.of(List.of(3, 2), List.of(3, 2), List.of(5)),
+                        List.of(List.of(3, 2), List.of(2, 4, 3), List.of(2, 5)),
+                        List.of(List.of(0, 3, 10, 2), List.of(3, 2, 4), List.of(1, 5))
                 );
     }
 }
