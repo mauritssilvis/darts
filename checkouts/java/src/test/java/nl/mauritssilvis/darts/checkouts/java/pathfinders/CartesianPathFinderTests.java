@@ -21,17 +21,15 @@ class CartesianPathFinderTests {
     void findASpecificShortPath(List<Set<Integer>> steps, int target, List<Integer> path) {
         PathFinder pathFinder = new CartesianPathFinder();
 
-        Set<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, target);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
-        Iterator<Path> iterator = paths.iterator();
-
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(path, iterator.next().getSteps())
+                () -> Assertions.assertEquals(path, paths.get(0).getSteps())
         );
     }
 
@@ -40,18 +38,16 @@ class CartesianPathFinderTests {
     void findTwoSpecificShortPaths(List<Set<Integer>> steps, int target, Set<List<Integer>> lists) {
         PathFinder pathFinder = new CartesianPathFinder();
 
-        Set<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, target);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
-        Iterator<Path> iterator = paths.iterator();
-
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps())),
-                () -> Assertions.assertTrue(lists.contains(iterator.next().getSteps()))
+                () -> Assertions.assertTrue(lists.contains(paths.get(0).getSteps())),
+                () -> Assertions.assertTrue(lists.contains(paths.get(1).getSteps()))
         );
     }
 
@@ -62,17 +58,15 @@ class CartesianPathFinderTests {
         int target = 9 * 9;
 
         PathFinder pathFinder = new CartesianPathFinder();
-        Set<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, target);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
-        Iterator<Path> iterator = paths.iterator();
-
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), iterator.next().getSteps())
+                () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), paths.get(0).getSteps())
         );
     }
 

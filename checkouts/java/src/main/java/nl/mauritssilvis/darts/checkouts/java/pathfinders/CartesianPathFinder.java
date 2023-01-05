@@ -12,18 +12,18 @@ import java.util.*;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
-    public Set<Path> find(List<Set<Integer>> steps, int target) {
+    public List<Path> find(List<Set<Integer>> steps, int target) {
         boolean hasEmptySteps = steps.stream()
                 .anyMatch(Set::isEmpty);
 
-        return hasEmptySteps ? new HashSet() : new Finder(steps, target).find();
+        return hasEmptySteps ? new ArrayList<>() : new Finder(steps, target).find();
     }
 
     private static class Finder {
         private final List<Set<Integer>> steps;
         private final int target;
         private final List<Integer> path;
-        private final Set<Path> paths;
+        private final List<Path> paths;
 
         Finder(List<Set<Integer>> steps, int target) {
             this.steps = steps;
@@ -32,17 +32,17 @@ public class CartesianPathFinder implements PathFinder {
             path = new ArrayList<>();
             steps.forEach(step -> path.add(0));
 
-            paths = new HashSet<>();
+            paths = new ArrayList<>();
         }
 
-        Set<Path> find() {
+        List<Path> find() {
             paths.clear();
 
             int level = 0;
             int distance = 0;
             findRecursively(level, distance);
 
-            return Collections.unmodifiableSet(paths);
+            return Collections.unmodifiableList(paths);
         }
 
         private void findRecursively(int level, int distance) {
