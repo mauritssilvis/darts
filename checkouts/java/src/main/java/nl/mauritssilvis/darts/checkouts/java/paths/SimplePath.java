@@ -5,7 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SimplePath implements Path {
@@ -15,9 +14,9 @@ public class SimplePath implements Path {
     public SimplePath(List<Integer> steps) {
         this.steps = List.copyOf(steps);
 
-        Boolean[] flags = new Boolean[steps.size()];
-        Arrays.fill(flags, false);
-        links = List.of(flags);
+        links = steps.stream()
+                .map(step -> false)
+                .toList();
     }
 
     @Override
