@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junitpioneer.jupiter.cartesian.ArgumentSets;
-import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
 import java.util.Collection;
 import java.util.List;
@@ -35,8 +33,8 @@ class CartesianPathFinderTests {
         );
     }
 
-    @CartesianTest
-    @CartesianTest.MethodFactory("withTwoSpecificLength10Paths")
+    @ParameterizedTest
+    @MethodSource("withTwoSpecificLength10Paths")
     void findTwoSpecificShortPaths(List<List<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
         int target = 10;
@@ -84,12 +82,11 @@ class CartesianPathFinderTests {
         );
     }
 
-    static ArgumentSets withTwoSpecificLength10Paths() {
-        return ArgumentSets
-                .argumentsForFirstParameter(
-                        List.of(List.of(3, 2), List.of(3, 2), List.of(5)),
-                        List.of(List.of(3, 2), List.of(2, 4, 3), List.of(2, 5)),
-                        List.of(List.of(0, 3, 10, 2), List.of(3, 2, 4), List.of(1, 5))
-                );
+    static Collection<List<List<Integer>>> withTwoSpecificLength10Paths() {
+        return List.of(
+                List.of(List.of(3, 2), List.of(3, 2), List.of(5)),
+                List.of(List.of(3, 2), List.of(2, 4, 3), List.of(2, 5)),
+                List.of(List.of(0, 3, 10, 2), List.of(3, 2, 4), List.of(1, 5))
+        );
     }
 }
