@@ -25,15 +25,17 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withEmptySteps")
-    void handleEmptySteps(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
+    @CartesianTest.MethodFactory("withAllPathFindersAndEmptySteps")
+    void handleEmptySteps(PathFinder pathFinder, List<Set<Integer>> steps) {
+        int target = 2;
+
         List<Path> paths = pathFinder.find(steps, target);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withUnreachableTargets")
+    @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableTargets")
     void handleUnreachableTargets(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
         List<Path> paths = pathFinder.find(steps, target);
 
@@ -41,7 +43,7 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withOneShortPath")
+    @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
     void findOneShortPath(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
         List<Path> paths = pathFinder.find(steps, target);
 
@@ -56,7 +58,7 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withTwoShortPaths")
+    @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
     void findTwoShortPaths(PathFinder pathFinder, List<Set<Integer>> steps, int target) {
         List<Path> paths = pathFinder.find(steps, target);
 
@@ -78,7 +80,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withEmptySteps() {
+    static ArgumentSets withAllPathFindersAndEmptySteps() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -89,13 +91,10 @@ class PathFinderTests {
                         List.of(Collections.emptySet(), Set.of(1, 2)),
                         List.of(Set.of(1, 2), Collections.emptySet()),
                         List.of(Set.of(3), Collections.emptySet(), Set.of(-1))
-                )
-                .argumentsForNextParameter(
-                        2
                 );
     }
 
-    static ArgumentSets withUnreachableTargets() {
+    static ArgumentSets withAllPathFindersAndUnreachableTargets() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -113,7 +112,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withOneShortPath() {
+    static ArgumentSets withAllPathFindersAndOneShortPath() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -132,7 +131,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withTwoShortPaths() {
+    static ArgumentSets withAllPathFindersAndTwoShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
