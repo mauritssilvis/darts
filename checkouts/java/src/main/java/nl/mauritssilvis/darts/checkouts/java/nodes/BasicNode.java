@@ -11,29 +11,29 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class BasicNode implements Node {
-    private final List<Integer> edges;
+    private final List<Integer> weights;
 
-    private BasicNode(Stream<Integer> edges) {
-        this.edges = edges
+    private BasicNode(Stream<Integer> weights) {
+        this.weights = weights
                 .distinct()
                 .toList();
     }
 
-    public static Node of(Collection<Integer> edges) {
-        return new BasicNode(edges.stream());
+    public static Node of(Collection<Integer> weights) {
+        return new BasicNode(weights.stream());
     }
 
-    public static Node of(int... edges) {
-        return new BasicNode(Arrays.stream(edges).boxed());
+    public static Node of(int... weights) {
+        return new BasicNode(Arrays.stream(weights).boxed());
     }
 
     @Override
-    public List<Integer> getEdges() {
-        return edges;
+    public List<Integer> getWeights() {
+        return weights;
     }
 
     @Override
     public boolean isDisconnected() {
-        return edges.isEmpty();
+        return weights.isEmpty();
     }
 }

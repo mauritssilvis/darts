@@ -33,7 +33,7 @@ public class CartesianPathFinder implements PathFinder {
             this.length = length;
 
             path = new ArrayList<>();
-            nodes.forEach(step -> path.add(0));
+            nodes.forEach(node -> path.add(0));
 
             paths = new ArrayList<>();
         }
@@ -58,11 +58,11 @@ public class CartesianPathFinder implements PathFinder {
             }
 
             Node node = nodes.get(level);
-            List<Integer> edges = node.getEdges();
+            List<Integer> weights = node.getWeights();
 
-            for (int step : edges) {
-                path.set(level, step);
-                findRecursively(level + 1, distance + step);
+            for (int weight : weights) {
+                path.set(level, weight);
+                findRecursively(level + 1, distance + weight);
             }
         }
     }

@@ -9,16 +9,20 @@ import java.util.List;
 
 public interface Node {
     /**
-     * Returns the labels of the edges incident to the current node.
+     * Gets the weights of the edges incident to this node.
+     * <p>
+     * For the purposes of the present application, the weights of the edges
+     * associated with a node have to be unique.
      *
-     * @return a list of unique integers labeling the edges of the node
+     * @return a list of unique edge weights
      */
-    List<Integer> getEdges();
+    List<Integer> getWeights();
 
     /**
-     * Tells if the current node has no edges.
+     * Determines if this node is disconnected, that is, if this node has no
+     * edges.
      *
-     * @return a boolean that signals if the current node is disconnected
+     * @return a boolean that signals if this node is disconnected
      */
     boolean isDisconnected();
 }

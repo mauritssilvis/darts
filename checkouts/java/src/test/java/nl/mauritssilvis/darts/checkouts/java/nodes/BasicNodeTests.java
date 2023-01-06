@@ -14,113 +14,113 @@ import java.util.List;
 
 class BasicNodeTests {
     @Test
-    void getStoredEdgesWithCollectionInput() {
-        List<Integer> edges = List.of(4, 5, 6);
-        Node node = BasicNode.of(edges);
+    void getStoredWeightsWithCollectionInput() {
+        List<Integer> weights = List.of(4, 5, 6);
+        Node node = BasicNode.of(weights);
 
-        Assertions.assertEquals(edges, node.getEdges());
+        Assertions.assertEquals(weights, node.getWeights());
     }
 
     @Test
-    void getStoredEdgesWithArrayInput() {
-        int[] edges = {5, 1, 0};
-        Node node = BasicNode.of(edges);
+    void getStoredWeightsWithArrayInput() {
+        int[] weights = {5, 1, 0};
+        Node node = BasicNode.of(weights);
 
-        List<Integer> edgeList = Arrays.stream(edges)
+        List<Integer> edgeList = Arrays.stream(weights)
                 .boxed()
                 .toList();
 
-        Assertions.assertEquals(edgeList, node.getEdges());
+        Assertions.assertEquals(edgeList, node.getWeights());
     }
 
     @Test
-    void getStoredEdgesWithVarArgsInput() {
+    void getStoredWeightsWithVarArgsInput() {
         Node node = BasicNode.of(7, 3, 9);
 
-        List<Integer> edges = List.of(7, 3, 9);
+        List<Integer> weights = List.of(7, 3, 9);
 
-        Assertions.assertEquals(edges, node.getEdges());
+        Assertions.assertEquals(weights, node.getWeights());
     }
 
     @Test
-    void storeIndependentEdgesWithCollectionInput() {
-        List<Integer> edges = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = BasicNode.of(edges);
+    void storeIndependentWeightsWithCollectionInput() {
+        List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
+        Node node = BasicNode.of(weights);
 
-        edges.set(1, -2);
+        weights.set(1, -2);
 
-        Assertions.assertNotEquals(edges, node.getEdges());
+        Assertions.assertNotEquals(weights, node.getWeights());
     }
 
     @Test
-    void storeIndependentEdgesWithArrayInput() {
-        int[] edges = {5, 1, 0};
-        Node node = BasicNode.of(edges);
+    void storeIndependentWeightsWithArrayInput() {
+        int[] weights = {5, 1, 0};
+        Node node = BasicNode.of(weights);
 
-        edges[2] = 10;
+        weights[2] = 10;
 
-        List<Integer> edgeList = Arrays.stream(edges)
+        List<Integer> edgeList = Arrays.stream(weights)
                 .boxed()
                 .toList();
 
-        Assertions.assertNotEquals(edgeList, node.getEdges());
+        Assertions.assertNotEquals(edgeList, node.getWeights());
     }
 
     @Test
-    void storeImmutableEdgesWithCollectionInput() {
-        List<Integer> edges = new ArrayList<>(List.of(4, 5, 6));
-        Node node = BasicNode.of(edges);
+    void storeImmutableWeightsWithCollectionInput() {
+        List<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
+        Node node = BasicNode.of(weights);
 
-        List<Integer> storedEdges = node.getEdges();
+        List<Integer> storedWeights = node.getWeights();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedEdges.set(2, 1));
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(2, 1));
     }
 
     @Test
-    void storeImmutableEdgesWithArrayInput() {
-        int[] edges = {-5, 0, 5};
-        Node node = BasicNode.of(edges);
+    void storeImmutableWeightsWithArrayInput() {
+        int[] weights = {-5, 0, 5};
+        Node node = BasicNode.of(weights);
 
-        List<Integer> storedEdges = node.getEdges();
+        List<Integer> storedWeights = node.getWeights();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedEdges.set(1, 6));
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(1, 6));
     }
 
     @Test
-    void storeImmutableEdgesWithVarArgsInput() {
+    void storeImmutableWeightsWithVarArgsInput() {
         Node node = BasicNode.of(1, 3, 5);
 
-        List<Integer> storedEdges = node.getEdges();
+        List<Integer> storedWeights = node.getWeights();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedEdges.set(0, 7));
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(0, 7));
     }
 
     @Test
-    void storeUniqueEdgesWithCollectionInput() {
-        List<Integer> edges = List.of(7, 7, 8, 8, 9);
-        Node node = BasicNode.of(edges);
+    void storeUniqueWeightsWithCollectionInput() {
+        List<Integer> weights = List.of(7, 7, 8, 8, 9);
+        Node node = BasicNode.of(weights);
 
-        List<Integer> uniqueEdges = List.of(7, 8, 9);
+        List<Integer> uniqueWeights = List.of(7, 8, 9);
 
-        Assertions.assertEquals(uniqueEdges, node.getEdges());
+        Assertions.assertEquals(uniqueWeights, node.getWeights());
     }
 
     @Test
-    void storeUniqueEdgesWithArrayInput() {
-        int[] edges = {-5, 0, 0, 5, -5};
-        Node node = BasicNode.of(edges);
+    void storeUniqueWeightsWithArrayInput() {
+        int[] weights = {-5, 0, 0, 5, -5};
+        Node node = BasicNode.of(weights);
 
-        List<Integer> uniqueEdges = List.of(-5, 0, 5);
+        List<Integer> uniqueWeights = List.of(-5, 0, 5);
 
-        Assertions.assertEquals(uniqueEdges, node.getEdges());
+        Assertions.assertEquals(uniqueWeights, node.getWeights());
     }
 
     @Test
-    void storeUniqueEdgesWithVarArgsInput() {
+    void storeUniqueWeightsWithVarArgsInput() {
         Node node = BasicNode.of(-1, 0, 1, -1, 0, 1, 2);
 
-        List<Integer> uniqueEdges = List.of(-1, 0, 1, 2);
+        List<Integer> uniqueWeights = List.of(-1, 0, 1, 2);
 
-        Assertions.assertEquals(uniqueEdges, node.getEdges());
+        Assertions.assertEquals(uniqueWeights, node.getWeights());
     }
 }
