@@ -13,7 +13,15 @@ import java.util.List;
 
 class SimplePathTests {
     @Test
-    void retrieveStoredSteps() {
+    void getThePathLength() {
+        List<Integer> steps = List.of(5, 3, 1);
+        Path path = new SimplePath(steps);
+
+        Assertions.assertEquals(9, path.getLength());
+    }
+
+    @Test
+    void getStoredSteps() {
         List<Integer> steps = List.of(1, 2, 3);
         Path path = new SimplePath(steps);
 

@@ -8,6 +8,8 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.List;
 
 public interface Path {
+    int getLength();
+
     List<Integer> getSteps();
 
     int getSize();
