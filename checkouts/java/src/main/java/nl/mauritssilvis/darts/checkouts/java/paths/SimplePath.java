@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -12,12 +13,16 @@ public class SimplePath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> links;
 
-    public SimplePath(List<Integer> steps) {
+    private SimplePath(Collection<Integer> steps) {
         this.steps = List.copyOf(steps);
 
         links = steps.stream()
                 .map(step -> false)
                 .toList();
+    }
+
+    public static Path of(Collection<Integer> steps) {
+        return new SimplePath(steps);
     }
 
     @Override

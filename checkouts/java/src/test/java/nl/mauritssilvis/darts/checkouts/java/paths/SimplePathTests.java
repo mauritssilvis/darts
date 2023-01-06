@@ -15,7 +15,7 @@ class SimplePathTests {
     @Test
     void getThePathLength() {
         List<Integer> steps = List.of(5, 3, 1);
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(9, path.getLength());
     }
@@ -23,7 +23,7 @@ class SimplePathTests {
     @Test
     void getStoredSteps() {
         List<Integer> steps = List.of(1, 2, 3);
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps, path.getSteps());
     }
@@ -31,7 +31,7 @@ class SimplePathTests {
     @Test
     void storeAnIndependentCopyOfTheSteps() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         steps.set(0, 10);
 
@@ -41,7 +41,7 @@ class SimplePathTests {
     @Test
     void storeImmutableSteps() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         List<Integer> storedSteps = path.getSteps();
 
@@ -51,7 +51,7 @@ class SimplePathTests {
     @Test
     void obtainUnlinkedSteps() {
         List<Integer> steps = List.of(2, 5, 6);
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         List<Boolean> links = List.of(false, false, false);
 
@@ -61,7 +61,7 @@ class SimplePathTests {
     @Test
     void obtainASinglePath() {
         List<Integer> steps = List.of(-1, 10, 5);
-        Path path = new SimplePath(steps);
+        Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(1, path.getMultiplicity());
     }
