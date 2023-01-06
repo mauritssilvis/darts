@@ -8,6 +8,10 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * An implementation of the {@code Path} interface that represents a single path
+ * consisting of ungrouped steps.
+ */
 public class SimplePath implements Path {
     private final List<Integer> steps;
 
@@ -15,6 +19,13 @@ public class SimplePath implements Path {
         this.steps = List.copyOf(steps);
     }
 
+    /**
+     * Returns a new {@code SimplePath} with integer steps given by the supplied
+     * collection.
+     *
+     * @param steps a collection of integer steps
+     * @return a new {@code SimplePath} with the given steps
+     */
     public static Path of(Collection<Integer> steps) {
         return new SimplePath(steps);
     }

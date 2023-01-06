@@ -41,9 +41,9 @@ public interface Path {
     List<Integer> getSteps();
 
     /**
-     * Gets the number of groups that this path consists of.
+     * Gets the number of groups this path consists of.
      * <p>
-     * For a simple path, the number of groups will equal the number of steps.
+     * For a simple path, the number of groups equals the number of steps.
      *
      * @return the number of groups this path comprises
      */
