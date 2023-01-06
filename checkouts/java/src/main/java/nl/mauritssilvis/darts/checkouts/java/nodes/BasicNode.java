@@ -19,11 +19,11 @@ public class BasicNode implements Node {
                 .toList();
     }
 
-    public static Node of(Collection<Integer> weights) {
+    public static Node with(Collection<Integer> weights) {
         return new BasicNode(weights.stream());
     }
 
-    public static Node of(int... weights) {
+    public static Node with(int... weights) {
         return new BasicNode(Arrays.stream(weights).boxed());
     }
 
