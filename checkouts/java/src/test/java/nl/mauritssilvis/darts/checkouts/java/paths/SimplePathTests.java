@@ -13,7 +13,14 @@ import java.util.List;
 
 class SimplePathTests {
     @Test
-    void getThePathLength() {
+    void getPathSize() {
+        List<Integer> steps = List.of(4, 2, 0);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps.size(), path.getSize());
+    }
+    @Test
+    void getPathLength() {
         List<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
 
@@ -29,7 +36,7 @@ class SimplePathTests {
     }
 
     @Test
-    void storeAnIndependentCopyOfTheSteps() {
+    void storeIndependentSteps() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
 
@@ -49,11 +56,9 @@ class SimplePathTests {
     }
 
     @Test
-    void obtainUnlinkedSteps() {
+    void obtainUngroupedSteps() {
         List<Integer> steps = List.of(2, 5, 6);
         Path path = SimplePath.of(steps);
-
-        List<Boolean> links = List.of(false, false, false);
 
         Assertions.assertEquals(steps.size(), path.getGroupCount());
     }

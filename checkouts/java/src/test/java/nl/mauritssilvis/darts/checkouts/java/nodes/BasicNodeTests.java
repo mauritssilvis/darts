@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 class BasicNodeTests {
@@ -68,7 +69,7 @@ class BasicNodeTests {
 
     @Test
     void storeImmutableWeightsWithCollectionInput() {
-        List<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
+        Collection<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
         Node node = BasicNode.with(weights);
 
         List<Integer> storedWeights = node.getWeights();
