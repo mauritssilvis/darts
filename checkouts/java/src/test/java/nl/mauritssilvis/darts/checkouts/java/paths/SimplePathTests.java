@@ -55,17 +55,7 @@ class SimplePathTests {
 
         List<Boolean> links = List.of(false, false, false);
 
-        Assertions.assertEquals(links, path.getLinks());
-    }
-
-    @Test
-    void storeImmutableLinks() {
-        List<Integer> steps = List.of(4, 5, 6);
-        Path path = new SimplePath(steps);
-
-        List<Boolean> links = path.getLinks();
-
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> links.set(0, true));
+        Assertions.assertEquals(steps.size(), path.getGroupCount());
     }
 
     @Test

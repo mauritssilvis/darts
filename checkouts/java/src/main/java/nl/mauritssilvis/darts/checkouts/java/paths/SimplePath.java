@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class SimplePath implements Path {
     private final List<Integer> steps;
@@ -37,8 +38,10 @@ public class SimplePath implements Path {
     }
 
     @Override
-    public List<Boolean> getLinks() {
-        return links;
+    public int getGroupCount() {
+        return (int) links.stream()
+                .filter(Predicate.not(Boolean::booleanValue))
+                .count();
     }
 
     @Override
