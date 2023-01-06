@@ -7,6 +7,10 @@ package nl.mauritssilvis.darts.checkouts.java.nodes;
 
 import java.util.List;
 
+
+/**
+ * A node with outgoing edges having integer weights.
+ */
 public interface Node {
     /**
      * Gets the weights of the edges incident to this node.
