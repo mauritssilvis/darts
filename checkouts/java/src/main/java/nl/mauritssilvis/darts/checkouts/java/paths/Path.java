@@ -8,12 +8,12 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.List;
 
 /**
- * A path consisting of integer steps.
+ * A representation of paths consisting of integer steps.
  * <p>
- * A simple path will consist of ungrouped steps. In such a path, different
- * steps cannot be interchanged without getting a different path. Simple paths,
- * thus, represent only a single path. In contrast, paths with grouped steps
- * represent a group of paths, one for each permutation of the grouped elements.
+ * A simple path consists of ungrouped steps. In such a path, different steps
+ * cannot be interchanged without getting a different path. Simple paths, thus,
+ * represent only a single path. In contrast, paths with grouped steps represent
+ * a group of paths, one for each permutation of the grouped elements.
  */
 public interface Path {
     /**

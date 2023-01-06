@@ -10,6 +10,11 @@ import java.util.List;
 
 /**
  * A node with outgoing edges having integer weights.
+ * <p>
+ * For the purposes of the present application, it is not necessary to specify
+ * connections to other nodes. Each node can simply be assumed to be connected
+ * to one other node. The weights of the edges incident to a node have to be
+ * unique, however.
  */
 public interface Node {
     /**
