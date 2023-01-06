@@ -19,11 +19,11 @@ import java.util.List;
 class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
-    void findASpecificShortPath(List<Node> steps) {
+    void findASpecificShortPath(List<Node> nodes) {
         PathFinder pathFinder = new CartesianPathFinder();
         int length = 10;
 
-        List<Path> paths = pathFinder.find(steps, length);
+        List<Path> paths = pathFinder.find(nodes, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -37,11 +37,11 @@ class CartesianPathFinderTests {
 
     @ParameterizedTest
     @MethodSource("withTwoSpecificLength10Paths")
-    void findTwoSpecificShortPaths(List<Node> steps) {
+    void findTwoSpecificShortPaths(List<Node> nodes) {
         PathFinder pathFinder = new CartesianPathFinder();
         int length = 10;
 
-        List<Path> paths = pathFinder.find(steps, length);
+        List<Path> paths = pathFinder.find(nodes, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -59,12 +59,12 @@ class CartesianPathFinderTests {
 
     @Test
     void findASpecificLongPath() {
-        Node step = UnsortedNode.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        List<Node> steps = List.of(step, step, step, step, step, step, step, step, step);
+        Node node = UnsortedNode.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
         int length = 9 * 9;
 
         PathFinder pathFinder = new CartesianPathFinder();
-        List<Path> paths = pathFinder.find(steps, length);
+        List<Path> paths = pathFinder.find(nodes, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)

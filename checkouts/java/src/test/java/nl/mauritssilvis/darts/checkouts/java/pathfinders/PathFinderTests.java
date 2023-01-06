@@ -18,37 +18,37 @@ import java.util.List;
 class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFinders")
-    void handleAbsentSteps(PathFinder pathFinder) {
-        List<Node> steps = new ArrayList<>();
+    void handleAbsentNodes(PathFinder pathFinder) {
+        List<Node> nodes = new ArrayList<>();
         int length = 0;
 
-        List<Path> paths = pathFinder.find(steps, length);
+        List<Path> paths = pathFinder.find(nodes, length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndEmptySteps")
-    void handleEmptySteps(PathFinder pathFinder, List<Node> steps) {
+    @CartesianTest.MethodFactory("withAllPathFindersAndDisconnectedNodes")
+    void handleDisconnectedNodes(PathFinder pathFinder, List<Node> nodes) {
         int length = 2;
 
-        List<Path> paths = pathFinder.find(steps, length);
+        List<Path> paths = pathFinder.find(nodes, length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
-    void handleUnreachableLengths(PathFinder pathFinder, List<Node> steps, int length) {
-        List<Path> paths = pathFinder.find(steps, length);
+    void handleUnreachableLengths(PathFinder pathFinder, List<Node> nodes, int length) {
+        List<Path> paths = pathFinder.find(nodes, length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
-    void findOneShortPath(PathFinder pathFinder, List<Node> steps, int length) {
-        List<Path> paths = pathFinder.find(steps, length);
+    void findOneShortPath(PathFinder pathFinder, List<Node> nodes, int length) {
+        List<Path> paths = pathFinder.find(nodes, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -56,14 +56,14 @@ class PathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSize())
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize())
         );
     }
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
-    void findTwoShortPaths(PathFinder pathFinder, List<Node> steps, int length) {
-        List<Path> paths = pathFinder.find(steps, length);
+    void findTwoShortPaths(PathFinder pathFinder, List<Node> nodes, int length) {
+        List<Path> paths = pathFinder.find(nodes, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -75,8 +75,8 @@ class PathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(steps.size(), totalSize / paths.size())
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size())
         );
     }
 
@@ -87,7 +87,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndEmptySteps() {
+    static ArgumentSets withAllPathFindersAndDisconnectedNodes() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
