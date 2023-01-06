@@ -8,10 +8,7 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 class SimplePathTests {
     @Test
@@ -38,6 +35,29 @@ class SimplePathTests {
     }
 
     @Test
+    void getThePathSizeWithEmptyCollectionInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps.size(), path.getSize());
+    }
+
+    @Test
+    void getThePathSizeWithEmptyArrayInput() {
+        int[] steps = {};
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps.length, path.getSize());
+    }
+
+    @Test
+    void getThePathSizeWithEmptyVarArgsInput() {
+        Path path = SimplePath.of();
+
+        Assertions.assertEquals(0, path.getSize());
+    }
+
+    @Test
     void getThePathLengthWithCollectionInput() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
@@ -58,6 +78,29 @@ class SimplePathTests {
         Path path = SimplePath.of(3);
 
         Assertions.assertEquals(3, path.getLength());
+    }
+
+    @Test
+    void getThePathLengthWithEmptyCollectionInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getLength());
+    }
+
+    @Test
+    void getThePathLengthWithEmptyArrayInput() {
+        int[] steps = {};
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getLength());
+    }
+
+    @Test
+    void getThePathLengthWithEmptyVarArgsInput() {
+        Path path = SimplePath.of();
+
+        Assertions.assertEquals(0, path.getLength());
     }
 
     @Test
@@ -186,5 +229,28 @@ class SimplePathTests {
         Path path = SimplePath.of(8, 7, 6, 5, 4);
 
         Assertions.assertEquals(1, path.getMultiplicity());
+    }
+
+    @Test
+    void obtainNoPathWithEmptyCollectionInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getMultiplicity());
+    }
+
+    @Test
+    void obtainNoPathWithEmptyArrayInput() {
+        int[] steps = {};
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getMultiplicity());
+    }
+
+    @Test
+    void obtainNoPathWithEmptyVarArgsInput() {
+        Path path = SimplePath.of();
+
+        Assertions.assertEquals(0, path.getMultiplicity());
     }
 }

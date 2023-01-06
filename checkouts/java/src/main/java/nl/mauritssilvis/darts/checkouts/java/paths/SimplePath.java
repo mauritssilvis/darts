@@ -66,6 +66,6 @@ public class SimplePath implements Path {
 
     @Override
     public int getMultiplicity() {
-        return 1;
+        return steps.size() > 0 ? 1 : 0;
     }
 }
