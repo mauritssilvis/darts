@@ -8,15 +8,12 @@ package nl.mauritssilvis.darts.checkouts.java.nodes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 class BasicNodeTests {
     @Test
     void getStoredWeightsWithCollectionInput() {
-        List<Integer> weights = List.of(4, 5, 6);
+        Collection<Integer> weights = List.of(4, 5, 6);
         Node node = BasicNode.with(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
@@ -27,7 +24,7 @@ class BasicNodeTests {
         int[] weights = {5, 1, 0};
         Node node = BasicNode.with(weights);
 
-        List<Integer> edgeList = Arrays.stream(weights)
+        Collection<Integer> edgeList = Arrays.stream(weights)
                 .boxed()
                 .toList();
 
@@ -38,7 +35,7 @@ class BasicNodeTests {
     void getStoredWeightsWithVarArgsInput() {
         Node node = BasicNode.with(7, 3, 9);
 
-        List<Integer> weights = List.of(7, 3, 9);
+        Collection<Integer> weights = List.of(7, 3, 9);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -98,7 +95,7 @@ class BasicNodeTests {
 
     @Test
     void storeUniqueWeightsWithCollectionInput() {
-        List<Integer> weights = List.of(7, 7, 8, 8, 9);
+        Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
         Node node = BasicNode.with(weights);
 
         List<Integer> uniqueWeights = List.of(7, 8, 9);
@@ -123,5 +120,28 @@ class BasicNodeTests {
         List<Integer> uniqueWeights = List.of(-1, 0, 1, 2);
 
         Assertions.assertEquals(uniqueWeights, node.getWeights());
+    }
+
+    @Test
+    void getADisconnectedNodeWithCollectionInput() {
+        Collection<Integer> weights = Collections.emptyList();
+        Node node = BasicNode.with(weights);
+
+        Assertions.assertTrue(node.isDisconnected());
+    }
+
+    @Test
+    void getADisconnectedNodeWithArrayInput() {
+        int[] weights = {};
+        Node node = BasicNode.with(weights);
+
+        Assertions.assertTrue(node.isDisconnected());
+    }
+
+    @Test
+    void getADisconnectedNodeWithVarArgsInput() {
+        Node node = BasicNode.with();
+
+        Assertions.assertTrue(node.isDisconnected());
     }
 }
