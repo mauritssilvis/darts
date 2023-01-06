@@ -19,9 +19,9 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFinders")
     void handleAbsentSteps(PathFinder pathFinder) {
         List<List<Integer>> steps = new ArrayList<>();
-        int target = 0;
+        int length = 0;
 
-        List<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, length);
 
         Assertions.assertEquals(0, paths.size());
     }
@@ -29,25 +29,25 @@ class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndEmptySteps")
     void handleEmptySteps(PathFinder pathFinder, List<List<Integer>> steps) {
-        int target = 2;
+        int length = 2;
 
-        List<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableTargets")
-    void handleUnreachableTargets(PathFinder pathFinder, List<List<Integer>> steps, int target) {
-        List<Path> paths = pathFinder.find(steps, target);
+    @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
+    void handleUnreachableLengths(PathFinder pathFinder, List<List<Integer>> steps, int length) {
+        List<Path> paths = pathFinder.find(steps, length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
-    void findOneShortPath(PathFinder pathFinder, List<List<Integer>> steps, int target) {
-        List<Path> paths = pathFinder.find(steps, target);
+    void findOneShortPath(PathFinder pathFinder, List<List<Integer>> steps, int length) {
+        List<Path> paths = pathFinder.find(steps, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -61,8 +61,8 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
-    void findTwoShortPaths(PathFinder pathFinder, List<List<Integer>> steps, int target) {
-        List<Path> paths = pathFinder.find(steps, target);
+    void findTwoShortPaths(PathFinder pathFinder, List<List<Integer>> steps, int length) {
+        List<Path> paths = pathFinder.find(steps, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -100,7 +100,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndUnreachableTargets() {
+    static ArgumentSets withAllPathFindersAndUnreachableLengths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()

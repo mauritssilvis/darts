@@ -19,9 +19,9 @@ class CartesianPathFinderTests {
     @MethodSource("withASpecificLength10Path")
     void findASpecificShortPath(List<List<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
-        int target = 10;
+        int length = 10;
 
-        List<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -37,9 +37,9 @@ class CartesianPathFinderTests {
     @MethodSource("withTwoSpecificLength10Paths")
     void findTwoSpecificShortPaths(List<List<Integer>> steps) {
         PathFinder pathFinder = new CartesianPathFinder();
-        int target = 10;
+        int length = 10;
 
-        List<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)
@@ -59,10 +59,10 @@ class CartesianPathFinderTests {
     void findASpecificLongPath() {
         List<Integer> step = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         List<List<Integer>> steps = List.of(step, step, step, step, step, step, step, step, step);
-        int target = 9 * 9;
+        int length = 9 * 9;
 
         PathFinder pathFinder = new CartesianPathFinder();
-        List<Path> paths = pathFinder.find(steps, target);
+        List<Path> paths = pathFinder.find(steps, length);
 
         int numPaths = paths.stream()
                 .mapToInt(Path::getMultiplicity)

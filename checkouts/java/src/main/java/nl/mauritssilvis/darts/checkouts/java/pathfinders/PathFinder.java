@@ -10,5 +10,5 @@ import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import java.util.List;
 
 public interface PathFinder {
-    List<Path> find(List<List<Integer>> steps, int target);
+    List<Path> find(List<List<Integer>> steps, int length);
 }
