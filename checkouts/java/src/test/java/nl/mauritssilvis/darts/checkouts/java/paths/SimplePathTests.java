@@ -16,7 +16,7 @@ import java.util.List;
 class SimplePathTests {
     @Test
     void getThePathSizeWithCollectionInput() {
-        List<Integer> steps = List.of(4, 2, 0);
+        Collection<Integer> steps = List.of(4, 2, 0);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps.size(), path.getSize());
@@ -39,7 +39,7 @@ class SimplePathTests {
 
     @Test
     void getThePathLengthWithCollectionInput() {
-        List<Integer> steps = List.of(5, 3, 1);
+        Collection<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(9, path.getLength());
@@ -62,7 +62,7 @@ class SimplePathTests {
 
     @Test
     void getStoredStepsWithCollectionInput() {
-        List<Integer> steps = List.of(1, 2, 3);
+        Collection<Integer> steps = List.of(1, 2, 3);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps, path.getSteps());
@@ -144,7 +144,7 @@ class SimplePathTests {
 
     @Test
     void obtainUngroupedStepsWithCollectionInput() {
-        List<Integer> steps = List.of(2, 5, 6);
+        Collection<Integer> steps = List.of(2, 5, 6);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps.size(), path.getGroupCount());
@@ -167,7 +167,7 @@ class SimplePathTests {
 
     @Test
     void obtainASinglePathWithCollectionInput() {
-        List<Integer> steps = List.of(-1, 10, 5);
+        Collection<Integer> steps = List.of(-1, 10, 5);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(1, path.getMultiplicity());
