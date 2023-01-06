@@ -39,6 +39,16 @@ class SimplePathTests {
     }
 
     @Test
+    void storeImmutableSteps() {
+        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
+        Path path = new SimplePath(steps);
+
+        List<Integer> storedSteps = path.getSteps();
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedSteps.set(0, 7));
+    }
+
+    @Test
     void obtainUnlinkedSteps() {
         List<Integer> steps = List.of(2, 5, 6);
         Path path = new SimplePath(steps);
@@ -46,6 +56,17 @@ class SimplePathTests {
         List<Boolean> links = List.of(false, false, false);
 
         Assertions.assertEquals(links, path.getLinks());
+    }
+
+    @Test
+    void storeImmutableLinks() {
+        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
+        Path path = new SimplePath(steps);
+
+        List<Boolean> links = path.getLinks();
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> links.set(0, true));
+
     }
 
     @Test
