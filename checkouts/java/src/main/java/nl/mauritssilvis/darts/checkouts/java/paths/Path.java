@@ -17,6 +17,14 @@ import java.util.List;
  */
 public interface Path {
     /**
+     * Get the size of this path, that is, the number of steps comprising this
+     * path.
+     *
+     * @return the size of this path
+     */
+    int getSize();
+
+    /**
      * Get the length of this path, that is, the total length covered by the steps
      * of this path.
      *
@@ -31,14 +39,6 @@ public interface Path {
      * @return a list of integers representing the steps of this path
      */
     List<Integer> getSteps();
-
-    /**
-     * Get the size of this path, that is, the number of steps comprising this
-     * path.
-     *
-     * @return the size of this path
-     */
-    int getSize();
 
     List<Boolean> getLinks();
 

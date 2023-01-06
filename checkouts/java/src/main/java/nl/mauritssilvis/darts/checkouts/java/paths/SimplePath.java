@@ -20,6 +20,11 @@ public class SimplePath implements Path {
     }
 
     @Override
+    public int getSize() {
+        return steps.size();
+    }
+
+    @Override
     public int getLength() {
         return steps.stream()
                 .mapToInt(Integer::intValue)
@@ -29,11 +34,6 @@ public class SimplePath implements Path {
     @Override
     public List<Integer> getSteps() {
         return steps;
-    }
-
-    @Override
-    public int getSize() {
-        return steps.size();
     }
 
     @Override
