@@ -123,7 +123,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void getADisconnectedNodeWithCollectionInput() {
+    void getADisconnectedNodeWithEmptyCollectionInput() {
         Collection<Integer> weights = Collections.emptyList();
         Node node = BasicNode.with(weights);
 
@@ -131,7 +131,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void getADisconnectedNodeWithArrayInput() {
+    void getADisconnectedNodeWithEmptyArrayInput() {
         int[] weights = {};
         Node node = BasicNode.with(weights);
 
@@ -139,7 +139,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void getADisconnectedNodeWithVarArgsInput() {
+    void getADisconnectedNodeWithEmptyVarArgsInput() {
         Node node = BasicNode.with();
 
         Assertions.assertTrue(node.isDisconnected());
