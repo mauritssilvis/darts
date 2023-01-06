@@ -9,20 +9,28 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class BaseNode implements Node {
+public class BasicNode implements Node {
     private final List<Integer> edges;
 
-    BaseNode(Collection<Integer> edges) {
+    private BasicNode(Collection<Integer> edges) {
         this.edges = edges.stream()
                 .distinct()
                 .toList();
     }
 
-    BaseNode(int[] edges) {
+    private BasicNode(int... edges) {
         this.edges = Arrays.stream(edges)
                 .distinct()
                 .boxed()
                 .toList();
+    }
+
+    public static Node of(Collection<Integer> edges) {
+        return new BasicNode(edges);
+    }
+
+    public static Node of(int... edges) {
+        return new BasicNode(edges);
     }
 
     @Override

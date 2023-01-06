@@ -5,8 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.nodes;
 
-import nl.mauritssilvis.darts.checkouts.java.paths.Path;
-import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class UnsortedNodeTests {
+class BasicNodeTests {
     @Test
     void getStoredEdgesWithCollectionInput() {
         List<Integer> edges = List.of(4, 5, 6);
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         Assertions.assertEquals(edges, node.getEdges());
     }
@@ -26,7 +24,7 @@ class UnsortedNodeTests {
     @Test
     void getStoredEdgesWithArrayInput() {
         int[] edges = {5, 1, 0};
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         List<Integer> edgeList = Arrays.stream(edges)
                 .boxed()
@@ -37,7 +35,7 @@ class UnsortedNodeTests {
 
     @Test
     void getStoredEdgesWithVarArgsInput() {
-        Node node = UnsortedNode.of(7, 3, 9);
+        Node node = BasicNode.of(7, 3, 9);
 
         List<Integer> edges = List.of(7, 3, 9);
 
@@ -47,7 +45,7 @@ class UnsortedNodeTests {
     @Test
     void storeIndependentEdgesWithCollectionInput() {
         List<Integer> edges = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         edges.set(1, -2);
 
@@ -57,7 +55,7 @@ class UnsortedNodeTests {
     @Test
     void storeIndependentEdgesWithArrayInput() {
         int[] edges = {5, 1, 0};
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         edges[2] = 10;
 
@@ -71,7 +69,7 @@ class UnsortedNodeTests {
     @Test
     void storeImmutableEdgesWithCollectionInput() {
         List<Integer> edges = new ArrayList<>(List.of(4, 5, 6));
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         List<Integer> storedEdges = node.getEdges();
 
@@ -81,7 +79,7 @@ class UnsortedNodeTests {
     @Test
     void storeImmutableEdgesWithArrayInput() {
         int[] edges = {-5, 0, 5};
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         List<Integer> storedEdges = node.getEdges();
 
@@ -90,7 +88,7 @@ class UnsortedNodeTests {
 
     @Test
     void storeImmutableEdgesWithVarArgsInput() {
-        Node node = UnsortedNode.of(1, 3, 5);
+        Node node = BasicNode.of(1, 3, 5);
 
         List<Integer> storedEdges = node.getEdges();
 
@@ -100,7 +98,7 @@ class UnsortedNodeTests {
     @Test
     void storeUniqueEdgesWithCollectionInput() {
         List<Integer> edges = List.of(7, 7, 8, 8, 9);
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         List<Integer> uniqueEdges = List.of(7, 8, 9);
 
@@ -110,7 +108,7 @@ class UnsortedNodeTests {
     @Test
     void storeUniqueEdgesWithArrayInput() {
         int[] edges = {-5, 0, 0, 5, -5};
-        Node node = UnsortedNode.of(edges);
+        Node node = BasicNode.of(edges);
 
         List<Integer> uniqueEdges = List.of(-5, 0, 5);
 
@@ -119,7 +117,7 @@ class UnsortedNodeTests {
 
     @Test
     void storeUniqueEdgesWithVarArgsInput() {
-        Node node = UnsortedNode.of(-1, 0, 1, -1, 0, 1, 2);
+        Node node = BasicNode.of(-1, 0, 1, -1, 0, 1, 2);
 
         List<Integer> uniqueEdges = List.of(-1, 0, 1, 2);
 
