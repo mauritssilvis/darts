@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.nodes;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,6 +15,13 @@ public abstract class BaseNode implements Node {
     BaseNode(Collection<Integer> edges) {
         this.edges = edges.stream()
                 .distinct()
+                .toList();
+    }
+
+    BaseNode(int[] edges) {
+        this.edges = Arrays.stream(edges)
+                .distinct()
+                .boxed()
                 .toList();
     }
 

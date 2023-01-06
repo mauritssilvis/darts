@@ -5,11 +5,14 @@
 
 package nl.mauritssilvis.darts.checkouts.java.nodes;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 public class UnsortedNode extends BaseNode {
     private UnsortedNode(Collection<Integer> edges) {
+        super(edges);
+    }
+
+    private UnsortedNode(int... edges) {
         super(edges);
     }
 
@@ -18,6 +21,6 @@ public class UnsortedNode extends BaseNode {
     }
 
     public static Node of(int... edges) {
-        return of(Arrays.stream(edges).boxed().toList());
+        return new UnsortedNode(edges);
     }
 }
