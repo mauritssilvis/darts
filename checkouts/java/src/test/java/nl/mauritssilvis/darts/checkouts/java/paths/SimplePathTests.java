@@ -60,13 +60,12 @@ class SimplePathTests {
 
     @Test
     void storeImmutableLinks() {
-        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
+        List<Integer> steps = List.of(4, 5, 6);
         Path path = new SimplePath(steps);
 
         List<Boolean> links = path.getLinks();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> links.set(0, true));
-
     }
 
     @Test
