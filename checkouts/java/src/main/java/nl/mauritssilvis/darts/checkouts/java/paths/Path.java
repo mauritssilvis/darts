@@ -10,7 +10,7 @@ import java.util.List;
 public interface Path {
     List<Integer> getSteps();
 
-    int getLength();
+    int getSize();
 
     List<Boolean> getLinks();
 

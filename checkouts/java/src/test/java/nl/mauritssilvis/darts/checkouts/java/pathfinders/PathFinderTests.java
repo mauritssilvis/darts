@@ -55,7 +55,7 @@ class PathFinderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getLength())
+                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSize())
         );
     }
 
@@ -68,14 +68,14 @@ class PathFinderTests {
                 .mapToInt(Path::getMultiplicity)
                 .sum();
 
-        int totalLength = paths.stream()
-                .mapToInt(Path::getLength)
+        int totalSize = paths.stream()
+                .mapToInt(Path::getSize)
                 .sum();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertEquals(steps.size(), paths.get(0).getLength()),
-                () -> Assertions.assertEquals(steps.size(), totalLength / paths.size())
+                () -> Assertions.assertEquals(steps.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(steps.size(), totalSize / paths.size())
         );
     }
 

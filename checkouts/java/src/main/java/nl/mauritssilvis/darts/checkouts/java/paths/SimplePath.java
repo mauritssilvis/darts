@@ -25,7 +25,7 @@ public class SimplePath implements Path {
     }
 
     @Override
-    public int getLength() {
+    public int getSize() {
         return steps.size();
     }
 
