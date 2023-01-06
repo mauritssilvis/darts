@@ -7,18 +7,12 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class SimplePath implements Path {
     private final List<Integer> steps;
-    private final List<Boolean> links;
 
     private SimplePath(Collection<Integer> steps) {
         this.steps = List.copyOf(steps);
-
-        links = steps.stream()
-                .map(step -> false)
-                .toList();
     }
 
     public static Path of(Collection<Integer> steps) {
@@ -44,9 +38,7 @@ public class SimplePath implements Path {
 
     @Override
     public int getGroupCount() {
-        return (int) links.stream()
-                .filter(Predicate.not(Boolean::booleanValue))
-                .count();
+        return steps.size();
     }
 
     @Override
