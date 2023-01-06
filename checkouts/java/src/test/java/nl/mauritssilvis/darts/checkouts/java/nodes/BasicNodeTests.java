@@ -24,11 +24,11 @@ class BasicNodeTests {
         int[] weights = {5, 1, 0};
         Node node = BasicNode.with(weights);
 
-        Collection<Integer> edgeList = Arrays.stream(weights)
+        Collection<Integer> weightList = Arrays.stream(weights)
                 .boxed()
                 .toList();
 
-        Assertions.assertEquals(edgeList, node.getWeights());
+        Assertions.assertEquals(weightList, node.getWeights());
     }
 
     @Test
@@ -57,11 +57,11 @@ class BasicNodeTests {
 
         weights[2] = 10;
 
-        List<Integer> edgeList = Arrays.stream(weights)
+        List<Integer> weightList = Arrays.stream(weights)
                 .boxed()
                 .toList();
 
-        Assertions.assertNotEquals(edgeList, node.getWeights());
+        Assertions.assertNotEquals(weightList, node.getWeights());
     }
 
     @Test
