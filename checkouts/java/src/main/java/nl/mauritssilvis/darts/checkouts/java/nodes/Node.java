@@ -14,4 +14,11 @@ public interface Node {
      * @return a list of unique integers labeling the edges of the node
      */
     List<Integer> getEdges();
+
+    /**
+     * Tells if the current node has no edges.
+     *
+     * @return a boolean that signals if the current node is disconnected
+     */
+    boolean isDisconnected();
 }

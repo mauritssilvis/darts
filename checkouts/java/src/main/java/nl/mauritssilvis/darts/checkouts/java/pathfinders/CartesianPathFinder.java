@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
+import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 
@@ -14,25 +15,25 @@ import java.util.List;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
-    public List<Path> find(List<List<Integer>> steps, int length) {
-        boolean hasEmptySteps = steps.stream()
-                .anyMatch(List::isEmpty);
+    public List<Path> find(List<Node> nodes, int length) {
+        boolean hasDisconnectedNodes = nodes.stream()
+                .anyMatch(Node::isDisconnected);
 
-        return hasEmptySteps ? new ArrayList<>() : new Finder(steps, length).find();
+        return hasDisconnectedNodes ? new ArrayList<>() : new Finder(nodes, length).find();
     }
 
     private static class Finder {
-        private final List<List<Integer>> steps;
+        private final List<Node> nodes;
         private final int length;
         private final List<Integer> path;
         private final List<Path> paths;
 
-        Finder(List<List<Integer>> steps, int length) {
-            this.steps = steps;
+        Finder(List<Node> nodes, int length) {
+            this.nodes = nodes;
             this.length = length;
 
             path = new ArrayList<>();
-            steps.forEach(step -> path.add(0));
+            nodes.forEach(step -> path.add(0));
 
             paths = new ArrayList<>();
         }
@@ -48,7 +49,7 @@ public class CartesianPathFinder implements PathFinder {
         }
 
         private void findRecursively(int level, int distance) {
-            if (level == steps.size()) {
+            if (level == nodes.size()) {
                 if (level > 0 && distance == length) {
                     paths.add(new SimplePath(path));
                 }
@@ -56,7 +57,10 @@ public class CartesianPathFinder implements PathFinder {
                 return;
             }
 
-            for (int step : steps.get(level)) {
+            Node node = nodes.get(level);
+            List<Integer> edges = node.getEdges();
+
+            for (int step : edges) {
                 path.set(level, step);
                 findRecursively(level + 1, distance + step);
             }

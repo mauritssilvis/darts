@@ -5,10 +5,11 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
+import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 
 import java.util.List;
 
 public interface PathFinder {
-    List<Path> find(List<List<Integer>> steps, int length);
+    List<Path> find(List<Node> steps, int length);
 }

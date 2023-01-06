@@ -29,4 +29,9 @@ public abstract class BaseNode implements Node {
     public List<Integer> getEdges() {
         return edges;
     }
+
+    @Override
+    public boolean isDisconnected() {
+        return edges.isEmpty();
+    }
 }
