@@ -5,11 +5,8 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * An implementation of the {@code Path} interface that can represent multiple
@@ -20,22 +17,15 @@ public class GroupedPath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> grouping;
 
-    private GroupedPath(Stream<Integer> steps, Stream<Boolean> grouping) {
-        this.steps = steps.toList();
-        this.grouping = grouping.limit(this.steps.size())
+    private GroupedPath(Collection<Integer> steps, Collection<Boolean> grouping) {
+        this.steps = List.copyOf(steps);
+        this.grouping = grouping.stream()
+                .limit(this.steps.size())
                 .toList();
     }
 
     public static GroupedPath of(Collection<Integer> steps, Collection<Boolean> grouping) {
-        return new GroupedPath(steps.stream(), grouping.stream());
-    }
-
-    public static GroupedPath of(int[] steps, boolean[] grouping) {
-        return new GroupedPath(
-                Arrays.stream(steps).boxed(),
-                IntStream.range(0, grouping.length)
-                        .mapToObj(i -> grouping[i])
-        );
+        return new GroupedPath(steps, grouping);
     }
 
     @Override
