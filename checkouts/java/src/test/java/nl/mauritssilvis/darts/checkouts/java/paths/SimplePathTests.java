@@ -39,7 +39,7 @@ class SimplePathTests {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(steps.size(), path.getSize());
+        Assertions.assertEquals(0, path.getSize());
     }
 
     @Test
@@ -47,7 +47,7 @@ class SimplePathTests {
         int[] steps = {};
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(steps.length, path.getSize());
+        Assertions.assertEquals(0, path.getSize());
     }
 
     @Test
@@ -206,6 +206,29 @@ class SimplePathTests {
         Path path = SimplePath.of(5, 3, 9);
 
         Assertions.assertEquals(3, path.getGroupCount());
+    }
+
+    @Test
+    void obtainNoGroupsWithEmptyCollectionInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getGroupCount());
+    }
+
+    @Test
+    void obtainNoGroupsWithEmptyArrayInput() {
+        int[] steps = {};
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.getGroupCount());
+    }
+
+    @Test
+    void obtainNoGroupsWithEmptyVarArgsInput() {
+        Path path = SimplePath.of();
+
+        Assertions.assertEquals(0, path.getGroupCount());
     }
 
     @Test
