@@ -20,8 +20,7 @@ public interface Node {
     /**
      * Gets the weights of the edges incident to this node.
      * <p>
-     * For the purposes of the present application, the weights of the edges
-     * associated with a node have to be unique.
+     * The weights of the edges associated with this node have to be unique.
      *
      * @return a list of unique edge weights
      */
