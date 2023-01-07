@@ -30,7 +30,7 @@ public class BasicNode implements Node {
      * @param weights a collection of integer weights
      * @return a new {@code BasicNode} with the given weights
      */
-    public static Node with(Collection<Integer> weights) {
+    public static Node of(Collection<Integer> weights) {
         return new BasicNode(weights.stream());
     }
 
@@ -41,7 +41,7 @@ public class BasicNode implements Node {
      * @param weights an array of integer weights
      * @return a new {@code BasicNode} with the given weights
      */
-    public static Node with(int... weights) {
+    public static Node of(int... weights) {
         return new BasicNode(Arrays.stream(weights).boxed());
     }
 

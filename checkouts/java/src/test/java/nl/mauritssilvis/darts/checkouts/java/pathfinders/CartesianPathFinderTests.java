@@ -59,7 +59,7 @@ class CartesianPathFinderTests {
 
     @Test
     void findASpecificLongPath() {
-        Node node = BasicNode.with(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Node node = BasicNode.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         List<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
         int length = 9 * 9;
 
@@ -78,17 +78,17 @@ class CartesianPathFinderTests {
 
     static Collection<List<Node>> withASpecificLength10Path() {
         return List.of(
-                List.of(BasicNode.with(3), BasicNode.with(2), BasicNode.with(5)),
-                List.of(BasicNode.with(3, 2), BasicNode.with(2, 4), BasicNode.with(2, 5)),
-                List.of(BasicNode.with(0, 3, 10), BasicNode.with(2, 4), BasicNode.with(1, 5))
+                List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
+                List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
+                List.of(BasicNode.of(0, 3, 10), BasicNode.of(2, 4), BasicNode.of(1, 5))
         );
     }
 
     static Collection<List<Node>> withTwoSpecificLength10Paths() {
         return List.of(
-                List.of(BasicNode.with(3, 2), BasicNode.with(3, 2), BasicNode.with(5)),
-                List.of(BasicNode.with(3, 2), BasicNode.with(2, 4, 3), BasicNode.with(2, 5)),
-                List.of(BasicNode.with(0, 3, 10, 2), BasicNode.with(3, 2, 4), BasicNode.with(1, 5))
+                List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
+                List.of(BasicNode.of(3, 2), BasicNode.of(2, 4, 3), BasicNode.of(2, 5)),
+                List.of(BasicNode.of(0, 3, 10, 2), BasicNode.of(3, 2, 4), BasicNode.of(1, 5))
         );
     }
 }

@@ -14,7 +14,7 @@ class BasicNodeTests {
     @Test
     void getStoredWeightsWithCollectionInput() {
         Collection<Integer> weights = List.of(4, 5, 6);
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -22,7 +22,7 @@ class BasicNodeTests {
     @Test
     void getStoredWeightsWithArrayInput() {
         int[] weights = {5, 1, 0};
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         Collection<Integer> weightList = Arrays.stream(weights)
                 .boxed()
@@ -33,7 +33,7 @@ class BasicNodeTests {
 
     @Test
     void getStoredWeightsWithVarArgsInput() {
-        Node node = BasicNode.with(7, 3, 9);
+        Node node = BasicNode.of(7, 3, 9);
 
         Collection<Integer> weights = List.of(7, 3, 9);
 
@@ -43,7 +43,7 @@ class BasicNodeTests {
     @Test
     void storeIndependentWeightsWithCollectionInput() {
         List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         weights.set(1, -2);
 
@@ -53,7 +53,7 @@ class BasicNodeTests {
     @Test
     void storeIndependentWeightsWithArrayInput() {
         int[] weights = {5, 1, 0};
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         weights[2] = 10;
 
@@ -67,7 +67,7 @@ class BasicNodeTests {
     @Test
     void storeImmutableWeightsWithCollectionInput() {
         Collection<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         List<Integer> storedWeights = node.getWeights();
 
@@ -77,7 +77,7 @@ class BasicNodeTests {
     @Test
     void storeImmutableWeightsWithArrayInput() {
         int[] weights = {-5, 0, 5};
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         List<Integer> storedWeights = node.getWeights();
 
@@ -86,7 +86,7 @@ class BasicNodeTests {
 
     @Test
     void storeImmutableWeightsWithVarArgsInput() {
-        Node node = BasicNode.with(1, 3, 5);
+        Node node = BasicNode.of(1, 3, 5);
 
         List<Integer> storedWeights = node.getWeights();
 
@@ -96,7 +96,7 @@ class BasicNodeTests {
     @Test
     void storeUniqueWeightsWithCollectionInput() {
         Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         List<Integer> uniqueWeights = List.of(7, 8, 9);
 
@@ -106,7 +106,7 @@ class BasicNodeTests {
     @Test
     void storeUniqueWeightsWithArrayInput() {
         int[] weights = {-5, 0, 0, 5, -5};
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         List<Integer> uniqueWeights = List.of(-5, 0, 5);
 
@@ -115,7 +115,7 @@ class BasicNodeTests {
 
     @Test
     void storeUniqueWeightsWithVarArgsInput() {
-        Node node = BasicNode.with(-1, 0, 1, -1, 0, 1, 2);
+        Node node = BasicNode.of(-1, 0, 1, -1, 0, 1, 2);
 
         List<Integer> uniqueWeights = List.of(-1, 0, 1, 2);
 
@@ -125,7 +125,7 @@ class BasicNodeTests {
     @Test
     void getADisconnectedNodeWithEmptyCollectionInput() {
         Collection<Integer> weights = Collections.emptyList();
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         Assertions.assertTrue(node.isDisconnected());
     }
@@ -133,14 +133,14 @@ class BasicNodeTests {
     @Test
     void getADisconnectedNodeWithEmptyArrayInput() {
         int[] weights = {};
-        Node node = BasicNode.with(weights);
+        Node node = BasicNode.of(weights);
 
         Assertions.assertTrue(node.isDisconnected());
     }
 
     @Test
     void getADisconnectedNodeWithEmptyVarArgsInput() {
-        Node node = BasicNode.with();
+        Node node = BasicNode.of();
 
         Assertions.assertTrue(node.isDisconnected());
     }
