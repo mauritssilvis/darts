@@ -5,8 +5,12 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code Path} interface that can represent multiple
@@ -19,16 +23,14 @@ public class GroupedPath implements Path {
 
     private GroupedPath(Collection<Integer> steps, Collection<Boolean> grouping) {
         this.steps = List.copyOf(steps);
-        this.grouping = grouping.stream()
-                .limit(this.steps.size())
-                .toList();
+        this.grouping = processGrouping(grouping, steps.size());
     }
 
     /**
      * Returns a new {@code GroupedPath} with the supplied integer steps and
      * grouping signature.
      *
-     * @param steps a collection of integer steps
+     * @param steps    a collection of integer steps
      * @param grouping a collection of booleans representing the grouping signature
      * @return a new {@code SimplePath} with the given steps and grouping signature
      */
@@ -38,26 +40,49 @@ public class GroupedPath implements Path {
 
     @Override
     public int getSize() {
-        return -1;
+        return steps.size();
     }
 
     @Override
     public int getLength() {
-        return -1;
+        return steps.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     @Override
     public List<Integer> getSteps() {
-        return null;
+        return steps;
     }
 
     @Override
     public int getGroupCount() {
-        return -1;
+        return (int) grouping.stream()
+                .filter(Predicate.isEqual(false))
+                .count();
     }
 
     @Override
     public long getMultiplicity() {
         return -1;
+    }
+
+    private List<Boolean> processGrouping(Collection<Boolean> input, int size) {
+        if (size == 0) {
+            return List.of();
+        }
+
+        List<Boolean> output = new ArrayList<>();
+        output.add(false);
+
+        input.stream()
+                .limit(size)
+                .skip(1)
+                .forEach(output::add);
+
+        IntStream.range(input.size(), size)
+                .forEach(i -> output.add(false));
+
+        return Collections.unmodifiableList(output);
     }
 }
