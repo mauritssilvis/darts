@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * An implementation of the {@code Path} interface that represents a single sequence
@@ -16,8 +17,8 @@ import java.util.List;
 public class SimplePath implements Path {
     private final List<Integer> steps;
 
-    private SimplePath(Collection<Integer> steps) {
-        this.steps = List.copyOf(steps);
+    private SimplePath(Stream<Integer> steps) {
+        this.steps = steps.toList();
     }
 
     /**
@@ -28,7 +29,7 @@ public class SimplePath implements Path {
      * @return a new {@code SimplePath} with the given steps
      */
     public static Path of(Collection<Integer> steps) {
-        return new SimplePath(steps);
+        return new SimplePath(steps.stream());
     }
 
     /**
@@ -39,7 +40,7 @@ public class SimplePath implements Path {
      * @return a new {@code SimplePath} with the given steps
      */
     public static Path of(int... steps) {
-        return new SimplePath(Arrays.stream(steps).boxed().toList());
+        return new SimplePath(Arrays.stream(steps).boxed());
     }
 
     @Override
