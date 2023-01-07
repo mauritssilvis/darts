@@ -24,6 +24,14 @@ public class GroupedPath implements Path {
                 .toList();
     }
 
+    /**
+     * Returns a new {@code GroupedPath} with the supplied integer steps and
+     * grouping signature.
+     *
+     * @param steps a collection of integer steps
+     * @param grouping a collection of booleans representing the grouping signature
+     * @return a new {@code SimplePath} with the given steps and grouping signature
+     */
     public static Path of(Collection<Integer> steps, Collection<Boolean> grouping) {
         return new GroupedPath(steps, grouping);
     }
