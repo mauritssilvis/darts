@@ -145,7 +145,25 @@ class GroupedPathTests {
     }
 
     @Test
-    void obtainNoGroupsWithEmptyInput() {
+    void getTheGroupCountForPartlyGroupedSteps() {
+        Collection<Integer> steps = List.of(1, 2, 3);
+        Collection<Boolean> grouping = List.of(false, true, false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(2, path.getGroupCount());
+    }
+
+    @Test
+    void getTheGroupCountForGroupedSteps() {
+        Collection<Integer> steps = List.of(2, 5, 6);
+        Collection<Boolean> grouping = List.of(false, true, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(1, path.getGroupCount());
+    }
+
+    @Test
+    void getTheGroupCountWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
         Path path = GroupedPath.of(steps, grouping);
@@ -154,11 +172,20 @@ class GroupedPathTests {
     }
 
     @Test
-    void obtainNoPathWithEmptyInput() {
-        Collection<Integer> steps = Collections.emptyList();
-        Collection<Boolean> grouping = Collections.emptyList();
+    void getTheGroupCountWithAShorterGroupingSignature() {
+        Collection<Integer> steps = List.of(5, 6, 7, 8);
+        Collection<Boolean> grouping = List.of(true, false);
         Path path = GroupedPath.of(steps, grouping);
 
-        Assertions.assertEquals(0, path.getMultiplicity());
+        Assertions.assertEquals(4, path.getGroupCount());
+    }
+
+    @Test
+    void getTheGroupCountWithALongerGroupingSignature() {
+        Collection<Integer> steps = List.of(5, 7);
+        Collection<Boolean> grouping = List.of(false, true, true, false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(1, path.getGroupCount());
     }
 }
