@@ -251,7 +251,7 @@ class GroupedPathTests {
                 Arguments.arguments(
                         List.of(7, 8, 7, 8, 7, 8, 7),
                         List.of(false, true, true, true, true, true, false),
-                        60
+                        20
                 ),
                 Arguments.arguments(
                         List.of(3, 4, 4, 5, 6, 6, 6, 6),

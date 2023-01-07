@@ -5,11 +5,10 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -64,7 +63,27 @@ public class GroupedPath implements Path {
 
     @Override
     public long getMultiplicity() {
-        return -1;
+        if (steps.isEmpty()) {
+            return 0;
+        }
+
+        List<List<Integer>> groups = new ArrayList<>();
+        List<Integer> group = new ArrayList<>();
+
+        for (int i = 0; i < steps.size(); i++) {
+            if (i > 0 && !grouping.get(i)) {
+                groups.add(group);
+                group = new ArrayList<>();
+            }
+
+            group.add(steps.get(i));
+        }
+
+        groups.add(group);
+
+        return groups.stream()
+                .mapToLong(this::getGroupMultiplicity)
+                .reduce(1, (prod, e) -> prod * e);
     }
 
     private List<Boolean> processGrouping(Collection<Boolean> input, int size) {
@@ -84,5 +103,32 @@ public class GroupedPath implements Path {
                 .forEach(i -> output.add(false));
 
         return Collections.unmodifiableList(output);
+    }
+
+    private long getGroupMultiplicity(Collection<Integer> group) {
+        Map<Integer, Long> frequencies = group.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Function.identity(),
+                                HashMap::new,
+                                Collectors.counting()
+                        )
+                );
+
+        long denominator = frequencies.values().stream()
+                .map(this::factorial)
+                .reduce(1L, (p, e) -> p * e);
+
+        return factorial(group.size()) / denominator;
+    }
+
+    private long factorial(long n) {
+        long result = 1;
+
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+
+        return result;
     }
 }
