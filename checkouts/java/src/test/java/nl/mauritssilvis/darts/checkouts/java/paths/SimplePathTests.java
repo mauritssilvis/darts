@@ -133,6 +133,33 @@ class SimplePathTests {
     }
 
     @Test
+    void getStoredStepsWithEmptyCollectionInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps, path.getSteps());
+    }
+
+    @Test
+    void getStoredStepsWithEmptyArrayInput() {
+        int[] steps = {};
+        Path path = SimplePath.of(steps);
+
+        Collection<Integer> stepList = Collections.emptyList();
+
+        Assertions.assertEquals(stepList, path.getSteps());
+    }
+
+    @Test
+    void getStoredStepsWithEmptyVarArgsInput() {
+        Path path = SimplePath.of();
+
+        Collection<Integer> steps = Collections.emptyList();
+
+        Assertions.assertEquals(steps, path.getSteps());
+    }
+
+    @Test
     void storeIndependentStepsWithCollectionInput() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
