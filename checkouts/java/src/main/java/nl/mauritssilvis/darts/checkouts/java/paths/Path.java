@@ -8,12 +8,13 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.List;
 
 /**
- * A representation of paths consisting of integer steps.
+ * A path representing zero or more sequences of integer steps.
  * <p>
- * A simple path consists of ungrouped steps. In such a path, different steps
- * cannot be interchanged without getting a different path. Simple paths, thus,
- * represent only a single path. In contrast, paths with grouped steps represent
- * a group of paths, one for each permutation of the grouped elements.
+ * Simple paths represent a single sequence of integer steps. In such paths, the
+ * different steps are not grouped. Interchanging the steps of a simple path
+ * leads to a sequence of integers that is not represented by that same path. In
+ * contrast, paths with grouped steps represent multiple sequences, one for each
+ * permutation of the grouped elements.
  */
 public interface Path {
     /**
@@ -34,7 +35,7 @@ public interface Path {
 
     /**
      * Gets the steps of this path, that is, the list of integers representing
-     * the step lengths of this path.
+     * the steps of this path.
      *
      * @return a list of integers representing the steps of this path
      */
@@ -43,19 +44,19 @@ public interface Path {
     /**
      * Gets the number of groups this path consists of.
      * <p>
-     * For a simple path, the number of groups equals the number of steps.
+     * For a simple path, the number of groups equals the number of steps. Paths
+     * with grouped steps have a smaller number of groups.
      *
      * @return the number of groups this path comprises
      */
     int getGroupCount();
 
     /**
-     * Get the multiplicity of this path.
+     * Gets the multiplicity of this path.
      * <p>
-     * Simple paths without grouped elements
-     * represent only a single path and have a unit multiplicity. Paths with
-     * grouped steps represent multiple paths and, therefore, have a
-     * multiplicity larger than one.
+     * Simple paths representing a single sequence of steps have a unit
+     * multiplicity. Paths with grouped steps represent multiple sequences and,
+     * correspondingly, have a multiplicity larger than one.
      *
      * @return the multiplicity of this path
      */
