@@ -49,7 +49,7 @@ public class GroupedPath implements Path {
     }
 
     @Override
-    public int getMultiplicity() {
+    public long getMultiplicity() {
         return -1;
     }
 }

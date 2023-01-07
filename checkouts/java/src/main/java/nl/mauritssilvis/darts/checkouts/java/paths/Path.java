@@ -60,5 +60,5 @@ public interface Path {
      *
      * @return the multiplicity of this path
      */
-    int getMultiplicity();
+    long getMultiplicity();
 }

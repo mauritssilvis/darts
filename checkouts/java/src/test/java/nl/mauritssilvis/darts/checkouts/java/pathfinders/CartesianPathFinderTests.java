@@ -25,8 +25,8 @@ class CartesianPathFinderTests {
 
         List<Path> paths = pathFinder.find(nodes, length);
 
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
+        long numPaths = paths.stream()
+                .mapToLong(Path::getMultiplicity)
                 .sum();
 
         Assertions.assertAll(
@@ -43,8 +43,8 @@ class CartesianPathFinderTests {
 
         List<Path> paths = pathFinder.find(nodes, length);
 
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
+        long numPaths = paths.stream()
+                .mapToLong(Path::getMultiplicity)
                 .sum();
 
         List<List<Integer>> lists = paths.stream()
@@ -66,8 +66,8 @@ class CartesianPathFinderTests {
         PathFinder pathFinder = new CartesianPathFinder();
         List<Path> paths = pathFinder.find(nodes, length);
 
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
+        long numPaths = paths.stream()
+                .mapToLong(Path::getMultiplicity)
                 .sum();
 
         Assertions.assertAll(

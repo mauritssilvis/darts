@@ -50,8 +50,8 @@ class PathFinderTests {
     void findOneShortPath(PathFinder pathFinder, List<Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
+        long numPaths = paths.stream()
+                .mapToLong(Path::getMultiplicity)
                 .sum();
 
         Assertions.assertAll(
@@ -65,8 +65,8 @@ class PathFinderTests {
     void findTwoShortPaths(PathFinder pathFinder, List<Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
-        int numPaths = paths.stream()
-                .mapToInt(Path::getMultiplicity)
+        long numPaths = paths.stream()
+                .mapToLong(Path::getMultiplicity)
                 .sum();
 
         int totalSize = paths.stream()
