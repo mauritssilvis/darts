@@ -40,12 +40,12 @@ public class GroupedPath implements Path {
 
     @Override
     public int getSize() {
-        return 0;
+        return -1;
     }
 
     @Override
     public int getLength() {
-        return 0;
+        return -1;
     }
 
     @Override
@@ -55,11 +55,11 @@ public class GroupedPath implements Path {
 
     @Override
     public int getGroupCount() {
-        return 0;
+        return -1;
     }
 
     @Override
     public int getMultiplicity() {
-        return 0;
+        return -1;
     }
 }
