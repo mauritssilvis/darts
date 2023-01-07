@@ -24,7 +24,7 @@ public class GroupedPath implements Path {
                 .toList();
     }
 
-    public static GroupedPath of(Collection<Integer> steps, Collection<Boolean> grouping) {
+    public static Path of(Collection<Integer> steps, Collection<Boolean> grouping) {
         return new GroupedPath(steps, grouping);
     }
 
