@@ -25,11 +25,11 @@ class CartesianPathFinderTests {
         int length = 6;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        long numPaths = PathFinderTests.getTotalMultiplicity(pathFinder.find(length));
+        long numPaths = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
 
         nodes.clear();
 
-        long newNumPaths = PathFinderTests.getTotalMultiplicity(pathFinder.find(length));
+        long newNumPaths = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
 
         Assertions.assertEquals(numPaths, newNumPaths);
     }

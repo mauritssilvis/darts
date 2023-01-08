@@ -67,7 +67,7 @@ class PathFinderTests {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
-        long totalMultiplicity = getTotalMultiplicity(paths);
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, totalMultiplicity),
@@ -86,7 +86,7 @@ class PathFinderTests {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
-        long totalMultiplicity = getTotalMultiplicity(paths);
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
         int totalSize = getTotalSize(paths);
         int totalLength = getTotalLength(paths);
 
@@ -97,12 +97,6 @@ class PathFinderTests {
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, totalLength / paths.size())
         );
-    }
-
-    static long getTotalMultiplicity(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
     }
 
     private static ArgumentSets withAllPathFinders() {
