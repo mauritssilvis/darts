@@ -39,8 +39,8 @@ public class PathGroup implements Group {
         Map<Integer, Long> frequencies = getFrequencies();
 
         long denominator = frequencies.values().stream()
-                .map(this::factorial)
-                .reduce(1L, (p, e) -> p * e);
+                .mapToLong(this::factorial)
+                .reduce(1, (p, e) -> p * e);
 
         long numerator = factorial(values.size());
 

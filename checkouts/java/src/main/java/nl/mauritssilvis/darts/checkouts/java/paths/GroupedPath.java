@@ -5,10 +5,14 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
-import java.util.*;
-import java.util.function.Function;
+import nl.mauritssilvis.darts.checkouts.java.paths.groups.Group;
+import nl.mauritssilvis.darts.checkouts.java.paths.groups.PathGroup;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -65,30 +69,22 @@ public class GroupedPath implements Path {
     public long getMultiplicity() {
         if (steps.isEmpty()) {
             return 0;
+        } else if (steps.size() == 1) {
+            return 1;
         }
 
-        List<List<Integer>> groups = new ArrayList<>();
-        List<Integer> group = new ArrayList<>();
-
-        for (int i = 0; i < steps.size(); i++) {
-            if (i > 0 && !grouping.get(i)) {
-                groups.add(group);
-                group = new ArrayList<>();
-            }
-
-            group.add(steps.get(i));
-        }
-
-        groups.add(group);
+        List<Group> groups = getGroups();
 
         return groups.stream()
-                .mapToLong(this::getGroupMultiplicity)
+                .mapToLong(Group::countPermutations)
                 .reduce(1, (prod, e) -> prod * e);
     }
 
     private List<Boolean> processGrouping(Collection<Boolean> input, int size) {
         if (size == 0) {
-            return List.of();
+            return Collections.emptyList();
+        } else if (size == 1) {
+            return List.of(false);
         }
 
         List<Boolean> output = new ArrayList<>();
@@ -105,30 +101,28 @@ public class GroupedPath implements Path {
         return Collections.unmodifiableList(output);
     }
 
-    private long getGroupMultiplicity(Collection<Integer> group) {
-        Map<Integer, Long> frequencies = group.stream()
-                .collect(
-                        Collectors.groupingBy(
-                                Function.identity(),
-                                HashMap::new,
-                                Collectors.counting()
-                        )
-                );
-
-        long denominator = frequencies.values().stream()
-                .map(this::factorial)
-                .reduce(1L, (p, e) -> p * e);
-
-        return factorial(group.size()) / denominator;
-    }
-
-    private long factorial(long n) {
-        long result = 1;
-
-        for (int i = 2; i <= n; i++) {
-            result *= i;
+    private List<Group> getGroups() {
+        if (steps.isEmpty()) {
+            return Collections.emptyList();
+        } else if (steps.size() == 1) {
+            return List.of(PathGroup.of(steps));
         }
 
-        return result;
+        List<Group> groups = new ArrayList<>();
+
+        Collection<Integer> values = new ArrayList<>();
+
+        for (int i = 0; i < steps.size(); i++) {
+            if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
+                groups.add(PathGroup.of(values));
+                values = new ArrayList<>();
+            }
+
+            values.add(steps.get(i));
+        }
+
+        groups.add(PathGroup.of(values));
+
+        return groups;
     }
 }
