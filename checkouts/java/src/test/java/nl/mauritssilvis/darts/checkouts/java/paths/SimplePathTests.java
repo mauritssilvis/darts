@@ -12,7 +12,7 @@ import java.util.*;
 
 class SimplePathTests {
     @Test
-    void getTheSizeWithCollectionInput() {
+    void getTheSize() {
         Collection<Integer> steps = List.of(4, 2, 0);
         Path path = SimplePath.of(steps);
 
@@ -20,22 +20,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheSizeWithArrayInput() {
-        int[] steps = {6, 0};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(steps.length, path.getSize());
-    }
-
-    @Test
-    void getTheSizeWithVarArgsInput() {
-        Path path = SimplePath.of(1, 7);
-
-        Assertions.assertEquals(2, path.getSize());
-    }
-
-    @Test
-    void getTheSizeWithEmptyCollectionInput() {
+    void getTheSizeWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
@@ -43,22 +28,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheSizeWithEmptyArrayInput() {
-        int[] steps = {};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.getSize());
-    }
-
-    @Test
-    void getTheSizeWithEmptyVarArgsInput() {
-        Path path = SimplePath.of();
-
-        Assertions.assertEquals(0, path.getSize());
-    }
-
-    @Test
-    void getTheLengthWithCollectionInput() {
+    void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
 
@@ -66,22 +36,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheLengthWithArrayInput() {
-        int[] steps = {-1, 2, 4, 3};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(8, path.getLength());
-    }
-
-    @Test
-    void getTheLengthWithVarArgsInput() {
-        Path path = SimplePath.of(3);
-
-        Assertions.assertEquals(3, path.getLength());
-    }
-
-    @Test
-    void getTheLengthWithEmptyCollectionInput() {
+    void getTheLengthWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
@@ -89,22 +44,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheLengthWithEmptyArrayInput() {
-        int[] steps = {};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.getLength());
-    }
-
-    @Test
-    void getTheLengthWithEmptyVarArgsInput() {
-        Path path = SimplePath.of();
-
-        Assertions.assertEquals(0, path.getLength());
-    }
-
-    @Test
-    void getTheStepsWithCollectionInput() {
+    void getTheSteps() {
         Collection<Integer> steps = List.of(1, 2, 3);
         Path path = SimplePath.of(steps);
 
@@ -112,28 +52,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheStepsWithArrayInput() {
-        int[] steps = {-1, 3};
-        Path path = SimplePath.of(steps);
-
-        Collection<Integer> stepList = Arrays.stream(steps)
-                .boxed()
-                .toList();
-
-        Assertions.assertEquals(stepList, path.getSteps());
-    }
-
-    @Test
-    void getTheStepsWithVarArgsInput() {
-        Path path = SimplePath.of(1, 2, 4, 5);
-
-        Collection<Integer> steps = List.of(1, 2, 4, 5);
-
-        Assertions.assertEquals(steps, path.getSteps());
-    }
-
-    @Test
-    void getTheStepsWithEmptyCollectionInput() {
+    void getTheStepsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
@@ -141,26 +60,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheStepsWithEmptyArrayInput() {
-        int[] steps = {};
-        Path path = SimplePath.of(steps);
-
-        Collection<Integer> stepList = Collections.emptyList();
-
-        Assertions.assertEquals(stepList, path.getSteps());
-    }
-
-    @Test
-    void getTheStepsWithEmptyVarArgsInput() {
-        Path path = SimplePath.of();
-
-        Collection<Integer> steps = Collections.emptyList();
-
-        Assertions.assertEquals(steps, path.getSteps());
-    }
-
-    @Test
-    void storeIndependentStepsWithCollectionInput() {
+    void storeIndependentSteps() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
 
@@ -170,21 +70,7 @@ class SimplePathTests {
     }
 
     @Test
-    void storeIndependentStepsWithArrayInput() {
-        int[] steps = {-1, 3};
-        Path path = SimplePath.of(steps);
-
-        steps[1] = -5;
-
-        List<Integer> stepList = Arrays.stream(steps)
-                .boxed()
-                .toList();
-
-        Assertions.assertNotEquals(stepList, path.getSteps());
-    }
-
-    @Test
-    void storeImmutableStepsWithCollectionInput() {
+    void storeImmutableSteps() {
         List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
 
@@ -194,26 +80,7 @@ class SimplePathTests {
     }
 
     @Test
-    void storeImmutableStepsWithArrayInput() {
-        int[] steps = {0, 1, 2};
-        Path path = SimplePath.of(steps);
-
-        List<Integer> storedSteps = path.getSteps();
-
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedSteps.set(2, 2));
-    }
-
-    @Test
-    void storeImmutableStepsWithVarArgsInput() {
-        Path path = SimplePath.of(10, 9, 8);
-
-        List<Integer> storedSteps = path.getSteps();
-
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedSteps.set(0, 8));
-    }
-
-    @Test
-    void getTheGroupCountWithCollectionInput() {
+    void getTheGroupCount() {
         Collection<Integer> steps = List.of(2, 5, 6);
         Path path = SimplePath.of(steps);
 
@@ -221,22 +88,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheGroupCountWithArrayInput() {
-        int[] steps = {3, 1, 2};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(steps.length, path.getGroupCount());
-    }
-
-    @Test
-    void getTheGroupCountWithVarArgsInput() {
-        Path path = SimplePath.of(5, 3, 9);
-
-        Assertions.assertEquals(3, path.getGroupCount());
-    }
-
-    @Test
-    void getTheGroupCountWithEmptyCollectionInput() {
+    void getTheGroupCountWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
@@ -244,22 +96,7 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheGroupCountWithEmptyArrayInput() {
-        int[] steps = {};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.getGroupCount());
-    }
-
-    @Test
-    void getTheGroupCountWithEmptyVarArgsInput() {
-        Path path = SimplePath.of();
-
-        Assertions.assertEquals(0, path.getGroupCount());
-    }
-
-    @Test
-    void getTheMultiplicityWithCollectionInput() {
+    void getTheMultiplicity() {
         Collection<Integer> steps = List.of(-1, 10, 5);
         Path path = SimplePath.of(steps);
 
@@ -267,39 +104,9 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheMultiplicityWithArrayInput() {
-        int[] steps = {1, 3, 4, 6};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(1, path.getMultiplicity());
-    }
-
-    @Test
-    void getTheMultiplicityWithVarArgsInput() {
-        Path path = SimplePath.of(8, 7, 6, 5, 4);
-
-        Assertions.assertEquals(1, path.getMultiplicity());
-    }
-
-    @Test
-    void getTheMultiplicityWithEmptyCollectionInput() {
+    void getTheMultiplicityWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.getMultiplicity());
-    }
-
-    @Test
-    void getTheMultiplicityWithEmptyArrayInput() {
-        int[] steps = {};
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.getMultiplicity());
-    }
-
-    @Test
-    void getTheMultiplicityWithEmptyVarArgsInput() {
-        Path path = SimplePath.of();
 
         Assertions.assertEquals(0, path.getMultiplicity());
     }
