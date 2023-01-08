@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
-import nl.mauritssilvis.darts.checkouts.java.paths.groups.Group;
 import nl.mauritssilvis.darts.checkouts.java.paths.groups.BasicGroup;
+import nl.mauritssilvis.darts.checkouts.java.paths.groups.Group;
 
 import java.util.ArrayList;
 import java.util.Collection;

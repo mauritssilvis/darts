@@ -8,7 +8,10 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 class SimplePathTests {
     @Test
