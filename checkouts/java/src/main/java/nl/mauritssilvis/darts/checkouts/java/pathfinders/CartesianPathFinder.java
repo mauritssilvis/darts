@@ -15,34 +15,36 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public final class CartesianPathFinder implements PathFinder {
-    private CartesianPathFinder() {
+    private final List<? extends Node> nodes;
+
+    private CartesianPathFinder(List<? extends Node> nodes) {
+        this.nodes = nodes;
     }
 
     /**
-     * Returns a new {@code CartesianPathFinder}
+     * Returns a new {@code CartesianPathFinder} for the supplied nodes.
      *
-     * @return a new {@code CartesianPathFinder}
+     * @param nodes a list of nodes
+     * @return a new {@code CartesianPathFinder} for the given nodes
      */
-    public static PathFinder of() {
-        return new CartesianPathFinder();
+    public static PathFinder of(List<? extends Node> nodes) {
+        return new CartesianPathFinder(nodes);
     }
 
     @Override
-    public List<Path> find(List<? extends Node> nodes, int length) {
+    public List<Path> find(int length) {
         boolean hasDisconnectedNodes = nodes.stream()
                 .anyMatch(Predicate.not(Node::isConnected));
 
-        return hasDisconnectedNodes ? new ArrayList<>() : new Finder(nodes, length).find();
+        return hasDisconnectedNodes ? new ArrayList<>() : new Finder(length).find();
     }
 
-    private static class Finder {
-        private final List<? extends Node> nodes;
+    private class Finder {
         private final int length;
         private final List<Integer> path;
         private final List<Path> paths;
 
-        Finder(List<? extends Node> nodes, int length) {
-            this.nodes = nodes;
+        Finder(int length) {
             this.length = length;
 
             path = new ArrayList<>();

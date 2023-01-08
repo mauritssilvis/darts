@@ -20,10 +20,10 @@ class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
     void findASpecificShortPath(List<? extends Node> nodes) {
-        PathFinder pathFinder = CartesianPathFinder.of();
+        PathFinder pathFinder = CartesianPathFinder.of(nodes);
         int length = 10;
 
-        List<Path> paths = pathFinder.find(nodes, length);
+        List<Path> paths = pathFinder.find(length);
 
         long numPaths = paths.stream()
                 .mapToLong(Path::getMultiplicity)
@@ -38,10 +38,10 @@ class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withTwoSpecificLength10Paths")
     void findTwoSpecificShortPaths(List<? extends Node> nodes) {
-        PathFinder pathFinder = CartesianPathFinder.of();
+        PathFinder pathFinder = CartesianPathFinder.of(nodes);
         int length = 10;
 
-        List<Path> paths = pathFinder.find(nodes, length);
+        List<Path> paths = pathFinder.find(length);
 
         long numPaths = paths.stream()
                 .mapToLong(Path::getMultiplicity)
@@ -63,8 +63,8 @@ class CartesianPathFinderTests {
         List<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
         int length = 9 * 9;
 
-        PathFinder pathFinder = CartesianPathFinder.of();
-        List<Path> paths = pathFinder.find(nodes, length);
+        PathFinder pathFinder = CartesianPathFinder.of(nodes);
+        List<Path> paths = pathFinder.find(length);
 
         long numPaths = paths.stream()
                 .mapToLong(Path::getMultiplicity)
