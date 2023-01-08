@@ -7,11 +7,15 @@ package nl.mauritssilvis.darts.checkouts.java.paths.groups;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 class PathGroupTests {
     @Test
@@ -48,5 +52,39 @@ class PathGroupTests {
         List<Integer> storedValues = group.getValues();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedValues.set(1, 3));
+    }
+
+    @ParameterizedTest
+    @MethodSource("withPermutationData")
+    void getThePermutationCount(Collection<Integer> values, int permutationCount) {
+        Group group = PathGroup.of(values);
+
+        Assertions.assertEquals(permutationCount, group.countPermutations());
+    }
+
+    static Stream<Arguments> withPermutationData() {
+        return Stream.of(
+                Arguments.arguments(
+                        Collections.emptyList(), 0
+                ),
+                Arguments.arguments(
+                        List.of(10), 1
+                ),
+                Arguments.arguments(
+                        List.of(3, 3), 1
+                ),
+                Arguments.arguments(
+                        List.of(2, 3), 2
+                ),
+                Arguments.arguments(
+                        List.of(4, 4, 4), 1
+                ),
+                Arguments.arguments(
+                        List.of(7, 8, 8), 3
+                ),
+                Arguments.arguments(
+                        List.of(3, 6, 2), 6
+                )
+        );
     }
 }
