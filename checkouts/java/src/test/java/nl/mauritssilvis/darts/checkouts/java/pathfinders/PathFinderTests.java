@@ -20,8 +20,8 @@ import java.util.function.Function;
 class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFinders")
-    void handleAbsentNodes(Function<List<Node>, PathFinder> pathFinderFactory) {
-        List<Node> nodes = new ArrayList<>();
+    void handleAbsentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
+        Collection<Node> nodes = new ArrayList<>();
         int length = 0;
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
@@ -32,7 +32,10 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndDisconnectedNodes")
-    void handleDisconnectedNodes(Function<List<Node>, PathFinder> pathFinderFactory, List<Node> nodes) {
+    void handleDisconnectedNodes(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes
+    ) {
         int length = 2;
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
@@ -43,7 +46,11 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
-    void handleUnreachableLengths(Function<List<Node>, PathFinder> pathFinderFactory, List<Node> nodes, int length) {
+    void handleUnreachableLengths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -52,7 +59,11 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
-    void findOneShortPath(Function<List<Node>, PathFinder> pathFinderFactory, List<Node> nodes, int length) {
+    void findOneShortPath(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -67,7 +78,11 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
-    void findTwoShortPaths(Function<List<Node>, PathFinder> pathFinderFactory, List<Node> nodes, int length) {
+    void findTwoShortPaths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -166,7 +181,7 @@ class PathFinderTests {
                 );
     }
 
-    private static List<Function<List<Node>, PathFinder>> getAllPathFinders() {
+    private static List<Function<Collection<Node>, PathFinder>> getAllPathFinders() {
         return List.of(
                 CartesianPathFinder::of
         );

@@ -21,7 +21,7 @@ class CartesianPathFinderTests {
     @Test
     void storeIndependentNodes() {
         Node node = BasicNode.of(3, 5, 4);
-        List<Node> nodes = new ArrayList<>(List.of(node, node));
+        Collection<Node> nodes = new ArrayList<>(List.of(node, node));
         int length = 6;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
@@ -36,7 +36,7 @@ class CartesianPathFinderTests {
 
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
-    void findASpecificShortPath(List<? extends Node> nodes) {
+    void findASpecificShortPath(Collection<? extends Node> nodes) {
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
         int length = 10;
 
@@ -54,7 +54,7 @@ class CartesianPathFinderTests {
 
     @ParameterizedTest
     @MethodSource("withTwoSpecificLength10Paths")
-    void findTwoSpecificShortPaths(List<? extends Node> nodes) {
+    void findTwoSpecificShortPaths(Collection<? extends Node> nodes) {
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
         int length = 10;
 
@@ -77,7 +77,7 @@ class CartesianPathFinderTests {
     @Test
     void findASpecificLongPath() {
         Node node = BasicNode.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        List<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
+        Collection<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
         int length = 9 * 9;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
@@ -93,7 +93,7 @@ class CartesianPathFinderTests {
         );
     }
 
-    private static Collection<List<Node>> withASpecificLength10Path() {
+    private static List<List<Node>> withASpecificLength10Path() {
         return List.of(
                 List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
                 List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
@@ -101,7 +101,7 @@ class CartesianPathFinderTests {
         );
     }
 
-    private static Collection<List<Node>> withTwoSpecificLength10Paths() {
+    private static List<List<Node>> withTwoSpecificLength10Paths() {
         return List.of(
                 List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
                 List.of(BasicNode.of(3, 2), BasicNode.of(2, 4, 3), BasicNode.of(2, 5)),

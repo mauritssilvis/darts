@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
@@ -25,7 +26,7 @@ import java.util.function.Predicate;
 public final class CartesianPathFinder implements PathFinder {
     private final List<? extends Node> nodes;
 
-    private CartesianPathFinder(List<? extends Node> nodes) {
+    private CartesianPathFinder(Collection<? extends Node> nodes) {
         this.nodes = List.copyOf(nodes);
     }
 
@@ -35,7 +36,7 @@ public final class CartesianPathFinder implements PathFinder {
      * @param nodes a list of nodes
      * @return a new {@code CartesianPathFinder} for the given nodes
      */
-    public static PathFinder of(List<? extends Node> nodes) {
+    public static PathFinder of(Collection<? extends Node> nodes) {
         return new CartesianPathFinder(nodes);
     }
 
