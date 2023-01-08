@@ -13,6 +13,7 @@ import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 class PathFinderTests {
@@ -50,12 +51,10 @@ class PathFinderTests {
     void findOneShortPath(PathFinder pathFinder, List<Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
-        long numPaths = paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
+        long totalMultiplicity = getTotalMultiplicity(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, numPaths),
+                () -> Assertions.assertEquals(1, totalMultiplicity),
                 () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
                 () -> Assertions.assertEquals(length, paths.get(0).getLength())
         );
@@ -66,22 +65,15 @@ class PathFinderTests {
     void findTwoShortPaths(PathFinder pathFinder, List<Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
-        long numPaths = paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
-
-        int totalSize = paths.stream()
-                .mapToInt(Path::getSize)
-                .sum();
-
-        int totalLength = paths.stream()
-                .mapToInt(Path::getLength)
-                .sum();
+        long totalMultiplicity = getTotalMultiplicity(paths);
+        int totalSize = getTotalSize(paths);
+        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(2, numPaths),
+                () -> Assertions.assertEquals(2, totalMultiplicity),
                 () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
                 () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, totalLength / paths.size())
         );
     }
@@ -166,5 +158,23 @@ class PathFinderTests {
         return List.of(
                 new CartesianPathFinder()
         );
+    }
+
+    private static long getTotalMultiplicity(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToLong(Path::getMultiplicity)
+                .sum();
+    }
+
+    private static int getTotalSize(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToInt(Path::getSize)
+                .sum();
+    }
+
+    private static int getTotalLength(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToInt(Path::getLength)
+                .sum();
     }
 }
