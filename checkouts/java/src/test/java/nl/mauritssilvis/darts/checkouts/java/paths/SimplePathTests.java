@@ -74,7 +74,7 @@ class SimplePathTests {
 
     @Test
     void storeImmutableSteps() {
-        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
+        Collection<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
 
         List<Integer> storedSteps = path.getSteps();

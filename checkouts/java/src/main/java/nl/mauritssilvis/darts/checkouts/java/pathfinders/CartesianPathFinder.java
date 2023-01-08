@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
-    public List<Path> find(List<Node> nodes, int length) {
+    public List<Path> find(List<? extends Node> nodes, int length) {
         boolean hasDisconnectedNodes = nodes.stream()
                 .anyMatch(Predicate.not(Node::isConnected));
 
@@ -24,12 +24,12 @@ public class CartesianPathFinder implements PathFinder {
     }
 
     private static class Finder {
-        private final List<Node> nodes;
+        private final List<? extends Node> nodes;
         private final int length;
         private final List<Integer> path;
         private final List<Path> paths;
 
-        Finder(List<Node> nodes, int length) {
+        Finder(List<? extends Node> nodes, int length) {
             this.nodes = nodes;
             this.length = length;
 

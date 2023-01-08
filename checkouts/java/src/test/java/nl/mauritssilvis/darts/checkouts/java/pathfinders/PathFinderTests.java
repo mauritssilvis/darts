@@ -30,7 +30,7 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndDisconnectedNodes")
-    void handleDisconnectedNodes(PathFinder pathFinder, List<Node> nodes) {
+    void handleDisconnectedNodes(PathFinder pathFinder, List<? extends Node> nodes) {
         int length = 2;
 
         List<Path> paths = pathFinder.find(nodes, length);
@@ -40,7 +40,7 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
-    void handleUnreachableLengths(PathFinder pathFinder, List<Node> nodes, int length) {
+    void handleUnreachableLengths(PathFinder pathFinder, List<? extends Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
         Assertions.assertEquals(0, paths.size());
@@ -48,7 +48,7 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
-    void findOneShortPath(PathFinder pathFinder, List<Node> nodes, int length) {
+    void findOneShortPath(PathFinder pathFinder, List<? extends Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
         long totalMultiplicity = getTotalMultiplicity(paths);
@@ -62,7 +62,7 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
-    void findTwoShortPaths(PathFinder pathFinder, List<Node> nodes, int length) {
+    void findTwoShortPaths(PathFinder pathFinder, List<? extends Node> nodes, int length) {
         List<Path> paths = pathFinder.find(nodes, length);
 
         long totalMultiplicity = getTotalMultiplicity(paths);

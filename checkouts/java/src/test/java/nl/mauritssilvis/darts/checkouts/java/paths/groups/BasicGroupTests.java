@@ -46,7 +46,7 @@ class BasicGroupTests {
 
     @Test
     void storeImmutableValues() {
-        List<Integer> values = new ArrayList<>(List.of(3, 2, 3));
+        Collection<Integer> values = new ArrayList<>(List.of(3, 2, 3));
         Group group = BasicGroup.of(values);
 
         List<Integer> storedValues = group.getValues();
