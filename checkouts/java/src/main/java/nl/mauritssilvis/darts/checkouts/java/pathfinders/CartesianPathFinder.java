@@ -74,7 +74,7 @@ public final class CartesianPathFinder implements PathFinder {
             return Collections.unmodifiableList(paths);
         }
 
-        private void findRecursively(int level, int distance) {
+        void findRecursively(int level, int distance) {
             if (level == searchNodes.size()) {
                 if (level > 0 && distance == length) {
                     paths.add(SimplePath.of(path));
