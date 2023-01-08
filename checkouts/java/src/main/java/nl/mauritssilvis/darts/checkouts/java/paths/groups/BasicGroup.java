@@ -12,6 +12,10 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * An implementation of the {@code Group} interface that represents a single
+ * ordered group of integer values.
+ */
 public final class BasicGroup implements Group {
     private final List<Integer> values;
 
@@ -19,6 +23,12 @@ public final class BasicGroup implements Group {
         this.values = List.copyOf(values);
     }
 
+    /**
+     * Returns a new {@code BasicGroup} with the supplied integer values.
+     *
+     * @param values a collection of integer values
+     * @return a new {@code BasicGroup} with the given values
+     */
     public static Group of(Collection<Integer> values) {
         return new BasicGroup(values);
     }
