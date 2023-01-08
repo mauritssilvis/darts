@@ -57,6 +57,16 @@ public final class BasicGroup implements Group {
         return numerator / denominator;
     }
 
+    private static long factorial(long in) {
+        long out = 1;
+
+        for (int i = 2; i <= in; i++) {
+            out *= i;
+        }
+
+        return out;
+    }
+
     private Map<Integer, Long> getFrequencies() {
         return values.stream()
                 .collect(
@@ -66,15 +76,5 @@ public final class BasicGroup implements Group {
                                 Collectors.counting()
                         )
                 );
-    }
-
-    private static long factorial(long in) {
-        long out = 1;
-
-        for (int i = 2; i <= in; i++) {
-            out *= i;
-        }
-
-        return out;
     }
 }
