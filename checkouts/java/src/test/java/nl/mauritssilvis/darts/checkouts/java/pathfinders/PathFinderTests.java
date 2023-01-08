@@ -360,7 +360,8 @@ class PathFinderTests {
 
     private static List<Function<Collection<Node>, PathFinder>> getAllPathFinders() {
         return List.of(
-                CartesianPathFinder::of
+                CartesianPathFinder::of,
+                DescendingPathFinder::of
         );
     }
 
