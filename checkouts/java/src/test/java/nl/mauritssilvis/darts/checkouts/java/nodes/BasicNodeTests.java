@@ -123,6 +123,29 @@ class BasicNodeTests {
     }
 
     @Test
+    void getAConnectedNodeWithCollectionInput() {
+        Collection<Integer> weights = List.of(10);
+        Node node = BasicNode.of(weights);
+
+        Assertions.assertFalse(node.isDisconnected());
+    }
+
+    @Test
+    void getAConnectedNodeWithArrayInput() {
+        int[] weights = {3, 4};
+        Node node = BasicNode.of(weights);
+
+        Assertions.assertFalse(node.isDisconnected());
+    }
+
+    @Test
+    void getAConnectedNodeWithVarArgsInput() {
+        Node node = BasicNode.of(9, 8, 7);
+
+        Assertions.assertFalse(node.isDisconnected());
+    }
+
+    @Test
     void getADisconnectedNodeWithEmptyCollectionInput() {
         Collection<Integer> weights = Collections.emptyList();
         Node node = BasicNode.of(weights);
