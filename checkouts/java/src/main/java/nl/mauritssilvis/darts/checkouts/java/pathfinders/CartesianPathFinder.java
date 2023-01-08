@@ -14,6 +14,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
+/**
+ * An implementation of the {@code PathFinder} interface that finds paths
+ * of a specified length between sequences of nodes that are connected by
+ * directed edges with integer weights.
+ * <p>
+ * This implementation finds paths by considering all possible combinations of
+ * edges between the nodes.
+ */
 public final class CartesianPathFinder implements PathFinder {
     private final List<? extends Node> nodes;
 
