@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class BasicGroup implements Group {
+public final class BasicGroup implements Group {
     private final List<Integer> values;
 
     private BasicGroup(Collection<Integer> values) {

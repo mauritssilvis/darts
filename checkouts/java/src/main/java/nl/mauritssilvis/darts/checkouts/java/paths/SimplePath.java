@@ -12,7 +12,7 @@ import java.util.List;
  * An implementation of the {@code Path} interface that represents a single sequence
  * of ungrouped integer steps.
  */
-public class SimplePath implements Path {
+public final class SimplePath implements Path {
     private final List<Integer> steps;
 
     private SimplePath(Collection<Integer> steps) {

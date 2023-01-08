@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
  * sequences of integer steps, namely, one for each permutation of the grouped
  * elements.
  */
-public class GroupedPath implements Path {
+public final class GroupedPath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> grouping;
 
