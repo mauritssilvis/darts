@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 class GroupedPathTests {
     @Test
-    void getThePathSize() {
+    void getTheSize() {
         Collection<Integer> steps = List.of(1, 2, 3);
         Collection<Boolean> grouping = List.of(false, false, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -28,7 +28,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathSizeWithEmptyInput() {
+    void getTheSizeWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
         Path path = GroupedPath.of(steps, grouping);
@@ -37,7 +37,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathSizeWithAShorterGroupingSignature() {
+    void getTheSizeWithAShorterGroupingSignature() {
         Collection<Integer> steps = List.of(3, 7, 8, 1);
         Collection<Boolean> grouping = List.of(true, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -46,7 +46,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathSizeWithALongerGroupingSignature() {
+    void getTheSizeWithALongerGroupingSignature() {
         Collection<Integer> steps = List.of(5);
         Collection<Boolean> grouping = List.of(false, true, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -55,7 +55,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathLength() {
+    void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Collection<Boolean> grouping = List.of(false, true, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -64,7 +64,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathLengthWithEmptyInput() {
+    void getTheLengthWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
         Path path = GroupedPath.of(steps, grouping);
@@ -73,7 +73,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathLengthWithAShorterGroupingSignature() {
+    void getTheLengthWithAShorterGroupingSignature() {
         Collection<Integer> steps = List.of(2, 3, 1, 1);
         Collection<Boolean> grouping = List.of(false, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -82,7 +82,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getThePathLengthWithALongerGroupingSignature() {
+    void getTheLengthWithALongerGroupingSignature() {
         Collection<Integer> steps = List.of(3, 1);
         Collection<Boolean> grouping = List.of(false, true, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -91,7 +91,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getStoredSteps() {
+    void getTheSteps() {
         Collection<Integer> steps = List.of(3, 2, 3);
         Collection<Boolean> grouping = List.of(true, true, true);
         Path path = GroupedPath.of(steps, grouping);
@@ -100,7 +100,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getStoredStepsWithEmptyInput() {
+    void getTheStepsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
         Path path = GroupedPath.of(steps, grouping);
@@ -109,7 +109,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getStoredStepsWithAShorterGroupingSignature() {
+    void getTheStepsWithAShorterGroupingSignature() {
         Collection<Integer> steps = List.of(1, 2);
         Collection<Boolean> grouping = Collections.emptyList();
         Path path = GroupedPath.of(steps, grouping);
@@ -118,7 +118,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void getStoredStepsWithALongerGroupingSignature() {
+    void getTheStepsWithALongerGroupingSignature() {
         Collection<Integer> steps = List.of(1);
         Collection<Boolean> grouping = List.of(false, false);
         Path path = GroupedPath.of(steps, grouping);
@@ -195,7 +195,7 @@ class GroupedPathTests {
 
     @ParameterizedTest
     @MethodSource("withMultiplicityData")
-    void getThePathMultiplicity(
+    void getTheMultiplicity(
             Collection<Integer> steps,
             Collection<Boolean> grouping,
             int multiplicity) {

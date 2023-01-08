@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 
 class PathGroupTests {
     @Test
-    void getStoredValues() {
+    void getTheStoredValues() {
         Collection<Integer> values = List.of(1, 2, 7);
         Group group = PathGroup.of(values);
 
@@ -27,7 +27,7 @@ class PathGroupTests {
     }
 
     @Test
-    void getStoredValuesWithEmptyInput() {
+    void getTheStoredValuesWithEmptyInput() {
         Collection<Integer> values = Collections.emptyList();
         Group group = PathGroup.of(values);
 

@@ -12,7 +12,7 @@ import java.util.*;
 
 class BasicNodeTests {
     @Test
-    void getStoredWeightsWithCollectionInput() {
+    void getTheWeightsWithCollectionInput() {
         Collection<Integer> weights = List.of(4, 5, 6);
         Node node = BasicNode.of(weights);
 
@@ -20,7 +20,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void getStoredWeightsWithArrayInput() {
+    void getTheWeightsWithArrayInput() {
         int[] weights = {5, 1, 0};
         Node node = BasicNode.of(weights);
 
@@ -32,7 +32,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void getStoredWeightsWithVarArgsInput() {
+    void getTheWeightsWithVarArgsInput() {
         Node node = BasicNode.of(7, 3, 9);
 
         Collection<Integer> weights = List.of(7, 3, 9);
