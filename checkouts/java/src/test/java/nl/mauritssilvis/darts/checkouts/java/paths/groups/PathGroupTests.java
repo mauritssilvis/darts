@@ -56,35 +56,32 @@ class PathGroupTests {
 
     @ParameterizedTest
     @MethodSource("withPermutationData")
-    void getThePermutationCount(Collection<Integer> values, int permutationCount) {
+    void getThePermutationCount(Collection<Integer> values, int permutations) {
         Group group = PathGroup.of(values);
 
-        Assertions.assertEquals(permutationCount, group.countPermutations());
+        Assertions.assertEquals(permutations, group.countPermutations());
     }
 
     static Stream<Arguments> withPermutationData() {
         return Stream.of(
-                Arguments.arguments(
-                        Collections.emptyList(), 0
-                ),
-                Arguments.arguments(
-                        List.of(10), 1
-                ),
-                Arguments.arguments(
-                        List.of(3, 3), 1
-                ),
-                Arguments.arguments(
-                        List.of(2, 3), 2
-                ),
-                Arguments.arguments(
-                        List.of(4, 4, 4), 1
-                ),
-                Arguments.arguments(
-                        List.of(7, 8, 8), 3
-                ),
-                Arguments.arguments(
-                        List.of(3, 6, 2), 6
-                )
+                Arguments.of(Collections.emptyList(), 0),
+                Arguments.of(List.of(10), 1),
+                Arguments.of(List.of(3, 3), 1),
+                Arguments.of(List.of(2, 3), 2),
+                Arguments.of(List.of(4, 4, 4), 1),
+                Arguments.of(List.of(7, 8, 8), 3),
+                Arguments.of(List.of(3, 6, 2), 6),
+                Arguments.of(List.of(8, 8, 8, 8), 1),
+                Arguments.of(List.of(9, 6, 9, 9), 4),
+                Arguments.of(List.of(3, 6, 6, 3), 6),
+                Arguments.of(List.of(4, 3, 4, 7), 12),
+                Arguments.of(List.of(0, 8, 5, 9), 24),
+                Arguments.of(List.of(0, 0, 0, 0, 0), 1),
+                Arguments.of(List.of(1, 2, 1, 2, 1), 10),
+                Arguments.of(List.of(7, 8, 7, 9, 7), 20),
+                Arguments.of(List.of(3, 3, 5, 4, 4), 30),
+                Arguments.of(List.of(4, 1, 2, 3, 4), 60),
+                Arguments.of(List.of(1, 3, 5, 9, 7), 120)
         );
     }
 }
