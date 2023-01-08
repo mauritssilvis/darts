@@ -12,15 +12,15 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class PathGroup implements Group {
+public class BasicGroup implements Group {
     private final List<Integer> values;
 
-    private PathGroup(Collection<Integer> values) {
+    private BasicGroup(Collection<Integer> values) {
         this.values = List.copyOf(values);
     }
 
     public static Group of(Collection<Integer> values) {
-        return new PathGroup(values);
+        return new BasicGroup(values);
     }
 
     @Override

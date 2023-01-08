@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import nl.mauritssilvis.darts.checkouts.java.paths.groups.Group;
-import nl.mauritssilvis.darts.checkouts.java.paths.groups.PathGroup;
+import nl.mauritssilvis.darts.checkouts.java.paths.groups.BasicGroup;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -105,7 +105,7 @@ public class GroupedPath implements Path {
         if (steps.isEmpty()) {
             return Collections.emptyList();
         } else if (steps.size() == 1) {
-            return List.of(PathGroup.of(steps));
+            return List.of(BasicGroup.of(steps));
         }
 
         List<Group> groups = new ArrayList<>();
@@ -114,14 +114,14 @@ public class GroupedPath implements Path {
 
         for (int i = 0; i < steps.size(); i++) {
             if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
-                groups.add(PathGroup.of(values));
+                groups.add(BasicGroup.of(values));
                 values = new ArrayList<>();
             }
 
             values.add(steps.get(i));
         }
 
-        groups.add(PathGroup.of(values));
+        groups.add(BasicGroup.of(values));
 
         return groups;
     }
