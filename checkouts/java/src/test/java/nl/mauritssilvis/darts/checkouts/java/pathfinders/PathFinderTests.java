@@ -99,6 +99,98 @@ class PathFinderTests {
         );
     }
 
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndThreeShortPaths")
+    void findThreeShortPaths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
+        int totalSize = getTotalSize(paths);
+        int totalLength = getTotalLength(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(3, totalMultiplicity),
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
+                () -> Assertions.assertEquals(length, totalLength / paths.size())
+        );
+    }
+
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndFourShortPaths")
+    void findFourShortPaths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
+        int totalSize = getTotalSize(paths);
+        int totalLength = getTotalLength(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(4, totalMultiplicity),
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
+                () -> Assertions.assertEquals(length, totalLength / paths.size())
+        );
+    }
+
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndSixShortPaths")
+    void findSixShortPaths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
+        int totalSize = getTotalSize(paths);
+        int totalLength = getTotalLength(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(6, totalMultiplicity),
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
+                () -> Assertions.assertEquals(length, totalLength / paths.size())
+        );
+    }
+
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndTwelveShortPaths")
+    void findTwelveShortPaths(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
+        int totalSize = getTotalSize(paths);
+        int totalLength = getTotalLength(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(12, totalMultiplicity),
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
+                () -> Assertions.assertEquals(length, totalLength / paths.size())
+        );
+    }
+
     private static ArgumentSets withAllPathFinders() {
         return ArgumentSets
                 .argumentsForFirstParameter(
@@ -172,6 +264,73 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         4
+                );
+    }
+
+    private static ArgumentSets withAllPathFindersAndThreeShortPaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                )
+                .argumentsForNextParameter(
+                        List.of(BasicNode.of(4, 3), BasicNode.of(4, 3), BasicNode.of(3, 4)),
+                        List.of(BasicNode.of(2, 4, 3), BasicNode.of(6, 7, 8))
+                )
+                .argumentsForNextParameter(
+                        10
+                );
+    }
+
+    private static ArgumentSets withAllPathFindersAndFourShortPaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                )
+                .argumentsForNextParameter(
+                        (Object) List.of(
+                                BasicNode.of(1, 2),
+                                BasicNode.of(1, 2),
+                                BasicNode.of(1, 2),
+                                BasicNode.of(2, 1)
+                        )
+                )
+                .argumentsForNextParameter(
+                        5
+                );
+    }
+
+    private static ArgumentSets withAllPathFindersAndSixShortPaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                )
+                .argumentsForNextParameter(
+                        (Object) List.of(
+                                BasicNode.of(1, 3),
+                                BasicNode.of(1, 3),
+                                BasicNode.of(3, 1),
+                                BasicNode.of(3, 1)
+                        )
+                )
+                .argumentsForNextParameter(
+                        8
+                );
+    }
+
+    private static ArgumentSets withAllPathFindersAndTwelveShortPaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                )
+                .argumentsForNextParameter(
+                        (Object) List.of(
+                                BasicNode.of(1, 2, 3, 4),
+                                BasicNode.of(3, 4, 2, 1),
+                                BasicNode.of(2, 1, 4, 3)
+                        )
+                )
+                .argumentsForNextParameter(
+                        7
                 );
     }
 
