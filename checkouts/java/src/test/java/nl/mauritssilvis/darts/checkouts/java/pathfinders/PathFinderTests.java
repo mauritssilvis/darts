@@ -58,6 +58,42 @@ class PathFinderTests {
     }
 
     @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
+    void getThePathSize(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        int totalSize = getTotalSize(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size())
+        );
+    }
+
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
+    void getThePathLength(
+            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Collection<Node> nodes,
+            int length
+    ) {
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        List<Path> paths = pathFinder.find(length);
+
+        int totalLength = getTotalLength(paths);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
+                () -> Assertions.assertEquals(length, totalLength / paths.size())
+        );
+    }
+
+    @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
     void findOneShortPath(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
@@ -70,9 +106,7 @@ class PathFinderTests {
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength())
+                () -> Assertions.assertEquals(1, totalMultiplicity)
         );
     }
 
@@ -87,15 +121,9 @@ class PathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-        int totalSize = getTotalSize(paths);
-        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(2, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
-                () -> Assertions.assertEquals(length, totalLength / paths.size())
+                () -> Assertions.assertEquals(2, totalMultiplicity)
         );
     }
 
@@ -110,15 +138,9 @@ class PathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-        int totalSize = getTotalSize(paths);
-        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(3, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
-                () -> Assertions.assertEquals(length, totalLength / paths.size())
+                () -> Assertions.assertEquals(3, totalMultiplicity)
         );
     }
 
@@ -133,15 +155,9 @@ class PathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-        int totalSize = getTotalSize(paths);
-        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(4, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
-                () -> Assertions.assertEquals(length, totalLength / paths.size())
+                () -> Assertions.assertEquals(4, totalMultiplicity)
         );
     }
 
@@ -156,15 +172,9 @@ class PathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-        int totalSize = getTotalSize(paths);
-        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(6, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
-                () -> Assertions.assertEquals(length, totalLength / paths.size())
+                () -> Assertions.assertEquals(6, totalMultiplicity)
         );
     }
 
@@ -179,15 +189,9 @@ class PathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-        int totalSize = getTotalSize(paths);
-        int totalLength = getTotalLength(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(12, totalMultiplicity),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size()),
-                () -> Assertions.assertEquals(length, paths.get(0).getLength()),
-                () -> Assertions.assertEquals(length, totalLength / paths.size())
+                () -> Assertions.assertEquals(12, totalMultiplicity)
         );
     }
 
@@ -227,6 +231,20 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         -1, 0, 2
+                );
+    }
+
+    private static ArgumentSets withAllPathFindersAndMultiplePaths() {
+        return ArgumentSets
+                .argumentsForFirstParameter(
+                        getAllPathFinders()
+                )
+                .argumentsForNextParameter(
+                        List.of(BasicNode.of(5, 3), BasicNode.of(1, 4, 5)),
+                        List.of(BasicNode.of(3, 4), BasicNode.of(4, 3), BasicNode.of(1, 2))
+                )
+                .argumentsForNextParameter(
+                        7, 8, 9, 10
                 );
     }
 
@@ -274,7 +292,13 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         List.of(BasicNode.of(4, 3), BasicNode.of(4, 3), BasicNode.of(3, 4)),
-                        List.of(BasicNode.of(2, 4, 3), BasicNode.of(6, 7, 8))
+                        List.of(BasicNode.of(2, 4, 3), BasicNode.of(6, 7, 8)),
+                        List.of(
+                                BasicNode.of(3, 4),
+                                BasicNode.of(4, 3),
+                                BasicNode.of(0, 2),
+                                BasicNode.of(2, 0)
+                        )
                 )
                 .argumentsForNextParameter(
                         10
