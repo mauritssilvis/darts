@@ -14,7 +14,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class CartesianPathFinder implements PathFinder {
+public final class CartesianPathFinder implements PathFinder {
+    private CartesianPathFinder() {
+    }
+
+    /**
+     * Returns a new {@code CartesianPathFinder}
+     *
+     * @return a new {@code CartesianPathFinder}
+     */
+    public static PathFinder of() {
+        return new CartesianPathFinder();
+    }
+
     @Override
     public List<Path> find(List<? extends Node> nodes, int length) {
         boolean hasDisconnectedNodes = nodes.stream()

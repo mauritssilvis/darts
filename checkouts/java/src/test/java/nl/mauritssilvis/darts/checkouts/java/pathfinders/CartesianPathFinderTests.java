@@ -20,7 +20,7 @@ class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
     void findASpecificShortPath(List<? extends Node> nodes) {
-        PathFinder pathFinder = new CartesianPathFinder();
+        PathFinder pathFinder = CartesianPathFinder.of();
         int length = 10;
 
         List<Path> paths = pathFinder.find(nodes, length);
@@ -38,7 +38,7 @@ class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withTwoSpecificLength10Paths")
     void findTwoSpecificShortPaths(List<? extends Node> nodes) {
-        PathFinder pathFinder = new CartesianPathFinder();
+        PathFinder pathFinder = CartesianPathFinder.of();
         int length = 10;
 
         List<Path> paths = pathFinder.find(nodes, length);
@@ -63,7 +63,7 @@ class CartesianPathFinderTests {
         List<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
         int length = 9 * 9;
 
-        PathFinder pathFinder = new CartesianPathFinder();
+        PathFinder pathFinder = CartesianPathFinder.of();
         List<Path> paths = pathFinder.find(nodes, length);
 
         long numPaths = paths.stream()

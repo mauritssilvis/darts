@@ -156,7 +156,7 @@ class PathFinderTests {
 
     private static List<PathFinder> getAllPathFinders() {
         return List.of(
-                new CartesianPathFinder()
+                CartesianPathFinder.of()
         );
     }
 
