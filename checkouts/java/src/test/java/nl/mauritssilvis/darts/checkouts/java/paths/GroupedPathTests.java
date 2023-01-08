@@ -204,7 +204,7 @@ class GroupedPathTests {
         Assertions.assertEquals(multiplicity, path.getMultiplicity());
     }
 
-    static Stream<Arguments> withMultiplicityData() {
+    private static Stream<Arguments> withMultiplicityData() {
         return Stream.of(
                 Arguments.of(
                         Collections.emptyList(), Collections.emptyList(), 0

@@ -76,7 +76,7 @@ class CartesianPathFinderTests {
         );
     }
 
-    static Collection<List<Node>> withASpecificLength10Path() {
+    private static Collection<List<Node>> withASpecificLength10Path() {
         return List.of(
                 List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
                 List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
@@ -84,7 +84,7 @@ class CartesianPathFinderTests {
         );
     }
 
-    static Collection<List<Node>> withTwoSpecificLength10Paths() {
+    private static Collection<List<Node>> withTwoSpecificLength10Paths() {
         return List.of(
                 List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
                 List.of(BasicNode.of(3, 2), BasicNode.of(2, 4, 3), BasicNode.of(2, 5)),

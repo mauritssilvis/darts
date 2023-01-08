@@ -62,7 +62,7 @@ class BasicGroupTests {
         Assertions.assertEquals(permutations, group.countPermutations());
     }
 
-    static Stream<Arguments> withPermutationData() {
+    private static Stream<Arguments> withPermutationData() {
         return Stream.of(
                 Arguments.of(Collections.emptyList(), 0),
                 Arguments.of(List.of(10), 1),
