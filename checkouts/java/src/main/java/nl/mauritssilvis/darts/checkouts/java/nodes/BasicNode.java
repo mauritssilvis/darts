@@ -51,7 +51,7 @@ public class BasicNode implements Node {
     }
 
     @Override
-    public boolean isDisconnected() {
-        return weights.isEmpty();
+    public boolean isConnected() {
+        return !weights.isEmpty();
     }
 }

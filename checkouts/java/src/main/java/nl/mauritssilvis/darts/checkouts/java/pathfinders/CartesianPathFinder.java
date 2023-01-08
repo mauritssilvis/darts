@@ -12,12 +12,13 @@ import nl.mauritssilvis.darts.checkouts.java.paths.SimplePath;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class CartesianPathFinder implements PathFinder {
     @Override
     public List<Path> find(List<Node> nodes, int length) {
         boolean hasDisconnectedNodes = nodes.stream()
-                .anyMatch(Node::isDisconnected);
+                .anyMatch(Predicate.not(Node::isConnected));
 
         return hasDisconnectedNodes ? new ArrayList<>() : new Finder(nodes, length).find();
     }

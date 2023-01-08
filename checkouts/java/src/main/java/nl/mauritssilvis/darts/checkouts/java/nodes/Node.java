@@ -27,10 +27,10 @@ public interface Node {
     List<Integer> getWeights();
 
     /**
-     * Determines if this node is disconnected, that is, if this node has no
-     * outgoing edges.
+     * Determines if this node is connected, that is, if this node has outgoing
+     * edges.
      *
-     * @return a boolean that signals if this node is disconnected
+     * @return a boolean that signals if this node is connected
      */
-    boolean isDisconnected();
+    boolean isConnected();
 }

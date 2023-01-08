@@ -127,7 +127,7 @@ class BasicNodeTests {
         Collection<Integer> weights = List.of(10);
         Node node = BasicNode.of(weights);
 
-        Assertions.assertFalse(node.isDisconnected());
+        Assertions.assertTrue(node.isConnected());
     }
 
     @Test
@@ -135,14 +135,14 @@ class BasicNodeTests {
         int[] weights = {3, 4};
         Node node = BasicNode.of(weights);
 
-        Assertions.assertFalse(node.isDisconnected());
+        Assertions.assertTrue(node.isConnected());
     }
 
     @Test
     void getAConnectedNodeWithVarArgsInput() {
         Node node = BasicNode.of(9, 8, 7);
 
-        Assertions.assertFalse(node.isDisconnected());
+        Assertions.assertTrue(node.isConnected());
     }
 
     @Test
@@ -150,7 +150,7 @@ class BasicNodeTests {
         Collection<Integer> weights = Collections.emptyList();
         Node node = BasicNode.of(weights);
 
-        Assertions.assertTrue(node.isDisconnected());
+        Assertions.assertFalse(node.isConnected());
     }
 
     @Test
@@ -158,13 +158,13 @@ class BasicNodeTests {
         int[] weights = {};
         Node node = BasicNode.of(weights);
 
-        Assertions.assertTrue(node.isDisconnected());
+        Assertions.assertFalse(node.isConnected());
     }
 
     @Test
     void getADisconnectedNodeWithEmptyVarArgsInput() {
         Node node = BasicNode.of();
 
-        Assertions.assertTrue(node.isDisconnected());
+        Assertions.assertFalse(node.isConnected());
     }
 }
