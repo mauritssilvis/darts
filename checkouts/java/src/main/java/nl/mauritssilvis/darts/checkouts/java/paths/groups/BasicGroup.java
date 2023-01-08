@@ -39,7 +39,7 @@ public final class BasicGroup implements Group {
         Map<Integer, Long> frequencies = getFrequencies();
 
         long denominator = frequencies.values().stream()
-                .mapToLong(this::factorial)
+                .mapToLong(BasicGroup::factorial)
                 .reduce(1, (p, e) -> p * e);
 
         long numerator = factorial(values.size());
@@ -58,7 +58,7 @@ public final class BasicGroup implements Group {
                 );
     }
 
-    private long factorial(long in) {
+    private static long factorial(long in) {
         long out = 1;
 
         for (int i = 2; i <= in; i++) {

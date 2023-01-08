@@ -80,7 +80,7 @@ public final class GroupedPath implements Path {
                 .reduce(1, (prod, e) -> prod * e);
     }
 
-    private List<Boolean> processGrouping(Collection<Boolean> input, int size) {
+    private static List<Boolean> processGrouping(Collection<Boolean> input, int size) {
         if (size == 0) {
             return Collections.emptyList();
         } else if (size == 1) {
