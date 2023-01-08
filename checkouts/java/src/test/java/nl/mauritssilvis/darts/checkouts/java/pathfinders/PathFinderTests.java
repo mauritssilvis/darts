@@ -160,16 +160,16 @@ class PathFinderTests {
                 );
     }
 
+    static long getTotalMultiplicity(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToLong(Path::getMultiplicity)
+                .sum();
+    }
+
     private static List<Function<List<Node>, PathFinder>> getAllPathFinders() {
         return List.of(
                 CartesianPathFinder::of
         );
-    }
-
-    private static long getTotalMultiplicity(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
     }
 
     private static int getTotalSize(Collection<? extends Path> paths) {

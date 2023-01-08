@@ -13,10 +13,27 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 class CartesianPathFinderTests {
+    @Test
+    void storeIndependentNodes() {
+        Node node = BasicNode.of(3, 5, 4);
+        List<Node> nodes = new ArrayList<>(List.of(node, node));
+        int length = 6;
+
+        PathFinder pathFinder = CartesianPathFinder.of(nodes);
+        long numPaths = PathFinderTests.getTotalMultiplicity(pathFinder.find(length));
+
+        nodes.clear();
+
+        long newNumPaths = PathFinderTests.getTotalMultiplicity(pathFinder.find(length));
+
+        Assertions.assertEquals(numPaths, newNumPaths);
+    }
+
     @ParameterizedTest
     @MethodSource("withASpecificLength10Path")
     void findASpecificShortPath(List<? extends Node> nodes) {

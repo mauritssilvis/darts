@@ -26,7 +26,7 @@ public final class CartesianPathFinder implements PathFinder {
     private final List<? extends Node> nodes;
 
     private CartesianPathFinder(List<? extends Node> nodes) {
-        this.nodes = nodes;
+        this.nodes = List.copyOf(nodes);
     }
 
     /**
