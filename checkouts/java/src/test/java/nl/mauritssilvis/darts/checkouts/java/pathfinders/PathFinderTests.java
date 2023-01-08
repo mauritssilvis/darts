@@ -84,6 +84,12 @@ class PathFinderTests {
         );
     }
 
+    static long getTotalMultiplicity(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToLong(Path::getMultiplicity)
+                .sum();
+    }
+
     private static ArgumentSets withAllPathFinders() {
         return ArgumentSets
                 .argumentsForFirstParameter(
@@ -91,7 +97,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndDisconnectedNodes() {
+    private static ArgumentSets withAllPathFindersAndDisconnectedNodes() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -105,7 +111,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndUnreachableLengths() {
+    private static ArgumentSets withAllPathFindersAndUnreachableLengths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -123,7 +129,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndOneShortPath() {
+    private static ArgumentSets withAllPathFindersAndOneShortPath() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -142,7 +148,7 @@ class PathFinderTests {
                 );
     }
 
-    static ArgumentSets withAllPathFindersAndTwoShortPaths() {
+    private static ArgumentSets withAllPathFindersAndTwoShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
                         getAllPathFinders()
@@ -158,12 +164,6 @@ class PathFinderTests {
                 .argumentsForNextParameter(
                         4
                 );
-    }
-
-    static long getTotalMultiplicity(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
     }
 
     private static List<Function<List<Node>, PathFinder>> getAllPathFinders() {
