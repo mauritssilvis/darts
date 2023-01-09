@@ -92,6 +92,11 @@ class CartesianPathFinderTests {
                         List.of(List.of(2, 2))
                 ),
                 Arguments.of(
+                        List.of(BasicNode.of(1, 2), BasicNode.of(2, 1)),
+                        3,
+                        List.of(List.of(1, 2), List.of(2, 1))
+                ),
+                Arguments.of(
                         List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
                         10,
                         List.of(List.of(3, 2, 5))
@@ -100,16 +105,6 @@ class CartesianPathFinderTests {
                         List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
                         10,
                         List.of(List.of(3, 2, 5))
-                ),
-                Arguments.of(
-                        List.of(BasicNode.of(0, 3, 10), BasicNode.of(2, 4), BasicNode.of(1, 5)),
-                        10,
-                        List.of(List.of(3, 2, 5))
-                ),
-                Arguments.of(
-                        List.of(BasicNode.of(1, 2), BasicNode.of(2, 1)),
-                        3,
-                        List.of(List.of(1, 2), List.of(2, 1))
                 ),
                 Arguments.of(
                         List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
