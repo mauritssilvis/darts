@@ -67,7 +67,7 @@ class PathFinderTests {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
-        int totalSize = getTotalSize(paths);
+        int totalSize = PathFinderTestUtils.getTotalSize(paths);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
@@ -85,7 +85,7 @@ class PathFinderTests {
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
-        int totalLength = getTotalLength(paths);
+        int totalLength = PathFinderTestUtils.getTotalLength(paths);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
@@ -365,15 +365,4 @@ class PathFinderTests {
         );
     }
 
-    private static int getTotalSize(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::getSize)
-                .sum();
-    }
-
-    private static int getTotalLength(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::getLength)
-                .sum();
-    }
 }

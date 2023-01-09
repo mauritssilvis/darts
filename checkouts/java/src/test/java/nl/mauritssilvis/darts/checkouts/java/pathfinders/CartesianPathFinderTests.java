@@ -11,11 +11,13 @@ import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 class CartesianPathFinderTests {
     @Test
@@ -25,52 +27,27 @@ class CartesianPathFinderTests {
         int length = 6;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        long numPaths = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
 
         nodes.clear();
 
-        long newNumPaths = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
+        long newTotalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
 
-        Assertions.assertEquals(numPaths, newNumPaths);
+        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
     }
 
     @ParameterizedTest
-    @MethodSource("withASpecificLength10Path")
-    void findASpecificShortPath(Collection<? extends Node> nodes) {
+    @MethodSource("withPathData")
+    void findPaths(Collection<? extends Node> nodes, int length, Collection<Collection<Integer>> steps) {
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        int length = 10;
-
         List<Path> paths = pathFinder.find(length);
 
-        long numPaths = paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
-
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, numPaths),
-                () -> Assertions.assertEquals(List.of(3, 2, 5), paths.get(0).getSteps())
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("withTwoSpecificLength10Paths")
-    void findTwoSpecificShortPaths(Collection<? extends Node> nodes) {
-        PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        int length = 10;
-
-        List<Path> paths = pathFinder.find(length);
-
-        long numPaths = paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
-
-        List<List<Integer>> lists = paths.stream()
-                .map(Path::getSteps)
-                .toList();
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(2, numPaths),
-                () -> Assertions.assertEquals(List.of(List.of(3, 2, 5), List.of(2, 3, 5)), lists)
+                () -> Assertions.assertEquals(nodes.size(), PathFinderTestUtils.getTotalSize(paths) / paths.size()),
+                () -> Assertions.assertEquals(length, PathFinderTestUtils.getTotalLength(paths) / paths.size()),
+                () -> Assertions.assertEquals(steps.size(), paths.size()),
+                () -> Assertions.assertEquals(steps.size(), PathFinderTestUtils.getTotalMultiplicity(paths)),
+                () -> Assertions.assertEquals(steps, PathFinderTestUtils.getAllSteps(paths))
         );
     }
 
@@ -93,19 +70,42 @@ class CartesianPathFinderTests {
         );
     }
 
-    private static List<List<Node>> withASpecificLength10Path() {
-        return List.of(
-                List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
-                List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
-                List.of(BasicNode.of(0, 3, 10), BasicNode.of(2, 4), BasicNode.of(1, 5))
-        );
-    }
+    private static Stream<Arguments> withPathData() {
+        return Stream.of(
+                // Collection<? extends Node> nodes,
+                // int length,
+                // Collection<Collection<Integer>> steps
 
-    private static List<List<Node>> withTwoSpecificLength10Paths() {
-        return List.of(
-                List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
-                List.of(BasicNode.of(3, 2), BasicNode.of(2, 4, 3), BasicNode.of(2, 5)),
-                List.of(BasicNode.of(0, 3, 10, 2), BasicNode.of(3, 2, 4), BasicNode.of(1, 5))
+                Arguments.of(
+                        List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
+                        10,
+                        List.of(List.of(3, 2, 5))
+                ),
+                Arguments.of(
+                        List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
+                        10,
+                        List.of(List.of(3, 2, 5))
+                ),
+                Arguments.of(
+                        List.of(BasicNode.of(0, 3, 10), BasicNode.of(2, 4), BasicNode.of(1, 5)),
+                        10,
+                        List.of(List.of(3, 2, 5))
+                ),
+                Arguments.of(
+                        List.of(BasicNode.of(3, 2), BasicNode.of(3, 2), BasicNode.of(5)),
+                        10,
+                        List.of(List.of(3, 2, 5), List.of(2, 3, 5))
+                ),
+                Arguments.of(
+                        List.of(BasicNode.of(3, 2), BasicNode.of(2, 4, 3), BasicNode.of(2, 5)),
+                        10,
+                        List.of(List.of(3, 2, 5), List.of(2, 3, 5))
+                ),
+                Arguments.of(
+                        List.of(BasicNode.of(0, 3, 10, 2), BasicNode.of(3, 2, 4), BasicNode.of(1, 5)),
+                        10,
+                        List.of(List.of(3, 2, 5), List.of(2, 3, 5))
+                )
         );
     }
 }
