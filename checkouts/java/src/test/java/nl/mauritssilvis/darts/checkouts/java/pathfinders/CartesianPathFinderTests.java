@@ -196,7 +196,6 @@ class CartesianPathFinderTests {
                                 List.of(4, 4, 2)
                         )
                 ),
-                ),
                 Arguments.of(
                         List.of(List.of(1, 3), List.of(1, 3), List.of(4, 7), List.of(4, 7)),
                         15,
