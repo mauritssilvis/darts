@@ -22,8 +22,10 @@ import java.util.stream.Stream;
 class CartesianPathFinderTests {
     @Test
     void storeIndependentNodes() {
-        Node node = BasicNode.of(3, 5, 4);
+        Collection<Integer> weights = List.of(3, 5, 4);
+        Node node = BasicNode.of(weights);
         Collection<Node> nodes = new ArrayList<>(List.of(node, node));
+
         int length = 6;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
@@ -54,8 +56,10 @@ class CartesianPathFinderTests {
 
     @Test
     void findASpecificLongPath() {
-        Node node = BasicNode.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Collection<Integer> weights = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Node node = BasicNode.of(weights);
         Collection<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
+
         int length = 9 * 9;
 
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
