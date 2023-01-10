@@ -5,7 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.nodes;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
@@ -32,17 +31,6 @@ public final class BasicNode implements Node {
      */
     public static Node of(Collection<Integer> weights) {
         return new BasicNode(weights.stream());
-    }
-
-    /**
-     * Returns a new {@code BasicNode} with unique edge weights in the order
-     * determined by the supplied array.
-     *
-     * @param weights an array of integer weights
-     * @return a new {@code BasicNode} with the given weights
-     */
-    public static Node of(int... weights) {
-        return new BasicNode(Arrays.stream(weights).boxed());
     }
 
     @Override
