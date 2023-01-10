@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
+import nl.mauritssilvis.darts.checkouts.java.nodes.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
@@ -18,6 +19,25 @@ import java.util.List;
 import java.util.function.Function;
 
 class PathFinderTests {
+    @CartesianTest
+    @CartesianTest.MethodFactory("withAllPathFinders")
+    void storeIndependentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
+        Collection<Integer> weights = List.of(3, 5, 4);
+        Node node = BasicNode.of(weights);
+        Collection<Node> nodes = new ArrayList<>(List.of(node, node));
+
+        int length = 6;
+
+        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
+
+        nodes.clear();
+
+        long newTotalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
+
+        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+    }
+
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFinders")
     void handleAbsentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {

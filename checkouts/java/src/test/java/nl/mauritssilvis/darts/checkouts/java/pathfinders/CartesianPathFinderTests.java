@@ -14,30 +14,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
 class CartesianPathFinderTests {
-    @Test
-    void storeIndependentNodes() {
-        Collection<Integer> weights = List.of(3, 5, 4);
-        Node node = BasicNode.of(weights);
-        Collection<Node> nodes = new ArrayList<>(List.of(node, node));
-
-        int length = 6;
-
-        PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
-
-        nodes.clear();
-
-        long newTotalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(pathFinder.find(length));
-
-        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
-    }
-
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
