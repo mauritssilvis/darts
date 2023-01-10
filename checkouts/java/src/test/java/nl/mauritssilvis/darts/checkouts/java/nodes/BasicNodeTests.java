@@ -21,6 +21,7 @@ class BasicNodeTests {
 
         Assertions.assertEquals(weights, node.getWeights());
     }
+
     @Test
     void getTheWeightsWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
