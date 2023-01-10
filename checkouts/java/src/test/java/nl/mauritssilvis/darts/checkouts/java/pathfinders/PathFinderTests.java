@@ -5,7 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
-import nl.mauritssilvis.darts.checkouts.java.nodes.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +13,7 @@ import org.junitpioneer.jupiter.cartesian.CartesianTest;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -34,8 +34,9 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndDisconnectedNodes")
     void handleDisconnectedNodes(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes
+            Collection<Collection<Integer>> weights
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
         int length = 2;
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
@@ -48,9 +49,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
     void handleUnreachableLengths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -61,9 +64,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
     void getThePathSize(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -79,9 +84,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
     void getThePathLength(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -97,9 +104,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
     void findOneShortPath(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -114,9 +123,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
     void findTwoShortPaths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -131,9 +142,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndThreeShortPaths")
     void findThreeShortPaths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -148,9 +161,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndFourShortPaths")
     void findFourShortPaths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -165,9 +180,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndSixShortPaths")
     void findSixShortPaths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -182,9 +199,11 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFindersAndTwelveShortPaths")
     void findTwelveShortPaths(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
-            Collection<Node> nodes,
+            Collection<Collection<Integer>> weights,
             int length
     ) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -208,11 +227,11 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of()),
-                        List.of(BasicNode.of(), BasicNode.of()),
-                        List.of(BasicNode.of(), BasicNode.of(1, 2)),
-                        List.of(BasicNode.of(1, 2), BasicNode.of()),
-                        List.of(BasicNode.of(3), BasicNode.of(), BasicNode.of(-1))
+                        List.of(Collections.emptyList()),
+                        List.of(Collections.emptyList(), Collections.emptyList()),
+                        List.of(Collections.emptyList(), List.of(1, 2)),
+                        List.of(List.of(1, 2), Collections.emptyList()),
+                        List.of(List.of(3), Collections.emptyList(), List.of(-1))
                 );
     }
 
@@ -222,12 +241,12 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of(1)),
-                        List.of(BasicNode.of(-3, 1)),
-                        List.of(BasicNode.of(1), BasicNode.of(2)),
-                        List.of(BasicNode.of(0, 2), BasicNode.of(3, -4)),
-                        List.of(BasicNode.of(1), BasicNode.of(1), BasicNode.of(1)),
-                        List.of(BasicNode.of(0), BasicNode.of(1, 2), BasicNode.of(2, 3))
+                        List.of(List.of(1)),
+                        List.of(List.of(-3, 1)),
+                        List.of(List.of(1), List.of(2)),
+                        List.of(List.of(0, 2), List.of(3, -4)),
+                        List.of(List.of(1), List.of(1), List.of(1)),
+                        List.of(List.of(0), List.of(1, 2), List.of(2, 3))
                 )
                 .argumentsForNextParameter(
                         -1, 0, 2
@@ -240,8 +259,8 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of(5, 3), BasicNode.of(1, 4, 5)),
-                        List.of(BasicNode.of(3, 4), BasicNode.of(4, 3), BasicNode.of(1, 2))
+                        List.of(List.of(5, 3), List.of(1, 4, 5)),
+                        List.of(List.of(3, 4), List.of(4, 3), List.of(1, 2))
                 )
                 .argumentsForNextParameter(
                         7, 8, 9, 10
@@ -254,13 +273,13 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of(3)),
-                        List.of(BasicNode.of(1, 3)),
-                        List.of(BasicNode.of(1), BasicNode.of(2)),
-                        List.of(BasicNode.of(2, 1), BasicNode.of(2, 3)),
-                        List.of(BasicNode.of(1), BasicNode.of(1), BasicNode.of(1)),
-                        List.of(BasicNode.of(1, 2), BasicNode.of(3, 1), BasicNode.of(4, 1, 2)),
-                        List.of(BasicNode.of(0, 1, 2), BasicNode.of(1), BasicNode.of(1))
+                        List.of(List.of(3)),
+                        List.of(List.of(1, 3)),
+                        List.of(List.of(1), List.of(2)),
+                        List.of(List.of(2, 1), List.of(2, 3)),
+                        List.of(List.of(1), List.of(1), List.of(1)),
+                        List.of(List.of(1, 2), List.of(3, 1), List.of(4, 1, 2)),
+                        List.of(List.of(0, 1, 2), List.of(1), List.of(1))
                 )
                 .argumentsForNextParameter(
                         3
@@ -273,12 +292,12 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of(1, 3), BasicNode.of(1, 3)),
-                        List.of(BasicNode.of(2, 3), BasicNode.of(2, 1)),
-                        List.of(BasicNode.of(1, 4), BasicNode.of(0, 3)),
-                        List.of(BasicNode.of(0), BasicNode.of(1, 2), BasicNode.of(2, 3)),
-                        List.of(BasicNode.of(1, 2), BasicNode.of(3, 1), BasicNode.of(4, 0, 2)),
-                        List.of(BasicNode.of(1, 2), BasicNode.of(1), BasicNode.of(2, 1))
+                        List.of(List.of(1, 3), List.of(1, 3)),
+                        List.of(List.of(2, 3), List.of(2, 1)),
+                        List.of(List.of(1, 4), List.of(0, 3)),
+                        List.of(List.of(0), List.of(1, 2), List.of(2, 3)),
+                        List.of(List.of(1, 2), List.of(3, 1), List.of(4, 0, 2)),
+                        List.of(List.of(1, 2), List.of(1), List.of(2, 1))
                 )
                 .argumentsForNextParameter(
                         4
@@ -291,13 +310,13 @@ class PathFinderTests {
                         getAllPathFinders()
                 )
                 .argumentsForNextParameter(
-                        List.of(BasicNode.of(4, 3), BasicNode.of(4, 3), BasicNode.of(3, 4)),
-                        List.of(BasicNode.of(2, 4, 3), BasicNode.of(6, 7, 8)),
+                        List.of(List.of(4, 3), List.of(4, 3), List.of(3, 4)),
+                        List.of(List.of(2, 4, 3), List.of(6, 7, 8)),
                         List.of(
-                                BasicNode.of(3, 4),
-                                BasicNode.of(4, 3),
-                                BasicNode.of(0, 2),
-                                BasicNode.of(2, 0)
+                                List.of(3, 4),
+                                List.of(4, 3),
+                                List.of(0, 2),
+                                List.of(2, 0)
                         )
                 )
                 .argumentsForNextParameter(
@@ -312,10 +331,10 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
-                                BasicNode.of(1, 2),
-                                BasicNode.of(1, 2),
-                                BasicNode.of(1, 2),
-                                BasicNode.of(2, 1)
+                                List.of(1, 2),
+                                List.of(1, 2),
+                                List.of(1, 2),
+                                List.of(2, 1)
                         )
                 )
                 .argumentsForNextParameter(
@@ -330,10 +349,10 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
-                                BasicNode.of(1, 3),
-                                BasicNode.of(1, 3),
-                                BasicNode.of(3, 1),
-                                BasicNode.of(3, 1)
+                                List.of(1, 3),
+                                List.of(1, 3),
+                                List.of(3, 1),
+                                List.of(3, 1)
                         )
                 )
                 .argumentsForNextParameter(
@@ -348,9 +367,9 @@ class PathFinderTests {
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
-                                BasicNode.of(1, 2, 3, 4),
-                                BasicNode.of(3, 4, 2, 1),
-                                BasicNode.of(2, 1, 4, 3)
+                                List.of(1, 2, 3, 4),
+                                List.of(3, 4, 2, 1),
+                                List.of(2, 1, 4, 3)
                         )
                 )
                 .argumentsForNextParameter(
