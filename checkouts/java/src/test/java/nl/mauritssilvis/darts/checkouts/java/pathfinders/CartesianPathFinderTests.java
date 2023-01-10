@@ -38,7 +38,8 @@ class CartesianPathFinderTests {
 
     @ParameterizedTest
     @MethodSource("withPathData")
-    void findPaths(Collection<? extends Node> nodes, int length, Collection<Collection<Integer>> steps) {
+    void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
+        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
         List<Path> paths = pathFinder.find(length);
 
@@ -77,70 +78,70 @@ class CartesianPathFinderTests {
                 // Collection<Collection<Integer>> steps
 
                 Arguments.of(
-                        List.of(BasicNode.of(7)),
+                        List.of(List.of(7)),
                         7,
                         List.of(List.of(7))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(3), BasicNode.of(6)),
+                        List.of(List.of(3), List.of(6)),
                         9,
                         List.of(List.of(3, 6))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(5), BasicNode.of(5)),
+                        List.of(List.of(5), List.of(5)),
                         10,
                         List.of(List.of(5, 5))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(2, 4), BasicNode.of(6, 3, 7)),
+                        List.of(List.of(2, 4), List.of(6, 3, 7)),
                         8,
                         List.of(List.of(2, 6))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 2), BasicNode.of(1, 2)),
+                        List.of(List.of(1, 2), List.of(1, 2)),
                         4,
                         List.of(List.of(2, 2))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 2), BasicNode.of(2, 1)),
+                        List.of(List.of(1, 2), List.of(2, 1)),
                         3,
                         List.of(List.of(1, 2), List.of(2, 1))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 2), BasicNode.of(1, 2, 3)),
+                        List.of(List.of(1, 2), List.of(1, 2, 3)),
                         3,
                         List.of(List.of(1, 2), List.of(2, 1))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(5)),
+                        List.of(List.of(3), List.of(2), List.of(5)),
                         10,
                         List.of(List.of(3, 2, 5))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(3), BasicNode.of(2), BasicNode.of(2)),
+                        List.of(List.of(3), List.of(2), List.of(2)),
                         7,
                         List.of(List.of(3, 2, 2))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(3, 2), BasicNode.of(2, 4), BasicNode.of(2, 5)),
+                        List.of(List.of(3, 2), List.of(2, 4), List.of(2, 5)),
                         10,
                         List.of(List.of(3, 2, 5))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(3, 2), BasicNode.of(2, 3), BasicNode.of(5)),
+                        List.of(List.of(3, 2), List.of(2, 3), List.of(5)),
                         10,
                         List.of(List.of(3, 2, 5), List.of(2, 3, 5))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(2, 3), BasicNode.of(2, 3, 4), BasicNode.of(2, 5)),
+                        List.of(List.of(2, 3), List.of(2, 3, 4), List.of(2, 5)),
                         10,
                         List.of(List.of(2, 3, 5), List.of(3, 2, 5))
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(1, 2, 4),
-                                BasicNode.of(1, 2, 4),
-                                BasicNode.of(1, 2, 4)
+                                List.of(1, 2, 4),
+                                List.of(1, 2, 4),
+                                List.of(1, 2, 4)
                         ),
                         7,
                         List.of(
@@ -154,9 +155,9 @@ class CartesianPathFinderTests {
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(7, 4, 3),
-                                BasicNode.of(7, 4, 3),
-                                BasicNode.of(7, 4, 3)
+                                List.of(7, 4, 3),
+                                List.of(7, 4, 3),
+                                List.of(7, 4, 3)
                         ),
                         14,
                         List.of(
@@ -169,20 +170,20 @@ class CartesianPathFinderTests {
                         )
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 2, 3), BasicNode.of(1, 2, 3), BasicNode.of(1, 2, 3)),
+                        List.of(List.of(1, 2, 3), List.of(1, 2, 3), List.of(1, 2, 3)),
                         8,
                         List.of(List.of(2, 3, 3), List.of(3, 2, 3), List.of(3, 3, 2))
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 2, 3), BasicNode.of(1, 2, 3), BasicNode.of(1, 2, 3, 7)),
+                        List.of(List.of(1, 2, 3), List.of(1, 2, 3), List.of(1, 2, 3, 7)),
                         8,
                         List.of(List.of(2, 3, 3), List.of(3, 2, 3), List.of(3, 3, 2))
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(2, 3, 4),
-                                BasicNode.of(2, 3, 4),
-                                BasicNode.of(2, 3, 4)
+                                List.of(2, 3, 4),
+                                List.of(2, 3, 4),
+                                List.of(2, 3, 4)
                         ),
                         10,
                         List.of(
@@ -196,9 +197,9 @@ class CartesianPathFinderTests {
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(2, 3, 4, 7),
-                                BasicNode.of(2, 3, 4),
-                                BasicNode.of(2, 3, 4)
+                                List.of(2, 3, 4, 7),
+                                List.of(2, 3, 4),
+                                List.of(2, 3, 4)
                         ),
                         10,
                         List.of(
@@ -212,17 +213,17 @@ class CartesianPathFinderTests {
                 ),
                 ),
                 Arguments.of(
-                        List.of(BasicNode.of(1, 3), BasicNode.of(1, 3), BasicNode.of(4, 7), BasicNode.of(4, 7)),
+                        List.of(List.of(1, 3), List.of(1, 3), List.of(4, 7), List.of(4, 7)),
                         15,
                         List.of(List.of(1, 3, 4, 7), List.of(1, 3, 7, 4), List.of(3, 1, 4, 7), List.of(3, 1, 7, 4))
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(1, 2),
-                                BasicNode.of(1, 2),
-                                BasicNode.of(4),
-                                BasicNode.of(3, 6),
-                                BasicNode.of(6, 3)
+                                List.of(1, 2),
+                                List.of(1, 2),
+                                List.of(4),
+                                List.of(3, 6),
+                                List.of(6, 3)
                         ),
                         16,
                         List.of(
@@ -234,12 +235,12 @@ class CartesianPathFinderTests {
                 ),
                 Arguments.of(
                         List.of(
-                                BasicNode.of(3, 2),
-                                BasicNode.of(2, 3),
-                                BasicNode.of(5),
-                                BasicNode.of(2, 7),
-                                BasicNode.of(7, 2),
-                                BasicNode.of(7, 2)
+                                List.of(3, 2),
+                                List.of(2, 3),
+                                List.of(5),
+                                List.of(2, 7),
+                                List.of(7, 2),
+                                List.of(7, 2)
                         ),
                         26,
                         List.of(

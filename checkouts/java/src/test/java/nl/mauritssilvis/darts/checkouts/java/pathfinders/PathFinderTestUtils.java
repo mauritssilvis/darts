@@ -5,12 +5,20 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
+import nl.mauritssilvis.darts.checkouts.java.nodes.BasicNode;
+import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 
 import java.util.Collection;
 import java.util.List;
 
 class PathFinderTestUtils {
+    static List<Node> getNodes(Collection<Collection<Integer>> weights) {
+        return weights.stream()
+                .map(BasicNode::of)
+                .toList();
+    }
+
     static int getTotalSize(Collection<? extends Path> paths) {
         return paths.stream()
                 .mapToInt(Path::getSize)
