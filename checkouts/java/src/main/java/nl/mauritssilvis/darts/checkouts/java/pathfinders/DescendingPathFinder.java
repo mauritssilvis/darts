@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 
 /**
@@ -31,15 +32,12 @@ import java.util.function.Predicate;
  */
 public final class DescendingPathFinder implements PathFinder {
     private final List<? extends Node> nodes;
-    private final List<Boolean> grouping;
 
     private DescendingPathFinder(Collection<? extends Node> nodes) {
         this.nodes = nodes.stream()
                 .map(Node::getWeights)
                 .map(DescendingNode::of)
                 .toList();
-
-        grouping = getGrouping(this.nodes);
     }
 
     /**
@@ -54,42 +52,36 @@ public final class DescendingPathFinder implements PathFinder {
 
     @Override
     public List<Path> find(int length) {
+        if (nodes.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         boolean hasDisconnectedNodes = nodes.stream()
                 .anyMatch(Predicate.not(Node::isConnected));
 
-        return hasDisconnectedNodes
-                ? new ArrayList<>()
-                : new Finder(nodes, grouping, length).find();
-    }
-
-    private static List<Boolean> getGrouping(List<? extends Node> nodeList) {
-        if (nodeList.isEmpty()) {
+        if (hasDisconnectedNodes) {
             return Collections.emptyList();
-        } else if (nodeList.size() == 1) {
-            return List.of(false);
         }
 
-        List<Boolean> groupingList = new ArrayList<>();
-        groupingList.add(false);
-
-        for (int i = 1; i < nodeList.size(); i++) {
-            groupingList.add(nodeList.get(i).getWeights().equals(nodeList.get(i - 1).getWeights()));
-        }
-
-        return groupingList;
+        return new Finder(nodes, length).find();
     }
 
     private static class Finder {
         private final List<? extends Node> searchNodes;
-        private final List<Boolean> nodeGrouping;
         private final int length;
+        private final List<Boolean> grouping;
+        private final List<Integer> maxRemaining;
+        private final List<Integer> minRemaining;
         private final List<Integer> path;
         private final List<Path> paths;
 
-        Finder(List<? extends Node> searchNodes, List<Boolean> nodeGrouping, int length) {
+        Finder(List<? extends Node> searchNodes, int length) {
             this.searchNodes = searchNodes;
-            this.nodeGrouping = nodeGrouping;
             this.length = length;
+
+            grouping = getGrouping(searchNodes);
+            maxRemaining = getMaxRemaining(searchNodes);
+            minRemaining = getMinRemaining(searchNodes);
 
             path = new ArrayList<>();
             searchNodes.forEach(node -> path.add(0));
@@ -108,7 +100,7 @@ public final class DescendingPathFinder implements PathFinder {
         void findRecursively(int level, int distance) {
             if (level == searchNodes.size()) {
                 if (level > 0 && distance == length) {
-                    paths.add(GroupedPath.of(path, nodeGrouping));
+                    paths.add(GroupedPath.of(path, grouping));
                 }
 
                 return;
@@ -117,22 +109,71 @@ public final class DescendingPathFinder implements PathFinder {
             Node node = searchNodes.get(level);
             List<Integer> weights = node.getWeights();
 
-            if (level == 0 || Boolean.FALSE.equals(nodeGrouping.get(level))) {
-                for (int weight : weights) {
-                    path.set(level, weight);
-                    findRecursively(level + 1, distance + weight);
-                }
-            } else {
-                for (int weight : weights) {
-                    if (weight > path.get(level - 1)) {
-                        continue;
-                    }
+            int maxRemainder = maxRemaining.get(level);
+            int minRemainder = minRemaining.get(level);
 
-                    path.set(level, weight);
-                    findRecursively(level + 1, distance + weight);
+            boolean isGrouped = Boolean.TRUE.equals(grouping.get(level));
+            int lastWeight = level > 0 ? path.get(level - 1) : Integer.MAX_VALUE;
+
+            for (int weight : weights) {
+                if (distance + weight + maxRemainder < length) {
+                    return;
                 }
+
+                if (distance + weight + minRemainder > length) {
+                    continue;
+                }
+
+                if (isGrouped && weight > lastWeight) {
+                    continue;
+                }
+
+                path.set(level, weight);
+                findRecursively(level + 1, distance + weight);
+            }
+        }
+
+        private static List<Boolean> getGrouping(List<? extends Node> nodes) {
+            if (nodes.size() == 1) {
+                return List.of(false);
             }
 
+            List<Boolean> grouping = new ArrayList<>();
+            grouping.add(false);
+
+            for (int i = 1; i < nodes.size(); i++) {
+                grouping.add(nodes.get(i).getWeights().equals(nodes.get(i - 1).getWeights()));
+            }
+
+            return grouping;
+        }
+
+        private static List<Integer> getMaxRemaining(List<? extends Node> nodes) {
+            return getRemaining(nodes, Integer::max);
+        }
+
+        private static List<Integer> getMinRemaining(List<? extends Node> nodes) {
+            return getRemaining(nodes, Integer::min);
+        }
+
+        private static List<Integer> getRemaining(List<? extends Node> nodes, IntBinaryOperator operator) {
+            int sum = 0;
+
+            List<Integer> remaining = new ArrayList<>();
+            remaining.add(sum);
+
+            for (int i = nodes.size() - 1; i > 0; i--) {
+                Node node = nodes.get(i);
+
+                sum += node.getWeights().stream()
+                        .mapToInt(Integer::intValue)
+                        .reduce(operator)
+                        .orElseThrow();
+
+                remaining.add(0, sum);
+            }
+
+            return remaining;
         }
     }
 }

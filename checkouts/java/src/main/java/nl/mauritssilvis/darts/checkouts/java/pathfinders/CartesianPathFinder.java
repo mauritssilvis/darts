@@ -47,12 +47,18 @@ public final class CartesianPathFinder implements PathFinder {
 
     @Override
     public List<Path> find(int length) {
+        if (nodes.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         boolean hasDisconnectedNodes = nodes.stream()
                 .anyMatch(Predicate.not(Node::isConnected));
 
-        return hasDisconnectedNodes
-                ? new ArrayList<>()
-                : new Finder(nodes, length).find();
+        if (hasDisconnectedNodes) {
+            return Collections.emptyList();
+        }
+
+        return new Finder(nodes, length).find();
     }
 
     private static class Finder {
