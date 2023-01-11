@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.nodes;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -15,7 +16,13 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public class DescendingNode implements Node {
+    private final List<Integer> weights;
+
     private DescendingNode(Collection<Integer> weights) {
+        this.weights = weights.stream()
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .toList();
     }
 
     /**
@@ -31,11 +38,11 @@ public class DescendingNode implements Node {
 
     @Override
     public List<Integer> getWeights() {
-        return null;
+        return weights;
     }
 
     @Override
     public boolean isConnected() {
-        return false;
+        return !weights.isEmpty();
     }
 }
