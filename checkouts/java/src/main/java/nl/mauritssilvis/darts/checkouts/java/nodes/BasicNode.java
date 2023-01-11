@@ -7,7 +7,6 @@ package nl.mauritssilvis.darts.checkouts.java.nodes;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * An implementation of the {@code Node} interface that stores unique edge
@@ -18,8 +17,8 @@ import java.util.stream.Stream;
 public final class BasicNode implements Node {
     private final List<Integer> weights;
 
-    private BasicNode(Stream<Integer> weights) {
-        this.weights = weights
+    private BasicNode(Collection<Integer> weights) {
+        this.weights = weights.stream()
                 .distinct()
                 .toList();
     }
@@ -32,7 +31,7 @@ public final class BasicNode implements Node {
      * @return a new {@code BasicNode} with the given weights
      */
     public static Node of(Collection<Integer> weights) {
-        return new BasicNode(weights.stream());
+        return new BasicNode(weights);
     }
 
     @Override
