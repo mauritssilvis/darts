@@ -19,6 +19,8 @@ import java.util.stream.IntStream;
  * An implementation of the {@code Path} interface that can represent multiple
  * sequences of integer steps, namely, one for each permutation of the grouped
  * elements.
+ * <p>
+ * Relevant design patterns: Immutable object, static factory method.
  */
 public final class GroupedPath implements Path {
     private final List<Integer> steps;

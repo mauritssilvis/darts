@@ -12,6 +12,8 @@ import java.util.stream.Stream;
 /**
  * An implementation of the {@code Node} interface that stores unique edge
  * weights in the order in which they are supplied.
+ * <p>
+ * Relevant design patterns: Immutable object, static factory method.
  */
 public final class BasicNode implements Node {
     private final List<Integer> weights;

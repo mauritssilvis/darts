@@ -15,6 +15,8 @@ import java.util.List;
  * leads to a sequence of integers that is not represented by that same path. In
  * contrast, paths with grouped steps represent multiple sequences, one for each
  * permutation of the grouped elements.
+ * <p>
+ * Relevant design pattern: Immutable interface.
  */
 public interface Path {
     /**

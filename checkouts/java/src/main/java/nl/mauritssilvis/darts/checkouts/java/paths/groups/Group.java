@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * An ordered group of integer values.
+ * <p>
+ * Relevant design pattern: Immutable interface.
  */
 public interface Group {
     /**

@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * An implementation of the {@code Path} interface that represents a single sequence
  * of ungrouped integer steps.
+ * <p>
+ * Relevant design patterns: Immutable object, static factory method.
  */
 public final class SimplePath implements Path {
     private final List<Integer> steps;

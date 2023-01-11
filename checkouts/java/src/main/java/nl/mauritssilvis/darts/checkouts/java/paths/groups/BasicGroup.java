@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 /**
  * An implementation of the {@code Group} interface that represents a single
  * ordered group of integer values.
+ * <p>
+ * Relevant design patterns: Immutable object, static factory method.
  */
 public final class BasicGroup implements Group {
     private final List<Integer> values;

@@ -15,6 +15,8 @@ import java.util.List;
  * connections to other nodes. Each node can simply be assumed to have directed
  * edges to one other node. The weights of the edges incident to a node have to
  * be unique, however.
+ * <p>
+ * Relevant design pattern: Immutable interface.
  */
 public interface Node {
     /**
