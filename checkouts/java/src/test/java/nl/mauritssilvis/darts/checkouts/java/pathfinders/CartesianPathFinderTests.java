@@ -46,12 +46,10 @@ class CartesianPathFinderTests {
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
         List<Path> paths = pathFinder.find(length);
 
-        long numPaths = paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
+        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, numPaths),
+                () -> Assertions.assertEquals(1, totalMultiplicity),
                 () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), paths.get(0).getSteps())
         );
     }
