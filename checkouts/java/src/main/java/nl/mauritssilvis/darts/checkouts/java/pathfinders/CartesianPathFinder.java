@@ -50,7 +50,9 @@ public final class CartesianPathFinder implements PathFinder {
         boolean hasDisconnectedNodes = nodes.stream()
                 .anyMatch(Predicate.not(Node::isConnected));
 
-        return hasDisconnectedNodes ? new ArrayList<>() : new Finder(nodes, length).find();
+        return hasDisconnectedNodes
+                ? new ArrayList<>()
+                : new Finder(nodes, length).find();
     }
 
     private static class Finder {
@@ -70,8 +72,6 @@ public final class CartesianPathFinder implements PathFinder {
         }
 
         List<Path> find() {
-            paths.clear();
-
             int level = 0;
             int distance = 0;
             findRecursively(level, distance);
