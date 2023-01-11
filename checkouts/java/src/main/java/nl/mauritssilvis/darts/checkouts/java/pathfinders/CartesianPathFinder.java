@@ -22,6 +22,8 @@ import java.util.function.Predicate;
  * <p>
  * This implementation finds paths by considering all possible combinations of
  * edges between the nodes.
+ * <p>
+ * Relevant design patterns: Strategy, static factory method.
  */
 public final class CartesianPathFinder implements PathFinder {
     private final List<? extends Node> nodes;

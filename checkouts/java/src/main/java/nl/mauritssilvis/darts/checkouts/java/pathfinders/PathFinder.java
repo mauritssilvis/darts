@@ -14,6 +14,8 @@ import java.util.List;
  * <p>
  * This interface does not fix the data structure that is searched for paths.
  * Implementations can specify the data structures they apply to.
+ * <p>
+ * Relevant design pattern: Strategy.
  */
 @FunctionalInterface
 public interface PathFinder {
