@@ -21,9 +21,12 @@ import java.util.function.Predicate;
  * directed edges with integer weights.
  * <p>
  * This implementation finds paths by considering all possible combinations of
- * edges between the nodes.
+ * edges between the nodes and returns results in the form of a list of
+ * {@code SimplePath} objects.
  * <p>
  * Relevant design patterns: Strategy, immutable object, static factory method.
+ * <p>
+ * Relevant terminology: Subset sum problem.
  */
 public final class CartesianPathFinder implements PathFinder {
     private final List<? extends Node> nodes;
