@@ -9,10 +9,8 @@ import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Type;
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.TypedField;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -22,43 +20,47 @@ import java.util.stream.IntStream;
  * Relevant design patterns: Immutable object.
  */
 public class StandardBoard implements Board {
+    private final List<Field> singleFields = getSingleFields();
+    private final List<Field> doubleFields = getDoubleFields();
+    private final List<Field> tripleFields = getTripleFields();
+    private final List<Field> quadrupleFields = Collections.emptyList();
+
     @Override
     public List<Field> getFields(Type type) {
         return switch (type) {
-            case SINGLE -> getSingleFields();
-            case DOUBLE -> getDoubleFields();
-            case TRIPLE -> getTripleFields();
-            case QUADRUPLE -> getQuadrupleFields();
+            case SINGLE -> singleFields;
+            case DOUBLE -> doubleFields;
+            case TRIPLE -> tripleFields;
+            case QUADRUPLE -> quadrupleFields;
         };
     }
 
     private static List<Field> getSingleFields() {
-        List<Field> fields = IntStream.rangeClosed(1, 20)
+        return getExtendedRange()
                 .mapToObj(i -> TypedField.of(Type.SINGLE, i))
-                .collect(Collectors.toList());
-
-        fields.add(TypedField.of(Type.SINGLE, 25));
-
-        return Collections.unmodifiableList(fields);
+                .toList();
     }
 
     private static List<Field> getDoubleFields() {
-        List<Field> fields = IntStream.rangeClosed(1, 20)
+        return getExtendedRange()
                 .mapToObj(i -> TypedField.of(Type.DOUBLE, i))
-                .collect(Collectors.toList());
-
-        fields.add(TypedField.of(Type.DOUBLE, 25));
-
-        return Collections.unmodifiableList(fields);
+                .toList();
     }
 
     private static List<Field> getTripleFields() {
-        return IntStream.rangeClosed(1, 20)
+        return getBaseRange()
                 .mapToObj(i -> TypedField.of(Type.TRIPLE, i))
                 .toList();
     }
 
-    private static List<Field> getQuadrupleFields() {
-        return Collections.emptyList();
+    private static IntStream getBaseRange() {
+        return IntStream.rangeClosed(1, 20);
+    }
+
+    private static IntStream getExtendedRange() {
+        return IntStream.concat(
+                getBaseRange(),
+                IntStream.of(25)
+        );
     }
 }
