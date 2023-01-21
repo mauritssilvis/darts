@@ -14,7 +14,7 @@ import java.util.List;
 
 class StandardBoardTests {
     @Test
-    void getTheSingleFields() {
+    void countTheSingleFields() {
         Board board = new StandardBoard();
         Type type = Type.SINGLE;
 
@@ -22,7 +22,7 @@ class StandardBoardTests {
     }
 
     @Test
-    void getTheDoubleFields() {
+    void countTheDoubleFields() {
         Board board = new StandardBoard();
         Type type = Type.DOUBLE;
 
@@ -30,7 +30,7 @@ class StandardBoardTests {
     }
 
     @Test
-    void getTheTripleFields() {
+    void countTheTripleFields() {
         Board board = new StandardBoard();
         Type type = Type.TRIPLE;
 
@@ -38,7 +38,7 @@ class StandardBoardTests {
     }
 
     @Test
-    void getTheQuadrupleFields() {
+    void countTheQuadrupleFields() {
         Board board = new StandardBoard();
         Type type = Type.QUADRUPLE;
 
@@ -99,62 +99,6 @@ class StandardBoardTests {
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
-    }
-
-    @Test
-    void getTheSingleFieldSum() {
-        Board board = new StandardBoard();
-        Type type = Type.SINGLE;
-
-        List<Field> fields = board.getFields(type);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getValue)
-                .sum();
-
-        Assertions.assertEquals(235, sum);
-    }
-
-    @Test
-    void getTheDoubleFieldSum() {
-        Board board = new StandardBoard();
-        Type type = Type.DOUBLE;
-
-        List<Field> fields = board.getFields(type);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getValue)
-                .sum();
-
-        Assertions.assertEquals(470, sum);
-    }
-
-    @Test
-    void getTheTripleFieldSum() {
-        Board board = new StandardBoard();
-        Type type = Type.TRIPLE;
-
-        List<Field> fields = board.getFields(type);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getValue)
-                .sum();
-
-        Assertions.assertEquals(630, sum);
-    }
-
-    @Test
-    void getTheQuadrupleFieldSum() {
-        Board board = new StandardBoard();
-        Type type = Type.QUADRUPLE;
-
-        List<Field> fields = board.getFields(type);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getValue)
-                .sum();
-
-        Assertions.assertEquals(0, sum);
     }
 
     @Test
@@ -275,5 +219,61 @@ class StandardBoardTests {
                 .orElse(-1);
 
         Assertions.assertEquals(-1, max);
+    }
+
+    @Test
+    void getTheSingleFieldSum() {
+        Board board = new StandardBoard();
+        Type type = Type.SINGLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int sum = fields.stream()
+                .mapToInt(Field::getValue)
+                .sum();
+
+        Assertions.assertEquals(235, sum);
+    }
+
+    @Test
+    void getTheDoubleFieldSum() {
+        Board board = new StandardBoard();
+        Type type = Type.DOUBLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int sum = fields.stream()
+                .mapToInt(Field::getValue)
+                .sum();
+
+        Assertions.assertEquals(470, sum);
+    }
+
+    @Test
+    void getTheTripleFieldSum() {
+        Board board = new StandardBoard();
+        Type type = Type.TRIPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int sum = fields.stream()
+                .mapToInt(Field::getValue)
+                .sum();
+
+        Assertions.assertEquals(630, sum);
+    }
+
+    @Test
+    void getTheQuadrupleFieldSum() {
+        Board board = new StandardBoard();
+        Type type = Type.QUADRUPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int sum = fields.stream()
+                .mapToInt(Field::getValue)
+                .sum();
+
+        Assertions.assertEquals(0, sum);
     }
 }
