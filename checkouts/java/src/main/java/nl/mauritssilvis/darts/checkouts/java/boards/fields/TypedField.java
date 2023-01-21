@@ -12,37 +12,40 @@ package nl.mauritssilvis.darts.checkouts.java.boards.fields;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class TypedField implements Field {
-    private final int base;
     private final Type type;
+    private final String name;
+    private final int value;
 
-    private TypedField(int base, Type type) {
-        this.base = base;
+    private TypedField(Type type, int base) {
         this.type = type;
+
+        name = type.getShorthand() + base;
+        value = type.getMultiplier() * base;
     }
 
     /**
      * Returns a new {@code TypedField} with the supplied base value and type.
      *
-     * @param base the integer base value
      * @param type the field type
+     * @param base the integer base value
      * @return a new {@code TypedField} with the given base value and type
      */
-    public static Field of(int base, Type type) {
-        return new TypedField(base, type);
-    }
-
-    @Override
-    public String getName() {
-        return type.getShorthand() + base;
-    }
-
-    @Override
-    public int getValue() {
-        return base * type.getMultiplier();
+    public static Field of(Type type, int base) {
+        return new TypedField(type, base);
     }
 
     @Override
     public Type getType() {
         return type;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getValue() {
+        return value;
     }
 }
