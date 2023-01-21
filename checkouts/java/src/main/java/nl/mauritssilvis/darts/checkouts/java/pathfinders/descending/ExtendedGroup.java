@@ -13,26 +13,26 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of the {@code Group} interface that represents a single
- * ordered group of integer values.
+ * An implementation of the {@code Group} interface that represents an ordered
+ * group of integer values.
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public final class BasicGroup implements Group {
+public final class ExtendedGroup implements Group {
     private final List<Integer> values;
 
-    private BasicGroup(Collection<Integer> values) {
+    private ExtendedGroup(Collection<Integer> values) {
         this.values = List.copyOf(values);
     }
 
     /**
-     * Returns a new {@code BasicGroup} with the supplied integer values.
+     * Returns a new {@code ExtendedGroup} with the supplied integer values.
      *
      * @param values a collection of integer values
-     * @return a new {@code BasicGroup} with the given values
+     * @return a new {@code ExtendedGroup} with the given values
      */
     public static Group of(Collection<Integer> values) {
-        return new BasicGroup(values);
+        return new ExtendedGroup(values);
     }
 
     @Override
@@ -51,7 +51,7 @@ public final class BasicGroup implements Group {
         Map<Integer, Long> frequencies = getFrequencies();
 
         long denominator = frequencies.values().stream()
-                .mapToLong(BasicGroup::factorial)
+                .mapToLong(ExtendedGroup::factorial)
                 .reduce(1, (p, e) -> p * e);
 
         long numerator = factorial(values.size());

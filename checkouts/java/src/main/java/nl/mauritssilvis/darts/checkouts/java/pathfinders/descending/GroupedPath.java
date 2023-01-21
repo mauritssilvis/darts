@@ -106,7 +106,7 @@ public final class GroupedPath implements Path {
         if (steps.isEmpty()) {
             return Collections.emptyList();
         } else if (steps.size() == 1) {
-            return List.of(BasicGroup.of(steps));
+            return List.of(ExtendedGroup.of(steps));
         }
 
         List<Group> groups = new ArrayList<>();
@@ -115,14 +115,14 @@ public final class GroupedPath implements Path {
 
         for (int i = 0; i < steps.size(); i++) {
             if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
-                groups.add(BasicGroup.of(values));
+                groups.add(ExtendedGroup.of(values));
                 values = new ArrayList<>();
             }
 
             values.add(steps.get(i));
         }
 
-        groups.add(BasicGroup.of(values));
+        groups.add(ExtendedGroup.of(values));
 
         return groups;
     }

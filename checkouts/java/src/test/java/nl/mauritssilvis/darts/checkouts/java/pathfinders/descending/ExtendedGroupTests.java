@@ -17,11 +17,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-class BasicGroupTests {
+class ExtendedGroupTests {
     @Test
     void getTheValues() {
         Collection<Integer> values = List.of(1, 2, 7);
-        Group group = BasicGroup.of(values);
+        Group group = ExtendedGroup.of(values);
 
         Assertions.assertEquals(values, group.getValues());
     }
@@ -29,7 +29,7 @@ class BasicGroupTests {
     @Test
     void getTheValuesWithEmptyInput() {
         Collection<Integer> values = Collections.emptyList();
-        Group group = BasicGroup.of(values);
+        Group group = ExtendedGroup.of(values);
 
         Assertions.assertEquals(values, group.getValues());
     }
@@ -37,7 +37,7 @@ class BasicGroupTests {
     @Test
     void storeIndependentValues() {
         List<Integer> values = new ArrayList<>(List.of(7, 5, 7));
-        Group group = BasicGroup.of(values);
+        Group group = ExtendedGroup.of(values);
 
         values.set(0, 8);
 
@@ -47,7 +47,7 @@ class BasicGroupTests {
     @Test
     void storeImmutableValues() {
         Collection<Integer> values = new ArrayList<>(List.of(3, 2, 3));
-        Group group = BasicGroup.of(values);
+        Group group = ExtendedGroup.of(values);
 
         List<Integer> storedValues = group.getValues();
 
@@ -57,7 +57,7 @@ class BasicGroupTests {
     @ParameterizedTest
     @MethodSource("withPermutationData")
     void getThePermutationCount(Collection<Integer> values, int permutations) {
-        Group group = BasicGroup.of(values);
+        Group group = ExtendedGroup.of(values);
 
         Assertions.assertEquals(permutations, group.countPermutations());
     }
