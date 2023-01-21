@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.paths;
+package nl.mauritssilvis.darts.checkouts.java.pathfinders.paths;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
-import nl.mauritssilvis.darts.checkouts.java.nodes.BasicNode;
-import nl.mauritssilvis.darts.checkouts.java.nodes.Node;
-import nl.mauritssilvis.darts.checkouts.java.paths.Path;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.BasicNode;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
 
 import java.util.Collection;
 import java.util.List;
