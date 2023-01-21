@@ -6,8 +6,6 @@
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.SimplePath;
 
 import java.util.ArrayList;
 import java.util.Collection;

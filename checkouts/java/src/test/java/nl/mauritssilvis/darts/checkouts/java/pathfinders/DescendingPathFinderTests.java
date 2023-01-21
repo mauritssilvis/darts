@@ -6,7 +6,6 @@
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

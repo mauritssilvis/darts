@@ -7,7 +7,6 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;

@@ -7,8 +7,6 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.DescendingNode;
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.GroupedPath;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
 
 import java.util.ArrayList;
 import java.util.Collection;

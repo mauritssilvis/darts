@@ -5,8 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.paths.Path;
-
 import java.util.List;
 
 /**
