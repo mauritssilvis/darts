@@ -27,5 +27,13 @@ public enum Type {
     /**
      * A field with a quadruple point value.
      */
-    QUADRUPLE
+    QUADRUPLE;
+
+    public String getShorthand() {
+        return null;
+    }
+
+    public int getMultiplier() {
+        return 0;
+    }
 }
