@@ -3,35 +3,39 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes;
+package nl.mauritssilvis.darts.checkouts.java.pathfinders.descending;
+
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Node;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * An implementation of the {@code Node} interface that stores unique edge
- * weights in the order in which they are supplied.
+ * weights in a strictly descending order.
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public final class BasicNode implements Node {
+public final class DescendingNode implements Node {
     private final List<Integer> weights;
 
-    private BasicNode(Collection<Integer> weights) {
+    private DescendingNode(Collection<Integer> weights) {
         this.weights = weights.stream()
                 .distinct()
+                .sorted(Comparator.reverseOrder())
                 .toList();
     }
 
     /**
-     * Returns a new {@code BasicNode} with unique edge weights in the order
-     * determined by the supplied collection.
+     * Returns a new {@code DescendingNode} with unique edge weights in a
+     * strictly descending order.
      *
      * @param weights a collection of integer weights
-     * @return a new {@code BasicNode} with the given weights
+     * @return a new {@code DescendingNode} with the given weights
      */
     public static Node of(Collection<Integer> weights) {
-        return new BasicNode(weights);
+        return new DescendingNode(weights);
     }
 
     @Override

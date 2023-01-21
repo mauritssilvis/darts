@@ -3,7 +3,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards;
+package nl.mauritssilvis.darts.checkouts.java.boards.standard;
+
+import nl.mauritssilvis.darts.checkouts.java.boards.Field;
+import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 
 /**
  * An implementation of the {@code Field} interface that can represent fields of
@@ -27,7 +30,7 @@ public final class TypedField implements Field {
      * Returns a new {@code TypedField} with the supplied base value and type.
      *
      * @param fieldType the field type
-     * @param base the integer base value
+     * @param base      the integer base value
      * @return a new {@code TypedField} with the given base value and type
      */
     public static Field of(FieldType fieldType, int base) {

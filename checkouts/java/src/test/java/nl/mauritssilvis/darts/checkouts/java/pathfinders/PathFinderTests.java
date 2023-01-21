@@ -5,8 +5,9 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.BasicNode;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian.BasicNode;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian.CartesianPathFinder;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.descending.DescendingPathFinder;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;

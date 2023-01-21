@@ -3,8 +3,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards;
+package nl.mauritssilvis.darts.checkouts.java.boards.standard;
 
+import nl.mauritssilvis.darts.checkouts.java.boards.Field;
+import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

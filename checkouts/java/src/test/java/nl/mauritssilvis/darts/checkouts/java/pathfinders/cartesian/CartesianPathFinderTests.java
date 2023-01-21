@@ -3,9 +3,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.pathfinders;
+package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.nodes.Node;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Node;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Path;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.PathFinder;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.PathFinderTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
