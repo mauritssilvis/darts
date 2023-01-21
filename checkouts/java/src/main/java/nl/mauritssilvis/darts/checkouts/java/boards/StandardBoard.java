@@ -17,13 +17,25 @@ import java.util.stream.IntStream;
  * An implementation of the {@code Board} interface that represents a standard
  * dartboard.
  * <p>
- * Relevant design patterns: Immutable object.
+ * Relevant design patterns: Immutable object, static factory method.
  */
-public class StandardBoard implements Board {
+public final class StandardBoard implements Board {
     private final List<Field> singleFields = getSingleFields();
     private final List<Field> doubleFields = getDoubleFields();
     private final List<Field> tripleFields = getTripleFields();
     private final List<Field> quadrupleFields = Collections.emptyList();
+
+    private StandardBoard() {
+    }
+
+    /**
+     * Return a new {@code StandardBoard}.
+     *
+     * @return a new {@code StandardBoard}
+     */
+    public static Board create() {
+        return new StandardBoard();
+    }
 
     @Override
     public List<Field> getFields(Type type) {

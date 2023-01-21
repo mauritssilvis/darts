@@ -16,7 +16,7 @@ import java.util.List;
 class StandardBoardTests {
     @Test
     void getImmutableSingleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         List<Field> fields = board.getFields(type);
@@ -26,7 +26,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableDoubleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         List<Field> fields = board.getFields(type);
@@ -36,7 +36,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableTripleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         List<Field> fields = board.getFields(type);
@@ -46,7 +46,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableQuadrupleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
@@ -57,7 +57,7 @@ class StandardBoardTests {
 
     @Test
     void countTheSingleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         Assertions.assertEquals(21, board.getFields(type).size());
@@ -65,7 +65,7 @@ class StandardBoardTests {
 
     @Test
     void countTheDoubleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         Assertions.assertEquals(21, board.getFields(type).size());
@@ -73,7 +73,7 @@ class StandardBoardTests {
 
     @Test
     void countTheTripleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         Assertions.assertEquals(20, board.getFields(type).size());
@@ -81,7 +81,7 @@ class StandardBoardTests {
 
     @Test
     void countTheQuadrupleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         Assertions.assertEquals(0, board.getFields(type).size());
@@ -89,7 +89,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlySingleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         List<Field> fields = board.getFields(type);
@@ -103,7 +103,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyDoubleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         List<Field> fields = board.getFields(type);
@@ -117,7 +117,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyTripleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         List<Field> fields = board.getFields(type);
@@ -131,7 +131,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyQuadrupleFields() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
@@ -145,7 +145,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumSingleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         List<Field> fields = board.getFields(type);
@@ -160,7 +160,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumDoubleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         List<Field> fields = board.getFields(type);
@@ -175,7 +175,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumTripleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         List<Field> fields = board.getFields(type);
@@ -190,7 +190,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumQuadrupleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
@@ -205,7 +205,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumSingleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         List<Field> fields = board.getFields(type);
@@ -220,7 +220,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumDoubleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         List<Field> fields = board.getFields(type);
@@ -235,7 +235,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumTripleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         List<Field> fields = board.getFields(type);
@@ -250,7 +250,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumQuadrupleField() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
@@ -265,7 +265,7 @@ class StandardBoardTests {
 
     @Test
     void getTheSingleFieldSum() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.SINGLE;
 
         List<Field> fields = board.getFields(type);
@@ -279,7 +279,7 @@ class StandardBoardTests {
 
     @Test
     void getTheDoubleFieldSum() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.DOUBLE;
 
         List<Field> fields = board.getFields(type);
@@ -293,7 +293,7 @@ class StandardBoardTests {
 
     @Test
     void getTheTripleFieldSum() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.TRIPLE;
 
         List<Field> fields = board.getFields(type);
@@ -307,7 +307,7 @@ class StandardBoardTests {
 
     @Test
     void getTheQuadrupleFieldSum() {
-        Board board = new StandardBoard();
+        Board board = StandardBoard.create();
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
