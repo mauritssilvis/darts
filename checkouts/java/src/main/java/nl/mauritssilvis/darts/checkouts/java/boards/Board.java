@@ -15,6 +15,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: Immutable interface.
  */
+@FunctionalInterface
 public interface Board {
     /**
      * Gets the dartboard fields of the specified type.
