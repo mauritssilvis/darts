@@ -19,8 +19,8 @@ public final class TypedField implements Field {
     private TypedField(Type type, int base) {
         this.type = type;
 
-        name = type.getShorthand() + base;
-        value = type.getMultiplier() * base;
+        name = getShorthand(type) + base;
+        value = getMultiplier(type) * base;
     }
 
     /**
@@ -47,5 +47,23 @@ public final class TypedField implements Field {
     @Override
     public int getValue() {
         return value;
+    }
+
+    private static String getShorthand(Type type) {
+        return switch (type) {
+            case SINGLE -> "";
+            case DOUBLE -> "D";
+            case TRIPLE -> "T";
+            case QUADRUPLE -> "Q";
+        };
+    }
+
+    private static int getMultiplier(Type type) {
+        return switch (type) {
+            case SINGLE -> 1;
+            case DOUBLE -> 2;
+            case TRIPLE -> 3;
+            case QUADRUPLE -> 4;
+        };
     }
 }

@@ -10,38 +10,22 @@ package nl.mauritssilvis.darts.checkouts.java.boards.fields;
  */
 public enum Type {
     /**
-     * A field with a single point value.
+     * A single field.
      */
-    SINGLE("", 1),
+    SINGLE,
 
     /**
-     * A field with a double point value.
+     * A double field.
      */
-    DOUBLE("D", 2),
+    DOUBLE,
 
     /**
-     * A field with a triple point value.
+     * A triple field.
      */
-    TRIPLE("T", 3),
+    TRIPLE,
 
     /**
-     * A field with a quadruple point value.
+     * A quadruple field.
      */
-    QUADRUPLE("Q", 4);
-
-    private final String shorthand;
-    private final int multiplier;
-
-    Type(String shorthand, int multiplier) {
-        this.shorthand = shorthand;
-        this.multiplier = multiplier;
-    }
-
-    public String getShorthand() {
-        return shorthand;
-    }
-
-    public int getMultiplier() {
-        return multiplier;
-    }
+    QUADRUPLE
 }
