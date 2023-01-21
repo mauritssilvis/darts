@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.boards.fields;
 
 /**
- * A field of a dartboard.
+ * A dartboard field with a name, a value and a type.
  */
 public interface Field {
     /**
