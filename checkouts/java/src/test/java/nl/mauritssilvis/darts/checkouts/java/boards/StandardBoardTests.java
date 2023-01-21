@@ -156,4 +156,124 @@ class StandardBoardTests {
 
         Assertions.assertEquals(0, sum);
     }
+
+    @Test
+    void getTheMinimumSingleField() {
+        Board board = new StandardBoard();
+        Type type = Type.SINGLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int min = fields.stream()
+                .mapToInt(Field::getValue)
+                .min()
+                .orElse(-1);
+
+        Assertions.assertEquals(1, min);
+    }
+
+    @Test
+    void getTheMinimumDoubleField() {
+        Board board = new StandardBoard();
+        Type type = Type.DOUBLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int min = fields.stream()
+                .mapToInt(Field::getValue)
+                .min()
+                .orElse(-1);
+
+        Assertions.assertEquals(2, min);
+    }
+
+    @Test
+    void getTheMinimumTripleField() {
+        Board board = new StandardBoard();
+        Type type = Type.TRIPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int min = fields.stream()
+                .mapToInt(Field::getValue)
+                .min()
+                .orElse(-1);
+
+        Assertions.assertEquals(3, min);
+    }
+
+    @Test
+    void getTheMinimumQuadrupleField() {
+        Board board = new StandardBoard();
+        Type type = Type.QUADRUPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int min = fields.stream()
+                .mapToInt(Field::getValue)
+                .min()
+                .orElse(-1);
+
+        Assertions.assertEquals(-1, min);
+    }
+
+    @Test
+    void getTheMaximumSingleField() {
+        Board board = new StandardBoard();
+        Type type = Type.SINGLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int max = fields.stream()
+                .mapToInt(Field::getValue)
+                .max()
+                .orElse(-1);
+
+        Assertions.assertEquals(25, max);
+    }
+
+    @Test
+    void getTheMaximumDoubleField() {
+        Board board = new StandardBoard();
+        Type type = Type.DOUBLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int max = fields.stream()
+                .mapToInt(Field::getValue)
+                .max()
+                .orElse(-1);
+
+        Assertions.assertEquals(50, max);
+    }
+
+    @Test
+    void getTheMaximumTripleField() {
+        Board board = new StandardBoard();
+        Type type = Type.TRIPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int max = fields.stream()
+                .mapToInt(Field::getValue)
+                .max()
+                .orElse(-1);
+
+        Assertions.assertEquals(60, max);
+    }
+
+    @Test
+    void getTheMaximumQuadrupleField() {
+        Board board = new StandardBoard();
+        Type type = Type.QUADRUPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        int max = fields.stream()
+                .mapToInt(Field::getValue)
+                .max()
+                .orElse(-1);
+
+        Assertions.assertEquals(-1, max);
+    }
 }
