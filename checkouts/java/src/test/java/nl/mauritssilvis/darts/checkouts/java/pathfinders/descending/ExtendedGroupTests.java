@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.descending;
 
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

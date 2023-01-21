@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.descending;
 
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.Path;
 
 import java.util.ArrayList;
@@ -67,6 +68,32 @@ public final class GroupedPath implements Path {
     }
 
     @Override
+    public List<Group> getGroups() {
+        if (steps.isEmpty()) {
+            return Collections.emptyList();
+        } else if (steps.size() == 1) {
+            return List.of(ExtendedGroup.of(steps));
+        }
+
+        List<Group> groups = new ArrayList<>();
+
+        Collection<Integer> values = new ArrayList<>();
+
+        for (int i = 0; i < steps.size(); i++) {
+            if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
+                groups.add(ExtendedGroup.of(values));
+                values = new ArrayList<>();
+            }
+
+            values.add(steps.get(i));
+        }
+
+        groups.add(ExtendedGroup.of(values));
+
+        return groups;
+    }
+
+    @Override
     public long getMultiplicity() {
         if (steps.isEmpty()) {
             return 0;
@@ -100,30 +127,5 @@ public final class GroupedPath implements Path {
                 .forEach(i -> output.add(false));
 
         return Collections.unmodifiableList(output);
-    }
-
-    private List<Group> getGroups() {
-        if (steps.isEmpty()) {
-            return Collections.emptyList();
-        } else if (steps.size() == 1) {
-            return List.of(ExtendedGroup.of(steps));
-        }
-
-        List<Group> groups = new ArrayList<>();
-
-        Collection<Integer> values = new ArrayList<>();
-
-        for (int i = 0; i < steps.size(); i++) {
-            if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
-                groups.add(ExtendedGroup.of(values));
-                values = new ArrayList<>();
-            }
-
-            values.add(steps.get(i));
-        }
-
-        groups.add(ExtendedGroup.of(values));
-
-        return groups;
     }
 }

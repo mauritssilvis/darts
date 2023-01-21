@@ -54,6 +54,13 @@ public interface Path {
     int countGroups();
 
     /**
+     * Gets the groups this path consists of.
+     *
+     * @return the groups this path comprises
+     */
+    List<Group> getGroups();
+
+    /**
      * Gets the multiplicity of this path.
      * <p>
      * Simple paths, which represent a single sequence of steps, have a unit

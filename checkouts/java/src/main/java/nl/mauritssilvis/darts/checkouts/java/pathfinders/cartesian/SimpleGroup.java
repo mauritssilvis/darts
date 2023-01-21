@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.descending.Group;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 
 import java.util.Collections;
 import java.util.List;

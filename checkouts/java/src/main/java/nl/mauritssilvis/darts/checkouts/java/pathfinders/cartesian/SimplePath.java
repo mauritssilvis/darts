@@ -5,9 +5,12 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
 
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.Path;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,6 +56,15 @@ public final class SimplePath implements Path {
     @Override
     public int countGroups() {
         return steps.size();
+    }
+
+    @Override
+    public List<Group> getGroups() {
+        List<Group> groups = new ArrayList<>();
+
+        steps.forEach(step -> groups.add(SimpleGroup.of(step)));
+
+        return Collections.unmodifiableList(groups);
     }
 
     @Override

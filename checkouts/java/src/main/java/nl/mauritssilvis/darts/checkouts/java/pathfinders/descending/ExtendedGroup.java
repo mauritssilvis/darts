@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.descending;
 
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;

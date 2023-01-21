@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.descending;
 
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -150,6 +151,15 @@ class GroupedPathTests {
     }
 
     @Test
+    void countTheGroupsForUngroupedSteps() {
+        Collection<Integer> steps = List.of(6, 7, 8, 9);
+        Collection<Boolean> grouping = List.of(false, false, false, false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(4, path.countGroups());
+    }
+
+    @Test
     void countTheGroupsForPartlyGroupedSteps() {
         Collection<Integer> steps = List.of(1, 2, 3);
         Collection<Boolean> grouping = List.of(false, true, false);
@@ -192,6 +202,91 @@ class GroupedPathTests {
         Path path = GroupedPath.of(steps, grouping);
 
         Assertions.assertEquals(1, path.countGroups());
+    }
+
+    @Test
+    void getTheGroupsForUngroupedSteps() {
+        Collection<Integer> steps = List.of(3, 2);
+        Collection<Boolean> grouping = List.of(false, false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, groups.size()),
+                () -> Assertions.assertEquals(List.of(3), groups.get(0).getValues()),
+                () -> Assertions.assertEquals(List.of(2), groups.get(1).getValues())
+        );
+    }
+
+    @Test
+    void getTheGroupsForPartlyGroupedSteps() {
+        Collection<Integer> steps = List.of(4, 3, 2, 2);
+        Collection<Boolean> grouping = List.of(false, false, true, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, groups.size()),
+                () -> Assertions.assertEquals(List.of(4), groups.get(0).getValues()),
+                () -> Assertions.assertEquals(List.of(3, 2, 2), groups.get(1).getValues())
+        );
+    }
+
+    @Test
+    void getTheGroupsForGroupedSteps() {
+        Collection<Integer> steps = List.of(7, 8);
+        Collection<Boolean> grouping = List.of(false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, groups.size()),
+                () -> Assertions.assertEquals(steps, groups.get(0).getValues())
+        );
+    }
+
+    @Test
+    void getTheGroupsWithEmptyInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Collection<Boolean> grouping = Collections.emptyList();
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertEquals(0, groups.size());
+    }
+
+    @Test
+    void getTheGroupsWithAShorterGroupingSignature() {
+        Collection<Integer> steps = List.of(4, 3, 2);
+        Collection<Boolean> grouping = List.of(false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, groups.size()),
+                () -> Assertions.assertEquals(List.of(4, 3), groups.get(0).getValues()),
+                () -> Assertions.assertEquals(List.of(2), groups.get(1).getValues())
+        );
+    }
+
+    @Test
+    void getTheGroupsWithALongerGroupingSignature() {
+        Collection<Integer> steps = List.of(1, 2);
+        Collection<Boolean> grouping = List.of(false, false, true, false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, groups.size()),
+                () -> Assertions.assertEquals(List.of(1), groups.get(0).getValues()),
+                () -> Assertions.assertEquals(List.of(2), groups.get(1).getValues())
+        );
     }
 
     @ParameterizedTest

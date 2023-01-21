@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.descending.Group;
+import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
