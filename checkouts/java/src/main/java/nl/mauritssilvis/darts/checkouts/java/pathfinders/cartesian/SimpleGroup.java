@@ -7,6 +7,7 @@ package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
 
 import nl.mauritssilvis.darts.checkouts.java.pathfinders.descending.Group;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,7 +17,10 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public class SimpleGroup implements Group {
+    private final int value;
+
     private SimpleGroup(int value) {
+        this.value = value;
     }
 
     /**
@@ -31,11 +35,11 @@ public class SimpleGroup implements Group {
 
     @Override
     public List<Integer> getValues() {
-        return null;
+        return Collections.singletonList(value);
     }
 
     @Override
     public long countPermutations() {
-        return 0;
+        return 1;
     }
 }
