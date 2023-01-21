@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code Path} interface that can represent multiple
+ * An implementation of the {@code Path} interface that represents multiple
  * sequences of integer steps, namely, one for each permutation of the grouped
  * elements.
  * <p>
@@ -37,7 +37,7 @@ public final class GroupedPath implements Path {
      *
      * @param steps    a collection of integer steps
      * @param grouping a collection of booleans representing the grouping signature
-     * @return a new {@code SimplePath} with the given steps and grouping signature
+     * @return a new {@code GroupedPath} with the given steps and grouping signature
      */
     public static Path of(Collection<Integer> steps, Collection<Boolean> grouping) {
         return new GroupedPath(steps, grouping);

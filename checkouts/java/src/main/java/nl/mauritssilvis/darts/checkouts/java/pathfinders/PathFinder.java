@@ -22,7 +22,7 @@ public interface PathFinder {
     /**
      * Finds paths having a specified length.
      *
-     * @param length the target path length
+     * @param length the integer target path length
      * @return a list of paths having the given length
      */
     List<Path> find(int length);

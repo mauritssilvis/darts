@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.List;
 
 /**
- * A path representing zero or more sequences of integer steps.
+ * A path that represents zero or more sequences of integer steps.
  * <p>
  * Simple paths represent a single sequence of integer steps. In such paths, the
  * different steps are not grouped. Interchanging the steps of a simple path
@@ -56,7 +56,7 @@ public interface Path {
     /**
      * Gets the multiplicity of this path.
      * <p>
-     * Simple paths representing a single sequence of steps have a unit
+     * Simple paths, which represent a single sequence of steps, have a unit
      * multiplicity. Paths with grouped steps represent multiple sequences and,
      * correspondingly, have a multiplicity larger than one.
      *
