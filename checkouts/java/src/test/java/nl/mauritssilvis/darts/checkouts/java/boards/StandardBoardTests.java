@@ -14,6 +14,46 @@ import java.util.List;
 
 class StandardBoardTests {
     @Test
+    void getImmutableSingleFields() {
+        Board board = new StandardBoard();
+        Type type = Type.SINGLE;
+
+        List<Field> fields = board.getFields(type);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+    }
+
+    @Test
+    void getImmutableDoubleFields() {
+        Board board = new StandardBoard();
+        Type type = Type.DOUBLE;
+
+        List<Field> fields = board.getFields(type);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+    }
+
+    @Test
+    void getImmutableTripleFields() {
+        Board board = new StandardBoard();
+        Type type = Type.TRIPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+    }
+
+    @Test
+    void getImmutableQuadrupleFields() {
+        Board board = new StandardBoard();
+        Type type = Type.QUADRUPLE;
+
+        List<Field> fields = board.getFields(type);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+    }
+
+    @Test
     void countTheSingleFields() {
         Board board = new StandardBoard();
         Type type = Type.SINGLE;
