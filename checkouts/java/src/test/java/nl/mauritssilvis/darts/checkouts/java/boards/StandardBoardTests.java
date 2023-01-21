@@ -7,6 +7,7 @@ package nl.mauritssilvis.darts.checkouts.java.boards;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Type;
+import nl.mauritssilvis.darts.checkouts.java.boards.fields.TypedField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -49,8 +50,9 @@ class StandardBoardTests {
         Type type = Type.QUADRUPLE;
 
         List<Field> fields = board.getFields(type);
+        Field field = TypedField.of(type, 3);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> fields.add(field));
     }
 
     @Test
