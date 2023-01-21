@@ -16,7 +16,7 @@ public interface Field {
      *
      * @return the type of this field
      */
-    Type getType();
+    FieldType getType();
 
     /**
      * Gets the name of this dartboard field.

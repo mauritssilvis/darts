@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.Type;
+import nl.mauritssilvis.darts.checkouts.java.boards.fields.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.TypedField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,9 +17,9 @@ class StandardBoardTests {
     @Test
     void getImmutableSingleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
     }
@@ -27,9 +27,9 @@ class StandardBoardTests {
     @Test
     void getImmutableDoubleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
     }
@@ -37,9 +37,9 @@ class StandardBoardTests {
     @Test
     void getImmutableTripleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
     }
@@ -47,10 +47,10 @@ class StandardBoardTests {
     @Test
     void getImmutableQuadrupleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        List<Field> fields = board.getFields(type);
-        Field field = TypedField.of(type, 3);
+        List<Field> fields = board.getFields(fieldType);
+        Field field = TypedField.of(fieldType, 3);
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> fields.add(field));
     }
@@ -58,44 +58,44 @@ class StandardBoardTests {
     @Test
     void countTheSingleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        Assertions.assertEquals(21, board.getFields(type).size());
+        Assertions.assertEquals(21, board.getFields(fieldType).size());
     }
 
     @Test
     void countTheDoubleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        Assertions.assertEquals(21, board.getFields(type).size());
+        Assertions.assertEquals(21, board.getFields(fieldType).size());
     }
 
     @Test
     void countTheTripleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        Assertions.assertEquals(20, board.getFields(type).size());
+        Assertions.assertEquals(20, board.getFields(fieldType).size());
     }
 
     @Test
     void countTheQuadrupleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        Assertions.assertEquals(0, board.getFields(type).size());
+        Assertions.assertEquals(0, board.getFields(fieldType).size());
     }
 
     @Test
     void getOnlySingleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != type)
+                .filter(field -> field.getType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -104,12 +104,12 @@ class StandardBoardTests {
     @Test
     void getOnlyDoubleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != type)
+                .filter(field -> field.getType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -118,12 +118,12 @@ class StandardBoardTests {
     @Test
     void getOnlyTripleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != type)
+                .filter(field -> field.getType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -132,12 +132,12 @@ class StandardBoardTests {
     @Test
     void getOnlyQuadrupleFields() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != type)
+                .filter(field -> field.getType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -146,9 +146,9 @@ class StandardBoardTests {
     @Test
     void getTheMinimumSingleField() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
                 .mapToInt(Field::getValue)
@@ -161,9 +161,9 @@ class StandardBoardTests {
     @Test
     void getTheMinimumDoubleField() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
                 .mapToInt(Field::getValue)
@@ -176,9 +176,9 @@ class StandardBoardTests {
     @Test
     void getTheMinimumTripleField() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
                 .mapToInt(Field::getValue)
@@ -191,9 +191,9 @@ class StandardBoardTests {
     @Test
     void getTheMinimumQuadrupleField() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
                 .mapToInt(Field::getValue)
@@ -206,9 +206,9 @@ class StandardBoardTests {
     @Test
     void getTheMaximumSingleField() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
                 .mapToInt(Field::getValue)
@@ -221,9 +221,9 @@ class StandardBoardTests {
     @Test
     void getTheMaximumDoubleField() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
                 .mapToInt(Field::getValue)
@@ -236,9 +236,9 @@ class StandardBoardTests {
     @Test
     void getTheMaximumTripleField() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
                 .mapToInt(Field::getValue)
@@ -251,9 +251,9 @@ class StandardBoardTests {
     @Test
     void getTheMaximumQuadrupleField() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
                 .mapToInt(Field::getValue)
@@ -266,9 +266,9 @@ class StandardBoardTests {
     @Test
     void getTheSingleFieldSum() {
         Board board = StandardBoard.create();
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
                 .mapToInt(Field::getValue)
@@ -280,9 +280,9 @@ class StandardBoardTests {
     @Test
     void getTheDoubleFieldSum() {
         Board board = StandardBoard.create();
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
                 .mapToInt(Field::getValue)
@@ -294,9 +294,9 @@ class StandardBoardTests {
     @Test
     void getTheTripleFieldSum() {
         Board board = StandardBoard.create();
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
                 .mapToInt(Field::getValue)
@@ -308,9 +308,9 @@ class StandardBoardTests {
     @Test
     void getTheQuadrupleFieldSum() {
         Board board = StandardBoard.create();
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
 
-        List<Field> fields = board.getFields(type);
+        List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
                 .mapToInt(Field::getValue)

@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 class TypedFieldTests {
     @Test
     void getTheNameOfASingleField() {
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
         int base = 10;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         String name = "10";
 
@@ -22,9 +22,9 @@ class TypedFieldTests {
 
     @Test
     void getTheNameOfADoubleField() {
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
         int base = 8;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         String name = "D8";
 
@@ -33,9 +33,9 @@ class TypedFieldTests {
 
     @Test
     void getTheNameOfATripleField() {
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
         int base = 12;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         String name = "T12";
 
@@ -44,9 +44,9 @@ class TypedFieldTests {
 
     @Test
     void getTheNameOfAQuadrupleField() {
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
         int base = 20;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         String name = "Q20";
 
@@ -55,9 +55,9 @@ class TypedFieldTests {
 
     @Test
     void getTheValueOfASingleField() {
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
         int base = 2;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         int value = 2;
 
@@ -66,9 +66,9 @@ class TypedFieldTests {
 
     @Test
     void getTheValueOfADoubleField() {
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
         int base = 6;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         int value = 12;
 
@@ -77,9 +77,9 @@ class TypedFieldTests {
 
     @Test
     void getTheValueOfATripleField() {
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
         int base = 20;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         int value = 60;
 
@@ -88,9 +88,9 @@ class TypedFieldTests {
 
     @Test
     void getTheValueOfAQuadrupleField() {
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
         int base = 10;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
         int value = 40;
 
@@ -99,37 +99,37 @@ class TypedFieldTests {
 
     @Test
     void getTheTypeOfASingleField() {
-        Type type = Type.SINGLE;
+        FieldType fieldType = FieldType.SINGLE;
         int base = 19;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
-        Assertions.assertEquals(type, field.getType());
+        Assertions.assertEquals(fieldType, field.getType());
     }
 
     @Test
     void getTheTypeOfADoubleField() {
-        Type type = Type.DOUBLE;
+        FieldType fieldType = FieldType.DOUBLE;
         int base = 5;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
-        Assertions.assertEquals(type, field.getType());
+        Assertions.assertEquals(fieldType, field.getType());
     }
 
     @Test
     void getTheTypeOfATripleField() {
-        Type type = Type.TRIPLE;
+        FieldType fieldType = FieldType.TRIPLE;
         int base = 17;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
-        Assertions.assertEquals(type, field.getType());
+        Assertions.assertEquals(fieldType, field.getType());
     }
 
     @Test
     void getTheTypeOfAQuadrupleField() {
-        Type type = Type.QUADRUPLE;
+        FieldType fieldType = FieldType.QUADRUPLE;
         int base = 4;
-        Field field = TypedField.of(type, base);
+        Field field = TypedField.of(fieldType, base);
 
-        Assertions.assertEquals(type, field.getType());
+        Assertions.assertEquals(fieldType, field.getType());
     }
 }

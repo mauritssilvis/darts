@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.Type;
+import nl.mauritssilvis.darts.checkouts.java.boards.fields.FieldType;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public interface Board {
     /**
      * Gets the dartboard fields of the specified type.
      *
-     * @param type the field type
+     * @param fieldType the field type
      * @return a list of fields of the given type
      */
-    List<Field> getFields(Type type);
+    List<Field> getFields(FieldType fieldType);
 }

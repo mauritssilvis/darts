@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.checkouts.java.boards.fields;
 /**
  * The type of dartboard field.
  */
-public enum Type {
+public enum FieldType {
     /**
      * A single field.
      */

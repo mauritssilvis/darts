@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.Type;
+import nl.mauritssilvis.darts.checkouts.java.boards.fields.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.fields.TypedField;
 
 import java.util.Collections;
@@ -42,8 +42,8 @@ public final class StandardBoard implements Board {
     }
 
     @Override
-    public List<Field> getFields(Type type) {
-        return switch (type) {
+    public List<Field> getFields(FieldType fieldType) {
+        return switch (fieldType) {
             case SINGLE -> singleFields;
             case DOUBLE -> doubleFields;
             case TRIPLE -> tripleFields;
@@ -53,19 +53,19 @@ public final class StandardBoard implements Board {
 
     private static List<Field> getSingleFields() {
         return getExtendedRange()
-                .mapToObj(i -> TypedField.of(Type.SINGLE, i))
+                .mapToObj(i -> TypedField.of(FieldType.SINGLE, i))
                 .toList();
     }
 
     private static List<Field> getDoubleFields() {
         return getExtendedRange()
-                .mapToObj(i -> TypedField.of(Type.DOUBLE, i))
+                .mapToObj(i -> TypedField.of(FieldType.DOUBLE, i))
                 .toList();
     }
 
     private static List<Field> getTripleFields() {
         return getBaseRange()
-                .mapToObj(i -> TypedField.of(Type.TRIPLE, i))
+                .mapToObj(i -> TypedField.of(FieldType.TRIPLE, i))
                 .toList();
     }
 
