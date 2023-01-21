@@ -20,6 +20,10 @@ import java.util.stream.IntStream;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class StandardBoard implements Board {
+    private static final int RANGE_MIN = 1;
+    private static final int RANGE_MAX = 20;
+    private static final int RANGE_EXTENSION = 25;
+
     private final List<Field> singleFields = getSingleFields();
     private final List<Field> doubleFields = getDoubleFields();
     private final List<Field> tripleFields = getTripleFields();
@@ -66,13 +70,13 @@ public final class StandardBoard implements Board {
     }
 
     private static IntStream getBaseRange() {
-        return IntStream.rangeClosed(1, 20);
+        return IntStream.rangeClosed(RANGE_MIN, RANGE_MAX);
     }
 
     private static IntStream getExtendedRange() {
         return IntStream.concat(
                 getBaseRange(),
-                IntStream.of(25)
+                IntStream.of(RANGE_EXTENSION)
         );
     }
 }
