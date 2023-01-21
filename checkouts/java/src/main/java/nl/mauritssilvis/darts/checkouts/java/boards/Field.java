@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards.fields;
+package nl.mauritssilvis.darts.checkouts.java.boards;
 
 /**
  * A dartboard field with a type, a name and a value.

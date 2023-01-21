@@ -5,10 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.FieldType;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.TypedField;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;

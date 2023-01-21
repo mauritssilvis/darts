@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards.fields;
+package nl.mauritssilvis.darts.checkouts.java.boards;
 
 /**
  * An implementation of the {@code Field} interface that can represent fields of

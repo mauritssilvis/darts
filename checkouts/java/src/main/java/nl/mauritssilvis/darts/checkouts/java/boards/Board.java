@@ -5,9 +5,6 @@
 
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.fields.FieldType;
-
 import java.util.List;
 
 /**
