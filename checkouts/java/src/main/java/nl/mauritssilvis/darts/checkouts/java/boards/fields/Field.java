@@ -7,6 +7,8 @@ package nl.mauritssilvis.darts.checkouts.java.boards.fields;
 
 /**
  * A dartboard field with a name, a value and a type.
+ * <p>
+ * Relevant design patterns: Immutable interface.
  */
 public interface Field {
     /**

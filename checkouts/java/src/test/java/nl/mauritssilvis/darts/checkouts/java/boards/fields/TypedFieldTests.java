@@ -37,7 +37,7 @@ class TypedFieldTests {
         Type type = Type.TRIPLE;
         Field field = TypedField.of(base, type);
 
-        String name = "D12";
+        String name = "T12";
 
         Assertions.assertEquals(name, field.getName());
     }

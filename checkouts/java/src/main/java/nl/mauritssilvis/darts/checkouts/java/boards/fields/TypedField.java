@@ -12,8 +12,12 @@ package nl.mauritssilvis.darts.checkouts.java.boards.fields;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class TypedField implements Field {
-    private TypedField(int base, Type type) {
+    private final int base;
+    private final Type type;
 
+    private TypedField(int base, Type type) {
+        this.base = base;
+        this.type = type;
     }
 
     /**
@@ -29,16 +33,16 @@ public final class TypedField implements Field {
 
     @Override
     public String getName() {
-        return null;
+        return type.getShorthand() + base;
     }
 
     @Override
     public int getValue() {
-        return 0;
+        return base * type.getMultiplier();
     }
 
     @Override
     public Type getType() {
-        return null;
+        return type;
     }
 }
