@@ -12,28 +12,36 @@ public enum Type {
     /**
      * A field with a single point value.
      */
-    SINGLE,
+    SINGLE("", 1),
 
     /**
      * A field with a double point value.
      */
-    DOUBLE,
+    DOUBLE("D", 2),
 
     /**
      * A field with a triple point value.
      */
-    TRIPLE,
+    TRIPLE("T", 3),
 
     /**
      * A field with a quadruple point value.
      */
-    QUADRUPLE;
+    QUADRUPLE("Q", 4);
+
+    private final String shorthand;
+    private final int multiplier;
+
+    Type(String shorthand, int multiplier) {
+        this.shorthand = shorthand;
+        this.multiplier = multiplier;
+    }
 
     public String getShorthand() {
-        return null;
+        return shorthand;
     }
 
     public int getMultiplier() {
-        return 0;
+        return multiplier;
     }
 }
