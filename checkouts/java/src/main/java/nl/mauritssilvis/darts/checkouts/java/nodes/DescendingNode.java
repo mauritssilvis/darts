@@ -15,7 +15,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public class DescendingNode implements Node {
+public final class DescendingNode implements Node {
     private final List<Integer> weights;
 
     private DescendingNode(Collection<Integer> weights) {

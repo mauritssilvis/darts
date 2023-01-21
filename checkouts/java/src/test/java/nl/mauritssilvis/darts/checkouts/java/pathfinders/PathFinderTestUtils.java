@@ -12,7 +12,10 @@ import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import java.util.Collection;
 import java.util.List;
 
-class PathFinderTestUtils {
+final class PathFinderTestUtils {
+    private PathFinderTestUtils() {
+    }
+
     static List<Node> getNodes(Collection<Collection<Integer>> weights) {
         return weights.stream()
                 .map(BasicNode::of)
