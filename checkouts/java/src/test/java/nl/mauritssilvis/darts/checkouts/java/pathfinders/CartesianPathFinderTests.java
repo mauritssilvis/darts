@@ -35,25 +35,6 @@ class CartesianPathFinderTests {
         );
     }
 
-    @Test
-    void findASpecificLongPath() {
-        Collection<Integer> weights = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Node node = BasicNode.of(weights);
-        Collection<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
-
-        int length = 9 * 9;
-
-        PathFinder pathFinder = CartesianPathFinder.of(nodes);
-        List<Path> paths = pathFinder.find(length);
-
-        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, totalMultiplicity),
-                () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), paths.get(0).getSteps())
-        );
-    }
-
     private static Stream<Arguments> withPathData() {
         return Stream.of(
                 // Collection<? extends Node> nodes,

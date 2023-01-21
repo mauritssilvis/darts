@@ -40,26 +40,6 @@ class DescendingPathFinderTests {
         );
     }
 
-    // TODO: Incorporate in the parameterized tests
-    @Test
-    void findASpecificLongPath() {
-        Collection<Integer> weights = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Node node = BasicNode.of(weights);
-        Collection<Node> nodes = List.of(node, node, node, node, node, node, node, node, node);
-
-        int length = 9 * 9;
-
-        PathFinder pathFinder = DescendingPathFinder.of(nodes);
-        List<Path> paths = pathFinder.find(length);
-
-        long totalMultiplicity = PathFinderTestUtils.getTotalMultiplicity(paths);
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, totalMultiplicity),
-                () -> Assertions.assertEquals(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9), paths.get(0).getSteps())
-        );
-    }
-
     private static Stream<Arguments> withPathData() {
         return Stream.of(
                 // Collection<? extends Node> nodes,
@@ -249,6 +229,38 @@ class DescendingPathFinderTests {
                         26,
                         List.of(List.of(3, 2, 5, 7, 7, 2)),
                         6
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9)
+                        ),
+                        9,
+                        List.of(List.of(1, 1, 1, 1, 1, 1, 1, 1, 1)),
+                        1
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                                List.of(1, 2, 3, 4, 5, 6, 7, 8, 9)
+                        ),
+                        81,
+                        List.of(List.of(9, 9, 9, 9, 9, 9, 9, 9, 9)),
+                        1
                 )
         );
     }
