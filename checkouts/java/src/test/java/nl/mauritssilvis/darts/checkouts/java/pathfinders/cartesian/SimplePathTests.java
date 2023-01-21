@@ -84,19 +84,19 @@ class SimplePathTests {
     }
 
     @Test
-    void getTheGroupCount() {
+    void countTheGroups() {
         Collection<Integer> steps = List.of(2, 5, 6);
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(steps.size(), path.getGroupCount());
+        Assertions.assertEquals(steps.size(), path.countGroups());
     }
 
     @Test
-    void getTheGroupCountWithEmptyInput() {
+    void countTheGroupsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(0, path.getGroupCount());
+        Assertions.assertEquals(0, path.countGroups());
     }
 
     @Test

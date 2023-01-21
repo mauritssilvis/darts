@@ -51,7 +51,7 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public int getGroupCount() {
+    public int countGroups() {
         return steps.size();
     }
 

@@ -21,7 +21,7 @@ class SimpleGroupTests {
     }
 
     @Test
-    void getThePermutationCount() {
+    void countThePermutations() {
         int value = 3;
         Group group = SimpleGroup.of(value);
 

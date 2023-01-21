@@ -56,7 +56,7 @@ class ExtendedGroupTests {
 
     @ParameterizedTest
     @MethodSource("withPermutationData")
-    void getThePermutationCount(Collection<Integer> values, int permutations) {
+    void countThePermutations(Collection<Integer> values, int permutations) {
         Group group = ExtendedGroup.of(values);
 
         Assertions.assertEquals(permutations, group.countPermutations());

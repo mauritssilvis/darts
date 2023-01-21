@@ -60,7 +60,7 @@ public final class GroupedPath implements Path {
     }
 
     @Override
-    public int getGroupCount() {
+    public int countGroups() {
         return (int) grouping.stream()
                 .filter(Predicate.isEqual(false))
                 .count();

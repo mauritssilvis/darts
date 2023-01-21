@@ -51,7 +51,7 @@ public interface Path {
      *
      * @return the number of groups this path comprises
      */
-    int getGroupCount();
+    int countGroups();
 
     /**
      * Gets the multiplicity of this path.
