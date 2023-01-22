@@ -18,11 +18,26 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class BasicThrow implements Throw {
+    private final int score;
+    private final List<Field> fields;
+
     private BasicThrow(Collection<Field> fields) {
+        score = fields.isEmpty() ? 0 : fields.iterator().next().getScore();
+
+        boolean otherScore = fields.stream()
+                .anyMatch(field -> field.getScore() != score);
+
+        if (otherScore) {
+            throw new IllegalArgumentException("All fields should have the same score");
+        }
+
+        this.fields = fields.stream()
+                .toList();
     }
 
     /**
      * Returns a new {@code BasicThrow} with the specified score and fields.
+     *
      * @param fields a collection of fields
      * @return a new {@code BasicThrow} with the specified score and fields
      */
@@ -32,16 +47,16 @@ public final class BasicThrow implements Throw {
 
     @Override
     public int getScore() {
-        return -1;
+        return score;
     }
 
     @Override
     public int countFields() {
-        return -1;
+        return fields.size();
     }
 
     @Override
     public List<Field> getFields() {
-        return null;
+        return fields;
     }
 }
