@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
+package nl.mauritssilvis.darts.checkouts.java.paths.cartesian;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.Node;
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

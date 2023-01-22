@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.pathfinders;
+package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.List;
 

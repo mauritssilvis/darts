@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.pathfinders.cartesian;
+package nl.mauritssilvis.darts.checkouts.java.paths.cartesian;
 
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.Group;
-import nl.mauritssilvis.darts.checkouts.java.pathfinders.Path;
+import nl.mauritssilvis.darts.checkouts.java.paths.Group;
+import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 
 import java.util.Collection;
 import java.util.List;
