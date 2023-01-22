@@ -9,8 +9,9 @@ import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class TypedFieldTestUtils {
     private TypedFieldTestUtils() {
@@ -20,6 +21,16 @@ public class TypedFieldTestUtils {
         FieldType fieldType = getFieldType(name);
         int baseScore = getBaseScore(name, fieldType);
         return TypedField.of(fieldType, baseScore);
+    }
+
+    public static List<Field> getFields(String... names) {
+        if (names.length == 1) {
+            return Collections.singletonList(getField(names[0]));
+        }
+
+        return Arrays.stream(names)
+                .map(TypedFieldTestUtils::getField)
+                .toList();
     }
 
     private static FieldType getFieldType(CharSequence name) {
@@ -36,11 +47,5 @@ public class TypedFieldTestUtils {
     private static int getBaseScore(String name, FieldType fieldType) {
         int index = fieldType == FieldType.SINGLE ? 0 : 1;
         return Integer.parseInt(name.substring(index));
-    }
-
-    public static List<Field> getFields(List<FieldType> fieldTypes, List<Integer> baseScores) {
-        return IntStream.range(0, fieldTypes.size())
-                .mapToObj(i -> TypedField.of(fieldTypes.get(i), baseScores.get(i)))
-                .toList();
     }
 }
