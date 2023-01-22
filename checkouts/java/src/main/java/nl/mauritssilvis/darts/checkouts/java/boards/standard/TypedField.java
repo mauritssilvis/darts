@@ -56,6 +56,11 @@ public final class TypedField implements Field {
         return score;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     private static String getShorthand(FieldType fieldType) {
         return switch (fieldType) {
             case SINGLE -> "";
