@@ -99,7 +99,7 @@ class SimplePathTests {
     }
 
     @Test
-    void storeImmutableSteps() {
+    void getImmutableSteps() {
         Collection<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
         Path path = SimplePath.of(steps);
 
