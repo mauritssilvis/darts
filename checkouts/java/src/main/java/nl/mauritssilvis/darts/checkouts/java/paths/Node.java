@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.paths.common;
+package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.List;
-
 
 /**
  * A node with outgoing edges having integer weights.

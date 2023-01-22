@@ -5,10 +5,9 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.common;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
-import nl.mauritssilvis.darts.checkouts.java.paths.PathTestUtils;
-import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.CartesianPathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.descending.DescendingPathFinder;
 import org.junit.jupiter.api.Assertions;
@@ -26,8 +25,10 @@ class PathFinderTests {
     @CartesianTest.MethodFactory("withAllPathFinders")
     void storeIndependentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
         Collection<Integer> weights = List.of(3, 5, 4);
-        Node node = BasicNode.of(weights);
-        Collection<Node> nodes = new ArrayList<>(List.of(node, node));
+
+        Collection<Node> nodes = new ArrayList<>(
+                BasicNodeTestUtils.getNodes(List.of(weights, weights))
+        );
 
         int length = 6;
 
@@ -44,7 +45,7 @@ class PathFinderTests {
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFinders")
     void handleAbsentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
-        Collection<Node> nodes = new ArrayList<>();
+        Collection<Node> nodes = Collections.emptyList();
         int length = 0;
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
@@ -59,7 +60,7 @@ class PathFinderTests {
             Function<Collection<Node>, PathFinder> pathFinderFactory,
             Collection<Collection<Integer>> weights
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
         int length = 2;
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
@@ -75,7 +76,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -90,7 +91,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -110,7 +111,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -130,7 +131,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -149,7 +150,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -168,7 +169,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -187,7 +188,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -206,7 +207,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
@@ -225,7 +226,7 @@ class PathFinderTests {
             Collection<Collection<Integer>> weights,
             int length
     ) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
         PathFinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);

@@ -5,13 +5,14 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.common;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
 
 import java.util.Collection;
 import java.util.List;
 
-public final class PathFinderTestUtils {
-    private PathFinderTestUtils() {
+public final class BasicNodeTestUtils {
+    private BasicNodeTestUtils() {
     }
 
     public static List<Node> getNodes(Collection<Collection<Integer>> weights) {
@@ -19,5 +20,4 @@ public final class PathFinderTestUtils {
                 .map(BasicNode::of)
                 .toList();
     }
-
 }

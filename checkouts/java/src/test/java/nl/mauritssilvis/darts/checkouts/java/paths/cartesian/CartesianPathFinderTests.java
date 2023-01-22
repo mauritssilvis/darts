@@ -7,9 +7,9 @@ package nl.mauritssilvis.darts.checkouts.java.paths.cartesian;
 
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
-import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
-import nl.mauritssilvis.darts.checkouts.java.paths.common.PathFinderTestUtils;
-import nl.mauritssilvis.darts.checkouts.java.paths.PathTestUtils;
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.PathTestUtils;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.BasicNodeTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -23,7 +23,7 @@ class CartesianPathFinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
-        Collection<Node> nodes = PathFinderTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
         PathFinder pathFinder = CartesianPathFinder.of(nodes);
         List<Path> paths = pathFinder.find(length);
 

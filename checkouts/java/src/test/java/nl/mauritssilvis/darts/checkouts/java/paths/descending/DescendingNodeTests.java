@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.descending;
 
-import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
