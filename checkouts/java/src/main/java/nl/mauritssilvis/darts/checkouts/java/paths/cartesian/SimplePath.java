@@ -59,7 +59,7 @@ public final class SimplePath implements Path {
     @Override
     public List<Group> getGroups() {
         return steps.stream()
-                .map(step -> (Group) SimpleGroup.of(step))
+                .map(SimpleGroup::of)
                 .toList();
     }
 
