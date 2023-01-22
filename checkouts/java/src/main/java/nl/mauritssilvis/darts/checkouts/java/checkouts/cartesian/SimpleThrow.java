@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.checkouts.java.checkouts.cartesian;
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.checkouts.Throw;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,7 +17,12 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class SimpleThrow implements Throw {
+    private final int score;
+    private final Field field;
+
     private SimpleThrow(Field field) {
+        score = field.getScore();
+        this.field = field;
     }
 
     /**
@@ -31,16 +37,16 @@ public final class SimpleThrow implements Throw {
 
     @Override
     public int getScore() {
-        return -1;
+        return score;
     }
 
     @Override
     public int countFields() {
-        return -1;
+        return 1;
     }
 
     @Override
     public List<Field> getFields() {
-        return null;
+        return Collections.singletonList(field);
     }
 }
