@@ -35,15 +35,15 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public int countSteps() {
-        return steps.size();
-    }
-
-    @Override
     public int getLength() {
         return steps.stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    @Override
+    public int countSteps() {
+        return steps.size();
     }
 
     @Override

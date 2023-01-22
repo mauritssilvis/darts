@@ -17,30 +17,6 @@ import java.util.List;
 
 class SimplePathTests {
     @Test
-    void countTheSteps() {
-        Collection<Integer> steps = List.of(4, 2, 0);
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(steps.size(), path.countSteps());
-    }
-
-    @Test
-    void countTheStepsWithSingletonInput() {
-        Collection<Integer> steps = Collections.singletonList(7);
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(1, path.countSteps());
-    }
-
-    @Test
-    void countTheStepsWithEmptyInput() {
-        Collection<Integer> steps = Collections.emptyList();
-        Path path = SimplePath.of(steps);
-
-        Assertions.assertEquals(0, path.countSteps());
-    }
-
-    @Test
     void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
@@ -62,6 +38,30 @@ class SimplePathTests {
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(0, path.getLength());
+    }
+
+    @Test
+    void countTheSteps() {
+        Collection<Integer> steps = List.of(4, 2, 0);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps.size(), path.countSteps());
+    }
+
+    @Test
+    void countTheStepsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(1, path.countSteps());
+    }
+
+    @Test
+    void countTheStepsWithEmptyInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(0, path.countSteps());
     }
 
     @Test

@@ -21,19 +21,19 @@ import java.util.List;
  */
 public interface Path {
     /**
-     * Gets the number of steps of this path.
-     *
-     * @return the number of steps of this path
-     */
-    int countSteps();
-
-    /**
      * Gets the length of this path, that is, the total length covered by the steps
      * of this path.
      *
      * @return the length of this path
      */
     int getLength();
+
+    /**
+     * Gets the number of steps of this path.
+     *
+     * @return the number of steps of this path
+     */
+    int countSteps();
 
     /**
      * Gets the steps of this path.
