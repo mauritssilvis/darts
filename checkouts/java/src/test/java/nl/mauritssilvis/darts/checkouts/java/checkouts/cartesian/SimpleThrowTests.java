@@ -6,9 +6,8 @@
 package nl.mauritssilvis.darts.checkouts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
-import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
-import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
 import nl.mauritssilvis.darts.checkouts.java.checkouts.Throw;
+import nl.mauritssilvis.darts.checkouts.java.checkouts.common.TypedFieldTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ import java.util.List;
 class SimpleThrowTests {
     @Test
     void getTheScore() {
-        Field field = TypedField.of(FieldType.DOUBLE, 7);
+        Field field = TypedFieldTestUtils.getField("D7");
         Throw simpleThrow = SimpleThrow.of(field);
 
         Assertions.assertEquals(14, simpleThrow.getScore());
@@ -25,7 +24,7 @@ class SimpleThrowTests {
 
     @Test
     void countTheFields() {
-        Field field = TypedField.of(FieldType.TRIPLE, 7);
+        Field field = TypedFieldTestUtils.getField("T7");
         Throw simpleThrow = SimpleThrow.of(field);
 
         Assertions.assertEquals(1, simpleThrow.countFields());
@@ -33,7 +32,7 @@ class SimpleThrowTests {
 
     @Test
     void getTheFields() {
-        Field field = TypedField.of(FieldType.QUADRUPLE, 3);
+        Field field = TypedFieldTestUtils.getField("Q3");
         Throw simpleThrow = SimpleThrow.of(field);
 
         Assertions.assertEquals(List.of(field), simpleThrow.getFields());
@@ -41,7 +40,7 @@ class SimpleThrowTests {
 
     @Test
     void storeImmutableFields() {
-        Field field = TypedField.of(FieldType.QUADRUPLE, 3);
+        Field field = TypedFieldTestUtils.getField("7");
         Throw simpleThrow = SimpleThrow.of(field);
 
         List<Field> storedFields = simpleThrow.getFields();
