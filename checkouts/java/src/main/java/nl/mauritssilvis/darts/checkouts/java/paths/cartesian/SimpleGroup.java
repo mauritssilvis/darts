@@ -16,7 +16,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public class SimpleGroup implements Group {
+public final class SimpleGroup implements Group {
     private final int value;
 
     private SimpleGroup(int value) {
@@ -29,7 +29,7 @@ public class SimpleGroup implements Group {
      * @param value the value
      * @return a new {@code SimpleGroup} with the specified value
      */
-    public static SimpleGroup of(int value) {
+    public static Group of(int value) {
         return new SimpleGroup(value);
     }
 
