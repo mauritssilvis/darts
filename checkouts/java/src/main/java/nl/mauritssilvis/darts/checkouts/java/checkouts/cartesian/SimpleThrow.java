@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.checkouts.cartesian;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.checkouts.Throw;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class SimpleThrow implements Throw {
     private final int score;
     private final Field field;
