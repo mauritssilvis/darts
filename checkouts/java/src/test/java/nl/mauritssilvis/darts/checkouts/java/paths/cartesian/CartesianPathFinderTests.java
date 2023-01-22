@@ -5,11 +5,11 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.cartesian;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
-import nl.mauritssilvis.darts.checkouts.java.paths.Node;
-import nl.mauritssilvis.darts.checkouts.java.paths.common.PathTestUtils;
 import nl.mauritssilvis.darts.checkouts.java.paths.common.BasicNodeTestUtils;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

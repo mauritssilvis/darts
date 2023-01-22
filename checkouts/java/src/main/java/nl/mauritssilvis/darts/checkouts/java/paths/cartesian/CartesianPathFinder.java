@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.cartesian;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
-import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 
 import java.util.ArrayList;
 import java.util.Collection;
