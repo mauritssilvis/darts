@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 
 import java.util.Collection;
 import java.util.List;
