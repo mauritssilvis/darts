@@ -12,6 +12,42 @@ import org.junit.jupiter.api.Test;
 
 class TypedFieldTests {
     @Test
+    void getTheFieldTypeOfASingleField() {
+        FieldType fieldType = FieldType.SINGLE;
+        int baseScore = 19;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        Assertions.assertEquals(fieldType, field.getFieldType());
+    }
+
+    @Test
+    void getTheFieldTypeOfADoubleField() {
+        FieldType fieldType = FieldType.DOUBLE;
+        int baseScore = 5;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        Assertions.assertEquals(fieldType, field.getFieldType());
+    }
+
+    @Test
+    void getTheFieldTypeOfATripleField() {
+        FieldType fieldType = FieldType.TRIPLE;
+        int baseScore = 17;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        Assertions.assertEquals(fieldType, field.getFieldType());
+    }
+
+    @Test
+    void getTheFieldTypeOfAQuadrupleField() {
+        FieldType fieldType = FieldType.QUADRUPLE;
+        int baseScore = 4;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        Assertions.assertEquals(fieldType, field.getFieldType());
+    }
+
+    @Test
     void getTheNameOfASingleField() {
         FieldType fieldType = FieldType.SINGLE;
         int baseScore = 10;
@@ -100,42 +136,6 @@ class TypedFieldTests {
     }
 
     @Test
-    void getTheFieldTypeOfASingleField() {
-        FieldType fieldType = FieldType.SINGLE;
-        int baseScore = 19;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
-    void getTheFieldTypeOfADoubleField() {
-        FieldType fieldType = FieldType.DOUBLE;
-        int baseScore = 5;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
-    void getTheFieldTypeOfATripleField() {
-        FieldType fieldType = FieldType.TRIPLE;
-        int baseScore = 17;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
-    void getTheFieldTypeOfAQuadrupleField() {
-        FieldType fieldType = FieldType.QUADRUPLE;
-        int baseScore = 4;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
     void getEqualFields() {
         FieldType fieldType = FieldType.DOUBLE;
         int baseScore = 6;
@@ -151,7 +151,6 @@ class TypedFieldTests {
 
     @Test
     void getUnequalFields() {
-
         FieldType fieldType1 = FieldType.SINGLE;
         int baseScore1 = 9;
         Field field1 = TypedField.of(fieldType1, baseScore1);
