@@ -40,10 +40,10 @@ public final class DescendingPathFinder implements PathFinder {
     }
 
     /**
-     * Returns a new {@code DescendingPathFinder} for the supplied nodes.
+     * Returns a new {@code DescendingPathFinder} for the specified nodes.
      *
      * @param nodes a list of nodes
-     * @return a new {@code DescendingPathFinder} for the given nodes
+     * @return a new {@code DescendingPathFinder} for the specified nodes
      */
     public static PathFinder of(Collection<? extends Node> nodes) {
         return new DescendingPathFinder(nodes);

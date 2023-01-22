@@ -15,10 +15,10 @@ import java.util.List;
 @FunctionalInterface
 public interface Board {
     /**
-     * Gets the dartboard fields of the specified type.
+     * Gets the fields of this dartboard of the specified type.
      *
      * @param fieldType the field type
-     * @return a list of fields of the given type
+     * @return a list of fields of the specified type
      */
     List<Field> getFields(FieldType fieldType);
 }

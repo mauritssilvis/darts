@@ -24,10 +24,10 @@ public class SimpleGroup implements Group {
     }
 
     /**
-     * Returns a new {@code SimpleGroup} with the supplied integer values.
+     * Returns a new {@code SimpleGroup} with the specified value.
      *
-     * @param value an integer value
-     * @return a new {@code SimpleGroup} with the given value
+     * @param value the value
+     * @return a new {@code SimpleGroup} with the specified value
      */
     public static SimpleGroup of(int value) {
         return new SimpleGroup(value);

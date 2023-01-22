@@ -32,12 +32,14 @@ public final class GroupedPath implements Path {
     }
 
     /**
-     * Returns a new {@code GroupedPath} with the supplied integer steps and
-     * grouping signature.
+     * Returns a new {@code GroupedPath} with the specified steps and grouping
+     * signature.
      *
-     * @param steps    a collection of integer steps
-     * @param grouping a collection of booleans representing the grouping signature
-     * @return a new {@code GroupedPath} with the given steps and grouping signature
+     * @param steps    a collection of steps
+     * @param grouping a collection of booleans representing the grouping
+     *                 signature
+     * @return a new {@code GroupedPath} with the specified steps and grouping
+     * signature
      */
     public static Path of(Collection<Integer> steps, Collection<Boolean> grouping) {
         return new GroupedPath(steps, grouping);

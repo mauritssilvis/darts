@@ -48,7 +48,7 @@ public interface Checkout {
      * Simple checkouts, which represent a single sequence of throws, have a
      * multiplicity given by the product of the number of fields of each throw.
      * Checkouts with grouped throws represent multiple sequences and,
-     * correspondingly, will have a larger multiplicity.
+     * correspondingly, have a larger multiplicity.
      *
      * @return the multiplicity of this checkout
      */

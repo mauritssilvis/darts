@@ -14,16 +14,14 @@ import java.util.List;
  */
 public interface Group {
     /**
-     * Gets the values of this group, that is, the list of integer values of
-     * this group.
+     * Gets the values of this group.
      *
-     * @return a list of integers with the values of this group
+     * @return a list of the values of this group
      */
     List<Integer> getValues();
 
     /**
-     * Gets the number of unique permutations of the integer values of this
-     * group.
+     * Gets the number of unique permutations of the values of this group.
      *
      * @return the number of unique permutations of this group
      */

@@ -12,23 +12,23 @@ package nl.mauritssilvis.darts.checkouts.java.boards;
  */
 public interface Field {
     /**
-     * Gets the type of this dartboard field.
+     * Gets the type of this field.
      *
      * @return the type of this field
      */
     FieldType getType();
 
     /**
-     * Gets the name of this dartboard field.
+     * Gets the name of this field.
      *
      * @return the name of this field
      */
     String getName();
 
     /**
-     * Gets the point value of this dartboard field.
+     * Gets the value of this field.
      *
-     * @return the integer value of this field
+     * @return the value of this field
      */
     int getValue();
 }

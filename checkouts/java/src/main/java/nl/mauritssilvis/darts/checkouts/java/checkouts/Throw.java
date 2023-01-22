@@ -28,8 +28,9 @@ public interface Throw {
     int countFields();
 
     /**
-     * Gets the fields of this throw. All fields have the same score as this
-     * throw.
+     * Gets the fields of this throw.
+     * <p>
+     * All fields should have the same score as this throw.
      *
      * @return a list of the fields of this throw
      */

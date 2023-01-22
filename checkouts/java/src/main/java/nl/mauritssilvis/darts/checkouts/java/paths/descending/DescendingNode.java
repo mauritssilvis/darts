@@ -31,8 +31,8 @@ public final class DescendingNode implements Node {
      * Returns a new {@code DescendingNode} with unique edge weights in a
      * strictly descending order.
      *
-     * @param weights a collection of integer weights
-     * @return a new {@code DescendingNode} with the given weights
+     * @param weights a collection of weights
+     * @return a new {@code DescendingNode} with the specified weights
      */
     public static Node of(Collection<Integer> weights) {
         return new DescendingNode(weights);

@@ -8,7 +8,8 @@ package nl.mauritssilvis.darts.checkouts.java.paths;
 import java.util.List;
 
 /**
- * A path that represents zero or more sequences of integer steps.
+ * A path that represents zero or more sequences of integer steps of a certain
+ * total length.
  * <p>
  * Simple paths represent a single sequence of integer steps. In such paths, the
  * different steps are not grouped. Interchanging the steps of a simple path
@@ -20,10 +21,9 @@ import java.util.List;
  */
 public interface Path {
     /**
-     * Gets the size of this path, that is, the number of steps comprising this
-     * path.
+     * Gets the number of steps of this path.
      *
-     * @return the size of this path
+     * @return the number of steps of this path
      */
     int getSize();
 
@@ -36,10 +36,9 @@ public interface Path {
     int getLength();
 
     /**
-     * Gets the steps of this path, that is, the list of integers representing
-     * the steps of this path.
+     * Gets the steps of this path.
      *
-     * @return a list of integers representing the steps of this path
+     * @return a list of the steps of this path
      */
     List<Integer> getSteps();
 
@@ -49,14 +48,14 @@ public interface Path {
      * For a simple path, the number of groups equals the number of steps. Paths
      * with grouped steps have a smaller number of groups.
      *
-     * @return the number of groups this path comprises
+     * @return the number of groups this path consists of
      */
     int countGroups();
 
     /**
      * Gets the groups this path consists of.
      *
-     * @return the groups this path comprises
+     * @return a list of the groups this path consists of
      */
     List<Group> getGroups();
 

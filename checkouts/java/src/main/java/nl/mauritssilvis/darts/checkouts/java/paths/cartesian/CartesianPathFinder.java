@@ -36,10 +36,10 @@ public final class CartesianPathFinder implements PathFinder {
     }
 
     /**
-     * Returns a new {@code CartesianPathFinder} for the supplied nodes.
+     * Returns a new {@code CartesianPathFinder} for the specified nodes.
      *
      * @param nodes a list of nodes
-     * @return a new {@code CartesianPathFinder} for the given nodes
+     * @return a new {@code CartesianPathFinder} for the specified nodes
      */
     public static PathFinder of(Collection<? extends Node> nodes) {
         return new CartesianPathFinder(nodes);

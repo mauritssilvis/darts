@@ -28,10 +28,10 @@ public final class ExtendedGroup implements Group {
     }
 
     /**
-     * Returns a new {@code ExtendedGroup} with the supplied integer values.
+     * Returns a new {@code ExtendedGroup} with the specified values.
      *
-     * @param values a collection of integer values
-     * @return a new {@code ExtendedGroup} with the given values
+     * @param values a collection of values
+     * @return a new {@code ExtendedGroup} with the specified values
      */
     public static Group of(Collection<Integer> values) {
         return new ExtendedGroup(values);

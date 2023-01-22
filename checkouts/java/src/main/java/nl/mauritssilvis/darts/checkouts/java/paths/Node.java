@@ -20,11 +20,11 @@ import java.util.List;
  */
 public interface Node {
     /**
-     * Gets the weights of the edges incident to this node.
+     * Gets the weights of the outgoing edges of this node.
      * <p>
-     * The weights of the edges associated with this node have to be unique.
+     * The weights of the outgoing edges of a node have to be unique.
      *
-     * @return a list of unique edge weights
+     * @return a list of the unique edge weights of this node
      */
     List<Integer> getWeights();
 

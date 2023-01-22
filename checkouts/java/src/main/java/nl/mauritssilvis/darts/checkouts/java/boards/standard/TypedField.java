@@ -27,11 +27,13 @@ public final class TypedField implements Field {
     }
 
     /**
-     * Returns a new {@code TypedField} with the supplied base value and type.
+     * Returns a new {@code TypedField} with the specified field type and base
+     * value.
      *
      * @param fieldType the field type
-     * @param base      the integer base value
-     * @return a new {@code TypedField} with the given base value and type
+     * @param base      the base value
+     * @return a new {@code TypedField} with the specified field type and base
+     * value
      */
     public static Field of(FieldType fieldType, int base) {
         return new TypedField(fieldType, base);

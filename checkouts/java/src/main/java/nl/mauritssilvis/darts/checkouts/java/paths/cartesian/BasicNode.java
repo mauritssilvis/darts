@@ -29,8 +29,8 @@ public final class BasicNode implements Node {
      * Returns a new {@code BasicNode} with unique edge weights in the order
      * determined by the supplied collection.
      *
-     * @param weights a collection of integer weights
-     * @return a new {@code BasicNode} with the given weights
+     * @param weights a collection of weights
+     * @return a new {@code BasicNode} with the specified weights
      */
     public static Node of(Collection<Integer> weights) {
         return new BasicNode(weights);

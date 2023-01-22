@@ -25,10 +25,10 @@ public final class SimplePath implements Path {
     }
 
     /**
-     * Returns a new {@code SimplePath} with the supplied integer steps.
+     * Returns a new {@code SimplePath} with the specified steps.
      *
-     * @param steps a collection of integer steps
-     * @return a new {@code SimplePath} with the given steps
+     * @param steps a collection of steps
+     * @return a new {@code SimplePath} with the specified steps
      */
     public static Path of(Collection<Integer> steps) {
         return new SimplePath(steps);
