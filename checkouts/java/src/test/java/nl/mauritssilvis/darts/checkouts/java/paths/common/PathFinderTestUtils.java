@@ -5,9 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.common;
 
-import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
-import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,27 +20,4 @@ public final class PathFinderTestUtils {
                 .toList();
     }
 
-    public static int getTotalSize(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::countSteps)
-                .sum();
-    }
-
-    public static int getTotalLength(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::getLength)
-                .sum();
-    }
-
-    public static List<List<Integer>> getAllSteps(Collection<? extends Path> paths) {
-        return paths.stream()
-                .map(Path::getSteps)
-                .toList();
-    }
-
-    public static long getTotalMultiplicity(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToLong(Path::getMultiplicity)
-                .sum();
-    }
 }

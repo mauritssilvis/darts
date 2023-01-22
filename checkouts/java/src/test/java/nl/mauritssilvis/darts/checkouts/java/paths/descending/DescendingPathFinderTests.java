@@ -5,10 +5,11 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.descending;
 
-import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.common.PathFinderTestUtils;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -32,11 +33,11 @@ class DescendingPathFinderTests {
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(nodes.size(), PathFinderTestUtils.getTotalSize(paths) / paths.size()),
-                () -> Assertions.assertEquals(length, PathFinderTestUtils.getTotalLength(paths) / paths.size()),
+                () -> Assertions.assertEquals(nodes.size(), PathTestUtils.getTotalSize(paths) / paths.size()),
+                () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
                 () -> Assertions.assertEquals(steps.size(), paths.size()),
-                () -> Assertions.assertEquals(steps, PathFinderTestUtils.getAllSteps(paths)),
-                () -> Assertions.assertEquals(totalMultiplicity, PathFinderTestUtils.getTotalMultiplicity(paths))
+                () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths)),
+                () -> Assertions.assertEquals(totalMultiplicity, PathTestUtils.getTotalMultiplicity(paths))
         );
     }
 
