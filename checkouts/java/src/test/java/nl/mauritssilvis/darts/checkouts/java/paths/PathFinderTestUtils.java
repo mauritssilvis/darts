@@ -22,7 +22,7 @@ public final class PathFinderTestUtils {
 
     public static int getTotalSize(Collection<? extends Path> paths) {
         return paths.stream()
-                .mapToInt(Path::getSize)
+                .mapToInt(Path::countSteps)
                 .sum();
     }
 

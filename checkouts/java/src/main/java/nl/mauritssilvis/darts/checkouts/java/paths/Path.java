@@ -25,7 +25,7 @@ public interface Path {
      *
      * @return the number of steps of this path
      */
-    int getSize();
+    int countSteps();
 
     /**
      * Gets the length of this path, that is, the total length covered by the steps

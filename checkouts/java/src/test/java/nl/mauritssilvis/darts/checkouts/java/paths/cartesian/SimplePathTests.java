@@ -17,27 +17,27 @@ import java.util.List;
 
 class SimplePathTests {
     @Test
-    void getTheSize() {
+    void countTheSteps() {
         Collection<Integer> steps = List.of(4, 2, 0);
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(steps.size(), path.getSize());
+        Assertions.assertEquals(steps.size(), path.countSteps());
     }
 
     @Test
-    void getTheSizeWithSingletonInput() {
+    void countTheStepsWithSingletonInput() {
         Collection<Integer> steps = Collections.singletonList(7);
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(1, path.getSize());
+        Assertions.assertEquals(1, path.countSteps());
     }
 
     @Test
-    void getTheSizeWithEmptyInput() {
+    void countTheStepsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
-        Assertions.assertEquals(0, path.getSize());
+        Assertions.assertEquals(0, path.countSteps());
     }
 
     @Test

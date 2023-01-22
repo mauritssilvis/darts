@@ -46,7 +46,7 @@ public final class GroupedPath implements Path {
     }
 
     @Override
-    public int getSize() {
+    public int countSteps() {
         return steps.size();
     }
 

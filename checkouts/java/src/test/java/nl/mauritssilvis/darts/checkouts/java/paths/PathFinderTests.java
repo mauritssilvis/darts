@@ -82,7 +82,7 @@ class PathFinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
-    void getThePathSize(
+    void countTheSteps(
             Function<Collection<Node>, PathFinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
@@ -95,7 +95,7 @@ class PathFinderTests {
         int totalSize = PathFinderTestUtils.getTotalSize(paths);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).getSize()),
+                () -> Assertions.assertEquals(nodes.size(), paths.get(0).countSteps()),
                 () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size())
         );
     }
