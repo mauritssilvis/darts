@@ -19,7 +19,17 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class SimpleCheckout implements Checkout {
+    private final List<Throw> throwList;
+    private final int score;
+
     private SimpleCheckout(Collection<Field> fields) {
+        throwList = fields.stream()
+                .map(SimpleThrow::of)
+                .toList();
+
+        score = throwList.stream()
+                .mapToInt(Throw::getScore)
+                .sum();
     }
 
     /**
@@ -30,27 +40,27 @@ public final class SimpleCheckout implements Checkout {
      * @return a new {@code SimpleCheckout} of simple throws with the specified
      * fields
      */
-    public static SimpleCheckout of(Collection<Field> fields) {
+    public static Checkout of(Collection<Field> fields) {
         return new SimpleCheckout(fields);
     }
 
     @Override
     public int getScore() {
-        return -1;
+        return score;
     }
 
     @Override
     public int countThrows() {
-        return -1;
+        return throwList.size();
     }
 
     @Override
     public List<Throw> getThrows() {
-        return null;
+        return throwList;
     }
 
     @Override
     public long getMultiplicity() {
-        return -1;
+        return throwList.isEmpty() ? 0 : 1;
     }
 }

@@ -12,6 +12,7 @@ import nl.mauritssilvis.darts.checkouts.java.checkouts.common.TypedFieldTestUtil
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -91,7 +92,7 @@ class SimpleCheckoutTests {
 
     @Test
     void storeIndependentThrows() {
-        List<Field> fields = TypedFieldTestUtils.getFields("D9", "D11", "D13");
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("D9", "D11", "D13"));
         Checkout checkout = SimpleCheckout.of(fields);
 
         fields.remove(2);
