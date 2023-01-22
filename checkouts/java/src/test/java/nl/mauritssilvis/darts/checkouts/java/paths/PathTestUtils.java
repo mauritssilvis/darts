@@ -3,9 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.paths.common;
-
-import nl.mauritssilvis.darts.checkouts.java.paths.Path;
+package nl.mauritssilvis.darts.checkouts.java.paths;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.List;
 public final class PathTestUtils {
     private PathTestUtils() {
     }
-
 
     public static int getTotalSize(Collection<? extends Path> paths) {
         return paths.stream()
