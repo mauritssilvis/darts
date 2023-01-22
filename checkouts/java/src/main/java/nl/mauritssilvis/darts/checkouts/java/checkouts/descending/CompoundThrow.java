@@ -18,7 +18,23 @@ import java.util.List;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class CompoundThrow implements Throw {
+    private final int score;
+    private final List<Field> fields;
+
     private CompoundThrow(Collection<Field> fields) {
+        score = fields.isEmpty() ? 0 : fields.iterator().next().getScore();
+
+        boolean otherScore = fields.stream()
+                .anyMatch(field -> field.getScore() != score);
+
+        if (otherScore) {
+            throw new IllegalArgumentException(
+                    "All fields should have the same score"
+            );
+        }
+
+        this.fields = fields.stream()
+                .toList();
     }
 
     /**
@@ -33,16 +49,16 @@ public final class CompoundThrow implements Throw {
 
     @Override
     public int getScore() {
-        return -1;
+        return score;
     }
 
     @Override
     public int countFields() {
-        return -1;
+        return fields.size();
     }
 
     @Override
     public List<Field> getFields() {
-        return null;
+        return fields;
     }
 }

@@ -112,7 +112,7 @@ class CompoundThrowTests {
 
     @Test
     void storeIndependentFields() {
-        Collection<Field> fields = new ArrayList<>(
+        List<Field> fields = new ArrayList<>(
                 TypedFieldTestUtils.getFields("14", "D7")
         );
 
