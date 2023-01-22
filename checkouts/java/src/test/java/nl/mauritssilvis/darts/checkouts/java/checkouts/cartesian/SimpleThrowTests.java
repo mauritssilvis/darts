@@ -39,7 +39,7 @@ class SimpleThrowTests {
     }
 
     @Test
-    void storeImmutableFields() {
+    void getImmutableFields() {
         Field field = TypedFieldTestUtils.getField("7");
         Throw simpleThrow = SimpleThrow.of(field);
 

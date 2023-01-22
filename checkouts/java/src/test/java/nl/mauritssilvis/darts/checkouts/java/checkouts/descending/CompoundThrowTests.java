@@ -124,7 +124,7 @@ class CompoundThrowTests {
     }
 
     @Test
-    void storeImmutableFields() {
+    void getImmutableFields() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("D14");
         Throw basicThrow = CompoundThrow.of(fields);
 

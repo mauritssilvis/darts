@@ -50,7 +50,7 @@ class DescendingNodeTests {
     }
 
     @Test
-    void storeImmutableWeights() {
+    void getImmutableWeights() {
         Collection<Integer> weights = new ArrayList<>(List.of(8, 9, 10));
         Node node = DescendingNode.of(weights);
 

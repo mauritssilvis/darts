@@ -50,7 +50,7 @@ class BasicNodeTests {
     }
 
     @Test
-    void storeImmutableWeights() {
+    void getImmutableWeights() {
         Collection<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
         Node node = BasicNode.of(weights);
 

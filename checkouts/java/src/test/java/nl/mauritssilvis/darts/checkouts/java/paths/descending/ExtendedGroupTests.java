@@ -54,7 +54,7 @@ class ExtendedGroupTests {
     }
 
     @Test
-    void storeImmutableValues() {
+    void getImmutableValues() {
         Collection<Integer> values = new ArrayList<>(List.of(3, 2, 3));
         Group group = ExtendedGroup.of(values);
 

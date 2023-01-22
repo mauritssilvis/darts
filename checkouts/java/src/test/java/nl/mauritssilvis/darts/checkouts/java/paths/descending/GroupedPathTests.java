@@ -167,7 +167,7 @@ class GroupedPathTests {
     }
 
     @Test
-    void storeImmutableSteps() {
+    void getImmutableSteps() {
         Collection<Integer> steps = new ArrayList<>(List.of(3, 2, 3));
         Collection<Boolean> grouping = List.of(false, true);
         Path path = GroupedPath.of(steps, grouping);
