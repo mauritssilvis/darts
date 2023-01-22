@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.boards.standard;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 
@@ -14,6 +15,7 @@ import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class TypedField implements Field {
     private final FieldType fieldType;
     private final String name;
