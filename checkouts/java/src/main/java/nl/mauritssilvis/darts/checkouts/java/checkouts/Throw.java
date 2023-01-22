@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * A throw that contains fields of a certain score.
+ * <p>
+ * Relevant design patterns: Immutable interface.
  */
 public interface Throw {
     /**
