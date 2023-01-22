@@ -17,26 +17,26 @@ import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 public final class TypedField implements Field {
     private final FieldType fieldType;
     private final String name;
-    private final int value;
+    private final int score;
 
-    private TypedField(FieldType fieldType, int base) {
+    private TypedField(FieldType fieldType, int baseScore) {
         this.fieldType = fieldType;
 
-        name = getShorthand(fieldType) + base;
-        value = getMultiplier(fieldType) * base;
+        name = getShorthand(fieldType) + baseScore;
+        score = getMultiplier(fieldType) * baseScore;
     }
 
     /**
      * Returns a new {@code TypedField} with the specified field type and base
-     * value.
+     * score.
      *
      * @param fieldType the field type
-     * @param base      the base value
+     * @param baseScore the base score
      * @return a new {@code TypedField} with the specified field type and base
-     * value
+     * score
      */
-    public static Field of(FieldType fieldType, int base) {
-        return new TypedField(fieldType, base);
+    public static Field of(FieldType fieldType, int baseScore) {
+        return new TypedField(fieldType, baseScore);
     }
 
     @Override
@@ -50,8 +50,8 @@ public final class TypedField implements Field {
     }
 
     @Override
-    public int getValue() {
-        return value;
+    public int getScore() {
+        return score;
     }
 
     private static String getShorthand(FieldType fieldType) {

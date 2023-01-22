@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.boards;
 
 /**
- * A dartboard field with a type, a name and a value.
+ * A dartboard field with a type, a name and a score.
  * <p>
  * Relevant design patterns: Immutable interface.
  */
@@ -26,9 +26,9 @@ public interface Field {
     String getName();
 
     /**
-     * Gets the value of this field.
+     * Gets the score of this field.
      *
-     * @return the value of this field
+     * @return the score of this field
      */
-    int getValue();
+    int getScore();
 }

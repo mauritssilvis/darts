@@ -151,7 +151,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .min()
                 .orElse(-1);
 
@@ -166,7 +166,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .min()
                 .orElse(-1);
 
@@ -181,7 +181,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .min()
                 .orElse(-1);
 
@@ -196,7 +196,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int min = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .min()
                 .orElse(-1);
 
@@ -211,7 +211,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .max()
                 .orElse(-1);
 
@@ -226,7 +226,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .max()
                 .orElse(-1);
 
@@ -241,7 +241,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .max()
                 .orElse(-1);
 
@@ -256,7 +256,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int max = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .max()
                 .orElse(-1);
 
@@ -271,7 +271,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .sum();
 
         Assertions.assertEquals(235, sum);
@@ -285,7 +285,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .sum();
 
         Assertions.assertEquals(470, sum);
@@ -299,7 +299,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .sum();
 
         Assertions.assertEquals(630, sum);
@@ -313,7 +313,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         int sum = fields.stream()
-                .mapToInt(Field::getValue)
+                .mapToInt(Field::getScore)
                 .sum();
 
         Assertions.assertEquals(0, sum);
