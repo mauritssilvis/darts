@@ -13,6 +13,8 @@ import java.util.List;
  * This functional interface does not fix the number of throws or the fields
  * that are available per throw. Implementations can be used to specify these
  * properties.
+ * <p>
+ * Relevant design patterns: Strategy.
  */
 @FunctionalInterface
 public interface CheckoutFinder {
