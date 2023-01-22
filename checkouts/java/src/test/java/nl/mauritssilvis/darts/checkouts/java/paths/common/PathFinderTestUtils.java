@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.paths;
+package nl.mauritssilvis.darts.checkouts.java.paths.common;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 

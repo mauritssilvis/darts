@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.paths;
+package nl.mauritssilvis.darts.checkouts.java.paths.common;
 
+import nl.mauritssilvis.darts.checkouts.java.paths.Path;
+import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.CartesianPathFinder;
-import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 import nl.mauritssilvis.darts.checkouts.java.paths.descending.DescendingPathFinder;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
