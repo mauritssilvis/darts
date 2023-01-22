@@ -105,7 +105,7 @@ class TypedFieldTests {
         int baseScore = 19;
         Field field = TypedField.of(fieldType, baseScore);
 
-        Assertions.assertEquals(fieldType, field.getType());
+        Assertions.assertEquals(fieldType, field.getFieldType());
     }
 
     @Test
@@ -114,7 +114,7 @@ class TypedFieldTests {
         int baseScore = 5;
         Field field = TypedField.of(fieldType, baseScore);
 
-        Assertions.assertEquals(fieldType, field.getType());
+        Assertions.assertEquals(fieldType, field.getFieldType());
     }
 
     @Test
@@ -123,7 +123,7 @@ class TypedFieldTests {
         int baseScore = 17;
         Field field = TypedField.of(fieldType, baseScore);
 
-        Assertions.assertEquals(fieldType, field.getType());
+        Assertions.assertEquals(fieldType, field.getFieldType());
     }
 
     @Test
@@ -132,6 +132,6 @@ class TypedFieldTests {
         int baseScore = 4;
         Field field = TypedField.of(fieldType, baseScore);
 
-        Assertions.assertEquals(fieldType, field.getType());
+        Assertions.assertEquals(fieldType, field.getFieldType());
     }
 }

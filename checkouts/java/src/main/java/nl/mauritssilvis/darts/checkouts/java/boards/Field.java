@@ -16,7 +16,7 @@ public interface Field {
      *
      * @return the type of this field
      */
-    FieldType getType();
+    FieldType getFieldType();
 
     /**
      * Gets the name of this field.

@@ -95,7 +95,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != fieldType)
+                .filter(field -> field.getFieldType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -109,7 +109,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != fieldType)
+                .filter(field -> field.getFieldType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -123,7 +123,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != fieldType)
+                .filter(field -> field.getFieldType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());
@@ -137,7 +137,7 @@ class StandardBoardTests {
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
-                .filter(field -> field.getType() != fieldType)
+                .filter(field -> field.getFieldType() != fieldType)
                 .toList();
 
         Assertions.assertEquals(0, otherFields.size());

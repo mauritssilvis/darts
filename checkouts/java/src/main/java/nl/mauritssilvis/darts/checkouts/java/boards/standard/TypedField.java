@@ -40,7 +40,7 @@ public final class TypedField implements Field {
     }
 
     @Override
-    public FieldType getType() {
+    public FieldType getFieldType() {
         return fieldType;
     }
 
