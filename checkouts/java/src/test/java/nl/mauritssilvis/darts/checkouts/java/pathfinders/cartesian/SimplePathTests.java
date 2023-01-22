@@ -25,6 +25,14 @@ class SimplePathTests {
     }
 
     @Test
+    void getTheSizeWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(1, path.getSize());
+    }
+
+    @Test
     void getTheSizeWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
@@ -41,6 +49,14 @@ class SimplePathTests {
     }
 
     @Test
+    void getTheLengthWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(6);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(6, path.getLength());
+    }
+
+    @Test
     void getTheLengthWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
@@ -51,6 +67,14 @@ class SimplePathTests {
     @Test
     void getTheSteps() {
         Collection<Integer> steps = List.of(1, 2, 3);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(steps, path.getSteps());
+    }
+
+    @Test
+    void getTheStepsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(3);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps, path.getSteps());
@@ -93,6 +117,14 @@ class SimplePathTests {
     }
 
     @Test
+    void countTheGroupsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(9);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(1, path.countGroups());
+    }
+
+    @Test
     void countTheGroupsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
@@ -115,6 +147,16 @@ class SimplePathTests {
     }
 
     @Test
+    void getTheGroupsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(2);
+        Path path = SimplePath.of(steps);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertEquals(1, groups.size());
+    }
+
+    @Test
     void getTheGroupsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
@@ -127,6 +169,14 @@ class SimplePathTests {
     @Test
     void getTheMultiplicity() {
         Collection<Integer> steps = List.of(-1, 10, 5);
+        Path path = SimplePath.of(steps);
+
+        Assertions.assertEquals(1, path.getMultiplicity());
+    }
+
+    @Test
+    void getTheMultiplicityWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(1, path.getMultiplicity());

@@ -24,6 +24,14 @@ class BasicNodeTests {
     }
 
     @Test
+    void getTheWeightsWithSingletonInput() {
+        Collection<Integer> weights = Collections.singletonList(3);
+        Node node = BasicNode.of(weights);
+
+        Assertions.assertEquals(weights, node.getWeights());
+    }
+
+    @Test
     void getTheWeightsWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
         Node node = BasicNode.of(weights);
@@ -63,7 +71,15 @@ class BasicNodeTests {
 
     @Test
     void getAConnectedNode() {
-        Collection<Integer> weights = List.of(10);
+        Collection<Integer> weights = List.of(10, 8);
+        Node node = BasicNode.of(weights);
+
+        Assertions.assertTrue(node.isConnected());
+    }
+
+    @Test
+    void getAConnectedNodeWithSingletonInput() {
+        Collection<Integer> weights = Collections.singletonList(3);
         Node node = BasicNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());

@@ -30,6 +30,15 @@ class GroupedPathTests {
     }
 
     @Test
+    void getTheSizeWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(3);
+        Collection<Boolean> grouping = Collections.singletonList(false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(1, path.getSize());
+    }
+
+    @Test
     void getTheSizeWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
@@ -66,6 +75,15 @@ class GroupedPathTests {
     }
 
     @Test
+    void getTheLengthWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(3);
+        Collection<Boolean> grouping = Collections.singletonList(false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(3, path.getLength());
+    }
+
+    @Test
     void getTheLengthWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
@@ -96,6 +114,15 @@ class GroupedPathTests {
     void getTheSteps() {
         Collection<Integer> steps = List.of(3, 2, 3);
         Collection<Boolean> grouping = List.of(true, true, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(steps, path.getSteps());
+    }
+
+    @Test
+    void getTheStepsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
+        Collection<Boolean> grouping = Collections.singletonList(true);
         Path path = GroupedPath.of(steps, grouping);
 
         Assertions.assertEquals(steps, path.getSteps());
@@ -178,6 +205,15 @@ class GroupedPathTests {
     }
 
     @Test
+    void countTheGroupsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(5);
+        Collection<Boolean> grouping = Collections.singletonList(false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(1, path.countGroups());
+    }
+
+    @Test
     void countTheGroupsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
@@ -249,6 +285,20 @@ class GroupedPathTests {
     }
 
     @Test
+    void getTheGroupsWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
+        Collection<Boolean> grouping = Collections.singletonList(true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Group> groups = path.getGroups();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, groups.size()),
+                () -> Assertions.assertEquals(steps, groups.get(0).getValues())
+        );
+    }
+
+    @Test
     void getTheGroupsWithEmptyInput() {
         Collection<Integer> steps = Collections.emptyList();
         Collection<Boolean> grouping = Collections.emptyList();
@@ -304,6 +354,9 @@ class GroupedPathTests {
         return Stream.of(
                 Arguments.of(
                         Collections.emptyList(), Collections.emptyList(), 0
+                ),
+                Arguments.of(
+                        List.of(5), Collections.emptyList(), 1
                 ),
                 Arguments.of(
                         List.of(3), List.of(false), 1

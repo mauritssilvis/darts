@@ -28,6 +28,14 @@ class ExtendedGroupTests {
     }
 
     @Test
+    void getTheValuesWithSingletonInput() {
+        Collection<Integer> values = Collections.singletonList(5);
+        Group group = ExtendedGroup.of(values);
+
+        Assertions.assertEquals(values, group.getValues());
+    }
+
+    @Test
     void getTheValuesWithEmptyInput() {
         Collection<Integer> values = Collections.emptyList();
         Group group = ExtendedGroup.of(values);

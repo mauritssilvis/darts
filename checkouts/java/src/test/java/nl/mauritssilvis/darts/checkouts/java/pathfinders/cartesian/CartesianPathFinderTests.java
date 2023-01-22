@@ -37,7 +37,7 @@ class CartesianPathFinderTests {
 
     private static Stream<Arguments> withPathData() {
         return Stream.of(
-                // Collection<? extends Node> nodes,
+                // Collection<Collection<Integer>> nodes,
                 // int length,
                 // Collection<Collection<Integer>> steps
 

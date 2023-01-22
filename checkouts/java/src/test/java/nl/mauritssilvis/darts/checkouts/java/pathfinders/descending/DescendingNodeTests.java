@@ -24,6 +24,14 @@ class DescendingNodeTests {
     }
 
     @Test
+    void getTheWeightsWithSingletonInput() {
+        Collection<Integer> weights = Collections.singletonList(9);
+        Node node = DescendingNode.of(weights);
+
+        Assertions.assertEquals(weights, node.getWeights());
+    }
+
+    @Test
     void getTheWeightsWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
         Node node = DescendingNode.of(weights);
@@ -74,6 +82,14 @@ class DescendingNodeTests {
     @Test
     void getAConnectedNode() {
         Collection<Integer> weights = List.of(3, 4);
+        Node node = DescendingNode.of(weights);
+
+        Assertions.assertTrue(node.isConnected());
+    }
+
+    @Test
+    void getAConnectedNodeWithSingletonInput() {
+        Collection<Integer> weights = Collections.singletonList(8);
         Node node = DescendingNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());
