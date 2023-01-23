@@ -9,9 +9,8 @@ import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public final class TypedFieldTestUtils {
     private TypedFieldTestUtils() {
@@ -30,6 +29,14 @@ public final class TypedFieldTestUtils {
 
         return Arrays.stream(names)
                 .map(TypedFieldTestUtils::getField)
+                .toList();
+    }
+
+    public static List<List<Field>> getFieldsPerThrow(List<List<String>> namesPerThrow) {
+        return namesPerThrow.stream()
+                .map(names -> names.stream()
+                        .map(TypedFieldTestUtils::getField).toList()
+                )
                 .toList();
     }
 
