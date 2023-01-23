@@ -56,6 +56,17 @@ class CartesianCheckoutFinderTests {
     }
 
     @ParameterizedTest
+    @MethodSource("withoutCheckouts")
+    void doNotFindCheckouts(List<List<String>> namesPerThrow, int score) {
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
+        List<Checkout> checkouts = checkoutFinder.find(score);
+
+        Assertions.assertEquals(0, checkouts.size());
+    }
+
+    @ParameterizedTest
     @MethodSource("withCheckouts")
     void findCheckouts(List<List<String>> namesPerThrow, int score, List<List<String>> namesPerCheckout) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
@@ -86,6 +97,51 @@ class CartesianCheckoutFinderTests {
         );
     }
 
+    private static Stream<Arguments> withoutCheckouts() {
+        return Stream.of(
+                Arguments.of(
+                        List.of(List.of("1")),
+                        0
+                ),
+                Arguments.of(
+                        List.of(List.of("1")),
+                        2
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "2")),
+                        0
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "2", "1")),
+                        3
+                ),
+                Arguments.of(
+                        List.of(List.of("D1")),
+                        0
+                ),
+                Arguments.of(
+                        List.of(List.of("D1")),
+                        1
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D1")),
+                        4
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D2")),
+                        3
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D2")),
+                        5
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "D2")),
+                        5
+                )
+        );
+    }
+
     private static Stream<Arguments> withCheckouts() {
         return Stream.of(
                 Arguments.of(
@@ -94,12 +150,88 @@ class CartesianCheckoutFinderTests {
                         List.of(List.of(List.of("1")))
                 ),
                 Arguments.of(
-                        List.of(List.of("1"), List.of("2")),
+                        List.of(List.of("1", "1")),
+                        1,
+                        List.of(List.of(List.of("1")))
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "2")),
+                        1,
+                        List.of(List.of(List.of("1")))
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "2", "1")),
+                        2,
+                        List.of(List.of(List.of("2")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D1")),
+                        2,
+                        List.of(List.of(List.of("D1")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D1")),
+                        2,
+                        List.of(List.of(List.of("D1")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D2")),
+                        2,
+                        List.of(List.of(List.of("D1")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "D2")),
+                        4,
+                        List.of(List.of(List.of("D2")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D2", "D3", "T2", "T3")),
+                        4,
+                        List.of(List.of(List.of("D2")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D2", "D3", "T2", "T3")),
+                        6,
+                        List.of(
+                                List.of(List.of("D3")),
+                                List.of(List.of("T2"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(List.of("T2", "T3", "D2", "D3", "T2")),
+                        6,
+                        List.of(
+                                List.of(List.of("T2")),
+                                List.of(List.of("D3"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(List.of("D2", "D3", "T2", "T3")),
+                        9,
+                        List.of(List.of(List.of("T3")))
+                ),
+                Arguments.of(
+                        List.of(List.of("2", "6", "D2", "D3", "T2", "T3")),
+                        6,
+                        List.of(
+                                List.of(List.of("6")),
+                                List.of(List.of("D3")),
+                                List.of(List.of("T2"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("1"),
+                                List.of("2")
+                        ),
                         3,
                         List.of(List.of(List.of("1"), List.of("2")))
                 ),
                 Arguments.of(
-                        List.of(List.of("D4"), List.of("D4")),
+                        List.of(
+                                List.of("D4"),
+                                List.of("D4")
+                        ),
                         16,
                         List.of(List.of(List.of("D4"), List.of("D4")))
                 )
