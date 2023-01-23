@@ -35,7 +35,7 @@ class CartesianCheckoutFinderTests {
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
-        fieldsPerThrow.clear();
+        namesPerThrow.clear();
 
         long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
