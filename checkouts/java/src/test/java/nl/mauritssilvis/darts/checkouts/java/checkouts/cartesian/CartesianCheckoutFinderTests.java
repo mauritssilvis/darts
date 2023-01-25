@@ -397,6 +397,33 @@ class CartesianCheckoutFinderTests {
                                 List.of(List.of("2"), List.of("1"), List.of("1")),
                                 List.of(List.of("D1"), List.of("1"), List.of("1"))
                         )
+                ),
+                Arguments.of(
+                        List.of(ANY, ANY, ANY, ANY),
+                        40,
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("D5"), List.of("D5")))
+                ),
+                Arguments.of(
+                        List.of(ANY, ANY, ANY, ANY),
+                        39,
+                        List.of(
+                                List.of(List.of("T3"), List.of("D5"), List.of("D5"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("T3"), List.of("D5"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("D5"), List.of("D5"), List.of("T3"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(ANY, ANY, ANY, ANY),
+                        38,
+                        List.of(
+                                List.of(List.of("T3"), List.of("T3"), List.of("D5"), List.of("D5")),
+                                List.of(List.of("T3"), List.of("D5"), List.of("T3"), List.of("D5")),
+                                List.of(List.of("T3"), List.of("D5"), List.of("D5"), List.of("T3")),
+                                List.of(List.of("D5"), List.of("T3"), List.of("T3"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("T3"), List.of("D5"), List.of("T3")),
+                                List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("T3"))
+                        )
                 )
         );
     }
