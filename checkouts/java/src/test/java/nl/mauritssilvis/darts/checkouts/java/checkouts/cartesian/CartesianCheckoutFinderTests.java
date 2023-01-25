@@ -320,8 +320,8 @@ class CartesianCheckoutFinderTests {
                         28,
                         List.of(
                                 List.of(List.of("D3"), List.of("D11")),
-                                List.of(List.of("D5"), List.of("D8")),
-                                List.of(List.of("6"), List.of("D11"))
+                                List.of(List.of("6"), List.of("D11")),
+                                List.of(List.of("D5"), List.of("D8"))
                         )
                 ),
                 Arguments.of(
