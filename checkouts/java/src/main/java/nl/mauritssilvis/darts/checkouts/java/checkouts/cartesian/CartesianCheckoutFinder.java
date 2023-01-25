@@ -74,15 +74,24 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
         for (Path path : paths) {
             List<Integer> steps = path.getSteps();
 
-            for (int j = 0; j < steps.size(); j++) {
-                int step = steps.get(j);
-                fields.set(j, scoreToFieldsPerThrow.get(j).get(step).get(0));
-            }
-
-            checkouts.add(SimpleCheckout.of(fields));
+            findRecursively(0, steps, fields, checkouts);
         }
 
         return checkouts;
+    }
+
+    private void findRecursively(int level, List<Integer> steps, List<Field> fields, List<Checkout> checkouts) {
+        if (level == numThrows) {
+            checkouts.add(SimpleCheckout.of(fields));
+            return;
+        }
+
+        int score = steps.get(level);
+
+        for (Field field : scoreToFieldsPerThrow.get(level).get(score)) {
+            fields.set(level, field);
+            findRecursively(level + 1, steps, fields, checkouts);
+        }
     }
 
     private static Node getNode(Collection<? extends Field> fields) {
