@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
  */
 public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final List<List<Field>> fieldsPerThrow;
+    private final PathFinder pathFinder;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
         this.fieldsPerThrow = fieldsPerThrow.stream()
@@ -39,6 +40,12 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
                         .toList()
                 )
                 .toList();
+
+        List<Node> nodes = fieldsPerThrow.stream()
+                .map(CartesianCheckoutFinder::getNode)
+                .toList();
+
+        pathFinder = CartesianPathFinder.of(nodes);
     }
 
     /**
@@ -55,15 +62,6 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
     @Override
     public List<Checkout> find(int score) {
-        List<Node> nodes = fieldsPerThrow.stream()
-                .map(fields -> fields.stream()
-                        .map(Field::getScore)
-                        .toList()
-                )
-                .map(BasicNode::of)
-                .toList();
-
-        PathFinder pathFinder = CartesianPathFinder.of(nodes);
         List<Path> paths = pathFinder.find(score);
 
         List<Map<Integer, List<Field>>> scoreToFields = fieldsPerThrow.stream()
@@ -88,5 +86,13 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
         }
 
         return checkouts;
+    }
+
+    private static Node getNode(Collection<? extends Field> fields) {
+        List<Integer> scores = fields.stream().
+                map(Field::getScore)
+                .toList();
+
+        return BasicNode.of(scores);
     }
 }
