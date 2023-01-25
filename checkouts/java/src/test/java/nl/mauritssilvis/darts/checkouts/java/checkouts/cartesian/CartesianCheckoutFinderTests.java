@@ -143,6 +143,13 @@ class CartesianCheckoutFinderTests {
     }
 
     private static Stream<Arguments> withCheckouts() {
+        List<String> singles = List.of("1", "2", "3", "5");
+        List<String> doubles = List.of("D1", "D2", "D3", "D5");
+        List<String> triples = List.of("T1", "T2", "T3");
+
+        List<String> singlesDoubles = Stream.concat(singles.stream(), doubles.stream()).toList();
+        List<String> any = Stream.concat(triples.stream(), singlesDoubles.stream()).toList();
+
         return Stream.of(
                 Arguments.of(
                         List.of(List.of("1")),
@@ -349,6 +356,35 @@ class CartesianCheckoutFinderTests {
                                 List.of(List.of("8"), List.of("8"), List.of("D4")),
                                 List.of(List.of("8"), List.of("D4"), List.of("8")),
                                 List.of(List.of("8"), List.of("D4"), List.of("D4"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(any, any, any),
+                        3,
+                        List.of(List.of(List.of("1"), List.of("1"), List.of("1")))
+                ),
+                Arguments.of(
+                        List.of(any, any, any),
+                        30,
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("D5")))
+                ),
+                Arguments.of(
+                        List.of(any, any, any),
+                        29,
+                        List.of(List.of(List.of("T3"), List.of("D5"), List.of("D5"))),
+                        List.of(List.of(List.of("D5"), List.of("T3"), List.of("D5"))),
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
+                ),
+                Arguments.of(
+                        List.of(any, any, any),
+                        4,
+                        List.of(
+                                List.of(List.of("1"), List.of("1"), List.of("2")),
+                                List.of(List.of("1"), List.of("1"), List.of("D1")),
+                                List.of(List.of("1"), List.of("2"), List.of("1")),
+                                List.of(List.of("1"), List.of("D1"), List.of("1")),
+                                List.of(List.of("2"), List.of("1"), List.of("1")),
+                                List.of(List.of("D1"), List.of("1"), List.of("1"))
                         )
                 )
         );
