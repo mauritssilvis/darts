@@ -67,7 +67,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
         List<Path> paths = pathFinder.find(score);
 
         List<Field> fields = new ArrayList<>();
-//        scoreToFieldsPerThrow.forEach(e -> fields.add(TypedField.of(FieldType.SINGLE, 0)));
+        scoreToFieldsPerThrow.forEach(e -> fields.add(null));
 
         List<Checkout> checkouts = new ArrayList<>();
 
@@ -76,11 +76,10 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
             for (int j = 0; j < steps.size(); j++) {
                 int step = steps.get(j);
-                fields.add(scoreToFieldsPerThrow.get(j).get(step).get(0));
+                fields.set(j, scoreToFieldsPerThrow.get(j).get(step).get(0));
             }
 
             checkouts.add(SimpleCheckout.of(fields));
-            fields.clear();
         }
 
         return checkouts;
