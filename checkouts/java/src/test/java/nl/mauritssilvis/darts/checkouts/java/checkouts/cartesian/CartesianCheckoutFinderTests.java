@@ -22,6 +22,13 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class CartesianCheckoutFinderTests {
+    private static final List<String> SINGLES = List.of("1", "2", "3", "5");
+    private static final List<String> DOUBLES = List.of("D1", "D2", "D3", "D5");
+    private static final List<String> TRIPLES = List.of("T1", "T2", "T3");
+
+    private static final List<String> SINGLES_DOUBLES = Stream.concat(SINGLES.stream(), DOUBLES.stream()).toList();
+    private static final List<String> ANY = Stream.concat(TRIPLES.stream(), SINGLES_DOUBLES.stream()).toList();
+
     @Test
     void storeIndependentFieldsPerThrow() {
         List<List<String>> namesPerThrow = new ArrayList<>(
@@ -138,18 +145,15 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(List.of("1", "2", "1")),
                         3
+                ),
+                Arguments.of(
+                        List.of(ANY, ANY, ANY),
+                        2
                 )
         );
     }
 
     private static Stream<Arguments> withCheckouts() {
-        List<String> singles = List.of("1", "2", "3", "5");
-        List<String> doubles = List.of("D1", "D2", "D3", "D5");
-        List<String> triples = List.of("T1", "T2", "T3");
-
-        List<String> singlesDoubles = Stream.concat(singles.stream(), doubles.stream()).toList();
-        List<String> any = Stream.concat(triples.stream(), singlesDoubles.stream()).toList();
-
         return Stream.of(
                 Arguments.of(
                         List.of(List.of("1")),
@@ -359,24 +363,31 @@ class CartesianCheckoutFinderTests {
                         )
                 ),
                 Arguments.of(
-                        List.of(any, any, any),
+                        List.of(ANY, ANY, ANY),
                         3,
                         List.of(List.of(List.of("1"), List.of("1"), List.of("1")))
                 ),
                 Arguments.of(
-                        List.of(any, any, any),
+                        List.of(ANY, ANY, ANY),
                         30,
                         List.of(List.of(List.of("D5"), List.of("D5"), List.of("D5")))
                 ),
                 Arguments.of(
-                        List.of(any, any, any),
+                        List.of(ANY, ANY, ANY),
+                        28,
+                        List.of(List.of(List.of("T3"), List.of("T3"), List.of("D5"))),
+                        List.of(List.of(List.of("T3"), List.of("D5"), List.of("T3"))),
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
+                ),
+                Arguments.of(
+                        List.of(ANY, ANY, ANY),
                         29,
                         List.of(List.of(List.of("T3"), List.of("D5"), List.of("D5"))),
                         List.of(List.of(List.of("D5"), List.of("T3"), List.of("D5"))),
                         List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
                 ),
                 Arguments.of(
-                        List.of(any, any, any),
+                        List.of(ANY, ANY, ANY),
                         4,
                         List.of(
                                 List.of(List.of("1"), List.of("1"), List.of("2")),
