@@ -80,8 +80,9 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
     }
 
     private static Node getNode(Collection<? extends Field> fields) {
-        List<Integer> scores = fields.stream().
-                map(Field::getScore)
+        List<Integer> scores = fields.stream()
+                .map(Field::getScore)
+                .distinct()
                 .toList();
 
         return BasicNode.of(scores);
@@ -89,6 +90,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
     private static Map<Integer, List<Field>> mapScoresToFields(Collection<? extends Field> fields) {
         return fields.stream()
+                .distinct()
                 .collect(Collectors.groupingBy(Field::getScore));
     }
 
