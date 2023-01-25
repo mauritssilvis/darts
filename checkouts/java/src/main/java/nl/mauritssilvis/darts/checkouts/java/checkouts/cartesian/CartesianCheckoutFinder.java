@@ -73,11 +73,23 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
         for (Path path : paths) {
             List<Integer> steps = path.getSteps();
-
             findRecursively(0, steps, fields, checkouts);
         }
 
         return checkouts;
+    }
+
+    private static Node getNode(Collection<? extends Field> fields) {
+        List<Integer> scores = fields.stream().
+                map(Field::getScore)
+                .toList();
+
+        return BasicNode.of(scores);
+    }
+
+    private static Map<Integer, List<Field>> mapScoresToFields(Collection<? extends Field> fields) {
+        return fields.stream()
+                .collect(Collectors.groupingBy(Field::getScore));
     }
 
     private void findRecursively(int level, List<Integer> steps, List<Field> fields, List<Checkout> checkouts) {
@@ -92,18 +104,5 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
             fields.set(level, field);
             findRecursively(level + 1, steps, fields, checkouts);
         }
-    }
-
-    private static Node getNode(Collection<? extends Field> fields) {
-        List<Integer> scores = fields.stream().
-                map(Field::getScore)
-                .toList();
-
-        return BasicNode.of(scores);
-    }
-
-    private static Map<Integer, List<Field>> mapScoresToFields(Collection<? extends Field> fields) {
-        return fields.stream()
-                .collect(Collectors.groupingBy(Field::getScore));
     }
 }
