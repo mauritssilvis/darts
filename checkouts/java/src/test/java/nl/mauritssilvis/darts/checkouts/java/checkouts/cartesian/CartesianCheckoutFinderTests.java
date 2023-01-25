@@ -49,6 +49,26 @@ class CartesianCheckoutFinderTests {
         Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
     }
 
+    @Test
+    void storeIndependentCopiesOfTheFieldsPerThrow() {
+        List<List<String>> namesPerThrow = new ArrayList<>(
+                List.of(List.of("D2", "D4"), List.of("D4", "D6"))
+        );
+
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+
+        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+        int score = 16;
+
+        long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+
+        namesPerThrow.set(1, Collections.emptyList());
+
+        long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+
+        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+    }
+
     @ParameterizedTest
     @MethodSource("withEmptyFieldsPerThrow")
     void handleEmptyFieldsPerThrow(List<List<String>> namesPerThrow) {
