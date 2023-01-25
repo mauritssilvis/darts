@@ -14,10 +14,7 @@ import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.BasicNode;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.CartesianPathFinder;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -31,14 +28,15 @@ import java.util.stream.Collectors;
  * Relevant design patterns: Strategy, immutable object, static factory method.
  */
 public final class CartesianCheckoutFinder implements CheckoutFinder {
-    private final List<List<Field>> fieldsPerThrow;
+    private final int numThrows;
     private final PathFinder pathFinder;
+    private final List<Map<Integer, List<Field>>> scoreToFieldsPerThrow;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
-        this.fieldsPerThrow = fieldsPerThrow.stream()
-                .map(fields -> fields.stream()
-                        .toList()
-                )
+        numThrows = fieldsPerThrow.size();
+
+        scoreToFieldsPerThrow = fieldsPerThrow.stream()
+                .map(CartesianCheckoutFinder::mapScoresToFields)
                 .toList();
 
         List<Node> nodes = fieldsPerThrow.stream()
@@ -62,27 +60,27 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
     @Override
     public List<Checkout> find(int score) {
+        if (numThrows == 0) {
+            return Collections.emptyList();
+        }
+
         List<Path> paths = pathFinder.find(score);
 
-        List<Map<Integer, List<Field>>> scoreToFields = fieldsPerThrow.stream()
-                .map(fields -> fields.stream()
-                        .collect(Collectors.groupingBy(Field::getScore))
-                )
-                .toList();
+        List<Field> fields = new ArrayList<>();
+//        scoreToFieldsPerThrow.forEach(e -> fields.add(TypedField.of(FieldType.SINGLE, 0)));
 
         List<Checkout> checkouts = new ArrayList<>();
 
         for (Path path : paths) {
             List<Integer> steps = path.getSteps();
 
-            Collection<Field> fields = new ArrayList<>();
-
             for (int j = 0; j < steps.size(); j++) {
                 int step = steps.get(j);
-                fields.add(scoreToFields.get(j).get(step).get(0));
+                fields.add(scoreToFieldsPerThrow.get(j).get(step).get(0));
             }
 
             checkouts.add(SimpleCheckout.of(fields));
+            fields.clear();
         }
 
         return checkouts;
@@ -94,5 +92,10 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
                 .toList();
 
         return BasicNode.of(scores);
+    }
+
+    private static Map<Integer, List<Field>> mapScoresToFields(Collection<? extends Field> fields) {
+        return fields.stream()
+                .collect(Collectors.groupingBy(Field::getScore));
     }
 }
