@@ -108,20 +108,20 @@ class CartesianCheckoutFinderTests {
                         2
                 ),
                 Arguments.of(
-                        List.of(List.of("1", "2")),
-                        0
-                ),
-                Arguments.of(
-                        List.of(List.of("1", "2", "1")),
-                        3
-                ),
-                Arguments.of(
                         List.of(List.of("D1")),
                         0
                 ),
                 Arguments.of(
                         List.of(List.of("D1")),
                         1
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "2")),
+                        0
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "D2")),
+                        5
                 ),
                 Arguments.of(
                         List.of(List.of("D1", "D1")),
@@ -136,8 +136,8 @@ class CartesianCheckoutFinderTests {
                         5
                 ),
                 Arguments.of(
-                        List.of(List.of("1", "D2")),
-                        5
+                        List.of(List.of("1", "2", "1")),
+                        3
                 )
         );
     }
@@ -150,6 +150,11 @@ class CartesianCheckoutFinderTests {
                         List.of(List.of(List.of("1")))
                 ),
                 Arguments.of(
+                        List.of(List.of("D1")),
+                        2,
+                        List.of(List.of(List.of("D1")))
+                ),
+                Arguments.of(
                         List.of(List.of("1", "1")),
                         1,
                         List.of(List.of(List.of("1")))
@@ -158,16 +163,6 @@ class CartesianCheckoutFinderTests {
                         List.of(List.of("1", "2")),
                         1,
                         List.of(List.of(List.of("1")))
-                ),
-                Arguments.of(
-                        List.of(List.of("1", "2", "1")),
-                        2,
-                        List.of(List.of(List.of("2")))
-                ),
-                Arguments.of(
-                        List.of(List.of("D1")),
-                        2,
-                        List.of(List.of(List.of("D1")))
                 ),
                 Arguments.of(
                         List.of(List.of("D1", "D1")),
@@ -185,9 +180,19 @@ class CartesianCheckoutFinderTests {
                         List.of(List.of(List.of("D2")))
                 ),
                 Arguments.of(
+                        List.of(List.of("1", "2", "1")),
+                        2,
+                        List.of(List.of(List.of("2")))
+                ),
+                Arguments.of(
                         List.of(List.of("D2", "D3", "T2", "T3")),
                         4,
                         List.of(List.of(List.of("D2")))
+                ),
+                Arguments.of(
+                        List.of(List.of("D2", "D3", "T2", "T3")),
+                        9,
+                        List.of(List.of(List.of("T3")))
                 ),
                 Arguments.of(
                         List.of(List.of("D2", "D3", "T2", "T3")),
@@ -204,11 +209,6 @@ class CartesianCheckoutFinderTests {
                                 List.of(List.of("T2")),
                                 List.of(List.of("D3"))
                         )
-                ),
-                Arguments.of(
-                        List.of(List.of("D2", "D3", "T2", "T3")),
-                        9,
-                        List.of(List.of(List.of("T3")))
                 ),
                 Arguments.of(
                         List.of(List.of("2", "6", "D2", "D3", "T2", "T3")),
