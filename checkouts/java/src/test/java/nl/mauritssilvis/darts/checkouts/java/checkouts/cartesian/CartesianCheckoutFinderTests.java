@@ -395,16 +395,20 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         28,
-                        List.of(List.of(List.of("T3"), List.of("T3"), List.of("D5"))),
-                        List.of(List.of(List.of("T3"), List.of("D5"), List.of("T3"))),
-                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
+                        List.of(
+                                List.of(List.of("T3"), List.of("T3"), List.of("D5")),
+                                List.of(List.of("T3"), List.of("D5"), List.of("T3")),
+                                List.of(List.of("D5"), List.of("T3"), List.of("T3"))
+                        )
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         29,
-                        List.of(List.of(List.of("T3"), List.of("D5"), List.of("D5"))),
-                        List.of(List.of(List.of("D5"), List.of("T3"), List.of("D5"))),
-                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
+                        List.of(
+                                List.of(List.of("T3"), List.of("D5"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("T3"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("D5"), List.of("T3"))
+                        )
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
