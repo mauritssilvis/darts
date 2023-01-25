@@ -234,6 +234,122 @@ class CartesianCheckoutFinderTests {
                         ),
                         16,
                         List.of(List.of(List.of("D4"), List.of("D4")))
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("1", "D1"),
+                                List.of("D1", "1")
+                        ),
+                        3,
+                        List.of(
+                                List.of(List.of("1"), List.of("D1")),
+                                List.of(List.of("D1"), List.of("1"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D5", "10"),
+                                List.of("D5", "10")
+                        ),
+                        20,
+                        List.of(
+                                List.of(List.of("D5"), List.of("D5")),
+                                List.of(List.of("D5"), List.of("10")),
+                                List.of(List.of("10"), List.of("D5")),
+                                List.of(List.of("10"), List.of("10"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("1", "D2", "D3"),
+                                List.of("D3", "1")
+                        ),
+                        7,
+                        List.of(
+                                List.of(List.of("1"), List.of("D3")),
+                                List.of(List.of("D3"), List.of("1"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D3", "D7", "D5"),
+                                List.of("D11", "D9")
+                        ),
+                        28,
+                        List.of(
+                                List.of(List.of("D3"), List.of("D11")),
+                                List.of(List.of("D5"), List.of("D9"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D3", "D5", "6"),
+                                List.of("D11", "D9")
+                        ),
+                        28,
+                        List.of(
+                                List.of(List.of("D3"), List.of("D11")),
+                                List.of(List.of("D5"), List.of("D8")),
+                                List.of(List.of("6"), List.of("D11"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T1"),
+                                List.of("T5"),
+                                List.of("T9")
+                        ),
+                        45,
+                        List.of(List.of(List.of("T1"), List.of("T5"), List.of("T9")))
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("Q2"),
+                                List.of("Q6"),
+                                List.of("Q6")
+                        ),
+                        56,
+                        List.of(List.of(List.of("Q2"), List.of("Q6"), List.of("Q6")))
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("18", "D18"),
+                                List.of("18", "D18"),
+                                List.of("18", "D18")
+                        ),
+                        54,
+                        List.of(List.of(List.of("18"), List.of("18"), List.of("18")))
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("18", "D18"),
+                                List.of("18", "D18"),
+                                List.of("D18", "18")
+                        ),
+                        72,
+                        List.of(
+                                List.of(List.of("18"), List.of("18"), List.of("D18")),
+                                List.of(List.of("18"), List.of("D18"), List.of("18")),
+                                List.of(List.of("D18"), List.of("18"), List.of("18"))
+                        )
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D4", "8"),
+                                List.of("8", "D4"),
+                                List.of("8", "D4")
+                        ),
+                        24,
+                        List.of(
+                                List.of(List.of("D4"), List.of("8"), List.of("8")),
+                                List.of(List.of("D4"), List.of("8"), List.of("D4")),
+                                List.of(List.of("D4"), List.of("D4"), List.of("8")),
+                                List.of(List.of("D4"), List.of("D4"), List.of("D4")),
+                                List.of(List.of("8"), List.of("8"), List.of("8")),
+                                List.of(List.of("8"), List.of("8"), List.of("D4")),
+                                List.of(List.of("8"), List.of("D4"), List.of("8")),
+                                List.of(List.of("8"), List.of("D4"), List.of("D4"))
+                        )
                 )
         );
     }
