@@ -146,7 +146,7 @@ public final class DescendingPathFinder implements PathFinder {
             grouping.add(false);
 
             for (int i = 1; i < nodes.size(); i++) {
-                grouping.add(nodes.get(i).getWeights().equals(nodes.get(i - 1).getWeights()));
+                grouping.add(nodes.get(i).equals(nodes.get(i - 1)));
             }
 
             return grouping;

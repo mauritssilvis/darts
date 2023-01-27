@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.checkouts.java.paths.descending;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.checkouts.java.paths.Node;
 
 import java.util.Collection;
@@ -17,6 +18,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class DescendingNode implements Node {
     private final List<Integer> weights;
 
