@@ -16,6 +16,7 @@ import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.CartesianPathFinder
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code CheckoutFinder} interface that finds
@@ -30,13 +31,13 @@ import java.util.stream.Collectors;
 public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final int numThrows;
     private final PathFinder pathFinder;
-    private final List<Map<Integer, List<Field>>> scoreToFieldsPerThrow;
+    private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
         numThrows = fieldsPerThrow.size();
 
-        scoreToFieldsPerThrow = fieldsPerThrow.stream()
-                .map(CartesianCheckoutFinder::mapScoresToFields)
+        scoreMaps = fieldsPerThrow.stream()
+                .map(CartesianCheckoutFinder::getScoreMap)
                 .toList();
 
         List<Node> nodes = fieldsPerThrow.stream()
@@ -66,17 +67,11 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
         List<Path> paths = pathFinder.find(score);
 
-        List<Field> fields = new ArrayList<>();
-        scoreToFieldsPerThrow.forEach(e -> fields.add(null));
-
-        List<Checkout> checkouts = new ArrayList<>();
-
-        for (Path path : paths) {
-            List<Integer> steps = path.getSteps();
-            findRecursively(0, steps, fields, checkouts);
+        if (paths.isEmpty()) {
+            return Collections.emptyList();
         }
 
-        return checkouts;
+        return new Converter(paths, scoreMaps).convert();
     }
 
     private static Node getNode(Collection<? extends Field> fields) {
@@ -88,23 +83,52 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
         return BasicNode.of(scores);
     }
 
-    private static Map<Integer, List<Field>> mapScoresToFields(Collection<? extends Field> fields) {
+    private static Map<Integer, List<Field>> getScoreMap(Collection<? extends Field> fields) {
         return fields.stream()
                 .distinct()
                 .collect(Collectors.groupingBy(Field::getScore));
     }
 
-    private void findRecursively(int level, List<Integer> steps, List<Field> fields, List<Checkout> checkouts) {
-        if (level == numThrows) {
-            checkouts.add(SimpleCheckout.of(fields));
-            return;
+    private static class Converter {
+        private final List<? extends Path> paths;
+        private final List<? extends Map<Integer, List<Field>>> scoreMaps;
+        private final int maxLevel;
+        private final List<Checkout> checkouts;
+
+        Converter(List<? extends Path> paths, List<? extends Map<Integer, List<Field>>> scoreMaps) {
+            this.paths = paths;
+            this.scoreMaps = scoreMaps;
+
+            maxLevel = scoreMaps.size();
+            checkouts = new ArrayList<>();
         }
 
-        int score = steps.get(level);
+        List<Checkout> convert() {
+            for (Path path : paths) {
+                List<Integer> steps = path.getSteps();
 
-        for (Field field : scoreToFieldsPerThrow.get(level).get(score)) {
-            fields.set(level, field);
-            findRecursively(level + 1, steps, fields, checkouts);
+                List<Field> fields = new ArrayList<>();
+                IntStream.range(0, maxLevel)
+                        .forEach(i -> fields.add(null));
+
+                convertRecursively(0, steps, fields);
+            }
+
+            return Collections.unmodifiableList(checkouts);
+        }
+
+        void convertRecursively(int level, List<Integer> steps, List<Field> fields) {
+            if (level == maxLevel) {
+                checkouts.add(SimpleCheckout.of(fields));
+                return;
+            }
+
+            int score = steps.get(level);
+
+            for (Field field : scoreMaps.get(level).get(score)) {
+                fields.set(level, field);
+                convertRecursively(level + 1, steps, fields);
+            }
         }
     }
 }
