@@ -67,7 +67,7 @@ public final class DescendingPathFinder implements PathFinder {
     }
 
     private static class Finder {
-        private final List<? extends Node> searchNodes;
+        private final List<? extends Node> nodes;
         private final List<Boolean> grouping;
         private final List<Integer> maxRemaining;
         private final List<Integer> minRemaining;
@@ -75,12 +75,12 @@ public final class DescendingPathFinder implements PathFinder {
         private final int length;
         private final List<Path> paths;
 
-        Finder(List<? extends Node> searchNodes, int length) {
-            this.searchNodes = searchNodes;
-            grouping = getGrouping(searchNodes);
-            maxRemaining = getMaxRemaining(searchNodes);
-            minRemaining = getMinRemaining(searchNodes);
-            maxLevel = searchNodes.size();
+        Finder(List<? extends Node> nodes, int length) {
+            this.nodes = nodes;
+            grouping = getGrouping(nodes);
+            maxRemaining = getMaxRemaining(nodes);
+            minRemaining = getMinRemaining(nodes);
+            maxLevel = nodes.size();
 
             this.length = length;
 
@@ -109,7 +109,7 @@ public final class DescendingPathFinder implements PathFinder {
                 return;
             }
 
-            Node node = searchNodes.get(level);
+            Node node = nodes.get(level);
             List<Integer> weights = node.getWeights();
 
             int maxRemainder = maxRemaining.get(level);

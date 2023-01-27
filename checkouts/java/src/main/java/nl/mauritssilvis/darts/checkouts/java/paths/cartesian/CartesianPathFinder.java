@@ -63,14 +63,14 @@ public final class CartesianPathFinder implements PathFinder {
     }
 
     private static class Finder {
-        private final List<? extends Node> searchNodes;
+        private final List<? extends Node> nodes;
         private final int maxLevel;
         private final int length;
         private final List<Path> paths;
 
-        Finder(List<? extends Node> searchNodes, int length) {
-            this.searchNodes = searchNodes;
-            maxLevel = searchNodes.size();
+        Finder(List<? extends Node> nodes, int length) {
+            this.nodes = nodes;
+            maxLevel = nodes.size();
 
             this.length = length;
 
@@ -99,7 +99,7 @@ public final class CartesianPathFinder implements PathFinder {
                 return;
             }
 
-            Node node = searchNodes.get(level);
+            Node node = nodes.get(level);
             List<Integer> weights = node.getWeights();
 
             for (int weight : weights) {
