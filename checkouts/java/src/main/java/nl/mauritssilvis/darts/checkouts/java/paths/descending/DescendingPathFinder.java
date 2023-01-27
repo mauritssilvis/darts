@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code PathFinder} interface that finds paths
@@ -71,7 +72,7 @@ public final class DescendingPathFinder implements PathFinder {
         private final List<Integer> maxRemaining;
         private final List<Integer> minRemaining;
         private final int length;
-        private final List<Integer> path;
+        private final int maxLevel;
         private final List<Path> paths;
 
         Finder(List<? extends Node> searchNodes, int length) {
@@ -80,11 +81,9 @@ public final class DescendingPathFinder implements PathFinder {
             grouping = getGrouping(searchNodes);
             maxRemaining = getMaxRemaining(searchNodes);
             minRemaining = getMinRemaining(searchNodes);
+            maxLevel = searchNodes.size();
 
             this.length = length;
-
-            path = new ArrayList<>();
-            searchNodes.forEach(node -> path.add(0));
 
             paths = new ArrayList<>();
         }
@@ -92,12 +91,17 @@ public final class DescendingPathFinder implements PathFinder {
         List<Path> find() {
             int level = 0;
             int distance = 0;
-            findRecursively(level, distance);
+
+            List<Integer> path = new ArrayList<>();
+            IntStream.range(0, maxLevel).
+                    forEach(i -> path.add(0));
+
+            findRecursively(level, distance, path);
 
             return Collections.unmodifiableList(paths);
         }
 
-        void findRecursively(int level, int distance) {
+        void findRecursively(int level, int distance, List<Integer> path) {
             if (level == searchNodes.size()) {
                 if (level > 0 && distance == length) {
                     paths.add(GroupedPath.of(path, grouping));
@@ -129,7 +133,7 @@ public final class DescendingPathFinder implements PathFinder {
                 }
 
                 path.set(level, weight);
-                findRecursively(level + 1, distance + weight);
+                findRecursively(level + 1, distance + weight, path);
             }
         }
 
