@@ -71,8 +71,8 @@ public final class DescendingPathFinder implements PathFinder {
         private final List<Boolean> grouping;
         private final List<Integer> maxRemaining;
         private final List<Integer> minRemaining;
-        private final int length;
         private final int maxLevel;
+        private final int length;
         private final List<Path> paths;
 
         Finder(List<? extends Node> searchNodes, int length) {
@@ -102,7 +102,7 @@ public final class DescendingPathFinder implements PathFinder {
         }
 
         void findRecursively(int level, int distance, List<Integer> path) {
-            if (level == searchNodes.size()) {
+            if (level == maxLevel) {
                 if (level > 0 && distance == length) {
                     paths.add(GroupedPath.of(path, grouping));
                 }
