@@ -122,7 +122,10 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
             int score = steps.get(level);
 
-            for (Field field : scoreMaps.get(level).get(score)) {
+            Map<Integer, List<Field>> scoreMap = scoreMaps.get(level);
+            List<Field> scoreFields = scoreMap.get(score);
+
+            for (Field field : scoreFields) {
                 fields.set(level, field);
                 convertRecursively(level + 1, steps, fields);
             }
