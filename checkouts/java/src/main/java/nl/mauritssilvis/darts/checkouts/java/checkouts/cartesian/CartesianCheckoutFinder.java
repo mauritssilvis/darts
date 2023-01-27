@@ -29,13 +29,10 @@ import java.util.stream.IntStream;
  * Relevant design patterns: Strategy, immutable object, static factory method.
  */
 public final class CartesianCheckoutFinder implements CheckoutFinder {
-    private final int numThrows;
     private final PathFinder pathFinder;
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
-        numThrows = fieldsPerThrow.size();
-
         scoreMaps = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getScoreMap)
                 .toList();
@@ -61,7 +58,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
 
     @Override
     public List<Checkout> find(int score) {
-        if (numThrows == 0) {
+        if (scoreMaps.isEmpty()) {
             return Collections.emptyList();
         }
 
