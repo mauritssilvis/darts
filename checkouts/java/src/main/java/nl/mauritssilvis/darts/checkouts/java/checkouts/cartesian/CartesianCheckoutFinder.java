@@ -33,15 +33,15 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
-        scoreMaps = fieldsPerThrow.stream()
-                .map(CartesianCheckoutFinder::getScoreMap)
-                .toList();
-
         List<Node> nodes = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getNode)
                 .toList();
 
         pathFinder = CartesianPathFinder.of(nodes);
+
+        scoreMaps = fieldsPerThrow.stream()
+                .map(CartesianCheckoutFinder::getScoreMap)
+                .toList();
     }
 
     /**
