@@ -77,7 +77,6 @@ public final class DescendingPathFinder implements PathFinder {
 
         Finder(List<? extends Node> searchNodes, int length) {
             this.searchNodes = searchNodes;
-
             grouping = getGrouping(searchNodes);
             maxRemaining = getMaxRemaining(searchNodes);
             minRemaining = getMinRemaining(searchNodes);
