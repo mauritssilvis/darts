@@ -67,20 +67,21 @@ public final class DescendingPathFinder implements PathFinder {
 
     private static class Finder {
         private final List<? extends Node> searchNodes;
-        private final int length;
         private final List<Boolean> grouping;
         private final List<Integer> maxRemaining;
         private final List<Integer> minRemaining;
+        private final int length;
         private final List<Integer> path;
         private final List<Path> paths;
 
         Finder(List<? extends Node> searchNodes, int length) {
             this.searchNodes = searchNodes;
-            this.length = length;
 
             grouping = getGrouping(searchNodes);
             maxRemaining = getMaxRemaining(searchNodes);
             minRemaining = getMinRemaining(searchNodes);
+
+            this.length = length;
 
             path = new ArrayList<>();
             searchNodes.forEach(node -> path.add(0));
