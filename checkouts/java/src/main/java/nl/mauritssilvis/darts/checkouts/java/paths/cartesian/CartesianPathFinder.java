@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code PathFinder} interface that finds paths
@@ -63,15 +64,16 @@ public final class CartesianPathFinder implements PathFinder {
 
     private static class Finder {
         private final List<? extends Node> searchNodes;
-        private final int length;
         private final int maxLevel;
+        private final int length;
         private final List<Path> paths;
 
         Finder(List<? extends Node> searchNodes, int length) {
             this.searchNodes = searchNodes;
+            maxLevel = searchNodes.size();
+
             this.length = length;
 
-            maxLevel = searchNodes.size();
             paths = new ArrayList<>();
         }
 
@@ -80,7 +82,8 @@ public final class CartesianPathFinder implements PathFinder {
             int distance = 0;
 
             List<Integer> path = new ArrayList<>();
-            searchNodes.forEach(node -> path.add(0));
+            IntStream.range(0, maxLevel).
+                    forEach(i -> path.add(0));
 
             findRecursively(level, distance, path);
 
