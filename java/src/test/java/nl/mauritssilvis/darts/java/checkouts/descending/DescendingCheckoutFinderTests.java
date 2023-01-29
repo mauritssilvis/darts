@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.checkouts.cartesian;
+package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-class CartesianCheckoutFinderTests {
+class DescendingCheckoutFinderTests {
     private static final List<String> SINGLES = List.of("1", "2", "3", "5");
     private static final List<String> DOUBLES = List.of("D1", "D2", "D3", "D5");
     private static final List<String> TRIPLES = List.of("T1", "T2", "T3");
@@ -32,13 +32,13 @@ class CartesianCheckoutFinderTests {
     @Test
     void storeIndependentFieldsPerThrow() {
         List<List<String>> namesPerThrow = new ArrayList<>(
-                List.of(List.of("D2", "D4"), List.of("D4", "D6"))
+                List.of(List.of("3", "D9"), List.of("18", "3"))
         );
 
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
 
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
-        int score = 16;
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+        int score = 21;
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
@@ -52,17 +52,17 @@ class CartesianCheckoutFinderTests {
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
         List<List<String>> namesPerThrow = new ArrayList<>(
-                List.of(List.of("T1", "T9"), List.of("T9", "1"))
+                List.of(List.of("1", "Q1"), List.of("Q2", "3"))
         );
 
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
 
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
-        int score = 30;
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+        int score = 12;
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
-        namesPerThrow.set(1, Collections.emptyList());
+        namesPerThrow.set(0, Collections.emptyList());
 
         long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
@@ -73,9 +73,9 @@ class CartesianCheckoutFinderTests {
     @MethodSource("withEmptyFieldsPerThrow")
     void handleEmptyFieldsPerThrow(List<List<String>> namesPerThrow) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
-        int score = 3;
+        int score = 10;
 
         List<Checkout> checkouts = checkoutFinder.find(score);
 
@@ -86,7 +86,7 @@ class CartesianCheckoutFinderTests {
     @MethodSource("withoutCheckouts")
     void doNotFindCheckouts(List<List<String>> namesPerThrow, int score) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
 
@@ -97,7 +97,7 @@ class CartesianCheckoutFinderTests {
     @MethodSource("withCheckouts")
     void findCheckouts(List<List<String>> namesPerThrow, int score, List<List<List<String>>> namesPerCheckout) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
 
@@ -118,9 +118,9 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(Collections.emptyList()),
                 Arguments.of(List.of(Collections.emptyList())),
                 Arguments.of(List.of(Collections.emptyList(), Collections.emptyList())),
-                Arguments.of(List.of(Collections.emptyList(), List.of("D3"))),
-                Arguments.of(List.of(List.of("T8", "D9"), Collections.emptyList())),
-                Arguments.of(List.of(List.of("Q2"), Collections.emptyList(), List.of("25")))
+                Arguments.of(List.of(Collections.emptyList(), List.of("3"))),
+                Arguments.of(List.of(List.of("Q8", "9"), Collections.emptyList())),
+                Arguments.of(List.of(List.of("T2"), Collections.emptyList(), List.of("D25")))
         );
     }
 
@@ -228,27 +228,17 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(List.of("D2", "D3", "T2", "T3")),
                         6,
-                        List.of(
-                                List.of(List.of("D3")),
-                                List.of(List.of("T2"))
-                        )
+                        List.of(List.of(List.of("D3", "T2")))
                 ),
                 Arguments.of(
                         List.of(List.of("T2", "T3", "D2", "D3", "T2")),
                         6,
-                        List.of(
-                                List.of(List.of("T2")),
-                                List.of(List.of("D3"))
-                        )
+                        List.of(List.of(List.of("D3", "T2")))
                 ),
                 Arguments.of(
                         List.of(List.of("2", "6", "D2", "D3", "T2", "T3")),
                         6,
-                        List.of(
-                                List.of(List.of("6")),
-                                List.of(List.of("D3")),
-                                List.of(List.of("T2"))
-                        )
+                        List.of(List.of(List.of("6", "D3", "T2")))
                 ),
                 Arguments.of(
                         List.of(
@@ -272,10 +262,7 @@ class CartesianCheckoutFinderTests {
                                 List.of("D1", "1")
                         ),
                         3,
-                        List.of(
-                                List.of(List.of("1"), List.of("D1")),
-                                List.of(List.of("D1"), List.of("1"))
-                        )
+                        List.of(List.of(List.of("1"), List.of("D1")))
                 ),
                 Arguments.of(
                         List.of(
@@ -284,10 +271,9 @@ class CartesianCheckoutFinderTests {
                         ),
                         20,
                         List.of(
-                                List.of(List.of("D5"), List.of("D5")),
+                                List.of(List.of("10"), List.of("10")),
                                 List.of(List.of("D5"), List.of("10")),
-                                List.of(List.of("10"), List.of("D5")),
-                                List.of(List.of("10"), List.of("10"))
+                                List.of(List.of("D5"), List.of("D5"))
                         )
                 ),
                 Arguments.of(
@@ -296,10 +282,7 @@ class CartesianCheckoutFinderTests {
                                 List.of("D3", "1")
                         ),
                         7,
-                        List.of(
-                                List.of(List.of("1"), List.of("D3")),
-                                List.of(List.of("D3"), List.of("1"))
-                        )
+                        List.of(List.of(List.of("D3"), List.of("1")))
                 ),
                 Arguments.of(
                         List.of(
@@ -308,8 +291,8 @@ class CartesianCheckoutFinderTests {
                         ),
                         28,
                         List.of(
-                                List.of(List.of("D3"), List.of("D11")),
-                                List.of(List.of("D5"), List.of("D9"))
+                                List.of(List.of("D5"), List.of("D9")),
+                                List.of(List.of("D3"), List.of("D11"))
                         )
                 ),
                 Arguments.of(
@@ -319,9 +302,8 @@ class CartesianCheckoutFinderTests {
                         ),
                         28,
                         List.of(
-                                List.of(List.of("D3"), List.of("D11")),
-                                List.of(List.of("6"), List.of("D11")),
-                                List.of(List.of("D5"), List.of("D9"))
+                                List.of(List.of("D5"), List.of("D9")),
+                                List.of(List.of("6", "D3"), List.of("D11"))
                         )
                 ),
                 Arguments.of(
@@ -358,11 +340,7 @@ class CartesianCheckoutFinderTests {
                                 List.of("D18", "18")
                         ),
                         72,
-                        List.of(
-                                List.of(List.of("18"), List.of("18"), List.of("D18")),
-                                List.of(List.of("18"), List.of("D18"), List.of("18")),
-                                List.of(List.of("D18"), List.of("18"), List.of("18"))
-                        )
+                        List.of(List.of(List.of("D18"), List.of("18"), List.of("18")))
                 ),
                 Arguments.of(
                         List.of(
@@ -372,14 +350,7 @@ class CartesianCheckoutFinderTests {
                         ),
                         24,
                         List.of(
-                                List.of(List.of("D4"), List.of("8"), List.of("8")),
-                                List.of(List.of("D4"), List.of("8"), List.of("D4")),
-                                List.of(List.of("D4"), List.of("D4"), List.of("8")),
-                                List.of(List.of("D4"), List.of("D4"), List.of("D4")),
-                                List.of(List.of("8"), List.of("8"), List.of("8")),
-                                List.of(List.of("8"), List.of("8"), List.of("D4")),
-                                List.of(List.of("8"), List.of("D4"), List.of("8")),
-                                List.of(List.of("8"), List.of("D4"), List.of("D4"))
+                                List.of(List.of("8", "D4"), List.of("8", "D4"), List.of("8", "D4"))
                         )
                 ),
                 Arguments.of(
@@ -395,32 +366,17 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         28,
-                        List.of(
-                                List.of(List.of("T3"), List.of("T3"), List.of("D5")),
-                                List.of(List.of("T3"), List.of("D5"), List.of("T3")),
-                                List.of(List.of("D5"), List.of("T3"), List.of("T3"))
-                        )
+                        List.of(List.of(List.of("D5"), List.of("T3"), List.of("T3")))
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         29,
-                        List.of(
-                                List.of(List.of("T3"), List.of("D5"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("T3"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("D5"), List.of("T3"))
-                        )
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3")))
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         4,
-                        List.of(
-                                List.of(List.of("1"), List.of("1"), List.of("2")),
-                                List.of(List.of("1"), List.of("1"), List.of("D1")),
-                                List.of(List.of("1"), List.of("2"), List.of("1")),
-                                List.of(List.of("1"), List.of("D1"), List.of("1")),
-                                List.of(List.of("2"), List.of("1"), List.of("1")),
-                                List.of(List.of("D1"), List.of("1"), List.of("1"))
-                        )
+                        List.of(List.of(List.of("2", "D1"), List.of("1"), List.of("1")))
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY, ANY),
@@ -430,24 +386,12 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(ANY, ANY, ANY, ANY),
                         39,
-                        List.of(
-                                List.of(List.of("T3"), List.of("D5"), List.of("D5"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("T3"), List.of("D5"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("D5"), List.of("D5"), List.of("T3"))
-                        )
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("D5"), List.of("T3")))
                 ),
                 Arguments.of(
                         List.of(ANY, ANY, ANY, ANY),
                         38,
-                        List.of(
-                                List.of(List.of("T3"), List.of("T3"), List.of("D5"), List.of("D5")),
-                                List.of(List.of("T3"), List.of("D5"), List.of("T3"), List.of("D5")),
-                                List.of(List.of("T3"), List.of("D5"), List.of("D5"), List.of("T3")),
-                                List.of(List.of("D5"), List.of("T3"), List.of("T3"), List.of("D5")),
-                                List.of(List.of("D5"), List.of("T3"), List.of("D5"), List.of("T3")),
-                                List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("T3"))
-                        )
+                        List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("T3")))
                 )
         );
     }
