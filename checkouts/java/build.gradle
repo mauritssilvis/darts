@@ -7,7 +7,7 @@ plugins {
     id 'java'
 }
 
-group 'nl.mauritssilvis.darts.checkouts.java'
+group 'nl.mauritssilvis.darts.java'
 version '1.0-SNAPSHOT'
 
 repositories {
