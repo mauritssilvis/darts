@@ -19,8 +19,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code CheckoutFinder} interface that finds
- * checkouts of a specified score by selecting throws from available fields.
+ * An implementation of the {@code CheckoutFinder} interface that finds darts
+ * checkouts of a specified score by selecting throws from available dartboard
+ * fields.
  * <p>
  * This implementation finds checkouts by considering all possible combinations
  * of the available fields and returns results in the form of a list of {@code

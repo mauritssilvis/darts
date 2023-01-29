@@ -8,11 +8,11 @@ package nl.mauritssilvis.darts.java.checkouts;
 import java.util.List;
 
 /**
- * A tool to find checkouts of a certain score.
+ * A tool to find darts checkouts of a certain score.
  * <p>
- * This functional interface does not fix the number of throws or the fields
- * that are available per throw. Implementations can be used to specify these
- * properties.
+ * This functional interface does not fix the number of throws or the dartboard
+ * fields that are available per throw. Implementations can be used to specify
+ * these properties.
  * <p>
  * Relevant design patterns: Strategy.
  */
