@@ -8,14 +8,14 @@ package nl.mauritssilvis.darts.java.checkouts.descending;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.checkouts.cartesian.SimpleCheckout;
+import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingNode;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingPathfinder;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * Relevant design patterns: Strategy, immutable object, static factory method.
  */
 public final class DescendingCheckoutFinder implements CheckoutFinder {
-    private final Pathfinder pathFinder;
+    private final Pathfinder pathfinder;
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private DescendingCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
@@ -38,7 +38,7 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
                 .map(DescendingCheckoutFinder::getNode)
                 .toList();
 
-        pathFinder = DescendingPathfinder.of(nodes);
+        pathfinder = DescendingPathfinder.of(nodes);
 
         scoreMaps = fieldsPerThrow.stream()
                 .map(DescendingCheckoutFinder::getScoreMap)
@@ -46,11 +46,11 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
     }
 
     /**
-     * Returns a new {@code CartesianCheckoutFinder} for the specified fields
+     * Returns a new {@code DescendingCheckoutFinder} for the specified fields
      * per throw.
      *
      * @param fieldsPerThrow a collection of available fields per throw
-     * @return a new {@code CartesianCheckoutFinder} for the specified fields
+     * @return a new {@code DescendingCheckoutFinder} for the specified fields
      * per throw
      */
     public static CheckoutFinder of(Collection<? extends Collection<Field>> fieldsPerThrow) {
@@ -59,7 +59,33 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
 
     @Override
     public List<Checkout> find(int score) {
-        return null;
+        if (scoreMaps.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<Path> paths = pathfinder.find(score);
+
+        if (paths.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        List<Checkout> checkouts = new ArrayList<>();
+
+        for (Path path : paths) {
+            List<Integer> steps = path.getSteps();
+            List<Field> fields = new ArrayList<>();
+
+            for (int i = 0; i < steps.size(); i++) {
+                int step = steps.get(i);
+
+                Field field = scoreMaps.get(i).get(step).get(0);
+                fields.add(field);
+            }
+
+            checkouts.add(SimpleCheckout.of(fields));
+        }
+
+        return checkouts;
     }
 
     private static Node getNode(Collection<? extends Field> fields) {
