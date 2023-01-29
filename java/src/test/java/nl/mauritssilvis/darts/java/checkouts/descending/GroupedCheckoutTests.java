@@ -11,11 +11,15 @@ import nl.mauritssilvis.darts.java.checkouts.Throw;
 import nl.mauritssilvis.darts.java.checkouts.utils.TypedFieldTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 class GroupedCheckoutTests {
     @Test
@@ -217,7 +221,19 @@ class GroupedCheckoutTests {
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedThrows.remove(2));
     }
 
-    // TODO: Multiplicity tests
+    @ParameterizedTest
+    @MethodSource("withMultiplicityData")
+    void getTheMultiplicity(
+            Collection<Collection<String>> namesPerThrow,
+            Collection<Boolean> grouping,
+            int multiplicity
+    ) {
+        List<Throw> throwList = getThrows(namesPerThrow);
+
+        Checkout checkout = GroupedCheckout.of(throwList, grouping);
+
+        Assertions.assertEquals(multiplicity, checkout.getMultiplicity());
+    }
 
     private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
@@ -225,5 +241,16 @@ class GroupedCheckoutTests {
         return fieldsPerThrow.stream()
                 .map(CompoundThrow::of)
                 .toList();
+    }
+
+    private static Stream<Arguments> withMultiplicityData() {
+        return Stream.of(
+                Arguments.of(
+                        Collections.emptyList(), Collections.emptyList(), 0
+                ),
+                Arguments.of(
+                        List.of(List.of("1")), List.of(false), 1
+                )
+        );
     }
 }

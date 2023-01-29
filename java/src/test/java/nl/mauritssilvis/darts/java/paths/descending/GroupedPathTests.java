@@ -344,8 +344,8 @@ class GroupedPathTests {
     void getTheMultiplicity(
             Collection<Integer> steps,
             Collection<Boolean> grouping,
-            int multiplicity) {
-
+            int multiplicity
+    ) {
         Path path = GroupedPath.of(steps, grouping);
         Assertions.assertEquals(multiplicity, path.getMultiplicity());
     }
