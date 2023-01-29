@@ -34,7 +34,7 @@ public final class CheckoutTestUtils {
                 .sum();
     }
 
-    public static List<List<List<String>>> getNamesPerCheckout(List<Checkout> checkouts) {
+    public static List<List<List<String>>> getNamesPerCheckout(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()
                 .map(Checkout::getThrows)
                 .map(throwList -> throwList.stream()

@@ -17,21 +17,22 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
 class CartesianCheckoutFinderTests {
-    private static final List<String> SINGLES = List.of("1", "2", "3", "5");
-    private static final List<String> DOUBLES = List.of("D1", "D2", "D3", "D5");
-    private static final List<String> TRIPLES = List.of("T1", "T2", "T3");
+    private static final Collection<String> SINGLES = List.of("1", "2", "3", "5");
+    private static final Collection<String> DOUBLES = List.of("D1", "D2", "D3", "D5");
+    private static final Collection<String> TRIPLES = List.of("T1", "T2", "T3");
 
-    private static final List<String> SINGLES_DOUBLES = Stream.concat(SINGLES.stream(), DOUBLES.stream()).toList();
-    private static final List<String> ANY = Stream.concat(TRIPLES.stream(), SINGLES_DOUBLES.stream()).toList();
+    private static final Collection<String> SINGLES_DOUBLES = Stream.concat(SINGLES.stream(), DOUBLES.stream()).toList();
+    private static final Collection<String> ANY = Stream.concat(TRIPLES.stream(), SINGLES_DOUBLES.stream()).toList();
 
     @Test
     void storeIndependentFieldsPerThrow() {
-        List<List<String>> namesPerThrow = new ArrayList<>(
+        Collection<Collection<String>> namesPerThrow = new ArrayList<>(
                 List.of(List.of("D2", "D4"), List.of("D4", "D6"))
         );
 
@@ -51,7 +52,7 @@ class CartesianCheckoutFinderTests {
 
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
-        List<List<String>> namesPerThrow = new ArrayList<>(
+        List<Collection<String>> namesPerThrow = new ArrayList<>(
                 List.of(List.of("T1", "T9"), List.of("T9", "1"))
         );
 
@@ -71,31 +72,35 @@ class CartesianCheckoutFinderTests {
 
     @ParameterizedTest
     @MethodSource("withEmptyFieldsPerThrow")
-    void handleEmptyFieldsPerThrow(List<List<String>> namesPerThrow) {
+    void handleEmptyFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         int score = 3;
 
-        List<Checkout> checkouts = checkoutFinder.find(score);
+        Collection<Checkout> checkouts = checkoutFinder.find(score);
 
         Assertions.assertEquals(0, checkouts.size());
     }
 
     @ParameterizedTest
     @MethodSource("withoutCheckouts")
-    void doNotFindCheckouts(List<List<String>> namesPerThrow, int score) {
+    void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
-        List<Checkout> checkouts = checkoutFinder.find(score);
+        Collection<Checkout> checkouts = checkoutFinder.find(score);
 
         Assertions.assertEquals(0, checkouts.size());
     }
 
     @ParameterizedTest
     @MethodSource("withCheckouts")
-    void findCheckouts(List<List<String>> namesPerThrow, int score, List<List<List<String>>> namesPerCheckout) {
+    void findCheckouts(
+            Collection<? extends Collection<String>> namesPerThrow,
+            int score,
+            Collection<Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 

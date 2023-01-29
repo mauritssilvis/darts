@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.java.boards.FieldType;
 import nl.mauritssilvis.darts.java.boards.common.TypedField;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public final class TypedFieldTestUtils {
                 .toList();
     }
 
-    public static List<List<Field>> getFieldsPerThrow(List<List<String>> namesPerThrow) {
+    public static List<List<Field>> getFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
         return namesPerThrow.stream()
                 .map(names -> names.stream()
                         .map(TypedFieldTestUtils::getField).toList()
