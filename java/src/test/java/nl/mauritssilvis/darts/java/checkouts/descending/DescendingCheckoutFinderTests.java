@@ -292,9 +292,7 @@ class DescendingCheckoutFinderTests {
                         ),
                         20,
                         List.of(
-                                List.of(List.of("10"), List.of("10")),
-                                List.of(List.of("D5"), List.of("10")),
-                                List.of(List.of("D5"), List.of("D5"))
+                                List.of(List.of("10", "D5"), List.of("10", "D5"))
                         ),
                         4
                 ),
