@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.checkouts.common;
+package nl.mauritssilvis.darts.checkouts.java.checkouts.utils;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public final class TypedFieldTestUtils {
     private TypedFieldTestUtils() {

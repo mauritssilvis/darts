@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.checkouts.common;
+package nl.mauritssilvis.darts.checkouts.java.checkouts.utils;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.checkouts.Checkout;
