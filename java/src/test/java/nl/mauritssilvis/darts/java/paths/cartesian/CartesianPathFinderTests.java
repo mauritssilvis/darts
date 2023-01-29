@@ -24,8 +24,8 @@ class CartesianPathfinderTests {
     @MethodSource("withPathData")
     void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
-        Pathfinder pathFinder = CartesianPathfinder.of(nodes);
-        List<Path> paths = pathFinder.find(length);
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+        List<Path> paths = pathfinder.find(length);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(nodes.size(), PathTestUtils.getTotalSize(paths) / paths.size()),

@@ -29,8 +29,8 @@ class DescendingPathfinderTests {
             int totalMultiplicity
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
-        Pathfinder pathFinder = DescendingPathfinder.of(nodes);
-        List<Path> paths = pathFinder.find(length);
+        Pathfinder pathfinder = DescendingPathfinder.of(nodes);
+        List<Path> paths = pathfinder.find(length);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(nodes.size(), PathTestUtils.getTotalSize(paths) / paths.size()),
