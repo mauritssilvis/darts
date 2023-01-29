@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.paths.descending;
 
-import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
 import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
 import org.junit.jupiter.api.Assertions;

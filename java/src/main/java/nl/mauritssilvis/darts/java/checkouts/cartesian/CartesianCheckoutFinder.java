@@ -8,11 +8,11 @@ package nl.mauritssilvis.darts.java.checkouts.cartesian;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.PathFinder;
 import nl.mauritssilvis.darts.java.paths.cartesian.BasicNode;
 import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathFinder;
+import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
-import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.ArrayList;
 import java.util.Collection;

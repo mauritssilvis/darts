@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.boards.london;
+package nl.mauritssilvis.darts.java.boards.common;
 
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
-import nl.mauritssilvis.darts.java.boards.common.TypedField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
