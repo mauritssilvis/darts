@@ -15,8 +15,12 @@ import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingNode;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingPathfinder;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code CheckoutFinder} interface that finds darts
@@ -69,23 +73,9 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
             return Collections.emptyList();
         }
 
-        List<Checkout> checkouts = new ArrayList<>();
-
-        for (Path path : paths) {
-            List<Integer> steps = path.getSteps();
-            List<Field> fields = new ArrayList<>();
-
-            for (int i = 0; i < steps.size(); i++) {
-                int step = steps.get(i);
-
-                Field field = scoreMaps.get(i).get(step).get(0);
-                fields.add(field);
-            }
-
-            checkouts.add(SimpleCheckout.of(fields));
-        }
-
-        return checkouts;
+        return paths.stream()
+                .map(this::convert)
+                .toList();
     }
 
     private static Node getNode(Collection<? extends Field> fields) {
@@ -100,5 +90,15 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
         return fields.stream()
                 .distinct()
                 .collect(Collectors.groupingBy(Field::getScore));
+    }
+
+    private Checkout convert(Path path) {
+        List<Integer> steps = path.getSteps();
+
+        Collection<Field> fields = IntStream.range(0, steps.size())
+                .mapToObj(i -> scoreMaps.get(i).get(steps.get(i)).get(0))
+                .toList();
+
+        return SimpleCheckout.of(fields);
     }
 }
