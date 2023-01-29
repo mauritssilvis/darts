@@ -3,23 +3,24 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards.standard;
+package nl.mauritssilvis.darts.checkouts.java.boards.london;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Board;
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
+import nl.mauritssilvis.darts.checkouts.java.boards.common.TypedField;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code Board} interface that represents a standard
+ * An implementation of the {@code Board} interface that represents a London
  * dartboard.
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public final class StandardBoard implements Board {
+public final class LondonBoard implements Board {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 20;
     private static final int RANGE_EXTENSION = 25;
@@ -29,16 +30,16 @@ public final class StandardBoard implements Board {
     private final List<Field> tripleFields = getTripleFields();
     private final List<Field> quadrupleFields = Collections.emptyList();
 
-    private StandardBoard() {
+    private LondonBoard() {
     }
 
     /**
-     * Return a new {@code StandardBoard}.
+     * Return a new {@code LondonBoard}.
      *
-     * @return a new {@code StandardBoard}
+     * @return a new {@code LondonBoard}
      */
     public static Board create() {
-        return new StandardBoard();
+        return new LondonBoard();
     }
 
     @Override

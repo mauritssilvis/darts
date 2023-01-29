@@ -3,20 +3,21 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.checkouts.java.boards.standard;
+package nl.mauritssilvis.darts.checkouts.java.boards.london;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Board;
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
+import nl.mauritssilvis.darts.checkouts.java.boards.common.TypedField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class StandardBoardTests {
+class LondonBoardTests {
     @Test
     void getImmutableSingleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -26,7 +27,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableDoubleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -36,7 +37,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableTripleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -46,7 +47,7 @@ class StandardBoardTests {
 
     @Test
     void getImmutableQuadrupleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -57,7 +58,7 @@ class StandardBoardTests {
 
     @Test
     void countTheSingleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         Assertions.assertEquals(21, board.getFields(fieldType).size());
@@ -65,7 +66,7 @@ class StandardBoardTests {
 
     @Test
     void countTheDoubleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         Assertions.assertEquals(21, board.getFields(fieldType).size());
@@ -73,7 +74,7 @@ class StandardBoardTests {
 
     @Test
     void countTheTripleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         Assertions.assertEquals(20, board.getFields(fieldType).size());
@@ -81,7 +82,7 @@ class StandardBoardTests {
 
     @Test
     void countTheQuadrupleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         Assertions.assertEquals(0, board.getFields(fieldType).size());
@@ -89,7 +90,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlySingleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -103,7 +104,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyDoubleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -117,7 +118,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyTripleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -131,7 +132,7 @@ class StandardBoardTests {
 
     @Test
     void getOnlyQuadrupleFields() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -145,7 +146,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumSingleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -160,7 +161,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumDoubleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -175,7 +176,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumTripleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -190,7 +191,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMinimumQuadrupleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -205,7 +206,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumSingleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -220,7 +221,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumDoubleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -235,7 +236,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumTripleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -250,7 +251,7 @@ class StandardBoardTests {
 
     @Test
     void getTheMaximumQuadrupleField() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -265,7 +266,7 @@ class StandardBoardTests {
 
     @Test
     void getTheSingleFieldSum() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.SINGLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -279,7 +280,7 @@ class StandardBoardTests {
 
     @Test
     void getTheDoubleFieldSum() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.DOUBLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -293,7 +294,7 @@ class StandardBoardTests {
 
     @Test
     void getTheTripleFieldSum() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.TRIPLE;
 
         List<Field> fields = board.getFields(fieldType);
@@ -307,7 +308,7 @@ class StandardBoardTests {
 
     @Test
     void getTheQuadrupleFieldSum() {
-        Board board = StandardBoard.create();
+        Board board = LondonBoard.create();
         FieldType fieldType = FieldType.QUADRUPLE;
 
         List<Field> fields = board.getFields(fieldType);

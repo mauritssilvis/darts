@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.checkouts.java.checkouts.utils;
 
 import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
-import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
+import nl.mauritssilvis.darts.checkouts.java.boards.common.TypedField;
 
 import java.util.Arrays;
 import java.util.Collections;
