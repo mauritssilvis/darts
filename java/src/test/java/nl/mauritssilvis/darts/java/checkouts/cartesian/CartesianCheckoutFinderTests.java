@@ -95,7 +95,7 @@ class CartesianCheckoutFinderTests {
 
     @ParameterizedTest
     @MethodSource("withCheckouts")
-    void findCheckouts(List<List<String>> namesPerThrow, int score, List<List<String>> namesPerCheckout) {
+    void findCheckouts(List<List<String>> namesPerThrow, int score, List<List<List<String>>> namesPerCheckout) {
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
