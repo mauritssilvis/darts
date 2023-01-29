@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.checkouts.java.paths.descending;
 
 import lombok.EqualsAndHashCode;
-import nl.mauritssilvis.darts.checkouts.java.paths.Node;
+import nl.mauritssilvis.darts.checkouts.java.paths.common.Node;
 
 import java.util.Collection;
 import java.util.Comparator;
