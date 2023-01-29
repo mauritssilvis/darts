@@ -28,11 +28,11 @@ class CartesianPathfinderTests {
         List<Path> paths = pathfinder.find(length);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(nodes.size(), PathTestUtils.getTotalSize(paths) / paths.size()),
                 () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
+                () -> Assertions.assertEquals(nodes.size(), PathTestUtils.countTotalSteps(paths) / paths.size()),
                 () -> Assertions.assertEquals(steps.size(), paths.size()),
-                () -> Assertions.assertEquals(steps.size(), PathTestUtils.getTotalMultiplicity(paths)),
-                () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths))
+                () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths)),
+                () -> Assertions.assertEquals(steps.size(), PathTestUtils.getTotalMultiplicity(paths))
         );
     }
 

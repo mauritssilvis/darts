@@ -14,15 +14,15 @@ public final class PathTestUtils {
     private PathTestUtils() {
     }
 
-    public static int getTotalSize(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::countSteps)
-                .sum();
-    }
-
     public static int getTotalLength(Collection<? extends Path> paths) {
         return paths.stream()
                 .mapToInt(Path::getLength)
+                .sum();
+    }
+
+    public static int countTotalSteps(Collection<? extends Path> paths) {
+        return paths.stream()
+                .mapToInt(Path::countSteps)
                 .sum();
     }
 

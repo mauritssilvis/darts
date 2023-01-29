@@ -97,7 +97,7 @@ class PathfinderTests {
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
 
-        int totalSize = PathTestUtils.getTotalSize(paths);
+        int totalSize = PathTestUtils.countTotalSteps(paths);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(nodes.size(), paths.get(0).countSteps()),
