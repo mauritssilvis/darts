@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.checkouts.descending;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.checkouts.cartesian.SimpleCheckout;
+import nl.mauritssilvis.darts.java.checkouts.Throw;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
@@ -95,10 +95,11 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
     private Checkout convert(Path path) {
         List<Integer> steps = path.getSteps();
 
-        Collection<Field> fields = IntStream.range(0, steps.size())
-                .mapToObj(i -> scoreMaps.get(i).get(steps.get(i)).get(0))
+        Collection<Throw> throwList = IntStream.range(0, steps.size())
+                .mapToObj(i -> scoreMaps.get(i).get(steps.get(i)))
+                .map(CompoundThrow::of)
                 .toList();
 
-        return SimpleCheckout.of(fields);
+        return GroupedCheckout.of(throwList, Collections.emptyList());
     }
 }
