@@ -107,14 +107,13 @@ class CartesianCheckoutFinderTests {
         List<Checkout> checkouts = checkoutFinder.find(score);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
                 () -> Assertions.assertEquals(score, checkouts.get(0).getScore()),
                 () -> Assertions.assertEquals(score, CheckoutTestUtils.getTotalScore(checkouts) / checkouts.size()),
                 () -> Assertions.assertEquals(namesPerThrow.size(), checkouts.get(0).countThrows()),
                 () -> Assertions.assertEquals(namesPerThrow.size(), CheckoutTestUtils.countTotalThrows(checkouts) / checkouts.size()),
-                () -> Assertions.assertEquals(1, checkouts.get(0).getMultiplicity()),
-                () -> Assertions.assertEquals(namesPerCheckout.size(), CheckoutTestUtils.getTotalMultiplicity(checkouts)),
-                () -> Assertions.assertEquals(namesPerCheckout, CheckoutTestUtils.getNamesPerCheckout(checkouts))
+                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
+                () -> Assertions.assertEquals(namesPerCheckout, CheckoutTestUtils.getNamesPerCheckout(checkouts)),
+                () -> Assertions.assertEquals(namesPerCheckout.size(), CheckoutTestUtils.getTotalMultiplicity(checkouts))
         );
     }
 
