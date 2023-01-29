@@ -19,9 +19,7 @@ import java.util.List;
 class CompoundThrowTests {
     @Test
     void doNotAcceptFieldsWithDifferentScores() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields(
-                "8", "T3"
-        );
+        Collection<Field> fields = TypedFieldTestUtils.getFields("8", "T3");
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
@@ -31,13 +29,10 @@ class CompoundThrowTests {
 
     @Test
     void getTheScore() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields(
-                "10", "D5"
-        );
+        Collection<Field> fields = TypedFieldTestUtils.getFields("10", "D5");
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Throw basicThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(10, basicThrow.getScore());
+        Assertions.assertEquals(10, compoundThrow.getScore());
     }
 
     @Test
@@ -58,81 +53,69 @@ class CompoundThrowTests {
 
     @Test
     void countTheFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields(
-                "T2", "D3", "6"
-        );
+        Collection<Field> fields = TypedFieldTestUtils.getFields("T2", "D3", "6");
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Throw basicThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(3, basicThrow.countFields());
+        Assertions.assertEquals(3, compoundThrow.countFields());
     }
 
     @Test
     void countTheFieldsWithSingletonInput() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("T20");
-        Throw basicThrow = CompoundThrow.of(fields);
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(1, basicThrow.countFields());
+        Assertions.assertEquals(1, compoundThrow.countFields());
     }
 
     @Test
     void countTheFieldsWithEmptyInput() {
         Collection<Field> fields = Collections.emptyList();
-        Throw basicThrow = CompoundThrow.of(fields);
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(0, basicThrow.countFields());
+        Assertions.assertEquals(0, compoundThrow.countFields());
     }
 
     @Test
     void getTheFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields(
-                "Q4", "D8", "16"
-        );
+        Collection<Field> fields = TypedFieldTestUtils.getFields("Q4", "D8", "16");
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Throw basicThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(fields, basicThrow.getFields());
+        Assertions.assertEquals(fields, compoundThrow.getFields());
     }
 
     @Test
     void getTheFieldsWithSingletonInput() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("T15");
-        Throw basicThrow = CompoundThrow.of(fields);
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(fields, basicThrow.getFields());
+        Assertions.assertEquals(fields, compoundThrow.getFields());
     }
 
     @Test
     void getTheFieldsWithEmptyInput() {
         Collection<Field> fields = Collections.emptyList();
-        Throw basicThrow = CompoundThrow.of(fields);
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(fields, basicThrow.getFields());
+        Assertions.assertEquals(fields, compoundThrow.getFields());
     }
 
     @Test
     void storeIndependentFields() {
-        List<Field> fields = new ArrayList<>(
-                TypedFieldTestUtils.getFields("14", "D7")
-        );
-
-        Throw basicThrow = CompoundThrow.of(fields);
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("14", "D7"));
+        Throw compoundThrow = CompoundThrow.of(fields);
 
         fields.remove(1);
 
-        Assertions.assertNotEquals(fields, basicThrow.getFields());
+        Assertions.assertNotEquals(fields, compoundThrow.getFields());
     }
 
     @Test
     void getImmutableFields() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("D14");
-        Throw basicThrow = CompoundThrow.of(fields);
+        Throw compoundThrow = CompoundThrow.of(fields);
 
-        List<Field> storedFields = basicThrow.getFields();
+        List<Field> storedFields = compoundThrow.getFields();
 
-        Assertions.assertThrows(
-                UnsupportedOperationException.class,
-                () -> storedFields.remove(0)
-        );
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedFields.remove(0));
     }
 }

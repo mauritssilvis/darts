@@ -45,10 +45,7 @@ class SimpleThrowTests {
 
         List<Field> storedFields = simpleThrow.getFields();
 
-        Assertions.assertThrows(
-                UnsupportedOperationException.class,
-                () -> storedFields.add(field)
-        );
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedFields.add(field));
     }
 
     @Test
