@@ -75,7 +75,6 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
     private static Node getNode(Collection<? extends Field> fields) {
         List<Integer> scores = fields.stream()
                 .map(Field::getScore)
-                .distinct()
                 .toList();
 
         return BasicNode.of(scores);
