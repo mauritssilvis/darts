@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
 import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
@@ -19,12 +19,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-class CartesianPathFinderTests {
+class CartesianPathfinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
-        PathFinder pathFinder = CartesianPathFinder.of(nodes);
+        Pathfinder pathFinder = CartesianPathfinder.of(nodes);
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertAll(

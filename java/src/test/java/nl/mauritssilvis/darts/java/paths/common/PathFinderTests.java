@@ -6,9 +6,9 @@
 package nl.mauritssilvis.darts.java.paths.common;
 
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
-import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathFinder;
-import nl.mauritssilvis.darts.java.paths.descending.DescendingPathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
+import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathfinder;
+import nl.mauritssilvis.darts.java.paths.descending.DescendingPathfinder;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
 import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
@@ -21,10 +21,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-class PathFinderTests {
+class PathfinderTests {
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFinders")
-    void storeIndependentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
+    @CartesianTest.MethodFactory("withAllPathfinders")
+    void storeIndependentNodes(Function<Collection<Node>, Pathfinder> pathFinderFactory) {
         Collection<Integer> weights = List.of(3, 5, 4);
 
         Collection<Node> nodes = new ArrayList<>(
@@ -33,7 +33,7 @@ class PathFinderTests {
 
         int length = 6;
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(pathFinder.find(length));
 
         nodes.clear();
@@ -44,57 +44,57 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFinders")
-    void handleAbsentNodes(Function<Collection<Node>, PathFinder> pathFinderFactory) {
+    @CartesianTest.MethodFactory("withAllPathfinders")
+    void handleAbsentNodes(Function<Collection<Node>, Pathfinder> pathFinderFactory) {
         Collection<Node> nodes = Collections.emptyList();
         int length = 0;
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndDisconnectedNodes")
+    @CartesianTest.MethodFactory("withAllPathfindersAndDisconnectedNodes")
     void handleDisconnectedNodes(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
         int length = 2;
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndUnreachableLengths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndUnreachableLengths")
     void handleUnreachableLengths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertEquals(0, paths.size());
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndMultiplePaths")
     void countTheSteps(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         int totalSize = PathTestUtils.getTotalSize(paths);
@@ -106,15 +106,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndMultiplePaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndMultiplePaths")
     void getThePathLength(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         int totalLength = PathTestUtils.getTotalLength(paths);
@@ -126,15 +126,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndOneShortPath")
+    @CartesianTest.MethodFactory("withAllPathfindersAndOneShortPath")
     void findOneShortPath(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -145,15 +145,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndTwoShortPaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndTwoShortPaths")
     void findTwoShortPaths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -164,15 +164,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndThreeShortPaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndThreeShortPaths")
     void findThreeShortPaths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -183,15 +183,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndFourShortPaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndFourShortPaths")
     void findFourShortPaths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -202,15 +202,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndSixShortPaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndSixShortPaths")
     void findSixShortPaths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -221,15 +221,15 @@ class PathFinderTests {
     }
 
     @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathFindersAndTwelveShortPaths")
+    @CartesianTest.MethodFactory("withAllPathfindersAndTwelveShortPaths")
     void findTwelveShortPaths(
-            Function<Collection<Node>, PathFinder> pathFinderFactory,
+            Function<Collection<Node>, Pathfinder> pathFinderFactory,
             Collection<Collection<Integer>> weights,
             int length
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
 
-        PathFinder pathFinder = pathFinderFactory.apply(nodes);
+        Pathfinder pathFinder = pathFinderFactory.apply(nodes);
         List<Path> paths = pathFinder.find(length);
 
         long totalMultiplicity = PathTestUtils.getTotalMultiplicity(paths);
@@ -239,17 +239,17 @@ class PathFinderTests {
         );
     }
 
-    private static ArgumentSets withAllPathFinders() {
+    private static ArgumentSets withAllPathfinders() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndDisconnectedNodes() {
+    private static ArgumentSets withAllPathfindersAndDisconnectedNodes() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(Collections.emptyList()),
@@ -260,10 +260,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndUnreachableLengths() {
+    private static ArgumentSets withAllPathfindersAndUnreachableLengths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(List.of(1)),
@@ -278,10 +278,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndMultiplePaths() {
+    private static ArgumentSets withAllPathfindersAndMultiplePaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(List.of(5, 3), List.of(1, 4, 5)),
@@ -292,10 +292,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndOneShortPath() {
+    private static ArgumentSets withAllPathfindersAndOneShortPath() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(List.of(3)),
@@ -311,10 +311,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndTwoShortPaths() {
+    private static ArgumentSets withAllPathfindersAndTwoShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(List.of(1, 3), List.of(1, 3)),
@@ -329,10 +329,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndThreeShortPaths() {
+    private static ArgumentSets withAllPathfindersAndThreeShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         List.of(List.of(4, 3), List.of(4, 3), List.of(3, 4)),
@@ -349,10 +349,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndFourShortPaths() {
+    private static ArgumentSets withAllPathfindersAndFourShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
@@ -367,10 +367,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndSixShortPaths() {
+    private static ArgumentSets withAllPathfindersAndSixShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
@@ -385,10 +385,10 @@ class PathFinderTests {
                 );
     }
 
-    private static ArgumentSets withAllPathFindersAndTwelveShortPaths() {
+    private static ArgumentSets withAllPathfindersAndTwelveShortPaths() {
         return ArgumentSets
                 .argumentsForFirstParameter(
-                        getAllPathFinders()
+                        getAllPathfinders()
                 )
                 .argumentsForNextParameter(
                         (Object) List.of(
@@ -402,10 +402,10 @@ class PathFinderTests {
                 );
     }
 
-    private static List<Function<Collection<Node>, PathFinder>> getAllPathFinders() {
+    private static List<Function<Collection<Node>, Pathfinder>> getAllPathfinders() {
         return List.of(
-                CartesianPathFinder::of,
-                DescendingPathFinder::of
+                CartesianPathfinder::of,
+                DescendingPathfinder::of
         );
     }
 

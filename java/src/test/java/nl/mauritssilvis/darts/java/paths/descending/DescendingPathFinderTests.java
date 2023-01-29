@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.descending;
 
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
 import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-class DescendingPathFinderTests {
+class DescendingPathfinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(
@@ -29,7 +29,7 @@ class DescendingPathFinderTests {
             int totalMultiplicity
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
-        PathFinder pathFinder = DescendingPathFinder.of(nodes);
+        Pathfinder pathFinder = DescendingPathfinder.of(nodes);
         List<Path> paths = pathFinder.find(length);
 
         Assertions.assertAll(

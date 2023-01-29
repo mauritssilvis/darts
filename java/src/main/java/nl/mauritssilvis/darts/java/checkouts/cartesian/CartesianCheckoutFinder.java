@@ -9,9 +9,9 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.cartesian.BasicNode;
-import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathFinder;
+import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.*;
@@ -29,7 +29,7 @@ import java.util.stream.IntStream;
  * Relevant design patterns: Strategy, immutable object, static factory method.
  */
 public final class CartesianCheckoutFinder implements CheckoutFinder {
-    private final PathFinder pathFinder;
+    private final Pathfinder pathFinder;
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
@@ -37,7 +37,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
                 .map(CartesianCheckoutFinder::getNode)
                 .toList();
 
-        pathFinder = CartesianPathFinder.of(nodes);
+        pathFinder = CartesianPathfinder.of(nodes);
 
         scoreMaps = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getScoreMap)

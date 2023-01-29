@@ -16,7 +16,7 @@ import java.util.List;
  * Relevant design pattern: Strategy.
  */
 @FunctionalInterface
-public interface PathFinder {
+public interface Pathfinder {
     /**
      * Finds paths having a specified length.
      *

@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.descending;
 
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code PathFinder} interface that finds paths
+ * An implementation of the {@code Pathfinder} interface that finds paths
  * of a specified length between sequences of nodes that are connected by
  * directed edges with integer weights.
  * <p>
@@ -30,10 +30,10 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant terminology: Subset sum problem.
  */
-public final class DescendingPathFinder implements PathFinder {
+public final class DescendingPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
-    private DescendingPathFinder(Collection<? extends Node> nodes) {
+    private DescendingPathfinder(Collection<? extends Node> nodes) {
         this.nodes = nodes.stream()
                 .map(Node::getWeights)
                 .map(DescendingNode::of)
@@ -41,13 +41,13 @@ public final class DescendingPathFinder implements PathFinder {
     }
 
     /**
-     * Returns a new {@code DescendingPathFinder} for the specified nodes.
+     * Returns a new {@code DescendingPathfinder} for the specified nodes.
      *
      * @param nodes a list of nodes
-     * @return a new {@code DescendingPathFinder} for the specified nodes
+     * @return a new {@code DescendingPathfinder} for the specified nodes
      */
-    public static PathFinder of(Collection<? extends Node> nodes) {
-        return new DescendingPathFinder(nodes);
+    public static Pathfinder of(Collection<? extends Node> nodes) {
+        return new DescendingPathfinder(nodes);
     }
 
     @Override

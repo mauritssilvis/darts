@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
 import nl.mauritssilvis.darts.java.paths.Path;
-import nl.mauritssilvis.darts.java.paths.PathFinder;
+import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code PathFinder} interface that finds paths
+ * An implementation of the {@code Pathfinder} interface that finds paths
  * of a specified length between sequences of nodes that are connected by
  * directed edges with integer weights.
  * <p>
@@ -29,21 +29,21 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant terminology: Subset sum problem.
  */
-public final class CartesianPathFinder implements PathFinder {
+public final class CartesianPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
-    private CartesianPathFinder(Collection<? extends Node> nodes) {
+    private CartesianPathfinder(Collection<? extends Node> nodes) {
         this.nodes = List.copyOf(nodes);
     }
 
     /**
-     * Returns a new {@code CartesianPathFinder} for the specified nodes.
+     * Returns a new {@code CartesianPathfinder} for the specified nodes.
      *
      * @param nodes a list of nodes
-     * @return a new {@code CartesianPathFinder} for the specified nodes
+     * @return a new {@code CartesianPathfinder} for the specified nodes
      */
-    public static PathFinder of(Collection<? extends Node> nodes) {
-        return new CartesianPathFinder(nodes);
+    public static Pathfinder of(Collection<? extends Node> nodes) {
+        return new CartesianPathfinder(nodes);
     }
 
     @Override
