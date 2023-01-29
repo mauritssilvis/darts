@@ -9,6 +9,8 @@ import nl.mauritssilvis.darts.checkouts.java.paths.Path;
 import nl.mauritssilvis.darts.checkouts.java.paths.PathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.cartesian.CartesianPathFinder;
 import nl.mauritssilvis.darts.checkouts.java.paths.descending.DescendingPathFinder;
+import nl.mauritssilvis.darts.checkouts.java.paths.utils.BasicNodeTestUtils;
+import nl.mauritssilvis.darts.checkouts.java.paths.utils.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;

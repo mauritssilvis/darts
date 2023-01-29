@@ -9,7 +9,9 @@ import nl.mauritssilvis.darts.checkouts.java.boards.Field;
 import nl.mauritssilvis.darts.checkouts.java.boards.FieldType;
 import nl.mauritssilvis.darts.checkouts.java.boards.standard.TypedField;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public final class TypedFieldTestUtils {
     private TypedFieldTestUtils() {
