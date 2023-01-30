@@ -83,6 +83,11 @@ public final class GroupedPath implements Path {
     }
 
     @Override
+    public List<Boolean> getGrouping() {
+        return null;
+    }
+
+    @Override
     public long getMultiplicity() {
         if (steps.isEmpty()) {
             return 0;

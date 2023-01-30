@@ -54,6 +54,11 @@ public final class SimplePath implements Path {
     }
 
     @Override
+    public List<Boolean> getGrouping() {
+        return null;
+    }
+
+    @Override
     public long getMultiplicity() {
         return steps.isEmpty() ? 0 : 1;
     }

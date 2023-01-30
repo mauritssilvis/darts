@@ -133,6 +133,87 @@ class GroupedPathTests {
     }
 
     @Test
+    void getTheGroupingForUngroupedSteps() {
+        Collection<Integer> steps = List.of(3, 2);
+        Collection<Boolean> grouping = List.of(false, false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(grouping, path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingForPartlyGroupedSteps() {
+        Collection<Integer> steps = List.of(4, 3, 2, 2);
+        Collection<Boolean> grouping = List.of(false, false, true, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(grouping, path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingForGroupedSteps() {
+        Collection<Integer> steps = List.of(7, 8);
+        Collection<Boolean> grouping = List.of(false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(grouping, path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithSingletonInput() {
+        Collection<Integer> steps = Collections.singletonList(7);
+        Collection<Boolean> grouping = Collections.singletonList(false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(grouping, path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithEmptyInput() {
+        Collection<Integer> steps = Collections.emptyList();
+        Collection<Boolean> grouping = Collections.emptyList();
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(grouping, path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithAGroupedElement() {
+        Collection<Integer> steps = Collections.singletonList(9);
+        Collection<Boolean> grouping = Collections.singletonList(true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(List.of(false), path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithAGroupedFirstElement() {
+        Collection<Integer> steps = List.of(1, 2);
+        Collection<Boolean> grouping = List.of(true, false);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(List.of(false, false), path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithAShorterGroupingSignature() {
+        Collection<Integer> steps = List.of(4, 3, 2);
+        Collection<Boolean> grouping = List.of(false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(List.of(false, true, false), path.getGrouping());
+    }
+
+    @Test
+    void getTheGroupingWithALongerGroupingSignature() {
+        Collection<Integer> steps = List.of(1, 2);
+        Collection<Boolean> grouping = List.of(false, false, true, false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        Assertions.assertEquals(List.of(false, false), path.getGrouping());
+    }
+
+    @Test
     void getTheGroupsForUngroupedSteps() {
         Collection<Integer> steps = List.of(3, 2);
         Collection<Boolean> grouping = List.of(false, false);

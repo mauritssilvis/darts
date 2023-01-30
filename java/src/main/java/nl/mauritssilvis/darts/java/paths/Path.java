@@ -44,6 +44,14 @@ public interface Path {
     List<Group> getGroups();
 
     /**
+     * Gets the grouping signature of this path.
+     *
+     * @return a list of booleans representing the grouping signature of this
+     * path
+     */
+    List<Boolean> getGrouping();
+
+    /**
      * Gets the multiplicity of this path.
      * <p>
      * Simple paths, which represent a single sequence of steps, have a unit
