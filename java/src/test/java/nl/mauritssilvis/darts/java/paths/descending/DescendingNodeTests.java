@@ -26,6 +26,26 @@ class DescendingNodeTests {
     }
 
     @Test
+    void storeUniqueWeights() {
+        Collection<Integer> weights = List.of(5, 5, 6, 8, 6);
+        Node node = DescendingNode.of(weights);
+
+        List<Integer> uniqueWeights = List.of(8, 6, 5);
+
+        Assertions.assertEquals(uniqueWeights, node.getWeights());
+    }
+
+    @Test
+    void storeStrictlyDescendingWeights() {
+        Collection<Integer> weights = List.of(1, 4, 5, 5, 4, -1);
+        Node node = DescendingNode.of(weights);
+
+        List<Integer> descendingWeights = List.of(5, 4, 1, -1);
+
+        Assertions.assertEquals(descendingWeights, node.getWeights());
+    }
+
+    @Test
     void getTheWeights() {
         Collection<Integer> weights = List.of(7, 6, 5);
         Node node = DescendingNode.of(weights);
@@ -57,26 +77,6 @@ class DescendingNodeTests {
         List<Integer> storedWeights = node.getWeights();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(0, 7));
-    }
-
-    @Test
-    void storeUniqueWeights() {
-        Collection<Integer> weights = List.of(5, 5, 6, 8, 6);
-        Node node = DescendingNode.of(weights);
-
-        List<Integer> uniqueWeights = List.of(8, 6, 5);
-
-        Assertions.assertEquals(uniqueWeights, node.getWeights());
-    }
-
-    @Test
-    void storeStrictlyDescendingWeights() {
-        Collection<Integer> weights = List.of(1, 4, 5, 5, 4, -1);
-        Node node = DescendingNode.of(weights);
-
-        List<Integer> descendingWeights = List.of(5, 4, 1, -1);
-
-        Assertions.assertEquals(descendingWeights, node.getWeights());
     }
 
     @Test

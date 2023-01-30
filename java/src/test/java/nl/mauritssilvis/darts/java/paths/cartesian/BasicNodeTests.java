@@ -26,6 +26,16 @@ class BasicNodeTests {
     }
 
     @Test
+    void storeUniqueWeights() {
+        Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
+        Node node = BasicNode.of(weights);
+
+        List<Integer> uniqueWeights = List.of(7, 8, 9);
+
+        Assertions.assertEquals(uniqueWeights, node.getWeights());
+    }
+
+    @Test
     void getTheWeights() {
         Collection<Integer> weights = List.of(4, 5, 6);
         Node node = BasicNode.of(weights);
@@ -57,16 +67,6 @@ class BasicNodeTests {
         List<Integer> storedWeights = node.getWeights();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(2, 1));
-    }
-
-    @Test
-    void storeUniqueWeights() {
-        Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
-        Node node = BasicNode.of(weights);
-
-        List<Integer> uniqueWeights = List.of(7, 8, 9);
-
-        Assertions.assertEquals(uniqueWeights, node.getWeights());
     }
 
     @Test
