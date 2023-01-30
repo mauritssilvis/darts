@@ -100,6 +100,6 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
                 .map(CompoundThrow::of)
                 .toList();
 
-        return GroupedCheckout.of(throwList, Collections.emptyList());
+        return GroupedCheckout.of(throwList, path.getGrouping());
     }
 }
