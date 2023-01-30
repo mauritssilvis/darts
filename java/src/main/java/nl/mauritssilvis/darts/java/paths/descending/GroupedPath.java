@@ -96,12 +96,6 @@ public final class GroupedPath implements Path {
     }
 
     private List<List<Integer>> getGroups() {
-        if (steps.isEmpty()) {
-            return Collections.emptyList();
-        } else if (steps.size() == 1) {
-            return Collections.singletonList(steps);
-        }
-
         List<List<Integer>> groups = new ArrayList<>();
 
         List<Integer> values = new ArrayList<>();
@@ -121,9 +115,7 @@ public final class GroupedPath implements Path {
     }
 
     private static long countPermutations(Collection<Integer> group) {
-        if (group.isEmpty()) {
-            return 0;
-        } else if (group.size() == 1) {
+        if (group.size() == 1) {
             return 1;
         }
 
