@@ -206,11 +206,167 @@ class GroupedCheckoutTests {
 
     private static Stream<Arguments> withMultiplicityData() {
         return Stream.of(
+                // Empty throws
                 Arguments.of(
                         Collections.emptyList(), Collections.emptyList(), 0
                 ),
                 Arguments.of(
+                        List.of(Collections.emptyList()), List.of(false), 0
+                ),
+                Arguments.of(
+                        List.of(Collections.emptyList(), List.of("1")), List.of(false, true), 0
+                ),
+                // Ungrouped, simple throws
+                Arguments.of(
                         List.of(List.of("1")), List.of(false), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("1"), List.of("2")), List.of(false, false, true), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("1", "1"), List.of("1")), List.of(false, false), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("1"), List.of("2"), List.of("3")), List.of(false, false), 1
+                ),
+                // Ungrouped, compound throws
+                Arguments.of(
+                        List.of(List.of("D7", "14")), List.of(false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("12", "D6", "T4")), List.of(false), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("12", "D6", "T4", "Q3", "D6")), List.of(false, true), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("D10", "20"), List.of("T3", "9")), List.of(false, false), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("15", "T5", "T5"), List.of("15", "T5")), List.of(false), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("10", "D5"), List.of("T19", "T19")), List.of(false, false, true), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("18"), List.of("D9", "18")), List.of(false, false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("3", "3"), List.of("T3", "9")), List.of(false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("Q2", "8", "D4"), List.of("6", "T2", "D3")), List.of(false, false), 9
+                ),
+                Arguments.of(
+                        List.of(List.of("11"), List.of("6", "T2", "T2", "D3")), List.of(false, false), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("2", "D1"), List.of("2"), List.of("3")), List.of(false, false, false), 2
+                ),
+                // Partly grouped, simple throws
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("4")), List.of(false, true, false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("4"), List.of("6")), List.of(false, true), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("6"), List.of("7")),
+                        List.of(false, true, false, true),
+                        4
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("8"), List.of("8")),
+                        List.of(false, true, false, true),
+                        2
+                ),
+                Arguments.of(
+                        List.of(List.of("3"), List.of("3"), List.of("9"), List.of("9")),
+                        List.of(false, true, false, true),
+                        1
+                ),
+                // Partly grouped, compound throws
+                Arguments.of(
+                        List.of(List.of("2", "D1"), List.of("4", "D2"), List.of("18", "T6")),
+                        List.of(false, true, false),
+                        16
+                ),
+                Arguments.of(
+                        List.of(List.of("2", "D1"), List.of("4", "D2"), List.of("7")), List.of(false, true, false), 8
+                ),
+                Arguments.of(
+                        List.of(List.of("8", "Q2"), List.of("8"), List.of("6", "D3")),
+                        List.of(false, true, false, true),
+                        6
+                ),
+                Arguments.of(
+                        List.of(List.of("18", "D9", "T6"), List.of("12", "T4", "Q3"), List.of("18")),
+                        List.of(false, false, true),
+                        18
+                ),
+                Arguments.of(
+                        List.of(List.of("6", "D3", "T2"), List.of("6"), List.of("18", "T6")),
+                        List.of(false, true),
+                        10
+                ),
+                Arguments.of(
+                        List.of(List.of("6", "D3"), List.of("18", "T6"), List.of("18", "T6")),
+                        List.of(false, false, true),
+                        8
+                ),
+                Arguments.of(
+                        List.of(List.of("6", "D3"), List.of("6", "T2"), List.of("6", "T2", "D3", "D3")),
+                        List.of(false, true),
+                        21
+                ),
+                Arguments.of(
+                        List.of(List.of("D1", "2"), List.of("2"), List.of("4", "D2"), List.of("8", "D4")),
+                        List.of(false, false, true, false),
+                        16
+                ),
+                // Fully grouped, simple throws
+                Arguments.of(
+                        List.of(List.of("5"), List.of("7")), List.of(false, true), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("2"), List.of("2")), List.of(false, true, false), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("5"), List.of("7"), List.of("9")), List.of(true, true, true), 6
+                ),
+                Arguments.of(
+                        List.of(List.of("8"), List.of("6"), List.of("8")), List.of(false, true, true), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("9"), List.of("9"), List.of("9")), List.of(false, true, true, false), 1
+                ),
+                // Fully grouped, compound throws
+                Arguments.of(
+                        List.of(List.of("D10", "20"), List.of("D5", "10")), List.of(false, true), 8
+                ),
+                Arguments.of(
+                        List.of(List.of("D5", "D10"), List.of("D5", "10")), List.of(false, true), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("D5", "D10"), List.of("D5")), List.of(false, true), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("8", "D4"), List.of("10", "D5"), List.of("12", "D6")),
+                        List.of(false, true, true),
+                        48
+                ),
+                Arguments.of(
+                        List.of(List.of("4", "D2"), List.of("6", "D3"), List.of("10")), List.of(true, true, true), 24
+                ),
+                Arguments.of(
+                        List.of(List.of("12", "D6"), List.of("12", "T4"), List.of("D6", "Q3")),
+                        List.of(false, true, true, false),
+                        36
+                ),
+                Arguments.of(
+                        List.of(List.of("4", "D2"), List.of("4", "D2"), List.of("4", "D2")),
+                        List.of(false, true, true),
+                        8
                 )
         );
     }
