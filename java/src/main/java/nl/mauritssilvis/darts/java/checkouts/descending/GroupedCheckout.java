@@ -69,7 +69,7 @@ public final class GroupedCheckout implements Checkout {
         List<List<Throw>> groups = getGroups();
 
         return groups.stream()
-                .mapToLong(GroupedCheckout::countPermutations)
+                .mapToLong(GroupedCheckout::countGroupPermutations)
                 .reduce(1, (prod, e) -> prod * e);
     }
 
@@ -113,7 +113,7 @@ public final class GroupedCheckout implements Checkout {
         return groups;
     }
 
-    private static long countPermutations(List<? extends Throw> group) {
+    private static long countGroupPermutations(List<? extends Throw> group) {
         if (group.size() == 1) {
             return group.get(0).getFields().size();
         }
@@ -134,7 +134,6 @@ public final class GroupedCheckout implements Checkout {
         List<List<Field>> simpleGroups = new ArrayList<>();
 
         List<Field> simpleGroup = new ArrayList<>();
-
         IntStream.range(0, group.size())
                 .forEach(i -> simpleGroup.add(null));
 
@@ -148,7 +147,7 @@ public final class GroupedCheckout implements Checkout {
             int level,
             int maxLevel,
             List<Field> simpleGroup,
-            List<List<Field>> simpleGroups
+            List<? super List<Field>> simpleGroups
     ) {
         if (level == maxLevel) {
             simpleGroups.add(new ArrayList<>(simpleGroup));
@@ -168,7 +167,7 @@ public final class GroupedCheckout implements Checkout {
 
         long denominator = frequencies.values().stream()
                 .mapToLong(GroupedCheckout::factorial)
-                .reduce(1, (p, e) -> p * e);
+                .reduce(1, (prod, e) -> prod * e);
 
         long numerator = factorial(fields.size());
 

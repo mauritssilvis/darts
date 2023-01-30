@@ -123,7 +123,7 @@ public final class GroupedPath implements Path {
 
         long denominator = frequencies.values().stream()
                 .mapToLong(GroupedPath::factorial)
-                .reduce(1, (p, e) -> p * e);
+                .reduce(1, (prod, e) -> prod * e);
 
         long numerator = factorial(group.size());
 
