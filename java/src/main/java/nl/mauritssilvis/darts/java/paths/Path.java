@@ -40,6 +40,7 @@ public interface Path {
      *
      * @return a list of the groups this path consists of
      */
+    @Deprecated
     List<Group> getGroups();
 
     /**
