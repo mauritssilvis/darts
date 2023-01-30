@@ -15,10 +15,7 @@ import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingNode;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingPathfinder;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -89,6 +86,7 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
     private static Map<Integer, List<Field>> getScoreMap(Collection<? extends Field> fields) {
         return fields.stream()
                 .distinct()
+                .sorted(Comparator.comparing(Field::getFieldType))
                 .collect(Collectors.groupingBy(Field::getScore));
     }
 
