@@ -229,6 +229,62 @@ class GroupedCheckoutTests {
                 Arguments.of(
                         List.of(List.of("1"), List.of("2"), List.of("3")), List.of(false, false), 1
                 ),
+                // Ungrouped, compound throws
+                Arguments.of(
+                        List.of(List.of("D7", "14")), List.of(false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("12", "D6", "T4")), List.of(false), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("12", "D6", "T4", "Q3", "D6")), List.of(false, true), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("D10", "20"), List.of("T3", "9")), List.of(false, false), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("15", "T5", "T5"), List.of("15", "T5")), List.of(false), 4
+                ),
+                Arguments.of(
+                        List.of(List.of("10", "D5"), List.of("T19", "T19")), List.of(false, false, true), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("18"), List.of("D9", "18")), List.of(false, false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("3", "3"), List.of("T3", "9")), List.of(false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("Q2", "8", "D4"), List.of("6", "T2", "D3")), List.of(false, false), 9
+                ),
+                Arguments.of(
+                        List.of(List.of("11"), List.of("6", "T2", "T2", "D3")), List.of(false, false), 3
+                ),
+                Arguments.of(
+                        List.of(List.of("2", "D1"), List.of("2"), List.of("3")), List.of(false, false, false), 2
+                ),
+                // Partly grouped, simple throws
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("4")), List.of(false, true, false), 2
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("4"), List.of("6")), List.of(false, true), 1
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("6"), List.of("7")),
+                        List.of(false, true, false, true),
+                        4
+                ),
+                Arguments.of(
+                        List.of(List.of("4"), List.of("5"), List.of("8"), List.of("8")),
+                        List.of(false, true, false, true),
+                        2
+                ),
+                Arguments.of(
+                        List.of(List.of("3"), List.of("3"), List.of("9"), List.of("9")),
+                        List.of(false, true, false, true),
+                        1
+                ),
                 Arguments.of(
                         List.of(
                                 List.of("T20"),
@@ -348,62 +404,6 @@ class GroupedCheckoutTests {
                         ),
                         List.of(false, true, true, true, true, true, true, true, false),
                         560
-                ),
-                // Ungrouped, compound throws
-                Arguments.of(
-                        List.of(List.of("D7", "14")), List.of(false), 2
-                ),
-                Arguments.of(
-                        List.of(List.of("12", "D6", "T4")), List.of(false), 3
-                ),
-                Arguments.of(
-                        List.of(List.of("12", "D6", "T4", "Q3", "D6")), List.of(false, true), 4
-                ),
-                Arguments.of(
-                        List.of(List.of("D10", "20"), List.of("T3", "9")), List.of(false, false), 4
-                ),
-                Arguments.of(
-                        List.of(List.of("15", "T5", "T5"), List.of("15", "T5")), List.of(false), 4
-                ),
-                Arguments.of(
-                        List.of(List.of("10", "D5"), List.of("T19", "T19")), List.of(false, false, true), 2
-                ),
-                Arguments.of(
-                        List.of(List.of("18"), List.of("D9", "18")), List.of(false, false), 2
-                ),
-                Arguments.of(
-                        List.of(List.of("3", "3"), List.of("T3", "9")), List.of(false), 2
-                ),
-                Arguments.of(
-                        List.of(List.of("Q2", "8", "D4"), List.of("6", "T2", "D3")), List.of(false, false), 9
-                ),
-                Arguments.of(
-                        List.of(List.of("11"), List.of("6", "T2", "T2", "D3")), List.of(false, false), 3
-                ),
-                Arguments.of(
-                        List.of(List.of("2", "D1"), List.of("2"), List.of("3")), List.of(false, false, false), 2
-                ),
-                // Partly grouped, simple throws
-                Arguments.of(
-                        List.of(List.of("4"), List.of("5"), List.of("4")), List.of(false, true, false), 2
-                ),
-                Arguments.of(
-                        List.of(List.of("4"), List.of("4"), List.of("6")), List.of(false, true), 1
-                ),
-                Arguments.of(
-                        List.of(List.of("4"), List.of("5"), List.of("6"), List.of("7")),
-                        List.of(false, true, false, true),
-                        4
-                ),
-                Arguments.of(
-                        List.of(List.of("4"), List.of("5"), List.of("8"), List.of("8")),
-                        List.of(false, true, false, true),
-                        2
-                ),
-                Arguments.of(
-                        List.of(List.of("3"), List.of("3"), List.of("9"), List.of("9")),
-                        List.of(false, true, false, true),
-                        1
                 ),
                 // Partly grouped, compound throws
                 Arguments.of(
