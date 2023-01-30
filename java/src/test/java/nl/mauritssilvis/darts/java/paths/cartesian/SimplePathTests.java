@@ -5,7 +5,6 @@
 
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
-import nl.mauritssilvis.darts.java.paths.Group;
 import nl.mauritssilvis.darts.java.paths.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -113,12 +112,12 @@ class SimplePathTests {
         Collection<Integer> steps = List.of(3, 6);
         Path path = SimplePath.of(steps);
 
-        List<Group> groups = path.getGroups();
+        List<List<Integer>> groups = path.getGroups();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(steps.size(), groups.size()),
-                () -> Assertions.assertEquals(List.of(3), groups.get(0).getValues()),
-                () -> Assertions.assertEquals(List.of(6), groups.get(1).getValues())
+                () -> Assertions.assertEquals(List.of(3), groups.get(0)),
+                () -> Assertions.assertEquals(List.of(6), groups.get(1))
         );
     }
 
@@ -127,7 +126,7 @@ class SimplePathTests {
         Collection<Integer> steps = Collections.singletonList(2);
         Path path = SimplePath.of(steps);
 
-        List<Group> groups = path.getGroups();
+        List<List<Integer>> groups = path.getGroups();
 
         Assertions.assertEquals(1, groups.size());
     }
@@ -137,7 +136,7 @@ class SimplePathTests {
         Collection<Integer> steps = Collections.emptyList();
         Path path = SimplePath.of(steps);
 
-        List<Group> groups = path.getGroups();
+        List<List<Integer>> groups = path.getGroups();
 
         Assertions.assertEquals(0, groups.size());
     }

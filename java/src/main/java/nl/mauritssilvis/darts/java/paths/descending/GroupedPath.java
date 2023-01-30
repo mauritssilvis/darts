@@ -5,13 +5,11 @@
 
 package nl.mauritssilvis.darts.java.paths.descending;
 
-import nl.mauritssilvis.darts.java.paths.Group;
 import nl.mauritssilvis.darts.java.paths.Path;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -57,27 +55,27 @@ public final class GroupedPath implements Path {
     }
 
     @Override
-    public List<Group> getGroups() {
+    public List<List<Integer>> getGroups() {
         if (steps.isEmpty()) {
             return Collections.emptyList();
         } else if (steps.size() == 1) {
-            return List.of(ExtendedGroup.of(steps));
+            return Collections.singletonList(steps);
         }
 
-        List<Group> groups = new ArrayList<>();
+        List<List<Integer>> groups = new ArrayList<>();
 
-        Collection<Integer> values = new ArrayList<>();
+        List<Integer> values = new ArrayList<>();
 
         for (int i = 0; i < steps.size(); i++) {
             if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
-                groups.add(ExtendedGroup.of(values));
+                groups.add(values);
                 values = new ArrayList<>();
             }
 
             values.add(steps.get(i));
         }
 
-        groups.add(ExtendedGroup.of(values));
+        groups.add(values);
 
         return groups;
     }
@@ -95,10 +93,10 @@ public final class GroupedPath implements Path {
             return 1;
         }
 
-        List<Group> groups = getGroups();
+        List<List<Integer>> groups = getGroups();
 
         return groups.stream()
-                .mapToLong(Group::countPermutations)
+                .mapToLong(GroupedPath::countPermutations)
                 .reduce(1, (prod, e) -> prod * e);
     }
 
@@ -121,5 +119,44 @@ public final class GroupedPath implements Path {
                 .forEach(i -> output.add(false));
 
         return Collections.unmodifiableList(output);
+    }
+
+    private static long countPermutations(Collection<Integer> group) {
+        if (group.isEmpty()) {
+            return 0;
+        } else if (group.size() == 1) {
+            return 1;
+        }
+
+        Map<Integer, Long> frequencies = getFrequencies(group);
+
+        long denominator = frequencies.values().stream()
+                .mapToLong(GroupedPath::factorial)
+                .reduce(1, (p, e) -> p * e);
+
+        long numerator = factorial(group.size());
+
+        return numerator / denominator;
+    }
+
+    private static Map<Integer, Long> getFrequencies(Collection<Integer> group) {
+        return group.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Function.identity(),
+                                HashMap::new,
+                                Collectors.counting()
+                        )
+                );
+    }
+
+    private static long factorial(long in) {
+        long out = 1;
+
+        for (int i = 2; i <= in; i++) {
+            out *= i;
+        }
+
+        return out;
     }
 }

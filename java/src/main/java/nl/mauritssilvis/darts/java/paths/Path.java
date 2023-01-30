@@ -41,7 +41,7 @@ public interface Path {
      * @return a list of the groups this path consists of
      */
     @Deprecated
-    List<Group> getGroups();
+    List<List<Integer>> getGroups();
 
     /**
      * Gets the grouping signature of this path.

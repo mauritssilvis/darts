@@ -5,10 +5,10 @@
 
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
-import nl.mauritssilvis.darts.java.paths.Group;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -47,9 +47,9 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public List<Group> getGroups() {
+    public List<List<Integer>> getGroups() {
         return steps.stream()
-                .map(SimpleGroup::of)
+                .map(Collections::singletonList)
                 .toList();
     }
 
