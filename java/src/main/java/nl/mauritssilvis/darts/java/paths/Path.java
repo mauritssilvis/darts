@@ -45,6 +45,9 @@ public interface Path {
 
     /**
      * Gets the grouping signature of this path.
+     * <p>
+     * The grouping signature states for each step whether it belongs to a group
+     * with the previous step.
      *
      * @return a list of booleans representing the grouping signature of this
      * path
