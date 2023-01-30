@@ -8,7 +8,6 @@ package nl.mauritssilvis.darts.java.paths.cartesian;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
