@@ -47,11 +47,6 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public int countGroups() {
-        return steps.size();
-    }
-
-    @Override
     public List<Group> getGroups() {
         return steps.stream()
                 .map(SimpleGroup::of)

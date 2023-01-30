@@ -58,13 +58,6 @@ public final class GroupedPath implements Path {
     }
 
     @Override
-    public int countGroups() {
-        return (int) grouping.stream()
-                .filter(Predicate.isEqual(false))
-                .count();
-    }
-
-    @Override
     public List<Group> getGroups() {
         if (steps.isEmpty()) {
             return Collections.emptyList();

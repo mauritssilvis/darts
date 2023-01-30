@@ -133,69 +133,6 @@ class GroupedPathTests {
     }
 
     @Test
-    void countTheGroupsForUngroupedSteps() {
-        Collection<Integer> steps = List.of(6, 7, 8, 9);
-        Collection<Boolean> grouping = List.of(false, false, false, false);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(4, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsForPartlyGroupedSteps() {
-        Collection<Integer> steps = List.of(1, 2, 3);
-        Collection<Boolean> grouping = List.of(false, true, false);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(2, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsForGroupedSteps() {
-        Collection<Integer> steps = List.of(2, 5, 6);
-        Collection<Boolean> grouping = List.of(false, true, true);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(1, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsWithSingletonInput() {
-        Collection<Integer> steps = Collections.singletonList(5);
-        Collection<Boolean> grouping = Collections.singletonList(false);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(1, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsWithEmptyInput() {
-        Collection<Integer> steps = Collections.emptyList();
-        Collection<Boolean> grouping = Collections.emptyList();
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(0, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsWithAShorterGroupingSignature() {
-        Collection<Integer> steps = List.of(5, 6, 7, 8);
-        Collection<Boolean> grouping = List.of(true, false);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(4, path.countGroups());
-    }
-
-    @Test
-    void countTheGroupsWithALongerGroupingSignature() {
-        Collection<Integer> steps = List.of(5, 7);
-        Collection<Boolean> grouping = List.of(false, true, true, false, true);
-        Path path = GroupedPath.of(steps, grouping);
-
-        Assertions.assertEquals(1, path.countGroups());
-    }
-
-    @Test
     void getTheGroupsForUngroupedSteps() {
         Collection<Integer> steps = List.of(3, 2);
         Collection<Boolean> grouping = List.of(false, false);

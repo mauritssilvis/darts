@@ -36,19 +36,6 @@ public interface Path {
     List<Integer> getSteps();
 
     /**
-     * Gets the number of groups this path consists of.
-     * <p>
-     * For a simple path, the number of groups equals the number of steps. Paths
-     * with grouped steps have a smaller number of groups.
-     *
-     * @return the number of groups this path consists of
-     * @deprecated Replaced by calling {@link List#size()} on the return value
-     * of {@link #getGroups()}.
-     */
-    @Deprecated
-    int countGroups();
-
-    /**
      * Gets the groups this path consists of.
      *
      * @return a list of the groups this path consists of
