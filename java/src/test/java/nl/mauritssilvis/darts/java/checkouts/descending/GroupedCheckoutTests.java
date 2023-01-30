@@ -229,6 +229,126 @@ class GroupedCheckoutTests {
                 Arguments.of(
                         List.of(List.of("1"), List.of("2"), List.of("3")), List.of(false, false), 1
                 ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("D12")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        8
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T18"),
+                                List.of("D15")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D15")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T17"),
+                                List.of("D18")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        168
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T18"),
+                                List.of("D18")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T18"),
+                                List.of("D25"),
+                                List.of("D20")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        336
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T18"),
+                                List.of("D25"),
+                                List.of("D25"),
+                                List.of("D25")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        840
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D25"),
+                                List.of("D25"),
+                                List.of("D25")
+                        ),
+                        List.of(false, true, true, true, true, true, true, true, false),
+                        560
+                ),
                 // Ungrouped, compound throws
                 Arguments.of(
                         List.of(List.of("D7", "14")), List.of(false), 2
