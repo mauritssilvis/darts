@@ -12,6 +12,7 @@ import java.util.List;
  * <p>
  * Relevant design pattern: Immutable interface.
  */
+@Deprecated
 public interface Group {
     /**
      * Gets the values of this group.
