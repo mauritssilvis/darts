@@ -29,16 +29,6 @@ public interface Path {
     int getLength();
 
     /**
-     * Gets the number of steps of this path.
-     *
-     * @return the number of steps of this path
-     * @deprecated Replaced by calling {@link List#size()} on the return value
-     * of {@link #getSteps()}.
-     */
-    @Deprecated
-    int countSteps();
-
-    /**
      * Gets the steps of this path.
      *
      * @return a list of the steps of this path

@@ -87,26 +87,6 @@ class PathfinderTests {
 
     @CartesianTest
     @CartesianTest.MethodFactory("withAllPathfindersAndMultiplePaths")
-    void countTheSteps(
-            Function<Collection<Node>, Pathfinder> pathfinderFactory,
-            Collection<Collection<Integer>> weights,
-            int length
-    ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
-
-        Pathfinder pathfinder = pathfinderFactory.apply(nodes);
-        List<Path> paths = pathfinder.find(length);
-
-        int totalSize = PathTestUtils.countTotalSteps(paths);
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).countSteps()),
-                () -> Assertions.assertEquals(nodes.size(), totalSize / paths.size())
-        );
-    }
-
-    @CartesianTest
-    @CartesianTest.MethodFactory("withAllPathfindersAndMultiplePaths")
     void getThePathLength(
             Function<Collection<Node>, Pathfinder> pathfinderFactory,
             Collection<Collection<Integer>> weights,

@@ -42,11 +42,6 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public int countSteps() {
-        return steps.size();
-    }
-
-    @Override
     public List<Integer> getSteps() {
         return steps;
     }

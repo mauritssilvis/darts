@@ -20,12 +20,6 @@ public final class PathTestUtils {
                 .sum();
     }
 
-    public static int countTotalSteps(Collection<? extends Path> paths) {
-        return paths.stream()
-                .mapToInt(Path::countSteps)
-                .sum();
-    }
-
     public static List<List<Integer>> getAllSteps(Collection<? extends Path> paths) {
         return paths.stream()
                 .map(Path::getSteps)

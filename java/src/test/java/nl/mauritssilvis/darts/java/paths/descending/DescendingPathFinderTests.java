@@ -35,8 +35,6 @@ class DescendingPathfinderTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
-                () -> Assertions.assertEquals(nodes.size(), paths.get(0).countSteps()),
-                () -> Assertions.assertEquals(nodes.size(), PathTestUtils.countTotalSteps(paths) / paths.size()),
                 () -> Assertions.assertEquals(steps.size(), paths.size()),
                 () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths)),
                 () -> Assertions.assertEquals(totalMultiplicity, PathTestUtils.getTotalMultiplicity(paths))
