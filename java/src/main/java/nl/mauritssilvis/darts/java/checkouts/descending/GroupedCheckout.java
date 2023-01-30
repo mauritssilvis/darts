@@ -8,7 +8,6 @@ package nl.mauritssilvis.darts.java.checkouts.descending;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
-import nl.mauritssilvis.darts.java.paths.descending.GroupedPath;
 
 import java.util.*;
 import java.util.function.Function;
@@ -165,12 +164,6 @@ public final class GroupedCheckout implements Checkout {
     }
 
     private static long countFieldPermutations(Collection<? extends Field> fields) {
-        if (fields.isEmpty()) {
-            return 0;
-        } else if (fields.size() == 1) {
-            return 1;
-        }
-
         Map<Field, Long> frequencies = getFrequencies(fields);
 
         long denominator = frequencies.values().stream()
