@@ -465,10 +465,10 @@ class GroupedCheckoutTests {
                         List.of(List.of("D10", "20"), List.of("D5", "10")), List.of(false, true), 8
                 ),
                 Arguments.of(
-                        List.of(List.of("D5", "D10"), List.of("D5", "10")), List.of(false, true), 4
+                        List.of(List.of("D5", "10"), List.of("D5", "10")), List.of(false, true), 4
                 ),
                 Arguments.of(
-                        List.of(List.of("D5", "D10"), List.of("D5")), List.of(false, true), 3
+                        List.of(List.of("D5", "10"), List.of("D5")), List.of(false, true), 3
                 ),
                 Arguments.of(
                         List.of(List.of("8", "D4"), List.of("10", "D5"), List.of("12", "D6")),
