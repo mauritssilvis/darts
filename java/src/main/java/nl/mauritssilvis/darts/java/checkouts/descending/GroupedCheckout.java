@@ -54,11 +54,6 @@ public final class GroupedCheckout implements Checkout {
     }
 
     @Override
-    public int countThrows() {
-        return throwList.size();
-    }
-
-    @Override
     public List<Throw> getThrows() {
         return throwList;
     }

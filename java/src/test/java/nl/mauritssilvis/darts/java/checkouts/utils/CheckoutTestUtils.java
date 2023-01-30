@@ -22,12 +22,6 @@ public final class CheckoutTestUtils {
                 .sum();
     }
 
-    public static int countTotalThrows(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .mapToInt(Checkout::countThrows)
-                .sum();
-    }
-
     public static long getTotalMultiplicity(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()
                 .mapToLong(Checkout::getMultiplicity)

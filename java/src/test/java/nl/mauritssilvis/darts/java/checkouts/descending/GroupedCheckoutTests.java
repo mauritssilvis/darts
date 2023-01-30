@@ -80,63 +80,6 @@ class GroupedCheckoutTests {
     }
 
     @Test
-    void countTheThrows() {
-        Collection<Collection<String>> namesPerThrow = List.of(List.of("D10", "20"), List.of("D9"));
-        List<Throw> throwList = getThrows(namesPerThrow);
-
-        Collection<Boolean> grouping = List.of(false, false);
-
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        Assertions.assertEquals(throwList.size(), checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithSingletonInput() {
-        Collection<Collection<String>> namesPerThrow = List.of(List.of("Q4", "D8"));
-        List<Throw> throwList = getThrows(namesPerThrow);
-
-        Collection<Boolean> grouping = Collections.singletonList(false);
-
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        Assertions.assertEquals(1, checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithEmptyInput() {
-        Collection<Throw> throwList = Collections.emptyList();
-        Collection<Boolean> grouping = Collections.emptyList();
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        Assertions.assertEquals(0, checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithAShorterGroupingSignature() {
-        Collection<Collection<String>> namesPerThrow = List.of(List.of("15"), List.of("D9", "18"));
-        List<Throw> throwList = getThrows(namesPerThrow);
-
-        Collection<Boolean> grouping = Collections.emptyList();
-
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        Assertions.assertEquals(throwList.size(), checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithALongerGroupingSignature() {
-        Collection<Collection<String>> namesPerThrow = List.of(List.of("9"), List.of("T3", "9"));
-        List<Throw> throwList = getThrows(namesPerThrow);
-
-        Collection<Boolean> grouping = List.of(true, false, false);
-
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        Assertions.assertEquals(throwList.size(), checkout.countThrows());
-    }
-
-    @Test
     void getTheThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("Q3", "T4"), List.of("8"));
         List<Throw> throwList = getThrows(namesPerThrow);

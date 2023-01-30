@@ -50,11 +50,6 @@ public final class SimpleCheckout implements Checkout {
     }
 
     @Override
-    public int countThrows() {
-        return throwList.size();
-    }
-
-    @Override
     public List<Throw> getThrows() {
         return throwList;
     }

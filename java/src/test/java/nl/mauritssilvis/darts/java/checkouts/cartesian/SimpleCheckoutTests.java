@@ -43,30 +43,6 @@ class SimpleCheckoutTests {
     }
 
     @Test
-    void countTheThrows() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("D3", "D2", "13");
-        Checkout checkout = SimpleCheckout.of(fields);
-
-        Assertions.assertEquals(fields.size(), checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("Q2");
-        Checkout checkout = SimpleCheckout.of(fields);
-
-        Assertions.assertEquals(1, checkout.countThrows());
-    }
-
-    @Test
-    void countTheThrowsWithEmptyInput() {
-        Collection<Field> fields = Collections.emptyList();
-        Checkout checkout = SimpleCheckout.of(fields);
-
-        Assertions.assertEquals(0, checkout.countThrows());
-    }
-
-    @Test
     void getTheThrows() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("Q2", "T7", "D19");
         Checkout checkout = SimpleCheckout.of(fields);
