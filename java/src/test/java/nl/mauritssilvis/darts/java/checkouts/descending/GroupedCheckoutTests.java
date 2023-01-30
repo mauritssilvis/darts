@@ -185,7 +185,7 @@ class GroupedCheckoutTests {
     @ParameterizedTest
     @MethodSource("withMultiplicityData")
     void getTheMultiplicity(
-            Collection<Collection<String>> namesPerThrow,
+            Collection<? extends Collection<String>> namesPerThrow,
             Collection<Boolean> grouping,
             int multiplicity
     ) {

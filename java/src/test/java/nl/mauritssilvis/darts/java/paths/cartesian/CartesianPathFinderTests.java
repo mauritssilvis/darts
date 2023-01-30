@@ -36,7 +36,11 @@ class CartesianPathfinderTests {
 
     @ParameterizedTest
     @MethodSource("withPathData")
-    void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {
+    void findPaths(
+            Collection<? extends Collection<Integer>> weights,
+            int length,
+            Collection<? extends Collection<Integer>> steps
+    ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
         List<Path> paths = pathfinder.find(length);

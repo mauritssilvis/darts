@@ -15,7 +15,7 @@ public final class BasicNodeTestUtils {
     private BasicNodeTestUtils() {
     }
 
-    public static List<Node> getNodes(Collection<Collection<Integer>> weights) {
+    public static List<Node> getNodes(Collection<? extends Collection<Integer>> weights) {
         return weights.stream()
                 .map(BasicNode::of)
                 .toList();

@@ -37,9 +37,9 @@ class DescendingPathfinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(
-            Collection<Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weights,
             int length,
-            Collection<Collection<Integer>> steps,
+            Collection<? extends Collection<Integer>> steps,
             int totalMultiplicity
     ) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
