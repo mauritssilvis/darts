@@ -62,6 +62,8 @@ public final class GroupedCheckout implements Checkout {
     public long getMultiplicity() {
         if (throwList.isEmpty()) {
             return 0;
+        } else if (throwList.size() == 1) {
+            return throwList.get(0).getFields().size();
         }
 
         return -1;
