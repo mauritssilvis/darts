@@ -52,22 +52,32 @@ class DescendingCheckoutFinderTests {
 
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
-        List<Collection<String>> namesPerThrow = new ArrayList<>(
-                List.of(List.of("1", "Q1"), List.of("Q2", "3"))
-        );
-
+        List<Collection<String>> namesPerThrow = List.of(new ArrayList<>(List.of("1", "Q1")), List.of("Q2", "3"));
         List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+
         int score = 12;
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
-        namesPerThrow.set(0, Collections.emptyList());
+        namesPerThrow.get(0).clear();
 
         long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
         Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+    }
+
+    @Test
+    void getImmutableCheckouts() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("6", "D3"), List.of("1"));
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+
+        int score = 7;
+
+        List<Checkout> checkouts = checkoutFinder.find(score);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, checkouts::clear);
     }
 
     @ParameterizedTest
