@@ -31,6 +31,21 @@ class GroupedPathTests {
     }
 
     @Test
+    void storeAnIndependentGrouping() {
+        List<Integer> steps = List.of(7, 5, 7);
+        List<Boolean> grouping = new ArrayList<>(List.of(false, true));
+        Path path = GroupedPath.of(steps, grouping);
+
+        long multiplicity = path.getMultiplicity();
+
+        grouping.set(1, false);
+
+        long newMultiplicity = path.getMultiplicity();
+
+        Assertions.assertEquals(multiplicity, newMultiplicity);
+    }
+
+    @Test
     void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Collection<Boolean> grouping = List.of(false, true, false);
@@ -210,6 +225,17 @@ class GroupedPathTests {
         Path path = GroupedPath.of(steps, grouping);
 
         Assertions.assertEquals(List.of(false, false), path.getGrouping());
+    }
+
+    @Test
+    void getAnImmutableGrouping() {
+        Collection<Integer> steps = List.of(4, 2, 1);
+        Collection<Boolean> grouping = List.of(false, false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        List<Boolean> storedGrouping = path.getGrouping();
+
+        Assertions.assertThrows(UnsupportedOperationException.class, storedGrouping::clear);
     }
 
     @ParameterizedTest

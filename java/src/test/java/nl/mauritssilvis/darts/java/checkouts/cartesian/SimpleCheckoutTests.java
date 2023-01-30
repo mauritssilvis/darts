@@ -19,7 +19,7 @@ import java.util.List;
 
 class SimpleCheckoutTests {
     @Test
-    void storeIndependentThrows() {
+    void storeIndependentFields() {
         List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("D9", "D11", "D13"));
         Checkout checkout = SimpleCheckout.of(fields);
 

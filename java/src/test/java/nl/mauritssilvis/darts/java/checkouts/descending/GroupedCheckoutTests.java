@@ -37,6 +37,24 @@ class GroupedCheckoutTests {
     }
 
     @Test
+    void storeAnIndependentGrouping() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("1"), List.of("2"));
+        Collection<Throw> throwList = new ArrayList<>(getThrows(namesPerThrow));
+
+        List<Boolean> grouping = new ArrayList<>(List.of(false, false));
+
+        Checkout checkout = GroupedCheckout.of(throwList, grouping);
+
+        long multiplicity = checkout.getMultiplicity();
+
+        grouping.set(1, true);
+
+        long newMultiplicity = checkout.getMultiplicity();
+
+        Assertions.assertEquals(multiplicity, newMultiplicity);
+    }
+
+    @Test
     void getTheScore() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "4"), List.of("2"), List.of("3"));
         List<Throw> throwList = getThrows(namesPerThrow);
