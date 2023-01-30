@@ -439,6 +439,1232 @@ class DescendingCheckoutFinderTests {
                         38,
                         List.of(List.of(List.of("D5"), List.of("D5"), List.of("T3"), List.of("T3"))),
                         6
+                ),
+                // The following tests are based on:
+                // https://en.wikipedia.org/wiki/Nine-dart_finish#/media/File:Nine-Dart_Paths.svg
+                Arguments.of(
+                        List.of(
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("D12")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("D12")
+                        )),
+                        8
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("T17", "T20"),
+                                List.of("D15")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T17"),
+                                List.of("D15")
+                        )),
+                        8
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("D15")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D15")
+                                )
+                        ),
+                        56 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("D15")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D15")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("T17", "T18", "T19", "T20"),
+                                List.of("D15")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D15")
+                                )
+                        ),
+                        8 + 56 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D17")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("D25"),
+                                List.of("D17")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("T15", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T15"),
+                                List.of("D18")
+                        )),
+                        8
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("T16", "T19", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T16"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D18")
+                                )
+                        ),
+                        56 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("T17", "T18", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T18"),
+                                List.of("T17"),
+                                List.of("D18")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("T17", "T19", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T17"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D18")
+                                )
+                        ),
+                        168 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("T18", "T19", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D18")
+                                )
+                        ),
+                        168 + 280 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("T19", "T20"),
+                                List.of("D18")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D18")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D18")
+                        ),
+                        501,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T15"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T16"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T18"),
+                                        List.of("T17"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T17"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D18")
+                                )
+                        ),
+                        8 + 56 + 56 + 168 + 168 + 280 + 56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D20")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T17"),
+                                List.of("D25"),
+                                List.of("D20")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D20")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                )
+                        ),
+                        336 + 280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D20")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D25"),
+                                List.of("D20")
+                        )),
+                        280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25", "T17", "T18", "T19", "T20"),
+                                List.of("D20")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                )
+                        ),
+                        56 + 336 + 280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25", "T17", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T17"),
+                                List.of("D25"),
+                                List.of("D25"),
+                                List.of("D25")
+                        )),
+                        168
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25", "T18", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                )
+                        ),
+                        840 + 560
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D25"),
+                                List.of("D25"),
+                                List.of("D25")
+                        )),
+                        560
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D20", "T17", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T17"),
+                                List.of("D20"),
+                                List.of("D25")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D20", "T18", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                )
+                        ),
+                        336 + 280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D20", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("T19"),
+                                List.of("D20"),
+                                List.of("D25")
+                        )),
+                        280
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D17", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(List.of(
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T20"),
+                                List.of("T19"),
+                                List.of("D17"),
+                                List.of("D25")
+                        )),
+                        56
+                ),
+                Arguments.of(
+                        List.of(
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T17", "T18", "T19", "T20"),
+                                List.of("D25")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("D17"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                )
+                        ),
+                        168 + 840 + 560 + 56 + 336 + 280 + 56
+                ),
+                ////
+                Arguments.of(
+                        List.of(
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D17", "D20", "D25", "T15", "T16", "T17", "T18", "T19", "T20"),
+                                List.of("D12", "D15", "D17", "D18", "D20", "D25")
+                        ),
+                        501
+                        ,
+                        List.of(
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("D12")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T15"),
+                                        List.of("D18")
+                                ),
+
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D17")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T16"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("D17"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T18"),
+                                        List.of("T17"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D15")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T17"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T17"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                ),
+
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D20")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D20"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T18"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D18")
+                                ),
+                                List.of(
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T20"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("T19"),
+                                        List.of("D25"),
+                                        List.of("D25"),
+                                        List.of("D25")
+                                )
+                        ),
+                        3944
                 )
         );
     }
