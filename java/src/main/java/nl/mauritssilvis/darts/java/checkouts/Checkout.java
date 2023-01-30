@@ -33,7 +33,10 @@ public interface Checkout {
      * Gets the number of throws of this checkout.
      *
      * @return the number of throws of this checkout
+     * @deprecated Replaced by calling {@link List#size()} on the return value
+     * of {@link #getThrows()}.
      */
+    @Deprecated
     int countThrows();
 
     /**

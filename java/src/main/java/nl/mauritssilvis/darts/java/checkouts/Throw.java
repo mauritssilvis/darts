@@ -26,7 +26,10 @@ public interface Throw {
      * Gets the number of fields of this throw.
      *
      * @return the number of fields of this throw
+     * @deprecated Replaced by calling {@link List#size()} on the return value
+     * of {@link #getFields()}.
      */
+    @Deprecated
     int countFields();
 
     /**

@@ -32,7 +32,10 @@ public interface Path {
      * Gets the number of steps of this path.
      *
      * @return the number of steps of this path
+     * @deprecated Replaced by calling {@link List#size()} on the return value
+     * of {@link #getSteps()}.
      */
+    @Deprecated
     int countSteps();
 
     /**
@@ -49,7 +52,10 @@ public interface Path {
      * with grouped steps have a smaller number of groups.
      *
      * @return the number of groups this path consists of
+     * @deprecated Replaced by calling {@link List#size()} on the return value
+     * of {@link #getGroups()}.
      */
+    @Deprecated
     int countGroups();
 
     /**
