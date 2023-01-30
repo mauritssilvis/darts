@@ -292,7 +292,7 @@ class DescendingCheckoutFinderTests {
                                 List.of("D1", "1")
                         ),
                         3,
-                        List.of(List.of(List.of("1"), List.of("D1"))),
+                        List.of(List.of(List.of("D1"), List.of("1"))),
                         2
                 ),
                 Arguments.of(
@@ -301,9 +301,7 @@ class DescendingCheckoutFinderTests {
                                 List.of("D5", "10")
                         ),
                         20,
-                        List.of(
-                                List.of(List.of("10", "D5"), List.of("10", "D5"))
-                        ),
+                        List.of(List.of(List.of("10", "D5"), List.of("10", "D5"))),
                         4
                 ),
                 Arguments.of(
@@ -312,7 +310,10 @@ class DescendingCheckoutFinderTests {
                                 List.of("D3", "1")
                         ),
                         7,
-                        List.of(List.of(List.of("D3"), List.of("1"))),
+                        List.of(
+                                List.of(List.of("D3"), List.of("1")),
+                                List.of(List.of("1"), List.of("D3"))
+                        ),
                         2
                 ),
                 Arguments.of(
