@@ -187,4 +187,48 @@ class TypedFieldTests {
 
         Assertions.assertNotEquals(field1, field2);
     }
+
+    @Test
+    void convertASingleFieldToString() {
+        FieldType fieldType = FieldType.SINGLE;
+        int baseScore = 2;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        String str = "2";
+
+        Assertions.assertEquals(str, field.toString());
+    }
+
+    @Test
+    void convertADoubleFieldToString() {
+        FieldType fieldType = FieldType.DOUBLE;
+        int baseScore = 9;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        String str = "D9";
+
+        Assertions.assertEquals(str, field.toString());
+    }
+
+    @Test
+    void convertATripleFieldToString() {
+        FieldType fieldType = FieldType.TRIPLE;
+        int baseScore = 17;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        String str = "T17";
+
+        Assertions.assertEquals(str, field.toString());
+    }
+
+    @Test
+    void convertAQuadrupleFieldToString() {
+        FieldType fieldType = FieldType.QUADRUPLE;
+        int baseScore = 2;
+        Field field = TypedField.of(fieldType, baseScore);
+
+        String str = "Q2";
+
+        Assertions.assertEquals(str, field.toString());
+    }
 }
