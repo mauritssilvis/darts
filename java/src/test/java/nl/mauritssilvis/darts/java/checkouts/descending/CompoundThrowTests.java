@@ -28,6 +28,16 @@ class CompoundThrowTests {
     }
 
     @Test
+    void storeUniqueFields() {
+        Collection<Field> fields = TypedFieldTestUtils.getFields("12", "D6", "12");
+        Throw compoundThrow = CompoundThrow.of(fields);
+
+        Collection<Field> uniqueFields = TypedFieldTestUtils.getFields("12", "D6");
+
+        Assertions.assertEquals(uniqueFields, compoundThrow.getFields());
+    }
+
+    @Test
     void doNotAcceptFieldsWithDifferentScores() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("8", "T3");
 

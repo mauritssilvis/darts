@@ -12,8 +12,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * An implementation of the {@code Throw} interface that can store multiple
- * fields of a certain score.
+ * An implementation of the {@code Throw} interface that can store multiple,
+ * unique fields of a certain score.
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
@@ -34,11 +34,13 @@ public final class CompoundThrow implements Throw {
         }
 
         this.fields = fields.stream()
+                .distinct()
                 .toList();
     }
 
     /**
-     * Returns a new {@code CompoundThrow} with the specified fields.
+     * Returns a new {@code CompoundThrow} with unique fields of a certain
+     * score.
      *
      * @param fields a collection of fields
      * @return a new {@code CompoundThrow} with the specified fields
