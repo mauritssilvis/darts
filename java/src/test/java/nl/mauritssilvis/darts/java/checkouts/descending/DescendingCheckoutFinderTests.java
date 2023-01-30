@@ -27,7 +27,9 @@ class DescendingCheckoutFinderTests {
     private static final Collection<String> DOUBLES = List.of("D1", "D2", "D3", "D5");
     private static final Collection<String> TRIPLES = List.of("T1", "T2", "T3");
 
-    private static final Collection<String> SINGLES_DOUBLES = Stream.concat(SINGLES.stream(), DOUBLES.stream()).toList();
+    private static final Collection<String> SINGLES_DOUBLES = Stream.concat(SINGLES.stream(), DOUBLES.stream())
+            .toList();
+
     private static final Collection<String> ANY = Stream.concat(TRIPLES.stream(), SINGLES_DOUBLES.stream()).toList();
 
     @Test
