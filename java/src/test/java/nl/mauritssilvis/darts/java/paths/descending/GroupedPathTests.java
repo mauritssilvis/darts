@@ -324,40 +324,45 @@ class GroupedPathTests {
 
     private static Stream<Arguments> withMultiplicityData() {
         return Stream.of(
+                // Ungrouped steps
                 Arguments.of(
                         Collections.emptyList(), Collections.emptyList(), 0
                 ),
                 Arguments.of(
-                        List.of(5), Collections.emptyList(), 1
+                        Collections.emptyList(), List.of(true), 0
                 ),
                 Arguments.of(
                         List.of(3), List.of(false), 1
                 ),
                 Arguments.of(
-                        List.of(2, 4), List.of(false, true), 2
+                        List.of(5), Collections.emptyList(), 1
                 ),
                 Arguments.of(
-                        List.of(5, 5, 5), List.of(true, true, true), 1
+                        List.of(7), List.of(false, true), 1
                 ),
                 Arguments.of(
-                        List.of(3, 7, 7, 3),
-                        List.of(true, true, true, true),
-                        6
+                        List.of(1, 2), List.of(false, false), 1
                 ),
                 Arguments.of(
-                        List.of(9, 8, 2, 2, 2),
-                        List.of(false, true, true, true, true),
-                        20
+                        List.of(2, 3), List.of(false), 1
                 ),
+                Arguments.of(
+                        List.of(4, 4), List.of(false, false, true), 1
+                ),
+                Arguments.of(
+                        List.of(9, 7, 8), List.of(false, false, false), 1
+                ),
+                Arguments.of(
+                        List.of(3, 3, 2), List.of(false), 1
+                ),
+                Arguments.of(
+                        List.of(5, 7, 6), List.of(false, false, false, false), 1
+                ),
+                // Partly grouped steps
                 Arguments.of(
                         List.of(2, 2, 1, 2, 2),
                         List.of(true, true, false, true, true),
                         3
-                ),
-                Arguments.of(
-                        List.of(1, 8, 4, 0, 6, 3),
-                        List.of(false, true, true, true, true, true),
-                        720
                 ),
                 Arguments.of(
                         List.of(1, 2, 6, 7, 7, 2, 7),
@@ -392,6 +397,82 @@ class GroupedPathTests {
                         List.of(1, 1, 1, 3, 3, 2, 2, 3, 3, 4, 4),
                         List.of(false, true, true, true, true, false, true, true, true, true, true),
                         10 * 90
+                ),
+                // Fully grouped steps
+                Arguments.of(
+                        List.of(2, 4), List.of(false, true), 2
+                ),
+                Arguments.of(
+                        List.of(3, 3), List.of(false, true, false), 1
+                ),
+                Arguments.of(
+                        List.of(3, 6, 2), List.of(false, true, true), 6
+                ),
+                Arguments.of(
+                        List.of(7, 8, 8), List.of(true, true, true, false), 3
+                ),
+                Arguments.of(
+                        List.of(5, 5, 5), List.of(true, true, true), 1
+                ),
+                Arguments.of(
+                        List.of(0, 8, 5, 9),
+                        List.of(true, true, true, true),
+                        24
+                ),
+                Arguments.of(
+                        List.of(4, 3, 4, 7),
+                        List.of(false, true, true, true),
+                        12
+                ),
+                Arguments.of(
+                        List.of(3, 7, 7, 3),
+                        List.of(true, true, true, true, false),
+                        6
+                ),
+                Arguments.of(
+                        List.of(9, 6, 9, 9),
+                        List.of(false, true, true, true),
+                        4
+                ),
+                Arguments.of(
+                        List.of(8, 8, 8, 8),
+                        List.of(true, true, true, true),
+                        1
+                ),
+                Arguments.of(
+                        List.of(1, 3, 5, 9, 7),
+                        List.of(false, true, true, true, true),
+                        120
+                ),
+                Arguments.of(
+                        List.of(4, 1, 2, 3, 4),
+                        List.of(false, true, true, true, true),
+                        60
+                ),
+                Arguments.of(
+                        List.of(3, 3, 5, 4, 4),
+                        List.of(false, true, true, true, true),
+                        30
+                ),
+                Arguments.of(
+                        List.of(9, 8, 2, 2, 2),
+                        List.of(false, true, true, true, true),
+                        20
+                ),
+                Arguments.of(
+                        List.of(1, 2, 1, 2, 1),
+                        List.of(false, true, true, true, true),
+                        10
+                ),
+                Arguments.of(
+                        List.of(0, 0, 0, 0, 0),
+                        List.of(false, true, true, true, true),
+                        1
+                ),
+                Arguments.of(
+                        List.of(1, 8, 4, 0, 6, 3),
+                        List.of(false, true, true, true, true, true),
+                        720
                 )
         );
     }
