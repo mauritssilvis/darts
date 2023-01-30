@@ -20,6 +20,17 @@ import java.util.stream.Stream;
 
 class GroupedPathTests {
     @Test
+    void storeIndependentSteps() {
+        List<Integer> steps = new ArrayList<>(List.of(7, 5, 7));
+        Collection<Boolean> grouping = List.of(false, true, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        steps.set(1, 7);
+
+        Assertions.assertNotEquals(steps, path.getSteps());
+    }
+
+    @Test
     void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Collection<Boolean> grouping = List.of(false, true, false);
@@ -107,17 +118,6 @@ class GroupedPathTests {
         Path path = GroupedPath.of(steps, grouping);
 
         Assertions.assertEquals(steps, path.getSteps());
-    }
-
-    @Test
-    void storeIndependentSteps() {
-        List<Integer> steps = new ArrayList<>(List.of(7, 5, 7));
-        Collection<Boolean> grouping = List.of(false, true, true);
-        Path path = GroupedPath.of(steps, grouping);
-
-        steps.set(1, 7);
-
-        Assertions.assertNotEquals(steps, path.getSteps());
     }
 
     @Test

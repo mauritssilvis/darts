@@ -19,6 +19,16 @@ import java.util.List;
 
 class SimpleCheckoutTests {
     @Test
+    void storeIndependentThrows() {
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("D9", "D11", "D13"));
+        Checkout checkout = SimpleCheckout.of(fields);
+
+        fields.remove(2);
+
+        Assertions.assertNotEquals(getThrows(fields), checkout.getThrows());
+    }
+
+    @Test
     void getTheScore() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("1", "4");
         Checkout checkout = SimpleCheckout.of(fields);
@@ -64,16 +74,6 @@ class SimpleCheckoutTests {
         Checkout checkout = SimpleCheckout.of(fields);
 
         Assertions.assertEquals(getThrows(fields), checkout.getThrows());
-    }
-
-    @Test
-    void storeIndependentThrows() {
-        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("D9", "D11", "D13"));
-        Checkout checkout = SimpleCheckout.of(fields);
-
-        fields.remove(2);
-
-        Assertions.assertNotEquals(getThrows(fields), checkout.getThrows());
     }
 
     @Test

@@ -16,6 +16,16 @@ import java.util.List;
 
 class SimplePathTests {
     @Test
+    void storeIndependentSteps() {
+        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
+        Path path = SimplePath.of(steps);
+
+        steps.set(0, 10);
+
+        Assertions.assertNotEquals(steps, path.getSteps());
+    }
+
+    @Test
     void getTheLength() {
         Collection<Integer> steps = List.of(5, 3, 1);
         Path path = SimplePath.of(steps);
@@ -61,16 +71,6 @@ class SimplePathTests {
         Path path = SimplePath.of(steps);
 
         Assertions.assertEquals(steps, path.getSteps());
-    }
-
-    @Test
-    void storeIndependentSteps() {
-        List<Integer> steps = new ArrayList<>(List.of(4, 5, 6));
-        Path path = SimplePath.of(steps);
-
-        steps.set(0, 10);
-
-        Assertions.assertNotEquals(steps, path.getSteps());
     }
 
     @Test

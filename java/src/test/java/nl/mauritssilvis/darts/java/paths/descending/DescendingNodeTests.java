@@ -16,6 +16,16 @@ import java.util.List;
 
 class DescendingNodeTests {
     @Test
+    void storeIndependentWeights() {
+        List<Integer> weights = new ArrayList<>(List.of(2, 0, -2));
+        Node node = DescendingNode.of(weights);
+
+        weights.set(1, 1);
+
+        Assertions.assertNotEquals(weights, node.getWeights());
+    }
+
+    @Test
     void getTheWeights() {
         Collection<Integer> weights = List.of(7, 6, 5);
         Node node = DescendingNode.of(weights);
@@ -37,16 +47,6 @@ class DescendingNodeTests {
         Node node = DescendingNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
-    }
-
-    @Test
-    void storeIndependentWeights() {
-        List<Integer> weights = new ArrayList<>(List.of(2, 0, -2));
-        Node node = DescendingNode.of(weights);
-
-        weights.set(1, 1);
-
-        Assertions.assertNotEquals(weights, node.getWeights());
     }
 
     @Test

@@ -16,6 +16,16 @@ import java.util.List;
 
 class BasicNodeTests {
     @Test
+    void storeIndependentWeights() {
+        List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
+        Node node = BasicNode.of(weights);
+
+        weights.set(1, -2);
+
+        Assertions.assertNotEquals(weights, node.getWeights());
+    }
+
+    @Test
     void getTheWeights() {
         Collection<Integer> weights = List.of(4, 5, 6);
         Node node = BasicNode.of(weights);
@@ -37,16 +47,6 @@ class BasicNodeTests {
         Node node = BasicNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
-    }
-
-    @Test
-    void storeIndependentWeights() {
-        List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = BasicNode.of(weights);
-
-        weights.set(1, -2);
-
-        Assertions.assertNotEquals(weights, node.getWeights());
     }
 
     @Test

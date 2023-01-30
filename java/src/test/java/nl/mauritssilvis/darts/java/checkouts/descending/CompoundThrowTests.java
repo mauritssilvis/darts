@@ -18,6 +18,16 @@ import java.util.List;
 
 class CompoundThrowTests {
     @Test
+    void storeIndependentFields() {
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("14", "D7"));
+        Throw compoundThrow = CompoundThrow.of(fields);
+
+        fields.remove(1);
+
+        Assertions.assertNotEquals(fields, compoundThrow.getFields());
+    }
+
+    @Test
     void doNotAcceptFieldsWithDifferentScores() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("8", "T3");
 
@@ -73,16 +83,6 @@ class CompoundThrowTests {
         Throw compoundThrow = CompoundThrow.of(fields);
 
         Assertions.assertEquals(fields, compoundThrow.getFields());
-    }
-
-    @Test
-    void storeIndependentFields() {
-        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("14", "D7"));
-        Throw compoundThrow = CompoundThrow.of(fields);
-
-        fields.remove(1);
-
-        Assertions.assertNotEquals(fields, compoundThrow.getFields());
     }
 
     @Test

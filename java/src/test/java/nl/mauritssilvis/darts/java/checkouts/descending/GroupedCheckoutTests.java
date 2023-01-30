@@ -23,6 +23,20 @@ import java.util.stream.Stream;
 
 class GroupedCheckoutTests {
     @Test
+    void storeIndependentThrows() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("1"), List.of("2", "D1"), List.of("3"));
+        List<Throw> throwList = new ArrayList<>(getThrows(namesPerThrow));
+
+        Collection<Boolean> grouping = List.of(false, false, false);
+
+        Checkout checkout = GroupedCheckout.of(throwList, grouping);
+
+        throwList.remove(2);
+
+        Assertions.assertNotEquals(throwList, checkout.getThrows());
+    }
+
+    @Test
     void getTheScore() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "4"), List.of("2"), List.of("3"));
         List<Throw> throwList = getThrows(namesPerThrow);
@@ -134,20 +148,6 @@ class GroupedCheckoutTests {
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
         Assertions.assertEquals(throwList, checkout.getThrows());
-    }
-
-    @Test
-    void storeIndependentThrows() {
-        Collection<Collection<String>> namesPerThrow = List.of(List.of("1"), List.of("2", "D1"), List.of("3"));
-        List<Throw> throwList = new ArrayList<>(getThrows(namesPerThrow));
-
-        Collection<Boolean> grouping = List.of(false, false, false);
-
-        Checkout checkout = GroupedCheckout.of(throwList, grouping);
-
-        throwList.remove(2);
-
-        Assertions.assertNotEquals(throwList, checkout.getThrows());
     }
 
     @Test
