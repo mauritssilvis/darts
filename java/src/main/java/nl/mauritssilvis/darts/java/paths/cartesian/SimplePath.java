@@ -55,7 +55,9 @@ public final class SimplePath implements Path {
 
     @Override
     public List<Boolean> getGrouping() {
-        return null;
+        return steps.stream()
+                .map(step -> false)
+                .toList();
     }
 
     @Override

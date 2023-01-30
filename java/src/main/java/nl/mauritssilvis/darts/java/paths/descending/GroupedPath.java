@@ -84,7 +84,7 @@ public final class GroupedPath implements Path {
 
     @Override
     public List<Boolean> getGrouping() {
-        return null;
+        return grouping;
     }
 
     @Override
