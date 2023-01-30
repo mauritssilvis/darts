@@ -23,14 +23,6 @@ class SimpleThrowTests {
     }
 
     @Test
-    void countTheFields() {
-        Field field = TypedFieldTestUtils.getField("T7");
-        Throw simpleThrow = SimpleThrow.of(field);
-
-        Assertions.assertEquals(1, simpleThrow.countFields());
-    }
-
-    @Test
     void getTheFields() {
         Field field = TypedFieldTestUtils.getField("Q3");
         Throw simpleThrow = SimpleThrow.of(field);

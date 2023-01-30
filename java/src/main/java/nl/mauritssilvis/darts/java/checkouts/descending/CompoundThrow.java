@@ -53,11 +53,6 @@ public final class CompoundThrow implements Throw {
     }
 
     @Override
-    public int countFields() {
-        return fields.size();
-    }
-
-    @Override
     public List<Field> getFields() {
         return fields;
     }

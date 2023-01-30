@@ -43,11 +43,6 @@ public final class SimpleThrow implements Throw {
     }
 
     @Override
-    public int countFields() {
-        return 1;
-    }
-
-    @Override
     public List<Field> getFields() {
         return Collections.singletonList(field);
     }

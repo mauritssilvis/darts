@@ -23,16 +23,6 @@ public interface Throw {
     int getScore();
 
     /**
-     * Gets the number of fields of this throw.
-     *
-     * @return the number of fields of this throw
-     * @deprecated Replaced by calling {@link List#size()} on the return value
-     * of {@link #getFields()}.
-     */
-    @Deprecated
-    int countFields();
-
-    /**
      * Gets the fields of this throw.
      * <p>
      * All fields should have the same score as this throw.

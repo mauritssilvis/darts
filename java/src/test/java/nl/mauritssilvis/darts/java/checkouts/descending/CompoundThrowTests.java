@@ -52,30 +52,6 @@ class CompoundThrowTests {
     }
 
     @Test
-    void countTheFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("T2", "D3", "6");
-        Throw compoundThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(3, compoundThrow.countFields());
-    }
-
-    @Test
-    void countTheFieldsWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("T20");
-        Throw compoundThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(1, compoundThrow.countFields());
-    }
-
-    @Test
-    void countTheFieldsWithEmptyInput() {
-        Collection<Field> fields = Collections.emptyList();
-        Throw compoundThrow = CompoundThrow.of(fields);
-
-        Assertions.assertEquals(0, compoundThrow.countFields());
-    }
-
-    @Test
     void getTheFields() {
         Collection<Field> fields = TypedFieldTestUtils.getFields("Q4", "D8", "16");
         Throw compoundThrow = CompoundThrow.of(fields);
