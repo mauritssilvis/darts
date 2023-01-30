@@ -36,14 +36,6 @@ public interface Path {
     List<Integer> getSteps();
 
     /**
-     * Gets the groups this path consists of.
-     *
-     * @return a list of the groups this path consists of
-     */
-    @Deprecated
-    List<List<Integer>> getGroups();
-
-    /**
      * Gets the grouping signature of this path.
      * <p>
      * The grouping signature states for each step whether it belongs to a group

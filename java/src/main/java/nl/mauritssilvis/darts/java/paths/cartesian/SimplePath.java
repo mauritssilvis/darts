@@ -47,13 +47,6 @@ public final class SimplePath implements Path {
     }
 
     @Override
-    public List<List<Integer>> getGroups() {
-        return steps.stream()
-                .map(Collections::singletonList)
-                .toList();
-    }
-
-    @Override
     public List<Boolean> getGrouping() {
         return steps.stream()
                 .map(step -> false)

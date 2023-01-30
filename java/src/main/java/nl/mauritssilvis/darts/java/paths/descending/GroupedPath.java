@@ -55,32 +55,6 @@ public final class GroupedPath implements Path {
     }
 
     @Override
-    public List<List<Integer>> getGroups() {
-        if (steps.isEmpty()) {
-            return Collections.emptyList();
-        } else if (steps.size() == 1) {
-            return Collections.singletonList(steps);
-        }
-
-        List<List<Integer>> groups = new ArrayList<>();
-
-        List<Integer> values = new ArrayList<>();
-
-        for (int i = 0; i < steps.size(); i++) {
-            if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
-                groups.add(values);
-                values = new ArrayList<>();
-            }
-
-            values.add(steps.get(i));
-        }
-
-        groups.add(values);
-
-        return groups;
-    }
-
-    @Override
     public List<Boolean> getGrouping() {
         return grouping;
     }
@@ -119,6 +93,31 @@ public final class GroupedPath implements Path {
                 .forEach(i -> output.add(false));
 
         return Collections.unmodifiableList(output);
+    }
+
+    private List<List<Integer>> getGroups() {
+        if (steps.isEmpty()) {
+            return Collections.emptyList();
+        } else if (steps.size() == 1) {
+            return Collections.singletonList(steps);
+        }
+
+        List<List<Integer>> groups = new ArrayList<>();
+
+        List<Integer> values = new ArrayList<>();
+
+        for (int i = 0; i < steps.size(); i++) {
+            if (i > 0 && Boolean.FALSE.equals(grouping.get(i))) {
+                groups.add(values);
+                values = new ArrayList<>();
+            }
+
+            values.add(steps.get(i));
+        }
+
+        groups.add(values);
+
+        return groups;
     }
 
     private static long countPermutations(Collection<Integer> group) {
