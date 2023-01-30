@@ -11,6 +11,7 @@ import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
 import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -20,6 +21,19 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class CartesianPathfinderTests {
+    @Test
+    void getImmutablePaths() {
+        Collection<Collection<Integer>> weights = List.of(List.of(3, 4), List.of(6, 7));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+
+        int length = 10;
+
+        List<Path> paths = pathfinder.find(length);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, paths::clear);
+    }
+
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(Collection<Collection<Integer>> weights, int length, Collection<Collection<Integer>> steps) {

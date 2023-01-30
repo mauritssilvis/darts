@@ -92,6 +92,16 @@ class SimplePathTests {
     }
 
     @Test
+    void getAnImmutableGrouping() {
+        Collection<Integer> steps = List.of(1, 9);
+        Path path = SimplePath.of(steps);
+
+        List<Boolean> grouping = path.getGrouping();
+
+        Assertions.assertThrows(UnsupportedOperationException.class, grouping::clear);
+    }
+
+    @Test
     void getTheGroupingWithSingletonInput() {
         Collection<Integer> steps = Collections.singletonList(6);
         Path path = SimplePath.of(steps);
