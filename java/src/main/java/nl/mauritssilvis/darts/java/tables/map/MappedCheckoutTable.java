@@ -31,6 +31,17 @@ public final class MappedCheckoutTable implements CheckoutTable {
             CheckType checkoutType,
             Map<Integer, List<Checkout>> checkoutMap
     ) {
+        boolean hasOtherScore = checkoutMap.entrySet().stream()
+                .anyMatch(e -> e.getValue().stream()
+                        .anyMatch(checkout -> checkout.getScore() != e.getKey())
+                );
+
+        if (hasOtherScore) {
+            throw new IllegalArgumentException(
+                    "Checkouts should have the same score as their access key"
+            );
+        }
+
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;

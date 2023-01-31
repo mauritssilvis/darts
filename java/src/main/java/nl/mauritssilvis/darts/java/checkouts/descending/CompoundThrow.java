@@ -24,10 +24,10 @@ public final class CompoundThrow implements Throw {
     private CompoundThrow(Collection<Field> fields) {
         score = fields.isEmpty() ? 0 : fields.iterator().next().getScore();
 
-        boolean otherScore = fields.stream()
+        boolean hasOtherScore = fields.stream()
                 .anyMatch(field -> field.getScore() != score);
 
-        if (otherScore) {
+        if (hasOtherScore) {
             throw new IllegalArgumentException(
                     "All fields should have the same score"
             );
