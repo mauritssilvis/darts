@@ -59,7 +59,7 @@ public final class MappedCheckoutTable implements CheckoutTable {
     }
 
     @Override
-    public CheckType getCheckOutType() {
+    public CheckType getCheckoutType() {
         return null;
     }
 

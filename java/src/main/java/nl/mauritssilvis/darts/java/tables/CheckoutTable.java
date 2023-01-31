@@ -38,7 +38,7 @@ public interface CheckoutTable {
      *
      * @return the checkout type of this checkout table
      */
-    CheckType getCheckOutType();
+    CheckType getCheckoutType();
 
     /**
      * Gets the checkout map of this checkout table.
