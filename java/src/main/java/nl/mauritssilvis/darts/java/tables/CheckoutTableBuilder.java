@@ -23,7 +23,7 @@ public interface CheckoutTableBuilder {
      * @param boardType the dartboard type
      * @return this checkout table builder
      */
-    CheckoutTable setBoardType(BoardType boardType);
+    CheckoutTableBuilder setBoardType(BoardType boardType);
 
     /**
      * Sets the check-in type.
@@ -31,7 +31,7 @@ public interface CheckoutTableBuilder {
      * @param checkInType the check-in type
      * @return this checkout table builder
      */
-    CheckoutTable setCheckInType(CheckType checkInType);
+    CheckoutTableBuilder setCheckInType(CheckType checkInType);
 
     /**
      * Sets the checkout type.
@@ -39,7 +39,7 @@ public interface CheckoutTableBuilder {
      * @param checkoutType the checkout type
      * @return this checkout table builder
      */
-    CheckoutTable setCheckoutType(CheckType checkoutType);
+    CheckoutTableBuilder setCheckoutType(CheckType checkoutType);
 
     /**
      * Sets the checkouts for the specified score.
@@ -48,13 +48,13 @@ public interface CheckoutTableBuilder {
      * @param checkouts a collection of checkouts for the specified score
      * @return this checkout table builder
      */
-    CheckoutTable setCheckouts(int score, Collection<Checkout> checkouts);
+    CheckoutTableBuilder setCheckouts(int score, Collection<Checkout> checkouts);
 
     /**
-     * Gets a new {@code CheckoutTable} with the set dartboard type, check-in
-     * type, checkout type and checkouts.
+     * Gets a new {@code CheckoutTable} with the specified dartboard type,
+     * check-in type, checkout type and checkouts.
      * <p>
-     * Non-null, default values have to be given to unspecified properties.
+     * Non-null, default values have to be set for unspecified properties.
      *
      * @return a new {@code CheckoutTable} with the set dartboard type, check-in
      * type, checkout type and checkouts.
