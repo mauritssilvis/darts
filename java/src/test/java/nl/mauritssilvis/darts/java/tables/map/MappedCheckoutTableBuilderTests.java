@@ -144,18 +144,21 @@ class MappedCheckoutTableBuilderTests {
                 List.of(List.of("2"), List.of("D2", "4"))
         );
 
-        Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                5, GroupedCheckoutTestUtils.getCheckouts(names5),
-                6, GroupedCheckoutTestUtils.getCheckouts(names6)
-        );
+        List<Checkout> checkouts5 = GroupedCheckoutTestUtils.getCheckouts(names5);
+        List<Checkout> checkouts6 = GroupedCheckoutTestUtils.getCheckouts(names6);
 
         CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
-                .setCheckouts(5, checkoutMap.get(5))
-                .setCheckouts(6, checkoutMap.get(6))
+                .setCheckouts(5, checkouts5)
+                .setCheckouts(6, checkouts6)
                 .build();
 
+        Map<Integer, List<Checkout>> checkoutMap = Map.of(
+                5, GroupedCheckoutTestUtils.getCheckouts(names5),
+                6, GroupedCheckoutTestUtils.getCheckouts(names6)
+        );
+        
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
     }
 
@@ -210,10 +213,8 @@ class MappedCheckoutTableBuilderTests {
                 List.of(List.of("2"), List.of("D3", "6"))
         );
 
-        Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                4, GroupedCheckoutTestUtils.getCheckouts(names4),
-                8, GroupedCheckoutTestUtils.getCheckouts(names8)
-        );
+        List<Checkout> checkouts4 = GroupedCheckoutTestUtils.getCheckouts(names4);
+        List<Checkout> checkouts8 = GroupedCheckoutTestUtils.getCheckouts(names8);
 
         CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
 
@@ -221,9 +222,14 @@ class MappedCheckoutTableBuilderTests {
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
                 .setCheckoutType(checkoutType)
-                .setCheckouts(5, checkoutMap.get(5))
-                .setCheckouts(6, checkoutMap.get(6))
+                .setCheckouts(4, checkouts4)
+                .setCheckouts(8, checkouts8)
                 .build();
+
+        Map<Integer, List<Checkout>> checkoutMap = Map.of(
+                4, checkouts4,
+                8, checkouts8
+        );
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(boardType, checkoutTable.getBoardType()),
