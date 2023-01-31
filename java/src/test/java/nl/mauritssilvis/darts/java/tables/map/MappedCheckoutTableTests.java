@@ -5,20 +5,15 @@
 
 package nl.mauritssilvis.darts.java.tables.map;
 
-import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.Throw;
-import nl.mauritssilvis.darts.java.checkouts.descending.CompoundThrow;
-import nl.mauritssilvis.darts.java.checkouts.descending.GroupedCheckout;
-import nl.mauritssilvis.darts.java.checkouts.utils.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
+import nl.mauritssilvis.darts.java.tables.utils.GroupedCheckoutTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class MappedCheckoutTableTests {
     @Test
@@ -29,7 +24,7 @@ class MappedCheckoutTableTests {
 
         int score = 6;
         Collection<Collection<Collection<String>>> names = List.of(List.of(List.of("D3")), List.of(List.of("D4")));
-        List<Checkout> checkouts = getCheckouts(names);
+        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
         Map<Integer, List<Checkout>> checkoutMap = Map.of(score, checkouts);
 
         Assertions.assertThrows(
@@ -50,7 +45,7 @@ class MappedCheckoutTableTests {
                 List.of(List.of("5"), List.of("3"), List.of("2", "D1"))
         );
 
-        List<Checkout> checkouts = getCheckouts(names);
+        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -74,7 +69,7 @@ class MappedCheckoutTableTests {
                 List.of(List.of("2"), List.of("T2", "D3"))
         );
 
-        List<Checkout> checkouts = getCheckouts(names);
+        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -139,8 +134,8 @@ class MappedCheckoutTableTests {
                 List.of(List.of("D3"))
         );
 
-        List<Checkout> checkouts4 = getCheckouts(names4);
-        List<Checkout> checkouts6 = getCheckouts(names6);
+        List<Checkout> checkouts4 = GroupedCheckoutTestUtils.getCheckouts(names4);
+        List<Checkout> checkouts6 = GroupedCheckoutTestUtils.getCheckouts(names6);
 
         Map<Integer, List<Checkout>> checkoutMap = Map.of(
                 4, checkouts4,
@@ -189,7 +184,7 @@ class MappedCheckoutTableTests {
                 List.of(List.of("T3"))
         );
 
-        List<Checkout> checkouts = getCheckouts(names);
+        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -213,7 +208,7 @@ class MappedCheckoutTableTests {
                 List.of(List.of("D5"))
         );
 
-        List<Checkout> checkouts = getCheckouts(names);
+        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -224,31 +219,5 @@ class MappedCheckoutTableTests {
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
 
         Assertions.assertThrows(UnsupportedOperationException.class, storedCheckouts::clear);
-    }
-
-    private static List<Checkout> getCheckouts(Collection<? extends Collection<Collection<String>>> names) {
-        return names.stream()
-                .map(MappedCheckoutTableTests::getCheckout)
-                .collect(Collectors.toList());
-    }
-
-    private static Checkout getCheckout(Collection<? extends Collection<String>> names) {
-        List<Throw> throwList = names.stream()
-                .map(MappedCheckoutTableTests::getThrow)
-                .toList();
-
-        List<Boolean> grouping = throwList.stream()
-                .map(t -> true)
-                .toList();
-
-        return GroupedCheckout.of(throwList, grouping);
-    }
-
-    private static Throw getThrow(Collection<String> names) {
-        List<Field> fields = names.stream()
-                .map(TypedFieldTestUtils::getField)
-                .toList();
-
-        return CompoundThrow.of(fields);
     }
 }
