@@ -34,7 +34,7 @@ public final class MappedCheckoutTable implements CheckoutTable {
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;
-        this.checkoutMap = checkoutMap;
+        this.checkoutMap = Map.copyOf(checkoutMap);
     }
 
     /**
