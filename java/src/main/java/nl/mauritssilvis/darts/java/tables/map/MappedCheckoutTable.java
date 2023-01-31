@@ -10,8 +10,10 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * An implementation of the {@code CheckoutTable} interface that uses a map to
@@ -45,7 +47,10 @@ public final class MappedCheckoutTable implements CheckoutTable {
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;
-        this.checkoutMap = Map.copyOf(checkoutMap);
+        this.checkoutMap = Collections.unmodifiableMap(
+                checkoutMap.entrySet().stream()
+                        .collect(Collectors.toMap(Map.Entry::getKey, e -> List.copyOf(e.getValue())))
+        );
     }
 
     /**
