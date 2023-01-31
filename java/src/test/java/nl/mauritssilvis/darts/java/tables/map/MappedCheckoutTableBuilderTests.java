@@ -44,6 +44,21 @@ class MappedCheckoutTableBuilderTests {
     }
 
     @Test
+    void overrideTheBoardType() {
+        BoardType boardType1 = null;
+        BoardType boardType2 = BoardType.LONDON;
+
+        CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setBoardType(boardType1)
+                .setBoardType(boardType2)
+                .build();
+
+        Assertions.assertEquals(boardType2, checkoutTable.getBoardType());
+    }
+
+    @Test
     void getTheCheckInType() {
         CheckType checkInType = CheckType.MASTER;
 
@@ -67,6 +82,21 @@ class MappedCheckoutTableBuilderTests {
     }
 
     @Test
+    void overrideTheCheckInType() {
+        CheckType checkInType1 = CheckType.DOUBLE;
+        CheckType checkInType2 = CheckType.MASTER;
+
+        CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setCheckInType(checkInType1)
+                .setCheckInType(checkInType2)
+                .build();
+
+        Assertions.assertEquals(checkInType2, checkoutTable.getCheckInType());
+    }
+
+    @Test
     void getTheCheckoutType() {
         CheckType checkoutType = CheckType.ANY;
 
@@ -87,6 +117,21 @@ class MappedCheckoutTableBuilderTests {
         CheckType checkoutType = CheckType.DOUBLE;
 
         Assertions.assertEquals(checkoutType, checkoutTable.getCheckoutType());
+    }
+
+    @Test
+    void overrideTheCheckoutType() {
+        CheckType checkoutType1 = CheckType.ANY;
+        CheckType checkoutType2 = CheckType.MASTER;
+
+        CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setCheckoutType(checkoutType1)
+                .setCheckoutType(checkoutType2)
+                .build();
+
+        Assertions.assertEquals(checkoutType2, checkoutTable.getCheckoutType());
     }
 
     @Test
@@ -120,6 +165,33 @@ class MappedCheckoutTableBuilderTests {
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         Map<Integer, List<Checkout>> checkoutMap = Collections.emptyMap();
+
+        Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
+    }
+
+    @Test
+    void overrideACheckoutList() {
+        Collection<Collection<Collection<String>>> names1 = List.of(
+                List.of(List.of("7"))
+        );
+
+        Collection<Collection<Collection<String>>> names2 = List.of(
+                List.of(List.of("1"), List.of("D3", "6"))
+        );
+
+        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(names1);
+        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(names2);
+
+        CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setCheckouts(7, checkouts1)
+                .setCheckouts(7, checkouts2)
+                .build();
+
+        Map<Integer, List<Checkout>> checkoutMap = Map.of(
+                7, checkouts2
+        );
 
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
     }
