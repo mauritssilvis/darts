@@ -123,4 +123,41 @@ class MappedCheckoutTableBuilderTests {
 
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
     }
+
+    @Test
+    void getACustomCheckoutTable() {
+        BoardType boardType = BoardType.LONDON;
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.MASTER;
+
+        Collection<Collection<Collection<String>>> names4 = List.of(
+                List.of(List.of("D2"))
+        );
+
+        Collection<Collection<Collection<String>>> names8 = List.of(
+                List.of(List.of("2"), List.of("D3", "6"))
+        );
+
+        Map<Integer, List<Checkout>> checkoutMap = Map.of(
+                4, GroupedCheckoutTestUtils.getCheckouts(names4),
+                8, GroupedCheckoutTestUtils.getCheckouts(names8)
+        );
+
+        CheckoutTableBuilder checkoutTableBuilder = new MappedCheckoutTableBuilder();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setBoardType(boardType)
+                .setCheckInType(checkInType)
+                .setCheckoutType(checkoutType)
+                .setCheckouts(5, checkoutMap.get(5))
+                .setCheckouts(6, checkoutMap.get(6))
+                .build();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(boardType, checkoutTable.getBoardType()),
+                () -> Assertions.assertEquals(checkInType, checkoutTable.getCheckInType()),
+                () -> Assertions.assertEquals(checkoutType, checkoutTable.getCheckoutType()),
+                () -> Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap())
+        );
+    }
 }
