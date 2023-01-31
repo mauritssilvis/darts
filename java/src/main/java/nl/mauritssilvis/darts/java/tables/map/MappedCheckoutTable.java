@@ -20,12 +20,15 @@ import java.util.Map;
  * Relevant design patterns: Immutable object, static factory method.
  */
 public final class MappedCheckoutTable implements CheckoutTable {
+    private final Map<Integer, List<Checkout>> checkoutMap;
+
     private MappedCheckoutTable(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
             Map<Integer, List<Checkout>> checkoutMap
     ) {
+        this.checkoutMap = checkoutMap;
     }
 
     /**
@@ -39,7 +42,7 @@ public final class MappedCheckoutTable implements CheckoutTable {
      * @return a new {@code MappedCheckoutTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
      */
-    public static MappedCheckoutTable of(
+    public static CheckoutTable of(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -65,6 +68,6 @@ public final class MappedCheckoutTable implements CheckoutTable {
 
     @Override
     public Map<Integer, List<Checkout>> getCheckoutMap() {
-        return null;
+        return checkoutMap;
     }
 }
