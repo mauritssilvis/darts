@@ -15,6 +15,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * An implementation of the {@code CheckoutTableBuilder} interface that builds
+ * {@code MappedCheckoutTable} objects. Default values are provided for
+ * unspecified properties.
+ * <p>
+ * Relevant design patterns: Builder.
+ */
 public class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
