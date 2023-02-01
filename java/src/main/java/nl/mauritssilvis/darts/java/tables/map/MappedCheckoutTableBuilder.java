@@ -11,31 +11,42 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 import nl.mauritssilvis.darts.java.tables.CheckoutTableBuilder;
 
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
+    private BoardType boardType = BoardType.LONDON;
+    private CheckType checkInType = CheckType.ANY;
+    private CheckType checkoutType = CheckType.DOUBLE;
+    private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
+
     @Override
     public CheckoutTableBuilder setBoardType(BoardType boardType) {
+        this.boardType = boardType;
         return this;
     }
 
     @Override
     public CheckoutTableBuilder setCheckInType(CheckType checkInType) {
+        this.checkInType = checkInType;
         return this;
     }
 
     @Override
     public CheckoutTableBuilder setCheckoutType(CheckType checkoutType) {
+        this.checkoutType = checkoutType;
         return this;
     }
 
     @Override
-    public CheckoutTableBuilder setCheckouts(int score, Collection<Checkout> checkouts) {
+    public CheckoutTableBuilder setCheckouts(int score, List<Checkout> checkouts) {
+        checkoutMap.put(score, checkouts);
         return this;
     }
 
     @Override
     public CheckoutTable build() {
-        return null;
+        return MappedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
     }
 }

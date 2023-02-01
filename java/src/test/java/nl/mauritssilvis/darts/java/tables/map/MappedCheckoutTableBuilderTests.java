@@ -158,7 +158,7 @@ class MappedCheckoutTableBuilderTests {
                 5, GroupedCheckoutTestUtils.getCheckouts(names5),
                 6, GroupedCheckoutTestUtils.getCheckouts(names6)
         );
-        
+
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
     }
 
