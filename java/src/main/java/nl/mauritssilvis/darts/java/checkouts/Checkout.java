@@ -18,7 +18,7 @@ import java.util.List;
  * grouped throws represent multiple sequences, one for each permutation of the
  * grouped elements.
  * <p>
- * Relevant design patterns: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 public interface Checkout {
     /**

@@ -16,7 +16,7 @@ import java.util.Map;
  * A checkout table that contains checkouts for a specific dartboard type,
  * check-in type and checkout type.
  * <p>
- * Relevant design patterns: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 public interface CheckoutTable {
     /**

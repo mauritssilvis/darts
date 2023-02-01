@@ -13,7 +13,7 @@ import java.util.List;
  * A throw that contains fields of a certain score. All fields have to be
  * unique.
  * <p>
- * Relevant design patterns: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 public interface Throw {
     /**

@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * An implementation of the {@code Board} interface that represents a London
  * dartboard.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 public final class LondonBoard implements Board {
     private static final int RANGE_MIN = 1;

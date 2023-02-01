@@ -15,7 +15,7 @@ import java.util.List;
  * An implementation of the {@code Throw} interface that can store multiple,
  * unique fields of a certain score.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 public final class CompoundThrow implements Throw {
     private final int score;

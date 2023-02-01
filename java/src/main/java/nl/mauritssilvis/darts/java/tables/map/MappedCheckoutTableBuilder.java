@@ -20,7 +20,7 @@ import java.util.Map;
  * {@code MappedCheckoutTable} objects. Default values are provided for
  * unspecified properties.
  * <p>
- * Relevant design patterns: Builder, static factory method.
+ * Relevant design patterns: builder, static factory method.
  */
 public final class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;

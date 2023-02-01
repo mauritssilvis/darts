@@ -15,7 +15,7 @@ import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
  * An implementation of the {@code CheckoutTableGenerator} interface that
  * generates {@code MappedCheckoutTable} objects.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 public final class MappedCheckoutTableGenerator implements CheckoutTableGenerator {
     private MappedCheckoutTableGenerator(

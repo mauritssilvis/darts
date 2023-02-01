@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
  * sequences of edges between those nodes that have non-increasing weights.
  * Results are returned in the form of a list of {@code GroupedPath} objects.
  * <p>
- * Relevant design patterns: Strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, static factory method.
  * <p>
  * Relevant terminology: Subset sum problem.
  */

@@ -16,7 +16,7 @@ import java.util.List;
  * An implementation of the {@code Node} interface that stores unique edge
  * weights in a strictly descending order.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
 public final class DescendingNode implements Node {

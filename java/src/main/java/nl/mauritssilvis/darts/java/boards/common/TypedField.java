@@ -13,7 +13,7 @@ import nl.mauritssilvis.darts.java.boards.FieldType;
  * An implementation of the {@code Field} interface that can represent fields of
  * all predefined types.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
 public final class TypedField implements Field {

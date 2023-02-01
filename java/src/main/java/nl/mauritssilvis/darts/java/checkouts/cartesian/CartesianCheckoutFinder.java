@@ -27,7 +27,7 @@ import java.util.stream.IntStream;
  * of the available fields and returns results in the form of a list of {@code
  * SimpleCheckout} objects.
  * <p>
- * Relevant design patterns: Strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, static factory method.
  */
 public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;

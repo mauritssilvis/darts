@@ -25,7 +25,7 @@ import java.util.stream.IntStream;
  * edges between the nodes and returns results in the form of a list of
  * {@code SimplePath} objects.
  * <p>
- * Relevant design patterns: Strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, static factory method.
  * <p>
  * Relevant terminology: Subset sum problem.
  */

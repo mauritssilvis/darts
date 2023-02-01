@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * An implementation of the {@code Throw} interface that stores a single field.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
 public final class SimpleThrow implements Throw {

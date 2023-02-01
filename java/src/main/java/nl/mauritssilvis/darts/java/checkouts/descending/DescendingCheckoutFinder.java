@@ -28,7 +28,7 @@ import java.util.stream.IntStream;
  * sequences of grouped fields that have non-increasing scores. Results are
  * returned in the form of a list of {@code GroupedCheckout} objects.
  * <p>
- * Relevant design patterns: Strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, static factory method.
  */
 public final class DescendingCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;

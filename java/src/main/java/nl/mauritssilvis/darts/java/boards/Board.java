@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * A dartboard.
  * <p>
- * Relevant design patterns: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 @FunctionalInterface
 public interface Board {

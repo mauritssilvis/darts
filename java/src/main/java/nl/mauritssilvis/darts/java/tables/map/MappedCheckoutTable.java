@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * An implementation of the {@code CheckoutTable} interface that uses a map to
  * store checkouts.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 public final class MappedCheckoutTable implements CheckoutTable {
     private final BoardType boardType;

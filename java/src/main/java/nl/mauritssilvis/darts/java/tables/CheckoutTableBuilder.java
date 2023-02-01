@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * A checkout table builder.
  * <p>
- * Relevant design patterns: Builder, fluent interface.
+ * Relevant design patterns: builder, fluent interface.
  */
 public interface CheckoutTableBuilder {
     /**

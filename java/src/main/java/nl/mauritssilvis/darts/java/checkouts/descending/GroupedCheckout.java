@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
  * An implementation of the {@code Checkout} interface that represents multiple
  * sequence of throws, namely, one for each permutation of the grouped throws.
  * <p>
- * Relevant design patterns: Immutable object, static factory method.
+ * Relevant design patterns: immutable object, static factory method.
  */
 public final class GroupedCheckout implements Checkout {
     private final List<Throw> throwList;

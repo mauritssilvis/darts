@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.boards;
 /**
  * A dartboard field with a type, a name and a score.
  * <p>
- * Relevant design patterns: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 public interface Field {
     /**
