@@ -34,7 +34,7 @@ public final class LondonBoard implements Board {
     }
 
     /**
-     * Return a new {@code LondonBoard}.
+     * Returns a new {@code LondonBoard}.
      *
      * @return a new {@code LondonBoard}
      */

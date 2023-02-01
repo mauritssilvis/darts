@@ -20,13 +20,26 @@ import java.util.Map;
  * {@code MappedCheckoutTable} objects. Default values are provided for
  * unspecified properties.
  * <p>
- * Relevant design patterns: Builder.
+ * Relevant design patterns: Builder, static factory method.
  */
 public class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
     private CheckType checkoutType = CheckType.DOUBLE;
     private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
+
+    private MappedCheckoutTableBuilder() {
+    }
+
+    /**
+     * Returns a new {@code MappedCheckoutTableBuilder} with default values for
+     * the dartboard, check-in and checkout types.
+     *
+     * @return a new {@code MappedCheckoutTableBuilder}
+     */
+    public static CheckoutTableBuilder create() {
+        return new MappedCheckoutTableBuilder();
+    }
 
     @Override
     public CheckoutTableBuilder setBoardType(BoardType boardType) {
