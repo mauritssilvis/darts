@@ -19,10 +19,10 @@ public final class BoardFactory {
     }
 
     /**
-     * Returns a new {@code Board} of the specified dartboard type.
+     * Returns a new {@code Board} of the specified type.
      *
      * @param boardType the dartboard type
-     * @return a new {@code Board} of the specified dartboard type
+     * @return a new {@code Board} of the specified type
      */
     public static Board create(BoardType boardType) {
         return switch (boardType) {
