@@ -22,7 +22,7 @@ import java.util.Map;
  * <p>
  * Relevant design patterns: Builder, static factory method.
  */
-public class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
+public final class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
     private CheckType checkoutType = CheckType.DOUBLE;

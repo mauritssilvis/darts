@@ -17,7 +17,7 @@ import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
  * <p>
  * Relevant design patterns: Immutable object, static factory method.
  */
-public class MappedCheckoutTableGenerator implements CheckoutTableGenerator {
+public final class MappedCheckoutTableGenerator implements CheckoutTableGenerator {
     private MappedCheckoutTableGenerator(
             BoardType boardType,
             CheckType checkInType,
