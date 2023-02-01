@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.settings;
 /**
  * The type of checkout finder.
  */
-public enum CheckoutFinderType {
+public enum FinderType {
     /**
      * A Cartesian checkout finder.
      */

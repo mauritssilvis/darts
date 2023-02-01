@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.cartesian.CartesianCheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.descending.DescendingCheckoutFinder;
-import nl.mauritssilvis.darts.java.settings.CheckoutFinderType;
+import nl.mauritssilvis.darts.java.settings.FinderType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,18 +19,18 @@ import java.util.Collections;
 class CheckoutFinderFactoryTests {
     @Test
     void getACartesianCheckoutFinder() {
-        CheckoutFinderType checkoutFinderType = CheckoutFinderType.CARTESIAN;
+        FinderType finderType = FinderType.CARTESIAN;
         Collection<Collection<Field>> fieldsPerThrow = Collections.emptyList();
-        CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(checkoutFinderType, fieldsPerThrow);
+        CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(finderType, fieldsPerThrow);
 
         Assertions.assertTrue(checkoutFinder instanceof CartesianCheckoutFinder);
     }
 
     @Test
     void getADescendingCheckoutFinder() {
-        CheckoutFinderType checkoutFinderType = CheckoutFinderType.DESCENDING;
+        FinderType finderType = FinderType.DESCENDING;
         Collection<Collection<Field>> fieldsPerThrow = Collections.emptyList();
-        CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(checkoutFinderType, fieldsPerThrow);
+        CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(finderType, fieldsPerThrow);
 
         Assertions.assertTrue(checkoutFinder instanceof DescendingCheckoutFinder);
     }
