@@ -155,8 +155,8 @@ class MappedCheckoutTableBuilderTests {
                 .build();
 
         Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                5, GroupedCheckoutTestUtils.getCheckouts(names5),
-                6, GroupedCheckoutTestUtils.getCheckouts(names6)
+                5, checkouts5,
+                6, checkouts6
         );
 
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
