@@ -317,6 +317,6 @@ class QuadroBoardTests {
                 .mapToInt(Field::getScore)
                 .sum();
 
-        Assertions.assertEquals(940, sum);
+        Assertions.assertEquals(840, sum);
     }
 }
