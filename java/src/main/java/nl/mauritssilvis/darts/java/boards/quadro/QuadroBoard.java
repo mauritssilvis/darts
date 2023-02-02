@@ -21,7 +21,6 @@ public class QuadroBoard implements Board {
     private QuadroBoard() {
     }
 
-
     /**
      * Returns a new {@code QuadroBoard}.
      *
