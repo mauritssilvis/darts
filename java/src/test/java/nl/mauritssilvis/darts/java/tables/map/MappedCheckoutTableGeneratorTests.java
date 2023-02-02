@@ -47,7 +47,7 @@ class MappedCheckoutTableGeneratorTests {
 
     @Test
     void getTheCheckInType() {
-        BoardType boardType = BoardType.LONDON;
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;

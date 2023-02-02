@@ -7,6 +7,7 @@ package nl.mauritssilvis.darts.java.boards.factory;
 
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.london.LondonBoard;
+import nl.mauritssilvis.darts.java.boards.quadro.QuadroBoard;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 
 /**
@@ -27,6 +28,7 @@ public final class BoardFactory {
     public static Board create(BoardType boardType) {
         return switch (boardType) {
             case LONDON -> LondonBoard.create();
+            case QUADRO -> QuadroBoard.create();
         };
     }
 }

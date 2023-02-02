@@ -35,7 +35,7 @@ class MappedCheckoutTableTests {
 
     @Test
     void storeAnIndependentCheckoutMap() {
-        BoardType boardType = BoardType.LONDON;
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
 
@@ -149,7 +149,7 @@ class MappedCheckoutTableTests {
 
     @Test
     void getTheCheckoutMapWithAnEmptyMap() {
-        BoardType boardType = BoardType.LONDON;
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
         Map<Integer, List<Checkout>> checkoutMap = Collections.emptyMap();
@@ -197,7 +197,7 @@ class MappedCheckoutTableTests {
 
     @Test
     void getImmutableCheckouts() {
-        BoardType boardType = BoardType.LONDON;
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
 

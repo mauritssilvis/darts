@@ -22,7 +22,7 @@ import java.util.Map;
 class MappedCheckoutTableBuilderTests {
     @Test
     void getTheBoardType() {
-        BoardType boardType = BoardType.LONDON; // TODO: Change after introducing new board types
+        BoardType boardType = BoardType.QUADRO;
 
         CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
 
@@ -45,9 +45,8 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void overrideTheBoardType() {
-        // TODO: Change after introducing new board types
-        BoardType boardType1 = null;
-        BoardType boardType2 = BoardType.LONDON;
+        BoardType boardType1 = BoardType.LONDON;
+        BoardType boardType2 = BoardType.QUADRO;
 
         CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
 
@@ -202,7 +201,7 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void getACustomCheckoutTable() {
-        BoardType boardType = BoardType.LONDON;  // TODO: Change after introducing new board types
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.MASTER;
 
