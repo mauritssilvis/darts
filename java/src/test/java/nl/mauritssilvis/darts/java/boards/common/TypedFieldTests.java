@@ -9,130 +9,79 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 class TypedFieldTests {
-    @Test
-    void getTheFieldTypeOfASingleField() {
-        FieldType fieldType = FieldType.SINGLE;
-        int baseScore = 19;
+    @ParameterizedTest
+    @MethodSource("withTheFieldType")
+    void getTheFieldType(FieldType fieldType, int baseScore) {
         Field field = TypedField.of(fieldType, baseScore);
 
         Assertions.assertEquals(fieldType, field.getFieldType());
     }
 
-    @Test
-    void getTheFieldTypeOfADoubleField() {
-        FieldType fieldType = FieldType.DOUBLE;
-        int baseScore = 5;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
+    private static Stream<Arguments> withTheFieldType() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 19),
+                Arguments.of(FieldType.DOUBLE, 5),
+                Arguments.of(FieldType.TRIPLE, 17),
+                Arguments.of(FieldType.QUADRUPLE, 4)
+        );
     }
 
-    @Test
-    void getTheFieldTypeOfATripleField() {
-        FieldType fieldType = FieldType.TRIPLE;
-        int baseScore = 17;
+    @ParameterizedTest
+    @MethodSource("withTheName")
+    void getTheName(FieldType fieldType, int baseScore, String name) {
         Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
-    void getTheFieldTypeOfAQuadrupleField() {
-        FieldType fieldType = FieldType.QUADRUPLE;
-        int baseScore = 4;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        Assertions.assertEquals(fieldType, field.getFieldType());
-    }
-
-    @Test
-    void getTheNameOfASingleField() {
-        FieldType fieldType = FieldType.SINGLE;
-        int baseScore = 10;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String name = "10";
 
         Assertions.assertEquals(name, field.getName());
     }
 
-    @Test
-    void getTheNameOfADoubleField() {
-        FieldType fieldType = FieldType.DOUBLE;
-        int baseScore = 8;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String name = "D8";
-
-        Assertions.assertEquals(name, field.getName());
+    private static Stream<Arguments> withTheName() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 10, "10"),
+                Arguments.of(FieldType.DOUBLE, 8, "D8"),
+                Arguments.of(FieldType.TRIPLE, 12, "T12"),
+                Arguments.of(FieldType.QUADRUPLE, 20, "Q20")
+        );
     }
 
-    @Test
-    void getTheNameOfATripleField() {
-        FieldType fieldType = FieldType.TRIPLE;
-        int baseScore = 12;
+    @ParameterizedTest
+    @MethodSource("withTheScore")
+    void getTheScore(FieldType fieldType, int baseScore, int score) {
         Field field = TypedField.of(fieldType, baseScore);
-
-        String name = "T12";
-
-        Assertions.assertEquals(name, field.getName());
-    }
-
-    @Test
-    void getTheNameOfAQuadrupleField() {
-        FieldType fieldType = FieldType.QUADRUPLE;
-        int baseScore = 20;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String name = "Q20";
-
-        Assertions.assertEquals(name, field.getName());
-    }
-
-    @Test
-    void getTheScoreOfASingleField() {
-        FieldType fieldType = FieldType.SINGLE;
-        int baseScore = 2;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        int score = 2;
 
         Assertions.assertEquals(score, field.getScore());
     }
 
-    @Test
-    void getTheScoreOfADoubleField() {
-        FieldType fieldType = FieldType.DOUBLE;
-        int baseScore = 6;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        int score = 12;
-
-        Assertions.assertEquals(score, field.getScore());
+    private static Stream<Arguments> withTheScore() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 2, 2),
+                Arguments.of(FieldType.DOUBLE, 6, 12),
+                Arguments.of(FieldType.TRIPLE, 20, 60),
+                Arguments.of(FieldType.QUADRUPLE, 10, 40)
+        );
     }
 
-    @Test
-    void getTheScoreOfATripleField() {
-        FieldType fieldType = FieldType.TRIPLE;
-        int baseScore = 20;
+    @ParameterizedTest
+    @MethodSource("withTheStringRepresentation")
+    void convertToAString(FieldType fieldType, int baseScore, String str) {
         Field field = TypedField.of(fieldType, baseScore);
 
-        int score = 60;
-
-        Assertions.assertEquals(score, field.getScore());
+        Assertions.assertEquals(str, field.toString());
     }
 
-    @Test
-    void getTheScoreOfAQuadrupleField() {
-        FieldType fieldType = FieldType.QUADRUPLE;
-        int baseScore = 10;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        int score = 40;
-
-        Assertions.assertEquals(score, field.getScore());
+    private static Stream<Arguments> withTheStringRepresentation() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 2, "2"),
+                Arguments.of(FieldType.DOUBLE, 9, "D9"),
+                Arguments.of(FieldType.TRIPLE, 17, "T17"),
+                Arguments.of(FieldType.QUADRUPLE, 2, "Q2")
+        );
     }
 
     @Test
@@ -186,49 +135,5 @@ class TypedFieldTests {
         Field field2 = TypedField.of(fieldType, baseScore2);
 
         Assertions.assertNotEquals(field1, field2);
-    }
-
-    @Test
-    void convertASingleFieldToString() {
-        FieldType fieldType = FieldType.SINGLE;
-        int baseScore = 2;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String str = "2";
-
-        Assertions.assertEquals(str, field.toString());
-    }
-
-    @Test
-    void convertADoubleFieldToString() {
-        FieldType fieldType = FieldType.DOUBLE;
-        int baseScore = 9;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String str = "D9";
-
-        Assertions.assertEquals(str, field.toString());
-    }
-
-    @Test
-    void convertATripleFieldToString() {
-        FieldType fieldType = FieldType.TRIPLE;
-        int baseScore = 17;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String str = "T17";
-
-        Assertions.assertEquals(str, field.toString());
-    }
-
-    @Test
-    void convertAQuadrupleFieldToString() {
-        FieldType fieldType = FieldType.QUADRUPLE;
-        int baseScore = 2;
-        Field field = TypedField.of(fieldType, baseScore);
-
-        String str = "Q2";
-
-        Assertions.assertEquals(str, field.toString());
     }
 }
