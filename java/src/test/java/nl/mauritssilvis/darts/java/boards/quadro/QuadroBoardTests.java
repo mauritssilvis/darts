@@ -8,91 +8,30 @@ package nl.mauritssilvis.darts.java.boards.quadro;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
-import nl.mauritssilvis.darts.java.boards.common.TypedField;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class QuadroBoardTests {
-    @Test
-    void getImmutableSingleFields() {
+    @ParameterizedTest
+    @EnumSource(FieldType.class)
+    void getImmutableFields(FieldType fieldType) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
         List<Field> fields = board.getFields(fieldType);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> fields.remove(0));
     }
 
-    @Test
-    void getImmutableDoubleFields() {
+    @ParameterizedTest
+    @EnumSource(FieldType.class)
+    void getFieldsOfOneType(FieldType fieldType) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
-    }
-
-    @Test
-    void getImmutableTripleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        Assertions.assertThrows(UnsupportedOperationException.class, fields::clear);
-    }
-
-    @Test
-    void getImmutableQuadrupleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-        Field field = TypedField.of(fieldType, 3);
-
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> fields.add(field));
-    }
-
-    @Test
-    void countTheSingleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
-        Assertions.assertEquals(21, board.getFields(fieldType).size());
-    }
-
-    @Test
-    void countTheDoubleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
-        Assertions.assertEquals(21, board.getFields(fieldType).size());
-    }
-
-    @Test
-    void countTheTripleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
-        Assertions.assertEquals(20, board.getFields(fieldType).size());
-    }
-
-    @Test
-    void countTheQuadrupleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
-        Assertions.assertEquals(20, board.getFields(fieldType).size());
-    }
-
-    @Test
-    void getOnlySingleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
@@ -102,221 +41,89 @@ class QuadroBoardTests {
         Assertions.assertEquals(0, otherFields.size());
     }
 
-    @Test
-    void getOnlyDoubleFields() {
+    @ParameterizedTest
+    @MethodSource("withTheFieldCount")
+    void countTheFields(FieldType fieldType, int count) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
         List<Field> fields = board.getFields(fieldType);
 
-        List<Field> otherFields = fields.stream()
-                .filter(field -> field.getFieldType() != fieldType)
-                .toList();
-
-        Assertions.assertEquals(0, otherFields.size());
+        Assertions.assertEquals(count, fields.size());
     }
 
-    @Test
-    void getOnlyTripleFields() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        List<Field> otherFields = fields.stream()
-                .filter(field -> field.getFieldType() != fieldType)
-                .toList();
-
-        Assertions.assertEquals(0, otherFields.size());
+    private static Stream<Arguments> withTheFieldCount() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 21),
+                Arguments.of(FieldType.DOUBLE, 21),
+                Arguments.of(FieldType.TRIPLE, 20),
+                Arguments.of(FieldType.QUADRUPLE, 20)
+        );
     }
 
-    @Test
-    void getOnlyQuadrupleFields() {
+    @ParameterizedTest
+    @MethodSource("withTheMinimumScore")
+    void getTheMinimumScore(FieldType fieldType, int expectedMinimum) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
         List<Field> fields = board.getFields(fieldType);
 
-        List<Field> otherFields = fields.stream()
-                .filter(field -> field.getFieldType() != fieldType)
-                .toList();
-
-        Assertions.assertEquals(0, otherFields.size());
-    }
-
-    @Test
-    void getTheMinimumSingleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int min = fields.stream()
+        int actualMinimum = fields.stream()
                 .mapToInt(Field::getScore)
                 .min()
-                .orElse(-1);
+                .orElse(Integer.MAX_VALUE);
 
-        Assertions.assertEquals(1, min);
+        Assertions.assertEquals(expectedMinimum, actualMinimum);
     }
 
-    @Test
-    void getTheMinimumDoubleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int min = fields.stream()
-                .mapToInt(Field::getScore)
-                .min()
-                .orElse(-1);
-
-        Assertions.assertEquals(2, min);
+    private static Stream<Arguments> withTheMinimumScore() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 1),
+                Arguments.of(FieldType.DOUBLE, 2),
+                Arguments.of(FieldType.TRIPLE, 3),
+                Arguments.of(FieldType.QUADRUPLE, 4)
+        );
     }
 
-    @Test
-    void getTheMinimumTripleField() {
+    @ParameterizedTest
+    @MethodSource("withTheMaximumScore")
+    void getTheMaximumScore(FieldType fieldType, int expectedMaximum) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
         List<Field> fields = board.getFields(fieldType);
 
-        int min = fields.stream()
-                .mapToInt(Field::getScore)
-                .min()
-                .orElse(-1);
-
-        Assertions.assertEquals(3, min);
-    }
-
-    @Test
-    void getTheMinimumQuadrupleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int min = fields.stream()
-                .mapToInt(Field::getScore)
-                .min()
-                .orElse(-1);
-
-        Assertions.assertEquals(4, min);
-    }
-
-    @Test
-    void getTheMaximumSingleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int max = fields.stream()
+        int actualMaximum = fields.stream()
                 .mapToInt(Field::getScore)
                 .max()
-                .orElse(-1);
+                .orElse(Integer.MIN_VALUE);
 
-        Assertions.assertEquals(25, max);
+        Assertions.assertEquals(expectedMaximum, actualMaximum);
     }
 
-    @Test
-    void getTheMaximumDoubleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int max = fields.stream()
-                .mapToInt(Field::getScore)
-                .max()
-                .orElse(-1);
-
-        Assertions.assertEquals(50, max);
+    private static Stream<Arguments> withTheMaximumScore() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 25),
+                Arguments.of(FieldType.DOUBLE, 50),
+                Arguments.of(FieldType.TRIPLE, 60),
+                Arguments.of(FieldType.QUADRUPLE, 80)
+        );
     }
 
-    @Test
-    void getTheMaximumTripleField() {
+    @ParameterizedTest
+    @MethodSource("withTheSumOfScores")
+    void getTheTotalScore(FieldType fieldType, int expectedSum) {
         Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
         List<Field> fields = board.getFields(fieldType);
 
-        int max = fields.stream()
-                .mapToInt(Field::getScore)
-                .max()
-                .orElse(-1);
-
-        Assertions.assertEquals(60, max);
-    }
-
-    @Test
-    void getTheMaximumQuadrupleField() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int max = fields.stream()
-                .mapToInt(Field::getScore)
-                .max()
-                .orElse(-1);
-
-        Assertions.assertEquals(80, max);
-    }
-
-    @Test
-    void getTheSingleFieldSum() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.SINGLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int sum = fields.stream()
+        int actualSum = fields.stream()
                 .mapToInt(Field::getScore)
                 .sum();
 
-        Assertions.assertEquals(235, sum);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
 
-    @Test
-    void getTheDoubleFieldSum() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.DOUBLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getScore)
-                .sum();
-
-        Assertions.assertEquals(470, sum);
-    }
-
-    @Test
-    void getTheTripleFieldSum() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.TRIPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getScore)
-                .sum();
-
-        Assertions.assertEquals(630, sum);
-    }
-
-    @Test
-    void getTheQuadrupleFieldSum() {
-        Board board = QuadroBoard.create();
-        FieldType fieldType = FieldType.QUADRUPLE;
-
-        List<Field> fields = board.getFields(fieldType);
-
-        int sum = fields.stream()
-                .mapToInt(Field::getScore)
-                .sum();
-
-        Assertions.assertEquals(840, sum);
+    private static Stream<Arguments> withTheSumOfScores() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 235),
+                Arguments.of(FieldType.DOUBLE, 470),
+                Arguments.of(FieldType.TRIPLE, 630),
+                Arguments.of(FieldType.QUADRUPLE, 840)
+        );
     }
 }
