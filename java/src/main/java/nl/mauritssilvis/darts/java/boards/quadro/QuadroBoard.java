@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.boards.quadro;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
@@ -19,6 +20,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public class QuadroBoard implements Board {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 20;

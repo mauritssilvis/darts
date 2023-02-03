@@ -118,6 +118,17 @@ class QuadroBoardTests {
         Assertions.assertEquals(expectedSum, actualSum);
     }
 
+    @Test
+    void getEqualBoards() {
+        Board board1 = QuadroBoard.create();
+        Board board2 = QuadroBoard.create();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(board1, board2),
+                () -> Assertions.assertEquals(board1.hashCode(), board2.hashCode())
+        );
+    }
+
     private static Stream<Arguments> withTheSumOfScores() {
         return Stream.of(
                 Arguments.of(FieldType.SINGLE, 235),
