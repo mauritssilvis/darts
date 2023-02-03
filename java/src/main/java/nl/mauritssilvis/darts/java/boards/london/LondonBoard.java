@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code Board} interface that represents a London
- * dartboard.
+ * An implementation of the {@code Board} interface that represents the London
+ * or clock dartboard.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
