@@ -9,6 +9,7 @@ import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -123,6 +124,17 @@ class LondonBoardTests {
                 Arguments.of(FieldType.DOUBLE, 470),
                 Arguments.of(FieldType.TRIPLE, 630),
                 Arguments.of(FieldType.QUADRUPLE, 0)
+        );
+    }
+
+    @Test
+    void getEqualBoards() {
+        Board board1 = LondonBoard.create();
+        Board board2 = LondonBoard.create();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(board1, board2),
+                () -> Assertions.assertEquals(board1.hashCode(), board2.hashCode())
         );
     }
 }
