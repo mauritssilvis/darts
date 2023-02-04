@@ -25,7 +25,9 @@ class SimpleCheckoutTests {
 
         fields.remove(2);
 
-        Assertions.assertNotEquals(getThrows(fields), checkout.getThrows());
+        Collection<Throw> throwList = getThrows(fields);
+
+        Assertions.assertNotEquals(throwList, checkout.getThrows());
     }
 
     @Test
@@ -57,7 +59,9 @@ class SimpleCheckoutTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields("Q2", "T7", "D19");
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Assertions.assertEquals(getThrows(fields), checkout.getThrows());
+        Collection<Throw> throwList = getThrows(fields);
+
+        Assertions.assertEquals(throwList, checkout.getThrows());
     }
 
     @Test
@@ -65,7 +69,9 @@ class SimpleCheckoutTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields("D7");
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Assertions.assertEquals(getThrows(fields), checkout.getThrows());
+        Collection<Throw> throwList = getThrows(fields);
+
+        Assertions.assertEquals(throwList, checkout.getThrows());
     }
 
     @Test
@@ -73,7 +79,9 @@ class SimpleCheckoutTests {
         Collection<Field> fields = Collections.emptyList();
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Assertions.assertEquals(getThrows(fields), checkout.getThrows());
+        Collection<Throw> throwList = getThrows(fields);
+
+        Assertions.assertEquals(throwList, checkout.getThrows());
     }
 
     @Test
