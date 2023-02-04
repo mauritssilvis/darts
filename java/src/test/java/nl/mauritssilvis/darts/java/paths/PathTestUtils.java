@@ -3,9 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.paths.utils;
-
-import nl.mauritssilvis.darts.java.paths.Path;
+package nl.mauritssilvis.darts.java.paths;
 
 import java.util.Collection;
 import java.util.List;

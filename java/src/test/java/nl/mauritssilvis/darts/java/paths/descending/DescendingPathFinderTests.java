@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
-import nl.mauritssilvis.darts.java.paths.utils.PathTestUtils;
+import nl.mauritssilvis.darts.java.paths.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
