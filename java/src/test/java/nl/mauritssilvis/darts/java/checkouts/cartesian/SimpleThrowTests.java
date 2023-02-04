@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.FieldTestUtils;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 import org.junit.jupiter.api.Assertions;
@@ -16,7 +17,8 @@ import java.util.List;
 class SimpleThrowTests {
     @Test
     void getTheScore() {
-        Field field = TypedFieldTestUtils.getField("D7");
+        String name = "D7";
+        Field field = TypedFieldTestUtils.getField(name);
         Throw simpleThrow = SimpleThrow.of(field);
 
         Assertions.assertEquals(14, simpleThrow.getScore());
@@ -24,10 +26,14 @@ class SimpleThrowTests {
 
     @Test
     void getTheFields() {
-        Field field = TypedFieldTestUtils.getField("Q3");
+        String name = "Q3";
+        Field field = TypedFieldTestUtils.getField(name);
         Throw simpleThrow = SimpleThrow.of(field);
 
-        Assertions.assertEquals(List.of(field), simpleThrow.getFields());
+        List<Field> storedFields = simpleThrow.getFields();
+        List<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(List.of(name), storedNames);
     }
 
     @Test
@@ -42,10 +48,12 @@ class SimpleThrowTests {
 
     @Test
     void getEqualThrows() {
-        Field field1 = TypedFieldTestUtils.getField("19");
+        String name = "19";
+
+        Field field1 = TypedFieldTestUtils.getField(name);
         Throw simpleThrow1 = SimpleThrow.of(field1);
 
-        Field field2 = TypedFieldTestUtils.getField("19");
+        Field field2 = TypedFieldTestUtils.getField(name);
         Throw simpleThrow2 = SimpleThrow.of(field2);
 
         Assertions.assertAll(
@@ -56,10 +64,12 @@ class SimpleThrowTests {
 
     @Test
     void getUnequalThrows() {
-        Field field1 = TypedFieldTestUtils.getField("25");
+        String name1 = "25";
+        Field field1 = TypedFieldTestUtils.getField(name1);
         Throw simpleThrow1 = SimpleThrow.of(field1);
 
-        Field field2 = TypedFieldTestUtils.getField("D25");
+        String name2 = "D25";
+        Field field2 = TypedFieldTestUtils.getField(name2);
         Throw simpleThrow2 = SimpleThrow.of(field2);
 
         Assertions.assertNotEquals(simpleThrow1, simpleThrow2);

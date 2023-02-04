@@ -17,7 +17,7 @@ import java.util.List;
  * A set of testing utilities that create (collections of) {@code TypedField}
  * objects.
  */
-public class TypedFieldTestUtils {
+public final class TypedFieldTestUtils {
     private TypedFieldTestUtils() {
     }
 

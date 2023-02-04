@@ -9,7 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * A set of testing utilities that process collections of {@code Path} objects.
+ * A set of testing utilities for processing collections of {@code Path}
+ * objects.
  */
 public final class PathTestUtils {
     private PathTestUtils() {
