@@ -41,13 +41,13 @@ class CartesianCheckoutFinderTests {
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 16;
 
-        long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+        Collection<Checkout> checkouts1 = checkoutFinder.find(score);
 
         fieldsPerThrow.clear();
 
-        long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+        Collection<Checkout> checkouts2 = checkoutFinder.find(score);
 
-        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+        Assertions.assertEquals(checkouts1, checkouts2);
     }
 
     @Test
@@ -62,13 +62,13 @@ class CartesianCheckoutFinderTests {
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 30;
 
-        long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+        Collection<Checkout> checkouts1 = checkoutFinder.find(score);
 
         fieldsPerThrow.get(1).clear();
 
-        long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
+        Collection<Checkout> checkouts2 = checkoutFinder.find(score);
 
-        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+        Assertions.assertEquals(checkouts1, checkouts2);
     }
 
     @Test
@@ -79,7 +79,7 @@ class CartesianCheckoutFinderTests {
 
         int score = 16;
 
-        List<Checkout> checkouts = checkoutFinder.find(score);
+        Collection<Checkout> checkouts = checkoutFinder.find(score);
 
         Assertions.assertThrows(UnsupportedOperationException.class, checkouts::clear);
     }
@@ -180,8 +180,8 @@ class CartesianCheckoutFinderTests {
 
         List<Checkout> checkouts = checkoutFinder.find(score);
 
-        List<List<Throw>> storedThrows = CheckoutTestUtils.getAllThrows(checkouts);
-        List<List<List<Field>>> storedFields = storedThrows.stream()
+        List<List<List<Field>>> storedFields = checkouts.stream()
+                .map(Checkout::getThrows)
                 .map(ThrowTestUtils::getAllFields)
                 .toList();
 
