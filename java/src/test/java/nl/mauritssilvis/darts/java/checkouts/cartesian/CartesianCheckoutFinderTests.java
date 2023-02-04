@@ -32,18 +32,18 @@ class CartesianCheckoutFinderTests {
 
     @Test
     void storeIndependentFieldsPerThrow() {
-        Collection<Collection<String>> namesPerThrow = new ArrayList<>(
-                List.of(List.of("D2", "D4"), List.of("D4", "D6"))
-        );
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "D4"), List.of("D4", "D6"));
 
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = new ArrayList<>(
+                TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow)
+        );
 
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 16;
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
-        namesPerThrow.clear();
+        fieldsPerThrow.clear();
 
         long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
@@ -52,15 +52,19 @@ class CartesianCheckoutFinderTests {
 
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
-        List<Collection<String>> namesPerThrow = List.of(List.of("T1", "T9"), new ArrayList<>(List.of("T9", "1")));
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<Collection<String>> namesPerThrow = List.of(List.of("T1", "T9"), List.of("T9", "1"));
+
+        List<Collection<Field>> fieldsPerThrow = List.of(
+                TypedFieldTestUtils.getFields(namesPerThrow.get(0)),
+                new ArrayList<>(TypedFieldTestUtils.getFields(namesPerThrow.get(1)))
+        );
 
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 30;
 
         long totalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
-        namesPerThrow.get(1).clear();
+        fieldsPerThrow.get(1).clear();
 
         long newTotalMultiplicity = CheckoutTestUtils.getTotalMultiplicity(checkoutFinder.find(score));
 
@@ -70,7 +74,7 @@ class CartesianCheckoutFinderTests {
     @Test
     void getImmutableCheckouts() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("8"), List.of("8", "Q2"));
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         int score = 16;
@@ -83,7 +87,7 @@ class CartesianCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withEmptyFieldsPerThrow")
     void handleEmptyFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         int score = 3;
@@ -107,7 +111,7 @@ class CartesianCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withoutCheckouts")
     void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         Collection<Checkout> checkouts = checkoutFinder.find(score);
@@ -171,7 +175,7 @@ class CartesianCheckoutFinderTests {
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
