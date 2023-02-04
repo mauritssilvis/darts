@@ -45,14 +45,28 @@ public final class TypedFieldTestUtils {
     }
 
     /**
-     * Returns a list of lists of fields with the specified names.
+     * Returns a list of fields per throw with the specified names.
      *
-     * @param namesCollections a collection of collections of names
-     * @return a list of lists of fields with the specified names
+     * @param namesPerThrow a collection names per throw
+     * @return a list of fields per throw with the specified names
      */
-    public static List<List<Field>> getFieldsPerCollection(Collection<? extends Collection<String>> namesCollections) {
-        return namesCollections.stream()
+    public static List<List<Field>> getFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
+        return namesPerThrow.stream()
                 .map(TypedFieldTestUtils::getFields)
+                .toList();
+    }
+
+    /**
+     * Returns a list of fields per checkout with the specified names.
+     *
+     * @param namesPerCheckout a collection of names per checkout
+     * @return a list of fields per checkout with the specified names
+     */
+    public static List<List<List<Field>>> getFieldsPerCheckout(
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
+        return namesPerCheckout.stream()
+                .map(TypedFieldTestUtils::getFieldsPerThrow)
                 .toList();
     }
 

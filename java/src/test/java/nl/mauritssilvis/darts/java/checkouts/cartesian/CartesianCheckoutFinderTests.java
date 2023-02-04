@@ -7,9 +7,7 @@ package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.checkouts.utils.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.checkouts.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,7 +36,7 @@ class CartesianCheckoutFinderTests {
                 List.of(List.of("D2", "D4"), List.of("D4", "D6"))
         );
 
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
 
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 16;
@@ -55,8 +53,7 @@ class CartesianCheckoutFinderTests {
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
         List<Collection<String>> namesPerThrow = List.of(List.of("T1", "T9"), new ArrayList<>(List.of("T9", "1")));
-
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
 
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
         int score = 30;
@@ -73,7 +70,7 @@ class CartesianCheckoutFinderTests {
     @Test
     void getImmutableCheckouts() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("8"), List.of("8", "Q2"));
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         int score = 16;
@@ -86,7 +83,7 @@ class CartesianCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withEmptyFieldsPerThrow")
     void handleEmptyFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         int score = 3;
@@ -110,7 +107,7 @@ class CartesianCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withoutCheckouts")
     void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         Collection<Checkout> checkouts = checkoutFinder.find(score);
@@ -172,22 +169,27 @@ class CartesianCheckoutFinderTests {
     void findCheckouts(
             Collection<? extends Collection<String>> namesPerThrow,
             int score,
-            Collection<Collection<? extends Collection<String>>> namesPerCheckout
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
 
+        List<List<Throw>> storedThrows = CheckoutTestUtils.getAllThrows(checkouts);
+        List<List<List<Field>>> storedFields = storedThrows.stream()
+                .map(ThrowTestUtils::getAllFields)
+                .toList();
+
+        int totalMultiplicity = namesPerCheckout.size();
+        List<List<List<Field>>> fieldsPerCheckout = TypedFieldTestUtils.getFieldsPerCheckout(namesPerCheckout);
+
         Assertions.assertAll(
                 () -> Assertions.assertEquals(score, checkouts.get(0).getScore()),
                 () -> Assertions.assertEquals(score, CheckoutTestUtils.getTotalScore(checkouts) / checkouts.size()),
-                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
-                () -> Assertions.assertEquals(namesPerCheckout, CheckoutTestUtils.getNamesPerCheckout(checkouts)),
-                () -> Assertions.assertEquals(
-                        namesPerCheckout.size(),
-                        CheckoutTestUtils.getTotalMultiplicity(checkouts)
-                )
+                () -> Assertions.assertEquals(totalMultiplicity, checkouts.size()),
+                () -> Assertions.assertEquals(fieldsPerCheckout, storedFields),
+                () -> Assertions.assertEquals(totalMultiplicity, CheckoutTestUtils.getTotalMultiplicity(checkouts))
         );
     }
 

@@ -484,7 +484,7 @@ class GroupedCheckoutTests {
     }
 
     private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
 
         return fieldsPerThrow.stream()
                 .map(CompoundThrow::of)

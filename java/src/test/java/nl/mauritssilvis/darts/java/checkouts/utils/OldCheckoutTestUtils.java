@@ -12,20 +12,8 @@ import nl.mauritssilvis.darts.java.checkouts.Throw;
 import java.util.Collection;
 import java.util.List;
 
-public final class CheckoutTestUtils {
-    private CheckoutTestUtils() {
-    }
-
-    public static int getTotalScore(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .mapToInt(Checkout::getScore)
-                .sum();
-    }
-
-    public static long getTotalMultiplicity(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .mapToLong(Checkout::getMultiplicity)
-                .sum();
+public final class OldCheckoutTestUtils {
+    private OldCheckoutTestUtils() {
     }
 
     public static List<List<List<String>>> getNamesPerCheckout(Collection<? extends Checkout> checkouts) {
