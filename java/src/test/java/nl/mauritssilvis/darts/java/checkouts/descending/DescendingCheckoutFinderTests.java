@@ -37,8 +37,8 @@ class DescendingCheckoutFinderTests {
     void storeIndependentFieldsPerThrow() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("3", "D9"), List.of("18", "3"));
         Collection<List<Field>> fieldsPerThrow = new ArrayList<>(TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow));
-
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+
         int score = 21;
 
         Collection<Checkout> checkouts1 = checkoutFinder.find(score);

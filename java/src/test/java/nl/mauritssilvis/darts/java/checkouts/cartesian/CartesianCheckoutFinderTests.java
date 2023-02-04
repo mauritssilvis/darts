@@ -37,8 +37,8 @@ class CartesianCheckoutFinderTests {
     void storeIndependentFieldsPerThrow() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "D4"), List.of("D4", "D6"));
         Collection<List<Field>> fieldsPerThrow = new ArrayList<>(TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow));
-
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
         int score = 16;
 
         Collection<Checkout> checkouts1 = checkoutFinder.find(score);
