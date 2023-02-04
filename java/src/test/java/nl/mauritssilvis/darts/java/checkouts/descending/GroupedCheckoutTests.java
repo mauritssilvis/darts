@@ -508,6 +508,79 @@ class GroupedCheckoutTests {
         );
     }
 
+    @Test
+    void getEqualCheckouts() {
+        Collection<Collection<String>> namesPerThrow1 = List.of(List.of("10", "D5"), List.of("Q3"));
+        Collection<List<Field>> fieldsPerThrow1 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow1);
+        Collection<Throw> throwList1 = getThrows(fieldsPerThrow1);
+
+        Collection<Boolean> grouping1 = List.of(false, true);
+
+        Checkout checkout1 = GroupedCheckout.of(throwList1, grouping1);
+
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("10", "D5"), List.of("Q3"));
+        Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
+        Collection<Throw> throwList2 = getThrows(fieldsPerThrow2);
+
+        Collection<Boolean> grouping2 = List.of(false, true);
+
+        Checkout checkout2 = GroupedCheckout.of(throwList2, grouping2);
+
+        Assertions.assertEquals(checkout1, checkout2);
+    }
+
+    @Test
+    void getUnequalCheckouts() {
+        Collection<Throw> throwList1 = Collections.emptyList();
+        Collection<Boolean> grouping1 = Collections.emptyList();
+
+        Checkout checkout1 = GroupedCheckout.of(throwList1, grouping1);
+
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("D3", "T2", "6"));
+        Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
+        Collection<Throw> throwList2 = getThrows(fieldsPerThrow2);
+
+        Collection<Boolean> grouping2 = List.of(false);
+
+        Checkout checkout2 = GroupedCheckout.of(throwList2, grouping2);
+
+        Assertions.assertNotEquals(checkout1, checkout2);
+    }
+
+    @Test
+    void getUnequalCheckoutsForDifferentThrows() {
+        Collection<Collection<String>> namesPerThrow1 = List.of(List.of("12", "D6"));
+        Collection<List<Field>> fieldsPerThrow1 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow1);
+        Collection<Throw> throwList1 = getThrows(fieldsPerThrow1);
+
+        Collection<Boolean> grouping = List.of(false, true);
+
+        Checkout checkout1 = GroupedCheckout.of(throwList1, grouping);
+
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("10", "D5"), List.of("Q3"));
+        Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
+        Collection<Throw> throwList2 = getThrows(fieldsPerThrow2);
+
+        Checkout checkout2 = GroupedCheckout.of(throwList2, grouping);
+
+        Assertions.assertNotEquals(checkout1, checkout2);
+    }
+
+    @Test
+    void getUnequalCheckoutsForADifferentGroupingSignature() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("15", "T5"), List.of("18", "D9", "T6"));
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
+
+        Collection<Boolean> grouping1 = List.of(false, true);
+        Checkout checkout1 = GroupedCheckout.of(throwList, grouping1);
+
+        Collection<Boolean> grouping2 = List.of(false, true);
+        Checkout checkout2 = GroupedCheckout.of(throwList, grouping2);
+
+        Assertions.assertNotEquals(checkout1, checkout2);
+    }
+
     private static List<Throw> getThrows(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         return fieldsPerThrow.stream()
                 .map(CompoundThrow::of)
