@@ -23,7 +23,7 @@ public final class CompoundThrow implements Throw {
     private final int score;
     private final List<Field> fields;
 
-    private CompoundThrow(Collection<Field> fields) {
+    private CompoundThrow(Collection<? extends Field> fields) {
         score = fields.isEmpty() ? 0 : fields.iterator().next().getScore();
 
         boolean hasOtherScore = fields.stream()
@@ -37,6 +37,7 @@ public final class CompoundThrow implements Throw {
 
         this.fields = fields.stream()
                 .distinct()
+                .map(Field.class::cast)
                 .toList();
     }
 
@@ -47,7 +48,7 @@ public final class CompoundThrow implements Throw {
      * @param fields a collection of fields
      * @return a new {@code CompoundThrow} with the specified fields
      */
-    public static Throw of(Collection<Field> fields) {
+    public static Throw of(Collection<? extends Field> fields) {
         return new CompoundThrow(fields);
     }
 

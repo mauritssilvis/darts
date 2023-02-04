@@ -24,7 +24,7 @@ public final class SimpleCheckout implements Checkout {
     private final List<Throw> throwList;
     private final int score;
 
-    private SimpleCheckout(Collection<Field> fields) {
+    private SimpleCheckout(Collection<? extends Field> fields) {
         throwList = fields.stream()
                 .map(SimpleThrow::of)
                 .toList();
@@ -42,7 +42,7 @@ public final class SimpleCheckout implements Checkout {
      * @return a new {@code SimpleCheckout} of simple throws with the specified
      * fields
      */
-    public static Checkout of(Collection<Field> fields) {
+    public static Checkout of(Collection<? extends Field> fields) {
         return new SimpleCheckout(fields);
     }
 

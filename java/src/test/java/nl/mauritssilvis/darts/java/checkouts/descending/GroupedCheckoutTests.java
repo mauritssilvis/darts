@@ -9,6 +9,7 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
+import nl.mauritssilvis.darts.java.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,21 +26,26 @@ class GroupedCheckoutTests {
     @Test
     void storeIndependentThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("1"), List.of("2", "D1"), List.of("3"));
-        List<Throw> throwList = new ArrayList<>(getThrows(namesPerThrow));
+        Collection<List<Field>> fieldsPerThrow = new ArrayList<>(TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow));
+        Collection<Throw> throwList = new ArrayList<>(getThrows(fieldsPerThrow));
 
         Collection<Boolean> grouping = List.of(false, false, false);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
-        throwList.remove(2);
+        throwList.clear();
 
-        Assertions.assertNotEquals(throwList, checkout.getThrows());
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<List<Field>> storedFields = ThrowTestUtils.getAllFields(storedThrows);
+
+        Assertions.assertEquals(fieldsPerThrow, storedFields);
     }
 
     @Test
     void storeAnIndependentGrouping() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("1"), List.of("2"));
-        Collection<Throw> throwList = new ArrayList<>(getThrows(namesPerThrow));
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = new ArrayList<>(getThrows(fieldsPerThrow));
 
         List<Boolean> grouping = new ArrayList<>(List.of(false, false));
 
@@ -57,7 +63,8 @@ class GroupedCheckoutTests {
     @Test
     void getTheScore() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "4"), List.of("2"), List.of("3"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true, false);
 
@@ -69,7 +76,8 @@ class GroupedCheckoutTests {
     @Test
     void getTheScoreWithSingletonInput() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D10"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = Collections.singleton(false);
 
@@ -90,7 +98,8 @@ class GroupedCheckoutTests {
     @Test
     void getTheScoreWithAShorterGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("3"), List.of("T2", "D3", "6"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
@@ -102,7 +111,8 @@ class GroupedCheckoutTests {
     @Test
     void getTheScoreWithALongerGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D25"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true, false);
 
@@ -114,7 +124,8 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("Q3", "T4"), List.of("8"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true);
 
@@ -126,13 +137,17 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrowsWithSingletonInput() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("18"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = Collections.singletonList(false);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<List<Field>> storedFields = ThrowTestUtils.getAllFields(storedThrows);
+
+        Assertions.assertEquals(fieldsPerThrow, storedFields);
     }
 
     @Test
@@ -147,31 +162,40 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrowsWithAShorterGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("6"), List.of("8"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = Collections.emptyList();
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<List<Field>> storedFields = ThrowTestUtils.getAllFields(storedThrows);
+
+        Assertions.assertEquals(fieldsPerThrow, storedFields);
     }
 
     @Test
     void getTheThrowsWithALongerGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = Collections.emptyList();
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<List<Field>> storedFields = ThrowTestUtils.getAllFields(storedThrows);
+
+        Assertions.assertEquals(fieldsPerThrow, storedFields);
     }
 
     @Test
     void getImmutableThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("12", "T4", "D6", "Q3"));
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
@@ -189,7 +213,8 @@ class GroupedCheckoutTests {
             Collection<Boolean> grouping,
             int multiplicity
     ) {
-        Collection<Throw> throwList = getThrows(namesPerThrow);
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        Collection<Throw> throwList = getThrows(fieldsPerThrow);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
@@ -483,9 +508,7 @@ class GroupedCheckoutTests {
         );
     }
 
-    private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-
+    private static List<Throw> getThrows(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         return fieldsPerThrow.stream()
                 .map(CompoundThrow::of)
                 .toList();

@@ -33,7 +33,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
-    private CartesianCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
+    private CartesianCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         List<Node> nodes = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getNode)
                 .toList();
@@ -53,7 +53,7 @@ public final class CartesianCheckoutFinder implements CheckoutFinder {
      * @return a new {@code CartesianCheckoutFinder} for the specified fields
      * per throw
      */
-    public static CheckoutFinder of(Collection<? extends Collection<Field>> fieldsPerThrow) {
+    public static CheckoutFinder of(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         return new CartesianCheckoutFinder(fieldsPerThrow);
     }
 

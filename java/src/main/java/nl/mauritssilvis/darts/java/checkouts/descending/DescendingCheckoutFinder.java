@@ -34,7 +34,7 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
-    private DescendingCheckoutFinder(Collection<? extends Collection<Field>> fieldsPerThrow) {
+    private DescendingCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         List<Node> nodes = fieldsPerThrow.stream()
                 .map(DescendingCheckoutFinder::getNode)
                 .toList();
@@ -54,7 +54,7 @@ public final class DescendingCheckoutFinder implements CheckoutFinder {
      * @return a new {@code DescendingCheckoutFinder} for the specified fields
      * per throw
      */
-    public static CheckoutFinder of(Collection<? extends Collection<Field>> fieldsPerThrow) {
+    public static CheckoutFinder of(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
         return new DescendingCheckoutFinder(fieldsPerThrow);
     }
 

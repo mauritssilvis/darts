@@ -7,7 +7,10 @@ package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
-import nl.mauritssilvis.darts.java.checkouts.*;
+import nl.mauritssilvis.darts.java.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
