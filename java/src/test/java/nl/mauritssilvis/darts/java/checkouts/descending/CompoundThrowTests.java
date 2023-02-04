@@ -104,4 +104,29 @@ class CompoundThrowTests {
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedFields.remove(0));
     }
+
+    @Test
+    void getEqualThrows() {
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields("T6", "D9");
+        Throw compoundThrow1 = CompoundThrow.of(fields1);
+
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields("T6", "D9");
+        Throw compoundThrow2 = CompoundThrow.of(fields2);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(compoundThrow1, compoundThrow2),
+                () -> Assertions.assertEquals(compoundThrow1.hashCode(), compoundThrow2.hashCode())
+        );
+    }
+
+    @Test
+    void getUnequalThrows() {
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields("25");
+        Throw compoundThrow1 = CompoundThrow.of(fields1);
+
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields("D25");
+        Throw compoundThrow2 = CompoundThrow.of(fields2);
+
+        Assertions.assertNotEquals(compoundThrow1, compoundThrow2);
+    }
 }
