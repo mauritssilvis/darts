@@ -118,6 +118,31 @@ class SimpleCheckoutTests {
         Assertions.assertEquals(0, checkout.getMultiplicity());
     }
 
+    @Test
+    void getEqualCheckouts() {
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields("Q4", "D8");
+        Checkout checkout1 = SimpleCheckout.of(fields1);
+
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields("Q4", "D8");
+        Checkout checkout2 = SimpleCheckout.of(fields2);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(checkout1, checkout2),
+                () -> Assertions.assertEquals(checkout1.hashCode(), checkout2.hashCode())
+        );
+    }
+
+    @Test
+    void getUnequalCheckouts() {
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields("D4");
+        Checkout checkout1 = SimpleCheckout.of(fields1);
+
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields("D5");
+        Checkout checkout2 = SimpleCheckout.of(fields2);
+
+        Assertions.assertNotEquals(checkout1, checkout2);
+    }
+
     private static Collection<Throw> getThrows(Collection<? extends Field> fields) {
         return fields.stream()
                 .map(SimpleThrow::of)
