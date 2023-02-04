@@ -140,4 +140,26 @@ class SimplePathTests {
 
         Assertions.assertEquals(0, path.getMultiplicity());
     }
+
+    @Test
+    void getEqualPaths() {
+        Collection<Integer> steps1 = List.of(1, 2, 3, 4, 5);
+        Path path1 = SimplePath.of(steps1);
+
+        Collection<Integer> steps2 = List.of(1, 2, 3, 4, 5);
+        Path path2 = SimplePath.of(steps2);
+
+        Assertions.assertEquals(path1, path2);
+    }
+
+    @Test
+    void getUnequalPaths() {
+        Collection<Integer> steps1 = List.of(5, 4, 3, 2, 1);
+        Path path1 = SimplePath.of(steps1);
+
+        Collection<Integer> steps2 = List.of(1, 2, 3, 4, 5);
+        Path path2 = SimplePath.of(steps2);
+
+        Assertions.assertNotEquals(path1, path2);
+    }
 }
