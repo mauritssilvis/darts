@@ -13,12 +13,12 @@ import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
 
 /**
  * An implementation of the {@code CheckoutTableGenerator} interface that
- * generates {@code MappedCheckoutTable} objects.
+ * generates {@code MapBasedCheckoutTable} objects.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
-public final class MappedCheckoutTableGenerator implements CheckoutTableGenerator {
-    private MappedCheckoutTableGenerator(
+public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenerator {
+    private MapBasedCheckoutTableGenerator(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -27,14 +27,14 @@ public final class MappedCheckoutTableGenerator implements CheckoutTableGenerato
     }
 
     /**
-     * Returns a new {@code MappedCheckoutTableGenerator} with the specified
+     * Returns a new {@code MapBasedCheckoutTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param finderType   the checkout finder type
-     * @return a new {@code MappedCheckoutTableGenerator} with the specified
+     * @return a new {@code MapBasedCheckoutTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      */
     public static CheckoutTableGenerator of(
@@ -43,7 +43,7 @@ public final class MappedCheckoutTableGenerator implements CheckoutTableGenerato
             CheckType checkoutType,
             FinderType finderType
     ) {
-        return new MappedCheckoutTableGenerator(boardType, checkInType, checkoutType, finderType);
+        return new MapBasedCheckoutTableGenerator(boardType, checkInType, checkoutType, finderType);
     }
 
     @Override

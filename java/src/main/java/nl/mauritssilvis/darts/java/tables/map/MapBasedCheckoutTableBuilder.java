@@ -17,28 +17,28 @@ import java.util.Map;
 
 /**
  * An implementation of the {@code CheckoutTableBuilder} interface that builds
- * {@code MappedCheckoutTable} objects. Default values are provided for
+ * {@code MapBasedCheckoutTable} objects. Default values are provided for
  * unspecified properties.
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
-public final class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
+public final class MapBasedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
     private CheckType checkoutType = CheckType.DOUBLE;
     private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
-    private MappedCheckoutTableBuilder() {
+    private MapBasedCheckoutTableBuilder() {
     }
 
     /**
-     * Returns a new {@code MappedCheckoutTableBuilder} with default values for
-     * the dartboard, check-in and checkout types.
+     * Returns a new {@code MapBasedCheckoutTableBuilder} with default values
+     * for the dartboard, check-in and checkout types.
      *
-     * @return a new {@code MappedCheckoutTableBuilder}
+     * @return a new {@code MapBasedCheckoutTableBuilder}
      */
     public static CheckoutTableBuilder create() {
-        return new MappedCheckoutTableBuilder();
+        return new MapBasedCheckoutTableBuilder();
     }
 
     @Override
@@ -67,6 +67,6 @@ public final class MappedCheckoutTableBuilder implements CheckoutTableBuilder {
 
     @Override
     public CheckoutTable build() {
-        return MappedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        return MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
     }
 }

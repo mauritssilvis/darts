@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
-public final class MappedCheckoutTable implements CheckoutTable {
+public final class MapBasedCheckoutTable implements CheckoutTable {
     private final BoardType boardType;
     private final CheckType checkInType;
     private final CheckType checkoutType;
     private final Map<Integer, List<Checkout>> checkoutMap;
 
-    private MappedCheckoutTable(
+    private MapBasedCheckoutTable(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -54,14 +54,14 @@ public final class MappedCheckoutTable implements CheckoutTable {
     }
 
     /**
-     * Returns a new {@code MappedCheckoutTable} with the specified dartboard
+     * Returns a new {@code MapBasedCheckoutTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param checkoutMap  the checkout map
-     * @return a new {@code MappedCheckoutTable} with the specified dartboard
+     * @return a new {@code MapBasedCheckoutTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
      */
     public static CheckoutTable of(
@@ -70,7 +70,7 @@ public final class MappedCheckoutTable implements CheckoutTable {
             CheckType checkoutType,
             Map<Integer, List<Checkout>> checkoutMap
     ) {
-        return new MappedCheckoutTable(boardType, checkInType, checkoutType, checkoutMap);
+        return new MapBasedCheckoutTable(boardType, checkInType, checkoutType, checkoutMap);
     }
 
     @Override

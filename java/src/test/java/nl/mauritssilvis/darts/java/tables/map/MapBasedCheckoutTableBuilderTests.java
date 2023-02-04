@@ -19,12 +19,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-class MappedCheckoutTableBuilderTests {
+class MapBasedCheckoutTableBuilderTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setBoardType(boardType)
@@ -35,7 +35,7 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void getTheDefaultBoardType() {
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         BoardType boardType = BoardType.LONDON;
@@ -48,7 +48,7 @@ class MappedCheckoutTableBuilderTests {
         BoardType boardType1 = BoardType.LONDON;
         BoardType boardType2 = BoardType.QUADRO;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setBoardType(boardType1)
@@ -62,7 +62,7 @@ class MappedCheckoutTableBuilderTests {
     void getTheCheckInType() {
         CheckType checkInType = CheckType.MASTER;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckInType(checkInType)
@@ -73,7 +73,7 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void getTheDefaultCheckInType() {
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         CheckType checkInType = CheckType.ANY;
@@ -86,7 +86,7 @@ class MappedCheckoutTableBuilderTests {
         CheckType checkInType1 = CheckType.DOUBLE;
         CheckType checkInType2 = CheckType.MASTER;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckInType(checkInType1)
@@ -100,7 +100,7 @@ class MappedCheckoutTableBuilderTests {
     void getTheCheckoutType() {
         CheckType checkoutType = CheckType.ANY;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckoutType(checkoutType)
@@ -111,7 +111,7 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void getTheDefaultCheckoutType() {
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         CheckType checkoutType = CheckType.DOUBLE;
@@ -124,7 +124,7 @@ class MappedCheckoutTableBuilderTests {
         CheckType checkoutType1 = CheckType.ANY;
         CheckType checkoutType2 = CheckType.MASTER;
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckoutType(checkoutType1)
@@ -147,7 +147,7 @@ class MappedCheckoutTableBuilderTests {
         List<Checkout> checkouts5 = GroupedCheckoutTestUtils.getCheckouts(names5);
         List<Checkout> checkouts6 = GroupedCheckoutTestUtils.getCheckouts(names6);
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckouts(5, checkouts5)
@@ -164,7 +164,7 @@ class MappedCheckoutTableBuilderTests {
 
     @Test
     void getTheDefaultCheckoutMap() {
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         Map<Integer, List<Checkout>> checkoutMap = Collections.emptyMap();
@@ -185,7 +185,7 @@ class MappedCheckoutTableBuilderTests {
         List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(names1);
         List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(names2);
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setCheckouts(7, checkouts1)
@@ -216,7 +216,7 @@ class MappedCheckoutTableBuilderTests {
         List<Checkout> checkouts4 = GroupedCheckoutTestUtils.getCheckouts(names4);
         List<Checkout> checkouts8 = GroupedCheckoutTestUtils.getCheckouts(names8);
 
-        CheckoutTableBuilder checkoutTableBuilder = MappedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
                 .setBoardType(boardType)

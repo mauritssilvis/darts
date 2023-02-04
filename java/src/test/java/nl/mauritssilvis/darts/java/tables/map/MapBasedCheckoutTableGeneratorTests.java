@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-class MappedCheckoutTableGeneratorTests {
+class MapBasedCheckoutTableGeneratorTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.LONDON;
@@ -30,7 +30,7 @@ class MappedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MappedCheckoutTableGenerator.of(
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
                 boardType,
                 checkInType,
                 checkoutType,
@@ -52,7 +52,7 @@ class MappedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MappedCheckoutTableGenerator.of(
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
                 boardType,
                 checkInType,
                 checkoutType,
@@ -74,7 +74,7 @@ class MappedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MappedCheckoutTableGenerator.of(
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
                 boardType,
                 checkInType,
                 checkoutType,
@@ -97,7 +97,7 @@ class MappedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MappedCheckoutTableGenerator.of(
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
                 boardType,
                 checkInType,
                 checkoutType,
