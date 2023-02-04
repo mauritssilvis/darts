@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public final class MapBasedCheckoutTable implements CheckoutTable {
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
-            Map<Integer, List<Checkout>> checkoutMap
+            Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
         boolean hasOtherScore = checkoutMap.entrySet().stream()
                 .anyMatch(e -> e.getValue().stream()
@@ -68,7 +69,7 @@ public final class MapBasedCheckoutTable implements CheckoutTable {
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
-            Map<Integer, List<Checkout>> checkoutMap
+            Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
         return new MapBasedCheckoutTable(boardType, checkInType, checkoutType, checkoutMap);
     }
