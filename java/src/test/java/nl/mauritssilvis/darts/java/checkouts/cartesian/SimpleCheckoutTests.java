@@ -25,9 +25,10 @@ class SimpleCheckoutTests {
 
         fields.remove(2);
 
-        Collection<Throw> throwList = getThrows(fields);
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<Field> storedFields = getAllFields(storedThrows);
 
-        Assertions.assertNotEquals(throwList, checkout.getThrows());
+        Assertions.assertNotEquals(fields, storedFields);
     }
 
     @Test
@@ -59,9 +60,10 @@ class SimpleCheckoutTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields("Q2", "T7", "D19");
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Collection<Throw> throwList = getThrows(fields);
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<Field> storedFields = getAllFields(storedThrows);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Assertions.assertEquals(fields, storedFields);
     }
 
     @Test
@@ -69,9 +71,10 @@ class SimpleCheckoutTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields("D7");
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Collection<Throw> throwList = getThrows(fields);
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<Field> storedFields = getAllFields(storedThrows);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Assertions.assertEquals(fields, storedFields);
     }
 
     @Test
@@ -79,9 +82,10 @@ class SimpleCheckoutTests {
         Collection<Field> fields = Collections.emptyList();
         Checkout checkout = SimpleCheckout.of(fields);
 
-        Collection<Throw> throwList = getThrows(fields);
+        Collection<Throw> storedThrows = checkout.getThrows();
+        Collection<Field> storedFields = getAllFields(storedThrows);
 
-        Assertions.assertEquals(throwList, checkout.getThrows());
+        Assertions.assertEquals(fields, storedFields);
     }
 
     @Test
@@ -143,9 +147,10 @@ class SimpleCheckoutTests {
         Assertions.assertNotEquals(checkout1, checkout2);
     }
 
-    private static Collection<Throw> getThrows(Collection<? extends Field> fields) {
-        return fields.stream()
-                .map(SimpleThrow::of)
+    private static List<Field> getAllFields(Collection<? extends Throw> throwCollection) {
+        return throwCollection.stream()
+                .map(Throw::getFields)
+                .flatMap(Collection::stream)
                 .toList();
     }
 }
