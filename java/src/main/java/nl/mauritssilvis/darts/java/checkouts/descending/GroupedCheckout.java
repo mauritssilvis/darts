@@ -27,7 +27,7 @@ public final class GroupedCheckout implements Checkout {
     private final List<Boolean> grouping;
     private final int score;
 
-    private GroupedCheckout(Collection<Throw> throwList, Collection<Boolean> grouping) {
+    private GroupedCheckout(Collection<? extends Throw> throwList, Collection<Boolean> grouping) {
         this.throwList = List.copyOf(throwList);
         this.grouping = processGrouping(grouping, throwList.size());
 
@@ -46,7 +46,7 @@ public final class GroupedCheckout implements Checkout {
      * @return a new {@code GroupedCheckout} with the specified throws and
      * grouping signature
      */
-    public static Checkout of(Collection<Throw> throwList, Collection<Boolean> grouping) {
+    public static Checkout of(Collection<? extends Throw> throwList, Collection<Boolean> grouping) {
         return new GroupedCheckout(throwList, grouping);
     }
 
