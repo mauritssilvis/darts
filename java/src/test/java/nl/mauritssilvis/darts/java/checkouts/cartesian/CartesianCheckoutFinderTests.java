@@ -7,7 +7,10 @@ package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
-import nl.mauritssilvis.darts.java.checkouts.*;
+import nl.mauritssilvis.darts.java.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -179,11 +182,7 @@ class CartesianCheckoutFinderTests {
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
-
-        List<List<List<Field>>> storedFields = checkouts.stream()
-                .map(Checkout::getThrows)
-                .map(ThrowTestUtils::getAllFields)
-                .toList();
+        List<List<List<Field>>> storedFields = getAllFields(checkouts);
 
         int totalMultiplicity = namesPerCheckout.size();
         List<List<List<Field>>> fieldsPerCheckout = TypedFieldTestUtils.getFieldsPerCheckout(namesPerCheckout);
@@ -474,5 +473,12 @@ class CartesianCheckoutFinderTests {
                         )
                 )
         );
+    }
+
+    private static List<List<List<Field>>> getAllFields(Collection<? extends Checkout> checkouts) {
+        return checkouts.stream()
+                .map(Checkout::getThrows)
+                .map(ThrowTestUtils::getAllFields)
+                .toList();
     }
 }
