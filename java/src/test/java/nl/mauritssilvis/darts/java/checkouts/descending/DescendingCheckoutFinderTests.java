@@ -6,10 +6,10 @@
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.utils.CheckoutTestUtils;
-import nl.mauritssilvis.darts.java.checkouts.utils.TypedFieldTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,7 +38,7 @@ class DescendingCheckoutFinderTests {
                 List.of(List.of("3", "D9"), List.of("18", "3"))
         );
 
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
 
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
         int score = 21;
@@ -55,7 +55,7 @@ class DescendingCheckoutFinderTests {
     @Test
     void storeIndependentCopiesOfTheFieldsPerThrow() {
         List<Collection<String>> namesPerThrow = List.of(new ArrayList<>(List.of("1", "Q1")), List.of("Q2", "3"));
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         int score = 12;
@@ -72,7 +72,7 @@ class DescendingCheckoutFinderTests {
     @Test
     void getImmutableCheckouts() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("6", "D3"), List.of("1"));
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         int score = 7;
@@ -85,7 +85,7 @@ class DescendingCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withEmptyFieldsPerThrow")
     void handleEmptyFieldsPerThrow(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         int score = 10;
@@ -109,7 +109,7 @@ class DescendingCheckoutFinderTests {
     @ParameterizedTest
     @MethodSource("withoutCheckouts")
     void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         Collection<Checkout> checkouts = checkoutFinder.find(score);
@@ -174,7 +174,7 @@ class DescendingCheckoutFinderTests {
             Collection<Collection<? extends Collection<String>>> namesPerCheckout,
             int totalMultiplicity
     ) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);

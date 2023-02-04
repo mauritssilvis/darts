@@ -9,6 +9,7 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class TypedFieldTestUtils {
     /**
      * Returns a field with the specified name.
      *
-     * @param name the field name
+     * @param name the name
      * @return a field with the specified name
      */
     public static Field getField(String name) {
@@ -36,7 +37,7 @@ public class TypedFieldTestUtils {
     /**
      * Returns a list of fields with the specified names.
      *
-     * @param names the field names
+     * @param names the names
      * @return a list of fields with the specified names
      */
     public static List<Field> getFields(String... names) {
@@ -46,6 +47,18 @@ public class TypedFieldTestUtils {
 
         return Arrays.stream(names)
                 .map(TypedFieldTestUtils::getField)
+                .toList();
+    }
+
+    /**
+     * Returns a list of lists of fields with the specified names.
+     *
+     * @param namesCollections a collection of collections of names
+     * @return a list of lists of fields with the specified names
+     */
+    public static List<List<Field>> getFieldsPerCollection(Collection<? extends Collection<String>> namesCollections) {
+        return namesCollections.stream()
+                .map(TypedFieldTestUtils::getFields)
                 .toList();
     }
 
@@ -63,5 +76,11 @@ public class TypedFieldTestUtils {
     private static int getBaseScore(String name, FieldType fieldType) {
         int index = fieldType == FieldType.SINGLE ? 0 : 1;
         return Integer.parseInt(name.substring(index));
+    }
+
+    private static List<Field> getFields(Collection<String> names) {
+        return names.stream()
+                .map(TypedFieldTestUtils::getField)
+                .toList();
     }
 }

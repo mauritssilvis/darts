@@ -6,9 +6,9 @@
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
-import nl.mauritssilvis.darts.java.checkouts.utils.TypedFieldTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -484,7 +484,7 @@ class GroupedCheckoutTests {
     }
 
     private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerCollection(namesPerThrow);
 
         return fieldsPerThrow.stream()
                 .map(CompoundThrow::of)
