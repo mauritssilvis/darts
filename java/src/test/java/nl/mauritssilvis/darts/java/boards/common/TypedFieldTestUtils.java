@@ -8,9 +8,7 @@ package nl.mauritssilvis.darts.java.boards.common;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,22 +30,6 @@ public final class TypedFieldTestUtils {
         int baseScore = getBaseScore(name, fieldType);
 
         return TypedField.of(fieldType, baseScore);
-    }
-
-    /**
-     * Returns a list of fields with the specified names.
-     *
-     * @param names the names
-     * @return a list of fields with the specified names
-     */
-    public static List<Field> getFields(String... names) {
-        if (names.length == 1) {
-            return Collections.singletonList(getField(names[0]));
-        }
-
-        return Arrays.stream(names)
-                .map(TypedFieldTestUtils::getField)
-                .toList();
     }
 
     /**
