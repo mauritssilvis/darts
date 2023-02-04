@@ -20,7 +20,8 @@ import java.util.List;
 class SimpleCheckoutTests {
     @Test
     void storeIndependentFields() {
-        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("D9", "D11", "D13"));
+        Collection<String> names = List.of("D9", "D11", "D13");
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields(names));
         Checkout checkout = SimpleCheckout.of(fields);
 
         fields.remove(2);
@@ -33,7 +34,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheScore() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("1", "4");
+        Collection<String> names = List.of("1", "4");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Assertions.assertEquals(5, checkout.getScore());
@@ -41,7 +43,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheScoreWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("Q20");
+        Collection<String> names = List.of("Q20");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Assertions.assertEquals(80, checkout.getScore());
@@ -57,7 +60,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheThrows() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("Q2", "T7", "D19");
+        Collection<String> names = List.of("Q2", "T7", "D19");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Collection<Throw> storedThrows = checkout.getThrows();
@@ -68,7 +72,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheThrowsWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("D7");
+        Collection<String> names = List.of("D7");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Collection<Throw> storedThrows = checkout.getThrows();
@@ -90,7 +95,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getImmutableThrows() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("1", "13", "25");
+        Collection<String> names = List.of("1", "13", "25");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         List<Throw> storedThrows = checkout.getThrows();
@@ -100,7 +106,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheMultiplicity() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("T20", "1", "D20");
+        Collection<String> names = List.of("T20", "1", "D20");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Assertions.assertEquals(1, checkout.getMultiplicity());
@@ -108,7 +115,8 @@ class SimpleCheckoutTests {
 
     @Test
     void getTheMultiplicityWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("16");
+        Collection<String> names = List.of("16");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Assertions.assertEquals(1, checkout.getMultiplicity());
@@ -124,10 +132,12 @@ class SimpleCheckoutTests {
 
     @Test
     void getEqualCheckouts() {
-        Collection<Field> fields1 = TypedFieldTestUtils.getFields("Q4", "D8");
+        Collection<String> names1 = List.of("Q4", "D8");
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields(names1);
         Checkout checkout1 = SimpleCheckout.of(fields1);
 
-        Collection<Field> fields2 = TypedFieldTestUtils.getFields("Q4", "D8");
+        Collection<String> names2 = List.of("Q4", "D8");
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields(names2);
         Checkout checkout2 = SimpleCheckout.of(fields2);
 
         Assertions.assertAll(
@@ -138,10 +148,12 @@ class SimpleCheckoutTests {
 
     @Test
     void getUnequalCheckouts() {
-        Collection<Field> fields1 = TypedFieldTestUtils.getFields("D4");
+        Collection<String> names1 = List.of("D4");
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields(names1);
         Checkout checkout1 = SimpleCheckout.of(fields1);
 
-        Collection<Field> fields2 = TypedFieldTestUtils.getFields("D5");
+        Collection<String> names2 = List.of("D5");
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields(names2);
         Checkout checkout2 = SimpleCheckout.of(fields2);
 
         Assertions.assertNotEquals(checkout1, checkout2);
