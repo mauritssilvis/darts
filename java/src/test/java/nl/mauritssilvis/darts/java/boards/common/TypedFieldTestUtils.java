@@ -51,6 +51,18 @@ public final class TypedFieldTestUtils {
     }
 
     /**
+     * Returns a list of fields with the specified names.
+     *
+     * @param names a collection of names
+     * @return a list of fields with the specified names
+     */
+    public static List<Field> getFields(Collection<String> names) {
+        return names.stream()
+                .map(TypedFieldTestUtils::getField)
+                .toList();
+    }
+
+    /**
      * Returns a list of lists of fields with the specified names.
      *
      * @param namesCollections a collection of collections of names
@@ -76,11 +88,5 @@ public final class TypedFieldTestUtils {
     private static int getBaseScore(String name, FieldType fieldType) {
         int index = fieldType == FieldType.SINGLE ? 0 : 1;
         return Integer.parseInt(name.substring(index));
-    }
-
-    private static List<Field> getFields(Collection<String> names) {
-        return names.stream()
-                .map(TypedFieldTestUtils::getField)
-                .toList();
     }
 }

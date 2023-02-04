@@ -19,7 +19,8 @@ import java.util.List;
 class CompoundThrowTests {
     @Test
     void storeIndependentFields() {
-        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields("14", "D7"));
+        Collection<String> names = List.of("14", "D7");
+        List<Field> fields = new ArrayList<>(TypedFieldTestUtils.getFields(names));
         Throw compoundThrow = CompoundThrow.of(fields);
 
         fields.remove(1);
@@ -29,17 +30,20 @@ class CompoundThrowTests {
 
     @Test
     void storeUniqueFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("12", "D6", "12");
+        Collection<String> names = List.of("12", "D6", "12");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
-        Collection<Field> uniqueFields = TypedFieldTestUtils.getFields("12", "D6");
+        Collection<String> uniqueNames = List.of("12", "D6");
+        Collection<Field> uniqueFields = TypedFieldTestUtils.getFields(uniqueNames);
 
         Assertions.assertEquals(uniqueFields, compoundThrow.getFields());
     }
 
     @Test
     void doNotAcceptFieldsWithDifferentScores() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("8", "T3");
+        Collection<String> names = List.of("8", "T3");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
@@ -49,7 +53,8 @@ class CompoundThrowTests {
 
     @Test
     void getTheScore() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("10", "D5");
+        Collection<String> names = List.of("10", "D5");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
         Assertions.assertEquals(10, compoundThrow.getScore());
@@ -57,7 +62,8 @@ class CompoundThrowTests {
 
     @Test
     void getTheScoreWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("D10");
+        Collection<String> names = List.of("D10");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw singleThrow = CompoundThrow.of(fields);
 
         Assertions.assertEquals(20, singleThrow.getScore());
@@ -73,7 +79,8 @@ class CompoundThrowTests {
 
     @Test
     void getTheFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("Q4", "D8", "16");
+        Collection<String> names = List.of("Q4", "D8", "16");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
         Assertions.assertEquals(fields, compoundThrow.getFields());
@@ -81,7 +88,8 @@ class CompoundThrowTests {
 
     @Test
     void getTheFieldsWithSingletonInput() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("T15");
+        Collection<String> names = List.of("T15");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
         Assertions.assertEquals(fields, compoundThrow.getFields());
@@ -97,7 +105,8 @@ class CompoundThrowTests {
 
     @Test
     void getImmutableFields() {
-        Collection<Field> fields = TypedFieldTestUtils.getFields("D14");
+        Collection<String> names = List.of("D14");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
         List<Field> storedFields = compoundThrow.getFields();
@@ -107,10 +116,12 @@ class CompoundThrowTests {
 
     @Test
     void getEqualThrows() {
-        Collection<Field> fields1 = TypedFieldTestUtils.getFields("T6", "D9");
+        Collection<String> names1 = List.of("T6", "D9");
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields(names1);
         Throw compoundThrow1 = CompoundThrow.of(fields1);
 
-        Collection<Field> fields2 = TypedFieldTestUtils.getFields("T6", "D9");
+        Collection<String> names2 = List.of("T6", "D9");
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields(names2);
         Throw compoundThrow2 = CompoundThrow.of(fields2);
 
         Assertions.assertAll(
@@ -121,10 +132,12 @@ class CompoundThrowTests {
 
     @Test
     void getUnequalThrows() {
-        Collection<Field> fields1 = TypedFieldTestUtils.getFields("25");
+        Collection<String> names1 = List.of("25");
+        Collection<Field> fields1 = TypedFieldTestUtils.getFields(names1);
         Throw compoundThrow1 = CompoundThrow.of(fields1);
 
-        Collection<Field> fields2 = TypedFieldTestUtils.getFields("D25");
+        Collection<String> names2 = List.of("D25");
+        Collection<Field> fields2 = TypedFieldTestUtils.getFields(names2);
         Throw compoundThrow2 = CompoundThrow.of(fields2);
 
         Assertions.assertNotEquals(compoundThrow1, compoundThrow2);
