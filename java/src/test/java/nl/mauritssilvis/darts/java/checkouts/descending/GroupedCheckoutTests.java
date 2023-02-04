@@ -203,7 +203,7 @@ class GroupedCheckoutTests {
 
         Collection<Throw> storedThrows = checkout.getThrows();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedThrows.remove(2));
+        Assertions.assertThrows(UnsupportedOperationException.class, storedThrows::clear);
     }
 
     @ParameterizedTest

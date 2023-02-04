@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
-public class QuadroBoard implements Board {
+public final class QuadroBoard implements Board {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 20;
     private static final int RANGE_EXTENSION = 25;
