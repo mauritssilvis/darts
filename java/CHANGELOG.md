@@ -12,7 +12,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 #### Checkout finders
 
 - Create a checkout finder that considers sequences of dartboard fields with non-increasing scores (`DescendingCheckoutFinder`).
-- Create a checkout finder that considers all possible combinations of dartboard fields (`CartesianCheckoutFinder`).
+- Create a checkout finder that considers all combinations of dartboard fields (`CartesianCheckoutFinder`).
 
 #### Dartboards
 
