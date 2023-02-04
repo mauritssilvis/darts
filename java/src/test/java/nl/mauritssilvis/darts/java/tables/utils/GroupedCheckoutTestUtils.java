@@ -16,7 +16,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GroupedCheckoutTestUtils {
+public final class GroupedCheckoutTestUtils {
+    private GroupedCheckoutTestUtils() {
+    }
+
     public static List<Checkout> getCheckouts(Collection<? extends Collection<Collection<String>>> names) {
         return names.stream()
                 .map(GroupedCheckoutTestUtils::getCheckout)

@@ -14,7 +14,10 @@ import java.util.List;
  * A set of testing utilities for processing collections of {@code Throw}
  * objects.
  */
-public class ThrowTestUtils {
+public final class ThrowTestUtils {
+    private ThrowTestUtils() {
+    }
+
     /**
      * Gets the fields of the specified throws.
      *
