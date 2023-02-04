@@ -15,7 +15,7 @@ import java.util.List;
  * edges to one other node. The weights of the edges incident to a node have to
  * be unique, however.
  * <p>
- * Relevant design pattern: Immutable interface.
+ * Relevant design patterns: immutable interface.
  */
 public interface Node {
     /**
