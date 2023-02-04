@@ -474,10 +474,12 @@ class CartesianCheckoutFinderTests {
 
     @Test
     void getEqualCheckoutFinders() {
-        Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
+        Collection<Collection<String>> namesPerThrow1 = List.of(List.of("T3", "9"), List.of("T16", "Q12"));
+        Collection<List<Field>> fieldsPerThrow1 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow1);
         CheckoutFinder checkoutFinder1 = CartesianCheckoutFinder.of(fieldsPerThrow1);
 
-        Collection<List<Field>> fieldsPerThrow2 = Collections.emptyList();
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("T3", "9"), List.of("T16", "Q12"));
+        Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
         CheckoutFinder checkoutFinder2 = CartesianCheckoutFinder.of(fieldsPerThrow2);
 
         Assertions.assertEquals(checkoutFinder1, checkoutFinder2);
@@ -488,7 +490,8 @@ class CartesianCheckoutFinderTests {
         Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
         CheckoutFinder checkoutFinder1 = CartesianCheckoutFinder.of(fieldsPerThrow1);
 
-        Collection<List<Field>> fieldsPerThrow2 = Collections.singletonList(Collections.emptyList());
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("T20"), List.of("T20"));
+        Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
         CheckoutFinder checkoutFinder2 = CartesianCheckoutFinder.of(fieldsPerThrow2);
 
         Assertions.assertNotEquals(checkoutFinder1, checkoutFinder2);
