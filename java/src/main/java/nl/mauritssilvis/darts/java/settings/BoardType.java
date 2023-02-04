@@ -17,5 +17,10 @@ public enum BoardType {
     /**
      * A Quadro dartboard.
      */
-    QUADRO
+    QUADRO,
+
+    /**
+     * A Yorkshire dartboard.
+     */
+    YORKSHIRE
 }
