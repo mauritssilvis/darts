@@ -6,11 +6,11 @@
 package nl.mauritssilvis.darts.java.paths.common;
 
 import nl.mauritssilvis.darts.java.paths.Path;
+import nl.mauritssilvis.darts.java.paths.PathTestUtils;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.cartesian.CartesianPathfinder;
 import nl.mauritssilvis.darts.java.paths.descending.DescendingPathfinder;
 import nl.mauritssilvis.darts.java.paths.utils.BasicNodeTestUtils;
-import nl.mauritssilvis.darts.java.paths.PathTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junitpioneer.jupiter.cartesian.ArgumentSets;
 import org.junitpioneer.jupiter.cartesian.CartesianTest;
