@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
@@ -29,6 +30,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant terminology: Subset sum problem.
  */
+@EqualsAndHashCode
 public final class CartesianPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
