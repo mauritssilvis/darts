@@ -117,7 +117,7 @@ class CompoundThrowTests {
         Collection<Field> fields1 = TypedFieldTestUtils.getFields(names1);
         Throw compoundThrow1 = CompoundThrow.of(fields1);
 
-        Collection<String> names2 = List.of("T6", "D9");
+        Collection<String> names2 = List.of("T6", "D9", "D9", "T6");
         Collection<Field> fields2 = TypedFieldTestUtils.getFields(names2);
         Throw compoundThrow2 = CompoundThrow.of(fields2);
 
