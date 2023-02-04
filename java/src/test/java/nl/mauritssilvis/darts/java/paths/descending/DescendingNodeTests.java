@@ -102,4 +102,26 @@ class DescendingNodeTests {
 
         Assertions.assertFalse(node.isConnected());
     }
+
+    @Test
+    void getEqualNodes() {
+        Collection<Integer> weights1 = List.of(3, 4, 4, 5);
+        Node node1 = DescendingNode.of(weights1);
+
+        Collection<Integer> weights2 = List.of(5, 4, 3);
+        Node node2 = DescendingNode.of(weights2);
+
+        Assertions.assertEquals(node1, node2);
+    }
+
+    @Test
+    void getUnequalNodes() {
+        Collection<Integer> weights1 = List.of(4, 5, 5, 6);
+        Node node1 = DescendingNode.of(weights1);
+
+        Collection<Integer> weights2 = List.of(4, 6);
+        Node node2 = DescendingNode.of(weights2);
+
+        Assertions.assertNotEquals(node1, node2);
+    }
 }
