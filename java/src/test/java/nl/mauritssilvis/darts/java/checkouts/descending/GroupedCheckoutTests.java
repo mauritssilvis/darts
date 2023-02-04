@@ -522,7 +522,7 @@ class GroupedCheckoutTests {
         Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
         Collection<Throw> throwList2 = getThrows(fieldsPerThrow2);
 
-        Collection<Boolean> grouping2 = List.of(false, true);
+        Collection<Boolean> grouping2 = List.of(true, true, true);
 
         Checkout checkout2 = GroupedCheckout.of(throwList2, grouping2);
 
@@ -575,7 +575,7 @@ class GroupedCheckoutTests {
         Collection<Boolean> grouping1 = List.of(false, true);
         Checkout checkout1 = GroupedCheckout.of(throwList, grouping1);
 
-        Collection<Boolean> grouping2 = List.of(false, true);
+        Collection<Boolean> grouping2 = List.of(false, false);
         Checkout checkout2 = GroupedCheckout.of(throwList, grouping2);
 
         Assertions.assertNotEquals(checkout1, checkout2);
