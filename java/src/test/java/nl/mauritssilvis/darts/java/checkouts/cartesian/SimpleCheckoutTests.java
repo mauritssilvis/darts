@@ -9,7 +9,6 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
-import nl.mauritssilvis.darts.java.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -100,9 +99,9 @@ class SimpleCheckoutTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
-        List<Throw> storedThrows = checkout.getThrows();
+        Collection<Throw> storedThrows = checkout.getThrows();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedThrows.remove(2));
+        Assertions.assertThrows(UnsupportedOperationException.class, storedThrows::clear);
     }
 
     @Test
@@ -160,10 +159,9 @@ class SimpleCheckoutTests {
         Assertions.assertNotEquals(checkout1, checkout2);
     }
 
-    private static List<Field> getAllFields(Collection<? extends Throw> throwCollection) {
-        List<List<Field>> fieldsPerThrow = ThrowTestUtils.getAllFields(throwCollection);
-
-        return fieldsPerThrow.stream()
+    private static Collection<Field> getAllFields(Collection<? extends Throw> throwCollection) {
+        return throwCollection.stream()
+                .map(Throw::getFields)
                 .flatMap(Collection::stream)
                 .toList();
     }
