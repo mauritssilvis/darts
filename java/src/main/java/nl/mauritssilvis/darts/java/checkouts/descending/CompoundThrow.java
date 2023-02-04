@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 
@@ -17,6 +18,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class CompoundThrow implements Throw {
     private final int score;
     private final List<Field> fields;
