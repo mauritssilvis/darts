@@ -6,11 +6,11 @@
 package nl.mauritssilvis.darts.java.tables.utils;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 import nl.mauritssilvis.darts.java.checkouts.descending.CompoundThrow;
 import nl.mauritssilvis.darts.java.checkouts.descending.GroupedCheckout;
-import nl.mauritssilvis.darts.java.checkouts.utils.TypedFieldTestUtils;
 
 import java.util.Collection;
 import java.util.List;
