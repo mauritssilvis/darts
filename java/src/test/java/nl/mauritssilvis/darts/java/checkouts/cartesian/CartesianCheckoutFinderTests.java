@@ -96,41 +96,6 @@ class CartesianCheckoutFinderTests {
         Assertions.assertEquals(0, checkouts.size());
     }
 
-    @ParameterizedTest
-    @MethodSource("withoutCheckouts")
-    void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
-
-        Collection<Checkout> checkouts = checkoutFinder.find(score);
-
-        Assertions.assertEquals(0, checkouts.size());
-    }
-
-    @ParameterizedTest
-    @MethodSource("withCheckouts")
-    void findCheckouts(
-            Collection<? extends Collection<String>> namesPerThrow,
-            int score,
-            Collection<Collection<? extends Collection<String>>> namesPerCheckout
-    ) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
-
-        List<Checkout> checkouts = checkoutFinder.find(score);
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(score, checkouts.get(0).getScore()),
-                () -> Assertions.assertEquals(score, CheckoutTestUtils.getTotalScore(checkouts) / checkouts.size()),
-                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
-                () -> Assertions.assertEquals(namesPerCheckout, CheckoutTestUtils.getNamesPerCheckout(checkouts)),
-                () -> Assertions.assertEquals(
-                        namesPerCheckout.size(),
-                        CheckoutTestUtils.getTotalMultiplicity(checkouts)
-                )
-        );
-    }
-
     private static Stream<Arguments> withEmptyFieldsPerThrow() {
         return Stream.of(
                 Arguments.of(Collections.emptyList()),
@@ -140,6 +105,17 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(List.of(List.of("T8", "D9"), Collections.emptyList())),
                 Arguments.of(List.of(List.of("Q2"), Collections.emptyList(), List.of("25")))
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutCheckouts")
+    void doNotFindCheckouts(Collection<? extends Collection<String>> namesPerThrow, int score) {
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
+        Collection<Checkout> checkouts = checkoutFinder.find(score);
+
+        Assertions.assertEquals(0, checkouts.size());
     }
 
     private static Stream<Arguments> withoutCheckouts() {
@@ -187,6 +163,30 @@ class CartesianCheckoutFinderTests {
                 Arguments.of(
                         List.of(ANY, ANY, ANY),
                         2
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withCheckouts")
+    void findCheckouts(
+            Collection<? extends Collection<String>> namesPerThrow,
+            int score,
+            Collection<Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
+        List<Checkout> checkouts = checkoutFinder.find(score);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(score, checkouts.get(0).getScore()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getTotalScore(checkouts) / checkouts.size()),
+                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
+                () -> Assertions.assertEquals(namesPerCheckout, CheckoutTestUtils.getNamesPerCheckout(checkouts)),
+                () -> Assertions.assertEquals(
+                        namesPerCheckout.size(),
+                        CheckoutTestUtils.getTotalMultiplicity(checkouts)
                 )
         );
     }

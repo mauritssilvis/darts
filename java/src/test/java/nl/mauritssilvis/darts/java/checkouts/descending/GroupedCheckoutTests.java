@@ -196,14 +196,6 @@ class GroupedCheckoutTests {
         Assertions.assertEquals(multiplicity, checkout.getMultiplicity());
     }
 
-    private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
-        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
-
-        return fieldsPerThrow.stream()
-                .map(CompoundThrow::of)
-                .toList();
-    }
-
     private static Stream<Arguments> withMultiplicityData() {
         return Stream.of(
                 // Empty throws
@@ -489,5 +481,13 @@ class GroupedCheckoutTests {
                         8
                 )
         );
+    }
+
+    private static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
+        List<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+
+        return fieldsPerThrow.stream()
+                .map(CompoundThrow::of)
+                .toList();
     }
 }
