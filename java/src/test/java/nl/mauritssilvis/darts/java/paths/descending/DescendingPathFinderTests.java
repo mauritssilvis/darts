@@ -57,11 +57,6 @@ class DescendingPathfinderTests {
 
     private static Stream<Arguments> withPathData() {
         return Stream.of(
-                // Collection<? extends Node> nodes,
-                // int length,
-                // Collection<Collection<Integer>> steps
-                // int totalMultiplicity
-
                 Arguments.of(
                         List.of(List.of(7)),
                         7,
