@@ -57,7 +57,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheScore() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "4"), List.of("2"), List.of("3"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true, false);
 
@@ -90,7 +90,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheScoreWithAShorterGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("3"), List.of("T2", "D3", "6"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
@@ -102,7 +102,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheScoreWithALongerGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D25"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true, false);
 
@@ -114,7 +114,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("Q3", "T4"), List.of("8"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false, true);
 
@@ -126,7 +126,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrowsWithSingletonInput() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("18"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = Collections.singletonList(false);
 
@@ -147,7 +147,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrowsWithAShorterGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("6"), List.of("8"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = Collections.emptyList();
 
@@ -159,7 +159,7 @@ class GroupedCheckoutTests {
     @Test
     void getTheThrowsWithALongerGroupingSignature() {
         Collection<Collection<String>> namesPerThrow = Collections.emptyList();
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
@@ -171,13 +171,13 @@ class GroupedCheckoutTests {
     @Test
     void getImmutableThrows() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("12", "T4", "D6", "Q3"));
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Collection<Boolean> grouping = List.of(false);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
-        List<Throw> storedThrows = checkout.getThrows();
+        Collection<Throw> storedThrows = checkout.getThrows();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedThrows.remove(2));
     }
@@ -189,7 +189,7 @@ class GroupedCheckoutTests {
             Collection<Boolean> grouping,
             int multiplicity
     ) {
-        List<Throw> throwList = getThrows(namesPerThrow);
+        Collection<Throw> throwList = getThrows(namesPerThrow);
 
         Checkout checkout = GroupedCheckout.of(throwList, grouping);
 
