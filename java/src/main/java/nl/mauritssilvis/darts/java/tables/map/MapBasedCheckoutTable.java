@@ -41,7 +41,7 @@ public final class MapBasedCheckoutTable implements CheckoutTable {
 
         if (hasOtherScore) {
             throw new IllegalArgumentException(
-                    "Checkouts should have the same score as their access key"
+                    "Checkouts should have the same score as their checkout map key"
             );
         }
 
@@ -64,6 +64,9 @@ public final class MapBasedCheckoutTable implements CheckoutTable {
      * @param checkoutMap  the checkout map
      * @return a new {@code MapBasedCheckoutTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
+     * @throws IllegalArgumentException if some checkouts in the checkout map do
+     *                                  not have the same score as their
+     *                                  checkout map key
      */
     public static CheckoutTable of(
             BoardType boardType,

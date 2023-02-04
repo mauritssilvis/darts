@@ -47,6 +47,8 @@ public final class CompoundThrow implements Throw {
      *
      * @param fields a collection of fields
      * @return a new {@code CompoundThrow} with the specified fields
+     * @throws IllegalArgumentException if the fields do not all have the same
+     *                                  score
      */
     public static Throw of(Collection<? extends Field> fields) {
         return new CompoundThrow(fields);
