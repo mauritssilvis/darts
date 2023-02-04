@@ -51,4 +51,16 @@ public final class CheckoutTestUtils {
                 .mapToLong(Checkout::getMultiplicity)
                 .sum();
     }
+
+    /**
+     * Gets the names of the fields of the specified checkouts.
+     *
+     * @param checkouts a collection of checkouts
+     * @return a list of the field names per checkout
+     */
+    public static List<List<List<String>>> getAllNames(Collection<? extends Checkout> checkouts) {
+        return getAllThrows(checkouts).stream()
+                .map(ThrowTestUtils::getAllNames)
+                .toList();
+    }
 }
