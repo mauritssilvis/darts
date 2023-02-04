@@ -45,10 +45,7 @@ class CompoundThrowTests {
         Collection<String> names = List.of("8", "T3");
         Collection<Field> fields = TypedFieldTestUtils.getFields(names);
 
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> CompoundThrow.of(fields)
-        );
+        Assertions.assertThrows(IllegalArgumentException.class, () -> CompoundThrow.of(fields));
     }
 
     @Test
