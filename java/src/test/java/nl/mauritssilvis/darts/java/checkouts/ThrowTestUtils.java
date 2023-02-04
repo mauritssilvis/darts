@@ -18,11 +18,11 @@ public class ThrowTestUtils {
     /**
      * Gets the fields of the specified throws.
      *
-     * @param throwList a collection of throws
-     * @return a list of the lists of fields of the specified throws
+     * @param throwCollection a collection of throws
+     * @return a list of lists of the fields per throw
      */
-    public static List<List<Field>> getAllFields(Collection<? extends Throw> throwList) {
-        return throwList.stream()
+    public static List<List<Field>> getAllFields(Collection<? extends Throw> throwCollection) {
+        return throwCollection.stream()
                 .map(Throw::getFields)
                 .toList();
     }

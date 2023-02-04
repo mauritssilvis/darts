@@ -32,7 +32,7 @@ public final class PathTestUtils {
      * Gets the steps of the specified paths.
      *
      * @param paths a collection of paths
-     * @return a list of the lists of steps of the specified paths
+     * @return a list of lists of the steps per path
      */
     public static List<List<Integer>> getAllSteps(Collection<? extends Path> paths) {
         return paths.stream()

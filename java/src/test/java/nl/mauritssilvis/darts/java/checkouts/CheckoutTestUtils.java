@@ -32,7 +32,7 @@ public final class CheckoutTestUtils {
      * Gets the throws of the specified checkouts.
      *
      * @param checkouts a collection of checkouts
-     * @return a list of the lists of throws of the specified checkouts
+     * @return a list of lists of the throws per checkout
      */
     public static List<List<Throw>> getAllThrows(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()

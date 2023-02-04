@@ -9,6 +9,7 @@ import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
+import nl.mauritssilvis.darts.java.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -160,8 +161,9 @@ class SimpleCheckoutTests {
     }
 
     private static List<Field> getAllFields(Collection<? extends Throw> throwCollection) {
-        return throwCollection.stream()
-                .map(Throw::getFields)
+        List<List<Field>> fieldsPerThrow = ThrowTestUtils.getAllFields(throwCollection);
+
+        return fieldsPerThrow.stream()
                 .flatMap(Collection::stream)
                 .toList();
     }
