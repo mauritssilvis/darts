@@ -6,12 +6,12 @@
 package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldTestUtils;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
 import java.util.List;
 
 class SimpleThrowTests {
@@ -30,18 +30,16 @@ class SimpleThrowTests {
         Field field = TypedFieldTestUtils.getField(name);
         Throw simpleThrow = SimpleThrow.of(field);
 
-        List<Field> storedFields = simpleThrow.getFields();
-        List<String> storedNames = FieldTestUtils.getAllNames(storedFields);
-
-        Assertions.assertEquals(List.of(name), storedNames);
+        Assertions.assertEquals(List.of(field), simpleThrow.getFields());
     }
 
     @Test
     void getImmutableFields() {
-        Field field = TypedFieldTestUtils.getField("7");
+        String name = "7";
+        Field field = TypedFieldTestUtils.getField(name);
         Throw simpleThrow = SimpleThrow.of(field);
 
-        List<Field> storedFields = simpleThrow.getFields();
+        Collection<Field> storedFields = simpleThrow.getFields();
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> storedFields.add(field));
     }
