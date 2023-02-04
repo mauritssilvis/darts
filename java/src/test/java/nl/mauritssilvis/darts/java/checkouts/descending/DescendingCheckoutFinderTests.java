@@ -2318,10 +2318,11 @@ class DescendingCheckoutFinderTests {
 
     @Test
     void getUnequalCheckoutFinders() {
-        Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
+        Collection<Collection<String>> namesPerThrow1 = List.of(List.of("T19"), List.of("T19"), List.of("T19"));
+        Collection<List<Field>> fieldsPerThrow1 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow1);
         CheckoutFinder checkoutFinder1 = DescendingCheckoutFinder.of(fieldsPerThrow1);
 
-        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("T20"), List.of("T20"));
+        Collection<Collection<String>> namesPerThrow2 = List.of(List.of("T20"), List.of("T20"), List.of("T19"));
         Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
         CheckoutFinder checkoutFinder2 = DescendingCheckoutFinder.of(fieldsPerThrow2);
 

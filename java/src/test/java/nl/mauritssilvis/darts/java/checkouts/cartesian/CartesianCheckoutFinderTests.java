@@ -487,7 +487,8 @@ class CartesianCheckoutFinderTests {
 
     @Test
     void getUnequalCheckoutFinders() {
-        Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
+        Collection<Collection<String>> namesPerThrow1 = List.of(List.of("D18"), List.of("D18"));
+        Collection<List<Field>> fieldsPerThrow1 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow1);
         CheckoutFinder checkoutFinder1 = CartesianCheckoutFinder.of(fieldsPerThrow1);
 
         Collection<Collection<String>> namesPerThrow2 = List.of(List.of("T20"), List.of("T20"));
