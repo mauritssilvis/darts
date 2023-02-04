@@ -403,4 +403,56 @@ class GroupedPathTests {
                 )
         );
     }
+
+    @Test
+    void getEqualPaths() {
+        Collection<Integer> steps1 = List.of(5, 7, 8);
+        Collection<Boolean> grouping1 = List.of(true, true, true, true);
+        Path path1 = GroupedPath.of(steps1, grouping1);
+
+        Collection<Integer> steps2 = List.of(5, 7, 8);
+        Collection<Boolean> grouping2 = List.of(false, true, true);
+        Path path2 = GroupedPath.of(steps2, grouping2);
+
+        Assertions.assertEquals(path1, path2);
+    }
+
+    @Test
+    void getUnequalPaths() {
+        Collection<Integer> steps1 = List.of(8, 8, 8);
+        Collection<Boolean> grouping1 = List.of(false, true, true);
+        Path path1 = GroupedPath.of(steps1, grouping1);
+
+        Collection<Integer> steps2 = List.of(5, 6, 7);
+        Collection<Boolean> grouping2 = List.of(false, false, false);
+        Path path2 = GroupedPath.of(steps2, grouping2);
+
+        Assertions.assertNotEquals(path1, path2);
+    }
+
+    @Test
+    void getUnequalPathsForDifferentSteps() {
+        Collection<Boolean> grouping = List.of(false, true, true);
+
+        Collection<Integer> steps1 = List.of(3, 2, 1);
+        Path path1 = GroupedPath.of(steps1, grouping);
+
+        Collection<Integer> steps2 = List.of(1, 2, 3);
+        Path path2 = GroupedPath.of(steps2, grouping);
+
+        Assertions.assertNotEquals(path1, path2);
+    }
+
+    @Test
+    void getUnequalPathsForADifferentGroupingSignature() {
+        Collection<Integer> steps = List.of(3, 7, 4, 8);
+
+        Collection<Boolean> grouping1 = List.of(false, true, true);
+        Path path1 = GroupedPath.of(steps, grouping1);
+
+        Collection<Boolean> grouping2 = List.of(false, true, true, true);
+        Path path2 = GroupedPath.of(steps, grouping2);
+
+        Assertions.assertNotEquals(path1, path2);
+    }
 }
