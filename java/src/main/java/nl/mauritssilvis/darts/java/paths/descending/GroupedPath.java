@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.paths.descending;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.*;
@@ -19,6 +20,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class GroupedPath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> grouping;
