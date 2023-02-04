@@ -8,8 +8,8 @@ package nl.mauritssilvis.darts.java.paths.descending;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.PathTestUtils;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
-import nl.mauritssilvis.darts.java.paths.common.Node;
 import nl.mauritssilvis.darts.java.paths.cartesian.BasicNodeTestUtils;
+import nl.mauritssilvis.darts.java.paths.common.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -273,5 +273,33 @@ class DescendingPathfinderTests {
                         1
                 )
         );
+    }
+
+    @Test
+    void getEqualPathfinders() {
+        Collection<Collection<Integer>> weights1 = List.of(List.of(3, 6));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
+
+
+        Collection<Collection<Integer>> weights2 = List.of(List.of(3, 6));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
+
+        Assertions.assertEquals(pathfinder1, pathfinder2);
+    }
+
+    @Test
+    void getUnequalPathfinders() {
+        Collection<Collection<Integer>> weights1 = List.of(List.of(4), List.of(8, 9));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
+
+
+        Collection<Collection<Integer>> weights2 = List.of(List.of(5, 8), List.of(10));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
+
+        Assertions.assertNotEquals(pathfinder1, pathfinder2);
     }
 }
