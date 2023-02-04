@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class SimplePath implements Path {
     private final List<Integer> steps;
 
