@@ -472,6 +472,28 @@ class CartesianCheckoutFinderTests {
         );
     }
 
+    @Test
+    void getEqualCheckoutFinders() {
+        Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
+        CheckoutFinder checkoutFinder1 = CartesianCheckoutFinder.of(fieldsPerThrow1);
+
+        Collection<List<Field>> fieldsPerThrow2 = Collections.emptyList();
+        CheckoutFinder checkoutFinder2 = CartesianCheckoutFinder.of(fieldsPerThrow2);
+
+        Assertions.assertEquals(checkoutFinder1, checkoutFinder2);
+    }
+
+    @Test
+    void getUnequalCheckoutFinders() {
+        Collection<List<Field>> fieldsPerThrow1 = Collections.emptyList();
+        CheckoutFinder checkoutFinder1 = CartesianCheckoutFinder.of(fieldsPerThrow1);
+
+        Collection<List<Field>> fieldsPerThrow2 = Collections.singletonList(Collections.emptyList());
+        CheckoutFinder checkoutFinder2 = CartesianCheckoutFinder.of(fieldsPerThrow2);
+
+        Assertions.assertNotEquals(checkoutFinder1, checkoutFinder2);
+    }
+
     private static List<List<List<Field>>> getAllFields(Collection<? extends Checkout> checkouts) {
         return CheckoutTestUtils.getAllThrows(checkouts).stream()
                 .map(ThrowTestUtils::getAllFields)
