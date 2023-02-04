@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
@@ -20,6 +21,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class GroupedCheckout implements Checkout {
     private final List<Throw> throwList;
     private final List<Boolean> grouping;
