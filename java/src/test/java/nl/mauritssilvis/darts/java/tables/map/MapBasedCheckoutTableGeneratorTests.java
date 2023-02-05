@@ -525,13 +525,47 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(32, List.of(List.of(List.of("D16"))), 1),
                 Arguments.of(40, List.of(List.of(List.of("D20"))), 1),
                 Arguments.of(50, List.of(List.of(List.of("D25"))), 1),
+                Arguments.of(
+                        80,
+                        List.of(
+                                List.of(List.of("D25"), List.of("D15")),
+                                List.of(List.of("D20"), List.of("D20"))
+                        ),
+                        2 + 1
+                ),
                 Arguments.of(90, List.of(List.of(List.of("D25"), List.of("D20"))), 2),
                 Arguments.of(100, List.of(List.of(List.of("D25"), List.of("D25"))), 1),
+                Arguments.of(
+                        147,
+                        List.of(
+                                List.of(List.of("D25"), List.of("T19"), List.of("D20")),
+                                List.of(List.of("D20"), List.of("T19"), List.of("D25"))
+                        ),
+                        1 + 1
+                ),
+                Arguments.of(
+                        150,
+                        List.of(
+                                List.of(List.of("D25"), List.of("T20"), List.of("D20")),
+                                List.of(List.of("D25"), List.of("D25"), List.of("D25")),
+                                List.of(List.of("D20"), List.of("T20"), List.of("D25"))
+                        ),
+                        1 + 1 + 1
+                ),
+                Arguments.of(151, List.of(List.of(List.of("D25"), List.of("T17"), List.of("D25"))), 1),
+                Arguments.of(154, List.of(List.of(List.of("D25"), List.of("T18"), List.of("D25"))), 1),
                 Arguments.of(157, List.of(List.of(List.of("D25"), List.of("T19"), List.of("D25"))), 1),
-                Arguments.of(160, List.of(List.of(List.of("D25"), List.of("T20"), List.of("D25"))), 1)
+                Arguments.of(160, List.of(List.of(List.of("D25"), List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(220, List.of(List.of(List.of("D25"), List.of("T20"), List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(
+                        280,
+                        List.of(
+                                List.of(List.of("D25"), List.of("T20"), List.of("T20"), List.of("T20"), List.of("D25"))
+                        ),
+                        1
+                )
         );
     }
-
 
     @ParameterizedTest
     @MethodSource("withDescendingQuadroBoardMasterInDoubleOutCheckouts")
