@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.FieldTestUtils;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 import org.junit.jupiter.api.Assertions;
@@ -25,7 +26,10 @@ class CompoundThrowTests {
 
         fields.remove(1);
 
-        Assertions.assertNotEquals(fields, compoundThrow.getFields());
+        Collection<Field> storedFields = compoundThrow.getFields();
+        Collection<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
@@ -34,10 +38,12 @@ class CompoundThrowTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
-        Collection<String> uniqueNames = List.of("12", "D6");
-        Collection<Field> uniqueFields = TypedFieldTestUtils.getFields(uniqueNames);
+        Collection<Field> storedFields = compoundThrow.getFields();
+        Collection<String> storedNames = FieldTestUtils.getAllNames(storedFields);
 
-        Assertions.assertEquals(uniqueFields, compoundThrow.getFields());
+        Collection<String> uniqueNames = List.of("12", "D6");
+
+        Assertions.assertEquals(uniqueNames, storedNames);
     }
 
     @Test
@@ -80,7 +86,10 @@ class CompoundThrowTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(fields, compoundThrow.getFields());
+        Collection<Field> storedFields = compoundThrow.getFields();
+        Collection<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
@@ -89,15 +98,22 @@ class CompoundThrowTests {
         Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(fields, compoundThrow.getFields());
+        Collection<Field> storedFields = compoundThrow.getFields();
+        Collection<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
     void getTheFieldsWithEmptyInput() {
-        Collection<Field> fields = Collections.emptyList();
+        Collection<String> names = Collections.emptyList();
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Throw compoundThrow = CompoundThrow.of(fields);
 
-        Assertions.assertEquals(fields, compoundThrow.getFields());
+        Collection<Field> storedFields = compoundThrow.getFields();
+        Collection<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
