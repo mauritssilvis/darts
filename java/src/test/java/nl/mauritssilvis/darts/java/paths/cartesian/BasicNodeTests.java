@@ -96,22 +96,22 @@ class BasicNodeTests {
     @Test
     void getEqualNodes() {
         Collection<Integer> weights1 = List.of(-10, 10, 10);
-        Node path1 = BasicNode.of(weights1);
+        Node node1 = BasicNode.of(weights1);
 
         Collection<Integer> weights2 = List.of(-10, 10);
-        Node path2 = BasicNode.of(weights2);
+        Node node2 = BasicNode.of(weights2);
 
-        Assertions.assertEquals(path1, path2);
+        Assertions.assertEquals(node1, node2);
     }
 
     @Test
     void getUnequalNodes() {
         Collection<Integer> weights1 = List.of(-10, 0, 10);
-        Node path1 = BasicNode.of(weights1);
+        Node node1 = BasicNode.of(weights1);
 
         Collection<Integer> weights2 = List.of(-5, 0, 5);
-        Node path2 = BasicNode.of(weights2);
+        Node node2 = BasicNode.of(weights2);
 
-        Assertions.assertNotEquals(path1, path2);
+        Assertions.assertNotEquals(node1, node2);
     }
 }

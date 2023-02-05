@@ -44,12 +44,14 @@ class CartesianPathfinderTests {
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
         List<Path> paths = pathfinder.find(length);
 
+        int totalMultiplicity = stepsPerPath.size();
+
         Assertions.assertAll(
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
                 () -> Assertions.assertEquals(stepsPerPath.size(), paths.size()),
                 () -> Assertions.assertEquals(stepsPerPath, PathTestUtils.getAllSteps(paths)),
-                () -> Assertions.assertEquals(stepsPerPath.size(), PathTestUtils.getTotalMultiplicity(paths))
+                () -> Assertions.assertEquals(totalMultiplicity, PathTestUtils.getTotalMultiplicity(paths))
         );
     }
 
