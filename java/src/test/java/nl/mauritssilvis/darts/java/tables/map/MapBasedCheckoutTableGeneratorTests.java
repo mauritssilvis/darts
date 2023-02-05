@@ -693,4 +693,56 @@ class MapBasedCheckoutTableGeneratorTests {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withDescendingLondonBoardHighScoreCheckouts")
+    void countTheDescendingLondonBoardHighScoreCheckouts(
+            int score, CheckType checkInType, CheckType checkoutType, int totalMultiplicity
+    ) {
+        BoardType boardType = BoardType.LONDON;
+        FinderType finderType = FinderType.DESCENDING;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withDescendingLondonBoardHighScoreCheckouts() {
+        return Stream.of(
+                Arguments.of(160, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(170, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(180, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(220, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(230, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(240, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(280, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(290, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(300, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(340, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(350, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(360, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(400, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(410, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(420, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(501, CheckType.ANY, CheckType.DOUBLE, 3944),
+                Arguments.of(501, CheckType.DOUBLE, CheckType.DOUBLE, 574),
+                Arguments.of(460, CheckType.DOUBLE, CheckType.DOUBLE, 1),
+                Arguments.of(470, CheckType.ANY, CheckType.DOUBLE, 1),
+                Arguments.of(480, CheckType.ANY, CheckType.ANY, 1)
+        );
+    }
 }
