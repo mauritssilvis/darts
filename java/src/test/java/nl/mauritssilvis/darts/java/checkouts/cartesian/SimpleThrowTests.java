@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.FieldTestUtils;
 import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 import org.junit.jupiter.api.Assertions;
@@ -30,7 +31,10 @@ class SimpleThrowTests {
         Field field = TypedFieldTestUtils.getField(name);
         Throw simpleThrow = SimpleThrow.of(field);
 
-        Assertions.assertEquals(List.of(field), simpleThrow.getFields());
+        List<Field> storedFields = simpleThrow.getFields();
+        List<String> storedNames = FieldTestUtils.getAllNames(storedFields);
+
+        Assertions.assertEquals(List.of(name), storedNames);
     }
 
     @Test
