@@ -19,7 +19,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -92,17 +91,18 @@ class MapBasedCheckoutTableGeneratorTests {
         );
 
         int minScore = -2;
-        int maxScore = 0;
+        int maxScore = 1;
 
         CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
 
         Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(3, checkoutMap.size()),
+                () -> Assertions.assertEquals(4, checkoutMap.size()),
                 () -> Assertions.assertTrue(checkoutMap.get(-2).isEmpty()),
                 () -> Assertions.assertTrue(checkoutMap.get(-1).isEmpty()),
-                () -> Assertions.assertTrue(checkoutMap.get(0).isEmpty())
+                () -> Assertions.assertTrue(checkoutMap.get(0).isEmpty()),
+                () -> Assertions.assertTrue(checkoutMap.get(1).isEmpty())
         );
     }
 
