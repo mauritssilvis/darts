@@ -258,4 +258,171 @@ class MapBasedCheckoutTableTests {
 
         Assertions.assertThrows(UnsupportedOperationException.class, storedCheckouts::clear);
     }
+
+    @Test
+    void getEqualCheckoutTables() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.DOUBLE;
+
+        int score = 20;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
+                List.of(List.of("20")),
+                List.of(List.of("D10"))
+        );
+
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap1 = Map.of(
+                score, checkouts1
+        );
+
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap1);
+
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap2 = Map.of(
+                score, checkouts2
+        );
+
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap2);
+
+        Assertions.assertEquals(checkoutTable1, checkoutTable2);
+    }
+
+    @Test
+    void getUnequalCheckoutTables() {
+        BoardType boardType1 = BoardType.LONDON;
+        CheckType checkInType1 = CheckType.DOUBLE;
+        CheckType checkoutType1 = CheckType.DOUBLE;
+
+        int score1 = 50;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout1 = List.of(List.of(List.of("D25")));
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+
+        Map<Integer, Collection<Checkout>> checkoutMap1 = Map.of(
+                score1, checkouts1
+        );
+
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType1, checkInType1, checkoutType1, checkoutMap1);
+
+        BoardType boardType2 = BoardType.QUADRO;
+        CheckType checkInType2 = CheckType.ANY;
+        CheckType checkoutType2 = CheckType.ANY;
+
+        int score2 = 80;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout2 = List.of(List.of(List.of("Q20")));
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
+
+        Map<Integer, Collection<Checkout>> checkoutMap2 = Map.of(
+                score2, checkouts2
+        );
+
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType2, checkInType2, checkoutType2, checkoutMap2);
+
+        Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
+    }
+
+    @Test
+    void getUnequalCheckoutTablesForDifferentBoardTypes() {
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.DOUBLE;
+
+        int score = 8;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(List.of(List.of("D4")));
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
+
+        BoardType boardType1 = BoardType.LONDON;
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType1, checkInType, checkoutType, checkoutMap);
+
+        BoardType boardType2 = BoardType.YORKSHIRE;
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType2, checkInType, checkoutType, checkoutMap);
+
+        Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
+    }
+
+    @Test
+    void getUnequalCheckoutTablesForDifferentCheckInTypes() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkoutType = CheckType.DOUBLE;
+
+        int score = 8;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(List.of(List.of("D4")));
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
+
+        CheckType checkInType1 = CheckType.DOUBLE;
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType, checkInType1, checkoutType, checkoutMap);
+
+        CheckType checkInType2 = CheckType.ANY;
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType, checkInType2, checkoutType, checkoutMap);
+
+        Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
+    }
+
+    @Test
+    void getUnequalCheckoutTablesForDifferentCheckoutTypes() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.DOUBLE;
+
+        int score = 8;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(List.of(List.of("D4")));
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
+
+        CheckType checkoutType1 = CheckType.MASTER;
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType1, checkoutMap);
+
+        CheckType checkoutType2 = CheckType.DOUBLE;
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType2, checkoutMap);
+
+        Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
+    }
+
+    @Test
+    void getUnequalCheckoutTablesForDifferentCheckoutMaps() {
+        BoardType boardType = BoardType.LONDON;
+        CheckType checkInType = CheckType.MASTER;
+        CheckType checkoutType = CheckType.MASTER;
+
+        int score1 = 15;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout1 = List.of(List.of(List.of("T5")));
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+
+        Map<Integer, Collection<Checkout>> checkoutMap1 = Map.of(
+                score1, checkouts1
+        );
+
+        CheckoutTable checkoutTable1 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap1);
+
+        int score2 = 60;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout2 = List.of(List.of(List.of("T20")));
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
+
+        Map<Integer, Collection<Checkout>> checkoutMap2 = Map.of(
+                score2, checkouts2
+        );
+
+        CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap2);
+
+        Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
+    }
 }
