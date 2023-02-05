@@ -224,11 +224,11 @@ class MapBasedCheckoutTableBuilderTests {
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
-        CheckoutTable checkoutTable = checkoutTableBuilder
-                .setCheckouts(score, checkouts)
-                .build();
+        checkoutTableBuilder.setCheckouts(score, checkouts);
 
         checkouts.clear();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
         Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);

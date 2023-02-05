@@ -59,7 +59,7 @@ public final class MapBasedCheckoutTableBuilder implements CheckoutTableBuilder 
 
     @Override
     public CheckoutTableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts) {
-        checkoutMap.put(score, new ArrayList<>(checkouts));
+        checkoutMap.put(score, List.copyOf(checkouts));
         return this;
     }
 
