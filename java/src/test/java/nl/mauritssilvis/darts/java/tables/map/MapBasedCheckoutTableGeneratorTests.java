@@ -377,13 +377,111 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(34, List.of(List.of(List.of("D17"))), 1),
                 Arguments.of(40, List.of(List.of(List.of("D20"))), 1),
                 Arguments.of(50, List.of(List.of(List.of("D25"))), 1),
+                Arguments.of(
+                        100,
+                        List.of(
+                                List.of(List.of("T20"), List.of("D20")),
+                                List.of(List.of("D25"), List.of("D25"))
+                        ),
+                        2
+                ),
+                Arguments.of(101, List.of(List.of(List.of("T17"), List.of("D25"))), 1),
+                Arguments.of(104, List.of(List.of(List.of("T18"), List.of("D25"))), 1),
                 Arguments.of(107, List.of(List.of(List.of("T19"), List.of("D25"))), 1),
                 Arguments.of(110, List.of(List.of(List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(
+                        160,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("D20")),
+                                List.of(List.of("T20"), List.of("D25"), List.of("D25"))
+                        ),
+                        1 + 2
+                ),
+                Arguments.of(
+                        161,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T17"), List.of("D25")),
+                                List.of(List.of("T19"), List.of("T18"), List.of("D25"))
+
+                        ),
+                        2 + 2
+                ),
+                Arguments.of(
+                        164,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T18"), List.of("D25")),
+                                List.of(List.of("T19"), List.of("T19"), List.of("D25"))
+
+                        ),
+                        2 + 1
+                ),
                 Arguments.of(167, List.of(List.of(List.of("T20"), List.of("T19"), List.of("D25"))), 2),
-                Arguments.of(170, List.of(List.of(List.of("T20"), List.of("T20"), List.of("D25"))), 1)
+                Arguments.of(170, List.of(List.of(List.of("T20"), List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(220,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("D20")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("D25"), List.of("D25"))
+                        ),
+                        1 + 3
+                ),
+                Arguments.of(221,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T17"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("T19"), List.of("T18"), List.of("D25")),
+                                List.of(List.of("T19"), List.of("T19"), List.of("T19"), List.of("D25"))
+                        ),
+                        3 + 6 + 1
+                ),
+                Arguments.of(224,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T18"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("T19"), List.of("T19"), List.of("D25"))
+                        ),
+                        3 + 3
+                ),
+                Arguments.of(227, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T19"), List.of("D25"))), 3),
+                Arguments.of(230, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(
+                        280,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("T20"), List.of("D20")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("D25"), List.of("D25"))
+                        ),
+                        1 + 4
+                ),
+                Arguments.of(
+                        281,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("T17"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("T19"), List.of("T18"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("T19"), List.of("T19"), List.of("T19"), List.of("D25"))
+                        ),
+                        4 + 12 + 4
+                ),
+                Arguments.of(
+                        284,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("T18"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("T19"), List.of("T19"), List.of("D25"))
+                        ),
+                        4 + 6
+                ),
+                Arguments.of(
+                        287,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("T19"), List.of("D25"))
+                        ),
+                        4
+                ),
+                Arguments.of(
+                        290,
+                        List.of(
+                                List.of(List.of("T20"), List.of("T20"), List.of("T20"), List.of("T20"), List.of("D25"))
+                        ),
+                        1
+                )
         );
     }
-
 
 
     @ParameterizedTest
