@@ -11,9 +11,7 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 import nl.mauritssilvis.darts.java.tables.CheckoutTableBuilder;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * An implementation of the {@code CheckoutTableBuilder} interface that builds
@@ -60,8 +58,8 @@ public final class MapBasedCheckoutTableBuilder implements CheckoutTableBuilder 
     }
 
     @Override
-    public CheckoutTableBuilder setCheckouts(int score, List<Checkout> checkouts) {
-        checkoutMap.put(score, checkouts);
+    public CheckoutTableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts) {
+        checkoutMap.put(score, new ArrayList<>(checkouts));
         return this;
     }
 

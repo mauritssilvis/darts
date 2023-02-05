@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * A checkout table builder.
@@ -48,7 +48,7 @@ public interface CheckoutTableBuilder {
      * @param checkouts a list of checkouts for the specified score
      * @return this checkout table builder
      */
-    CheckoutTableBuilder setCheckouts(int score, List<Checkout> checkouts);
+    CheckoutTableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts);
 
     /**
      * Gets a new {@code CheckoutTable} with the specified dartboard type,

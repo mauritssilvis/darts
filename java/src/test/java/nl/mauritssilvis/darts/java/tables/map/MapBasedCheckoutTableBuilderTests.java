@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.map;
 
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.descending.GroupedCheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
@@ -45,8 +46,8 @@ class MapBasedCheckoutTableBuilderTests {
 
     @Test
     void overrideTheBoardType() {
-        BoardType boardType1 = BoardType.LONDON;
-        BoardType boardType2 = BoardType.QUADRO;
+        BoardType boardType1 = BoardType.QUADRO;
+        BoardType boardType2 = BoardType.YORKSHIRE;
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
@@ -136,30 +137,40 @@ class MapBasedCheckoutTableBuilderTests {
 
     @Test
     void getTheCheckoutMap() {
-        Collection<Collection<Collection<String>>> names5 = List.of(
+        int score1 = 5;
+        int score2 = 6;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout1 = List.of(
                 List.of(List.of("5"))
         );
 
-        Collection<Collection<Collection<String>>> names6 = List.of(
+        Collection<Collection<Collection<String>>> namesPerCheckout2 = List.of(
                 List.of(List.of("2"), List.of("D2", "4"))
         );
 
-        List<Checkout> checkouts5 = GroupedCheckoutTestUtils.getCheckouts(names5);
-        List<Checkout> checkouts6 = GroupedCheckoutTestUtils.getCheckouts(names6);
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
-                .setCheckouts(5, checkouts5)
-                .setCheckouts(6, checkouts6)
+                .setCheckouts(score1, checkouts1)
+                .setCheckouts(score2, checkouts2)
                 .build();
 
-        Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                5, checkouts5,
-                6, checkouts6
-        );
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
 
-        Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(score1);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(score2);
+
+        Collection<List<List<String>>> storedNames1 = CheckoutTestUtils.getAllNames(storedCheckouts1);
+        Collection<List<List<String>>> storedNames2 = CheckoutTestUtils.getAllNames(storedCheckouts2);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(namesPerCheckout1, storedNames1),
+                () -> Assertions.assertEquals(namesPerCheckout2, storedNames2)
+        );
     }
 
     @Test
@@ -174,16 +185,18 @@ class MapBasedCheckoutTableBuilderTests {
 
     @Test
     void overrideACheckoutList() {
-        Collection<Collection<Collection<String>>> names1 = List.of(
+        int score = 7;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout1 = List.of(
                 List.of(List.of("7"))
         );
 
-        Collection<Collection<Collection<String>>> names2 = List.of(
+        Collection<Collection<Collection<String>>> namesPerCheckout2 = List.of(
                 List.of(List.of("1"), List.of("D3", "6"))
         );
 
-        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(names1);
-        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(names2);
+        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
@@ -192,11 +205,14 @@ class MapBasedCheckoutTableBuilderTests {
                 .setCheckouts(7, checkouts2)
                 .build();
 
-        Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                7, checkouts2
-        );
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
-        Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(namesPerCheckout2, storedNames)
+        );
     }
 
     @Test
@@ -205,16 +221,19 @@ class MapBasedCheckoutTableBuilderTests {
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.MASTER;
 
-        Collection<Collection<Collection<String>>> names4 = List.of(
+        int score1 = 4;
+        int score2 = 8;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout1 = List.of(
                 List.of(List.of("D2"))
         );
 
-        Collection<Collection<Collection<String>>> names8 = List.of(
+        Collection<Collection<Collection<String>>> namesPerCheckout2 = List.of(
                 List.of(List.of("2"), List.of("D3", "6"))
         );
 
-        List<Checkout> checkouts4 = GroupedCheckoutTestUtils.getCheckouts(names4);
-        List<Checkout> checkouts8 = GroupedCheckoutTestUtils.getCheckouts(names8);
+        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
@@ -222,20 +241,25 @@ class MapBasedCheckoutTableBuilderTests {
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
                 .setCheckoutType(checkoutType)
-                .setCheckouts(4, checkouts4)
-                .setCheckouts(8, checkouts8)
+                .setCheckouts(4, checkouts1)
+                .setCheckouts(8, checkouts2)
                 .build();
 
-        Map<Integer, List<Checkout>> checkoutMap = Map.of(
-                4, checkouts4,
-                8, checkouts8
-        );
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(score1);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(score2);
+
+        Collection<List<List<String>>> storedNames1 = CheckoutTestUtils.getAllNames(storedCheckouts1);
+        Collection<List<List<String>>> storedNames2 = CheckoutTestUtils.getAllNames(storedCheckouts2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(boardType, checkoutTable.getBoardType()),
                 () -> Assertions.assertEquals(checkInType, checkoutTable.getCheckInType()),
                 () -> Assertions.assertEquals(checkoutType, checkoutTable.getCheckoutType()),
-                () -> Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap())
+                () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(namesPerCheckout1, storedNames1),
+                () -> Assertions.assertEquals(namesPerCheckout2, storedNames2)
         );
     }
 }
