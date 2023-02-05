@@ -137,4 +137,19 @@ class YorkshireBoardTests {
                 () -> Assertions.assertEquals(board1.hashCode(), board2.hashCode())
         );
     }
+
+    @Test
+    void convertToAString() {
+        Board board = YorkshireBoard.create();
+        String str = board.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(board.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("singleFields")),
+                () -> Assertions.assertTrue(str.contains("doubleFields")),
+                () -> Assertions.assertTrue(str.contains("tripleFields")),
+                () -> Assertions.assertTrue(str.contains("quadrupleFields")),
+                () -> Assertions.assertFalse(str.contains("RANGE"))
+        );
+    }
 }

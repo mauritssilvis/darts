@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.boards.london;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
@@ -22,6 +23,7 @@ import java.util.stream.IntStream;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class LondonBoard implements Board {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 20;
