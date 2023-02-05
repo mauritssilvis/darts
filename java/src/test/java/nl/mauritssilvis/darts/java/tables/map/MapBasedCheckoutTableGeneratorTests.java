@@ -745,4 +745,86 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(480, CheckType.ANY, CheckType.ANY, 1)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withoutFewDartCheckouts")
+    void doNotReachACheckoutWithFewDarts(
+            BoardType boardType, CheckType checkInType, CheckType checkoutType, int score, int numThrows
+    ) {
+        FinderType finderType = FinderType.DESCENDING;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts.stream().noneMatch(checkout -> checkout.getThrows().size() == numThrows)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withoutFewDartCheckouts() {
+        return Stream.of(
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 0, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 1, 1),
+                Arguments.of(BoardType.LONDON, CheckType.MASTER, CheckType.ANY, 1, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 3, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.MASTER, 3, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.DOUBLE, 5, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.MASTER, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 21, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 23, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 25, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 25, 1),
+                Arguments.of(BoardType.LONDON, CheckType.DOUBLE, CheckType.ANY, 27, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 29, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 31, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 35, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 37, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 41, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 43, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.MASTER, 44, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 44, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 46, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 47, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 49, 1),
+                Arguments.of(BoardType.LONDON, CheckType.DOUBLE, CheckType.ANY, 51, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 51, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 52, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 61, 1),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 76, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 79, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 81, 1),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 99, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 102, 2),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 103, 2),
+                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.DOUBLE, 104, 2),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 105, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 106, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 108, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 109, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 111, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.MASTER, 113, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 121, 2),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 161, 2),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 159, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 162, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 163, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 165, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 166, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 168, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 169, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 171, 3),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 181, 3),
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 241, 3)
+        );
+    }
 }
