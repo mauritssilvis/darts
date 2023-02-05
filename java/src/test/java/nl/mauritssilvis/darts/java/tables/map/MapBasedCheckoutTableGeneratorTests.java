@@ -403,7 +403,6 @@ class MapBasedCheckoutTableGeneratorTests {
                         List.of(
                                 List.of(List.of("T20"), List.of("T17"), List.of("D25")),
                                 List.of(List.of("T19"), List.of("T18"), List.of("D25"))
-
                         ),
                         2 + 2
                 ),
@@ -483,7 +482,6 @@ class MapBasedCheckoutTableGeneratorTests {
                 )
         );
     }
-
 
     @ParameterizedTest
     @MethodSource("withDescendingLondonBoardDoubleInDoubleOutCheckouts")

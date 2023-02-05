@@ -281,7 +281,6 @@ class DescendingPathfinderTests {
         Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
 
-
         Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(3, 6));
         Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
