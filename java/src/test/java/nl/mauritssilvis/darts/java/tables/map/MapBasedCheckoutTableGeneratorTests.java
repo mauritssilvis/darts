@@ -606,11 +606,91 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(14, List.of(List.of(List.of("D7"))), 1),
                 Arguments.of(40, List.of(List.of(List.of("D20"))), 1),
                 Arguments.of(50, List.of(List.of(List.of("D25"))), 1),
+                Arguments.of(
+                        100,
+                        List.of(
+                                List.of(List.of("T20"), List.of("D20")),
+                                List.of(List.of("D25"), List.of("D25"))
+                        ),
+                        2
+                ),
+                Arguments.of(101, List.of(List.of(List.of("T17"), List.of("D25"))), 1),
+                Arguments.of(104, List.of(List.of(List.of("T18"), List.of("D25"))), 1),
                 Arguments.of(107, List.of(List.of(List.of("T19"), List.of("D25"))), 1),
                 Arguments.of(110, List.of(List.of(List.of("T20"), List.of("D25"))), 1),
+                Arguments.of(
+                        180,
+                        List.of(
+                                List.of(List.of("T20"), List.of("Q20"), List.of("D20")),
+                                List.of(List.of("T18"), List.of("Q19"), List.of("D25")),
+                                List.of(List.of("D25"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1 + 1 + 1
+                ),
+                Arguments.of(183, List.of(List.of(List.of("T19"), List.of("Q19"), List.of("D25"))), 1),
+                Arguments.of(184, List.of(List.of(List.of("T18"), List.of("Q20"), List.of("D25"))), 1),
                 Arguments.of(186, List.of(List.of(List.of("T20"), List.of("Q19"), List.of("D25"))), 1),
                 Arguments.of(187, List.of(List.of(List.of("T19"), List.of("Q20"), List.of("D25"))), 1),
-                Arguments.of(190, List.of(List.of(List.of("T20"), List.of("Q20"), List.of("D25"))), 1)
+                Arguments.of(190, List.of(List.of(List.of("T20"), List.of("Q20"), List.of("D25"))), 1),
+                Arguments.of(
+                        260,
+                        List.of(
+                                List.of(List.of("T20"), List.of("Q20"), List.of("Q20"), List.of("D20")),
+                                List.of(List.of("T18"), List.of("Q20"), List.of("Q19"), List.of("D25")),
+                                List.of(List.of("D25"), List.of("Q20"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1 + 2 + 1
+                ),
+                Arguments.of(
+                        261,
+                        List.of(
+                                List.of(List.of("T17"), List.of("Q20"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1
+                ),
+                Arguments.of(
+                        262,
+                        List.of(
+                                List.of(List.of("T20"), List.of("Q20"), List.of("Q18"), List.of("D25")),
+                                List.of(List.of("T20"), List.of("Q19"), List.of("Q19"), List.of("D25"))
+                        ),
+                        2 + 1
+                ),
+                Arguments.of(
+                        263,
+                        List.of(
+                                List.of(List.of("T19"), List.of("Q20"), List.of("Q19"), List.of("D25"))
+                        ),
+                        2
+                ),
+                Arguments.of(
+                        264,
+                        List.of(
+                                List.of(List.of("T18"), List.of("Q20"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1
+                ),
+                Arguments.of(
+                        266,
+                        List.of(
+                                List.of(List.of("T20"), List.of("Q20"), List.of("Q19"), List.of("D25"))
+                        ),
+                        2
+                ),
+                Arguments.of(
+                        267,
+                        List.of(
+                                List.of(List.of("T19"), List.of("Q20"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1
+                ),
+                Arguments.of(
+                        270,
+                        List.of(
+                                List.of(List.of("T20"), List.of("Q20"), List.of("Q20"), List.of("D25"))
+                        ),
+                        1
+                )
         );
     }
 }
