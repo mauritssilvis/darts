@@ -262,4 +262,18 @@ class CartesianPathfinderTests {
 
         Assertions.assertNotEquals(pathfinder1, pathfinder2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+
+        String str = pathfinder.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(pathfinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("nodes"))
+        );
+    }
 }

@@ -303,4 +303,18 @@ class DescendingPathfinderTests {
 
         Assertions.assertNotEquals(pathfinder1, pathfinder2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(1, 4), List.of(1, 5, 6));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Pathfinder pathfinder = DescendingPathfinder.of(nodes);
+
+        String str = pathfinder.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(pathfinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("nodes"))
+        );
+    }
 }

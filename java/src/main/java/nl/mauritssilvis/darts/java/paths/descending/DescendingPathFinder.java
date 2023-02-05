@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.descending;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.paths.Path;
 import nl.mauritssilvis.darts.java.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.paths.common.Node;
@@ -32,6 +33,7 @@ import java.util.stream.IntStream;
  * Relevant terminology: Subset sum problem.
  */
 @EqualsAndHashCode
+@ToString
 public final class DescendingPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
