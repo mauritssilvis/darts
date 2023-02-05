@@ -145,6 +145,7 @@ class YorkshireBoardTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(str.contains(board.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("Fields")),
                 () -> Assertions.assertTrue(str.contains("single")),
                 () -> Assertions.assertTrue(str.contains("double")),
                 () -> Assertions.assertTrue(str.contains("triple")),
