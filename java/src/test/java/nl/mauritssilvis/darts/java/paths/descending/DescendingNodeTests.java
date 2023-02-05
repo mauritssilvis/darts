@@ -127,4 +127,18 @@ class DescendingNodeTests {
 
         Assertions.assertNotEquals(node1, node2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Integer> weights = List.of(10, 5, 0, -5);
+        Node node = DescendingNode.of(weights);
+
+        String str = node.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(node.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("weights")),
+                () -> Assertions.assertTrue(str.contains("connected"))
+        );
+    }
 }

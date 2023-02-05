@@ -117,4 +117,18 @@ class BasicNodeTests {
 
         Assertions.assertNotEquals(node1, node2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Integer> weights = List.of(0, 1, 3);
+        Node node = BasicNode.of(weights);
+
+        String str = node.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(node.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("weights")),
+                () -> Assertions.assertTrue(str.contains("connected"))
+        );
+    }
 }

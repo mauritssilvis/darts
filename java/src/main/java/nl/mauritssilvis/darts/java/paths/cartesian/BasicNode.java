@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.paths.common.Node;
 
 import java.util.Collection;
@@ -18,6 +19,7 @@ import java.util.List;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class BasicNode implements Node {
     private final List<Integer> weights;
 
@@ -44,6 +46,7 @@ public final class BasicNode implements Node {
     }
 
     @Override
+    @ToString.Include(name = "connected")
     public boolean isConnected() {
         return !weights.isEmpty();
     }
