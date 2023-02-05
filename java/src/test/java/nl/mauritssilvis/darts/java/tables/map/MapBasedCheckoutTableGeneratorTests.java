@@ -18,6 +18,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -91,7 +92,10 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withCartesianQuadroBoardAnyInAnyOutCheckouts")
-    void getTheCartesianQuadroBoardAnyInAnyOutCheckouts(int score, int multiplicity) {
+    void getTheCartesianQuadroBoardAnyInAnyOutCheckouts(
+            int score,
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
@@ -105,12 +109,25 @@ class MapBasedCheckoutTableGeneratorTests {
         );
 
         CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+
+        int totalMultiplicity = namesPerCheckout.size();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
-                () -> Assertions.assertEquals(multiplicity, CheckoutTestUtils.getTotalMultiplicity(storedCheckouts))
+                () -> Assertions.assertEquals(score, storedCheckouts.get(0).getScore()),
+                () -> Assertions.assertEquals(
+                        score,
+                        CheckoutTestUtils.getTotalScore(storedCheckouts) / storedCheckouts.size()
+                ),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
         );
     }
 
