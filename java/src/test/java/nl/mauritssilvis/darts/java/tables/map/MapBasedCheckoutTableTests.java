@@ -25,7 +25,10 @@ class MapBasedCheckoutTableTests {
 
         int score = 6;
 
-        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(List.of(List.of("D3")), List.of(List.of("D4")));
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
+                List.of(List.of("D3")), List.of(List.of("D4"))
+        );
+
         Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
 
         Map<Integer, Collection<Checkout>> checkoutMap = Map.of(score, checkouts);

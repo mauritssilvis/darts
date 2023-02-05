@@ -15,7 +15,7 @@ import java.util.List;
  * A set of testing utilities that create (collections of) {@code CompoundThrow}
  * objects.
  */
-public final class CompoundThrowTestUtils {
+final class CompoundThrowTestUtils {
     private CompoundThrowTestUtils() {
     }
 
@@ -25,7 +25,7 @@ public final class CompoundThrowTestUtils {
      * @param namesPerThrow a collection of names per throw
      * @return a list of throws with the specified names
      */
-    public static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
+    static List<Throw> getThrows(Collection<? extends Collection<String>> namesPerThrow) {
         return namesPerThrow.stream()
                 .map(TypedFieldTestUtils::getFields)
                 .map(CompoundThrow::of)

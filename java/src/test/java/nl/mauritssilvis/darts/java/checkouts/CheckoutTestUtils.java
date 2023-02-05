@@ -29,18 +29,6 @@ public final class CheckoutTestUtils {
     }
 
     /**
-     * Gets the throws of the specified checkouts.
-     *
-     * @param checkouts a collection of checkouts
-     * @return a list of lists of the throws per checkout
-     */
-    public static List<List<Throw>> getAllThrows(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .map(Checkout::getThrows)
-                .toList();
-    }
-
-    /**
      * Gets the total multiplicity of the specified checkouts.
      *
      * @param checkouts a collection of checkouts
@@ -59,7 +47,8 @@ public final class CheckoutTestUtils {
      * @return a list of the field names per checkout
      */
     public static List<List<List<String>>> getAllNames(Collection<? extends Checkout> checkouts) {
-        return getAllThrows(checkouts).stream()
+        return checkouts.stream()
+                .map(Checkout::getThrows)
                 .map(ThrowTestUtils::getAllNames)
                 .toList();
     }

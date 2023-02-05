@@ -56,20 +56,6 @@ public final class TypedFieldTestUtils {
                 .toList();
     }
 
-    /**
-     * Returns a list of fields per checkout with the specified names.
-     *
-     * @param namesPerCheckout a collection of names per checkout
-     * @return a list of fields per checkout with the specified names
-     */
-    public static List<List<List<Field>>> getFieldsPerCheckout(
-            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
-    ) {
-        return namesPerCheckout.stream()
-                .map(TypedFieldTestUtils::getFieldsPerThrow)
-                .toList();
-    }
-
     private static FieldType getFieldType(CharSequence name) {
         char first = name.charAt(0);
 

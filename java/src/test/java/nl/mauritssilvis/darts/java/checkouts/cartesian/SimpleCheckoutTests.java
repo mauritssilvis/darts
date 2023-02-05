@@ -161,7 +161,7 @@ class SimpleCheckoutTests {
         Assertions.assertNotEquals(checkout1, checkout2);
     }
 
-    private List<String> getAllNames(Collection<? extends Throw> throwCollection) {
+    private static List<String> getAllNames(Collection<? extends Throw> throwCollection) {
         return ThrowTestUtils.getAllNames(throwCollection).stream()
                 .flatMap(Collection::stream)
                 .toList();
