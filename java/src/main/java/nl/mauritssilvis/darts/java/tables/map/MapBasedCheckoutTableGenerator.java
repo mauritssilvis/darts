@@ -126,6 +126,7 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
                 if (getMinScore(fieldsPerThrow) > i) {
                     break;
                 } else if (getMaxScore(fieldsPerThrow) < i) {
+                    numThrows++;
                     continue;
                 }
 
