@@ -23,8 +23,8 @@ import java.util.stream.Stream;
 class DescendingPathfinderTests {
     @Test
     void getImmutablePaths() {
-        Collection<Collection<Integer>> weights = List.of(List.of(4), List.of(4, 5));
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(4), List.of(4, 5));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = DescendingPathfinder.of(nodes);
 
         int length = 9;
@@ -37,20 +37,20 @@ class DescendingPathfinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length,
-            Collection<? extends Collection<Integer>> steps,
+            Collection<? extends Collection<Integer>> stepsPerPath,
             int totalMultiplicity
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = DescendingPathfinder.of(nodes);
         List<Path> paths = pathfinder.find(length);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
-                () -> Assertions.assertEquals(steps.size(), paths.size()),
-                () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths)),
+                () -> Assertions.assertEquals(stepsPerPath.size(), paths.size()),
+                () -> Assertions.assertEquals(stepsPerPath, PathTestUtils.getAllSteps(paths)),
                 () -> Assertions.assertEquals(totalMultiplicity, PathTestUtils.getTotalMultiplicity(paths))
         );
     }
@@ -277,13 +277,13 @@ class DescendingPathfinderTests {
 
     @Test
     void getEqualPathfinders() {
-        Collection<Collection<Integer>> weights1 = List.of(List.of(3, 6));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(3, 6));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
 
 
-        Collection<Collection<Integer>> weights2 = List.of(List.of(3, 6));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(3, 6));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
 
         Assertions.assertEquals(pathfinder1, pathfinder2);
@@ -291,13 +291,13 @@ class DescendingPathfinderTests {
 
     @Test
     void getUnequalPathfinders() {
-        Collection<Collection<Integer>> weights1 = List.of(List.of(4), List.of(8, 9));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(4), List.of(8, 9));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
 
 
-        Collection<Collection<Integer>> weights2 = List.of(List.of(5, 8), List.of(10));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(5, 8), List.of(10));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
 
         Assertions.assertNotEquals(pathfinder1, pathfinder2);

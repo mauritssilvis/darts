@@ -59,9 +59,9 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndDisconnectedNodes")
     void handleDisconnectedNodes(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights
+            Collection<? extends Collection<Integer>> weightsPerNode
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         int length = 2;
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
@@ -74,10 +74,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndUnreachableLengths")
     void handleUnreachableLengths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -89,10 +89,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndMultiplePaths")
     void getThePathLength(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -109,10 +109,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndOneShortPath")
     void findOneShortPath(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -128,10 +128,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndTwoShortPaths")
     void findTwoShortPaths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -147,10 +147,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndThreeShortPaths")
     void findThreeShortPaths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -166,10 +166,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndFourShortPaths")
     void findFourShortPaths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -185,10 +185,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndSixShortPaths")
     void findSixShortPaths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);
@@ -204,10 +204,10 @@ class PathfinderTests {
     @CartesianTest.MethodFactory("withAllPathfindersAndTwelveShortPaths")
     void findTwelveShortPaths(
             Function<? super Collection<Node>, ? extends Pathfinder> pathfinderFactory,
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
 
         Pathfinder pathfinder = pathfinderFactory.apply(nodes);
         List<Path> paths = pathfinder.find(length);

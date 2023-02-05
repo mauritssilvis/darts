@@ -22,8 +22,8 @@ import java.util.stream.Stream;
 class CartesianPathfinderTests {
     @Test
     void getImmutablePaths() {
-        Collection<Collection<Integer>> weights = List.of(List.of(3, 4), List.of(6, 7));
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(3, 4), List.of(6, 7));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
 
         int length = 10;
@@ -36,29 +36,25 @@ class CartesianPathfinderTests {
     @ParameterizedTest
     @MethodSource("withPathData")
     void findPaths(
-            Collection<? extends Collection<Integer>> weights,
+            Collection<? extends Collection<Integer>> weightsPerNode,
             int length,
-            Collection<? extends Collection<Integer>> steps
+            Collection<? extends Collection<Integer>> stepsPerPath
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weights);
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
         List<Path> paths = pathfinder.find(length);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(length, paths.get(0).getLength()),
                 () -> Assertions.assertEquals(length, PathTestUtils.getTotalLength(paths) / paths.size()),
-                () -> Assertions.assertEquals(steps.size(), paths.size()),
-                () -> Assertions.assertEquals(steps, PathTestUtils.getAllSteps(paths)),
-                () -> Assertions.assertEquals(steps.size(), PathTestUtils.getTotalMultiplicity(paths))
+                () -> Assertions.assertEquals(stepsPerPath.size(), paths.size()),
+                () -> Assertions.assertEquals(stepsPerPath, PathTestUtils.getAllSteps(paths)),
+                () -> Assertions.assertEquals(stepsPerPath.size(), PathTestUtils.getTotalMultiplicity(paths))
         );
     }
 
     private static Stream<Arguments> withPathData() {
         return Stream.of(
-                // Collection<Collection<Integer>> nodes,
-                // int length,
-                // Collection<Collection<Integer>> steps
-
                 Arguments.of(
                         List.of(List.of(7)),
                         7,
@@ -238,12 +234,12 @@ class CartesianPathfinderTests {
 
     @Test
     void getEqualPathfinders() {
-        Collection<Collection<Integer>> weights1 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = CartesianPathfinder.of(nodes1);
 
-        Collection<Collection<Integer>> weights2 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = CartesianPathfinder.of(nodes2);
 
         Assertions.assertEquals(pathfinder1, pathfinder2);
@@ -251,12 +247,12 @@ class CartesianPathfinderTests {
 
     @Test
     void getUnequalPathfinders() {
-        Collection<Collection<Integer>> weights1 = List.of(List.of(8, 7, 6));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weights1);
+        Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(8, 7, 6));
+        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = CartesianPathfinder.of(nodes1);
 
-        Collection<Collection<Integer>> weights2 = List.of(List.of(6, 7, 8), List.of(6, 7, 8));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weights2);
+        Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(6, 7, 8), List.of(6, 7, 8));
+        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = CartesianPathfinder.of(nodes2);
 
         Assertions.assertNotEquals(pathfinder1, pathfinder2);
