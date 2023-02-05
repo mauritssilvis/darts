@@ -31,7 +31,9 @@ public final class CheckoutFinderFactory {
      * @return a new {@code CheckoutFinder} of the specified type with the
      * specified fields per throw
      */
-    public static CheckoutFinder create(FinderType finderType, Collection<? extends Collection<Field>> fieldsPerThrow) {
+    public static CheckoutFinder create(
+            FinderType finderType, Collection<? extends Collection<? extends Field>> fieldsPerThrow
+    ) {
         return switch (finderType) {
             case CARTESIAN -> CartesianCheckoutFinder.of(fieldsPerThrow);
             case DESCENDING -> DescendingCheckoutFinder.of(fieldsPerThrow);
