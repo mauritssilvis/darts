@@ -67,29 +67,6 @@ class TypedFieldTests {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("withTheStringRepresentation")
-    void convertToAString(FieldType fieldType, int baseScore, String name) {
-        Field field = TypedField.of(fieldType, baseScore);
-        String str = field.toString();
-
-        Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains("TypedField")),
-                () -> Assertions.assertTrue(str.contains("fieldType")),
-                () -> Assertions.assertTrue(str.contains("name")),
-                () -> Assertions.assertTrue(str.contains("score"))
-        );
-    }
-
-    private static Stream<Arguments> withTheStringRepresentation() {
-        return Stream.of(
-                Arguments.of(FieldType.SINGLE, 2, "2"),
-                Arguments.of(FieldType.DOUBLE, 9, "D9"),
-                Arguments.of(FieldType.TRIPLE, 17, "T17"),
-                Arguments.of(FieldType.QUADRUPLE, 2, "Q2")
-        );
-    }
-
     @Test
     void getEqualFields() {
         FieldType fieldType = FieldType.DOUBLE;
@@ -141,5 +118,28 @@ class TypedFieldTests {
         Field field2 = TypedField.of(fieldType, baseScore2);
 
         Assertions.assertNotEquals(field1, field2);
+    }
+
+    @ParameterizedTest
+    @MethodSource("withTheStringRepresentation")
+    void convertToAString(FieldType fieldType, int baseScore, String name) {
+        Field field = TypedField.of(fieldType, baseScore);
+        String str = field.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains("TypedField")),
+                () -> Assertions.assertTrue(str.contains("fieldType")),
+                () -> Assertions.assertTrue(str.contains("name")),
+                () -> Assertions.assertTrue(str.contains("score"))
+        );
+    }
+
+    private static Stream<Arguments> withTheStringRepresentation() {
+        return Stream.of(
+                Arguments.of(FieldType.SINGLE, 2, "2"),
+                Arguments.of(FieldType.DOUBLE, 9, "D9"),
+                Arguments.of(FieldType.TRIPLE, 17, "T17"),
+                Arguments.of(FieldType.QUADRUPLE, 2, "Q2")
+        );
     }
 }
