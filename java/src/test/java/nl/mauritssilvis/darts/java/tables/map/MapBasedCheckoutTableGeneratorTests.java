@@ -921,4 +921,132 @@ class MapBasedCheckoutTableGeneratorTests {
                 )
         );
     }
+
+    @Test
+    void getEqualCheckoutTableGenerators() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.DOUBLE;
+        FinderType finderType = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(checkoutTableGenerator1, checkoutTableGenerator2),
+                () -> Assertions.assertEquals(checkoutTableGenerator1.hashCode(), checkoutTableGenerator2.hashCode())
+        );
+    }
+
+    @Test
+    void getUnequalCheckoutTableGenerators() {
+        BoardType boardType1 = BoardType.YORKSHIRE;
+        CheckType checkInType1 = CheckType.DOUBLE;
+        CheckType checkoutType1 = CheckType.DOUBLE;
+        FinderType finderType1 = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType1, checkInType1, checkoutType1, finderType1
+        );
+
+        BoardType boardType2 = BoardType.LONDON;
+        CheckType checkInType2 = CheckType.ANY;
+        CheckType checkoutType2 = CheckType.MASTER;
+        FinderType finderType2 = FinderType.DESCENDING;
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType2, checkInType2, checkoutType2, finderType2
+        );
+
+        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+    }
+
+    @Test
+    void getUnequalCheckoutTableGeneratorsWithDifferentBoardTypes() {
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.DOUBLE;
+        FinderType finderType = FinderType.CARTESIAN;
+
+        BoardType boardType1 = BoardType.QUADRO;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType1, checkInType, checkoutType, finderType
+        );
+
+        BoardType boardType2 = BoardType.LONDON;
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType2, checkInType, checkoutType, finderType
+        );
+
+        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+    }
+
+    @Test
+    void getUnequalCheckoutTableGeneratorsWithDifferentCheckInTypes() {
+        BoardType boardType = BoardType.QUADRO;
+        CheckType checkoutType = CheckType.MASTER;
+        FinderType finderType = FinderType.DESCENDING;
+
+        CheckType checkInType1 = CheckType.ANY;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType1, checkoutType, finderType
+        );
+
+        CheckType checkInType2 = CheckType.MASTER;
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType2, checkoutType, finderType
+        );
+
+        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+    }
+
+    @Test
+    void getUnequalCheckoutTableGeneratorsWithDifferentCheckoutTypes() {
+        BoardType boardType = BoardType.QUADRO;
+        CheckType checkInType = CheckType.ANY;
+        FinderType finderType = FinderType.DESCENDING;
+
+        CheckType checkoutType1 = CheckType.DOUBLE;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType1, finderType
+        );
+
+        CheckType checkoutType2 = CheckType.ANY;
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType2, finderType
+        );
+
+        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+    }
+
+    @Test
+    void getUnequalCheckoutTableGeneratorsWithDifferentFinderTypes() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.ANY;
+        CheckType checkoutType = CheckType.MASTER;
+
+        FinderType finderType1 = FinderType.DESCENDING;
+
+        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType1
+        );
+
+        FinderType finderType2 = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType2
+        );
+
+        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+    }
 }
