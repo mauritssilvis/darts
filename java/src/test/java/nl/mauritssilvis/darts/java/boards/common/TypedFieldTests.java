@@ -127,7 +127,7 @@ class TypedFieldTests {
         String str = field.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains("TypedField")),
+                () -> Assertions.assertTrue(str.contains(field.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("fieldType")),
                 () -> Assertions.assertTrue(str.contains("name")),
                 () -> Assertions.assertTrue(str.contains("score"))
