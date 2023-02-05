@@ -273,4 +273,66 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(180, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T20"))))
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withCartesianYorkshireBoardAnyInMasterOutCheckouts")
+    void getTheCartesianYorkshireBoardAnyInMasterOutCheckouts(
+            int score,
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.MASTER;
+        CheckType checkoutType = CheckType.MASTER;
+        FinderType finderType = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+
+        int totalMultiplicity = namesPerCheckout.size();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withCartesianYorkshireBoardAnyInMasterOutCheckouts() {
+        return Stream.of(
+                Arguments.of(2, List.of(List.of(List.of("D1")))),
+                Arguments.of(16, List.of(List.of(List.of("D8")))),
+                Arguments.of(30, List.of(List.of(List.of("D15")))),
+                Arguments.of(38, List.of(List.of(List.of("D19")))),
+                Arguments.of(40, List.of(List.of(List.of("D20")))),
+                Arguments.of(50, List.of(List.of(List.of("D25")))),
+                Arguments.of(
+                        90,
+                        List.of(
+                                List.of(List.of("D20"), List.of("D25")),
+                                List.of(List.of("D25"), List.of("D20"))
+                        )
+                ),
+                Arguments.of(100, List.of(List.of(List.of("D25"), List.of("D25")))),
+                Arguments.of(
+                        140,
+                        List.of(
+                                List.of(List.of("D20"), List.of("D25"), List.of("D25")),
+                                List.of(List.of("D25"), List.of("D20"), List.of("D25")),
+                                List.of(List.of("D25"), List.of("D25"), List.of("D20"))
+                        )
+                ),
+                Arguments.of(150, List.of(List.of(List.of("D25"), List.of("D25"), List.of("D25"))))
+        );
+    }
 }
