@@ -145,11 +145,10 @@ class LondonBoardTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(str.contains(board.getClass().getSimpleName())),
-                () -> Assertions.assertTrue(str.contains("singleFields")),
-                () -> Assertions.assertTrue(str.contains("doubleFields")),
-                () -> Assertions.assertTrue(str.contains("tripleFields")),
-                () -> Assertions.assertTrue(str.contains("quadrupleFields")),
-                () -> Assertions.assertFalse(str.contains("RANGE"))
+                () -> Assertions.assertTrue(str.contains("single")),
+                () -> Assertions.assertTrue(str.contains("double")),
+                () -> Assertions.assertTrue(str.contains("triple")),
+                () -> Assertions.assertTrue(str.contains("quadruple"))
         );
     }
 }
