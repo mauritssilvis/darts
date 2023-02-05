@@ -28,9 +28,9 @@ class SimpleCheckoutTests {
         fields.remove(2);
 
         Collection<Throw> storedThrows = checkout.getThrows();
-        Collection<Field> storedFields = getAllFields(storedThrows);
+        Collection<String> storedNames = getAllNames(storedThrows);
 
-        Assertions.assertNotEquals(fields, storedFields);
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
@@ -66,9 +66,9 @@ class SimpleCheckoutTests {
         Checkout checkout = SimpleCheckout.of(fields);
 
         Collection<Throw> storedThrows = checkout.getThrows();
-        Collection<Field> storedFields = getAllFields(storedThrows);
+        Collection<String> storedNames = getAllNames(storedThrows);
 
-        Assertions.assertEquals(fields, storedFields);
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
@@ -78,20 +78,21 @@ class SimpleCheckoutTests {
         Checkout checkout = SimpleCheckout.of(fields);
 
         Collection<Throw> storedThrows = checkout.getThrows();
-        Collection<Field> storedFields = getAllFields(storedThrows);
+        Collection<String> storedNames = getAllNames(storedThrows);
 
-        Assertions.assertEquals(fields, storedFields);
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
     void getTheThrowsWithEmptyInput() {
-        Collection<Field> fields = Collections.emptyList();
+        Collection<String> names = Collections.emptyList();
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
         Checkout checkout = SimpleCheckout.of(fields);
 
         Collection<Throw> storedThrows = checkout.getThrows();
-        Collection<Field> storedFields = getAllFields(storedThrows);
+        Collection<String> storedNames = getAllNames(storedThrows);
 
-        Assertions.assertEquals(fields, storedFields);
+        Assertions.assertEquals(names, storedNames);
     }
 
     @Test
@@ -160,8 +161,8 @@ class SimpleCheckoutTests {
         Assertions.assertNotEquals(checkout1, checkout2);
     }
 
-    private static Collection<Field> getAllFields(Collection<? extends Throw> throwCollection) {
-        return ThrowTestUtils.getAllFields(throwCollection).stream()
+    private List<String> getAllNames(Collection<? extends Throw> throwCollection) {
+        return ThrowTestUtils.getAllNames(throwCollection).stream()
                 .flatMap(Collection::stream)
                 .toList();
     }

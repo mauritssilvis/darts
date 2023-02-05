@@ -36,7 +36,7 @@ public final class ThrowTestUtils {
      * @param throwCollection a collection of throws
      * @return a list of the field names per throw
      */
-    static List<List<String>> getAllNames(Collection<? extends Throw> throwCollection) {
+    public static List<List<String>> getAllNames(Collection<? extends Throw> throwCollection) {
         return getAllFields(throwCollection).stream()
                 .map(FieldTestUtils::getAllNames)
                 .toList();
