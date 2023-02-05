@@ -42,6 +42,9 @@ public final class CheckoutTableTestUtils {
         Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
 
         return checkoutMap.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> CheckoutTestUtils.getTotalMultiplicity(e.getValue())));
+                .collect(Collectors.toMap(
+                                Map.Entry::getKey, e -> CheckoutTestUtils.getTotalMultiplicity(e.getValue())
+                        )
+                );
     }
 }
