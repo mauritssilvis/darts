@@ -35,10 +35,6 @@ public final class CheckoutTestUtils {
      * @return the average score of the specified checkouts
      */
     public static int getAvgScore(Collection<? extends Checkout> checkouts) {
-        if (checkouts.isEmpty()) {
-            return 0;
-        }
-
         return getTotalScore(checkouts) / checkouts.size();
     }
 
