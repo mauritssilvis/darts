@@ -12,6 +12,7 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
+import nl.mauritssilvis.darts.java.tables.CheckoutTableTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -825,6 +826,98 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 171, 3),
                 Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 181, 3),
                 Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 241, 3)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withMultipleElementCheckoutMaps")
+    void getCheckoutMapsWithMultipleScores(
+            BoardType boardType,
+            CheckType checkInType,
+            CheckType checkoutType,
+            FinderType finderType,
+            int minScore,
+            int maxScore,
+            Map<Integer, Collection<? extends Collection<? extends Collection<String>>>> namesPerScore,
+            Map<Integer, Long> multiplicityPerScore
+    ) {
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+
+        Map<Integer, List<List<List<String>>>> storedNamesPerScore = CheckoutTableTestUtils.getAllNames(checkoutTable);
+        Map<Integer, Long> storedMultiplicitiesPerScore = CheckoutTableTestUtils.getAllMultiplicities(checkoutTable);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(namesPerScore, storedNamesPerScore),
+                () -> Assertions.assertEquals(multiplicityPerScore, storedMultiplicitiesPerScore)
+        );
+    }
+
+    private static Stream<Arguments> withMultipleElementCheckoutMaps() {
+        return Stream.of(
+                Arguments.of(
+                        BoardType.QUADRO,
+                        CheckType.ANY,
+                        CheckType.ANY,
+                        FinderType.CARTESIAN,
+                        1,
+                        2,
+                        Map.of(
+                                1, List.of(List.of(List.of("1"))),
+                                2, List.of(
+                                        List.of(List.of("2")),
+                                        List.of(List.of("D1"))
+                                )
+                        ),
+                        Map.of(
+                                1, 1L,
+                                2, 2L
+                        )
+                ),
+                Arguments.of(
+                        BoardType.QUADRO,
+                        CheckType.ANY,
+                        CheckType.ANY,
+                        FinderType.DESCENDING,
+                        50,
+                        52,
+                        Map.of(
+                                50, List.of(List.of(List.of("D25"))),
+                                51, List.of(List.of(List.of("T17"))),
+                                52, List.of(List.of(List.of("Q13")))
+                        ),
+                        Map.of(
+                                50, 1L,
+                                51, 1L,
+                                52, 1L
+                        )
+                ),
+                Arguments.of(
+                        BoardType.YORKSHIRE,
+                        CheckType.ANY,
+                        CheckType.MASTER,
+                        FinderType.DESCENDING,
+                        49,
+                        50,
+                        Map.of(
+                                49, List.of(
+                                        List.of(List.of("19"), List.of("D15")),
+                                        List.of(List.of("17"), List.of("D16")),
+                                        List.of(List.of("15"), List.of("D17")),
+                                        List.of(List.of("13"), List.of("D18")),
+                                        List.of(List.of("11"), List.of("D19")),
+                                        List.of(List.of("9"), List.of("D20"))
+                                ),
+                                50, List.of(List.of(List.of("D25")))
+                        ),
+                        Map.of(
+                                49, 6L,
+                                50, 1L
+                        )
+                )
         );
     }
 }
