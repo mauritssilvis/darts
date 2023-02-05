@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.boards.common;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 
@@ -16,6 +17,7 @@ import nl.mauritssilvis.darts.java.boards.FieldType;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class TypedField implements Field {
     private final FieldType fieldType;
     private final String name;
@@ -54,11 +56,6 @@ public final class TypedField implements Field {
     @Override
     public int getScore() {
         return score;
-    }
-
-    @Override
-    public String toString() {
-        return name;
     }
 
     private static String getShorthand(FieldType fieldType) {

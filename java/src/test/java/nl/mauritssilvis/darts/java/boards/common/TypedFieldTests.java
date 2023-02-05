@@ -69,10 +69,16 @@ class TypedFieldTests {
 
     @ParameterizedTest
     @MethodSource("withTheStringRepresentation")
-    void convertToAString(FieldType fieldType, int baseScore, String str) {
+    void convertToAString(FieldType fieldType, int baseScore, String name) {
         Field field = TypedField.of(fieldType, baseScore);
+        String str = field.toString();
 
-        Assertions.assertEquals(str, field.toString());
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains("TypedField")),
+                () -> Assertions.assertTrue(str.contains("fieldType")),
+                () -> Assertions.assertTrue(str.contains("name")),
+                () -> Assertions.assertTrue(str.contains("score"))
+        );
     }
 
     private static Stream<Arguments> withTheStringRepresentation() {
