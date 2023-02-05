@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.tables.map;
 
+import lombok.EqualsAndHashCode;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
@@ -28,6 +29,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
+@EqualsAndHashCode
 public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenerator {
     private final BoardType boardType;
     private final CheckType checkInType;
