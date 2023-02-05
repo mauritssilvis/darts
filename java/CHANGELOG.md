@@ -25,3 +25,8 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Create a brute-force checkout finder that considers all combinations of dartboard fields (`CartesianCheckoutFinder`).
 - Create an optimized checkout finder that considers sequences of dartboard fields with non-increasing scores (`DescendingCheckoutFinder`).
+
+#### Checkout tables
+
+- Create a map-based checkout table generator (`MapBasedCheckoutTableGenerator`).
+- Add support for master and double check-ins and checkouts (`CheckType`).
