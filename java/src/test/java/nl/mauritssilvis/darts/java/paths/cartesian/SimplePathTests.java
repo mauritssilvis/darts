@@ -165,4 +165,20 @@ class SimplePathTests {
 
         Assertions.assertNotEquals(path1, path2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Integer> steps = List.of(1, 7, 9);
+        Path path = SimplePath.of(steps);
+
+        String str = path.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(path.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("length")),
+                () -> Assertions.assertTrue(str.contains("steps")),
+                () -> Assertions.assertTrue(str.contains("grouping")),
+                () -> Assertions.assertTrue(str.contains("multiplicity"))
+        );
+    }
 }

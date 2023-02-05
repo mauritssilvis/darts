@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.cartesian;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.Collection;
@@ -18,6 +19,7 @@ import java.util.List;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class SimplePath implements Path {
     private final List<Integer> steps;
 
@@ -36,6 +38,7 @@ public final class SimplePath implements Path {
     }
 
     @Override
+    @ToString.Include(name = "length")
     public int getLength() {
         return steps.stream()
                 .mapToInt(Integer::intValue)
@@ -48,6 +51,7 @@ public final class SimplePath implements Path {
     }
 
     @Override
+    @ToString.Include(name = "grouping")
     public List<Boolean> getGrouping() {
         return steps.stream()
                 .map(step -> false)
@@ -55,6 +59,7 @@ public final class SimplePath implements Path {
     }
 
     @Override
+    @ToString.Include(name = "multiplicity")
     public long getMultiplicity() {
         return steps.isEmpty() ? 0 : 1;
     }

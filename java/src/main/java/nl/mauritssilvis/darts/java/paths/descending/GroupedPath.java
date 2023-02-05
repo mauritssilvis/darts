@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.paths.descending;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.paths.Path;
 
 import java.util.*;
@@ -21,6 +22,7 @@ import java.util.stream.IntStream;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class GroupedPath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> grouping;
@@ -45,6 +47,7 @@ public final class GroupedPath implements Path {
     }
 
     @Override
+    @ToString.Include(name = "length")
     public int getLength() {
         return steps.stream()
                 .mapToInt(Integer::intValue)
@@ -62,6 +65,7 @@ public final class GroupedPath implements Path {
     }
 
     @Override
+    @ToString.Include(name = "multiplicity")
     public long getMultiplicity() {
         if (steps.isEmpty()) {
             return 0;

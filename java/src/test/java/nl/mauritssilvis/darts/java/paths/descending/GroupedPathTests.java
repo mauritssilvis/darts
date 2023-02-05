@@ -458,4 +458,21 @@ class GroupedPathTests {
 
         Assertions.assertNotEquals(path1, path2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Integer> steps = List.of(1, 3, 5);
+        Collection<Boolean> grouping = List.of(false, false, true);
+        Path path = GroupedPath.of(steps, grouping);
+
+        String str = path.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(path.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("length")),
+                () -> Assertions.assertTrue(str.contains("steps")),
+                () -> Assertions.assertTrue(str.contains("grouping")),
+                () -> Assertions.assertTrue(str.contains("multiplicity"))
+        );
+    }
 }
