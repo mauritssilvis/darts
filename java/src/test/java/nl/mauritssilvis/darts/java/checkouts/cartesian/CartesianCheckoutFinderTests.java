@@ -35,6 +35,7 @@ class CartesianCheckoutFinderTests {
     @Test
     void storeIndependentFieldsPerThrow() {
         Collection<Collection<String>> namesPerThrow = List.of(List.of("D2", "D4"), List.of("D4", "D6"));
+
         Collection<Collection<Field>> fieldsPerThrow = new ArrayList<>(
                 TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow)
         );
@@ -63,6 +64,7 @@ class CartesianCheckoutFinderTests {
         );
 
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
         int score = 30;
 
         Collection<Checkout> checkouts1 = checkoutFinder.find(score);
@@ -187,7 +189,7 @@ class CartesianCheckoutFinderTests {
         int totalMultiplicity = namesPerCheckout.size();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(totalMultiplicity, checkouts.size()),
+                () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),
                 () -> Assertions.assertEquals(score, checkouts.get(0).getScore()),
                 () -> Assertions.assertEquals(score, CheckoutTestUtils.getTotalScore(checkouts) / checkouts.size()),
                 () -> Assertions.assertEquals(namesPerCheckout, storedNames),
