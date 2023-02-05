@@ -119,7 +119,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withCartesianQuadroBoardAnyInAnyOutCheckouts")
-    void getTheCartesianQuadroBoardAnyInAnyOutCheckouts(
+    void getCartesianQuadroBoardAnyInAnyOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
@@ -202,7 +202,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withCartesianLondonBoardMasterInMasterOutCheckouts")
-    void getTheCartesianLondonBoardMasterInMasterOutCheckouts(
+    void getCartesianLondonBoardMasterInMasterOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
@@ -276,7 +276,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withCartesianYorkshireBoardAnyInMasterOutCheckouts")
-    void getTheCartesianYorkshireBoardAnyInMasterOutCheckouts(
+    void getCartesianYorkshireBoardAnyInMasterOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
@@ -338,7 +338,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withDescendingLondonBoardAnyInDoubleOutCheckouts")
-    void getTheDescendingLondonBoardAnyInDoubleOutCheckouts(
+    void getDescendingLondonBoardAnyInDoubleOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout,
             int totalMultiplicity
@@ -486,7 +486,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withDescendingLondonBoardDoubleInDoubleOutCheckouts")
-    void getTheDescendingLondonBoardDoubleInDoubleOutCheckouts(
+    void getDescendingLondonBoardDoubleInDoubleOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout,
             int totalMultiplicity
@@ -569,7 +569,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withDescendingQuadroBoardMasterInDoubleOutCheckouts")
-    void getTheDescendingQuadroBoardMasterInDoubleOutCheckouts(
+    void getDescendingQuadroBoardMasterInDoubleOutCheckouts(
             int score,
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout,
             int totalMultiplicity
@@ -696,7 +696,7 @@ class MapBasedCheckoutTableGeneratorTests {
 
     @ParameterizedTest
     @MethodSource("withDescendingLondonBoardHighScoreCheckouts")
-    void countTheDescendingLondonBoardHighScoreCheckouts(
+    void countDescendingLondonBoardHighScoreCheckouts(
             int score, CheckType checkInType, CheckType checkoutType, int totalMultiplicity
     ) {
         BoardType boardType = BoardType.LONDON;
