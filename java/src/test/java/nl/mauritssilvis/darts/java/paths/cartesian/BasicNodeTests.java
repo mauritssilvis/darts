@@ -101,7 +101,10 @@ class BasicNodeTests {
         Collection<Integer> weights2 = List.of(-10, 10);
         Node node2 = BasicNode.of(weights2);
 
-        Assertions.assertEquals(node1, node2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(node1, node2),
+                () -> Assertions.assertEquals(node1.hashCode(), node2.hashCode())
+        );
     }
 
     @Test

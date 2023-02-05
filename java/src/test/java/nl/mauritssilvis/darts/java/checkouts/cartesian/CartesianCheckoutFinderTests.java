@@ -486,7 +486,10 @@ class CartesianCheckoutFinderTests {
         Collection<List<Field>> fieldsPerThrow2 = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow2);
         CheckoutFinder checkoutFinder2 = CartesianCheckoutFinder.of(fieldsPerThrow2);
 
-        Assertions.assertEquals(checkoutFinder1, checkoutFinder2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(checkoutFinder1, checkoutFinder2),
+                () -> Assertions.assertEquals(checkoutFinder1.hashCode(), checkoutFinder2.hashCode())
+        );
     }
 
     @Test

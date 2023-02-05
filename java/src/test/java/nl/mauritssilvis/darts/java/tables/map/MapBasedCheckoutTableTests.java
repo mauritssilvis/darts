@@ -288,7 +288,10 @@ class MapBasedCheckoutTableTests {
 
         CheckoutTable checkoutTable2 = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap2);
 
-        Assertions.assertEquals(checkoutTable1, checkoutTable2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(checkoutTable1, checkoutTable2),
+                () -> Assertions.assertEquals(checkoutTable1.hashCode(), checkoutTable2.hashCode())
+        );
     }
 
     @Test

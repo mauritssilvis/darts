@@ -244,7 +244,10 @@ class CartesianPathfinderTests {
         Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = CartesianPathfinder.of(nodes2);
 
-        Assertions.assertEquals(pathfinder1, pathfinder2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(pathfinder1, pathfinder2),
+                () -> Assertions.assertEquals(pathfinder1.hashCode(), pathfinder2.hashCode())
+        );
     }
 
     @Test

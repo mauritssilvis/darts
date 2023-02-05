@@ -286,7 +286,10 @@ class DescendingPathfinderTests {
         Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = DescendingPathfinder.of(nodes2);
 
-        Assertions.assertEquals(pathfinder1, pathfinder2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(pathfinder1, pathfinder2),
+                () -> Assertions.assertEquals(pathfinder1.hashCode(), pathfinder2.hashCode())
+        );
     }
 
     @Test
@@ -294,7 +297,6 @@ class DescendingPathfinderTests {
         Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(4), List.of(8, 9));
         Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = DescendingPathfinder.of(nodes1);
-
 
         Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(5, 8), List.of(10));
         Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);

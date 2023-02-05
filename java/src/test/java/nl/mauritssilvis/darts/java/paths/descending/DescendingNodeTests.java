@@ -111,7 +111,10 @@ class DescendingNodeTests {
         Collection<Integer> weights2 = List.of(5, 4, 3);
         Node node2 = DescendingNode.of(weights2);
 
-        Assertions.assertEquals(node1, node2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(node1, node2),
+                () -> Assertions.assertEquals(node1.hashCode(), node2.hashCode())
+        );
     }
 
     @Test

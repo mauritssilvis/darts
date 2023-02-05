@@ -414,7 +414,10 @@ class GroupedPathTests {
         Collection<Boolean> grouping2 = List.of(false, true, true);
         Path path2 = GroupedPath.of(steps2, grouping2);
 
-        Assertions.assertEquals(path1, path2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(path1, path2),
+                () -> Assertions.assertEquals(path1.hashCode(), path2.hashCode())
+        );
     }
 
     @Test

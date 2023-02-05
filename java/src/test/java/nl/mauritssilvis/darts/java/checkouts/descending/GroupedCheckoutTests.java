@@ -510,7 +510,10 @@ class GroupedCheckoutTests {
 
         Checkout checkout2 = GroupedCheckout.of(throwList2, grouping2);
 
-        Assertions.assertEquals(checkout1, checkout2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(checkout1, checkout2),
+                () -> Assertions.assertEquals(checkout1.hashCode(), checkout2.hashCode())
+        );
     }
 
     @Test

@@ -149,7 +149,10 @@ class SimplePathTests {
         Collection<Integer> steps2 = List.of(1, 2, 3, 4, 5);
         Path path2 = SimplePath.of(steps2);
 
-        Assertions.assertEquals(path1, path2);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(path1, path2),
+                () -> Assertions.assertEquals(path1.hashCode(), path2.hashCode())
+        );
     }
 
     @Test
