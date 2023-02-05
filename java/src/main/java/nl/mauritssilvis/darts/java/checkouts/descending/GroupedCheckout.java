@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
@@ -22,10 +23,11 @@ import java.util.stream.IntStream;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class GroupedCheckout implements Checkout {
+    private final int score;
     private final List<Throw> throwList;
     private final List<Boolean> grouping;
-    private final int score;
 
     private GroupedCheckout(Collection<? extends Throw> throwList, Collection<Boolean> grouping) {
         this.throwList = List.copyOf(throwList);
@@ -61,6 +63,7 @@ public final class GroupedCheckout implements Checkout {
     }
 
     @Override
+    @ToString.Include(name = "multiplicity")
     public long getMultiplicity() {
         if (throwList.isEmpty()) {
             return 0;

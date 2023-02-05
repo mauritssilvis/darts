@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
@@ -20,9 +21,10 @@ import java.util.List;
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class SimpleCheckout implements Checkout {
-    private final List<Throw> throwList;
     private final int score;
+    private final List<Throw> throwList;
 
     private SimpleCheckout(Collection<? extends Field> fields) {
         throwList = fields.stream()
@@ -57,6 +59,7 @@ public final class SimpleCheckout implements Checkout {
     }
 
     @Override
+    @ToString.Include(name = "multiplicity")
     public long getMultiplicity() {
         return throwList.isEmpty() ? 0 : 1;
     }

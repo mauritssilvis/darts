@@ -166,4 +166,20 @@ class SimpleCheckoutTests {
                 .flatMap(Collection::stream)
                 .toList();
     }
+
+    @Test
+    void convertToAString() {
+        Collection<String> names = List.of("D1", "D2", "D3");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
+        Checkout checkout = SimpleCheckout.of(fields);
+
+        String str = checkout.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkout.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("score")),
+                () -> Assertions.assertTrue(str.contains("throw")),
+                () -> Assertions.assertTrue(str.contains("multiplicity"))
+        );
+    }
 }

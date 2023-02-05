@@ -563,4 +563,23 @@ class GroupedCheckoutTests {
 
         Assertions.assertNotEquals(checkout1, checkout2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("4", "D2"), List.of("D10"));
+        Collection<Throw> throwList = CompoundThrowTestUtils.getThrows(namesPerThrow);
+
+        Collection<Boolean> grouping = List.of(false, false);
+
+        Checkout checkout = GroupedCheckout.of(throwList, grouping);
+
+        String str = checkout.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkout.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("score")),
+                () -> Assertions.assertTrue(str.contains("throw")),
+                () -> Assertions.assertTrue(str.contains("multiplicity"))
+        );
+    }
 }
