@@ -306,6 +306,26 @@ class MapBasedCheckoutTableGeneratorTests {
                         List.of(
                                 List.of(List.of("Q20"))
                         )
+                ),
+                Arguments.of(
+                        160,
+                        List.of(
+                                List.of(List.of("Q20"), List.of("Q20"))
+                        )
+                ),
+                Arguments.of(
+                        236,
+                        List.of(
+                                List.of(List.of("Q19"), List.of("Q20"), List.of("Q20")),
+                                List.of(List.of("Q20"), List.of("Q19"), List.of("Q20")),
+                                List.of(List.of("Q20"), List.of("Q20"), List.of("Q19"))
+                        )
+                ),
+                Arguments.of(
+                        240,
+                        List.of(
+                                List.of(List.of("Q20"), List.of("Q20"), List.of("Q20"))
+                        )
                 )
         );
     }
