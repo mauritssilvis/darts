@@ -76,4 +76,19 @@ class SimpleThrowTests {
 
         Assertions.assertNotEquals(simpleThrow1, simpleThrow2);
     }
+
+    @Test
+    void convertToAString() {
+        String name = "T20";
+        Field field = TypedFieldTestUtils.getField(name);
+        Throw simpleThrow = SimpleThrow.of(field);
+
+        String str = simpleThrow.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(simpleThrow.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("score")),
+                () -> Assertions.assertTrue(str.contains("field"))
+        );
+    }
 }

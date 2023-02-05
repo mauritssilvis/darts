@@ -155,4 +155,19 @@ class CompoundThrowTests {
 
         Assertions.assertNotEquals(compoundThrow1, compoundThrow2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<String> names = List.of("T12", "D18", "Q9");
+        Collection<Field> fields = TypedFieldTestUtils.getFields(names);
+        Throw compoundThrow = CompoundThrow.of(fields);
+
+        String str = compoundThrow.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(compoundThrow.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("score")),
+                () -> Assertions.assertTrue(str.contains("field"))
+        );
+    }
 }
