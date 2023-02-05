@@ -287,4 +287,12 @@ class MapBasedCheckoutTableBuilderTests {
                 () -> Assertions.assertEquals(namesPerCheckout2, storedNames2)
         );
     }
+
+    @Test
+    void getUnequalCheckoutTableBuilders() {
+        CheckoutTableBuilder checkoutTableBuilder1 = MapBasedCheckoutTableBuilder.create();
+        CheckoutTableBuilder checkoutTableBuilder2 = MapBasedCheckoutTableBuilder.create();
+
+        Assertions.assertNotEquals(checkoutTableBuilder1, checkoutTableBuilder2);
+    }
 }
