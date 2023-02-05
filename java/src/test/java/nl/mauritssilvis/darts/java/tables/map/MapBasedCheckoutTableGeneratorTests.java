@@ -33,10 +33,7 @@ class MapBasedCheckoutTableGeneratorTests {
         FinderType finderType = FinderType.CARTESIAN;
 
         CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
-                boardType,
-                checkInType,
-                checkoutType,
-                finderType
+                boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
@@ -55,10 +52,7 @@ class MapBasedCheckoutTableGeneratorTests {
         FinderType finderType = FinderType.DESCENDING;
 
         CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
-                boardType,
-                checkInType,
-                checkoutType,
-                finderType
+                boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
@@ -77,10 +71,7 @@ class MapBasedCheckoutTableGeneratorTests {
         FinderType finderType = FinderType.CARTESIAN;
 
         CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
-                boardType,
-                checkInType,
-                checkoutType,
-                finderType
+                boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
@@ -89,6 +80,41 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
 
         Assertions.assertEquals(checkoutType, checkoutTable.getCheckoutType());
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutCheckouts")
+    void doNotGetCheckoutsWithTooLowScores(
+            BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
+    ) {
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        int minScore = -2;
+        int maxScore = 0;
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+
+        Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(3, checkoutMap.size()),
+                () -> Assertions.assertTrue(checkoutMap.get(-2).isEmpty()),
+                () -> Assertions.assertTrue(checkoutMap.get(-1).isEmpty()),
+                () -> Assertions.assertTrue(checkoutMap.get(0).isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withoutCheckouts() {
+        return Stream.of(
+                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, FinderType.CARTESIAN),
+                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.MASTER, FinderType.CARTESIAN),
+                Arguments.of(BoardType.LONDON, CheckType.MASTER, CheckType.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.MASTER, CheckType.ANY, FinderType.CARTESIAN),
+                Arguments.of(BoardType.YORKSHIRE, CheckType.DOUBLE, CheckType.MASTER, FinderType.DESCENDING)
+        );
     }
 
     @ParameterizedTest
