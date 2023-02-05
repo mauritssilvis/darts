@@ -129,10 +129,7 @@ class MapBasedCheckoutTableGeneratorTests {
         FinderType finderType = FinderType.CARTESIAN;
 
         CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
-                boardType,
-                checkInType,
-                checkoutType,
-                finderType
+                boardType, checkInType, checkoutType, finderType
         );
 
         CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
@@ -156,7 +153,6 @@ class MapBasedCheckoutTableGeneratorTests {
 
     private static Stream<Arguments> withCartesianQuadroBoardAnyInAnyOutCheckouts() {
         return Stream.of(
-                Arguments.of(0, Collections.emptyList()),
                 Arguments.of(1, List.of(List.of(List.of("1")))),
                 Arguments.of(
                         2,
@@ -201,6 +197,80 @@ class MapBasedCheckoutTableGeneratorTests {
                         )
                 ),
                 Arguments.of(240, List.of(List.of(List.of("Q20"), List.of("Q20"), List.of("Q20"))))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withCartesianLondonBoardMasterInMasterOutCheckouts")
+    void getTheCartesianLondonBoardMasterInMasterOutCheckouts(
+            int score,
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
+    ) {
+        BoardType boardType = BoardType.LONDON;
+        CheckType checkInType = CheckType.MASTER;
+        CheckType checkoutType = CheckType.MASTER;
+        FinderType finderType = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+
+        int totalMultiplicity = namesPerCheckout.size();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withCartesianLondonBoardMasterInMasterOutCheckouts() {
+        return Stream.of(
+                Arguments.of(2, List.of(List.of(List.of("D1")))),
+                Arguments.of(
+                        6,
+                        List.of(
+                                List.of(List.of("D3")),
+                                List.of(List.of("T2"))
+                        )
+                ),
+                Arguments.of(
+                        18,
+                        List.of(
+                                List.of(List.of("D9")),
+                                List.of(List.of("T6"))
+                        )
+                ),
+                Arguments.of(48, List.of(List.of(List.of("T16")))),
+                Arguments.of(57, List.of(List.of(List.of("T19")))),
+                Arguments.of(60, List.of(List.of(List.of("T20")))),
+                Arguments.of(
+                        117,
+                        List.of(
+                                List.of(List.of("T19"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T19"))
+                        )
+                ),
+                Arguments.of(120, List.of(List.of(List.of("T20"), List.of("T20")))),
+                Arguments.of(
+                        177,
+                        List.of(
+                                List.of(List.of("T19"), List.of("T20"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T19"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("T19"))
+                        )
+                ),
+                Arguments.of(180, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T20"))))
         );
     }
 }
