@@ -215,14 +215,15 @@ class MapBasedCheckoutTableTests {
 
         int score = 9;
 
-        Collection<Collection<Collection<String>>> names = List.of(
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
                 List.of(List.of("T3"))
         );
 
-        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
 
-        Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
-        checkoutMap.put(score, checkouts);
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
 
         CheckoutTable checkoutTable = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
@@ -239,15 +240,16 @@ class MapBasedCheckoutTableTests {
 
         int score = 10;
 
-        Collection<Collection<Collection<String>>> names = List.of(
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
                 List.of(List.of("10")),
                 List.of(List.of("D5"))
         );
 
-        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
 
-        Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
-        checkoutMap.put(score, checkouts);
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
 
         CheckoutTable checkoutTable = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
