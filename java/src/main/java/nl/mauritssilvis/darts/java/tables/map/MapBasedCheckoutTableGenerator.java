@@ -115,24 +115,31 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
     private Map<Integer, List<Checkout>> getCheckoutMap(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
-        List<Checkout> checkouts;
+        for (int i = minScore; i <= maxScore; i++) {
+            int numThrows = 1;
 
-        int numThrows = 1;
+            List<Checkout> checkouts = Collections.emptyList();
 
-        while (numThrows < 3) {
-            List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
-            CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
+            while (numThrows < 10) {
+                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
 
-            for (int i = minScore; i <= maxScore; i++) {
-                if (checkoutMap.containsKey(i)) {
+                if (getMinScore(fieldsPerThrow) > i) {
+                    break;
+                } else if (getMaxScore(fieldsPerThrow) < i) {
                     continue;
                 }
 
+                CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
                 checkouts = checkoutFinder.find(i);
-                checkoutMap.put(i, checkouts);
+
+                if (!checkouts.isEmpty()) {
+                    break;
+                }
+
+                numThrows++;
             }
 
-            numThrows++;
+            checkoutMap.put(i, checkouts);
         }
 
         return checkoutMap;
@@ -165,6 +172,22 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
         fieldsPerThrowMap.put(numThrows, fieldsPerThrow);
 
         return fieldsPerThrow;
+    }
+
+    private static int getMinScore(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
+        return fieldsPerThrow.stream()
+                .mapToInt(fields -> fields.stream()
+                        .mapToInt(Field::getScore).min().orElse(Integer.MIN_VALUE)
+                )
+                .sum();
+    }
+
+    private static int getMaxScore(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
+        return fieldsPerThrow.stream()
+                .mapToInt(fields -> fields.stream()
+                        .mapToInt(Field::getScore).max().orElse(Integer.MAX_VALUE)
+                )
+                .sum();
     }
 
     private CheckoutFinder getCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
