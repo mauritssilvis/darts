@@ -33,6 +33,7 @@ public final class ThrowTestUtils {
 
     /**
      * Gets the names of the fields of the specified throws.
+     *
      * @param throwCollection a collection of throws
      * @return a list of the field names per throw
      */
