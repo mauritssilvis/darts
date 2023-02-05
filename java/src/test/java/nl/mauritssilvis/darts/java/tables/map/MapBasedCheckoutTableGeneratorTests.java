@@ -383,4 +383,54 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(170, List.of(List.of(List.of("T20"), List.of("T20"), List.of("D25"))), 1)
         );
     }
+
+
+
+    @ParameterizedTest
+    @MethodSource("withDescendingLondonBoardDoubleInDoubleOutCheckouts")
+    void getTheDescendingLondonBoardDoubleInDoubleOutCheckouts(
+            int score,
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout,
+            int totalMultiplicity
+    ) {
+        BoardType boardType = BoardType.LONDON;
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.DOUBLE;
+        FinderType finderType = FinderType.DESCENDING;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withDescendingLondonBoardDoubleInDoubleOutCheckouts() {
+        return Stream.of(
+                Arguments.of(2, List.of(List.of(List.of("D1"))), 1),
+                Arguments.of(10, List.of(List.of(List.of("D5"))), 1),
+                Arguments.of(26, List.of(List.of(List.of("D13"))), 1),
+                Arguments.of(32, List.of(List.of(List.of("D16"))), 1),
+                Arguments.of(40, List.of(List.of(List.of("D20"))), 1),
+                Arguments.of(50, List.of(List.of(List.of("D25"))), 1),
+                Arguments.of(90, List.of(List.of(List.of("D25"), List.of("D20"))), 2),
+                Arguments.of(100, List.of(List.of(List.of("D25"), List.of("D25"))), 1),
+                Arguments.of(157, List.of(List.of(List.of("D25"), List.of("T19"), List.of("D25"))), 1),
+                Arguments.of(160, List.of(List.of(List.of("D25"), List.of("T20"), List.of("D25"))), 1)
+        );
+    }
 }
