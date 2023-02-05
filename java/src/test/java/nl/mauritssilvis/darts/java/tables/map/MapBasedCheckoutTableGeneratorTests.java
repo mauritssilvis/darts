@@ -743,7 +743,8 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(501, CheckType.DOUBLE, CheckType.DOUBLE, 574),
                 Arguments.of(460, CheckType.DOUBLE, CheckType.DOUBLE, 1),
                 Arguments.of(470, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(480, CheckType.ANY, CheckType.ANY, 1)
+                Arguments.of(480, CheckType.ANY, CheckType.ANY, 1),
+                Arguments.of(600, CheckType.ANY, CheckType.ANY, 1)
         );
     }
 

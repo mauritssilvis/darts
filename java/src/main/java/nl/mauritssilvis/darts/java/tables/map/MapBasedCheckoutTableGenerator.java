@@ -120,7 +120,7 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
 
             List<Checkout> checkouts = Collections.emptyList();
 
-            while (numThrows < 10) {
+            while (true) {
                 List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
 
                 if (getMinScore(fieldsPerThrow) > i) {
