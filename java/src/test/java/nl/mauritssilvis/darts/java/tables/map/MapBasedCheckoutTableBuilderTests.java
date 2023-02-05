@@ -15,10 +15,7 @@ import nl.mauritssilvis.darts.java.tables.CheckoutTableBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class MapBasedCheckoutTableBuilderTests {
     @Test
@@ -178,7 +175,7 @@ class MapBasedCheckoutTableBuilderTests {
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
         CheckoutTable checkoutTable = checkoutTableBuilder.build();
 
-        Map<Integer, List<Checkout>> checkoutMap = Collections.emptyMap();
+        Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
         Assertions.assertEquals(checkoutMap, checkoutTable.getCheckoutMap());
     }
@@ -195,14 +192,14 @@ class MapBasedCheckoutTableBuilderTests {
                 List.of(List.of("1"), List.of("D3", "6"))
         );
 
-        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
-        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
         CheckoutTable checkoutTable = checkoutTableBuilder
-                .setCheckouts(7, checkouts1)
-                .setCheckouts(7, checkouts2)
+                .setCheckouts(score, checkouts1)
+                .setCheckouts(score, checkouts2)
                 .build();
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
@@ -212,6 +209,34 @@ class MapBasedCheckoutTableBuilderTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
                 () -> Assertions.assertEquals(namesPerCheckout2, storedNames)
+        );
+    }
+
+    @Test
+    void storeIndependentCheckouts() {
+        int score = 9;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
+                List.of(List.of("7"), List.of("2", "D1"))
+        );
+
+        Collection<Checkout> checkouts = new ArrayList<>(GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout));
+
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
+
+        CheckoutTable checkoutTable = checkoutTableBuilder
+                .setCheckouts(score, checkouts)
+                .build();
+
+        checkouts.clear();
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+
+        Assertions.assertAll(
+                () -> Assertions.assertFalse(storedCheckoutMap.isEmpty()),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames)
         );
     }
 
@@ -232,8 +257,8 @@ class MapBasedCheckoutTableBuilderTests {
                 List.of(List.of("2"), List.of("D3", "6"))
         );
 
-        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
-        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
 
@@ -241,8 +266,8 @@ class MapBasedCheckoutTableBuilderTests {
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
                 .setCheckoutType(checkoutType)
-                .setCheckouts(4, checkouts1)
-                .setCheckouts(8, checkouts2)
+                .setCheckouts(score1, checkouts1)
+                .setCheckouts(score2, checkouts2)
                 .build();
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
