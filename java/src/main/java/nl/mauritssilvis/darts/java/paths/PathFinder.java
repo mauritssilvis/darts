@@ -13,7 +13,7 @@ import java.util.List;
  * This functional interface does not fix the data structure that is searched
  * for paths. Implementations can specify the data structures they apply to.
  * <p>
- * Relevant design patterns: strategy.
+ * Relevant design patterns: strategy, immutable interface.
  */
 @FunctionalInterface
 public interface Pathfinder {

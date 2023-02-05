@@ -16,7 +16,7 @@ import java.util.Collection;
 /**
  * A checkout finder factory.
  * <p>
- * Relevant design patterns: parameterized static factory method.
+ * Relevant design patterns: helper, parameterized static factory method.
  */
 public final class CheckoutFinderFactory {
     private CheckoutFinderFactory() {

@@ -27,7 +27,8 @@ import java.util.stream.IntStream;
  * An implementation of the {@code CheckoutTableGenerator} interface that
  * generates {@code MapBasedCheckoutTable} objects.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: strategy, lazy initialization, immutable object,
+ * static factory method.
  */
 @EqualsAndHashCode
 public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenerator {

@@ -14,7 +14,7 @@ import java.util.List;
  * fields that are available per throw. Implementations can be used to specify
  * these properties.
  * <p>
- * Relevant design patterns: strategy.
+ * Relevant design patterns: strategy, immutable interface.
  */
 @FunctionalInterface
 public interface CheckoutFinder {

@@ -14,7 +14,7 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 /**
  * A dartboard factory.
  * <p>
- * Relevant design patterns: parameterized static factory method.
+ * Relevant design patterns: helper, parameterized static factory method.
  */
 public final class BoardFactory {
     private BoardFactory() {

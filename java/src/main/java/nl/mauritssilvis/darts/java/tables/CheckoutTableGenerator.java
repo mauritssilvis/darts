@@ -11,7 +11,7 @@ package nl.mauritssilvis.darts.java.tables;
  * This functional interface does not fix the dartboard, check-in or checkout
  * types. Implementations can specify these properties.
  * <p>
- * Relevant design patterns: immutable interface.
+ * Relevant design patterns: strategy, immutable interface.
  */
 @FunctionalInterface
 public interface CheckoutTableGenerator {
