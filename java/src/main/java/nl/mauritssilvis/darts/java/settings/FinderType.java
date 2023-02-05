@@ -5,9 +5,12 @@
 
 package nl.mauritssilvis.darts.java.settings;
 
+import lombok.ToString;
+
 /**
  * The type of checkout finder.
  */
+@ToString
 public enum FinderType {
     /**
      * A Cartesian checkout finder.

@@ -5,9 +5,12 @@
 
 package nl.mauritssilvis.darts.java.settings;
 
+import lombok.ToString;
+
 /**
  * The type of dartboard.
  */
+@ToString
 public enum BoardType {
     /**
      * A London dartboard.

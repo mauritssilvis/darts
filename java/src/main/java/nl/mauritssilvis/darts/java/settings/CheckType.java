@@ -5,9 +5,12 @@
 
 package nl.mauritssilvis.darts.java.settings;
 
+import lombok.ToString;
+
 /**
  * The type of check-in or checkout.
  */
+@ToString
 public enum CheckType {
     /**
      * A check of any field.
