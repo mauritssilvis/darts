@@ -11,7 +11,10 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 import nl.mauritssilvis.darts.java.tables.CheckoutTableBuilder;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * An implementation of the {@code CheckoutTableBuilder} interface that builds

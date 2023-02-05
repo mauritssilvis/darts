@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.map;
 
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
@@ -17,7 +18,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -90,9 +90,9 @@ class MapBasedCheckoutTableGeneratorTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withLondonBoardCheckoutMultiplicity")
-    void countTheLondonBoardCheckoutsWithACartesianFinder(int score, int multiplicity) {
-        BoardType boardType = BoardType.LONDON;
+    @MethodSource("withCartesianQuadroBoardAnyInAnyOutCheckouts")
+    void getTheCartesianQuadroBoardAnyInAnyOutCheckouts(int score, int multiplicity) {
+        BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
@@ -105,16 +105,16 @@ class MapBasedCheckoutTableGeneratorTests {
         );
 
         CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
-        Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
-        List<Checkout> checkouts = checkoutMap.get(score);
+        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(1, checkoutMap.size()),
-                () -> Assertions.assertEquals(multiplicity, getMultiplicity(checkouts))
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(multiplicity, CheckoutTestUtils.getTotalMultiplicity(storedCheckouts))
         );
     }
 
-    private static Stream<Arguments> withLondonBoardCheckoutMultiplicity() {
+    private static Stream<Arguments> withCartesianQuadroBoardAnyInAnyOutCheckouts() {
         return Stream.of(
                 Arguments.of(1, 1),
                 Arguments.of(2, 2),
@@ -138,11 +138,5 @@ class MapBasedCheckoutTableGeneratorTests {
                 Arguments.of(20, 2),
                 Arguments.of(25, 1)
         );
-    }
-
-    private static long getMultiplicity(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .mapToLong(Checkout::getMultiplicity)
-                .sum();
     }
 }
