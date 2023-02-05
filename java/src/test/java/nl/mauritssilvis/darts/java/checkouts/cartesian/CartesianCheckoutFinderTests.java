@@ -184,7 +184,7 @@ class CartesianCheckoutFinderTests {
         CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
-        List<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(checkouts);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(checkouts);
 
         int totalMultiplicity = namesPerCheckout.size();
 

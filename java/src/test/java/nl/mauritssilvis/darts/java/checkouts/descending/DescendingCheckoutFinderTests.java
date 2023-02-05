@@ -185,7 +185,7 @@ class DescendingCheckoutFinderTests {
         CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
 
         List<Checkout> checkouts = checkoutFinder.find(score);
-        List<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(checkouts);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(checkouts);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(namesPerCheckout.size(), checkouts.size()),

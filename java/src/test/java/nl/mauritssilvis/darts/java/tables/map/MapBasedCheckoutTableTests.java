@@ -58,8 +58,8 @@ class MapBasedCheckoutTableTests {
         checkoutMap.clear();
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
-        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
-        List<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+        Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
@@ -89,8 +89,8 @@ class MapBasedCheckoutTableTests {
         checkoutMap.get(score).clear();
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
-        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
-        List<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
+        Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
@@ -154,8 +154,8 @@ class MapBasedCheckoutTableTests {
                 List.of(List.of("D3"))
         );
 
-        List<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
-        List<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
+        Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
+        Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
         Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
                 score1, checkouts1,
@@ -166,11 +166,11 @@ class MapBasedCheckoutTableTests {
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
 
-        List<Checkout> storedCheckouts1 = storedCheckoutMap.get(score1);
-        List<Checkout> storedCheckouts2 = storedCheckoutMap.get(score2);
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(score1);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(score2);
 
-        List<List<List<String>>> storedNames1 = CheckoutTestUtils.getAllNames(storedCheckouts1);
-        List<List<List<String>>> storedNames2 = CheckoutTestUtils.getAllNames(storedCheckouts2);
+        Collection<List<List<String>>> storedNames1 = CheckoutTestUtils.getAllNames(storedCheckouts1);
+        Collection<List<List<String>>> storedNames2 = CheckoutTestUtils.getAllNames(storedCheckouts2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
@@ -216,7 +216,7 @@ class MapBasedCheckoutTableTests {
                 List.of(List.of("T3"))
         );
 
-        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -241,7 +241,7 @@ class MapBasedCheckoutTableTests {
                 List.of(List.of("D5"))
         );
 
-        List<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(names);
 
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
@@ -249,7 +249,7 @@ class MapBasedCheckoutTableTests {
         CheckoutTable checkoutTable = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
-        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
 
         Assertions.assertThrows(UnsupportedOperationException.class, storedCheckouts::clear);
     }
