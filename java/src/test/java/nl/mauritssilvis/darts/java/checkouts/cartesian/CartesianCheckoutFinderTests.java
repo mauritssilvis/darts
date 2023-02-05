@@ -504,4 +504,18 @@ class CartesianCheckoutFinderTests {
 
         Assertions.assertNotEquals(checkoutFinder1, checkoutFinder2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("1", "2", "3"), List.of("D1", "D2", "D3"));
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = CartesianCheckoutFinder.of(fieldsPerThrow);
+
+        String str = checkoutFinder.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkoutFinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("pathfinder"))
+        );
+    }
 }

@@ -2334,4 +2334,18 @@ class DescendingCheckoutFinderTests {
 
         Assertions.assertNotEquals(checkoutFinder1, checkoutFinder2);
     }
+
+    @Test
+    void convertToAString() {
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("25", "D25"), List.of("25", "D25"));
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+        CheckoutFinder checkoutFinder = DescendingCheckoutFinder.of(fieldsPerThrow);
+
+        String str = checkoutFinder.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkoutFinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("pathfinder"))
+        );
+    }
 }

@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.cartesian;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
@@ -31,8 +32,10 @@ import java.util.stream.IntStream;
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
 @EqualsAndHashCode
+@ToString
 public final class CartesianCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;
+    @ToString.Exclude
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
