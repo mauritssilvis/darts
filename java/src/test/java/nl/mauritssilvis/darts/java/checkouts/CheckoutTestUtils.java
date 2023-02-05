@@ -29,6 +29,20 @@ public final class CheckoutTestUtils {
     }
 
     /**
+     * Gets the average score of the specified checkouts.
+     *
+     * @param checkouts a collection of checkouts
+     * @return the average score of the specified checkouts
+     */
+    public static int getAvgScore(Collection<? extends Checkout> checkouts) {
+        if (checkouts.isEmpty()) {
+            return 0;
+        }
+
+        return getTotalScore(checkouts) / checkouts.size();
+    }
+
+    /**
      * Gets the total multiplicity of the specified checkouts.
      *
      * @param checkouts a collection of checkouts
