@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.cli;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.OutputType;
+import nl.mauritssilvis.darts.java.settings.OutputFormat;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -30,7 +30,7 @@ public class DartsBoards implements Runnable {
             paramLabel = "<output format>",
             defaultValue = "string"
     )
-    private OutputType outputType;
+    private OutputFormat outputFormat;
 
     @Parameters(
             description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
