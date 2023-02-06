@@ -44,8 +44,7 @@ public final class Darts implements App {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        App darts = create();
-        darts.execute(args);
+        create().execute(args);
     }
 
     /**
