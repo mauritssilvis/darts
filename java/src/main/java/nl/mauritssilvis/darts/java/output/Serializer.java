@@ -13,6 +13,8 @@ package nl.mauritssilvis.darts.java.output;
  * this property.
  * <p>
  * Relevant design patterns: strategy, immutable interface.
+ *
+ * @param <T> the type of object to be serialized
  */
 @FunctionalInterface
 public interface Serializer<T> {

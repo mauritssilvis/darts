@@ -64,8 +64,8 @@ class DartsCheckoutsTests {
                 "-f", "Cartesian",
                 "-t", "map",
                 "-o", "string",
-                "1",
-                "1"
+                "2",
+                "2"
         };
 
         StringWriter stringWriter = new StringWriter();
@@ -80,7 +80,8 @@ class DartsCheckoutsTests {
                 "CheckoutTable",
                 "YORKSHIRE",
                 "MASTER",
-                "score=1"
+                "2=",
+                "score=2"
         );
 
         long count = elements.stream()

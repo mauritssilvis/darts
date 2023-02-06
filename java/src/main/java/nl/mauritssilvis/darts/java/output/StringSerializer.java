@@ -14,12 +14,14 @@ import java.util.stream.IntStream;
  * An abstract class that provides a default implementation of the
  * {@code Serializer} interface for serialization of objects using their Java
  * string representation.
+ * <p>
+ * Relevant design patterns: strategy.
  *
  * @param <T> the type of object to be serialized
  */
 public abstract class StringSerializer<T> implements Serializer<T> {
-    private static final List<Character> OPENING_BRACKETS = List.of('(', '[');
-    private static final List<Character> CLOSING_BRACKETS = List.of(')', ']');
+    private static final List<Character> OPENING_BRACKETS = List.of('{', '[', '(');
+    private static final List<Character> CLOSING_BRACKETS = List.of(')', ']', '}');
     private static final List<Character> DELIMITERS = Collections.singletonList(',');
     private static final Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
 
