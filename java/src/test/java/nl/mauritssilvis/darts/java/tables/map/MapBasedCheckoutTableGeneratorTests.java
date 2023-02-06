@@ -1047,4 +1047,26 @@ class MapBasedCheckoutTableGeneratorTests {
 
         Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
     }
+
+    @Test
+    void convertToAString() {
+        BoardType boardType = BoardType.YORKSHIRE;
+        CheckType checkInType = CheckType.DOUBLE;
+        CheckType checkoutType = CheckType.ANY;
+        FinderType finderType = FinderType.CARTESIAN;
+
+        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+                boardType, checkInType, checkoutType, finderType
+        );
+
+        String str = checkoutTableGenerator.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkoutTableGenerator.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("boardType")),
+                () -> Assertions.assertTrue(str.contains("checkInType")),
+                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("finderType"))
+        );
+    }
 }

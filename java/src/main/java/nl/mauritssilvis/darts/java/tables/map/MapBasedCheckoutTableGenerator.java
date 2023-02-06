@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.map;
 
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
@@ -31,10 +32,15 @@ import java.util.stream.IntStream;
  * static factory method.
  */
 @EqualsAndHashCode
+@ToString(onlyExplicitlyIncluded = true)
 public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenerator {
+    @ToString.Include
     private final BoardType boardType;
+    @ToString.Include
     private final CheckType checkInType;
+    @ToString.Include
     private final CheckType checkoutType;
+    @ToString.Include
     private final FinderType finderType;
 
     private final List<Field> firstFields;
