@@ -9,17 +9,20 @@ import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Parameters;
+import picocli.CommandLine.Spec;
 
-@CommandLine.Command(
+@Command(
         name = "boards",
         description = "Print a dartboard.",
         showDefaultValues = true
 )
 public class DartsBoards implements Runnable {
-    @CommandLine.Spec
+    @Spec
     CommandLine.Model.CommandSpec commandSpec;
 
-    @CommandLine.Parameters(
+    @Parameters(
             description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
             arity = "1..*",
             paramLabel = "<board type>"

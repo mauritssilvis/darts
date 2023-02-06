@@ -6,8 +6,9 @@
 package nl.mauritssilvis.darts.java.cli;
 
 import picocli.CommandLine;
+import picocli.CommandLine.Command;
 
-@CommandLine.Command(
+@Command(
         name = "darts",
         subcommands = {
                 CommandLine.HelpCommand.class,
