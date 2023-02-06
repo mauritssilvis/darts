@@ -31,18 +31,16 @@ class DartsTests {
 
         String expected1 = "Usage";
         String expected2 = "darts";
-        String expected3 = "computational toolbox";
-        String expected4 = "Copyright";
-        String expected5 = "2023";
-        String expected6 = "GPL";
+        String expected3 = "A computational toolbox aimed at the game of darts";
+        String expected4 = "Copyright © 2023 Maurits H. Silvis";
+        String expected5 = "SPDX-License-Identifier: GPL-3.0-or-later";
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(actual.contains(expected1)),
                 () -> Assertions.assertTrue(actual.contains(expected2)),
                 () -> Assertions.assertTrue(actual.contains(expected3)),
                 () -> Assertions.assertTrue(actual.contains(expected4)),
-                () -> Assertions.assertTrue(actual.contains(expected5)),
-                () -> Assertions.assertTrue(actual.contains(expected6))
+                () -> Assertions.assertTrue(actual.contains(expected5))
         );
     }
 
@@ -60,15 +58,13 @@ class DartsTests {
         String actual = stringWriter.toString();
 
         String expected1 = "darts";
-        String expected2 = "Copyright";
-        String expected3 = "2023";
-        String expected4 = "GPL";
+        String expected2 = "Copyright © 2023 Maurits H. Silvis";
+        String expected3 = "SPDX-License-Identifier: GPL-3.0-or-later";
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(actual.contains(expected1)),
                 () -> Assertions.assertTrue(actual.contains(expected2)),
-                () -> Assertions.assertTrue(actual.contains(expected3)),
-                () -> Assertions.assertTrue(actual.contains(expected4))
+                () -> Assertions.assertTrue(actual.contains(expected3))
         );
     }
 }
