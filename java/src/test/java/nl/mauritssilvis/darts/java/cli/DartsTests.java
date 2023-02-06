@@ -25,9 +25,22 @@ class DartsTests {
         commandLine.execute(args);
 
         String actual = stringWriter.toString();
-        String expected = "Usage";
 
-        Assertions.assertTrue(actual.contains(expected));
+        String expected1 = "Usage";
+        String expected2 = "darts";
+        String expected3 = "computational toolbox";
+        String expected4 = "Copyright";
+        String expected5 = "2023";
+        String expected6 = "GPL";
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(actual.contains(expected1)),
+                () -> Assertions.assertTrue(actual.contains(expected2)),
+                () -> Assertions.assertTrue(actual.contains(expected3)),
+                () -> Assertions.assertTrue(actual.contains(expected4)),
+                () -> Assertions.assertTrue(actual.contains(expected5)),
+                () -> Assertions.assertTrue(actual.contains(expected6))
+        );
     }
 
     @Test
@@ -42,9 +55,22 @@ class DartsTests {
         commandLine.execute(args);
 
         String actual = stringWriter.toString();
-        String expected = "Usage";
 
-        Assertions.assertTrue(actual.contains(expected));
+        String expected1 = "Usage";
+        String expected2 = "darts";
+        String expected3 = "computational toolbox";
+        String expected4 = "Copyright";
+        String expected5 = "2023";
+        String expected6 = "GPL";
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(actual.contains(expected1)),
+                () -> Assertions.assertTrue(actual.contains(expected2)),
+                () -> Assertions.assertTrue(actual.contains(expected3)),
+                () -> Assertions.assertTrue(actual.contains(expected4)),
+                () -> Assertions.assertTrue(actual.contains(expected5)),
+                () -> Assertions.assertTrue(actual.contains(expected6))
+        );
     }
 
     @Test
@@ -62,12 +88,14 @@ class DartsTests {
 
         String expected1 = "darts";
         String expected2 = "Copyright";
-        String expected3 = "GPL";
+        String expected3 = "2023";
+        String expected4 = "GPL";
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(actual.contains(expected1)),
                 () -> Assertions.assertTrue(actual.contains(expected2)),
-                () -> Assertions.assertTrue(actual.contains(expected3))
+                () -> Assertions.assertTrue(actual.contains(expected3)),
+                () -> Assertions.assertTrue(actual.contains(expected4))
         );
     }
 }
