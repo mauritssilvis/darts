@@ -11,22 +11,22 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 /**
- * An abstract class that provides a default implementation of the
- * {@code Serializer} interface for serialization of objects using their Java
- * string representation.
+ * An extension of the {@code Serializer} interface that provides a default
+ * implementation of serialization of objects using their Java string
+ * representation.
  * <p>
  * Relevant design patterns: strategy.
  *
  * @param <T> the type of object to be serialized
  */
-public abstract class StringSerializer<T> implements Serializer<T> {
-    private static final List<Character> OPENING_BRACKETS = List.of('{', '[', '(');
-    private static final List<Character> CLOSING_BRACKETS = List.of(')', ']', '}');
-    private static final List<Character> DELIMITERS = Collections.singletonList(',');
-    private static final Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
+public interface StringSerializer<T> extends Serializer<T> {
+    List<Character> OPENING_BRACKETS = List.of('{', '[', '(');
+    List<Character> CLOSING_BRACKETS = List.of(')', ']', '}');
+    List<Character> DELIMITERS = Collections.singletonList(',');
+    Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
 
     @Override
-    public String serialize(T object) {
+    default String serialize(T object) {
         String str = object.toString();
 
         StringBuilder stringBuilder = new StringBuilder(str.length());

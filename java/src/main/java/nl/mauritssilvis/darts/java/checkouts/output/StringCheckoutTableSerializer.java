@@ -10,12 +10,13 @@ import nl.mauritssilvis.darts.java.output.StringSerializer;
 import nl.mauritssilvis.darts.java.tables.CheckoutTable;
 
 /**
- * An implementation of the generic {@code Serializer} interface that serializes
- * {@code CheckoutTable} objects using their Java string representation.
+ * An implementation of the generic {@code StringSerializer} interface that
+ * allows for the creation of objects that can serialize {@code CheckoutTable}
+ * objects using their Java string representation.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class StringCheckoutTableSerializer extends StringSerializer<CheckoutTable> {
+public final class StringCheckoutTableSerializer implements StringSerializer<CheckoutTable> {
     private StringCheckoutTableSerializer() {
     }
 

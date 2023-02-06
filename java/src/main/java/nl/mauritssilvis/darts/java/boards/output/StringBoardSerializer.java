@@ -10,12 +10,13 @@ import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.output.StringSerializer;
 
 /**
- * An implementation of the generic {@code Serializer} interface that serializes
- * {@code Board} objects using their Java string representation.
+ * An implementation of the generic {@code StringSerializer} interface that
+ * allows for the creation of objects that can serialize {@code Board} objects
+ * using their Java string representation.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class StringBoardSerializer extends StringSerializer<Board> {
+public final class StringBoardSerializer implements StringSerializer<Board> {
     private StringBoardSerializer() {
     }
 
