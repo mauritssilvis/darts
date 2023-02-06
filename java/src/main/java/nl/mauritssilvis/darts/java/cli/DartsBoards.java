@@ -41,15 +41,16 @@ public class DartsBoards implements Runnable {
 
     @Parameters(
             description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
-            arity = "1..*",
             paramLabel = "<board>"
     )
     private BoardType boardType;
 
     public void run() {
-        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
         Board board = BoardFactory.create(boardType);
+
+        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
         String output = serializer.serialize(board);
+
         commandSpec.commandLine().getOut().println(output);
     }
 }
