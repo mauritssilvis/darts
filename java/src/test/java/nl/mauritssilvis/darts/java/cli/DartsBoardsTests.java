@@ -29,11 +29,15 @@ class DartsBoardsTests {
         String expected1 = "Usage";
         String expected2 = "boards";
         String expected3 = "Print a dartboard.";
+        String expected4 = "Dartboard type(s).";
+        String expected5 = "<board type>";
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(actual.contains(expected1)),
                 () -> Assertions.assertTrue(actual.contains(expected2)),
-                () -> Assertions.assertTrue(actual.contains(expected3))
+                () -> Assertions.assertTrue(actual.contains(expected3)),
+                () -> Assertions.assertTrue(actual.contains(expected4)),
+                () -> Assertions.assertTrue(actual.contains(expected5))
         );
     }
 }

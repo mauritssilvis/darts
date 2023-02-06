@@ -21,6 +21,8 @@ import picocli.CommandLine;
 )
 public class Darts {
     public static void main(String[] args) {
-        new CommandLine(new Darts()).execute(args);
+        new CommandLine(new Darts())
+                .setCaseInsensitiveEnumValuesAllowed(true)
+                .execute(args);
     }
 }
