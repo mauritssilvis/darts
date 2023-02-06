@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import picocli.CommandLine;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -19,14 +18,13 @@ import java.util.List;
 class DartsBoardsTests {
     @Test
     void getHelp() {
-        Darts darts = new Darts();
         String[] args = {"help", "boards"};
 
         StringWriter stringWriter = new StringWriter();
 
-        new CommandLine(darts)
-                .setOut(new PrintWriter(stringWriter))
-                .execute(args);
+        App darts = Darts.create();
+        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
+        darts.execute(args);
 
         String output = stringWriter.toString();
 
@@ -51,16 +49,13 @@ class DartsBoardsTests {
     @EnumSource(BoardType.class)
     void getADartboardString(BoardType boardType) {
         String boardName = getBoardName(boardType);
-
-        Darts darts = new Darts();
         String[] args = {"boards", "-f", "string", boardName};
 
         StringWriter stringWriter = new StringWriter();
 
-        new CommandLine(darts)
-                .setCaseInsensitiveEnumValuesAllowed(true)
-                .setOut(new PrintWriter(stringWriter))
-                .execute(args);
+        App darts = Darts.create();
+        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
+        darts.execute(args);
 
         String output = stringWriter.toString();
 

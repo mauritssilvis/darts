@@ -8,6 +8,12 @@ package nl.mauritssilvis.darts.java.cli;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
+/**
+ * The command-line interface for darts -- A computational toolbox aimed at the
+ * game of darts.
+ * <p>
+ * Relevant design patterns: static factory method, lazy initialization.
+ */
 @Command(
         name = "darts",
         subcommands = {
@@ -20,10 +26,44 @@ import picocli.CommandLine.Command;
         showDefaultValues = true,
         footer = {"Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
-public class Darts {
+public final class Darts implements App {
+    private CommandLine commandLine;
+
+    private Darts() {
+    }
+
+    /**
+     * Executes the darts application with the specified command-line
+     * arguments.
+     *
+     * @param args the command-line arguments
+     */
     public static void main(String[] args) {
-        new CommandLine(new Darts())
-                .setCaseInsensitiveEnumValuesAllowed(true)
-                .execute(args);
+        App darts = create();
+        darts.execute(args);
+    }
+
+    /**
+     * Returns a new {@code Darts} command-line application.
+     *
+     * @return a new {@code Darts} command-line application.
+     */
+    public static App create() {
+        return new Darts();
+    }
+
+    @Override
+    public CommandLine getCommandLine() {
+        if (commandLine == null) {
+            commandLine = new CommandLine(this)
+                    .setCaseInsensitiveEnumValuesAllowed(true);
+        }
+
+        return commandLine;
+    }
+
+    @Override
+    public int execute(String[] args) {
+        return getCommandLine().execute(args);
     }
 }

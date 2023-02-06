@@ -9,25 +9,29 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import picocli.CommandLine;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 class DartsTests {
+    @Test
+    void startTheApplication() {
+        String[] args = {"-V"};
+        Assertions.assertDoesNotThrow(() -> Darts.main(args));
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"-h", "help"})
     void getHelp(String arg) {
-        Darts darts = new Darts();
         String[] args = {arg};
 
         StringWriter stringWriter = new StringWriter();
 
-        CommandLine commandLine = new CommandLine(darts);
-        commandLine.setOut(new PrintWriter(stringWriter));
-        commandLine.execute(args);
+        App darts = Darts.create();
+        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
+        darts.execute(args);
 
-        String actual = stringWriter.toString();
+        String output = stringWriter.toString();
 
         String expected1 = "Usage";
         String expected2 = "darts";
@@ -37,27 +41,26 @@ class DartsTests {
         String expected6 = "SPDX-License-Identifier: GPL-3.0-or-later";
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(actual.contains(expected1)),
-                () -> Assertions.assertTrue(actual.contains(expected2)),
-                () -> Assertions.assertTrue(actual.contains(expected3)),
-                () -> Assertions.assertTrue(actual.contains(expected4)),
-                () -> Assertions.assertTrue(actual.contains(expected5)),
-                () -> Assertions.assertTrue(actual.contains(expected6))
+                () -> Assertions.assertTrue(output.contains(expected1)),
+                () -> Assertions.assertTrue(output.contains(expected2)),
+                () -> Assertions.assertTrue(output.contains(expected3)),
+                () -> Assertions.assertTrue(output.contains(expected4)),
+                () -> Assertions.assertTrue(output.contains(expected5)),
+                () -> Assertions.assertTrue(output.contains(expected6))
         );
     }
 
     @Test
     void getVersion() {
-        Darts darts = new Darts();
         String[] args = {"-V"};
 
         StringWriter stringWriter = new StringWriter();
 
-        CommandLine commandLine = new CommandLine(darts);
-        commandLine.setOut(new PrintWriter(stringWriter));
-        commandLine.execute(args);
+        App darts = Darts.create();
+        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
+        darts.execute(args);
 
-        String actual = stringWriter.toString();
+        String output = stringWriter.toString();
 
         String expected1 = "darts";
         String expected2 = "Copyright";
@@ -65,10 +68,10 @@ class DartsTests {
         String expected4 = "SPDX-License-Identifier: GPL-3.0-or-later";
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(actual.contains(expected1)),
-                () -> Assertions.assertTrue(actual.contains(expected2)),
-                () -> Assertions.assertTrue(actual.contains(expected3)),
-                () -> Assertions.assertTrue(actual.contains(expected4))
+                () -> Assertions.assertTrue(output.contains(expected1)),
+                () -> Assertions.assertTrue(output.contains(expected2)),
+                () -> Assertions.assertTrue(output.contains(expected3)),
+                () -> Assertions.assertTrue(output.contains(expected4))
         );
     }
 }
