@@ -24,7 +24,7 @@ class StringBoardSerializerTests {
 
         String boardName = getBoardName(boardType);
 
-        Assertions.assertTrue(output.contains(boardName));
+        Assertions.assertTrue(output.startsWith(boardName));
     }
 
     @ParameterizedTest
