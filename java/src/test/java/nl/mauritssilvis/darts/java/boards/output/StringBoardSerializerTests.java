@@ -16,7 +16,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 class StringBoardSerializerTests {
     @ParameterizedTest
     @EnumSource(BoardType.class)
-    void serializeABoard(BoardType boardType) {
+    void includeTheBoardName(BoardType boardType) {
         Board board = BoardFactory.create(boardType);
         Serializer<Board> serializer = StringBoardSerializer.create();
 
@@ -25,6 +25,34 @@ class StringBoardSerializerTests {
         String boardName = getBoardName(boardType);
 
         Assertions.assertTrue(output.contains(boardName));
+    }
+
+    @ParameterizedTest
+    @EnumSource(BoardType.class)
+    void useTheStringRepresentation(BoardType boardType) {
+        Board board = BoardFactory.create(boardType);
+        Serializer<Board> serializer = StringBoardSerializer.create();
+
+        String output = serializer.serialize(board);
+
+        String str = board.toString();
+        int index = str.indexOf('(');
+        String start = str.substring(0, index + 1);
+
+        Assertions.assertTrue(output.startsWith(start));
+    }
+
+    @ParameterizedTest
+    @EnumSource(BoardType.class)
+    void indentTheOutput(BoardType boardType) {
+        Board board = BoardFactory.create(boardType);
+        Serializer<Board> serializer = StringBoardSerializer.create();
+
+        String output = serializer.serialize(board);
+
+        String indentation = "(\n  ";
+
+        Assertions.assertTrue(output.contains(indentation));
     }
 
     private static String getBoardName(BoardType boardType) {
