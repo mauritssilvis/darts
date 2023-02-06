@@ -29,9 +29,9 @@ import picocli.CommandLine.Spec;
         sortSynopsis = false,
         showDefaultValues = true
 )
-public class DartsCheckouts implements Runnable {
+class DartsCheckouts implements Runnable {
     @Spec
-    CommandSpec commandSpec;
+    private CommandSpec commandSpec;
 
     @Option(
             names = {"-b", "--board"},

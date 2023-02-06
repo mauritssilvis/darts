@@ -19,6 +19,7 @@ public interface App {
      * If no writer is set, objects are written to the standard output stream.
      *
      * @param out the print writer
+     * @return this application
      */
     App setOut(PrintWriter out);
 
@@ -28,6 +29,7 @@ public interface App {
      * If no writer is set, messages are written to the standard error stream.
      *
      * @param err the print writer
+     * @return this application
      */
     App setErr(PrintWriter err);
 
