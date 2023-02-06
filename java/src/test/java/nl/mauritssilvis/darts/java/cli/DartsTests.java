@@ -21,6 +21,21 @@ class DartsTests {
         Assertions.assertDoesNotThrow(() -> Darts.main(args));
     }
 
+    @Test
+    void getAnErrorMessageWithoutArguments() {
+        String[] args = {};
+
+        StringWriter stringWriter = new StringWriter();
+
+        Darts.create()
+                .setErr(new PrintWriter(stringWriter))
+                .execute(args);
+
+        String output = stringWriter.toString();
+
+        Assertions.assertTrue(output.contains("Usage"));
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"-h", "help"})
     void getHelp(String arg) {
