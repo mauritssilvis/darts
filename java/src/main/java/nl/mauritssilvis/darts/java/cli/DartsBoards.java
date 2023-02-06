@@ -7,6 +7,8 @@ package nl.mauritssilvis.darts.java.cli;
 
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
+import nl.mauritssilvis.darts.java.boards.output.BoardSerializerFactory;
+import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.OutputFormat;
 import picocli.CommandLine;
@@ -40,7 +42,9 @@ public class DartsBoards implements Runnable {
     private BoardType boardType;
 
     public void run() {
+        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
         Board board = BoardFactory.create(boardType);
-        commandSpec.commandLine().getOut().println(board);
+        String output = serializer.serialize(board);
+        commandSpec.commandLine().getOut().println(output);
     }
 }

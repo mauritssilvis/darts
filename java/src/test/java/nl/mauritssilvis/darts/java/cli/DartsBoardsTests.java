@@ -49,11 +49,11 @@ class DartsBoardsTests {
 
     @ParameterizedTest
     @EnumSource(BoardType.class)
-    void getADartboard(BoardType boardType) {
+    void getADartboardString(BoardType boardType) {
         String boardName = getBoardName(boardType);
 
         Darts darts = new Darts();
-        String[] args = {"boards", boardName};
+        String[] args = {"boards", "-f", "string", boardName};
 
         StringWriter stringWriter = new StringWriter();
 
