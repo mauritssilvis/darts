@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.List;
 
 class DartsTests {
     @Test
@@ -33,21 +34,20 @@ class DartsTests {
 
         String output = stringWriter.toString();
 
-        String expected1 = "Usage";
-        String expected2 = "darts";
-        String expected3 = "A computational toolbox aimed at the game of darts";
-        String expected4 = "Copyright";
-        String expected5 = "Maurits H. Silvis";
-        String expected6 = "SPDX-License-Identifier: GPL-3.0-or-later";
-
-        Assertions.assertAll(
-                () -> Assertions.assertTrue(output.contains(expected1)),
-                () -> Assertions.assertTrue(output.contains(expected2)),
-                () -> Assertions.assertTrue(output.contains(expected3)),
-                () -> Assertions.assertTrue(output.contains(expected4)),
-                () -> Assertions.assertTrue(output.contains(expected5)),
-                () -> Assertions.assertTrue(output.contains(expected6))
+        List<String> elements = List.of(
+                "Usage",
+                "darts",
+                "A computational toolbox aimed at the game of darts",
+                "Copyright",
+                "Maurits H. Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
         );
+
+        long count = elements.stream()
+                .filter(output::contains)
+                .count();
+
+        Assertions.assertEquals(elements.size(), count);
     }
 
     @Test
@@ -62,16 +62,17 @@ class DartsTests {
 
         String output = stringWriter.toString();
 
-        String expected1 = "darts";
-        String expected2 = "Copyright";
-        String expected3 = "Maurits H. Silvis";
-        String expected4 = "SPDX-License-Identifier: GPL-3.0-or-later";
-
-        Assertions.assertAll(
-                () -> Assertions.assertTrue(output.contains(expected1)),
-                () -> Assertions.assertTrue(output.contains(expected2)),
-                () -> Assertions.assertTrue(output.contains(expected3)),
-                () -> Assertions.assertTrue(output.contains(expected4))
+        List<String> elements = List.of(
+                "darts",
+                "Copyright",
+                "Maurits H. Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
         );
+
+        long count = elements.stream()
+                .filter(output::contains)
+                .count();
+
+        Assertions.assertEquals(elements.size(), count);
     }
 }
