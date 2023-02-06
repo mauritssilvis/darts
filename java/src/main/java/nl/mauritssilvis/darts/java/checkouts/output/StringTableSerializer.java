@@ -11,8 +11,8 @@ import nl.mauritssilvis.darts.java.tables.Table;
 
 /**
  * An implementation of the generic {@code StringSerializer} interface that
- * allows for the creation of objects that can serialize {@code Table}
- * objects using their Java string representation.
+ * allows for the creation of objects that can serialize {@code Table} objects
+ * using their Java string representation.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */

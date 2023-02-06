@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of the {@code Table} interface that uses a map to
- * store checkouts.
+ * An implementation of the {@code Table} interface that uses a map to store
+ * checkouts.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
@@ -59,15 +59,15 @@ public final class MapBasedTable implements Table {
     }
 
     /**
-     * Returns a new {@code MapBasedTable} with the specified dartboard
-     * type, check-in type, checkout type and checkout map.
+     * Returns a new {@code MapBasedTable} with the specified dartboard type,
+     * check-in type, checkout type and checkout map.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param checkoutMap  the checkout map
-     * @return a new {@code MapBasedTable} with the specified dartboard
-     * type, check-in type, checkout type and checkout map.
+     * @return a new {@code MapBasedTable} with the specified dartboard type,
+     * check-in type, checkout type and checkout map.
      * @throws IllegalArgumentException if some checkouts in the checkout map do
      *                                  not have the same score as their
      *                                  checkout map key

@@ -51,13 +51,13 @@ public interface TableBuilder {
     TableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts);
 
     /**
-     * Gets a new {@code Table} with the specified dartboard type,
-     * check-in type, checkout type and checkouts.
+     * Gets a new {@code Table} with the specified dartboard type, check-in
+     * type, checkout type and checkouts.
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@code Table} with the set dartboard type, check-in
-     * type, checkout type and checkouts.
+     * @return a new {@code Table} with the set dartboard type, check-in type,
+     * checkout type and checkouts.
      */
     Table build();
 }

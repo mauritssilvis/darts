@@ -19,8 +19,8 @@ import java.util.Map;
 
 /**
  * An implementation of the {@code TableBuilder} interface that builds
- * {@code MapBasedTable} objects. Default values are provided for
- * unspecified properties.
+ * {@code MapBasedTable} objects. Default values are provided for unspecified
+ * properties.
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
@@ -35,8 +35,8 @@ public final class MapBasedTableBuilder implements TableBuilder {
     }
 
     /**
-     * Returns a new {@code MapBasedTableBuilder} with default values
-     * for the dartboard, check-in and checkout types.
+     * Returns a new {@code MapBasedTableBuilder} with default values for the
+     * dartboard, check-in and checkout types.
      *
      * @return a new {@code MapBasedTableBuilder}
      */

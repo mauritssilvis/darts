@@ -25,8 +25,8 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code TableGenerator} interface that
- * generates {@code MapBasedTable} objects.
+ * An implementation of the {@code TableGenerator} interface that generates
+ * {@code MapBasedTable} objects.
  * <p>
  * Relevant design patterns: strategy, lazy initialization, immutable object,
  * static factory method.
