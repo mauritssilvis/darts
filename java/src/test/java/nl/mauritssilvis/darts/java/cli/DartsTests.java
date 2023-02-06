@@ -31,6 +31,23 @@ class DartsTests {
     }
 
     @Test
+    void getSubCommandHelp() {
+        Darts darts = new Darts();
+        String[] args = {"help"};
+
+        StringWriter stringWriter = new StringWriter();
+
+        CommandLine commandLine = new CommandLine(darts);
+        commandLine.setOut(new PrintWriter(stringWriter));
+        commandLine.execute(args);
+
+        String actual = stringWriter.toString();
+        String expected = "Usage";
+
+        Assertions.assertTrue(actual.contains(expected));
+    }
+
+    @Test
     void getVersion() {
         Darts darts = new Darts();
         String[] args = {"-V"};
