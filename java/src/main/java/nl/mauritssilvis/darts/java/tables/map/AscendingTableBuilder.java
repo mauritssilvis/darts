@@ -19,29 +19,29 @@ import java.util.Map;
 
 /**
  * An implementation of the {@code TableBuilder} interface that builds
- * {@code MapBasedTable} objects. Default values are provided for unspecified
+ * {@code AscendingTable} objects. Default values are provided for unspecified
  * properties.
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
 @ToString
-public final class MapBasedTableBuilder implements TableBuilder {
+public final class AscendingTableBuilder implements TableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
     private CheckType checkoutType = CheckType.DOUBLE;
     private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
-    private MapBasedTableBuilder() {
+    private AscendingTableBuilder() {
     }
 
     /**
-     * Returns a new {@code MapBasedTableBuilder} with default values for the
+     * Returns a new {@code AscendingTableBuilder} with default values for the
      * dartboard, check-in and checkout types.
      *
-     * @return a new {@code MapBasedTableBuilder}
+     * @return a new {@code AscendingTableBuilder}
      */
     public static TableBuilder create() {
-        return new MapBasedTableBuilder();
+        return new AscendingTableBuilder();
     }
 
     @Override
@@ -70,6 +70,6 @@ public final class MapBasedTableBuilder implements TableBuilder {
 
     @Override
     public Table build() {
-        return MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        return AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
     }
 }

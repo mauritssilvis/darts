@@ -17,12 +17,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-class MapBasedTableBuilderTests {
+class AscendingTableBuilderTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setBoardType(boardType)
@@ -33,7 +33,7 @@ class MapBasedTableBuilderTests {
 
     @Test
     void getTheDefaultBoardType() {
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
         BoardType boardType = BoardType.LONDON;
@@ -46,7 +46,7 @@ class MapBasedTableBuilderTests {
         BoardType boardType1 = BoardType.QUADRO;
         BoardType boardType2 = BoardType.YORKSHIRE;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setBoardType(boardType1)
@@ -60,7 +60,7 @@ class MapBasedTableBuilderTests {
     void getTheCheckInType() {
         CheckType checkInType = CheckType.MASTER;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckInType(checkInType)
@@ -71,7 +71,7 @@ class MapBasedTableBuilderTests {
 
     @Test
     void getTheDefaultCheckInType() {
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
         CheckType checkInType = CheckType.ANY;
@@ -84,7 +84,7 @@ class MapBasedTableBuilderTests {
         CheckType checkInType1 = CheckType.DOUBLE;
         CheckType checkInType2 = CheckType.MASTER;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckInType(checkInType1)
@@ -98,7 +98,7 @@ class MapBasedTableBuilderTests {
     void getTheCheckoutType() {
         CheckType checkoutType = CheckType.ANY;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckoutType(checkoutType)
@@ -109,7 +109,7 @@ class MapBasedTableBuilderTests {
 
     @Test
     void getTheDefaultCheckoutType() {
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
         CheckType checkoutType = CheckType.DOUBLE;
@@ -122,7 +122,7 @@ class MapBasedTableBuilderTests {
         CheckType checkoutType1 = CheckType.ANY;
         CheckType checkoutType2 = CheckType.MASTER;
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckoutType(checkoutType1)
@@ -148,7 +148,7 @@ class MapBasedTableBuilderTests {
         Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
         Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckouts(score1, checkouts1)
@@ -172,7 +172,7 @@ class MapBasedTableBuilderTests {
 
     @Test
     void getTheDefaultCheckoutMap() {
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
@@ -195,7 +195,7 @@ class MapBasedTableBuilderTests {
         Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
         Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setCheckouts(score, checkouts1)
@@ -222,7 +222,7 @@ class MapBasedTableBuilderTests {
 
         Collection<Checkout> checkouts = new ArrayList<>(GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout));
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         tableBuilder.setCheckouts(score, checkouts);
 
@@ -260,7 +260,7 @@ class MapBasedTableBuilderTests {
         Collection<Checkout> checkouts1 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout1);
         Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout2);
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
                 .setBoardType(boardType)
@@ -290,15 +290,15 @@ class MapBasedTableBuilderTests {
 
     @Test
     void getUnequalTableBuilders() {
-        TableBuilder tableBuilder1 = MapBasedTableBuilder.create();
-        TableBuilder tableBuilder2 = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder1 = AscendingTableBuilder.create();
+        TableBuilder tableBuilder2 = AscendingTableBuilder.create();
 
         Assertions.assertNotEquals(tableBuilder1, tableBuilder2);
     }
 
     @Test
     void convertToAString() {
-        TableBuilder tableBuilder = MapBasedTableBuilder.create();
+        TableBuilder tableBuilder = AscendingTableBuilder.create();
         String str = tableBuilder.toString();
 
         Assertions.assertAll(

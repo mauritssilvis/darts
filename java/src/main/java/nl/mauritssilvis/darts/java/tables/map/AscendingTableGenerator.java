@@ -26,14 +26,14 @@ import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code TableGenerator} interface that generates
- * {@code MapBasedTable} objects.
+ * {@code AscendingTable} objects.
  * <p>
  * Relevant design patterns: strategy, lazy initialization, immutable object,
  * static factory method.
  */
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true)
-public final class MapBasedTableGenerator implements TableGenerator {
+public final class AscendingTableGenerator implements TableGenerator {
     @ToString.Include
     private final BoardType boardType;
     @ToString.Include
@@ -50,7 +50,7 @@ public final class MapBasedTableGenerator implements TableGenerator {
     private final Map<Integer, List<List<Field>>> fieldsPerThrowMap = new HashMap<>();
     private final Map<Integer, CheckoutFinder> checkoutFinderMap = new HashMap<>();
 
-    private MapBasedTableGenerator(
+    private AscendingTableGenerator(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -68,27 +68,27 @@ public final class MapBasedTableGenerator implements TableGenerator {
     }
 
     /**
-     * Returns a new {@code MapBasedTableGenerator} with the specified
+     * Returns a new {@code AscendingTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param finderType   the checkout finder type
-     * @return a new {@code MapBasedTableGenerator} with the specified
+     * @return a new {@code AscendingTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      */
     public static TableGenerator of(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
-        return new MapBasedTableGenerator(boardType, checkInType, checkoutType, finderType);
+        return new AscendingTableGenerator(boardType, checkInType, checkoutType, finderType);
     }
 
     @Override
     public Table generate(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = getCheckoutMap(minScore, maxScore);
 
-        TableBuilder tableBuilder = MapBasedTableBuilder.create()
+        TableBuilder tableBuilder = AscendingTableBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
                 .setCheckoutType(checkoutType);

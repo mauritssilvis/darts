@@ -10,7 +10,7 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.GeneratorType;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
-import nl.mauritssilvis.darts.java.tables.map.MapBasedTableGenerator;
+import nl.mauritssilvis.darts.java.tables.map.AscendingTableGenerator;
 
 /**
  * A checkout table generator factory.
@@ -39,7 +39,7 @@ public final class TableGeneratorFactory {
             FinderType finderType
     ) {
         return switch (generatorType) {
-            case MAP -> MapBasedTableGenerator.of(boardType, checkInType, checkoutType, finderType);
+            case ASCENDING -> AscendingTableGenerator.of(boardType, checkInType, checkoutType, finderType);
         };
     }
 }

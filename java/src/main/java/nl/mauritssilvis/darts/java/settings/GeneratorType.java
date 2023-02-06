@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public enum GeneratorType {
     /**
-     * A map-based checkout table generator.
+     * An ascending checkout table generator.
      */
-    MAP
+    ASCENDING
 }

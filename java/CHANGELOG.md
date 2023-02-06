@@ -28,5 +28,5 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Checkout tables
 
-- Create a map-based checkout table generator (`MapBasedTableGenerator`).
+- Create an ascending checkout table generator (`AscendingTableGenerator`).
 - Add support for master and double check-ins and checkouts (`CheckType`).

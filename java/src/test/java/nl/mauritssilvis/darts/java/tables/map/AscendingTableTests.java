@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-class MapBasedTableTests {
+class AscendingTableTests {
     @Test
     void doNotStoreCheckoutsWithAnotherScore() {
         BoardType boardType = BoardType.LONDON;
@@ -35,7 +35,7 @@ class MapBasedTableTests {
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
-                () -> MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap)
+                () -> AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap)
         );
     }
 
@@ -56,7 +56,7 @@ class MapBasedTableTests {
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         checkoutMap.clear();
 
@@ -87,7 +87,7 @@ class MapBasedTableTests {
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         checkoutMap.get(score).clear();
 
@@ -108,7 +108,7 @@ class MapBasedTableTests {
         CheckType checkoutType = CheckType.MASTER;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertEquals(boardType, table.getBoardType());
     }
@@ -120,7 +120,7 @@ class MapBasedTableTests {
         CheckType checkoutType = CheckType.DOUBLE;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertEquals(checkInType, table.getCheckInType());
     }
@@ -132,7 +132,7 @@ class MapBasedTableTests {
         CheckType checkoutType = CheckType.DOUBLE;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertEquals(checkoutType, table.getCheckoutType());
     }
@@ -165,7 +165,7 @@ class MapBasedTableTests {
                 score2, checkouts2
         );
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
 
@@ -189,7 +189,7 @@ class MapBasedTableTests {
         CheckType checkoutType = CheckType.DOUBLE;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertEquals(checkoutMap, table.getCheckoutMap());
     }
@@ -202,7 +202,7 @@ class MapBasedTableTests {
 
         Map<Integer, Collection<Checkout>> checkoutMap = Map.of(1, Collections.emptyList());
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertEquals(checkoutMap, table.getCheckoutMap());
     }
@@ -225,7 +225,7 @@ class MapBasedTableTests {
                 score, checkouts
         );
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
 
@@ -251,7 +251,7 @@ class MapBasedTableTests {
                 score, checkouts
         );
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
@@ -278,7 +278,7 @@ class MapBasedTableTests {
                 score, checkouts1
         );
 
-        Table table1 = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap1);
 
         Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
 
@@ -286,7 +286,7 @@ class MapBasedTableTests {
                 score, checkouts2
         );
 
-        Table table2 = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(table1, table2),
@@ -309,7 +309,7 @@ class MapBasedTableTests {
                 score1, checkouts1
         );
 
-        Table table1 = MapBasedTable.of(boardType1, checkInType1, checkoutType1, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType1, checkInType1, checkoutType1, checkoutMap1);
 
         BoardType boardType2 = BoardType.QUADRO;
         CheckType checkInType2 = CheckType.ANY;
@@ -324,7 +324,7 @@ class MapBasedTableTests {
                 score2, checkouts2
         );
 
-        Table table2 = MapBasedTable.of(boardType2, checkInType2, checkoutType2, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType2, checkInType2, checkoutType2, checkoutMap2);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -344,10 +344,10 @@ class MapBasedTableTests {
         );
 
         BoardType boardType1 = BoardType.LONDON;
-        Table table1 = MapBasedTable.of(boardType1, checkInType, checkoutType, checkoutMap);
+        Table table1 = AscendingTable.of(boardType1, checkInType, checkoutType, checkoutMap);
 
         BoardType boardType2 = BoardType.YORKSHIRE;
-        Table table2 = MapBasedTable.of(boardType2, checkInType, checkoutType, checkoutMap);
+        Table table2 = AscendingTable.of(boardType2, checkInType, checkoutType, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -367,10 +367,10 @@ class MapBasedTableTests {
         );
 
         CheckType checkInType1 = CheckType.DOUBLE;
-        Table table1 = MapBasedTable.of(boardType, checkInType1, checkoutType, checkoutMap);
+        Table table1 = AscendingTable.of(boardType, checkInType1, checkoutType, checkoutMap);
 
         CheckType checkInType2 = CheckType.ANY;
-        Table table2 = MapBasedTable.of(boardType, checkInType2, checkoutType, checkoutMap);
+        Table table2 = AscendingTable.of(boardType, checkInType2, checkoutType, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -390,10 +390,10 @@ class MapBasedTableTests {
         );
 
         CheckType checkoutType1 = CheckType.MASTER;
-        Table table1 = MapBasedTable.of(boardType, checkInType, checkoutType1, checkoutMap);
+        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType1, checkoutMap);
 
         CheckType checkoutType2 = CheckType.DOUBLE;
-        Table table2 = MapBasedTable.of(boardType, checkInType, checkoutType2, checkoutMap);
+        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType2, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -413,7 +413,7 @@ class MapBasedTableTests {
                 score1, checkouts1
         );
 
-        Table table1 = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap1);
 
         int score2 = 60;
 
@@ -424,7 +424,7 @@ class MapBasedTableTests {
                 score2, checkouts2
         );
 
-        Table table2 = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap2);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -449,7 +449,7 @@ class MapBasedTableTests {
                 score, checkouts
         );
 
-        Table table = MapBasedTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         String str = table.toString();
 

@@ -19,20 +19,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of the {@code Table} interface that uses a map to store
- * checkouts.
+ * An implementation of the {@code Table} interface that stores checkouts in
+ * ascending order.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
 @ToString
-public final class MapBasedTable implements Table {
+public final class AscendingTable implements Table {
     private final BoardType boardType;
     private final CheckType checkInType;
     private final CheckType checkoutType;
     private final Map<Integer, List<Checkout>> checkoutMap;
 
-    private MapBasedTable(
+    private AscendingTable(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -59,14 +59,14 @@ public final class MapBasedTable implements Table {
     }
 
     /**
-     * Returns a new {@code MapBasedTable} with the specified dartboard type,
+     * Returns a new {@code AscendingTable} with the specified dartboard type,
      * check-in type, checkout type and checkout map.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param checkoutMap  the checkout map
-     * @return a new {@code MapBasedTable} with the specified dartboard type,
+     * @return a new {@code AscendingTable} with the specified dartboard type,
      * check-in type, checkout type and checkout map.
      * @throws IllegalArgumentException if some checkouts in the checkout map do
      *                                  not have the same score as their
@@ -78,7 +78,7 @@ public final class MapBasedTable implements Table {
             CheckType checkoutType,
             Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
-        return new MapBasedTable(boardType, checkInType, checkoutType, checkoutMap);
+        return new AscendingTable(boardType, checkInType, checkoutType, checkoutMap);
     }
 
     @Override

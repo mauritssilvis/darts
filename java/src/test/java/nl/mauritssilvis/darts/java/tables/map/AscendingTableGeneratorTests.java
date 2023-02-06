@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-class MapBasedTableGeneratorTests {
+class AscendingTableGeneratorTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.YORKSHIRE;
@@ -32,7 +32,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -51,7 +51,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -70,7 +70,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -87,7 +87,7 @@ class MapBasedTableGeneratorTests {
     void doNotGetCheckoutsWithTooLowScores(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -129,7 +129,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -212,7 +212,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.MASTER;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -286,7 +286,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.MASTER;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -349,7 +349,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -495,7 +495,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -578,7 +578,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -701,7 +701,7 @@ class MapBasedTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -753,7 +753,7 @@ class MapBasedTableGeneratorTests {
     ) {
         FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -840,7 +840,7 @@ class MapBasedTableGeneratorTests {
             Map<Integer, Collection<? extends Collection<? extends Collection<String>>>> namesPerScore,
             Map<Integer, Long> multiplicityPerScore
     ) {
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -927,11 +927,11 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
@@ -948,7 +948,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType1 = CheckType.DOUBLE;
         FinderType finderType1 = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType1, checkInType1, checkoutType1, finderType1
         );
 
@@ -957,7 +957,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType2 = CheckType.MASTER;
         FinderType finderType2 = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType2, checkInType2, checkoutType2, finderType2
         );
 
@@ -972,13 +972,13 @@ class MapBasedTableGeneratorTests {
 
         BoardType boardType1 = BoardType.QUADRO;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType1, checkInType, checkoutType, finderType
         );
 
         BoardType boardType2 = BoardType.LONDON;
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType2, checkInType, checkoutType, finderType
         );
 
@@ -993,13 +993,13 @@ class MapBasedTableGeneratorTests {
 
         CheckType checkInType1 = CheckType.ANY;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType, checkInType1, checkoutType, finderType
         );
 
         CheckType checkInType2 = CheckType.MASTER;
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType, checkInType2, checkoutType, finderType
         );
 
@@ -1014,13 +1014,13 @@ class MapBasedTableGeneratorTests {
 
         CheckType checkoutType1 = CheckType.DOUBLE;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType1, finderType
         );
 
         CheckType checkoutType2 = CheckType.ANY;
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType2, finderType
         );
 
@@ -1035,13 +1035,13 @@ class MapBasedTableGeneratorTests {
 
         FinderType finderType1 = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator1 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType1
         );
 
         FinderType finderType2 = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator2 = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType2
         );
 
@@ -1055,7 +1055,7 @@ class MapBasedTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = MapBasedTableGenerator.of(
+        TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 

@@ -10,14 +10,14 @@ import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.GeneratorType;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
-import nl.mauritssilvis.darts.java.tables.map.MapBasedTableGenerator;
+import nl.mauritssilvis.darts.java.tables.map.AscendingTableGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TableGeneratorFactoryTests {
     @Test
-    void getAMapBasedTableGenerator() {
-        GeneratorType generatorType = GeneratorType.MAP;
+    void getAnAscendingTableGenerator() {
+        GeneratorType generatorType = GeneratorType.ASCENDING;
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.MASTER;
@@ -27,6 +27,6 @@ class TableGeneratorFactoryTests {
                 generatorType, boardType, checkInType, checkoutType, finderType
         );
 
-        Assertions.assertTrue(tableGenerator instanceof MapBasedTableGenerator);
+        Assertions.assertTrue(tableGenerator instanceof AscendingTableGenerator);
     }
 }
