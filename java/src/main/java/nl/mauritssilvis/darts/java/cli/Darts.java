@@ -14,6 +14,8 @@ import java.io.PrintWriter;
  * The command-line interface for darts -- A computational toolbox aimed at the
  * game of darts.
  * <p>
+ * This command-line interface was implemented using picocli.
+ * <p>
  * Relevant design patterns: static factory method, lazy initialization.
  */
 @Command(
