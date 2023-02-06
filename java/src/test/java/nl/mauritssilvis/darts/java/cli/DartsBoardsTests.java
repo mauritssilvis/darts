@@ -33,9 +33,9 @@ class DartsBoardsTests {
                 "boards",
                 "Print a dartboard.",
                 "The output format.",
-                "<output format>",
+                "<output>",
                 "Dartboard type(s).",
-                "<board type>"
+                "<board>"
         );
 
         long count = elements.stream()
@@ -49,7 +49,7 @@ class DartsBoardsTests {
     @EnumSource(BoardType.class)
     void getADartboardString(BoardType boardType) {
         String boardName = getBoardName(boardType);
-        String[] args = {"boards", "-f", "string", boardName};
+        String[] args = {"boards", "-o", "string", boardName};
 
         StringWriter stringWriter = new StringWriter();
 

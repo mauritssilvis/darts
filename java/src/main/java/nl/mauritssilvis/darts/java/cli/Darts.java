@@ -22,7 +22,8 @@ import java.io.PrintWriter;
         name = "darts",
         subcommands = {
                 CommandLine.HelpCommand.class,
-                DartsBoards.class
+                DartsBoards.class,
+                DartsCheckouts.class
         },
         version = {"darts 0.1.0", "Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"},
         mixinStandardHelpOptions = true,

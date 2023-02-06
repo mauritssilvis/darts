@@ -11,12 +11,17 @@ import nl.mauritssilvis.darts.java.boards.output.BoardSerializerFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.OutputFormat;
-import picocli.CommandLine;
 import picocli.CommandLine.Command;
+import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
+/**
+ * The command-line interface for the boards subcommand.
+ * <p>
+ * This command-line interface was implemented using picocli.
+*/
 @Command(
         name = "boards",
         description = "Print a dartboard.",
@@ -24,12 +29,12 @@ import picocli.CommandLine.Spec;
 )
 public class DartsBoards implements Runnable {
     @Spec
-    CommandLine.Model.CommandSpec commandSpec;
+    CommandSpec commandSpec;
 
     @Option(
-            names = {"-f", "--format"},
-            description = {"The output format. Supported values: string."},
-            paramLabel = "<output format>",
+            names = {"-o", "--output"},
+            description = "The output format. Supported values: string.",
+            paramLabel = "<output>",
             defaultValue = "string"
     )
     private OutputFormat outputFormat;
@@ -37,7 +42,7 @@ public class DartsBoards implements Runnable {
     @Parameters(
             description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
             arity = "1..*",
-            paramLabel = "<board type>"
+            paramLabel = "<board>"
     )
     private BoardType boardType;
 
