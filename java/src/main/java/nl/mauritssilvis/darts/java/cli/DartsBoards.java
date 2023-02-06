@@ -9,7 +9,7 @@ import picocli.CommandLine;
 
 @CommandLine.Command(
         name = "boards",
-        description = "Print a supported board"
+        description = "Print a dartboard."
 )
 public class DartsBoards implements Runnable {
     public void run() {
