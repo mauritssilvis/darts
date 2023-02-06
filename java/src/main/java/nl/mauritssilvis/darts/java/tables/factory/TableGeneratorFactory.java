@@ -9,29 +9,29 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.GeneratorType;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
-import nl.mauritssilvis.darts.java.tables.map.MapBasedCheckoutTableGenerator;
+import nl.mauritssilvis.darts.java.tables.TableGenerator;
+import nl.mauritssilvis.darts.java.tables.map.MapBasedTableGenerator;
 
 /**
  * A checkout table generator factory.
  * <p>
  * Relevant design patterns: helper, parameterized static factory method.
  */
-public final class CheckoutTableGeneratorFactory {
-    private CheckoutTableGeneratorFactory() {
+public final class TableGeneratorFactory {
+    private TableGeneratorFactory() {
     }
 
     /**
-     * Returns a new {@code CheckoutTableGenerator} of the specified type.
+     * Returns a new {@code TableGenerator} of the specified type.
      *
      * @param generatorType the generator type
      * @param boardType     the dartboard type
      * @param checkInType   the check-in type
      * @param checkoutType  the checkout type
      * @param finderType    the checkout finder type
-     * @return a new {@code CheckoutTableGenerator} of the specified type
+     * @return a new {@code TableGenerator} of the specified type
      */
-    public static CheckoutTableGenerator create(
+    public static TableGenerator create(
             GeneratorType generatorType,
             BoardType boardType,
             CheckType checkInType,
@@ -39,7 +39,7 @@ public final class CheckoutTableGeneratorFactory {
             FinderType finderType
     ) {
         return switch (generatorType) {
-            case MAP -> MapBasedCheckoutTableGenerator.of(boardType, checkInType, checkoutType, finderType);
+            case MAP -> MapBasedTableGenerator.of(boardType, checkInType, checkoutType, finderType);
         };
     }
 }

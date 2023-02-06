@@ -16,14 +16,14 @@ import java.util.Collection;
  * <p>
  * Relevant design patterns: builder, fluent interface.
  */
-public interface CheckoutTableBuilder {
+public interface TableBuilder {
     /**
      * Sets the dartboard type.
      *
      * @param boardType the dartboard type
      * @return this checkout table builder
      */
-    CheckoutTableBuilder setBoardType(BoardType boardType);
+    TableBuilder setBoardType(BoardType boardType);
 
     /**
      * Sets the check-in type.
@@ -31,7 +31,7 @@ public interface CheckoutTableBuilder {
      * @param checkInType the check-in type
      * @return this checkout table builder
      */
-    CheckoutTableBuilder setCheckInType(CheckType checkInType);
+    TableBuilder setCheckInType(CheckType checkInType);
 
     /**
      * Sets the checkout type.
@@ -39,7 +39,7 @@ public interface CheckoutTableBuilder {
      * @param checkoutType the checkout type
      * @return this checkout table builder
      */
-    CheckoutTableBuilder setCheckoutType(CheckType checkoutType);
+    TableBuilder setCheckoutType(CheckType checkoutType);
 
     /**
      * Sets the checkouts for the specified score.
@@ -48,16 +48,16 @@ public interface CheckoutTableBuilder {
      * @param checkouts a list of checkouts for the specified score
      * @return this checkout table builder
      */
-    CheckoutTableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts);
+    TableBuilder setCheckouts(int score, Collection<? extends Checkout> checkouts);
 
     /**
-     * Gets a new {@code CheckoutTable} with the specified dartboard type,
+     * Gets a new {@code Table} with the specified dartboard type,
      * check-in type, checkout type and checkouts.
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@code CheckoutTable} with the set dartboard type, check-in
+     * @return a new {@code Table} with the set dartboard type, check-in
      * type, checkout type and checkouts.
      */
-    CheckoutTable build();
+    Table build();
 }

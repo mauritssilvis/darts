@@ -55,7 +55,7 @@ class DartsCheckoutsTests {
     }
 
     @Test
-    void getACheckoutTableString() {
+    void getATableString() {
         String[] args = {
                 "checkouts",
                 "-b", "Yorkshire",
@@ -77,7 +77,7 @@ class DartsCheckoutsTests {
         String output = stringWriter.toString();
 
         List<String> elements = List.of(
-                "CheckoutTable",
+                "Table",
                 "YORKSHIRE",
                 "MASTER",
                 "2=",

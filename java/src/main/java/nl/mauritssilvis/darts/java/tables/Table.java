@@ -18,7 +18,7 @@ import java.util.Map;
  * <p>
  * Relevant design patterns: immutable interface.
  */
-public interface CheckoutTable {
+public interface Table {
     /**
      * Gets the dartboard type of this checkout table.
      *

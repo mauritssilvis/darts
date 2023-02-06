@@ -10,9 +10,9 @@ import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableTestUtils;
+import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.tables.TableGenerator;
+import nl.mauritssilvis.darts.java.tables.TableTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-class MapBasedCheckoutTableGeneratorTests {
+class MapBasedTableGeneratorTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.YORKSHIRE;
@@ -32,16 +32,16 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
         int maxScore = 0;
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(boardType, checkoutTable.getBoardType());
+        Assertions.assertEquals(boardType, table.getBoardType());
     }
 
     @Test
@@ -51,16 +51,16 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
         int maxScore = 0;
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(checkInType, checkoutTable.getCheckInType());
+        Assertions.assertEquals(checkInType, table.getCheckInType());
     }
 
     @Test
@@ -70,16 +70,16 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = 0;
         int maxScore = 0;
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(checkoutType, checkoutTable.getCheckoutType());
+        Assertions.assertEquals(checkoutType, table.getCheckoutType());
     }
 
     @ParameterizedTest
@@ -87,16 +87,16 @@ class MapBasedCheckoutTableGeneratorTests {
     void doNotGetCheckoutsWithTooLowScores(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
         int minScore = -2;
         int maxScore = 1;
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
-        Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(4, checkoutMap.size()),
@@ -129,13 +129,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -212,13 +212,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.MASTER;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -286,13 +286,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.MASTER;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -349,13 +349,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -495,13 +495,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -578,13 +578,13 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
         Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
@@ -701,13 +701,13 @@ class MapBasedCheckoutTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
 
         Assertions.assertAll(
@@ -753,13 +753,13 @@ class MapBasedCheckoutTableGeneratorTests {
     ) {
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(score, score);
+        Table table = tableGenerator.generate(score, score);
 
-        Map<Integer, List<Checkout>> storedCheckoutMap = checkoutTable.getCheckoutMap();
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
 
         Assertions.assertAll(
@@ -840,14 +840,14 @@ class MapBasedCheckoutTableGeneratorTests {
             Map<Integer, Collection<? extends Collection<? extends Collection<String>>>> namesPerScore,
             Map<Integer, Long> multiplicityPerScore
     ) {
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = checkoutTableGenerator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
-        Map<Integer, List<List<List<String>>>> storedNamesPerScore = CheckoutTableTestUtils.getAllNames(checkoutTable);
-        Map<Integer, Long> storedMultiplicitiesPerScore = CheckoutTableTestUtils.getAllMultiplicities(checkoutTable);
+        Map<Integer, List<List<List<String>>>> storedNamesPerScore = TableTestUtils.getAllNames(table);
+        Map<Integer, Long> storedMultiplicitiesPerScore = TableTestUtils.getAllMultiplicities(table);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(namesPerScore, storedNamesPerScore),
@@ -921,34 +921,34 @@ class MapBasedCheckoutTableGeneratorTests {
     }
 
     @Test
-    void getEqualCheckoutTableGenerators() {
+    void getEqualTableGenerators() {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(checkoutTableGenerator1, checkoutTableGenerator2),
-                () -> Assertions.assertEquals(checkoutTableGenerator1.hashCode(), checkoutTableGenerator2.hashCode())
+                () -> Assertions.assertEquals(tableGenerator1, tableGenerator2),
+                () -> Assertions.assertEquals(tableGenerator1.hashCode(), tableGenerator2.hashCode())
         );
     }
 
     @Test
-    void getUnequalCheckoutTableGenerators() {
+    void getUnequalTableGenerators() {
         BoardType boardType1 = BoardType.YORKSHIRE;
         CheckType checkInType1 = CheckType.DOUBLE;
         CheckType checkoutType1 = CheckType.DOUBLE;
         FinderType finderType1 = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType1, checkInType1, checkoutType1, finderType1
         );
 
@@ -957,95 +957,95 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType2 = CheckType.MASTER;
         FinderType finderType2 = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType2, checkInType2, checkoutType2, finderType2
         );
 
-        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+        Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalCheckoutTableGeneratorsWithDifferentBoardTypes() {
+    void getUnequalTableGeneratorsWithDifferentBoardTypes() {
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
         FinderType finderType = FinderType.CARTESIAN;
 
         BoardType boardType1 = BoardType.QUADRO;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType1, checkInType, checkoutType, finderType
         );
 
         BoardType boardType2 = BoardType.LONDON;
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType2, checkInType, checkoutType, finderType
         );
 
-        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+        Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalCheckoutTableGeneratorsWithDifferentCheckInTypes() {
+    void getUnequalTableGeneratorsWithDifferentCheckInTypes() {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkoutType = CheckType.MASTER;
         FinderType finderType = FinderType.DESCENDING;
 
         CheckType checkInType1 = CheckType.ANY;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType, checkInType1, checkoutType, finderType
         );
 
         CheckType checkInType2 = CheckType.MASTER;
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType, checkInType2, checkoutType, finderType
         );
 
-        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+        Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalCheckoutTableGeneratorsWithDifferentCheckoutTypes() {
+    void getUnequalTableGeneratorsWithDifferentCheckoutTypes() {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         FinderType finderType = FinderType.DESCENDING;
 
         CheckType checkoutType1 = CheckType.DOUBLE;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType1, finderType
         );
 
         CheckType checkoutType2 = CheckType.ANY;
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType2, finderType
         );
 
-        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+        Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalCheckoutTableGeneratorsWithDifferentFinderTypes() {
+    void getUnequalTableGeneratorsWithDifferentFinderTypes() {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.MASTER;
 
         FinderType finderType1 = FinderType.DESCENDING;
 
-        CheckoutTableGenerator checkoutTableGenerator1 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator1 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType1
         );
 
         FinderType finderType2 = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator2 = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator2 = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType2
         );
 
-        Assertions.assertNotEquals(checkoutTableGenerator1, checkoutTableGenerator2);
+        Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
@@ -1055,14 +1055,14 @@ class MapBasedCheckoutTableGeneratorTests {
         CheckType checkoutType = CheckType.ANY;
         FinderType finderType = FinderType.CARTESIAN;
 
-        CheckoutTableGenerator checkoutTableGenerator = MapBasedCheckoutTableGenerator.of(
+        TableGenerator tableGenerator = MapBasedTableGenerator.of(
                 boardType, checkInType, checkoutType, finderType
         );
 
-        String str = checkoutTableGenerator.toString();
+        String str = tableGenerator.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(checkoutTableGenerator.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains(tableGenerator.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
                 () -> Assertions.assertTrue(str.contains("checkInType")),
                 () -> Assertions.assertTrue(str.contains("checkoutType")),

@@ -7,17 +7,17 @@ package nl.mauritssilvis.darts.java.checkouts.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.OutputFormat;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
+import nl.mauritssilvis.darts.java.tables.Table;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class CheckoutTableSerializerFactoryTests {
+class TableSerializerFactoryTests {
     @Test
-    void getAStringCheckoutTableSerializer() {
+    void getAStringTableSerializer() {
         OutputFormat outputFormat = OutputFormat.STRING;
-        Serializer<CheckoutTable> serializer = CheckoutTableSerializerFactory.create(outputFormat);
+        Serializer<Table> serializer = TableSerializerFactory.create(outputFormat);
 
-        Assertions.assertTrue(serializer instanceof StringCheckoutTableSerializer);
+        Assertions.assertTrue(serializer instanceof StringTableSerializer);
     }
 }
 

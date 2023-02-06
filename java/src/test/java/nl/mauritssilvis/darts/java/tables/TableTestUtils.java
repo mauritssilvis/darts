@@ -13,20 +13,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * A set of testing utilities for processing {@code CheckoutTable} objects.
+ * A set of testing utilities for processing {@code Table} objects.
  */
-public final class CheckoutTableTestUtils {
-    private CheckoutTableTestUtils() {
+public final class TableTestUtils {
+    private TableTestUtils() {
     }
 
     /**
      * Gets the names of the fields of the stored checkouts
      *
-     * @param checkoutTable a checkout table
+     * @param table a checkout table
      * @return a map of the field names
      */
-    public static Map<Integer, List<List<List<String>>>> getAllNames(CheckoutTable checkoutTable) {
-        Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
+    public static Map<Integer, List<List<List<String>>>> getAllNames(Table table) {
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
 
         return checkoutMap.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> CheckoutTestUtils.getAllNames(e.getValue())));
@@ -35,11 +35,11 @@ public final class CheckoutTableTestUtils {
     /**
      * Gets the multiplicities of the stored checkouts per score.
      *
-     * @param checkoutTable a checkout table
+     * @param table a checkout table
      * @return a map of the total multiplicities per score
      */
-    public static Map<Integer, Long> getAllMultiplicities(CheckoutTable checkoutTable) {
-        Map<Integer, List<Checkout>> checkoutMap = checkoutTable.getCheckoutMap();
+    public static Map<Integer, Long> getAllMultiplicities(Table table) {
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
 
         return checkoutMap.entrySet().stream()
                 .collect(Collectors.toMap(

@@ -10,7 +10,7 @@ import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
+import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -19,20 +19,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of the {@code CheckoutTable} interface that uses a map to
+ * An implementation of the {@code Table} interface that uses a map to
  * store checkouts.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
 @EqualsAndHashCode
 @ToString
-public final class MapBasedCheckoutTable implements CheckoutTable {
+public final class MapBasedTable implements Table {
     private final BoardType boardType;
     private final CheckType checkInType;
     private final CheckType checkoutType;
     private final Map<Integer, List<Checkout>> checkoutMap;
 
-    private MapBasedCheckoutTable(
+    private MapBasedTable(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -59,26 +59,26 @@ public final class MapBasedCheckoutTable implements CheckoutTable {
     }
 
     /**
-     * Returns a new {@code MapBasedCheckoutTable} with the specified dartboard
+     * Returns a new {@code MapBasedTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param checkoutMap  the checkout map
-     * @return a new {@code MapBasedCheckoutTable} with the specified dartboard
+     * @return a new {@code MapBasedTable} with the specified dartboard
      * type, check-in type, checkout type and checkout map.
      * @throws IllegalArgumentException if some checkouts in the checkout map do
      *                                  not have the same score as their
      *                                  checkout map key
      */
-    public static CheckoutTable of(
+    public static Table of(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
             Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
-        return new MapBasedCheckoutTable(boardType, checkInType, checkoutType, checkoutMap);
+        return new MapBasedTable(boardType, checkInType, checkoutType, checkoutMap);
     }
 
     @Override

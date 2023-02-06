@@ -17,23 +17,23 @@ import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableBuilder;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
+import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.tables.TableBuilder;
+import nl.mauritssilvis.darts.java.tables.TableGenerator;
 
 import java.util.*;
 import java.util.stream.IntStream;
 
 /**
- * An implementation of the {@code CheckoutTableGenerator} interface that
- * generates {@code MapBasedCheckoutTable} objects.
+ * An implementation of the {@code TableGenerator} interface that
+ * generates {@code MapBasedTable} objects.
  * <p>
  * Relevant design patterns: strategy, lazy initialization, immutable object,
  * static factory method.
  */
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true)
-public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenerator {
+public final class MapBasedTableGenerator implements TableGenerator {
     @ToString.Include
     private final BoardType boardType;
     @ToString.Include
@@ -50,7 +50,7 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
     private final Map<Integer, List<List<Field>>> fieldsPerThrowMap = new HashMap<>();
     private final Map<Integer, CheckoutFinder> checkoutFinderMap = new HashMap<>();
 
-    private MapBasedCheckoutTableGenerator(
+    private MapBasedTableGenerator(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
@@ -68,34 +68,34 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
     }
 
     /**
-     * Returns a new {@code MapBasedCheckoutTableGenerator} with the specified
+     * Returns a new {@code MapBasedTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param finderType   the checkout finder type
-     * @return a new {@code MapBasedCheckoutTableGenerator} with the specified
+     * @return a new {@code MapBasedTableGenerator} with the specified
      * dartboard, check-in and checkout types.
      */
-    public static CheckoutTableGenerator of(
+    public static TableGenerator of(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
-        return new MapBasedCheckoutTableGenerator(boardType, checkInType, checkoutType, finderType);
+        return new MapBasedTableGenerator(boardType, checkInType, checkoutType, finderType);
     }
 
     @Override
-    public CheckoutTable generate(int minScore, int maxScore) {
+    public Table generate(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = getCheckoutMap(minScore, maxScore);
 
-        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create()
+        TableBuilder tableBuilder = MapBasedTableBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
                 .setCheckoutType(checkoutType);
 
-        checkoutMap.forEach(checkoutTableBuilder::setCheckouts);
+        checkoutMap.forEach(tableBuilder::setCheckouts);
 
-        return checkoutTableBuilder.build();
+        return tableBuilder.build();
     }
 
     private static List<Field> getFields(Board board, CheckType checkType) {

@@ -7,15 +7,15 @@ package nl.mauritssilvis.darts.java.checkouts.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.OutputFormat;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
+import nl.mauritssilvis.darts.java.tables.Table;
 
 /**
  * A dartboard serializer factory.
  * <p>
  * Relevant design patterns: helper, parameterized static factory method.
  */
-public final class CheckoutTableSerializerFactory {
-    private CheckoutTableSerializerFactory() {
+public final class TableSerializerFactory {
+    private TableSerializerFactory() {
     }
 
     /**
@@ -26,9 +26,9 @@ public final class CheckoutTableSerializerFactory {
      * @return a new checkout table {@code Serializer} with the specified output
      * format.
      */
-    public static Serializer<CheckoutTable> create(OutputFormat outputFormat) {
+    public static Serializer<Table> create(OutputFormat outputFormat) {
         return switch (outputFormat) {
-            case STRING -> StringCheckoutTableSerializer.create();
+            case STRING -> StringTableSerializer.create();
         };
     }
 }

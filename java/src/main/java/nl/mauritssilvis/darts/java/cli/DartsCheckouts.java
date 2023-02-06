@@ -5,12 +5,12 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
-import nl.mauritssilvis.darts.java.checkouts.output.CheckoutTableSerializerFactory;
+import nl.mauritssilvis.darts.java.checkouts.output.TableSerializerFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.*;
-import nl.mauritssilvis.darts.java.tables.CheckoutTable;
-import nl.mauritssilvis.darts.java.tables.CheckoutTableGenerator;
-import nl.mauritssilvis.darts.java.tables.factory.CheckoutTableGeneratorFactory;
+import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.tables.TableGenerator;
+import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;
@@ -103,14 +103,14 @@ class DartsCheckouts implements Runnable {
 
     @Override
     public void run() {
-        CheckoutTableGenerator generator = CheckoutTableGeneratorFactory.create(
+        TableGenerator generator = TableGeneratorFactory.create(
                 generatorType, boardType, checkInType, checkoutType, finderType
         );
 
-        CheckoutTable checkoutTable = generator.generate(minScore, maxScore);
+        Table table = generator.generate(minScore, maxScore);
 
-        Serializer<CheckoutTable> serializer = CheckoutTableSerializerFactory.create(outputFormat);
-        String output = serializer.serialize(checkoutTable);
+        Serializer<Table> serializer = TableSerializerFactory.create(outputFormat);
+        String output = serializer.serialize(table);
 
         commandSpec.commandLine().getOut().println(output);
     }

@@ -14,7 +14,7 @@ package nl.mauritssilvis.darts.java.tables;
  * Relevant design patterns: strategy, immutable interface.
  */
 @FunctionalInterface
-public interface CheckoutTableGenerator {
+public interface TableGenerator {
     /**
      * Generates a table with checkouts with scores from the specified minimal
      * score to the specified maximal score.
@@ -23,5 +23,5 @@ public interface CheckoutTableGenerator {
      * @param maxScore the maximal score
      * @return a checkout table with the specified minimal and maximal scores
      */
-    CheckoutTable generate(int minScore, int maxScore);
+    Table generate(int minScore, int maxScore);
 }
