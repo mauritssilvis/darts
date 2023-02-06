@@ -428,4 +428,37 @@ class MapBasedCheckoutTableTests {
 
         Assertions.assertNotEquals(checkoutTable1, checkoutTable2);
     }
+
+    @Test
+    void convertToAString() {
+        BoardType boardType = BoardType.LONDON;
+        CheckType checkInType = CheckType.ANY;
+        CheckType checkoutType = CheckType.DOUBLE;
+
+        int score = 3;
+
+        Collection<Collection<Collection<String>>> namesPerCheckout = List.of(
+                List.of(List.of("3")),
+                List.of(List.of("2", "D1"), List.of("1")),
+                List.of(List.of("1"), List.of("1"), List.of("1"))
+        );
+
+        Collection<Checkout> checkouts = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
+
+        Map<Integer, Collection<Checkout>> checkoutMap = Map.of(
+                score, checkouts
+        );
+
+        CheckoutTable checkoutTable = MapBasedCheckoutTable.of(boardType, checkInType, checkoutType, checkoutMap);
+
+        String str = checkoutTable.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkoutTable.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("boardType")),
+                () -> Assertions.assertTrue(str.contains("checkInType")),
+                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("checkoutMap"))
+        );
+    }
 }
