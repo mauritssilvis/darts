@@ -42,9 +42,9 @@ class DartsCheckoutsTests {
                 "The output format.",
                 "<output>",
                 "The minimum score",
-                "<minimum score>",
+                "<minimum>",
                 "The maximum score",
-                "<maximum score>"
+                "<maximum>"
         );
 
         long count = elements.stream()

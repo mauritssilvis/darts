@@ -88,21 +88,15 @@ public class DartsCheckouts implements Runnable {
     private OutputFormat outputFormat;
 
     @Parameters(
-            description = """
-             The minimum score that should be part of the checkout table. If \
-             not specified, the minimum is set equal to the maximum score.\
-             """,
-            arity = "0..1",
-            paramLabel = "<minimum score>",
-            defaultValue = "-1",
+            description = "The minimum score that should be part of the checkout table.",
+            paramLabel = "<minimum>",
             showDefaultValue = CommandLine.Help.Visibility.NEVER
     )
-
     private int minScore;
 
     @Parameters(
             description = "The maximum score that should be part of the checkout table.",
-            paramLabel = "<maximum score>",
+            paramLabel = "<maximum>",
             showDefaultValue = CommandLine.Help.Visibility.NEVER
     )
     private int maxScore;
