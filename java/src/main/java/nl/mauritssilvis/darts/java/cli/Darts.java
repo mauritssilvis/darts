@@ -8,6 +8,8 @@ package nl.mauritssilvis.darts.java.cli;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
+import java.io.PrintWriter;
+
 /**
  * The command-line interface for darts -- A computational toolbox aimed at the
  * game of darts.
@@ -53,17 +55,28 @@ public final class Darts implements App {
     }
 
     @Override
-    public CommandLine getCommandLine() {
+    public App setOut(PrintWriter out) {
+        getCommandLine().setOut(out);
+        return this;
+    }
+
+    @Override
+    public App setErr(PrintWriter err) {
+        getCommandLine().setErr(err);
+        return this;
+    }
+
+    @Override
+    public int execute(String[] args) {
+        return getCommandLine().execute(args);
+    }
+
+    private CommandLine getCommandLine() {
         if (commandLine == null) {
             commandLine = new CommandLine(this)
                     .setCaseInsensitiveEnumValuesAllowed(true);
         }
 
         return commandLine;
-    }
-
-    @Override
-    public int execute(String[] args) {
-        return getCommandLine().execute(args);
     }
 }

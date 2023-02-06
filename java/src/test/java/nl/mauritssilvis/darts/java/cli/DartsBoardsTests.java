@@ -22,9 +22,9 @@ class DartsBoardsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        App darts = Darts.create();
-        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
-        darts.execute(args);
+        Darts.create()
+                .setOut(new PrintWriter(stringWriter))
+                .execute(args);
 
         String output = stringWriter.toString();
 
@@ -53,9 +53,9 @@ class DartsBoardsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        App darts = Darts.create();
-        darts.getCommandLine().setOut(new PrintWriter(stringWriter));
-        darts.execute(args);
+        Darts.create()
+                .setOut(new PrintWriter(stringWriter))
+                .execute(args);
 
         String output = stringWriter.toString();
 

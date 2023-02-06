@@ -5,18 +5,31 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
-import picocli.CommandLine;
+import java.io.PrintWriter;
 
 /**
- * A picocli-based command-line application.
+ * A command-line application.
+ * <p>
+ * Relevant design patterns: fluent interface.
  */
 public interface App {
     /**
-     * Gets the {@code CommandLine} object of this application.
+     * Sets the writer to use when printing objects.
+     * <p>
+     * If no writer is set, objects are written to the standard output stream.
      *
-     * @return the {@code CommandLine} object of this application
+     * @param out the print writer
      */
-    CommandLine getCommandLine();
+    App setOut(PrintWriter out);
+
+    /**
+     * Sets the writer to use when printing error messages.
+     * <p>
+     * If no writer is set, messages are written to the standard error stream.
+     *
+     * @param err the print writer
+     */
+    App setErr(PrintWriter err);
 
     /**
      * Executes this command-line application with the specified arguments.
