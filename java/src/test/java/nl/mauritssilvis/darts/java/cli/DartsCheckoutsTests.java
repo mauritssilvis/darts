@@ -53,4 +53,40 @@ class DartsCheckoutsTests {
 
         Assertions.assertEquals(elements.size(), count);
     }
+
+    @Test
+    void getACheckoutTableString() {
+        String[] args = {
+                "checkouts",
+                "-b", "Yorkshire",
+                "-i", "master",
+                "-j", "master",
+                "-f", "Cartesian",
+                "-t", "map",
+                "-o", "string",
+                "1",
+                "1"
+        };
+
+        StringWriter stringWriter = new StringWriter();
+
+        Darts.create()
+                .setOut(new PrintWriter(stringWriter))
+                .execute(args);
+
+        String output = stringWriter.toString();
+
+        List<String> elements = List.of(
+                "CheckoutTable",
+                "YORKSHIRE",
+                "MASTER",
+                "score=1"
+        );
+
+        long count = elements.stream()
+                .filter(output::contains)
+                .count();
+
+        Assertions.assertEquals(elements.size(), count);
+    }
 }
