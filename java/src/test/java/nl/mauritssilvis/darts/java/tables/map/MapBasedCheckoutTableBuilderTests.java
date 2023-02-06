@@ -299,12 +299,10 @@ class MapBasedCheckoutTableBuilderTests {
     @Test
     void convertToAString() {
         CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
-        CheckoutTable checkoutTable = checkoutTableBuilder.build();
-
-        String str = checkoutTable.toString();
+        String str = checkoutTableBuilder.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(checkoutTable.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains(checkoutTableBuilder.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
                 () -> Assertions.assertTrue(str.contains("checkInType")),
                 () -> Assertions.assertTrue(str.contains("checkoutType")),
