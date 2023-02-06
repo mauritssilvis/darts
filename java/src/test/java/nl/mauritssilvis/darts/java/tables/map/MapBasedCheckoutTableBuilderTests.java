@@ -295,4 +295,20 @@ class MapBasedCheckoutTableBuilderTests {
 
         Assertions.assertNotEquals(checkoutTableBuilder1, checkoutTableBuilder2);
     }
+
+    @Test
+    void convertToAString() {
+        CheckoutTableBuilder checkoutTableBuilder = MapBasedCheckoutTableBuilder.create();
+        CheckoutTable checkoutTable = checkoutTableBuilder.build();
+
+        String str = checkoutTable.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(checkoutTable.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("boardType")),
+                () -> Assertions.assertTrue(str.contains("checkInType")),
+                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("checkoutMap"))
+        );
+    }
 }

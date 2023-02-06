@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.tables.map;
 
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
@@ -23,6 +24,7 @@ import java.util.Map;
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
+@ToString
 public final class MapBasedCheckoutTableBuilder implements CheckoutTableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
