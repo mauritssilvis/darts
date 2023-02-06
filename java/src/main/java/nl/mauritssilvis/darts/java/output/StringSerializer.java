@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.java.output;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
@@ -16,7 +18,10 @@ import java.util.stream.IntStream;
  * @param <T> the type of object to be serialized
  */
 public abstract class StringSerializer<T> implements Serializer<T> {
-    private static final Pattern PATTERN = Pattern.compile("\\n *\\n");
+    private static final List<Character> OPENING_BRACKETS = List.of('(', '[');
+    private static final List<Character> CLOSING_BRACKETS = List.of(')', ']');
+    private static final List<Character> DELIMITERS = Collections.singletonList(',');
+    private static final Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
 
     @Override
     public String serialize(T object) {
@@ -27,22 +32,25 @@ public abstract class StringSerializer<T> implements Serializer<T> {
         int indentation = 0;
 
         for (char ch : str.toCharArray()) {
-            if (ch == ')' || ch == ']') {
+            if (CLOSING_BRACKETS.contains(ch)) {
                 indentation -= 2;
                 addNewline(stringBuilder, indentation);
             }
 
             stringBuilder.append(ch);
 
-            if (ch == '(' || ch == '[') {
+            if (OPENING_BRACKETS.contains(ch)) {
                 indentation += 2;
                 addNewline(stringBuilder, indentation);
-            } else if (ch == ',') {
+            } else if (DELIMITERS.contains(ch)) {
                 addNewline(stringBuilder, indentation - 1);
             }
         }
 
-        return PATTERN.matcher(stringBuilder.toString()).replaceAll("\n");
+        String indentedStr = stringBuilder.toString();
+
+        return DOUBLE_NEWLINES.matcher(indentedStr)
+                .replaceAll("\n");
     }
 
     private static void addNewline(StringBuilder stringBuilder, int indentation) {
