@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
+import nl.mauritssilvis.darts.java.boards.Board;
+import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import picocli.CommandLine;
 
@@ -14,6 +16,9 @@ import picocli.CommandLine;
         showDefaultValues = true
 )
 public class DartsBoards implements Runnable {
+    @CommandLine.Spec
+    CommandLine.Model.CommandSpec commandSpec;
+
     @CommandLine.Parameters(
             description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
             arity = "1..*",
@@ -22,6 +27,7 @@ public class DartsBoards implements Runnable {
     private BoardType boardType;
 
     public void run() {
-        System.out.println("boards");
+        Board board = BoardFactory.create(boardType);
+        commandSpec.commandLine().getOut().println(board);
     }
 }

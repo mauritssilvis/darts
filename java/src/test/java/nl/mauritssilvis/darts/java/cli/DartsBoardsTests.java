@@ -5,8 +5,11 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
+import nl.mauritssilvis.darts.java.settings.BoardType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import picocli.CommandLine;
 
 import java.io.PrintWriter;
@@ -20,9 +23,9 @@ class DartsBoardsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        CommandLine commandLine = new CommandLine(darts);
-        commandLine.setOut(new PrintWriter(stringWriter));
-        commandLine.execute(args);
+        new CommandLine(darts)
+                .setOut(new PrintWriter(stringWriter))
+                .execute(args);
 
         String actual = stringWriter.toString();
 
@@ -39,5 +42,35 @@ class DartsBoardsTests {
                 () -> Assertions.assertTrue(actual.contains(expected4)),
                 () -> Assertions.assertTrue(actual.contains(expected5))
         );
+    }
+
+    @ParameterizedTest
+    @EnumSource(BoardType.class)
+    void getADartboard(BoardType boardType) {
+        String boardName = getBoardName(boardType);
+
+        Darts darts = new Darts();
+        String[] args = {"boards", boardName};
+
+        StringWriter stringWriter = new StringWriter();
+
+        new CommandLine(darts)
+                .setCaseInsensitiveEnumValuesAllowed(true)
+                .setOut(new PrintWriter(stringWriter))
+                .execute(args);
+
+        String output = stringWriter.toString();
+
+        Assertions.assertTrue(output.contains(boardName));
+    }
+
+    private static String getBoardName(BoardType boardType) {
+        String fullName = boardType.toString();
+        String shortName = fullName.split("\\.")[1];
+
+        char first = shortName.charAt(0);
+        String rest = shortName.substring(1);
+
+        return first + rest.toLowerCase();
     }
 }
