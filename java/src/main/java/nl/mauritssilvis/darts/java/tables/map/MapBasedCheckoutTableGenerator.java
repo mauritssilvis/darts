@@ -79,10 +79,7 @@ public final class MapBasedCheckoutTableGenerator implements CheckoutTableGenera
      * dartboard, check-in and checkout types.
      */
     public static CheckoutTableGenerator of(
-            BoardType boardType,
-            CheckType checkInType,
-            CheckType checkoutType,
-            FinderType finderType
+            BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
         return new MapBasedCheckoutTableGenerator(boardType, checkInType, checkoutType, finderType);
     }
