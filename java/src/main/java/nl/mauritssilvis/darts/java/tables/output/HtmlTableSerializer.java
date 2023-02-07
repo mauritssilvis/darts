@@ -39,6 +39,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         private final String scoreFormat;
         private final String throwFormat;
         private final String fieldFormat;
+        private final String emptyFieldFormat;
         private final String multiplicityFormat;
         private final int numThrows;
 
@@ -50,6 +51,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + getFieldWidth() + "s";
+            emptyFieldFormat = "%1$" + (throwWidth / getThrowSize()) + "s";
             multiplicityFormat = "%1$" + getMultiplicityWidth() + "s";
 
             numThrows = getNumThrows();
@@ -195,9 +197,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void addEmptyFieldBefore() {
-            startField();
-            addField("");
-            endField();
+            stringBuilder.append(String.format(emptyFieldFormat, ""));
         }
 
         @Override
