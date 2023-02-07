@@ -198,7 +198,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
                     .mapToObj(i ->
                             "|" + IntStream.range(0, columnWidth)
                                     .mapToObj(j -> " ")
-                                    .collect(Collectors.joining()) + "- "
+                                    .collect(Collectors.joining()) + "* "
                     )
                     .forEach(stringBuilder::append);
 
@@ -221,10 +221,10 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
             Collection<Throw> throwCollection = checkout.getThrows();
 
+            throwCollection.forEach(t -> writeThrow(stringBuilder, t));
+
             IntStream.range(0, numThrows - throwCollection.size())
                     .forEach(i -> writeEmptyThrow(stringBuilder));
-
-            throwCollection.forEach(t -> writeThrow(stringBuilder, t));
 
             stringBuilder.append(String.format(multiplicityFormat, checkout.getMultiplicity()))
                     .append("|\n");
