@@ -30,6 +30,12 @@ public final class BoardSerializerFactory {
         return switch (outputFormat) {
             case STRING -> StringBoardSerializer.create();
             case MARKDOWN -> MarkdownBoardSerializer.create();
+            case JSON -> throw new UnsupportedOperationException(
+                    "Dartboards do not yet support serialization to JSON."
+            );
+            case HTML -> throw new UnsupportedOperationException(
+                    "Dartboards do not yet support serialization to HTML."
+            );
         };
     }
 }

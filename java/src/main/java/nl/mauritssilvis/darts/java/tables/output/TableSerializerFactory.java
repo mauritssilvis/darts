@@ -30,6 +30,12 @@ public final class TableSerializerFactory {
         return switch (outputFormat) {
             case STRING -> StringTableSerializer.create();
             case MARKDOWN -> MarkdownTableSerializer.create();
+            case JSON -> throw new UnsupportedOperationException(
+                    "Checkout tables do not yet support serialization to JSON."
+            );
+            case HTML -> throw new UnsupportedOperationException(
+                    "Checkout tables do not yet support serialization to HTML."
+            );
         };
     }
 }

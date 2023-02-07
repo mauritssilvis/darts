@@ -20,5 +20,15 @@ public enum OutputFormat {
     /**
      * Markdown output.
      */
-    MARKDOWN
+    MARKDOWN,
+
+    /**
+     * JSON output.
+     */
+    JSON,
+
+    /**
+     * HTML output.
+     */
+    HTML
 }

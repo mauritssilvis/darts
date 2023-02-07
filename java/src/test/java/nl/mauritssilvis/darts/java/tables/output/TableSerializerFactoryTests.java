@@ -27,4 +27,19 @@ class TableSerializerFactoryTests {
 
         Assertions.assertTrue(serializer instanceof MarkdownTableSerializer);
     }
+
+
+    @Test
+    void doNotGetAJsonBoardSerializer() {
+        OutputFormat outputFormat = OutputFormat.JSON;
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> TableSerializerFactory.create(outputFormat));
+    }
+
+    @Test
+    void doNotGetAnHTMLBoardSerializer() {
+        OutputFormat outputFormat = OutputFormat.HTML;
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> TableSerializerFactory.create(outputFormat));
+    }
 }

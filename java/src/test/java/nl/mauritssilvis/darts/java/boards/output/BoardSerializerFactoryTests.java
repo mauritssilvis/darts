@@ -27,4 +27,18 @@ class BoardSerializerFactoryTests {
 
         Assertions.assertTrue(serializer instanceof MarkdownBoardSerializer);
     }
+
+    @Test
+    void doNotGetAJsonBoardSerializer() {
+        OutputFormat outputFormat = OutputFormat.JSON;
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> BoardSerializerFactory.create(outputFormat));
+    }
+
+    @Test
+    void doNotGetAnHTMLBoardSerializer() {
+        OutputFormat outputFormat = OutputFormat.HTML;
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> BoardSerializerFactory.create(outputFormat));
+    }
 }
