@@ -17,7 +17,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 class HtmlBoardSerializerTests {
     @Test
     void getAnHtmlBoard() {
-        BoardType boardType = BoardType.LONDON;
+        BoardType boardType = BoardType.YORKSHIRE;
         Board board = BoardFactory.create(boardType);
         Serializer<Board> serializer = HtmlBoardSerializer.create();
 
@@ -25,22 +25,30 @@ class HtmlBoardSerializerTests {
 
         Assertions.assertEquals(
                 """
-                        <table>
-                          <tr><th class="s">Score</th><th class="t"><span class="f">   </span><span class="f">  1</span></th><th class="t"><span class="f">     2 </span></th><th class="m"> #</th></tr>
-                          <tr><td class="s">   22</td><td class="t"><span class="f">   </span><span class="f">  *</span></td><td class="t"><span class="f">     * </span></td><td class="m"> 1</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f">D11</span></td><td class="t"><span class="f">     - </span></td><td class="m"> 1</td></tr>
-                          <tr><td class="s">   23</td><td class="t"><span class="f">   </span><span class="f">  *</span></td><td class="t"><span class="f">     * </span></td><td class="m">38</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f">D11</span></td><td class="t"><span class="f">     1 </span></td><td class="m"> 2</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 20</span><span class="f">D10</span></td><td class="t"><span class="f">     3 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 19</span></td><td class="t"><span class="f"> 4/ D2 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 18</span><span class="f"> D9</span></td><td class="t"><span class="f">     5 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 17</span></td><td class="t"><span class="f"> 6/ D3 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 16</span><span class="f"> D8</span></td><td class="t"><span class="f">     7 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 15</span></td><td class="t"><span class="f"> 8/ D4 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 14</span><span class="f"> D7</span></td><td class="t"><span class="f">     9 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 13</span></td><td class="t"><span class="f">10/ D5 </span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 12</span><span class="f"> D6</span></td><td class="t"><span class="f">    11 </span></td><td class="m"> 4</td></tr>
-                        </table>
+                <table>
+                  <tr><th>  S</th><th>  D</th></tr>
+                  <tr><td>  1</td><td> D1</td></tr>
+                  <tr><td>  2</td><td> D2</td></tr>
+                  <tr><td>  3</td><td> D3</td></tr>
+                  <tr><td>  4</td><td> D4</td></tr>
+                  <tr><td>  5</td><td> D5</td></tr>
+                  <tr><td>  6</td><td> D6</td></tr>
+                  <tr><td>  7</td><td> D7</td></tr>
+                  <tr><td>  8</td><td> D8</td></tr>
+                  <tr><td>  9</td><td> D9</td></tr>
+                  <tr><td> 10</td><td>D10</td></tr>
+                  <tr><td> 11</td><td>D11</td></tr>
+                  <tr><td> 12</td><td>D12</td></tr>
+                  <tr><td> 13</td><td>D13</td></tr>
+                  <tr><td> 14</td><td>D14</td></tr>
+                  <tr><td> 15</td><td>D15</td></tr>
+                  <tr><td> 16</td><td>D16</td></tr>
+                  <tr><td> 17</td><td>D17</td></tr>
+                  <tr><td> 18</td><td>D18</td></tr>
+                  <tr><td> 19</td><td>D19</td></tr>
+                  <tr><td> 20</td><td>D20</td></tr>
+                  <tr><td>  -</td><td>D25</td></tr>
+                </table>
                         """,
                 output);
     }
