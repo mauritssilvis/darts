@@ -20,6 +20,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add the London dartboard (`LondonBoard`).
 - Add the Quadro dartboard (`QuadroBoard`).
 - Add the Yorkshire dartboard (`YorkshireBoard`).
+- Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
 
 #### Checkout finders
 
@@ -30,6 +31,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
 - Add support for master and double check-ins and checkouts (`CheckType`).
+- Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
 
 #### Command-line interface
 
