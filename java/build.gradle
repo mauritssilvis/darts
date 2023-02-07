@@ -36,6 +36,6 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'nl.mauritssilvis.darts.java.cli.Darts'
+        attributes 'Main-Class': 'nl.mauritssilvis.darts.java.cli.DartsApp'
     }
 }
