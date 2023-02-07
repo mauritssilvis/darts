@@ -30,3 +30,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
 - Add support for master and double check-ins and checkouts (`CheckType`).
+
+#### Command-line interface
+
+- Add a command-line interface (`Darts`).
+- Add a command to print dartboards (`DartsBoards`).
+- Add a command to print checkout tables (`DartsCheckouts`).
