@@ -29,7 +29,7 @@ import picocli.CommandLine.Spec;
         sortSynopsis = false,
         showDefaultValues = true
 )
-class DartsCheckouts implements Runnable {
+class CheckoutsCommand implements Runnable {
     @Spec
     private CommandSpec commandSpec;
 

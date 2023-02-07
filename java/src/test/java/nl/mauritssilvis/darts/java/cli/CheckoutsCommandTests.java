@@ -12,14 +12,14 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
 
-class DartsCheckoutsTests {
+class CheckoutsCommandTests {
     @Test
     void getHelp() {
         String[] args = {"help", "checkouts"};
 
         StringWriter stringWriter = new StringWriter();
 
-        Darts.create()
+        DartsApp.create()
                 .setOut(new PrintWriter(stringWriter))
                 .execute(args);
 
@@ -70,7 +70,7 @@ class DartsCheckoutsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        Darts.create()
+        DartsApp.create()
                 .setOut(new PrintWriter(stringWriter))
                 .execute(args);
 

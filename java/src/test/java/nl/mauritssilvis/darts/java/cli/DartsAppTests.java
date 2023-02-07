@@ -14,11 +14,11 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
 
-class DartsTests {
+class DartsAppTests {
     @Test
     void startTheApplication() {
         String[] args = {"-V"};
-        Assertions.assertDoesNotThrow(() -> Darts.main(args));
+        Assertions.assertDoesNotThrow(() -> DartsApp.main(args));
     }
 
     @Test
@@ -27,7 +27,7 @@ class DartsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        Darts.create()
+        DartsApp.create()
                 .setErr(new PrintWriter(stringWriter))
                 .execute(args);
 
@@ -43,7 +43,7 @@ class DartsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        Darts.create()
+        DartsApp.create()
                 .setOut(new PrintWriter(stringWriter))
                 .execute(args);
 
@@ -71,7 +71,7 @@ class DartsTests {
 
         StringWriter stringWriter = new StringWriter();
 
-        Darts.create()
+        DartsApp.create()
                 .setOut(new PrintWriter(stringWriter))
                 .execute(args);
 

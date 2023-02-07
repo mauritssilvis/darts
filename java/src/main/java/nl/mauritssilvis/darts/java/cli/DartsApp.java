@@ -22,8 +22,8 @@ import java.io.PrintWriter;
         name = "darts",
         subcommands = {
                 CommandLine.HelpCommand.class,
-                DartsBoards.class,
-                DartsCheckouts.class
+                BoardsCommand.class,
+                CheckoutsCommand.class
         },
         version = {"darts 0.1.0", "Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"},
         mixinStandardHelpOptions = true,
@@ -31,10 +31,10 @@ import java.io.PrintWriter;
         showDefaultValues = true,
         footer = {"Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
-public final class Darts implements App {
+public final class DartsApp implements App {
     private CommandLine commandLine;
 
-    private Darts() {
+    private DartsApp() {
     }
 
     /**
@@ -53,7 +53,7 @@ public final class Darts implements App {
      * @return a new {@code Darts} command-line application.
      */
     public static App create() {
-        return new Darts();
+        return new DartsApp();
     }
 
     @Override
