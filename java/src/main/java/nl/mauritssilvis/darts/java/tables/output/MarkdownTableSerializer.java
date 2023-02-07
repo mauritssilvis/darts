@@ -44,20 +44,18 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
     }
 
     private static class Printer {
-        private final Map<Integer, List<Checkout>> checkoutMap;
+        private final Map<Integer, ? extends List<Checkout>> checkoutMap;
         private final Map<Integer, Long> multiplicityMap;
         private final int scoreWidth;
         private final int multiplicityWidth;
         private final int numThrows;
-        private final int throwSize;
-        private final int nameWidth;
         private final int columnWidth;
         private final String scoreFormat;
         private final String multiplicityFormat;
         private final String columnFormat;
         private final String nameFormat;
 
-        Printer(Map<Integer, List<Checkout>> checkoutMap) {
+        Printer(Map<Integer, ? extends List<Checkout>> checkoutMap) {
             this.checkoutMap = checkoutMap;
             multiplicityMap = getMultiplicityMap(checkoutMap);
 
@@ -69,8 +67,8 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
             multiplicityWidth = getMultiplicityWidth(multiplicityMap.values());
 
             numThrows = getMaxNumThrows(checkouts);
-            throwSize = getMaxThrowSize(checkouts);
-            nameWidth = getNameWidth(checkouts);
+            int throwSize = getMaxThrowSize(checkouts);
+            int nameWidth = getNameWidth(checkouts);
             columnWidth = nameWidth * throwSize + throwSize - 1;
 
             scoreFormat = "| %1$" + scoreWidth + "s ";
