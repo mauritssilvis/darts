@@ -5,12 +5,12 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
-import nl.mauritssilvis.darts.java.checkouts.output.TableSerializerFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
+import nl.mauritssilvis.darts.java.tables.output.TableSerializerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;
