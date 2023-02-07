@@ -21,9 +21,10 @@ class BoardSerializerFactoryTests {
     }
 
     @Test
-    void doNotGetAMarkdownBoardSerializer() {
+    void getAMarkdownBoardSerializer() {
         OutputFormat outputFormat = OutputFormat.MARKDOWN;
+        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> BoardSerializerFactory.create(outputFormat));
+        Assertions.assertTrue(serializer instanceof MarkdownBoardSerializer);
     }
 }
