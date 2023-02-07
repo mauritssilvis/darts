@@ -82,7 +82,7 @@ class DartsCheckouts implements Runnable {
             names = {"-o", "--output"},
             description = "The output format. Supported values: markdown, string.",
             paramLabel = "<output>",
-            defaultValue = "string",
+            defaultValue = "markdown",
             order = 5
     )
     private OutputFormat outputFormat;
