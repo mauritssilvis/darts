@@ -71,9 +71,9 @@ class DartsCheckouts implements Runnable {
 
     @Option(
             names = {"-t", "--table"},
-            description = "The checkout table type. Supported values: map.",
+            description = "The checkout table type. Supported values: ascending.",
             paramLabel = "<table>",
-            defaultValue = "map",
+            defaultValue = "ascending",
             order = 4
     )
     private TableType tableType;

@@ -62,7 +62,7 @@ class DartsCheckoutsTests {
                 "-i", "master",
                 "-j", "master",
                 "-f", "Cartesian",
-                "-t", "map",
+                "-t", "ascending",
                 "-o", "string",
                 "2",
                 "2"
