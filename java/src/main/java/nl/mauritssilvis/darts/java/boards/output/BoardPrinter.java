@@ -33,17 +33,8 @@ abstract class BoardPrinter {
         fieldsMap = fieldTypes.stream()
                 .collect(Collectors.toMap(Function.identity(), board::getFields, (e1, e2) -> e1, LinkedHashMap::new));
 
-        numFields = fieldsMap.values().stream()
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
-
-        fieldWidth = fieldsMap.values().stream()
-                .flatMap(Collection::stream)
-                .map(Field::getName)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
+        numFields = determineNumFields(fieldsMap.values());
+        fieldWidth = determineFieldWidth(fieldsMap.values());
     }
 
     int getNumFields() {
@@ -129,4 +120,20 @@ abstract class BoardPrinter {
     abstract void endEmptyField();
 
     abstract String getString();
+
+    private static int determineNumFields(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+        return fieldsPerType.stream()
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int determineFieldWidth(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+        return fieldsPerType.stream()
+                .flatMap(Collection::stream)
+                .map(Field::getName)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
+    }
 }

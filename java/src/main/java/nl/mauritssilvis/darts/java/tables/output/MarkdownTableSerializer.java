@@ -121,7 +121,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         private static int getMaxNumThrows(Collection<? extends Checkout> checkouts) {
             return checkouts.stream()
                     .map(Checkout::getThrows)
-                    .mapToInt(List::size)
+                    .mapToInt(Collection::size)
                     .max()
                     .orElse(0);
         }
@@ -131,7 +131,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
                     .map(Checkout::getThrows)
                     .flatMap(Collection::stream)
                     .map(Throw::getFields)
-                    .mapToInt(List::size)
+                    .mapToInt(Collection::size)
                     .max()
                     .orElse(0);
         }
