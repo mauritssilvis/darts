@@ -33,6 +33,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
 - Add support for master and double check-ins and checkouts (`CheckType`).
 - Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
+- Add a Markdown serializer for dartboards (`MarkdownTableSerializer`).
 
 #### Command-line interface
 
