@@ -15,5 +15,10 @@ public enum OutputFormat {
     /**
      * Java string representation output.
      */
-    STRING
+    STRING,
+
+    /**
+     * Markdown output.
+     */
+    MARKDOWN
 }

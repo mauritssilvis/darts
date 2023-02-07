@@ -29,6 +29,9 @@ public final class TableSerializerFactory {
     public static Serializer<Table> create(OutputFormat outputFormat) {
         return switch (outputFormat) {
             case STRING -> StringTableSerializer.create();
+            case MARKDOWN -> throw new UnsupportedOperationException(
+                    "Checkout tables do not yet support serialization to Markdown"
+            );
         };
     }
 }

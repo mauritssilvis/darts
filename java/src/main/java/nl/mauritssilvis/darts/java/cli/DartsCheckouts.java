@@ -80,7 +80,7 @@ class DartsCheckouts implements Runnable {
 
     @Option(
             names = {"-o", "--output"},
-            description = "The output format. Supported values: string.",
+            description = "The output format. Supported values: markdown, string.",
             paramLabel = "<output>",
             defaultValue = "string",
             order = 5

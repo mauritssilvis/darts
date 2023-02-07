@@ -19,5 +19,11 @@ class TableSerializerFactoryTests {
 
         Assertions.assertTrue(serializer instanceof StringTableSerializer);
     }
-}
 
+    @Test
+    void doNotGetAMarkdownTableSerializer() {
+        OutputFormat outputFormat = OutputFormat.MARKDOWN;
+
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> TableSerializerFactory.create(outputFormat));
+    }
+}

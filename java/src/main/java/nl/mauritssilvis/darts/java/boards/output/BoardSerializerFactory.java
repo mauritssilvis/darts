@@ -29,6 +29,9 @@ public final class BoardSerializerFactory {
     public static Serializer<Board> create(OutputFormat outputFormat) {
         return switch (outputFormat) {
             case STRING -> StringBoardSerializer.create();
+            case MARKDOWN -> throw new UnsupportedOperationException(
+                    "Dartboards do not yet support serialization to Markdown"
+            );
         };
     }
 }
