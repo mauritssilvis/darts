@@ -6,14 +6,12 @@
 package nl.mauritssilvis.darts.java.boards.output;
 
 import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
 import nl.mauritssilvis.darts.java.output.Serializer;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -38,101 +36,132 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
 
     @Override
     public String serialize(Board object) {
-        List<List<Field>> allFields = getAllFields(object);
-        int columnWidth = getColumnWidth(allFields);
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        writeHeader(stringBuilder, allFields, columnWidth);
-        writeFields(stringBuilder, allFields, columnWidth);
-
-        return stringBuilder.toString();
+        return new MarkdownBoardPrinter(object).print();
     }
 
-    private static int getColumnWidth(Collection<? extends Collection<? extends Field>> selectedFields) {
-        return selectedFields.stream()
-                .flatMap(Collection::stream)
-                .map(Field::getName)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
-    }
+    private static class MarkdownBoardPrinter extends BoardPrinter {
+        private final Map<Integer, StringBuilder> builderMap;
+        private final String columnFormat;
+        private int row;
 
-    private static List<List<Field>> getAllFields(Board object) {
-        return Arrays.stream(FieldType.values())
-                .map(object::getFields)
-                .filter(Predicate.not(Collection::isEmpty))
-                .toList();
-    }
+        private MarkdownBoardPrinter(Board board) {
+            super(board);
 
-    private static void writeHeader(
-            StringBuilder stringBuilder,
-            Collection<? extends List<? extends Field>> allFields,
-            int columnWidth
-    ) {
-        String padding = IntStream.range(0, columnWidth)
-                .mapToObj(i -> " ")
-                .collect(Collectors.joining());
+            builderMap = new HashMap<>();
+            IntStream.range(0, getNumFields() + 2)
+                    .forEach(i -> builderMap.put(i, new StringBuilder()));
 
-        String rule = padding.replace(" ", "-");
+            columnFormat = "%1$" + getFieldWidth() + "s";
+        }
 
-        List<String> columnNames = allFields.stream()
-                .map(fields -> fields.get(0))
-                .map(Field::getFieldType)
-                .map(MarkdownBoardSerializer::getFieldInitial)
-                .toList();
+        @Override
+        void startTable() {
+        }
 
-        IntStream.range(0, allFields.size())
-                .mapToObj(i -> String.format("| %1$" + columnWidth + "s ", columnNames.get(i)))
-                .forEach(stringBuilder::append);
+        @Override
+        void endTable() {
+            builderMap.values().forEach(e -> e.append("|\n"));
+        }
 
-        stringBuilder.append("|\n");
+        @Override
+        void startFields(FieldType fieldType) {
+            String typeInitial = getTypeInitial(fieldType);
 
-        IntStream.range(0, allFields.size())
-                .mapToObj(i -> "|-" + rule + ":")
-                .forEach(stringBuilder::append);
+            builderMap.get(row)
+                    .append("| ")
+                    .append(String.format(columnFormat, typeInitial))
+                    .append(' ');
 
-        stringBuilder.append("|\n");
-    }
+            nextRow();
 
-    private static String getFieldInitial(FieldType fieldType) {
-        String fullName = fieldType.toString();
-        String shortName = fullName.split("\\.")[1];
-        return shortName.substring(0, 1);
-    }
+            builderMap.get(row)
+                    .append("|-")
+                    .append(String.format(columnFormat, "").replace(' ', '-'))
+                    .append(':');
 
-    private static void writeFields(
-            StringBuilder stringBuilder,
-            Collection<? extends Collection<? extends Field>> allFields,
-            int columnWidth
-    ) {
-        List<List<String>> allNames = allFields.stream()
-                .map(fields -> fields.stream()
-                        .map(Field::getName)
-                        .toList())
-                .toList();
+            nextRow();
+        }
 
-        int numRows = allNames.stream()
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
+        @Override
+        void endFields() {
+        }
 
-        String empty = IntStream.range(0, columnWidth)
-                .mapToObj(i -> " ")
-                .collect(Collectors.joining()) + "- ";
+        @Override
+        void separateFields() {
+        }
 
-        for (int i = 0; i < numRows; i++) {
-            for (List<String> names : allNames) {
-                if (names.size() <= i) {
-                    stringBuilder.append("|").append(empty);
-                } else {
-                    String name = names.get(i);
-                    String paddedName = String.format("%1$" + columnWidth + "s", name);
-                    stringBuilder.append("| ").append(paddedName).append(' ');
-                }
-            }
+        @Override
+        void endLastFields() {
+        }
 
-            stringBuilder.append("|\n");
+        @Override
+        void separateEmptyFields() {
+        }
+
+        @Override
+        void startField() {
+            builderMap.get(row).append("| ");
+        }
+
+        @Override
+        void addField(String name) {
+            builderMap.get(row).append(String.format(columnFormat, name));
+        }
+
+        @Override
+        void endField() {
+            builderMap.get(row).append(' ');
+            nextRow();
+        }
+
+        @Override
+        void separateField() {
+        }
+
+        @Override
+        void endLastField() {
+        }
+
+        @Override
+        void startEmptyField() {
+            startField();
+        }
+
+        @Override
+        void addEmptyField() {
+            addField("-");
+        }
+
+        @Override
+        void endEmptyField() {
+            endField();
+        }
+
+        @Override
+        void separateEmptyField() {
+        }
+
+        @Override
+        void endLastEmptyField() {
+        }
+
+        @Override
+        String getString() {
+            return builderMap.entrySet().stream()
+                    .sorted(Comparator.comparingInt(Map.Entry::getKey))
+                    .map(Map.Entry::getValue)
+                    .map(StringBuilder::toString)
+                    .collect(Collectors.joining());
+        }
+
+        private void nextRow() {
+            row = (row + 1) % builderMap.size();
+        }
+
+        private static String getTypeInitial(FieldType fieldType) {
+            String fullName = fieldType.toString();
+            String shortName = fullName.split("\\.")[1];
+            return shortName.substring(0, 1);
         }
     }
 }

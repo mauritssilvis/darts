@@ -23,6 +23,7 @@ abstract class BoardPrinter {
     private final List<FieldType> fieldTypes;
     private final Map<FieldType, List<Field>> fieldsMap;
     private final int numFields;
+    private final int fieldWidth;
 
     BoardPrinter(Board board) {
         fieldTypes = Arrays.stream(FieldType.values())
@@ -36,10 +37,21 @@ abstract class BoardPrinter {
                 .mapToInt(Collection::size)
                 .max()
                 .orElse(0);
+
+        fieldWidth = fieldsMap.values().stream()
+                .flatMap(Collection::stream)
+                .map(Field::getName)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
     }
 
     int getNumFields() {
         return numFields;
+    }
+
+    int getFieldWidth() {
+        return fieldWidth;
     }
 
     String print() {
