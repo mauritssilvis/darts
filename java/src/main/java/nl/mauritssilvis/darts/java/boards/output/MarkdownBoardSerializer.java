@@ -64,7 +64,7 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void startFields(FieldType fieldType) {
+        void startType(FieldType fieldType) {
             String typeInitial = getTypeInitial(fieldType);
 
             builderMap.get(row)
@@ -83,15 +83,15 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void endFields() {
+        void endType() {
         }
 
         @Override
-        void separateFields() {
+        void separateType() {
         }
 
         @Override
-        void endLastFields() {
+        void endLastType() {
         }
 
         @Override

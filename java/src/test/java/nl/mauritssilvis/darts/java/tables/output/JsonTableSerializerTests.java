@@ -206,6 +206,6 @@ class JsonTableSerializerTests {
 
         String output = serializer.serialize(table);
 
-        Assertions.assertTrue(output.startsWith("{\n\"2\": {"));
+        Assertions.assertTrue(output.startsWith("{\n    \"2\": {"));
     }
 }

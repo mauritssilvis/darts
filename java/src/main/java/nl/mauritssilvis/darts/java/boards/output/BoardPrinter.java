@@ -47,61 +47,71 @@ abstract class BoardPrinter {
 
     String print() {
         startBoard();
-
-        for (int i = 0; i < fieldTypes.size(); i++) {
-            FieldType fieldType = fieldTypes.get(i);
-
-            startFields(fieldType);
-            addFields(fieldType);
-            endFields();
-
-            if (i != fieldTypes.size() - 1) {
-                separateFields();
-            } else {
-                endLastFields();
-            }
-        }
-
+        processTypes();
         endBoard();
 
         return getString();
+    }
+
+    private void processTypes() {
+        for (int i = 0; i < fieldTypes.size(); i++) {
+            FieldType fieldType = fieldTypes.get(i);
+            processType(fieldType);
+
+            if (i == fieldTypes.size() - 1) {
+                endLastType();
+            } else {
+                separateType();
+            }
+        }
+    }
+
+    private void processType(FieldType fieldType) {
+        startType(fieldType);
+        processFields(fieldsMap.get(fieldType));
+        endType();
+    }
+
+    private void processFields(List<? extends Field> fields) {
+        for (int i = 0; i < fields.size(); i++) {
+            Field field = fields.get(i);
+            processField(field);
+
+            if (i == fields.size() - 1) {
+                endLastField();
+            } else {
+                separateField();
+            }
+        }
+
+        for (int i = fields.size(); i < numFields; i++) {
+            processEmptyField();
+        }
+    }
+
+    private void processField(Field field) {
+        startField();
+        addField(field.getName());
+        endField();
+    }
+
+    private void processEmptyField() {
+        startEmptyField();
+        addEmptyField();
+        endEmptyField();
     }
 
     abstract void startBoard();
 
     abstract void endBoard();
 
-    abstract void startFields(FieldType fieldType);
+    abstract void startType(FieldType fieldType);
 
-    private void addFields(FieldType fieldType) {
-        List<Field> fields = fieldsMap.get(fieldType);
+    abstract void endType();
 
-        for (int i = 0; i < fields.size(); i++) {
-            Field field = fields.get(i);
+    abstract void separateType();
 
-            startField();
-            addField(field.getName());
-            endField();
-
-            if (i != fields.size() - 1) {
-                separateField();
-            } else {
-                endLastField();
-            }
-        }
-
-        for (int i = fields.size(); i < numFields; i++) {
-            startEmptyField();
-            addEmptyField();
-            endEmptyField();
-        }
-    }
-
-    abstract void endFields();
-
-    abstract void separateFields();
-
-    abstract void endLastFields();
+    abstract void endLastType();
 
     abstract void startField();
 

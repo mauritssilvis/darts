@@ -34,11 +34,10 @@ public final class JsonBoardSerializer implements Serializer<Board> {
     }
 
     private static class JsonBoardPrinter extends BoardPrinter {
-        private final StringBuilder stringBuilder;
+        private final StringBuilder stringBuilder = new StringBuilder();
 
         JsonBoardPrinter(Board board) {
             super(board);
-            stringBuilder = new StringBuilder();
         }
 
         @Override
@@ -52,7 +51,7 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void startFields(FieldType fieldType) {
+        void startType(FieldType fieldType) {
             String typeName = getTypeName(fieldType);
 
             stringBuilder.append("    \"")
@@ -61,17 +60,17 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void endFields() {
+        void endType() {
             stringBuilder.append("    ]");
         }
 
         @Override
-        void separateFields() {
+        void separateType() {
             stringBuilder.append(",\n");
         }
 
         @Override
-        void endLastFields() {
+        void endLastType() {
             stringBuilder.append('\n');
         }
 
