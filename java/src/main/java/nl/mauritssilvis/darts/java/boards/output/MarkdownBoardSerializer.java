@@ -117,9 +117,9 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
                 .max()
                 .orElse(0);
 
-        String empty = IntStream.range(0, columnWidth + 2)
+        String empty = IntStream.range(0, columnWidth)
                 .mapToObj(i -> " ")
-                .collect(Collectors.joining());
+                .collect(Collectors.joining()) + "- ";
 
         for (int i = 0; i < numRows; i++) {
             for (List<String> names : allNames) {
