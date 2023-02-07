@@ -103,11 +103,11 @@ class DartsCheckouts implements Runnable {
 
     @Override
     public void run() {
-        TableGenerator generator = TableGeneratorFactory.create(
+        TableGenerator tableGenerator = TableGeneratorFactory.create(
                 tableType, boardType, checkInType, checkoutType, finderType
         );
 
-        Table table = generator.generate(minScore, maxScore);
+        Table table = tableGenerator.generate(minScore, maxScore);
 
         Serializer<Table> serializer = TableSerializerFactory.create(outputFormat);
         String output = serializer.serialize(table);
