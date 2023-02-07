@@ -138,6 +138,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void endCheckout() {
+            stringBuilder.append("|\n");
         }
 
         @Override
@@ -244,7 +245,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void endCheckoutMultiplicity() {
-            endMultiplicity();
+            stringBuilder.append(' ');
         }
 
         @Override
