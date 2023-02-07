@@ -12,10 +12,7 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
 import nl.mauritssilvis.darts.java.tables.Table;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,7 +51,11 @@ public final class AscendingTable implements Table {
         this.checkoutType = checkoutType;
         this.checkoutMap = Collections.unmodifiableMap(
                 checkoutMap.entrySet().stream()
-                        .collect(Collectors.toMap(Map.Entry::getKey, e -> List.copyOf(e.getValue())))
+                        .collect(
+                                Collectors.toMap(
+                                        Map.Entry::getKey, e -> List.copyOf(e.getValue()), (e1, e2) -> e1, TreeMap::new
+                                )
+                        )
         );
     }
 

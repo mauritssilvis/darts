@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class AscendingTableTests {
@@ -108,17 +109,17 @@ class AscendingTableTests {
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
 
-        List<Integer> scores = List.of(1, 9, 3, 100, 20, 7, 6, 50);
+        List<Integer> scores = List.of(1, 9, 3, 100, 20, 7, 6, 50, 1000);
 
         Map<Integer, Collection<Checkout>> checkoutMap = scores.stream()
-                .collect(Collectors.toMap(i -> i, i -> Collections.emptyList()));
+                .collect(Collectors.toMap(Function.identity(), i -> Collections.emptyList()));
 
         Table table = AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Integer> storedScores = new ArrayList<>(storedCheckoutMap.keySet());
 
-        List<Integer> expectedScores = List.of(1, 3, 6, 7, 9, 20, 50, 100);
+        List<Integer> expectedScores = List.of(1, 3, 6, 7, 9, 20, 50, 100, 1000);
 
         Assertions.assertEquals(expectedScores, storedScores);
     }
