@@ -29,16 +29,19 @@ class BoardSerializerFactoryTests {
     }
 
     @Test
-    void doNotGetAJsonBoardSerializer() {
+    void getAJsonBoardSerializer() {
         OutputFormat outputFormat = OutputFormat.JSON;
+        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> BoardSerializerFactory.create(outputFormat));
+        Assertions.assertTrue(serializer instanceof JsonBoardSerializer);
     }
 
     @Test
-    void doNotGetAnHTMLBoardSerializer() {
+    void getAnHtmlBoardSerializer() {
         OutputFormat outputFormat = OutputFormat.HTML;
+        Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> BoardSerializerFactory.create(outputFormat));
+        Assertions.assertTrue(serializer instanceof HtmlBoardSerializer);
+
     }
 }
