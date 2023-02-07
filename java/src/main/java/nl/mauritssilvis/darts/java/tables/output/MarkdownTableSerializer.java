@@ -5,16 +5,9 @@
 
 package nl.mauritssilvis.darts.java.tables.output;
 
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.Throw;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.tables.Table;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -38,209 +31,225 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
     @Override
     public String serialize(Table object) {
-        Map<Integer, List<Checkout>> checkoutMap = object.getCheckoutMap();
-
-        return new Printer(checkoutMap).print();
+        return new MarkdownTablePrinter(object).print();
     }
 
-    private static class Printer {
-        private final Map<Integer, ? extends List<Checkout>> checkoutMap;
-        private final Map<Integer, Long> multiplicityMap;
-        private final int scoreWidth;
-        private final int multiplicityWidth;
-        private final int numThrows;
-        private final int columnWidth;
+    private static class MarkdownTablePrinter extends TablePrinter {
+        private final StringBuilder stringBuilder = new StringBuilder();
         private final String scoreFormat;
+        private final String throwFormat;
+        private final String fieldFormat;
         private final String multiplicityFormat;
-        private final String columnFormat;
-        private final String nameFormat;
+        private final int numThrows;
 
-        Printer(Map<Integer, ? extends List<Checkout>> checkoutMap) {
-            this.checkoutMap = checkoutMap;
-            multiplicityMap = getMultiplicityMap(checkoutMap);
+        MarkdownTablePrinter(Table table) {
+            super(table);
 
-            Collection<Checkout> checkouts = checkoutMap.values().stream()
-                    .flatMap(Collection::stream)
-                    .toList();
+            int throwWidth = (getFieldWidth() + 1) * getThrowSize() - 1;
 
-            scoreWidth = getScoreWidth(checkoutMap.keySet());
-            multiplicityWidth = getMultiplicityWidth(multiplicityMap.values());
+            scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
+            throwFormat = "%1$" + throwWidth + "s";
+            fieldFormat = "%1$" + getFieldWidth() + "s";
+            multiplicityFormat = "%1$" + getMultiplicityWidth() + "s";
 
-            numThrows = getMaxNumThrows(checkouts);
-            int throwSize = getMaxThrowSize(checkouts);
-            int nameWidth = getNameWidth(checkouts);
-            columnWidth = nameWidth * throwSize + throwSize - 1;
-
-            scoreFormat = "| %1$" + scoreWidth + "s ";
-            multiplicityFormat = "| %1$" + multiplicityWidth + "s ";
-            columnFormat = "| %1$" + columnWidth + "s ";
-            nameFormat = "%1$" + nameWidth + "s";
+            numThrows = getNumThrows();
         }
 
-        String print() {
-            StringBuilder stringBuilder = new StringBuilder();
+        @Override
+        void startTable() {
+            stringBuilder.append("| ")
+                    .append(String.format(scoreFormat, "Score"))
+                    .append(" ");
 
-            writeHeader(stringBuilder);
-            writeScores(stringBuilder);
+            IntStream.range(0, numThrows)
+                    .mapToObj(i -> String.format(throwFormat, i + 1))
+                    .forEach(str -> stringBuilder.append("| ").append(str).append(" "));
 
+            stringBuilder.append("| ")
+                    .append(String.format(multiplicityFormat, "#"))
+                    .append(" |\n");
+
+            stringBuilder.append("|-")
+                    .append(String.format(scoreFormat, "").replace(' ', '-'))
+                    .append(":");
+
+            IntStream.range(0, numThrows)
+                    .mapToObj(i -> String.format(throwFormat, "").replace(' ', '-'))
+                    .forEach(str -> stringBuilder.append("|-").append(str).append(":"));
+
+            stringBuilder.append("|-")
+                    .append(String.format(multiplicityFormat, "").replace(' ', '-'))
+                    .append(":|\n");
+        }
+
+        @Override
+        void endTable() {
+        }
+
+        @Override
+        void startScore(int score) {
+            stringBuilder.append("| ")
+                    .append(String.format(scoreFormat, score))
+                    .append(' ');
+
+            IntStream.range(0, numThrows)
+                    .mapToObj(i -> String.format(throwFormat, "*"))
+                    .forEach(str -> stringBuilder.append("| ").append(str).append(' '));
+        }
+
+        @Override
+        void endScore() {
+        }
+
+        @Override
+        void separateScore() {
+        }
+
+        @Override
+        void endLastScore() {
+        }
+
+        @Override
+        void startMultiplicity() {
+            stringBuilder.append("| ");
+        }
+
+        @Override
+        void addMultiplicity(long multiplicity) {
+            stringBuilder.append(String.format(multiplicityFormat, multiplicity));
+        }
+
+        @Override
+        void endMultiplicity() {
+            stringBuilder.append(" |\n");
+        }
+
+        @Override
+        void startCheckouts() {
+        }
+
+        @Override
+        void endCheckouts() {
+        }
+
+        @Override
+        void startCheckout() {
+        }
+
+        @Override
+        void endCheckout() {
+        }
+
+        @Override
+        void separateCheckout() {
+        }
+
+        @Override
+        void endLastCheckout() {
+        }
+
+        @Override
+        void startCheckoutScore() {
+            stringBuilder.append("| ");
+        }
+
+        @Override
+        void addCheckoutScore(int score) {
+            stringBuilder.append(String.format(scoreFormat, ""));
+        }
+
+        @Override
+        void endCheckoutScore() {
+            stringBuilder.append(' ');
+        }
+
+        @Override
+        void startThrows() {
+        }
+
+        @Override
+        void endThrows() {
+        }
+
+        @Override
+        void addEmptyThrowBefore() {
+        }
+
+        @Override
+        void startThrow() {
+            stringBuilder.append("| ");
+        }
+
+        @Override
+        void endThrow() {
+            stringBuilder.append(" ");
+        }
+
+        @Override
+        void separateThrow() {
+        }
+
+        @Override
+        void endLastThrow() {
+        }
+
+        @Override
+        void addEmptyThrowAfter() {
+            stringBuilder.append("| ")
+                    .append(String.format(throwFormat, "-"))
+                    .append(' ');
+        }
+
+        @Override
+        void addEmptyFieldBefore() {
+            addField("");
+            stringBuilder.append(' ');
+        }
+
+        @Override
+        void startField() {
+        }
+
+        @Override
+        void addField(String name) {
+            stringBuilder.append(String.format(fieldFormat, name));
+        }
+
+        @Override
+        void endField() {
+        }
+
+        @Override
+        void separateField() {
+            stringBuilder.append('/');
+        }
+
+        @Override
+        void endLastField() {
+        }
+
+        @Override
+        void addEmptyFieldAfter() {
+        }
+
+        @Override
+        void startCheckoutMultiplicity() {
+            startMultiplicity();
+        }
+
+        @Override
+        void addCheckoutMultiplicity(long multiplicity) {
+            addMultiplicity(multiplicity);
+        }
+
+        @Override
+        void endCheckoutMultiplicity() {
+            endMultiplicity();
+        }
+
+        @Override
+        String getString() {
             return stringBuilder.toString();
-        }
-
-        private static Map<Integer, Long> getMultiplicityMap(
-                Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
-        ) {
-            return checkoutMap.entrySet().stream()
-                    .collect(
-                            Collectors.toMap(
-                                    Map.Entry::getKey,
-                                    e -> e.getValue().stream()
-                                            .mapToLong(Checkout::getMultiplicity)
-                                            .sum()
-                            )
-                    );
-        }
-
-        private static int getScoreWidth(Collection<Integer> scores) {
-            int scoreWidth = scores.stream()
-                    .map(String::valueOf)
-                    .mapToInt(String::length)
-                    .max()
-                    .orElse(0);
-
-            return Math.max(scoreWidth, "Score".length());
-        }
-
-        private static int getMultiplicityWidth(Collection<Long> multiplicities) {
-            return multiplicities.stream()
-                    .map(String::valueOf)
-                    .mapToInt(String::length)
-                    .max()
-                    .orElse(0);
-        }
-
-        private static int getMaxNumThrows(Collection<? extends Checkout> checkouts) {
-            return checkouts.stream()
-                    .map(Checkout::getThrows)
-                    .mapToInt(Collection::size)
-                    .max()
-                    .orElse(0);
-        }
-
-        private static int getMaxThrowSize(Collection<? extends Checkout> checkouts) {
-            return checkouts.stream()
-                    .map(Checkout::getThrows)
-                    .flatMap(Collection::stream)
-                    .map(Throw::getFields)
-                    .mapToInt(Collection::size)
-                    .max()
-                    .orElse(0);
-        }
-
-        private static int getNameWidth(Collection<? extends Checkout> checkouts) {
-            return checkouts.stream()
-                    .map(Checkout::getThrows)
-                    .flatMap(Collection::stream)
-                    .map(Throw::getFields)
-                    .flatMap(Collection::stream)
-                    .map(Field::getName)
-                    .mapToInt(String::length)
-                    .max()
-                    .orElse(0);
-        }
-
-        private void writeHeader(StringBuilder stringBuilder) {
-            stringBuilder.append(String.format(scoreFormat, "Score"));
-
-            IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(columnFormat, i + 1))
-                    .forEach(stringBuilder::append);
-
-            stringBuilder.append(String.format(multiplicityFormat, "#"))
-                    .append("|\n")
-                    .append("|-");
-
-            IntStream.range(0, scoreWidth)
-                    .mapToObj(i -> "-")
-                    .forEach(stringBuilder::append);
-
-            stringBuilder.append(":");
-
-            IntStream.range(0, numThrows)
-                    .mapToObj(i ->
-                            "|-" + IntStream.range(0, columnWidth)
-                                    .mapToObj(j -> "-")
-                                    .collect(Collectors.joining()) + ":"
-                    )
-                    .forEach(stringBuilder::append);
-
-            stringBuilder.append("|-");
-
-            IntStream.range(0, multiplicityWidth)
-                    .mapToObj(i -> "-")
-                    .forEach(stringBuilder::append);
-
-            stringBuilder.append(":|\n");
-        }
-
-        private void writeScores(StringBuilder stringBuilder) {
-            checkoutMap.keySet().forEach(
-                    k -> {
-                        writeSubHeader(stringBuilder, k);
-                        writeCheckouts(stringBuilder, k);
-                    }
-            );
-        }
-
-        private void writeSubHeader(StringBuilder stringBuilder, int score) {
-            stringBuilder.append(String.format(scoreFormat, score));
-
-            IntStream.range(0, numThrows)
-                    .mapToObj(i ->
-                            "|" + IntStream.range(0, columnWidth)
-                                    .mapToObj(j -> " ")
-                                    .collect(Collectors.joining()) + "* "
-                    )
-                    .forEach(stringBuilder::append);
-
-            stringBuilder.append(String.format(multiplicityFormat, multiplicityMap.get(score)))
-                    .append("|\n");
-        }
-
-        private void writeCheckouts(StringBuilder stringBuilder, int score) {
-            List<Checkout> checkouts = checkoutMap.get(score);
-
-            checkouts.forEach(checkout -> writeCheckout(stringBuilder, checkout));
-        }
-
-        private void writeCheckout(StringBuilder stringBuilder, Checkout checkout) {
-            stringBuilder.append("|");
-
-            IntStream.range(0, scoreWidth + 2)
-                    .mapToObj(i -> " ")
-                    .forEach(stringBuilder::append);
-
-            Collection<Throw> throwCollection = checkout.getThrows();
-
-            throwCollection.forEach(t -> writeThrow(stringBuilder, t));
-
-            IntStream.range(0, numThrows - throwCollection.size())
-                    .forEach(i -> writeEmptyThrow(stringBuilder));
-
-            stringBuilder.append(String.format(multiplicityFormat, checkout.getMultiplicity()))
-                    .append("|\n");
-        }
-
-        private void writeEmptyThrow(StringBuilder stringBuilder) {
-            stringBuilder.append(String.format(columnFormat, "-"));
-        }
-
-        private void writeThrow(StringBuilder stringBuilder, Throw compoundThrow) {
-            String fieldNames = compoundThrow.getFields().stream()
-                    .map(Field::getName)
-                    .map(name -> String.format(nameFormat, name))
-                    .collect(Collectors.joining("/"));
-
-            stringBuilder.append(String.format(columnFormat, fieldNames));
         }
     }
 }

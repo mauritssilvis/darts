@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * An abstract class that defines an algorithm for getting string
@@ -125,13 +126,23 @@ abstract class TablePrinter {
 
     private void processCheckout(Checkout checkout) {
         startCheckout();
+
+        startCheckoutScore();
+        addCheckoutScore(checkout.getScore());
+        endCheckoutScore();
+
         processThrows(checkout.getThrows());
+
         processCheckoutMultiplicity(checkout.getMultiplicity());
+
         endCheckout();
     }
 
     private void processThrows(List<? extends Throw> throwList) {
         startThrows();
+
+        IntStream.range(0, numThrows - throwList.size())
+                .forEach(i -> addEmptyThrowBefore());
 
         for (int i = 0; i < throwList.size(); i++) {
             Throw compoundThrow = throwList.get(i);
@@ -145,6 +156,9 @@ abstract class TablePrinter {
             }
         }
 
+        IntStream.range(0, numThrows - throwList.size())
+                .forEach(i -> addEmptyThrowAfter());
+
         endThrows();
     }
 
@@ -155,6 +169,9 @@ abstract class TablePrinter {
     }
 
     private void processFields(List<? extends Field> fields) {
+        IntStream.range(0, throwSize - fields.size())
+                .forEach(i -> addEmptyFieldBefore());
+
         for (int i = 0; i < fields.size(); i++) {
             Field field = fields.get(i);
 
@@ -166,6 +183,9 @@ abstract class TablePrinter {
                 separateField();
             }
         }
+
+        IntStream.range(0, throwSize - fields.size())
+                .forEach(i -> addEmptyFieldAfter());
     }
 
     private void processField(Field field) {
@@ -210,15 +230,11 @@ abstract class TablePrinter {
 
     abstract void endCheckoutScore();
 
-    abstract void startEmptyCheckoutScore();
-
-    abstract void addEmptyCheckoutScore();
-
-    abstract void endEmptyCheckoutScore();
-
     abstract void startThrows();
 
     abstract void endThrows();
+
+    abstract void addEmptyThrowBefore();
 
     abstract void startThrow();
 
@@ -227,6 +243,10 @@ abstract class TablePrinter {
     abstract void separateThrow();
 
     abstract void endLastThrow();
+
+    abstract void addEmptyThrowAfter();
+
+    abstract void addEmptyFieldBefore();
 
     abstract void startField();
 
@@ -238,11 +258,7 @@ abstract class TablePrinter {
 
     abstract void endLastField();
 
-    abstract void startEmptyField();
-
-    abstract void addEmptyField();
-
-    abstract void endEmptyField();
+    abstract void addEmptyFieldAfter();
 
     abstract void startCheckoutMultiplicity();
 

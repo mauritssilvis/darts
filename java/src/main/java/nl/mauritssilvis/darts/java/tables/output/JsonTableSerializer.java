@@ -129,18 +129,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void startEmptyCheckoutScore() {
-        }
-
-        @Override
-        void addEmptyCheckoutScore() {
-        }
-
-        @Override
-        void endEmptyCheckoutScore() {
-        }
-
-        @Override
         void startThrows() {
             stringBuilder.append("                \"throws\": [\n");
         }
@@ -148,6 +136,10 @@ public final class JsonTableSerializer implements Serializer<Table> {
         @Override
         void endThrows() {
             stringBuilder.append("                ],\n");
+        }
+
+        @Override
+        void addEmptyThrowBefore() {
         }
 
         @Override
@@ -168,6 +160,14 @@ public final class JsonTableSerializer implements Serializer<Table> {
         @Override
         void endLastThrow() {
             stringBuilder.append('\n');
+        }
+
+        @Override
+        void addEmptyThrowAfter() {
+        }
+
+        @Override
+        void addEmptyFieldBefore() {
         }
 
         @Override
@@ -196,15 +196,7 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void startEmptyField() {
-        }
-
-        @Override
-        void addEmptyField() {
-        }
-
-        @Override
-        void endEmptyField() {
+        void addEmptyFieldAfter() {
         }
 
         @Override
