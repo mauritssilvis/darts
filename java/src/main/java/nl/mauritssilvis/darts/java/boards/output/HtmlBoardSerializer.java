@@ -89,10 +89,6 @@ public final class HtmlBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void separateEmptyFields() {
-        }
-
-        @Override
         void startField() {
             builderMap.get(row).append("<td>");
         }
@@ -129,14 +125,6 @@ public final class HtmlBoardSerializer implements Serializer<Board> {
         @Override
         void endEmptyField() {
             endField();
-        }
-
-        @Override
-        void separateEmptyField() {
-        }
-
-        @Override
-        void endLastEmptyField() {
         }
 
         @Override

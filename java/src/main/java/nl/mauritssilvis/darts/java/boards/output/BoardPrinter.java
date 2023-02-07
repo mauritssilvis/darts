@@ -82,7 +82,7 @@ abstract class BoardPrinter {
 
     abstract void startFields(FieldType fieldType);
 
-    void addFields(FieldType fieldType) {
+    private void addFields(FieldType fieldType) {
         List<Field> fields = fieldsMap.get(fieldType);
 
         for (int i = 0; i < fields.size(); i++) {
@@ -99,18 +99,10 @@ abstract class BoardPrinter {
             }
         }
 
-        separateEmptyFields();
-
         for (int i = fields.size(); i < numFields; i++) {
             startEmptyField();
             addEmptyField();
             endEmptyField();
-
-            if (i != numFields - 1) {
-                separateField();
-                separateEmptyField();
-            }
-
         }
     }
 
@@ -119,8 +111,6 @@ abstract class BoardPrinter {
     abstract void separateFields();
 
     abstract void endLastFields();
-
-    abstract void separateEmptyFields();
 
     abstract void startField();
 
@@ -137,10 +127,6 @@ abstract class BoardPrinter {
     abstract void addEmptyField();
 
     abstract void endEmptyField();
-
-    abstract void separateEmptyField();
-
-    abstract void endLastEmptyField();
 
     abstract String getString();
 }

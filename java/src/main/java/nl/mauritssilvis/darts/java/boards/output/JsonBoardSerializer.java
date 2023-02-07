@@ -76,10 +76,6 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void separateEmptyFields() {
-        }
-
-        @Override
         void startField() {
             stringBuilder.append("        \"");
         }
@@ -114,15 +110,6 @@ public final class JsonBoardSerializer implements Serializer<Board> {
 
         @Override
         void endEmptyField() {
-        }
-
-        @Override
-        void separateEmptyField() {
-        }
-
-        @Override
-        void endLastEmptyField() {
-
         }
 
         @Override
