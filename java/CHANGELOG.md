@@ -16,10 +16,10 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dartboards
 
-- Add support for single, double, triple and quadruple dartboard fields (`TypedField`).
-- Add support for the London dartboard (`LondonBoard`).
-- Add support for the Quadro dartboard (`QuadroBoard`).
-- Add support for the Yorkshire dartboard (`YorkshireBoard`).
+- Add single, double, triple and quadruple dartboard fields (`TypedField`).
+- Add the London dartboard (`LondonBoard`).
+- Add the Quadro dartboard (`QuadroBoard`).
+- Add the Yorkshire dartboard (`YorkshireBoard`).
 
 #### Checkout finders
 
