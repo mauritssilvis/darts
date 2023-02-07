@@ -8,12 +8,12 @@ package nl.mauritssilvis.darts.java.settings;
 import lombok.ToString;
 
 /**
- * The type of checkout table generator.
+ * The type of checkout table.
  */
 @ToString
-public enum GeneratorType {
+public enum TableType {
     /**
-     * An ascending checkout table generator.
+     * An ascending checkout table.
      */
     ASCENDING
 }

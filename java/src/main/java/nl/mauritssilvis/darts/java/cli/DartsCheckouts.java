@@ -76,7 +76,7 @@ class DartsCheckouts implements Runnable {
             defaultValue = "map",
             order = 4
     )
-    private GeneratorType generatorType;
+    private TableType tableType;
 
     @Option(
             names = {"-o", "--output"},
@@ -104,7 +104,7 @@ class DartsCheckouts implements Runnable {
     @Override
     public void run() {
         TableGenerator generator = TableGeneratorFactory.create(
-                generatorType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, finderType
         );
 
         Table table = generator.generate(minScore, maxScore);
