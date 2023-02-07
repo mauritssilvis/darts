@@ -21,7 +21,7 @@ import picocli.CommandLine.Spec;
  * The command-line interface for the boards subcommand.
  * <p>
  * This command-line interface was implemented using picocli.
-*/
+ */
 @Command(
         name = "boards",
         description = "Print a dartboard.",

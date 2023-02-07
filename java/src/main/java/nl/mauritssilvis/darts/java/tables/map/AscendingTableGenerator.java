@@ -69,14 +69,14 @@ public final class AscendingTableGenerator implements TableGenerator {
 
     /**
      * Returns a new {@code AscendingTableGenerator} with the specified
-     * dartboard, check-in and checkout types.
+     * dartboard, check-in, checkout and finder types.
      *
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param finderType   the checkout finder type
      * @return a new {@code AscendingTableGenerator} with the specified
-     * dartboard, check-in and checkout types.
+     * dartboard, check-in, checkout and finder types.
      */
     public static TableGenerator of(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType

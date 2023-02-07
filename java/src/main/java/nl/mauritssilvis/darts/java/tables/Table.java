@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A checkout table that contains checkouts for a specific dartboard type,
- * check-in type and checkout type.
+ * A checkout table that contains checkouts for a specific dartboard, check-in
+ * and checkout type.
  * <p>
  * Relevant design patterns: immutable interface.
  */
