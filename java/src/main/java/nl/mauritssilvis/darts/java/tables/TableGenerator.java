@@ -16,12 +16,12 @@ package nl.mauritssilvis.darts.java.tables;
 @FunctionalInterface
 public interface TableGenerator {
     /**
-     * Generates a table with checkouts with scores from the specified minimal
-     * score to the specified maximal score.
+     * Generates a table with checkouts with scores from the specified minimum
+     * score to the specified maximum score.
      *
-     * @param minScore the minimal score
-     * @param maxScore the maximal score
-     * @return a checkout table with the specified minimal and maximal scores
+     * @param minScore the minimum score
+     * @param maxScore the maximum score
+     * @return a checkout table with the specified minimum and maximum scores
      */
     Table generate(int minScore, int maxScore);
 }
