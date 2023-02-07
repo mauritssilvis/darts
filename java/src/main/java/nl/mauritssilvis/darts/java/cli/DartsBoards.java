@@ -35,7 +35,7 @@ class DartsBoards implements Runnable {
             names = {"-o", "--output"},
             description = "The output format. Supported values: markdown, string.",
             paramLabel = "<output>",
-            defaultValue = "string"
+            defaultValue = "markdown"
     )
     private OutputFormat outputFormat;
 

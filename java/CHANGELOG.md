@@ -21,6 +21,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add the Quadro dartboard (`QuadroBoard`).
 - Add the Yorkshire dartboard (`YorkshireBoard`).
 - Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
+- Add a Markdown serializer for dartboards (`MarkdownBoardSerializer`).
 
 #### Checkout finders
 

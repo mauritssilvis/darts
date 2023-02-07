@@ -16,12 +16,12 @@ import org.junit.jupiter.params.provider.EnumSource;
 class MarkdownBoardSerializerTests {
     @ParameterizedTest
     @EnumSource(BoardType.class)
-    void startWithARule(BoardType boardType) {
+    void getTheTableStart(BoardType boardType) {
         Board board = BoardFactory.create(boardType);
         Serializer<Board> serializer = MarkdownBoardSerializer.create();
 
         String output = serializer.serialize(board);
 
-        Assertions.assertTrue(output.startsWith("---"));
+        Assertions.assertTrue(output.startsWith("|   "));
     }
 }
