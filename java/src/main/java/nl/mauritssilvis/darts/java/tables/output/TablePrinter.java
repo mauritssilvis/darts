@@ -41,15 +41,10 @@ abstract class TablePrinter {
                 .toList();
 
         scoreWidth = determineScoreWidth(checkoutMap.keySet());
-        System.err.println(scoreWidth);
         numThrows = determineNumThrows(checkouts);
-        System.err.println(numThrows);
         throwSize = determineThrowSize(checkouts);
-        System.err.println(throwSize);
         fieldWidth = determineFieldWidth(checkouts);
-        System.err.println(fieldWidth);
         multiplicityWidth = getMultiplicityWidth(multiplicityMap.values());
-        System.err.println(multiplicityWidth);
     }
 
     int getScoreWidth() {

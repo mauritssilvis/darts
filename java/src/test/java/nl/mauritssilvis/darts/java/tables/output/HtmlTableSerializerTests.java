@@ -56,7 +56,7 @@ class HtmlTableSerializerTests {
                           <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 15</span></td><td class="t"><span class="f">  8</span><span class="f"> D4</span></td><td class="m"> 4</td></tr>
                           <tr><td class="s">     </td><td class="t"><span class="f"> 14</span><span class="f"> D7</span></td><td class="t"><span class="f">   </span><span class="f">  9</span></td><td class="m"> 4</td></tr>
                           <tr><td class="s">     </td><td class="t"><span class="f">   </span><span class="f"> 13</span></td><td class="t"><span class="f"> 10</span><span class="f"> D5</span></td><td class="m"> 4</td></tr>
-                          <tr><td class="s">     </td><td class="t"><span class="f"> 12</span><span class="f"> D6</span></td><td class="t"><span class="f"> 11</span><span class="f">   </span></td><td class="m"> 4</td></tr>
+                          <tr><td class="s">     </td><td class="t"><span class="f"> 12</span><span class="f"> D6</span></td><td class="t"><span class="f">   </span><span class="f"> 11</span></td><td class="m"> 4</td></tr>
                         </table>
                         """,
                 output);
@@ -83,6 +83,6 @@ class HtmlTableSerializerTests {
 
         String output = serializer.serialize(table);
 
-        Assertions.assertTrue(output.startsWith("| Score | "));
+        Assertions.assertTrue(output.startsWith("<table>\n  <tr><th class=\"s\">Score</th>"));
     }
 }
