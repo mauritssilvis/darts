@@ -55,11 +55,11 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void startTable() {
+        void startBoard() {
         }
 
         @Override
-        void endTable() {
+        void endBoard() {
             builderMap.values().forEach(e -> e.append("|\n"));
         }
 

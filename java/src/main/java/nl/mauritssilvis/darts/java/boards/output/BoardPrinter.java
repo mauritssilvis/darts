@@ -55,7 +55,7 @@ abstract class BoardPrinter {
     }
 
     String print() {
-        startTable();
+        startBoard();
 
         for (int i = 0; i < fieldTypes.size(); i++) {
             FieldType fieldType = fieldTypes.get(i);
@@ -71,14 +71,14 @@ abstract class BoardPrinter {
             }
         }
 
-        endTable();
+        endBoard();
 
         return getString();
     }
 
-    abstract void startTable();
+    abstract void startBoard();
 
-    abstract void endTable();
+    abstract void endBoard();
 
     abstract void startFields(FieldType fieldType);
 

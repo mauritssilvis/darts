@@ -55,12 +55,12 @@ public final class HtmlBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void startTable() {
+        void startBoard() {
             builderMap.values().forEach(e -> e.append("  <tr>"));
         }
 
         @Override
-        void endTable() {
+        void endBoard() {
             builderMap.values().forEach(e -> e.append("</tr>\n"));
         }
 

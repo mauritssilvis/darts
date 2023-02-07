@@ -42,12 +42,12 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void startTable() {
+        void startBoard() {
             stringBuilder.append("{\n");
         }
 
         @Override
-        void endTable() {
+        void endBoard() {
             stringBuilder.append("}\n");
         }
 
