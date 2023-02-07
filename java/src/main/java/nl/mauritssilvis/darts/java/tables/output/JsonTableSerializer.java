@@ -72,13 +72,28 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
+        void startMultiplicity() {
+            stringBuilder.append("        \"multiplicity\": ");
+        }
+
+        @Override
+        void addMultiplicity(long multiplicity) {
+            stringBuilder.append(multiplicity);
+        }
+
+        @Override
+        void endMultiplicity() {
+            stringBuilder.append(",\n");
+        }
+
+        @Override
         void startCheckouts() {
             stringBuilder.append("        \"checkouts\": [\n");
         }
 
         @Override
         void endCheckouts() {
-            stringBuilder.append("        ],\n");
+            stringBuilder.append("        ]\n");
         }
 
         @Override
@@ -204,21 +219,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void endCheckoutMultiplicity() {
-            stringBuilder.append('\n');
-        }
-
-        @Override
-        void startMultiplicity() {
-            stringBuilder.append("        \"multiplicity\": ");
-        }
-
-        @Override
-        void addMultiplicity(long multiplicity) {
-            stringBuilder.append(multiplicity);
-        }
-
-        @Override
-        void endMultiplicity() {
             stringBuilder.append('\n');
         }
 

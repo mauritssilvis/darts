@@ -97,11 +97,11 @@ abstract class TablePrinter {
     private void processScore(int score) {
         startScore(score);
 
-        processCheckouts(checkoutMap.get(score));
-
         startMultiplicity();
         addMultiplicity(multiplicityMap.get(score));
         endMultiplicity();
+
+        processCheckouts(checkoutMap.get(score));
 
         endScore();
     }

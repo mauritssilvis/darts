@@ -44,6 +44,7 @@ class JsonTableSerializerTests {
                 """
                         {
                             "22": {
+                                "multiplicity": 1,
                                 "checkouts": [
                                     {
                                         "throws": [
@@ -53,10 +54,10 @@ class JsonTableSerializerTests {
                                         ],
                                         "multiplicity": 1
                                     }
-                                ],
-                                "multiplicity": 1
+                                ]
                             },
                             "23": {
+                                "multiplicity": 38,
                                 "checkouts": [
                                     {
                                         "throws": [
@@ -177,8 +178,7 @@ class JsonTableSerializerTests {
                                         ],
                                         "multiplicity": 4
                                     }
-                                ],
-                                "multiplicity": 38
+                                ]
                             }
                         }
                         """,
