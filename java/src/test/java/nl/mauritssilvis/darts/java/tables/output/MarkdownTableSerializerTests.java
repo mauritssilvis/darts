@@ -30,8 +30,8 @@ class MarkdownTableSerializerTests {
                 tableType, boardType, checkInType, checkoutType, finderType
         );
 
-        int minScore = 3;
-        int maxScore = 3;
+        int minScore = 22;
+        int maxScore = 23;
 
         Table table = tableGenerator.generate(minScore, maxScore);
 
