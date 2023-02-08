@@ -18,9 +18,10 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
 /**
- * The command-line interface for the boards subcommand.
+ * The command-line interface for the {@code boards} subcommand. This command can be
+ * used to print dartboards to the console in various output formats.
  * <p>
- * This command-line interface was implemented using picocli.
+ * The {@code boards} command was implemented using picocli.
  */
 @Command(
         name = "boards",

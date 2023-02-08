@@ -19,9 +19,11 @@ import picocli.CommandLine.Parameters;
 import picocli.CommandLine.Spec;
 
 /**
- * The command-line interface for the checkouts subcommand.
+ * The command-line interface for the {@code checkouts} subcommand. This command
+ * can be used to generate darts checkout tables and print them to the console
+ * in various output formats.
  * <p>
- * This command-line interface was implemented using picocli.
+ * The {@code checkouts} command was implemented using picocli.
  */
 @Command(
         name = "checkouts",

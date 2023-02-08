@@ -43,4 +43,4 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Add a command-line interface (`DartsApp`).
 - Add a command to print dartboards (`BoardsCommand`).
-- Add a command to print checkout tables (`CheckoutsCommand`).
+- Add a command to generate darts checkout tables (`CheckoutsCommand`).
