@@ -15,22 +15,107 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
 class CartesianPathfinderTests {
     @Test
-    void getImmutablePaths() {
-        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(3, 4), List.of(6, 7));
+    void storeIndependentNodes() {
+        Collection<Integer> weights = List.of(3, 5, 4);
+        Collection<Node> nodes = new ArrayList<>(BasicNodeTestUtils.getNodes(List.of(weights, weights)));
+
+        int length = 6;
+
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+
+        long totalMultiplicity = PathTestUtils.getTotalMultiplicity(pathfinder.find(length));
+
+        nodes.clear();
+
+        long newTotalMultiplicity = PathTestUtils.getTotalMultiplicity(pathfinder.find(length));
+
+        Assertions.assertEquals(totalMultiplicity, newTotalMultiplicity);
+    }
+
+    @Test
+    void handleAbsentNodes() {
+        Collection<Node> nodes = Collections.emptyList();
+        int length = 0;
+
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+        List<Path> paths = pathfinder.find(length);
+
+        Assertions.assertEquals(0, paths.size());
+    }
+
+    @ParameterizedTest
+    @MethodSource("withDisconnectedNodes")
+    void handleDisconnectedNodes(Collection<? extends Collection<Integer>> weightsPerNode) {
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        int length = 2;
+
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+        List<Path> paths = pathfinder.find(length);
+
+        Assertions.assertEquals(0, paths.size());
+    }
+
+    private static Stream<Arguments> withDisconnectedNodes() {
+        return Stream.of(
+                Arguments.of(
+                        List.of(Collections.emptyList())
+                ),
+                Arguments.of(
+                        List.of(Collections.emptyList(), Collections.emptyList())
+                ),
+                Arguments.of(
+                        List.of(Collections.emptyList(), List.of(1, 2))
+                ),
+                Arguments.of(
+                        List.of(List.of(1, 2), Collections.emptyList())
+                ),
+                Arguments.of(
+                        List.of(List.of(3), Collections.emptyList(), List.of(-1))
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withAnUnreachableLength")
+    void handleUnreachableLengths(Collection<? extends Collection<Integer>> weightsPerNode) {
         Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
 
-        int length = 10;
-
+        int length = -1;
         List<Path> paths = pathfinder.find(length);
 
-        Assertions.assertThrows(UnsupportedOperationException.class, paths::clear);
+        Assertions.assertEquals(0, paths.size());
+    }
+
+    private static Stream<Arguments> withAnUnreachableLength() {
+        return Stream.of(
+                Arguments.of(
+                        List.of(List.of(1))
+                ),
+                Arguments.of(
+                        List.of(List.of(-3, 1))
+                ),
+                Arguments.of(
+                        List.of(List.of(1), List.of(2))
+                ),
+                Arguments.of(
+                        List.of(List.of(0, 2), List.of(3, -4))
+                ),
+                Arguments.of(
+                        List.of(List.of(1), List.of(1), List.of(1))
+                ),
+                Arguments.of(
+                        List.of(List.of(0), List.of(1, 2), List.of(2, 3))
+                )
+        );
     }
 
     @ParameterizedTest
@@ -232,6 +317,19 @@ class CartesianPathfinderTests {
                         )
                 )
         );
+    }
+
+    @Test
+    void getImmutablePaths() {
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(3, 4), List.of(6, 7));
+        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Pathfinder pathfinder = CartesianPathfinder.of(nodes);
+
+        int length = 10;
+
+        List<Path> paths = pathfinder.find(length);
+
+        Assertions.assertThrows(UnsupportedOperationException.class, paths::clear);
     }
 
     @Test
