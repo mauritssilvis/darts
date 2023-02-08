@@ -40,7 +40,7 @@ class BoardsCommand implements Runnable {
     private OutputFormat outputFormat;
 
     @Parameters(
-            description = "Dartboard type(s). Supported values: London, Quadro, Yorkshire.",
+            description = "The dartboard type. Supported values: London, Quadro, Yorkshire.",
             paramLabel = "<board>"
     )
     private BoardType boardType;
