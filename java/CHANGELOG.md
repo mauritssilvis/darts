@@ -22,6 +22,8 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add the Yorkshire dartboard (`YorkshireBoard`).
 - Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
 - Add a Markdown serializer for dartboards (`MarkdownBoardSerializer`).
+- Add a JSON serializer for dartboards (`JsonBoardSerializer`).
+- Add an HTML serializer for dartboards (`HtmlBoardSerializer`).
 
 #### Checkout finders
 
@@ -33,7 +35,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
 - Add support for master and double check-ins and checkouts (`CheckType`).
 - Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
-- Add a Markdown serializer for dartboards (`MarkdownTableSerializer`).
+- Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
+- Add a JSON serializer for checkout tables (`JsonTableSerializer`).
+- Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
 
 #### Command-line interface
 
