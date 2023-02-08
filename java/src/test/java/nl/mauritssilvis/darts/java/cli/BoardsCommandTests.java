@@ -34,7 +34,7 @@ class BoardsCommandTests {
                 "Print a dartboard.",
                 "The output format.",
                 "<output>",
-                "Dartboard type(s).",
+                "The dartboard type.",
                 "<board>"
         );
 
