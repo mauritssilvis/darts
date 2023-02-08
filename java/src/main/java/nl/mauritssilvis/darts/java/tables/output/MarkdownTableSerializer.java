@@ -45,7 +45,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         MarkdownTablePrinter(Table table) {
             super(table);
 
-            int throwWidth = (getFieldWidth() + 1) * getThrowSize() - 1;
+            int throwWidth = (getFieldWidth() + 3) * getThrowSize() - 3;
 
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
@@ -200,7 +200,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         @Override
         void addEmptyFieldBefore() {
             addField("");
-            stringBuilder.append(' ');
+            stringBuilder.append("   ");
         }
 
         @Override
@@ -218,7 +218,7 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void separateField() {
-            stringBuilder.append('/');
+            stringBuilder.append(" / ");
         }
 
         @Override
