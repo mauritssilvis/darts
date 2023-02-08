@@ -44,7 +44,7 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
         private final String columnFormat;
         private int row;
 
-        private MarkdownBoardPrinter(Board board) {
+        MarkdownBoardPrinter(Board board) {
             super(board);
 
             builderMap = new HashMap<>();
