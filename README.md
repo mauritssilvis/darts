@@ -4,10 +4,11 @@
 
 ## Introduction
 
-In darts, there is always something to compute:
-
-* How many points did I score? How many are left?
-* What is my average score? What percentage of my darts successfully hit a double?
+In darts, there is always something to compute.
+How many points did I score?
+How many are left?
+What is my average score?
+What percentage of my darts successfully hit a double?
 
 This project focuses on the following questions:
 
