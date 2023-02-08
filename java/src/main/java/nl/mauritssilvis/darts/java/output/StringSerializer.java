@@ -20,9 +20,24 @@ import java.util.stream.IntStream;
  * @param <T> the type of object to be serialized
  */
 public interface StringSerializer<T> extends Serializer<T> {
+    /**
+     * Detected opening brackets in string formatting.
+     */
     List<Character> OPENING_BRACKETS = List.of('{', '[', '(');
+
+    /**
+     * Detected closing brackets in string formatting.
+     */
     List<Character> CLOSING_BRACKETS = List.of(')', ']', '}');
+
+    /**
+     * Detected delimiters in string formatting.
+     */
     List<Character> DELIMITERS = Collections.singletonList(',');
+
+    /**
+     * Detected double newlines in string formatting.
+     */
     Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
 
     @Override
