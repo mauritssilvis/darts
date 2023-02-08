@@ -139,10 +139,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void addEmptyThrowBefore() {
-        }
-
-        @Override
         void startThrow() {
             stringBuilder.append("                    [\n");
         }
@@ -193,10 +189,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         @Override
         void endLastField() {
             stringBuilder.append('\n');
-        }
-
-        @Override
-        void addEmptyFieldAfter() {
         }
 
         @Override

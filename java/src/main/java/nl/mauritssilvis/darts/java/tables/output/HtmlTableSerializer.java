@@ -176,10 +176,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void addEmptyThrowBefore() {
-        }
-
-        @Override
         void startThrow() {
             stringBuilder.append("<td class=\"t\">");
         }
@@ -231,10 +227,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void endLastField() {
-        }
-
-        @Override
-        void addEmptyFieldAfter() {
         }
 
         @Override

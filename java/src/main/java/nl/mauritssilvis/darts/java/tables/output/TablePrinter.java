@@ -142,9 +142,6 @@ abstract class TablePrinter {
     private void processThrows(List<? extends Throw> throwList) {
         startThrows();
 
-        IntStream.range(0, numThrows - throwList.size())
-                .forEach(i -> addEmptyThrowBefore());
-
         for (int i = 0; i < throwList.size(); i++) {
             Throw compoundThrow = throwList.get(i);
 
@@ -184,9 +181,6 @@ abstract class TablePrinter {
                 separateField();
             }
         }
-
-        IntStream.range(0, throwSize - fields.size())
-                .forEach(i -> addEmptyFieldAfter());
     }
 
     private void processField(Field field) {
@@ -235,8 +229,6 @@ abstract class TablePrinter {
 
     abstract void endThrows();
 
-    abstract void addEmptyThrowBefore();
-
     abstract void startThrow();
 
     abstract void endThrow();
@@ -258,8 +250,6 @@ abstract class TablePrinter {
     abstract void separateField();
 
     abstract void endLastField();
-
-    abstract void addEmptyFieldAfter();
 
     abstract void startCheckoutMultiplicity();
 

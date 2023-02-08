@@ -173,10 +173,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void addEmptyThrowBefore() {
-        }
-
-        @Override
         void startThrow() {
             stringBuilder.append("| ");
         }
@@ -227,10 +223,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void endLastField() {
-        }
-
-        @Override
-        void addEmptyFieldAfter() {
         }
 
         @Override
