@@ -50,7 +50,7 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void startScore(int score) {
+        void startScore(int score, int numCheckouts) {
             stringBuilder.append("    \"")
                     .append(score)
                     .append("\": {\n");

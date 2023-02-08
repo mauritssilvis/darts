@@ -42,21 +42,21 @@ class HtmlTableSerializerTests {
 
         Assertions.assertEquals(
                 """
-                        <table class="table text-end">
-                          <tr class="h"><th>                           Score</th><th class="t">                                                   1</th><th class="t">                                                   2</th><th class="m"> #</th></tr>
-                          <tr class="s"><th rowspan="2" scope="rowgroup"> 22</th><td class="t">                          <span class="e">  *</span></td><td class="t">                          <span class="e">  *</span></td><td class="m"> 1</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f">D11</span></td><td class="t">                          <span class="n">  -</span></td><td class="m"> 1</td></tr>
-                          <tr class="s"><th rowspan="11" scope="rowgroup">23</th><td class="t">                          <span class="e">  *</span></td><td class="t">                          <span class="e">  *</span></td><td class="m">38</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f">D11</span></td><td class="t">                          <span class="f">  1</span></td><td class="m"> 2</td></tr>
-                          <tr class="c">                                         <td class="t"><span class="f"> 20</span><span class="f">D10</span></td><td class="t">                          <span class="f">  3</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f"> 19</span></td><td class="t"><span class="f">  4</span><span class="f"> D2</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t"><span class="f"> 18</span><span class="f"> D9</span></td><td class="t">                          <span class="f">  5</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f"> 17</span></td><td class="t"><span class="f">  6</span><span class="f"> D3</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t"><span class="f"> 16</span><span class="f"> D8</span></td><td class="t">                          <span class="f">  7</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f"> 15</span></td><td class="t"><span class="f">  8</span><span class="f"> D4</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t"><span class="f"> 14</span><span class="f"> D7</span></td><td class="t">                          <span class="f">  9</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t">                          <span class="f"> 13</span></td><td class="t"><span class="f"> 10</span><span class="f"> D5</span></td><td class="m"> 4</td></tr>
-                          <tr class="c">                                         <td class="t"><span class="f"> 12</span><span class="f"> D6</span></td><td class="t">                          <span class="f"> 11</span></td><td class="m"> 4</td></tr>
+                        <table>
+                          <tr class="h"><th>                              Score</th><th class="t">                                                   1</th><th class="t">                                                   2</th><th class="m"> #</th></tr>
+                          <tr class="s"><th rowspan="2" scope="rowgroup">    22</th><td class="t">                          <span class="e">  *</span></td><td class="t">                          <span class="e">  *</span></td><td class="m"> 1</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f">D11</span></td><td class="t">                          <span class="n">  -</span></td><td class="m"> 1</td></tr>
+                          <tr class="s"><th rowspan="11" scope="rowgroup">   23</th><td class="t">                          <span class="e">  *</span></td><td class="t">                          <span class="e">  *</span></td><td class="m">38</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f">D11</span></td><td class="t">                          <span class="f">  1</span></td><td class="m"> 2</td></tr>
+                          <tr class="c">                                            <td class="t"><span class="f"> 20</span><span class="f">D10</span></td><td class="t">                          <span class="f">  3</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f"> 19</span></td><td class="t"><span class="f">  4</span><span class="f"> D2</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t"><span class="f"> 18</span><span class="f"> D9</span></td><td class="t">                          <span class="f">  5</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f"> 17</span></td><td class="t"><span class="f">  6</span><span class="f"> D3</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t"><span class="f"> 16</span><span class="f"> D8</span></td><td class="t">                          <span class="f">  7</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f"> 15</span></td><td class="t"><span class="f">  8</span><span class="f"> D4</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t"><span class="f"> 14</span><span class="f"> D7</span></td><td class="t">                          <span class="f">  9</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t">                          <span class="f"> 13</span></td><td class="t"><span class="f"> 10</span><span class="f"> D5</span></td><td class="m"> 4</td></tr>
+                          <tr class="c">                                            <td class="t"><span class="f"> 12</span><span class="f"> D6</span></td><td class="t">                          <span class="f"> 11</span></td><td class="m"> 4</td></tr>
                         </table>
                         """,
                 output);
@@ -83,6 +83,6 @@ class HtmlTableSerializerTests {
 
         String output = serializer.serialize(table);
 
-        Assertions.assertTrue(output.startsWith("<table>\n  <tr><th class=\"s\">Score</th>"));
+        Assertions.assertTrue(output.startsWith("<table>\n  <tr class=\"h\"><th> "));
     }
 }

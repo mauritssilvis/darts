@@ -36,6 +36,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
     private static class HtmlTablePrinter extends TablePrinter {
         private final StringBuilder stringBuilder = new StringBuilder();
+        private final String preScoreFormat;
         private final String scoreFormat;
         private final String throwFormat;
         private final String fieldFormat;
@@ -47,7 +48,9 @@ public final class HtmlTableSerializer implements Serializer<Table> {
             super(table);
 
             int throwWidth = (getFieldWidth() + 23) * getThrowSize();
+            int scoreSizeWidth = String.valueOf(getNumCheckouts() + 1).length();
 
+            preScoreFormat = "%1$-" + (scoreSizeWidth + 28) + "s";
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + getFieldWidth() + "s";
@@ -60,7 +63,8 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         @Override
         void startTable() {
             stringBuilder.append("<table>\n")
-                    .append("  <tr><th class=\"s\">")
+                    .append("  <tr class=\"h\"><th>")
+                    .append(String.format(preScoreFormat, ""))
                     .append(String.format(scoreFormat, "Score"))
                     .append("</th>");
 
@@ -79,14 +83,18 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void startScore(int score) {
-            stringBuilder.append("  <tr>")
-                    .append("<td class=\"s\">")
+        void startScore(int score, int numCheckouts) {
+            String preScore = "rowspan=\"" + (numCheckouts + 1) + "\" scope=\"rowgroup\">";
+
+            stringBuilder.append("  <tr class=\"s\"><th ")
+                    .append(String.format(preScoreFormat, preScore))
                     .append(String.format(scoreFormat, score))
-                    .append("</td>");
+                    .append("</th>");
+
+            String starField = "<span class=\"e\">" + String.format(fieldFormat, "*") + "</span>";
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, "*"))
+                    .mapToObj(i -> String.format(throwFormat, starField))
                     .forEach(str -> stringBuilder.append("<td class=\"t\">").append(str).append("</td>"));
         }
 
@@ -127,7 +135,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void startCheckout() {
-            stringBuilder.append("  <tr>");
+            stringBuilder.append("  <tr class=\"c\">");
         }
 
         @Override
@@ -145,7 +153,8 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void startCheckoutScore() {
-            stringBuilder.append("<td class=\"s\">");
+            stringBuilder.append("    ")
+                    .append(String.format(preScoreFormat, ""));
         }
 
         @Override
@@ -155,7 +164,7 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void endCheckoutScore() {
-            stringBuilder.append("</td>");
+            stringBuilder.append("     ");
         }
 
         @Override
@@ -191,7 +200,8 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         @Override
         void addEmptyThrowAfter() {
             startThrow();
-            stringBuilder.append(String.format(throwFormat, "-"));
+            String noField = "<span class=\"n\">" + String.format(fieldFormat, "-") + "</span>";
+            stringBuilder.append(String.format(throwFormat, noField));
             endThrow();
         }
 

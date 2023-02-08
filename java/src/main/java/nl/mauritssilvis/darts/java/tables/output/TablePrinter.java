@@ -26,6 +26,7 @@ abstract class TablePrinter {
     private final Map<Integer, List<Checkout>> checkoutMap;
     private final Map<Integer, Long> multiplicityMap;
     private final int scoreWidth;
+    private final int numCheckouts;
     private final int numThrows;
     private final int throwSize;
     private final int fieldWidth;
@@ -40,15 +41,20 @@ abstract class TablePrinter {
                 .flatMap(Collection::stream)
                 .toList();
 
-        scoreWidth = determineScoreWidth(checkoutMap.keySet());
-        numThrows = determineNumThrows(checkouts);
-        throwSize = determineThrowSize(checkouts);
-        fieldWidth = determineFieldWidth(checkouts);
-        multiplicityWidth = getMultiplicityWidth(multiplicityMap.values());
+        scoreWidth = getMaxScoreWidth(checkoutMap.keySet());
+        numCheckouts = getMaxNumCheckouts(checkoutMap.values());
+        numThrows = getMaxNumThrows(checkouts);
+        throwSize = getMaxThrowSize(checkouts);
+        fieldWidth = getMaxFieldWidth(checkouts);
+        multiplicityWidth = getMaxMultiplicityWidth(multiplicityMap.values());
     }
 
     int getScoreWidth() {
         return scoreWidth;
+    }
+
+    int getNumCheckouts() {
+        return numCheckouts;
     }
 
     int getNumThrows() {
@@ -91,7 +97,7 @@ abstract class TablePrinter {
     }
 
     private void processScore(int score) {
-        startScore(score);
+        startScore(score, checkoutMap.get(score).size());
 
         startMultiplicity();
         addMultiplicity(multiplicityMap.get(score));
@@ -199,7 +205,7 @@ abstract class TablePrinter {
 
     abstract void endTable();
 
-    abstract void startScore(int score);
+    abstract void startScore(int score, int numCheckouts);
 
     abstract void endScore();
 
@@ -283,7 +289,7 @@ abstract class TablePrinter {
                 );
     }
 
-    private static int determineScoreWidth(Collection<Integer> scores) {
+    private static int getMaxScoreWidth(Collection<Integer> scores) {
         return scores.stream()
                 .map(String::valueOf)
                 .mapToInt(String::length)
@@ -291,7 +297,14 @@ abstract class TablePrinter {
                 .orElse(0);
     }
 
-    private int determineNumThrows(Collection<? extends Checkout> checkouts) {
+    private static int getMaxNumCheckouts(Collection<? extends Collection<? extends Checkout>> checkoutsPerScore) {
+        return checkoutsPerScore.stream()
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxNumThrows(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()
                 .map(Checkout::getThrows)
                 .mapToInt(Collection::size)
@@ -299,7 +312,7 @@ abstract class TablePrinter {
                 .orElse(0);
     }
 
-    private static int determineThrowSize(Collection<? extends Checkout> checkouts) {
+    private static int getMaxThrowSize(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()
                 .map(Checkout::getThrows)
                 .flatMap(Collection::stream)
@@ -309,7 +322,7 @@ abstract class TablePrinter {
                 .orElse(0);
     }
 
-    private static int determineFieldWidth(Collection<? extends Checkout> checkouts) {
+    private static int getMaxFieldWidth(Collection<? extends Checkout> checkouts) {
         return checkouts.stream()
                 .map(Checkout::getThrows)
                 .flatMap(Collection::stream)
@@ -321,7 +334,7 @@ abstract class TablePrinter {
                 .orElse(0);
     }
 
-    private static int getMultiplicityWidth(Collection<Long> multiplicities) {
+    private static int getMaxMultiplicityWidth(Collection<Long> multiplicities) {
         return multiplicities.stream()
                 .map(String::valueOf)
                 .mapToInt(String::length)
