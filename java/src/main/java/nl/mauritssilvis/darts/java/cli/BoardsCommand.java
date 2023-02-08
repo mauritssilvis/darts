@@ -33,9 +33,9 @@ class BoardsCommand implements Runnable {
 
     @Option(
             names = {"-o", "--output"},
-            description = "The output format. Supported values: markdown, string.",
+            description = "The output format. Supported values: Markdown, JSON, HTML, string.",
             paramLabel = "<output>",
-            defaultValue = "markdown"
+            defaultValue = "Markdown"
     )
     private OutputFormat outputFormat;
 

@@ -62,7 +62,7 @@ class CheckoutsCommand implements Runnable {
 
     @Option(
             names = {"-f", "--finder"},
-            description = "The checkout finder type. Supported values: Cartesian, descending.",
+            description = "The checkout finder type. Supported values: descending, Cartesian.",
             paramLabel = "<finder>",
             defaultValue = "descending",
             order = 3
@@ -80,9 +80,9 @@ class CheckoutsCommand implements Runnable {
 
     @Option(
             names = {"-o", "--output"},
-            description = "The output format. Supported values: markdown, string.",
+            description = "The output format. Supported values: Markdown, JSON, HTML, string.",
             paramLabel = "<output>",
-            defaultValue = "markdown",
+            defaultValue = "Markdown",
             order = 5
     )
     private OutputFormat outputFormat;
