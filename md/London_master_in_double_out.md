@@ -1,4 +1,4 @@
-# London dartboard master-in double-out checkouts
+# London dartboard master-in double-out checkout tables
 
 ## 101
 

@@ -2,23 +2,29 @@
 
 # Generate Markdown checkout tables for master-in and double-in darts games
 
-files=(
-    "../London_master_in_master_out.md"
-    "../London_master_in_double_out.md"
-    "../London_double_in_double_out.md"
-    "../Quadro_master_in_master_out.md"
-    "../Quadro_master_in_double_out.md"
-    "../Quadro_double_in_double_out.md"
+path="../"
+
+names=(
+    "London_master_in_master_out"
+    "London_master_in_double_out"
+    "London_double_in_double_out"
+    "Quadro_master_in_master_out"
+    "Quadro_master_in_double_out"
+    "Quadro_double_in_double_out"
 )
 
+extension=".md"
+
 titles=(
-    "London dartboard master-in master-out checkouts"
-    "London dartboard master-in double-out checkouts"
-    "London dartboard double-in double-out checkouts"
-    "Quadro 240 board master-in master-out checkouts"
-    "Quadro 240 board master-in double-out checkouts"
-    "Quadro 240 board double-in double-out checkouts"
+    "London dartboard master-in master-out"
+    "London dartboard master-in double-out"
+    "London dartboard double-in double-out"
+    "Quadro 240 board master-in master-out"
+    "Quadro 240 board master-in double-out"
+    "Quadro 240 board double-in double-out"
 )
+
+title_suffix="checkout tables"
 
 commands=(
     "checkouts -i master -j master"
@@ -29,10 +35,10 @@ commands=(
     "checkouts -b quadro -i double"
 )
 
-for i in ${!files[@]}
+for i in ${!names[@]}
 do
-    file=${files[i]}
-    title=${titles[i]}
+    file="$path${names[i]}$extension"
+    title="${titles[i]} $title_suffix"
 
     echo -e "# $title\n" > $file
 

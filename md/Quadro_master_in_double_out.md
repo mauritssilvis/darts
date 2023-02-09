@@ -1,4 +1,4 @@
-# Quadro 240 board master-in double-out checkouts
+# Quadro 240 board master-in double-out checkout tables
 
 ## 101
 
