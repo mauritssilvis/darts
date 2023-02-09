@@ -1,18 +1,19 @@
-# Darts > Markdown
+# darts > Markdown
 
 > Darts checkout tables in the Markdown format
 
 ## Introduction
 
-This part of the [Darts](https://github.com/mauritssilvis/darts) project provides extensive checkout tables for different dartboards and game modes.
-These checkout tables apply to the 'standard' London dartboard or the Quadro 240 board, and are valid for different combinations of requirements on the first (in) and last (out) darts.
+This part of the [darts](https://github.com/mauritssilvis/darts) project provides extensive checkout tables for darts games with different dartboards and game modes.
+Specifically, the checkout tables apply to the ‘standard’ London dartboard or the Quadro 240 board.
+Furthermore, they satisfy various requirements on the first (in) and last (out) darts.
 
 An overview of the available checkout tables can be found below.
-Additional tables can be generated using the `darts` toolbox of the [Darts](https://github.com/mauritssilvis/darts) project.
+Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 ## Checkout tables
 
-### 'Standard' or London dartboard
+### London dartboard
 
 |               | **Any-out** | **Master-out** | **Double-out** |
 |---------------|-------------|----------------|----------------|
