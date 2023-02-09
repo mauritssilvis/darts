@@ -5,6 +5,7 @@
 
 plugins {
     id 'java'
+    id 'application'
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
@@ -31,6 +32,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application {
+    applicationName = 'darts'
+    mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
 }
 
 jar {
