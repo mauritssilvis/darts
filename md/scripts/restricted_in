@@ -2,7 +2,7 @@
 
 # Generate Markdown checkout tables for master-in and double-in darts games
 
-path="../"
+output_path="../"
 
 names=(
     "London_master_in_master_out"
@@ -26,6 +26,8 @@ titles=(
 
 title_suffix="checkout tables"
 
+script_path="../../java/"
+
 commands=(
     "checkouts -i master -j master"
     "checkouts -i master"
@@ -37,7 +39,7 @@ commands=(
 
 for i in ${!names[@]}
 do
-    file="$path${names[i]}$extension"
+    file="${output_path}${names[i]}$extension"
     title="${titles[i]} $title_suffix"
 
     echo -e "# $title\n" > $file
@@ -59,6 +61,7 @@ do
         echo -e "## $score\n" >> $file
 
         command="${commands[i]} $score $score"
+        java -jar "${script_path}build/libs/java-darts-toolbox-0.1.0-SNAPSHOT-all.jar" $command >> $file
         echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts $command\n\`\`\`\n" >> $file
     done
 
