@@ -1,5 +1,5 @@
 /*
- * Copyright © 2023 Maurits H. Silvis
+ * Copyright © 2023 Maurits Silvis
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -54,7 +54,7 @@ class DartsAppTests {
                 "darts",
                 "A computational toolbox aimed at the game of darts",
                 "Copyright",
-                "Maurits H. Silvis",
+                "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         );
 
@@ -80,7 +80,7 @@ class DartsAppTests {
         List<String> elements = List.of(
                 "darts",
                 "Copyright",
-                "Maurits H. Silvis",
+                "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         );
 

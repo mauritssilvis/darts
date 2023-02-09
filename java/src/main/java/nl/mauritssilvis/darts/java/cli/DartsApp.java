@@ -1,5 +1,5 @@
 /*
- * Copyright © 2023 Maurits H. Silvis
+ * Copyright © 2023 Maurits Silvis
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -25,11 +25,11 @@ import java.io.PrintWriter;
                 BoardsCommand.class,
                 CheckoutsCommand.class
         },
-        version = {"darts 0.1.0", "Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"},
+        version = {"darts 0.1.0", "Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"},
         mixinStandardHelpOptions = true,
         description = "A computational toolbox aimed at the game of darts",
         showDefaultValues = true,
-        footer = {"Copyright © 2023 Maurits H. Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
+        footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
 public final class DartsApp implements App {
     private CommandLine commandLine;
