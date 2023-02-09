@@ -5,7 +5,7 @@
 ## Introduction
 
 This part of the [darts](https://github.com/mauritssilvis/darts) project provides extensive checkout tables for darts games with different dartboards and game modes.
-Specifically, the checkout tables apply to the ‘standard’ London dartboard or the Quadro 240 board.
+These checkout tables apply to the ‘standard’ London dartboard or the Quadro 240 board.
 Furthermore, they satisfy various requirements on the first (in) and last (out) darts.
 
 An overview of the available checkout tables can be found below.
