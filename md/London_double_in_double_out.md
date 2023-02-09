@@ -1,5 +1,18 @@
 # London dartboard double-in double-out checkout tables
 
+## Table of contents
+
+- [101](#101)
+- [201](#201)
+- [301](#301)
+- [401](#401)
+- [501](#501)
+- [601](#601)
+- [701](#701)
+- [801](#801)
+- [901](#901)
+- [1001](#1001)
+
 ## 101
 
 This table was generated using the command:

@@ -42,6 +42,16 @@ do
 
     echo -e "# $title\n" > $file
 
+    echo -e "## Table of contents\n" >> $file
+
+    for j in {1..10}
+    do
+        score=$(($j * 100 + 1))
+        echo -e "- [$score](#$score)" >> $file
+    done
+
+    echo "" >> $file
+
     for j in {1..10}
     do
         score=$(($j * 100 + 1))
