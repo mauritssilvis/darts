@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Generate Markdown checkout tables for selected scores
+# Generate Markdown checkout tables for selected dartboards, game modes and scores
 
 dir="../tables/"
 
@@ -34,7 +34,7 @@ titles=(
     "Quadro 240 board double-in double-out"
 )
 
-title_suffix="checkout tables"
+title_suffix="checkouts"
 
 selected_scores=(
     "101 401 701 1001"
@@ -73,18 +73,22 @@ do
     file="${dir}${paths[i]}"
     title="${titles[i]} $title_suffix"
 
-    echo -e "# $title\n" > $file
-
-    echo -e "## Table of contents\n" >> $file
+    {
+        echo -e "# $title\n";
+        echo -e "## Introduction\n";
+    } > "$file"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"
 
     for j in "${!scores[@]}"; do
         score=${scores[j]}
-        echo -e "- [$score](#$score)" >> $file
+        echo -e "- [$score](#$score)" >> "$file"
     done
 
-    echo "" >> $file
+    {
+        echo -e ""
+        echo -e "## Checkout tables\n"
+    } >> "$file"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"
 
@@ -92,12 +96,10 @@ do
         score=${scores[j]}
         command="${commands[i]} $score $score"
 
-        echo -e "## $score\n" >> $file
-        java -jar "${script_path}build/libs/java-darts-toolbox-0.1.0-SNAPSHOT-all.jar" $command >> $file
-        echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts $command\n\`\`\`\n" >> $file
+        {
+            echo -e "### $score\n";
+            java -jar "${script_path}build/libs/java-darts-toolbox-0.1.0-SNAPSHOT-all.jar" $command;
+            echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts $command\n\`\`\`\n";
+        } >> "$file"
     done
-
-    echo -e "## License\n" >> $file
-    echo -e "Copyright © 2023 Maurits Silvis\n" >> $file
-    echo -e "This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later." >> $file
 done

@@ -1,4 +1,4 @@
-# London dartboard double-in double-out checkout tables
+# London dartboard double-in double-out checkouts
 
 ## Introduction
 
@@ -15,7 +15,9 @@
 |         901 |    16 |    12,139,768 |
 |        1001 |    18 | 3,400,574,560 |
 
-## 201
+## Checkout tables
+
+### 201
 
 | Score |   1 |   2 |   3 |   4 |  # |
 |------:|----:|----:|----:|----:|---:|
@@ -34,7 +36,7 @@ This table was generated using the command:
 darts checkouts -i double 201 201
 ```
 
-## 501
+### 501
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |   # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
@@ -57,7 +59,7 @@ This table was generated using the command:
 darts checkouts -i double 501 501
 ```
 
-## 801
+### 801
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |  14 |    # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|

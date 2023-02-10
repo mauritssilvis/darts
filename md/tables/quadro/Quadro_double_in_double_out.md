@@ -1,4 +1,4 @@
-# Quadro 240 board double-in double-out checkout tables
+# Quadro 240 board double-in double-out checkouts
 
 ## Introduction
 
@@ -15,7 +15,9 @@
 |         901 |    13 |  34,829,663 |
 |        1001 |    14 |   1,752,252 |
 
-## 301
+## Checkout tables
+
+### 301
 
 | Score |   1 |   2 |   3 |   4 |   5 |  # |
 |------:|----:|----:|----:|----:|----:|---:|
@@ -37,7 +39,7 @@ This table was generated using the command:
 darts checkouts -b quadro -i double 301 301
 ```
 
-## 701
+### 701
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |    # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|

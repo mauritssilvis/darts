@@ -1,4 +1,4 @@
-# London dartboard any-in double-out checkout tables
+# London dartboard any-in double-out checkouts
 
 ## Introduction
 
@@ -15,7 +15,9 @@
 |           901 |    16 | 202,772,073 |
 | [1001](#1001) |    17 |         816 |
 
-## 101
+## Checkout tables
+
+### 101
 
 | Score |   1 |   2 | # |
 |------:|----:|----:|--:|
@@ -28,7 +30,7 @@ This table was generated using the command:
 darts checkouts 101 101
 ```
 
-## 401
+### 401
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |  # |
 |------:|----:|----:|----:|----:|----:|----:|----:|---:|
@@ -43,7 +45,7 @@ This table was generated using the command:
 darts checkouts 401 401
 ```
 
-## 501
+### 501
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |    # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|
@@ -77,7 +79,7 @@ This table was generated using the command:
 darts checkouts 501 501
 ```
 
-## 701
+### 701
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |   # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
@@ -92,7 +94,7 @@ This table was generated using the command:
 darts checkouts 701 701
 ```
 
-## 1001
+### 1001
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |  14 |  15 |  16 |  17 |   # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|

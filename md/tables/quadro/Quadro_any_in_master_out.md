@@ -1,4 +1,4 @@
-# Quadro 240 board any-in master-out checkout tables
+# Quadro 240 board any-in master-out checkouts
 
 ## Introduction
 
@@ -15,7 +15,9 @@
 |           901 |    12 |    117,085 |
 | [1001](#1001) |    13 |      1,377 |
 
-## 201
+## Checkout tables
+
+### 201
 
 | Score |   1 |   2 |   3 | # |
 |------:|----:|----:|----:|--:|
@@ -31,7 +33,7 @@ This table was generated using the command:
 darts checkouts -b quadro -j master 201 201
 ```
 
-## 601
+### 601
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
@@ -49,7 +51,7 @@ This table was generated using the command:
 darts checkouts -b quadro -j master 601 601
 ```
 
-## 1001
+### 1001
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |    # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|

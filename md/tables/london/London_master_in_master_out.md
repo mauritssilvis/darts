@@ -1,4 +1,4 @@
-# London dartboard master-in master-out checkout tables
+# London dartboard master-in master-out checkouts
 
 ## Introduction
 
@@ -15,7 +15,9 @@
 |           901 |    16 | 1,820,538,222 |
 | [1001](#1001) |    17 |        13,872 |
 
-## 101
+## Checkout tables
+
+### 101
 
 | Score |   1 |   2 | # |
 |------:|----:|----:|--:|
@@ -28,7 +30,7 @@ This table was generated using the command:
 darts checkouts -i master -j master 101 101
 ```
 
-## 401
+### 401
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|
@@ -68,7 +70,7 @@ This table was generated using the command:
 darts checkouts -i master -j master 401 401
 ```
 
-## 701
+### 701
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |    # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|
@@ -108,7 +110,7 @@ This table was generated using the command:
 darts checkouts -i master -j master 701 701
 ```
 
-## 1001
+### 1001
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |  14 |  15 |  16 |  17 |     # |
 |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|------:|
