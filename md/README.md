@@ -15,19 +15,19 @@ Additional tables can be generated using the `darts` toolbox of the [darts](http
 
 ### London dartboard
 
-|               |          **Any-out**           |            **Master-out**            |            **Double-out**            |
-|---------------|:------------------------------:|:------------------------------------:|:------------------------------------:|
-| **Any-in**    | [🔗](London_any_in_any_out.md) |  [🔗](London_any_in_master_out.md)   |  [🔗](London_any_in_double_out.md)   |
-| **Master-in** |                                | [🔗](London_master_in_master_out.md) | [🔗](London_master_in_double_out.md) |
-| **Double-in** |                                |                                      | [🔗](London_double_in_double_out.md) |
+|               |                 **Any-out**                  |                   **Master-out**                   |                   **Double-out**                   |
+|---------------|:--------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
+| **Any-in**    | [🔗](tables/london/London_any_in_any_out.md) |  [🔗](tables/london/London_any_in_master_out.md)   |  [🔗](tables/london/London_any_in_double_out.md)   |
+| **Master-in** |                                              | [🔗](tables/london/London_master_in_master_out.md) | [🔗](tables/london/London_master_in_double_out.md) |
+| **Double-in** |                                              |                                                    | [🔗](tables/london/London_double_in_double_out.md) |
 
 ### Quadro 240 board
 
-|               |          **Any-out**           |            **Master-out**            |            **Double-out**            |
-|---------------|:------------------------------:|:------------------------------------:|:------------------------------------:|
-| **Any-in**    | [🔗](Quadro_any_in_any_out.md) |  [🔗](Quadro_any_in_master_out.md)   |  [🔗](Quadro_any_in_double_out.md)   |
-| **Master-in** |                                | [🔗](Quadro_master_in_master_out.md) | [🔗](Quadro_master_in_double_out.md) |
-| **Double-in** |                                |                                      | [🔗](Quadro_double_in_double_out.md) |
+|               |                 **Any-out**                  |                   **Master-out**                   |                   **Double-out**                   |
+|---------------|:--------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
+| **Any-in**    | [🔗](tables/quadro/Quadro_any_in_any_out.md) |  [🔗](tables/quadro/Quadro_any_in_master_out.md)   |  [🔗](tables/quadro/Quadro_any_in_double_out.md)   |
+| **Master-in** |                                              | [🔗](tables/quadro/Quadro_master_in_master_out.md) | [🔗](tables/quadro/Quadro_master_in_double_out.md) |
+| **Double-in** |                                              |                                                    | [🔗](tables/quadro/Quadro_double_in_double_out.md) |
 
 ## License
 
