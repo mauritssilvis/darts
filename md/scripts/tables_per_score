@@ -20,7 +20,7 @@ paths=(
 )
 
 titles=(
-    "London dartboard any-in any-out"
+    "London dartboard any-in, any-out"
     "London dartboard any-in master-out"
     "London dartboard master-in master-out"
     "London dartboard any-in double-out"
