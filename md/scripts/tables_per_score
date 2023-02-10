@@ -2,24 +2,22 @@
 
 # Generate Markdown checkout tables for selected scores
 
-output_path="../"
+dir="../tables/"
 
-names=(
-    "London_any_in_any_out"
-    "London_any_in_master_out"
-    "London_master_in_master_out"
-    "London_any_in_double_out"
-    "London_master_in_double_out"
-    "London_double_in_double_out"
-    "Quadro_any_in_any_out"
-    "Quadro_any_in_master_out"
-    "Quadro_master_in_master_out"
-    "Quadro_any_in_double_out"
-    "Quadro_master_in_double_out"
-    "Quadro_double_in_double_out"
+paths=(
+    "london/London_any_in_any_out.md"
+    "london/London_any_in_master_out.md"
+    "london/London_master_in_master_out.md"
+    "london/London_any_in_double_out.md"
+    "london/London_master_in_double_out.md"
+    "london/London_double_in_double_out.md"
+    "quadro/Quadro_any_in_any_out.md"
+    "quadro/Quadro_any_in_master_out.md"
+    "quadro/Quadro_master_in_master_out.md"
+    "quadro/Quadro_any_in_double_out.md"
+    "quadro/Quadro_master_in_double_out.md"
+    "quadro/Quadro_double_in_double_out.md"
 )
-
-extension=".md"
 
 titles=(
     "London dartboard any-in any-out"
@@ -70,9 +68,9 @@ commands=(
     "checkouts -b quadro -i double"
 )
 
-for i in ${!names[@]}
+for i in "${!paths[@]}"
 do
-    file="${output_path}${names[i]}$extension"
+    file="${dir}${paths[i]}"
     title="${titles[i]} $title_suffix"
 
     echo -e "# $title\n" > $file
