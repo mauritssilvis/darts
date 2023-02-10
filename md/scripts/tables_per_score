@@ -109,17 +109,8 @@ do
         echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n";
 
         echo -e "|         Score | Darts |      Checkouts |";
-        echo -e "|--------------:|------:|---------------:|";
+        echo -e "|--------------:|------:|---------------:|\n";
     } > "$file"
-
-    IFS=' ' read -ra scores <<< "${selected_scores[i]}"
-
-    for j in "${!scores[@]}"; do
-        score=${scores[j]}
-        echo -e "|   [${score}](#${score}) |    " >> "$file"
-    done
-
-    echo -e "" >> "$file"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"
 
