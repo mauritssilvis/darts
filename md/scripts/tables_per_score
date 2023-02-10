@@ -85,10 +85,7 @@ do
         echo -e "- [$score](#$score)" >> "$file"
     done
 
-    {
-        echo -e ""
-        echo -e "## Checkout tables\n"
-    } >> "$file"
+    echo -e "" >> "$file"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"
 
@@ -97,7 +94,7 @@ do
         command="${commands[i]} $score $score"
 
         {
-            echo -e "### $score\n";
+            echo -e "## $score\n";
             java -jar "${script_path}build/libs/java-darts-toolbox-0.1.0-SNAPSHOT-all.jar" $command;
             echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts $command\n\`\`\`\n";
         } >> "$file"
