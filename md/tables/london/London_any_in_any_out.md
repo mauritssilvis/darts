@@ -2,6 +2,13 @@
 
 ## Introduction
 
+This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in any-in any-out mode.
+
+Darts games commonly require players to score x01 points, where x is an integer.
+The following table shows how many darts are required and how many checkouts are possible for London dartboard any-in any-out games with such scores.
+The most exciting games are those with a comparatively small number of checkouts for their maximal score.
+Checkout tables for these scores are given below.
+
 |         Score | Darts |     Checkouts |
 |--------------:|------:|--------------:|
 |   [101](#101) |     2 |             2 |
