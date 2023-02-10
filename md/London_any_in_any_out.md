@@ -1,0 +1,72 @@
+# London dartboard any-in any-out checkout tables
+
+## Table of contents
+
+- [101](#101)
+- [401](#401)
+- [701](#701)
+- [1001](#1001)
+
+## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 2 |
+|       | T17 | D25 | 2 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j any 101 101
+```
+
+## 401
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|
+|   401 |   * |   * |   * |   * |   * |   * |   * | 392 |
+|       | T20 | T20 | T20 | T20 | T20 | T17 | D25 |  42 |
+|       | T20 | T20 | T20 | T20 | T19 | T18 | D25 | 210 |
+|       | T20 | T20 | T20 | T19 | T19 | T19 | D25 | 140 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j any 401 401
+```
+
+## 701
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |    # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|
+|   701 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 3432 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T17 | D25 |  132 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T18 | D25 | 1320 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T19 | T19 | D25 | 1980 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j any 701 701
+```
+
+## 1001
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  13 |  14 |  15 |  16 |  17 |     # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|------:|
+|  1001 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 13872 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T17 | D25 |   272 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T18 | D25 |  4080 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T19 | T19 | D25 |  9520 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j any 1001 1001
+```
+
+## License
+
+Copyright © 2023 Maurits Silvis
+
+This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later.

@@ -1,4 +1,4 @@
-# Quadro 240 board master-in double-out checkout tables
+# Quadro 240 board any-in double-out checkout tables
 
 ## Table of contents
 
@@ -16,33 +16,33 @@
 This table was generated using the command:
 
 ```shell
-darts checkouts -b quadro -i master 101 101
+darts checkouts -b quadro 101 101
 ```
 
 ## 501
 
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
 |------:|----:|----:|----:|----:|----:|----:|----:|--:|
-|   501 |   * |   * |   * |   * |   * |   * |   * | 1 |
-|       | T17 | Q20 | Q20 | Q20 | Q20 | Q20 | D25 | 1 |
+|   501 |   * |   * |   * |   * |   * |   * |   * | 6 |
+|       | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D25 | 6 |
 
 This table was generated using the command:
 
 ```shell
-darts checkouts -b quadro -i master 501 501
+darts checkouts -b quadro 501 501
 ```
 
 ## 901
 
-| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 | # |
-|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|--:|
-|   901 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 1 |
-|       | T17 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | D25 | 1 |
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |  # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|---:|
+|   901 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 11 |
+|       | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D25 | 11 |
 
 This table was generated using the command:
 
 ```shell
-darts checkouts -b quadro -i master 901 901
+darts checkouts -b quadro 901 901
 ```
 
 ## License

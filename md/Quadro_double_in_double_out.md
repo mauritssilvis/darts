@@ -2,34 +2,24 @@
 
 ## Table of contents
 
-- [101](#101)
-- [201](#201)
 - [301](#301)
-- [401](#401)
-- [501](#501)
-- [601](#601)
 - [701](#701)
-- [801](#801)
-- [901](#901)
-- [1001](#1001)
-
-## 101
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 101 101
-```
-
-## 201
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 201 201
-```
 
 ## 301
+
+| Score |   1 |   2 |   3 |   4 |   5 |  # |
+|------:|----:|----:|----:|----:|----:|---:|
+|   301 |   * |   * |   * |   * |   * | 45 |
+|       | D25 | Q20 | Q20 | T19 | D17 |  3 |
+|       | D25 | Q20 | Q20 | T17 | D20 |  3 |
+|       | D25 | Q20 | Q19 | T19 | D19 |  6 |
+|       | D25 | Q20 | Q19 | T15 | D25 |  6 |
+|       | D25 | Q20 | Q16 | T19 | D25 |  6 |
+|       | D25 | Q19 | Q17 | T19 | D25 |  6 |
+|       | D25 | Q18 | Q18 | T19 | D25 |  3 |
+|       | D20 | Q20 | Q20 | T17 | D25 |  3 |
+|       | D19 | Q20 | Q19 | T19 | D25 |  6 |
+|       | D17 | Q20 | Q20 | T19 | D25 |  3 |
 
 This table was generated using the command:
 
@@ -37,60 +27,28 @@ This table was generated using the command:
 darts checkouts -b quadro -i double 301 301
 ```
 
-## 401
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 401 401
-```
-
-## 501
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 501 501
-```
-
-## 601
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 601 601
-```
-
 ## 701
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |    # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|
+|   701 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 1880 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T19 | D17 |    8 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D20 |    8 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T19 | D19 |   56 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T15 | D25 |   56 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q16 | T19 | D25 |   56 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q17 | T19 | D25 |  336 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q18 | Q18 | T19 | D25 |  168 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q19 | Q19 | Q18 | T19 | D25 |  840 |
+|       | D25 | Q20 | Q20 | Q20 | Q19 | Q19 | Q19 | Q19 | T19 | D25 |  280 |
+|       | D20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D25 |    8 |
+|       | D19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T19 | D25 |   56 |
+|       | D17 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T19 | D25 |    8 |
 
 This table was generated using the command:
 
 ```shell
 darts checkouts -b quadro -i double 701 701
-```
-
-## 801
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 801 801
-```
-
-## 901
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 901 901
-```
-
-## 1001
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i double 1001 1001
 ```
 
 ## License

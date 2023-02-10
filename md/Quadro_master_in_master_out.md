@@ -3,17 +3,15 @@
 ## Table of contents
 
 - [101](#101)
-- [201](#201)
-- [301](#301)
-- [401](#401)
 - [501](#501)
-- [601](#601)
-- [701](#701)
-- [801](#801)
 - [901](#901)
-- [1001](#1001)
 
 ## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 2 |
+|       | T17 | D25 | 2 |
 
 This table was generated using the command:
 
@@ -21,31 +19,29 @@ This table was generated using the command:
 darts checkouts -b quadro -i master -j master 101 101
 ```
 
-## 201
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 201 201
-```
-
-## 301
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 301 301
-```
-
-## 401
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 401 401
-```
-
 ## 501
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|
+|   501 |   * |   * |   * |   * |   * |   * |   * | 172 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q19 | T15 |   5 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q16 | T19 |   5 |
+|       | T20 | Q20 | Q20 | Q20 | Q19 | Q17 | T19 |  20 |
+|       | T20 | Q20 | Q20 | Q20 | Q18 | Q18 | T19 |  10 |
+|       | T20 | Q20 | Q20 | Q19 | Q19 | Q18 | T19 |  30 |
+|       | T20 | Q20 | Q19 | Q19 | Q19 | Q19 | T19 |   5 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q19 | T16 |   5 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q16 | T20 |   5 |
+|       | T19 | Q20 | Q20 | Q20 | Q19 | Q17 | T20 |  20 |
+|       | T19 | Q20 | Q20 | Q20 | Q18 | Q18 | T20 |  10 |
+|       | T19 | Q20 | Q20 | Q19 | Q19 | Q18 | T20 |  30 |
+|       | T19 | Q20 | Q19 | Q19 | Q19 | Q19 | T20 |   5 |
+|       | T18 | Q20 | Q20 | Q20 | Q20 | Q19 | T17 |   5 |
+|       | T17 | Q20 | Q20 | Q20 | Q20 | Q20 | D25 |   1 |
+|       | T17 | Q20 | Q20 | Q20 | Q20 | Q19 | T18 |   5 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | T17 |   1 |
+|       | T16 | Q20 | Q20 | Q20 | Q20 | Q19 | T19 |   5 |
+|       | T15 | Q20 | Q20 | Q20 | Q20 | Q19 | T20 |   5 |
 
 This table was generated using the command:
 
@@ -53,44 +49,34 @@ This table was generated using the command:
 darts checkouts -b quadro -i master -j master 501 501
 ```
 
-## 601
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 601 601
-```
-
-## 701
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 701 701
-```
-
-## 801
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 801 801
-```
-
 ## 901
+
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |    # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|
+|   901 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 1492 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T15 |   10 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q16 | T19 |   10 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q17 | T19 |   90 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q18 | Q18 | T19 |   45 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q19 | Q18 | T19 |  360 |
+|       | T20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q19 | Q19 | Q19 | T19 |  210 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T16 |   10 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q16 | T20 |   10 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q17 | T20 |   90 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q18 | Q18 | T20 |   45 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q19 | Q18 | T20 |  360 |
+|       | T19 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | Q19 | Q19 | Q19 | T20 |  210 |
+|       | T18 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T17 |   10 |
+|       | T17 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | D25 |    1 |
+|       | T17 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T18 |   10 |
+|       | D25 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | T17 |    1 |
+|       | T16 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T19 |   10 |
+|       | T15 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q20 | Q19 | T20 |   10 |
 
 This table was generated using the command:
 
 ```shell
 darts checkouts -b quadro -i master -j master 901 901
-```
-
-## 1001
-
-This table was generated using the command:
-
-```shell
-darts checkouts -b quadro -i master -j master 1001 1001
 ```
 
 ## License
