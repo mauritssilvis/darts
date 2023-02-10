@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In darts, there is always something to compute.
+In darts games, there is always something to compute.
 How many points did I score?
 How many are left?
 What is my average score?
@@ -25,11 +25,12 @@ In addition, several game modes are supported, including modes that require play
 Finally, `darts` can provide output in several formats: easily readable Markdown tables, HTML tables for web pages and JSON objects for computer processing.
 
 Currently, `darts` is available as a Java-based command-line application.
-More information about the installation and use of this app can be found on the [darts > Java](java) page.
-If you are interested in checking out those checkout tables, refer to the [darts > Markdown](md) page.
-Read on to learn more about the observations that can be made using `darts`.
+More information about the installation and use of this app can be found in the [darts > Java](java) readme.
+If you are interested in checking out those checkout tables, refer to the [darts > Markdown](md) readme.
 
-## Observations
+[//]: # (Read on to learn more about the observations that can be made using `darts`.)
+
+[//]: # (## Observations)
 
 ## License
 
