@@ -44,3 +44,17 @@ jar {
         attributes 'Main-Class': 'nl.mauritssilvis.darts.java.cli.DartsApp'
     }
 }
+
+tasks.register('createStartScripts', CreateStartScripts) {
+    outputDir = file('.')
+    mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
+    applicationName = 'darts'
+    classpath = files(project.name + '-' + version + '-all.jar')
+}
+
+createStartScripts {
+    doLast {
+        unixScript.text = unixScript.text.replace('/lib/', '/java/build/libs/')
+        windowsScript.text = windowsScript.text.replace('\\lib\\', '\\java\\build\\libs\\')
+    }
+}
