@@ -101,15 +101,15 @@ do
         echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode.\n";
 
         echo -e "Darts games commonly require players to score x01 points, where x is an integer.";
-        echo -e "The following table shows the minimum required number of darts to reach such scores in ${board} ${mode} games.";
+        echo -e "The following table shows the required number of darts to reach such scores in ${board} ${mode} games.";
         echo -e "In addition, the corresponding number of possible checkouts is shown.\n";
-
-        echo -e "The most exciting games will be those with a comparatively small number of checkouts for the target score.";
-        echo -e "Checkout tables for these scores are given below.";
-        echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n";
 
         echo -e "|         Score | Darts |      Checkouts |";
         echo -e "|--------------:|------:|---------------:|\n";
+
+        echo -e "The most exciting games will be those with a comparatively small number of possible checkouts.";
+        echo -e "Checkout tables for these scores are given below.";
+        echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n";
     } > "$file"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"

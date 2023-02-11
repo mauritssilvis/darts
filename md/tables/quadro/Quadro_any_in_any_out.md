@@ -7,12 +7,8 @@
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the Quadro 240 board played in any-in, any-out mode.
 
 Darts games commonly require players to score x01 points, where x is an integer.
-The following table shows the minimum required number of darts to reach such scores in Quadro 240 board any-in, any-out games.
+The following table shows the required number of darts to reach such scores in Quadro 240 board any-in, any-out games.
 In addition, the corresponding number of possible checkouts is shown.
-
-The most exciting games will be those with a comparatively small number of checkouts for the target score.
-Checkout tables for these scores are given below.
-Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 |         Score | Darts |  Checkouts |
 |--------------:|------:|-----------:|
@@ -26,6 +22,10 @@ Additional tables can be generated using the `darts` toolbox of the [darts](http
 |           801 |    11 | 15,375,723 |
 |           901 |    12 |  1,306,680 |
 | [1001](#1001) |    13 |     17,901 |
+
+The most exciting games will be those with a comparatively small number of possible checkouts.
+Checkout tables for these scores are given below.
+Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 ## 201
 

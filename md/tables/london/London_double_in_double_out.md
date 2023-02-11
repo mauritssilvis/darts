@@ -7,12 +7,8 @@
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in double-in, double-out mode.
 
 Darts games commonly require players to score x01 points, where x is an integer.
-The following table shows the minimum required number of darts to reach such scores in London dartboard double-in, double-out games.
+The following table shows the required number of darts to reach such scores in London dartboard double-in, double-out games.
 In addition, the corresponding number of possible checkouts is shown.
-
-The most exciting games will be those with a comparatively small number of checkouts for the target score.
-Checkout tables for these scores are given below.
-Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 |       Score | Darts |     Checkouts |
 |------------:|------:|--------------:|
@@ -26,6 +22,10 @@ Additional tables can be generated using the `darts` toolbox of the [darts](http
 | [801](#801) |    14 |         4,184 |
 |         901 |    16 |    12,139,768 |
 |        1001 |    18 | 3,400,574,560 |
+
+The most exciting games will be those with a comparatively small number of possible checkouts.
+Checkout tables for these scores are given below.
+Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 ## 201
 
