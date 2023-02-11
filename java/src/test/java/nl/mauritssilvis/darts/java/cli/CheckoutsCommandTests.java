@@ -14,16 +14,40 @@ import java.util.List;
 
 class CheckoutsCommandTests {
     @Test
+    void getAnErrorMessage() {
+        String[] args = {"checkouts"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.isEmpty()),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
+    }
+
+    @Test
     void getHelp() {
         String[] args = {"help", "checkouts"};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
         List<String> elements = List.of(
                 "Usage",
@@ -48,10 +72,13 @@ class CheckoutsCommandTests {
         );
 
         long count = elements.stream()
-                .filter(output::contains)
+                .filter(outString::contains)
                 .count();
 
-        Assertions.assertEquals(elements.size(), count);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 
     @Test
@@ -68,13 +95,16 @@ class CheckoutsCommandTests {
                 "2"
         };
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
         List<String> elements = List.of(
                 "Table",
@@ -85,9 +115,12 @@ class CheckoutsCommandTests {
         );
 
         long count = elements.stream()
-                .filter(output::contains)
+                .filter(outString::contains)
                 .count();
 
-        Assertions.assertEquals(elements.size(), count);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 }
