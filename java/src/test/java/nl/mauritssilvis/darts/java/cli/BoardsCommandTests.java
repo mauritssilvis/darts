@@ -75,8 +75,8 @@ class BoardsCommandTests {
 
     @ParameterizedTest
     @MethodSource("withTheBoardParameter")
-    void getADartboard(String board, String output) {
-        String[] args = {"boards", board};
+    void getADartboard(String boardType, String output) {
+        String[] args = {"boards", boardType};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -105,8 +105,8 @@ class BoardsCommandTests {
 
     @ParameterizedTest
     @MethodSource("withTheOutputFormatOption")
-    void getAFormattedDartboard(String format, String board, String output) {
-        String[] args = {"boards", "-o", format, board};
+    void getAFormattedDartboard(String optionName, String outputFormat, String boardType, String output) {
+        String[] args = {"boards", optionName, outputFormat, boardType};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -127,10 +127,10 @@ class BoardsCommandTests {
 
     private static Stream<Arguments> withTheOutputFormatOption() {
         return Stream.of(
-                Arguments.of("markDOWN", "London", "|"),
-                Arguments.of("HTML", "Quadro", "<"),
-                Arguments.of("json", "Yorkshire", "{"),
-                Arguments.of("OutputFormat.strIng", "London", "L")
+                Arguments.of("-o", "markDOWN", "London", "|"),
+                Arguments.of("--output", "HTML", "Quadro", "<"),
+                Arguments.of("-o", "json", "Yorkshire", "{"),
+                Arguments.of("--output", "OutputFormat.strIng", "London", "L")
         );
     }
 }
