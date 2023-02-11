@@ -114,6 +114,6 @@ class CheckoutsCommand implements Runnable {
         Serializer<Table> serializer = TableSerializerFactory.create(outputFormat);
         String output = serializer.serialize(table);
 
-        commandSpec.commandLine().getOut().println(output);
+        commandSpec.commandLine().getOut().println(output.strip());
     }
 }

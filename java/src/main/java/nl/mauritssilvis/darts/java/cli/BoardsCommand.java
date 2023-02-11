@@ -52,6 +52,6 @@ class BoardsCommand implements Runnable {
         Serializer<Board> serializer = BoardSerializerFactory.create(outputFormat);
         String output = serializer.serialize(board);
 
-        commandSpec.commandLine().getOut().println(output);
+        commandSpec.commandLine().getOut().println(output.strip());
     }
 }
