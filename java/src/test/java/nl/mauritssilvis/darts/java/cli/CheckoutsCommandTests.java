@@ -365,6 +365,53 @@ class CheckoutsCommandTests {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("withTheTableOption")
+    void processTheTableOption(String optionName, String tableType, String output) {
+        String[] args = {"checkouts", optionName, tableType, "1", "2"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheTableOption() {
+        return Stream.of(
+                Arguments.of(
+                        "-t",
+                        "ascending",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     1 |  * | 0 |
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |"""
+                ),
+                Arguments.of(
+                        "--table",
+                        "TableType.ASCENDING",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     1 |  * | 0 |
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |"""
+                )
+        );
+    }
+
     @Test
     void getATableString() {
         String[] args = {
