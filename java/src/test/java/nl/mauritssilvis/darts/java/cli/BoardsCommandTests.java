@@ -130,7 +130,7 @@ class BoardsCommandTests {
                 Arguments.of("-o", "markDOWN", "London", "|"),
                 Arguments.of("--output", "HTML", "Quadro", "<"),
                 Arguments.of("-o", "json", "Yorkshire", "{"),
-                Arguments.of("--output", "OutputFormat.strIng", "London", "L")
+                Arguments.of("--output", "OutputFormat.strIng", "London", "London")
         );
     }
 }

@@ -412,6 +412,37 @@ class CheckoutsCommandTests {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("withTheOutputOption")
+    void processTheOutputOption(String optionName, String outputFormat, String output) {
+        String[] args = {"checkouts", optionName, outputFormat, "1", "1"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheOutputOption() {
+        return Stream.of(
+                Arguments.of("-o", "OutputFormat.MARKDOWN", "|"),
+                Arguments.of("--output", "html", "<"),
+                Arguments.of("-o", "JSoN", "{"),
+                Arguments.of("--output", "STRING", "Ascending")
+        );
+    }
+
     @Test
     void getATableString() {
         String[] args = {
