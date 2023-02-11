@@ -25,29 +25,38 @@ class DartsAppTests {
     void getAnErrorMessage() {
         String[] args = {};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setErr(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
-        Assertions.assertTrue(output.contains("Usage"));
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.isEmpty()),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"-h", "help"})
+    @ValueSource(strings = {"-h", "--help", "help"})
     void getHelp(String arg) {
         String[] args = {arg};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
         List<String> elements = List.of(
                 "Usage",
@@ -59,23 +68,29 @@ class DartsAppTests {
         );
 
         long count = elements.stream()
-                .filter(output::contains)
+                .filter(outString::contains)
                 .count();
 
-        Assertions.assertEquals(elements.size(), count);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 
     @Test
     void getVersion() {
         String[] args = {"-V"};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
         List<String> elements = List.of(
                 "darts",
@@ -85,9 +100,12 @@ class DartsAppTests {
         );
 
         long count = elements.stream()
-                .filter(output::contains)
+                .filter(outString::contains)
                 .count();
 
-        Assertions.assertEquals(elements.size(), count);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 }
