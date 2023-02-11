@@ -320,6 +320,149 @@ class CheckoutsCommandTests {
     }
 
     @ParameterizedTest
+    @MethodSource("withTheThrowsOption")
+    void processTheThrowsOption(String optionName, String numThrows, String minScore, String maxScore, String output) {
+        String[] args = {"checkouts", optionName, numThrows, minScore, maxScore};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheThrowsOption() {
+        return Stream.of(
+                Arguments.of(
+                        "-n",
+                        "1",
+                        "23",
+                        "23",
+                        """
+                                | Score | 1 | # |
+                                |------:|--:|--:|
+                                |    23 | * | 0 |"""
+                ),
+                Arguments.of(
+                        "--throws",
+                        "10",
+                        "29",
+                        "29",
+                        """
+                                | Score |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | # |
+                                |------:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|--:|
+                                |    29 |  * |  * |  * |  * |  * |  * |  * |  * |  * |  * | 0 |"""
+                ),
+                Arguments.of(
+                        "-n",
+                        "1",
+                        "22",
+                        "23",
+                        """
+                                | Score |   1 | # |
+                                |------:|----:|--:|
+                                |    22 |   * | 1 |
+                                |       | D11 | 1 |
+                                |    23 |   * | 0 |"""
+                ),
+                Arguments.of(
+                        "--throws",
+                        "2",
+                        "22",
+                        "22",
+                        """
+                                | Score | 1 | 2 | # |
+                                |------:|--:|--:|--:|
+                                |    22 | * | * | 0 |"""
+                ),
+                Arguments.of(
+                        "--throws",
+                        "2",
+                        "22",
+                        "23",
+                        """
+                                | Score |               1 |               2 |  # |
+                                |------:|----------------:|----------------:|---:|
+                                |    22 |               * |               * |  0 |
+                                |    23 |               * |               * | 23 |
+                                |       |        20 / D10 |              D1 |  2 |
+                                |       |  18 /  D9 /  T6 |              D2 |  3 |
+                                |       |        16 /  D8 |              D3 |  2 |
+                                |       |        14 /  D7 |              D4 |  2 |
+                                |       |  12 /  D6 /  T4 |              D5 |  3 |
+                                |       |        10 /  D5 |              D6 |  2 |
+                                |       |         8 /  D4 |              D7 |  2 |
+                                |       |   6 /  D3 /  T2 |              D8 |  3 |
+                                |       |         4 /  D2 |              D9 |  2 |
+                                |       |         2 /  D1 |             D10 |  2 |"""
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withTheModeOption")
+    void processTheModeOption(String optionName, String finderMode, String output) {
+        String[] args = {"checkouts", "-n", "2", optionName, finderMode, "22", "22"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheModeOption() {
+        return Stream.of(
+                Arguments.of(
+                        "-m",
+                        "miniMUM",
+                        """
+                                | Score | 1 | 2 | # |
+                                |------:|--:|--:|--:|
+                                |    22 | * | * | 0 |"""
+                ),
+                Arguments.of(
+                        "--mode",
+                        "FinderMode.ALL",
+                        """
+                                | Score |               1 |               2 |  # |
+                                |------:|----------------:|----------------:|---:|
+                                |    22 |               * |               * | 23 |
+                                |       |        20 / D10 |              D1 |  2 |
+                                |       |  18 /  D9 /  T6 |              D2 |  3 |
+                                |       |        16 /  D8 |              D3 |  2 |
+                                |       |        14 /  D7 |              D4 |  2 |
+                                |       |  12 /  D6 /  T4 |              D5 |  3 |
+                                |       |        10 /  D5 |              D6 |  2 |
+                                |       |         8 /  D4 |              D7 |  2 |
+                                |       |   6 /  D3 /  T2 |              D8 |  3 |
+                                |       |         4 /  D2 |              D9 |  2 |
+                                |       |         2 /  D1 |             D10 |  2 |"""
+                )
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("withTheFinderOption")
     void processTheFinderOption(String optionName, String finderType, String output) {
         String[] args = {"checkouts", "-j", "any", optionName, finderType, "2", "2"};
