@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.tables.map;
+package nl.mauritssilvis.darts.java.tables.ascending;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
