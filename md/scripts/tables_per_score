@@ -117,10 +117,11 @@ do
     for j in "${!scores[@]}"; do
         score=${scores[j]}
         command="${commands[i]} ${score} ${score}"
+        shell_command=("./${script_path}darts" ${command})
 
         {
             echo -e "## ${score}\n";
-            java -jar "${script_path}build/libs/java-darts-toolbox-0.1.0-SNAPSHOT-all.jar" ${command};
+            "${shell_command[@]}"
             echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n";
         } >> "$file"
     done
