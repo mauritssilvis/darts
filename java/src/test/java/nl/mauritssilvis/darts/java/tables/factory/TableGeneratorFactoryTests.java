@@ -5,10 +5,7 @@
 
 package nl.mauritssilvis.darts.java.tables.factory;
 
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.ascending.AscendingTableGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -21,10 +18,12 @@ class TableGeneratorFactoryTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Assertions.assertTrue(tableGenerator instanceof AscendingTableGenerator);

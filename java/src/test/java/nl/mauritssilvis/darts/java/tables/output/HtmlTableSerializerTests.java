@@ -6,10 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
@@ -25,10 +22,12 @@ class HtmlTableSerializerTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 22;
@@ -68,10 +67,12 @@ class HtmlTableSerializerTests {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 2;

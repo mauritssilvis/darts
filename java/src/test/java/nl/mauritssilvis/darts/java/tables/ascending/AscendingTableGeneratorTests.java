@@ -9,6 +9,7 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.FinderMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -30,10 +31,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 0;
@@ -49,10 +52,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 0;
@@ -68,10 +73,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 0;
@@ -87,8 +94,11 @@ class AscendingTableGeneratorTests {
     void doNotGetCheckoutsWithTooLowScores(
             BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
     ) {
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
+
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = -2;
@@ -127,10 +137,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -210,10 +222,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -284,10 +298,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -347,10 +363,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -493,10 +511,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -576,10 +596,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.MASTER;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -699,10 +721,12 @@ class AscendingTableGeneratorTests {
             int score, CheckType checkInType, CheckType checkoutType, int totalMultiplicity
     ) {
         BoardType boardType = BoardType.LONDON;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -749,12 +773,14 @@ class AscendingTableGeneratorTests {
     @ParameterizedTest
     @MethodSource("withoutFewDartCheckouts")
     void doNotReachACheckoutWithFewDarts(
-            BoardType boardType, CheckType checkInType, CheckType checkoutType, int score, int numThrows
+            BoardType boardType, CheckType checkInType, CheckType checkoutType, int score, int targetNumThrows
     ) {
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -765,7 +791,7 @@ class AscendingTableGeneratorTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
                 () -> Assertions.assertTrue(
-                        storedCheckouts.stream().noneMatch(checkout -> checkout.getThrows().size() == numThrows)
+                        storedCheckouts.stream().noneMatch(checkout -> checkout.getThrows().size() == targetNumThrows)
                 )
         );
     }
@@ -840,8 +866,11 @@ class AscendingTableGeneratorTests {
             Map<Integer, Collection<? extends Collection<? extends Collection<String>>>> namesPerScore,
             Map<Integer, Long> multiplicityPerScore
     ) {
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
+
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(minScore, maxScore);
@@ -925,14 +954,16 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Assertions.assertAll(
@@ -946,10 +977,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType1 = BoardType.YORKSHIRE;
         CheckType checkInType1 = CheckType.DOUBLE;
         CheckType checkoutType1 = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType1 = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType1, checkInType1, checkoutType1, finderType1
+                boardType1, checkInType1, checkoutType1, numThrows, finderMode, finderType1
         );
 
         BoardType boardType2 = BoardType.LONDON;
@@ -958,7 +991,7 @@ class AscendingTableGeneratorTests {
         FinderType finderType2 = FinderType.DESCENDING;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType2, checkInType2, checkoutType2, finderType2
+                boardType2, checkInType2, checkoutType2, numThrows, finderMode, finderType2
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -968,18 +1001,20 @@ class AscendingTableGeneratorTests {
     void getUnequalTableGeneratorsWithDifferentBoardTypes() {
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         BoardType boardType1 = BoardType.QUADRO;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType1, checkInType, checkoutType, finderType
+                boardType1, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         BoardType boardType2 = BoardType.LONDON;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType2, checkInType, checkoutType, finderType
+                boardType2, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -989,18 +1024,20 @@ class AscendingTableGeneratorTests {
     void getUnequalTableGeneratorsWithDifferentCheckInTypes() {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         CheckType checkInType1 = CheckType.ANY;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType1, checkoutType, finderType
+                boardType, checkInType1, checkoutType, numThrows, finderMode, finderType
         );
 
         CheckType checkInType2 = CheckType.MASTER;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType2, checkoutType, finderType
+                boardType, checkInType2, checkoutType, numThrows, finderMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -1010,18 +1047,20 @@ class AscendingTableGeneratorTests {
     void getUnequalTableGeneratorsWithDifferentCheckoutTypes() {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         CheckType checkoutType1 = CheckType.DOUBLE;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType1, finderType
+                boardType, checkInType, checkoutType1, numThrows, finderMode, finderType
         );
 
         CheckType checkoutType2 = CheckType.ANY;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType2, finderType
+                boardType, checkInType, checkoutType2, numThrows, finderMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -1032,17 +1071,19 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
 
         FinderType finderType1 = FinderType.DESCENDING;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType1
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType1
         );
 
         FinderType finderType2 = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType2
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType2
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -1053,10 +1094,12 @@ class AscendingTableGeneratorTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, finderType
+                boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         String str = tableGenerator.toString();

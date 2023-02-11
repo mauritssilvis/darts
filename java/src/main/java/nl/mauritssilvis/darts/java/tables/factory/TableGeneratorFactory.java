@@ -5,10 +5,7 @@
 
 package nl.mauritssilvis.darts.java.tables.factory;
 
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.ascending.AscendingTableGenerator;
 
@@ -28,6 +25,8 @@ public final class TableGeneratorFactory {
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
+     * @param numThrows    the number of throws if fixed and -1 otherwise
+     * @param finderMode   the finder mode
      * @param finderType   the checkout finder type
      * @return a new {@code TableGenerator} for tables of the specified type
      */
@@ -36,10 +35,14 @@ public final class TableGeneratorFactory {
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
+            int numThrows,
+            FinderMode finderMode,
             FinderType finderType
     ) {
         return switch (tableType) {
-            case ASCENDING -> AscendingTableGenerator.of(boardType, checkInType, checkoutType, finderType);
+            case ASCENDING -> AscendingTableGenerator.of(
+                    boardType, checkInType, checkoutType, numThrows, finderMode, finderType
+            );
         };
     }
 }

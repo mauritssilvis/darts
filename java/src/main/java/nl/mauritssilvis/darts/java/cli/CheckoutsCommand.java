@@ -63,11 +63,30 @@ class CheckoutsCommand implements Runnable {
     private CheckType checkoutType;
 
     @Option(
+            names = {"-n", "--throws"},
+            description = "The number of throws. Set this value if you want to find checkouts with a fixed number of throws.",
+            paramLabel = "<throws>",
+            defaultValue = "-1",
+            showDefaultValue = CommandLine.Help.Visibility.NEVER,
+            order = 3
+    )
+    private int numThrows;
+
+    @Option(
+            names = {"-m", "--mode"},
+            description = "The checkout finder mode. Only applies when the number of throws is fixed. Supported values: minimum, all.",
+            paramLabel = "<mode>",
+            defaultValue = "minimum",
+            order = 4
+    )
+    private FinderMode finderMode;
+
+    @Option(
             names = {"-f", "--finder"},
             description = "The checkout finder type. Supported values: descending, Cartesian.",
             paramLabel = "<finder>",
             defaultValue = "descending",
-            order = 3
+            order = 5
     )
     private FinderType finderType;
 
@@ -76,7 +95,7 @@ class CheckoutsCommand implements Runnable {
             description = "The checkout table type. Supported values: ascending.",
             paramLabel = "<table>",
             defaultValue = "ascending",
-            order = 4
+            order = 6
     )
     private TableType tableType;
 
@@ -85,7 +104,7 @@ class CheckoutsCommand implements Runnable {
             description = "The output format. Supported values: Markdown, JSON, HTML, string.",
             paramLabel = "<output>",
             defaultValue = "Markdown",
-            order = 5
+            order = 7
     )
     private OutputFormat outputFormat;
 
@@ -106,7 +125,7 @@ class CheckoutsCommand implements Runnable {
     @Override
     public void run() {
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         Table table = tableGenerator.generate(minScore, maxScore);

@@ -16,6 +16,7 @@ import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.FinderMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
@@ -54,6 +55,8 @@ public final class AscendingTableGenerator implements TableGenerator {
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
+            int numThrows,
+            FinderMode finderMode,
             FinderType finderType
     ) {
         this.boardType = boardType;
@@ -74,14 +77,21 @@ public final class AscendingTableGenerator implements TableGenerator {
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
+     * @param numThrows    the number of throws if fixed and -1 otherwise
+     * @param finderMode   the finder mode
      * @param finderType   the checkout finder type
      * @return a new {@code AscendingTableGenerator} with the specified
      * dartboard, check-in, checkout and finder types.
      */
     public static TableGenerator of(
-            BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
+            BoardType boardType,
+            CheckType checkInType,
+            CheckType checkoutType,
+            int numThrows,
+            FinderMode finderMode,
+            FinderType finderType
     ) {
-        return new AscendingTableGenerator(boardType, checkInType, checkoutType, finderType);
+        return new AscendingTableGenerator(boardType, checkInType, checkoutType, numThrows, finderMode, finderType);
     }
 
     @Override

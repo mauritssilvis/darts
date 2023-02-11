@@ -6,10 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
@@ -24,10 +21,12 @@ class StringTableSerializerTests {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckType checkInType = CheckType.DOUBLE;
         CheckType checkoutType = CheckType.DOUBLE;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 2;
@@ -50,10 +49,12 @@ class StringTableSerializerTests {
         BoardType boardType = BoardType.LONDON;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.MASTER;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 3;
@@ -78,10 +79,12 @@ class StringTableSerializerTests {
         BoardType boardType = BoardType.QUADRO;
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
+        int numThrows = -1;
+        FinderMode finderMode = FinderMode.MINIMUM;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
         );
 
         int minScore = 1;
