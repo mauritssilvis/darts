@@ -47,14 +47,16 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         HtmlTablePrinter(Table table) {
             super(table);
 
-            int throwWidth = (getFieldWidth() + 23) * getThrowSize();
             int scoreSizeWidth = String.valueOf(getNumCheckouts() + 1).length();
+            int throwSize = getThrowSize();
+            int fieldWidth = getFieldWidth();
+            int throwWidth = (fieldWidth + 23) * throwSize;
 
             preScoreFormat = "%1$-" + (scoreSizeWidth + 28) + "s";
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
-            fieldFormat = "%1$" + getFieldWidth() + "s";
-            emptyFieldFormat = "%1$" + (throwWidth / getThrowSize()) + "s";
+            fieldFormat = "%1$" + (fieldWidth > 0 ? fieldWidth : 1) + "s";
+            emptyFieldFormat = throwSize > 0 ? "%1$" + (throwWidth / throwSize) + "s" : "%1$1s";
             multiplicityFormat = "%1$" + getMultiplicityWidth() + "s";
 
             numThrows = getNumThrows();
