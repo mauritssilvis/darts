@@ -109,21 +109,33 @@ class CheckoutsCommandTests {
 
     private static Stream<Arguments> withTheScoreParameters() {
         return Stream.of(
-                Arguments.of("1", "1", """
-                        | Score | # |
-                        |------:|--:|
-                        |     1 | 0 |"""),
-                Arguments.of("2", "2", """
-                        | Score |  1 | # |
-                        |------:|---:|--:|
-                        |     2 |  * | 1 |
-                        |       | D1 | 1 |"""),
-                Arguments.of("1", "2", """
-                        | Score |  1 | # |
-                        |------:|---:|--:|
-                        |     1 |  * | 0 |
-                        |     2 |  * | 1 |
-                        |       | D1 | 1 |""")
+                Arguments.of(
+                        "1",
+                        "1",
+                        """
+                                | Score | # |
+                                |------:|--:|
+                                |     1 | 0 |"""
+                ),
+                Arguments.of(
+                        "2",
+                        "2",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |"""
+                ),
+                Arguments.of(
+                        "1",
+                        "2",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     1 |  * | 0 |
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |"""
+                )
         );
     }
 
@@ -151,27 +163,39 @@ class CheckoutsCommandTests {
 
     private static Stream<Arguments> withTheBoardOption() {
         return Stream.of(
-                Arguments.of("-b", "London", """
-                        | Score |       1 | # |
-                        |------:|--------:|--:|
-                        |     3 |       * | 2 |
-                        |       |  3 / T1 | 2 |
-                        |     4 |       * | 2 |
-                        |       |  4 / D2 | 2 |"""),
-                Arguments.of("--board", "boardtype.quadro", """
-                        | Score |            1 | # |
-                        |------:|-------------:|--:|
-                        |     3 |            * | 2 |
-                        |       |       3 / T1 | 2 |
-                        |     4 |            * | 3 |
-                        |       |  4 / D2 / Q1 | 3 |"""),
-                Arguments.of("-b", "YORKSHIRE", """
-                        | Score |       1 | # |
-                        |------:|--------:|--:|
-                        |     3 |       * | 1 |
-                        |       |       3 | 1 |
-                        |     4 |       * | 2 |
-                        |       |  4 / D2 | 2 |""")
+                Arguments.of(
+                        "-b",
+                        "London",
+                        """
+                                | Score |       1 | # |
+                                |------:|--------:|--:|
+                                |     3 |       * | 2 |
+                                |       |  3 / T1 | 2 |
+                                |     4 |       * | 2 |
+                                |       |  4 / D2 | 2 |"""
+                ),
+                Arguments.of(
+                        "--board",
+                        "boardtype.quadro",
+                        """
+                                | Score |            1 | # |
+                                |------:|-------------:|--:|
+                                |     3 |            * | 2 |
+                                |       |       3 / T1 | 2 |
+                                |     4 |            * | 3 |
+                                |       |  4 / D2 / Q1 | 3 |"""
+                ),
+                Arguments.of(
+                        "-b",
+                        "YORKSHIRE",
+                        """
+                                | Score |       1 | # |
+                                |------:|--------:|--:|
+                                |     3 |       * | 1 |
+                                |       |       3 | 1 |
+                                |     4 |       * | 2 |
+                                |       |  4 / D2 | 2 |"""
+                )
         );
     }
 
@@ -199,27 +223,39 @@ class CheckoutsCommandTests {
 
     private static Stream<Arguments> withTheCheckInOption() {
         return Stream.of(
-                Arguments.of("-i", "AnY", """
-                        | Score |       1 | # |
-                        |------:|--------:|--:|
-                        |     2 |       * | 2 |
-                        |       |  2 / D1 | 2 |
-                        |     3 |       * | 2 |
-                        |       |  3 / T1 | 2 |"""),
-                Arguments.of("--check-in", "master", """
-                        | Score |  1 | # |
-                        |------:|---:|--:|
-                        |     2 |  * | 1 |
-                        |       | D1 | 1 |
-                        |     3 |  * | 1 |
-                        |       | T1 | 1 |"""),
-                Arguments.of("-i", "checktype.DOUBLE", """
-                        | Score |  1 |  2 | # |
-                        |------:|---:|---:|--:|
-                        |     2 |  * |  * | 1 |
-                        |       | D1 |  - | 1 |
-                        |     3 |  * |  * | 1 |
-                        |       | D1 |  1 | 1 |""")
+                Arguments.of(
+                        "-i",
+                        "AnY",
+                        """
+                                | Score |       1 | # |
+                                |------:|--------:|--:|
+                                |     2 |       * | 2 |
+                                |       |  2 / D1 | 2 |
+                                |     3 |       * | 2 |
+                                |       |  3 / T1 | 2 |"""
+                ),
+                Arguments.of(
+                        "--check-in",
+                        "master",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |
+                                |     3 |  * | 1 |
+                                |       | T1 | 1 |"""
+                ),
+                Arguments.of(
+                        "-i",
+                        "checktype.DOUBLE",
+                        """
+                                | Score |  1 |  2 | # |
+                                |------:|---:|---:|--:|
+                                |     2 |  * |  * | 1 |
+                                |       | D1 |  - | 1 |
+                                |     3 |  * |  * | 1 |
+                                |       | D1 |  1 | 1 |"""
+                )
         );
     }
 
@@ -247,27 +283,39 @@ class CheckoutsCommandTests {
 
     private static Stream<Arguments> withTheCheckoutOption() {
         return Stream.of(
-                Arguments.of("-j", "ANY", """
-                        | Score |       1 | # |
-                        |------:|--------:|--:|
-                        |     2 |       * | 2 |
-                        |       |  2 / D1 | 2 |
-                        |     3 |       * | 2 |
-                        |       |  3 / T1 | 2 |"""),
-                Arguments.of("--checkout", "CheckType.MASTER", """
-                        | Score |  1 | # |
-                        |------:|---:|--:|
-                        |     2 |  * | 1 |
-                        |       | D1 | 1 |
-                        |     3 |  * | 1 |
-                        |       | T1 | 1 |"""),
-                Arguments.of("-j", "double", """
-                        | Score |  1 |  2 | # |
-                        |------:|---:|---:|--:|
-                        |     2 |  * |  * | 1 |
-                        |       | D1 |  - | 1 |
-                        |     3 |  * |  * | 1 |
-                        |       |  1 | D1 | 1 |""")
+                Arguments.of(
+                        "-j",
+                        "ANY",
+                        """
+                                | Score |       1 | # |
+                                |------:|--------:|--:|
+                                |     2 |       * | 2 |
+                                |       |  2 / D1 | 2 |
+                                |     3 |       * | 2 |
+                                |       |  3 / T1 | 2 |"""
+                ),
+                Arguments.of(
+                        "--checkout",
+                        "CheckType.MASTER",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     2 |  * | 1 |
+                                |       | D1 | 1 |
+                                |     3 |  * | 1 |
+                                |       | T1 | 1 |"""
+                ),
+                Arguments.of(
+                        "-j",
+                        "double",
+                        """
+                                | Score |  1 |  2 | # |
+                                |------:|---:|---:|--:|
+                                |     2 |  * |  * | 1 |
+                                |       | D1 |  - | 1 |
+                                |     3 |  * |  * | 1 |
+                                |       |  1 | D1 | 1 |"""
+                )
         );
     }
 
