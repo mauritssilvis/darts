@@ -5,28 +5,53 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
-import nl.mauritssilvis.darts.java.settings.BoardType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.stream.Stream;
 
 class BoardsCommandTests {
+    @Test
+    void getAnErrorMessage() {
+        String[] args = {"boards"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.isEmpty()),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
+    }
+
     @Test
     void getHelp() {
         String[] args = {"help", "boards"};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
         List<String> elements = List.of(
                 "Usage",
@@ -39,36 +64,73 @@ class BoardsCommandTests {
         );
 
         long count = elements.stream()
-                .filter(output::contains)
+                .filter(outString::contains)
                 .count();
 
-        Assertions.assertEquals(elements.size(), count);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 
     @ParameterizedTest
-    @EnumSource(BoardType.class)
-    void getADartboardString(BoardType boardType) {
-        String boardName = getBoardName(boardType);
-        String[] args = {"boards", "-o", "string", boardName};
+    @MethodSource("withTheBoardParameter")
+    void getADartboard(String board, String output) {
+        String[] args = {"boards", board};
 
-        StringWriter stringWriter = new StringWriter();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
 
         DartsApp.create()
-                .setOut(new PrintWriter(stringWriter))
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
                 .execute(args);
 
-        String output = stringWriter.toString();
+        String outString = out.toString();
+        String errString = err.toString();
 
-        Assertions.assertTrue(output.contains(boardName));
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
     }
 
-    private static String getBoardName(BoardType boardType) {
-        String fullName = boardType.toString();
-        String shortName = fullName.split("\\.")[1];
+    private static Stream<Arguments> withTheBoardParameter() {
+        return Stream.of(
+                Arguments.of("london", "|   S |   D |   T |\n|"),
+                Arguments.of("Quadro", "|   S |   D |   T |   Q |\n|"),
+                Arguments.of("boardType.YorkshirE", "|   S |   D |\n|")
+        );
+    }
 
-        char first = shortName.charAt(0);
-        String rest = shortName.substring(1);
+    @ParameterizedTest
+    @MethodSource("withTheOutputFormatOption")
+    void getAFormattedDartboard(String format, String board, String output) {
+        String[] args = {"boards", "-o", format, board};
 
-        return first + rest.toLowerCase();
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheOutputFormatOption() {
+        return Stream.of(
+                Arguments.of("markDOWN", "London", "|"),
+                Arguments.of("HTML", "Quadro", "<"),
+                Arguments.of("json", "Yorkshire", "{"),
+                Arguments.of("OutputFormat.strIng", "London", "L")
+        );
     }
 }

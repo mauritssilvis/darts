@@ -22,7 +22,7 @@ class DartsAppTests {
     }
 
     @Test
-    void getAnErrorMessageWithoutArguments() {
+    void getAnErrorMessage() {
         String[] args = {};
 
         StringWriter stringWriter = new StringWriter();
