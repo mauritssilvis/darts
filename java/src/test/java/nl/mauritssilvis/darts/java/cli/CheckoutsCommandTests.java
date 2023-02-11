@@ -319,6 +319,52 @@ class CheckoutsCommandTests {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("withTheFinderOption")
+    void processTheFinderOption(String optionName, String finderType, String output) {
+        String[] args = {"checkouts", "-j", "any", optionName, finderType, "2", "2"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertTrue(errString.isEmpty())
+        );
+    }
+
+    private static Stream<Arguments> withTheFinderOption() {
+        return Stream.of(
+                Arguments.of(
+                        "-f",
+                        "findertype.cartesian",
+                        """
+                                | Score |  1 | # |
+                                |------:|---:|--:|
+                                |     2 |  * | 2 |
+                                |       |  2 | 1 |
+                                |       | D1 | 1 |"""
+                ),
+                Arguments.of(
+                        "--finder",
+                        "Descending",
+                        """
+                                | Score |       1 | # |
+                                |------:|--------:|--:|
+                                |     2 |       * | 2 |
+                                |       |  2 / D1 | 2 |"""
+                )
+        );
+    }
+
     @Test
     void getATableString() {
         String[] args = {
