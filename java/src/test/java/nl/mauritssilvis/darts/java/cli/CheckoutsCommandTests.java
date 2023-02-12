@@ -106,7 +106,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -160,7 +160,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -220,7 +220,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -280,7 +280,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -340,7 +340,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -431,7 +431,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(output.strip(), outString.strip()),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -484,7 +484,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
@@ -530,7 +530,7 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output, outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
