@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.basic;
+package nl.mauritssilvis.darts.java.settings.tables;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.settings.*;
 
 /**
- * An implementation of the {@code Settings} interface that can store checkout
+ * An implementation of the {@code Settings} interface that stores checkout
  * table settings.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
 @ToString
 @EqualsAndHashCode
-final class BasicSettings implements Settings {
+final class TableSettings implements Settings {
     private final BoardType boardType;
     private final CheckMode checkInMode;
     private final CheckMode checkoutMode;
@@ -26,7 +26,7 @@ final class BasicSettings implements Settings {
     private final FinderType finderType;
     private final TableType tableType;
 
-    private BasicSettings(
+    private TableSettings(
             BoardType boardType,
             CheckMode checkInMode,
             CheckMode checkoutMode,
@@ -45,7 +45,7 @@ final class BasicSettings implements Settings {
     }
 
     /**
-     * Returns a new {@code BasicSettings} object with the specified properties.
+     * Returns a new {@code TableSettings} object with the specified properties.
      *
      * @param boardType    the dartboard type
      * @param checkInMode  the check-in mode
@@ -64,7 +64,7 @@ final class BasicSettings implements Settings {
             FinderType finderType,
             TableType tableType
     ) {
-        return new BasicSettings(
+        return new TableSettings(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
     }

@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.basic;
+package nl.mauritssilvis.darts.java.settings.tables;
 
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.settings.*;
 
 /**
  * An implementation of the {@code SettingsBuilder} interface that builds
- * {@code BasicSettings} objects. Default values are provided for
+ * {@code TableSettings} objects. Default values are provided for
  * unspecified properties.
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
 @ToString
-public class BasicSettingsBuilder implements SettingsBuilder {
+public class TableSettingsBuilder implements SettingsBuilder {
     BoardType boardType = BoardType.LONDON;
     CheckMode checkInMode = CheckMode.ANY;
     CheckMode checkoutMode = CheckMode.DOUBLE;
@@ -25,17 +25,17 @@ public class BasicSettingsBuilder implements SettingsBuilder {
     FinderType finderType = FinderType.DESCENDING;
     TableType tableType = TableType.ASCENDING;
 
-    private BasicSettingsBuilder() {
+    private TableSettingsBuilder() {
     }
 
     /**
-     * Returns a new {@code BasicSettingsBuilder} with default checkout
-     * table settings.
+     * Returns a new {@code TableSettingsBuilder} with default checkout table
+     * settings.
      *
-     * @return a new {@code BasicSettingsBuilder}
+     * @return a new {@code TableSettingsBuilder}
      */
     public static SettingsBuilder create() {
-        return new BasicSettingsBuilder();
+        return new TableSettingsBuilder();
     }
 
     @Override
@@ -82,7 +82,7 @@ public class BasicSettingsBuilder implements SettingsBuilder {
 
     @Override
     public Settings build() {
-        return BasicSettings.of(
+        return TableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
     }

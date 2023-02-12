@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.basic;
+package nl.mauritssilvis.darts.java.settings.tables;
 
 import nl.mauritssilvis.darts.java.settings.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class BasicSettingsBuilderTests {
+class TableSettingsBuilderTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setBoardType(boardType)
@@ -25,7 +25,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultBoardType() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         BoardType boardType = BoardType.LONDON;
@@ -38,7 +38,7 @@ class BasicSettingsBuilderTests {
         BoardType boardType1 = BoardType.QUADRO;
         BoardType boardType2 = BoardType.YORKSHIRE;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setBoardType(boardType1)
@@ -53,7 +53,7 @@ class BasicSettingsBuilderTests {
     void getTheCheckInMode() {
         CheckMode checkInMode = CheckMode.MASTER;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setCheckInMode(checkInMode)
@@ -64,7 +64,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultCheckInMode() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         CheckMode checkInMode = CheckMode.ANY;
@@ -77,7 +77,7 @@ class BasicSettingsBuilderTests {
         CheckMode checkInMode1 = CheckMode.DOUBLE;
         CheckMode checkInMode2 = CheckMode.MASTER;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setCheckInMode(checkInMode1)
@@ -92,7 +92,7 @@ class BasicSettingsBuilderTests {
     void getTheCheckoutMode() {
         CheckMode checkoutMode = CheckMode.ANY;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setCheckoutMode(checkoutMode)
@@ -103,7 +103,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultCheckoutMode() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         CheckMode checkoutMode = CheckMode.DOUBLE;
@@ -116,7 +116,7 @@ class BasicSettingsBuilderTests {
         CheckMode checkoutMode1 = CheckMode.ANY;
         CheckMode checkoutMode2 = CheckMode.MASTER;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setCheckoutMode(checkoutMode1)
@@ -131,7 +131,7 @@ class BasicSettingsBuilderTests {
     void getTheNumThrows() {
         int numThrows = 5;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setNumThrows(numThrows)
@@ -142,7 +142,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultNumThrows() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         int numThrows = -1;
@@ -155,7 +155,7 @@ class BasicSettingsBuilderTests {
         int numThrows1 = 5;
         int numThrows2 = 3;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setNumThrows(numThrows1)
@@ -170,7 +170,7 @@ class BasicSettingsBuilderTests {
     void getTheThrowMode() {
         ThrowMode throwMode = ThrowMode.FIXED;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setThrowMode(throwMode)
@@ -181,7 +181,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultThrowMode() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         ThrowMode throwMode = ThrowMode.OPTIMAL;
@@ -194,7 +194,7 @@ class BasicSettingsBuilderTests {
         ThrowMode throwMode1 = ThrowMode.OPTIMAL;
         ThrowMode throwMode2 = ThrowMode.FIXED;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setThrowMode(throwMode1)
@@ -208,7 +208,7 @@ class BasicSettingsBuilderTests {
     void getTheFinderType() {
         FinderType finderType = FinderType.CARTESIAN;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setFinderType(finderType)
@@ -219,7 +219,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultFinderType() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         FinderType finderType = FinderType.DESCENDING;
@@ -232,7 +232,7 @@ class BasicSettingsBuilderTests {
         FinderType finderType1 = FinderType.DESCENDING;
         FinderType finderType2 = FinderType.CARTESIAN;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setFinderType(finderType1)
@@ -247,7 +247,7 @@ class BasicSettingsBuilderTests {
     void getTheTableType() {
         TableType tableType = TableType.ASCENDING;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setTableType(tableType)
@@ -258,7 +258,7 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getTheDefaultTableType() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
         TableType tableType = TableType.ASCENDING;
@@ -271,7 +271,7 @@ class BasicSettingsBuilderTests {
         TableType tableType1 = null;
         TableType tableType2 = TableType.ASCENDING;
 
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
 
         Settings settings = settingsBuilder
                 .setTableType(tableType1)
@@ -283,15 +283,15 @@ class BasicSettingsBuilderTests {
 
     @Test
     void getUnequalSettingsBuilders() {
-        SettingsBuilder settingsBuilder1 = BasicSettingsBuilder.create();
-        SettingsBuilder settingsBuilder2 = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder1 = TableSettingsBuilder.create();
+        SettingsBuilder settingsBuilder2 = TableSettingsBuilder.create();
 
         Assertions.assertNotEquals(settingsBuilder1, settingsBuilder2);
     }
 
     @Test
     void convertToAString() {
-        SettingsBuilder settingsBuilder = BasicSettingsBuilder.create();
+        SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         String str = settingsBuilder.toString();
 
         Assertions.assertAll(
