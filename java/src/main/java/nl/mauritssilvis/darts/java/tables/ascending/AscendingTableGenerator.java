@@ -42,6 +42,10 @@ public final class AscendingTableGenerator implements TableGenerator {
     @ToString.Include
     private final CheckType checkoutType;
     @ToString.Include
+    private final int numThrows;
+    @ToString.Include
+    private final FinderMode finderMode;
+    @ToString.Include
     private final FinderType finderType;
 
     private final List<Field> firstFields;
@@ -62,6 +66,8 @@ public final class AscendingTableGenerator implements TableGenerator {
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;
+        this.numThrows = numThrows;
+        this.finderMode = finderMode;
         this.finderType = finderType;
 
         Board board = BoardFactory.create(boardType);
@@ -96,7 +102,15 @@ public final class AscendingTableGenerator implements TableGenerator {
 
     @Override
     public Table generate(int minScore, int maxScore) {
-        Map<Integer, List<Checkout>> checkoutMap = getCheckoutMap(minScore, maxScore);
+        Map<Integer, List<Checkout>> checkoutMap;
+
+        if (numThrows == -1) {
+            checkoutMap = getRegularCheckoutMap(minScore, maxScore);
+        } else if (finderMode == FinderMode.MINIMUM) {
+            checkoutMap = getMinimumThrowCheckoutMap(minScore, maxScore);
+        } else {
+            checkoutMap = getFixedThrowCheckoutMap(minScore, maxScore);
+        }
 
         TableBuilder tableBuilder = AscendingTableBuilder.create()
                 .setBoardType(boardType)
@@ -128,21 +142,21 @@ public final class AscendingTableGenerator implements TableGenerator {
         return fields;
     }
 
-    private Map<Integer, List<Checkout>> getCheckoutMap(int minScore, int maxScore) {
+    private Map<Integer, List<Checkout>> getRegularCheckoutMap(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
         for (int i = minScore; i <= maxScore; i++) {
-            int numThrows = 1;
+            int throwCount = 1;
 
             List<Checkout> checkouts = Collections.emptyList();
 
             while (true) {
-                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
+                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(throwCount);
 
                 if (getMinScore(fieldsPerThrow) > i) {
                     break;
                 } else if (getMaxScore(fieldsPerThrow) < i) {
-                    numThrows++;
+                    throwCount++;
                     continue;
                 }
 
@@ -153,7 +167,7 @@ public final class AscendingTableGenerator implements TableGenerator {
                     break;
                 }
 
-                numThrows++;
+                throwCount++;
             }
 
             checkoutMap.put(i, checkouts);
@@ -162,12 +176,64 @@ public final class AscendingTableGenerator implements TableGenerator {
         return checkoutMap;
     }
 
-    private List<List<Field>> getFieldsPerThrow(int numThrows) {
-        if (fieldsPerThrowMap.containsKey(numThrows)) {
-            return fieldsPerThrowMap.get(numThrows);
+    private Map<Integer, List<Checkout>> getMinimumThrowCheckoutMap(int minScore, int maxScore) {
+        Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
+
+        for (int i = minScore; i <= maxScore; i++) {
+            List<Checkout> checkouts = Collections.emptyList();
+
+            for (int j = 1; j < numThrows; j++) {
+                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(j);
+
+                if (getMinScore(fieldsPerThrow) > i) {
+                    break;
+                } else if (getMaxScore(fieldsPerThrow) < i) {
+                    continue;
+                }
+
+                CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
+                checkouts = checkoutFinder.find(i);
+
+                if (!checkouts.isEmpty()) {
+                    break;
+                }
+            }
+
+            if (!checkouts.isEmpty()) {
+                checkoutMap.put(i, Collections.emptyList());
+                continue;
+            }
+
+            List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
+            CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
+
+            checkouts = checkoutFinder.find(i);
+            checkoutMap.put(i, checkouts);
         }
 
-        if (numThrows == 1) {
+        return checkoutMap;
+    }
+
+    private Map<Integer, List<Checkout>> getFixedThrowCheckoutMap(int minScore, int maxScore) {
+        Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
+
+        for (int i = minScore; i <= maxScore; i++) {
+            List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
+            CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
+
+            List<Checkout> checkouts = checkoutFinder.find(i);
+            checkoutMap.put(i, checkouts);
+        }
+
+        return checkoutMap;
+    }
+
+    private List<List<Field>> getFieldsPerThrow(int throwCount) {
+        if (fieldsPerThrowMap.containsKey(throwCount)) {
+            return fieldsPerThrowMap.get(throwCount);
+        }
+
+        if (throwCount == 1) {
             List<Field> fields = new ArrayList<>(firstFields);
             fields.retainAll(lastFields);
 
@@ -181,12 +247,12 @@ public final class AscendingTableGenerator implements TableGenerator {
 
         fieldsPerThrow.add(firstFields);
 
-        IntStream.range(0, numThrows - 2)
+        IntStream.range(0, throwCount - 2)
                 .forEach(i -> fieldsPerThrow.add(middleFields));
 
         fieldsPerThrow.add(lastFields);
 
-        fieldsPerThrowMap.put(numThrows, fieldsPerThrow);
+        fieldsPerThrowMap.put(throwCount, fieldsPerThrow);
 
         return fieldsPerThrow;
     }
@@ -208,14 +274,14 @@ public final class AscendingTableGenerator implements TableGenerator {
     }
 
     private CheckoutFinder getCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
-        int numThrows = fieldsPerThrow.size();
+        int throwCount = fieldsPerThrow.size();
 
-        if (checkoutFinderMap.containsKey(numThrows)) {
-            return checkoutFinderMap.get(numThrows);
+        if (checkoutFinderMap.containsKey(throwCount)) {
+            return checkoutFinderMap.get(throwCount);
         }
 
         CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(finderType, fieldsPerThrow);
-        checkoutFinderMap.put(numThrows, checkoutFinder);
+        checkoutFinderMap.put(throwCount, checkoutFinder);
 
         return checkoutFinder;
     }
