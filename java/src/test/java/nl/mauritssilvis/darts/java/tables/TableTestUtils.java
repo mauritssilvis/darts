@@ -20,7 +20,7 @@ public final class TableTestUtils {
     }
 
     /**
-     * Gets the names of the fields of the stored checkouts
+     * Gets the names of the fields of the stored checkouts.
      *
      * @param table a checkout table
      * @return a map of the field names

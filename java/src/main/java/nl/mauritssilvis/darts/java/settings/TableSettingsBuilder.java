@@ -71,11 +71,11 @@ public interface TableSettingsBuilder {
     TableSettingsBuilder setTableType(TableType tableType);
 
     /**
-     * Gets a new {@TableSettings} object with the specified properties.
+     * Gets a new {@code TableSettings} object with the specified properties.
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@TableSettings} object with the specified properties.
+     * @return a new {@code TableSettings} object with the specified properties.
      */
     TableSettings build();
 }
