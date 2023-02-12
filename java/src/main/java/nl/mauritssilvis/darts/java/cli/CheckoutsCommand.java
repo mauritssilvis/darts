@@ -74,12 +74,12 @@ class CheckoutsCommand implements Runnable {
 
     @Option(
             names = {"-m", "--mode"},
-            description = "The checkout finder mode. Only applies when the number of throws is fixed. Supported values: minimum, all.",
+            description = "The throw mode. Only applies when the number of throws is fixed. Supported values: optimal, all.",
             paramLabel = "<mode>",
-            defaultValue = "minimum",
+            defaultValue = "optimal",
             order = 4
     )
-    private FinderMode finderMode;
+    private ThrowMode throwMode;
 
     @Option(
             names = {"-f", "--finder"},
@@ -125,7 +125,7 @@ class CheckoutsCommand implements Runnable {
     @Override
     public void run() {
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(minScore, maxScore);

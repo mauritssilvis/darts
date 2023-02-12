@@ -23,11 +23,11 @@ class JsonTableSerializerTests {
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.ANY;
         int numThrows = -1;
-        FinderMode finderMode = FinderMode.MINIMUM;
+        ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
         );
 
         int minScore = 22;
@@ -191,11 +191,11 @@ class JsonTableSerializerTests {
         CheckType checkInType = CheckType.ANY;
         CheckType checkoutType = CheckType.DOUBLE;
         int numThrows = -1;
-        FinderMode finderMode = FinderMode.MINIMUM;
+        ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, finderMode, finderType
+                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
         );
 
         int minScore = 2;

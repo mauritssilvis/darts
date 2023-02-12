@@ -26,7 +26,7 @@ public final class TableGeneratorFactory {
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param finderMode   the finder mode
+     * @param throwMode   the finder mode
      * @param finderType   the checkout finder type
      * @return a new {@code TableGenerator} for tables of the specified type
      */
@@ -36,12 +36,12 @@ public final class TableGeneratorFactory {
             CheckType checkInType,
             CheckType checkoutType,
             int numThrows,
-            FinderMode finderMode,
+            ThrowMode throwMode,
             FinderType finderType
     ) {
         return switch (tableType) {
             case ASCENDING -> AscendingTableGenerator.of(
-                    boardType, checkInType, checkoutType, numThrows, finderMode, finderType
+                    boardType, checkInType, checkoutType, numThrows, throwMode, finderType
             );
         };
     }

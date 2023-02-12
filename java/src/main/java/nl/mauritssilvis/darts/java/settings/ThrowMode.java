@@ -8,14 +8,14 @@ package nl.mauritssilvis.darts.java.settings;
 import lombok.ToString;
 
 /**
- * The checkout finder mode.
+ * The throw mode.
  */
 @ToString
-public enum FinderMode {
+public enum ThrowMode {
     /**
      * Find checkouts consisting of a minimum number of throws.
      */
-    MINIMUM,
+    OPTIMAL,
 
     /**
      * Find all checkouts for a given number of throws.

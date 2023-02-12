@@ -65,7 +65,7 @@ class CheckoutsCommandTests {
                 "<checkout>",
                 "The number of throws.",
                 "<throws>",
-                "The checkout finder mode.",
+                "The throw mode.",
                 "<mode>",
                 "The checkout finder type.",
                 "<finder>",
@@ -415,9 +415,9 @@ class CheckoutsCommandTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withTheModeOption")
-    void processTheModeOption(String optionName, String finderMode, String output) {
-        String[] args = {"checkouts", "-n", "2", optionName, finderMode, "22", "22"};
+    @MethodSource("withTheThrowOption")
+    void processTheThrowOption(String optionName, String throwMode, String output) {
+        String[] args = {"checkouts", "-n", "2", optionName, throwMode, "22", "22"};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -436,11 +436,11 @@ class CheckoutsCommandTests {
         );
     }
 
-    private static Stream<Arguments> withTheModeOption() {
+    private static Stream<Arguments> withTheThrowOption() {
         return Stream.of(
                 Arguments.of(
                         "-m",
-                        "miniMUM",
+                        "optiMAL",
                         """
                                 | Score | 1 | 2 | # |
                                 |------:|--:|--:|--:|
@@ -448,7 +448,7 @@ class CheckoutsCommandTests {
                 ),
                 Arguments.of(
                         "--mode",
-                        "FinderMode.ALL",
+                        "ThrowMode.ALL",
                         """
                                 | Score |               1 |               2 |  # |
                                 |------:|----------------:|----------------:|---:|

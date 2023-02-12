@@ -16,7 +16,7 @@ import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.FinderMode;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
@@ -44,7 +44,7 @@ public final class AscendingTableGenerator implements TableGenerator {
     @ToString.Include
     private final int numThrows;
     @ToString.Include
-    private final FinderMode finderMode;
+    private final ThrowMode throwMode;
     @ToString.Include
     private final FinderType finderType;
 
@@ -60,14 +60,14 @@ public final class AscendingTableGenerator implements TableGenerator {
             CheckType checkInType,
             CheckType checkoutType,
             int numThrows,
-            FinderMode finderMode,
+            ThrowMode throwMode,
             FinderType finderType
     ) {
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;
         this.numThrows = numThrows;
-        this.finderMode = finderMode;
+        this.throwMode = throwMode;
         this.finderType = finderType;
 
         Board board = BoardFactory.create(boardType);
@@ -84,7 +84,7 @@ public final class AscendingTableGenerator implements TableGenerator {
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param finderMode   the finder mode
+     * @param throwMode   the finder mode
      * @param finderType   the checkout finder type
      * @return a new {@code AscendingTableGenerator} with the specified
      * dartboard, check-in, checkout and finder types.
@@ -94,10 +94,10 @@ public final class AscendingTableGenerator implements TableGenerator {
             CheckType checkInType,
             CheckType checkoutType,
             int numThrows,
-            FinderMode finderMode,
+            ThrowMode throwMode,
             FinderType finderType
     ) {
-        return new AscendingTableGenerator(boardType, checkInType, checkoutType, numThrows, finderMode, finderType);
+        return new AscendingTableGenerator(boardType, checkInType, checkoutType, numThrows, throwMode, finderType);
     }
 
     @Override
@@ -106,7 +106,7 @@ public final class AscendingTableGenerator implements TableGenerator {
 
         if (numThrows == -1) {
             checkoutMap = getRegularCheckoutMap(minScore, maxScore);
-        } else if (finderMode == FinderMode.MINIMUM) {
+        } else if (throwMode == ThrowMode.OPTIMAL) {
             checkoutMap = getMinimumThrowCheckoutMap(minScore, maxScore);
         } else {
             checkoutMap = getFixedThrowCheckoutMap(minScore, maxScore);
