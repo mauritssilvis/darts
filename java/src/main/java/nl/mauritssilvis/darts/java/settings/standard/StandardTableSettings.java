@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.settings.standard;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.settings.*;
 
@@ -15,6 +16,7 @@ import nl.mauritssilvis.darts.java.settings.*;
  * Relevant design patterns: immutable object, static factory method.
  */
 @ToString
+@EqualsAndHashCode
 final class StandardTableSettings implements TableSettings {
     private final BoardType boardType;
     private final CheckMode checkInMode;
