@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.settings.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class StandardTableSettingsTests {
+class BasicTableSettingsTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;
@@ -20,7 +20,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -37,7 +37,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -54,7 +54,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -71,7 +71,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -88,7 +88,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -105,7 +105,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -122,7 +122,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -139,7 +139,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.CARTESIAN;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -156,7 +156,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -173,11 +173,11 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -194,7 +194,7 @@ class StandardTableSettingsTests {
         FinderType finderType1 = FinderType.DESCENDING;
         TableType tableType1 = TableType.ASCENDING;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType1, checkInMode1, checkoutMode1, numThrows1, throwMode1, finderType1, tableType1
         );
 
@@ -206,7 +206,7 @@ class StandardTableSettingsTests {
         FinderType finderType2 = FinderType.CARTESIAN;
         TableType tableType2 = TableType.ASCENDING;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType2, checkInMode2, checkoutMode2, numThrows2, throwMode2, finderType2, tableType2
         );
 
@@ -224,13 +224,13 @@ class StandardTableSettingsTests {
 
         BoardType boardType1 = BoardType.YORKSHIRE;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType1, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
         BoardType boardType2 = BoardType.QUADRO;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType2, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -248,13 +248,13 @@ class StandardTableSettingsTests {
 
         CheckMode checkInMode1 = CheckMode.MASTER;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode1, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
         CheckMode checkInMode2 = CheckMode.DOUBLE;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode2, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -272,13 +272,13 @@ class StandardTableSettingsTests {
 
         CheckMode checkoutMode1 = CheckMode.MASTER;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode1, numThrows, throwMode, finderType, tableType
         );
 
         CheckMode checkoutMode2 = CheckMode.ANY;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode2, numThrows, throwMode, finderType, tableType
         );
 
@@ -296,13 +296,13 @@ class StandardTableSettingsTests {
 
         int numThrows1 = 2;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows1, throwMode, finderType, tableType
         );
 
         int numThrows2 = 3;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows2, throwMode, finderType, tableType
         );
 
@@ -320,13 +320,13 @@ class StandardTableSettingsTests {
 
         ThrowMode throwMode1 = ThrowMode.FIXED;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode1, finderType, tableType
         );
 
         ThrowMode throwMode2 = ThrowMode.OPTIMAL;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode2, finderType, tableType
         );
 
@@ -344,13 +344,13 @@ class StandardTableSettingsTests {
 
         FinderType finderType1 = FinderType.CARTESIAN;
 
-        TableSettings tableSettings1 = StandardTableSettings.of(
+        TableSettings tableSettings1 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType1, tableType
         );
 
         FinderType finderType2 = FinderType.DESCENDING;
 
-        TableSettings tableSettings2 = StandardTableSettings.of(
+        TableSettings tableSettings2 = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType2, tableType
         );
 
@@ -367,7 +367,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = StandardTableSettings.of(
+        TableSettings tableSettings = BasicTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 

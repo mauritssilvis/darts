@@ -17,7 +17,7 @@ import nl.mauritssilvis.darts.java.settings.*;
  */
 @ToString
 @EqualsAndHashCode
-final class StandardTableSettings implements TableSettings {
+final class BasicTableSettings implements TableSettings {
     private final BoardType boardType;
     private final CheckMode checkInMode;
     private final CheckMode checkoutMode;
@@ -26,7 +26,7 @@ final class StandardTableSettings implements TableSettings {
     private final FinderType finderType;
     private final TableType tableType;
 
-    private StandardTableSettings(
+    private BasicTableSettings(
             BoardType boardType,
             CheckMode checkInMode,
             CheckMode checkoutMode,
@@ -45,7 +45,7 @@ final class StandardTableSettings implements TableSettings {
     }
 
     /**
-     * Returns a new {@code StandardTableSettings} object with the specified
+     * Returns a new {@code BasicTableSettings} object with the specified
      * properties.
      *
      * @param boardType    the dartboard type
@@ -65,7 +65,7 @@ final class StandardTableSettings implements TableSettings {
             FinderType finderType,
             TableType tableType
     ) {
-        return new StandardTableSettings(
+        return new BasicTableSettings(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
     }
