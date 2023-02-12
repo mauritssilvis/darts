@@ -23,8 +23,8 @@ public final class TableGeneratorFactory {
      *
      * @param tableType    the table type
      * @param boardType    the dartboard type
-     * @param checkInType  the check-in type
-     * @param checkoutType the checkout type
+     * @param checkInMode  the check-in mode
+     * @param checkoutMode the checkout mode
      * @param numThrows    the number of throws if fixed and -1 otherwise
      * @param throwMode    the throw mode
      * @param finderType   the checkout finder type
@@ -33,15 +33,15 @@ public final class TableGeneratorFactory {
     public static TableGenerator create(
             TableType tableType,
             BoardType boardType,
-            CheckType checkInType,
-            CheckType checkoutType,
+            CheckMode checkInMode,
+            CheckMode checkoutMode,
             int numThrows,
             ThrowMode throwMode,
             FinderType finderType
     ) {
         return switch (tableType) {
             case ASCENDING -> AscendingTableGenerator.of(
-                    boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                    boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
             );
         };
     }

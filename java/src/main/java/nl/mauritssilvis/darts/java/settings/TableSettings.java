@@ -19,18 +19,18 @@ public interface TableSettings {
     BoardType getBoardType();
 
     /**
-     * Gets the check-in type.
+     * Gets the check-in mode.
      *
-     * @return the check-in type
+     * @return the check-in mode
      */
-    CheckType getCheckInType();
+    CheckMode getCheckInMode();
 
     /**
-     * Gets the checkout type.
+     * Gets the checkout mode.
      *
-     * @return the checkout type
+     * @return the checkout mode
      */
-    CheckType getCheckoutType();
+    CheckMode getCheckoutMode();
 
     /**
      * Determines whether the number of throws was fixed.

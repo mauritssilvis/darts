@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.descending.GroupedCheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
 import org.junit.jupiter.api.Assertions;
@@ -57,79 +57,79 @@ class AscendingTableBuilderTests {
     }
 
     @Test
-    void getTheCheckInType() {
-        CheckType checkInType = CheckType.MASTER;
+    void getTheCheckInMode() {
+        CheckMode checkInMode = CheckMode.MASTER;
 
         TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
-                .setCheckInType(checkInType)
+                .setCheckInMode(checkInMode)
                 .build();
 
-        Assertions.assertEquals(checkInType, table.getCheckInType());
+        Assertions.assertEquals(checkInMode, table.getCheckInMode());
     }
 
     @Test
-    void getTheDefaultCheckInType() {
+    void getTheDefaultCheckInMode() {
         TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
-        CheckType checkInType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
 
-        Assertions.assertEquals(checkInType, table.getCheckInType());
+        Assertions.assertEquals(checkInMode, table.getCheckInMode());
     }
 
     @Test
-    void overrideTheCheckInType() {
-        CheckType checkInType1 = CheckType.DOUBLE;
-        CheckType checkInType2 = CheckType.MASTER;
+    void overrideTheCheckInMode() {
+        CheckMode checkInMode1 = CheckMode.DOUBLE;
+        CheckMode checkInMode2 = CheckMode.MASTER;
 
         TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
-                .setCheckInType(checkInType1)
-                .setCheckInType(checkInType2)
+                .setCheckInMode(checkInMode1)
+                .setCheckInMode(checkInMode2)
                 .build();
 
-        Assertions.assertEquals(checkInType2, table.getCheckInType());
+        Assertions.assertEquals(checkInMode2, table.getCheckInMode());
     }
 
     @Test
-    void getTheCheckoutType() {
-        CheckType checkoutType = CheckType.ANY;
+    void getTheCheckoutMode() {
+        CheckMode checkoutMode = CheckMode.ANY;
 
         TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
-                .setCheckoutType(checkoutType)
+                .setCheckoutMode(checkoutMode)
                 .build();
 
-        Assertions.assertEquals(checkoutType, table.getCheckoutType());
+        Assertions.assertEquals(checkoutMode, table.getCheckoutMode());
     }
 
     @Test
-    void getTheDefaultCheckoutType() {
+    void getTheDefaultCheckoutMode() {
         TableBuilder tableBuilder = AscendingTableBuilder.create();
         Table table = tableBuilder.build();
 
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
 
-        Assertions.assertEquals(checkoutType, table.getCheckoutType());
+        Assertions.assertEquals(checkoutMode, table.getCheckoutMode());
     }
 
     @Test
-    void overrideTheCheckoutType() {
-        CheckType checkoutType1 = CheckType.ANY;
-        CheckType checkoutType2 = CheckType.MASTER;
+    void overrideTheCheckoutMode() {
+        CheckMode checkoutMode1 = CheckMode.ANY;
+        CheckMode checkoutMode2 = CheckMode.MASTER;
 
         TableBuilder tableBuilder = AscendingTableBuilder.create();
 
         Table table = tableBuilder
-                .setCheckoutType(checkoutType1)
-                .setCheckoutType(checkoutType2)
+                .setCheckoutMode(checkoutMode1)
+                .setCheckoutMode(checkoutMode2)
                 .build();
 
-        Assertions.assertEquals(checkoutType2, table.getCheckoutType());
+        Assertions.assertEquals(checkoutMode2, table.getCheckoutMode());
     }
 
     @Test
@@ -243,8 +243,8 @@ class AscendingTableBuilderTests {
     @Test
     void getACustomTable() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.MASTER;
 
         int score1 = 4;
         int score2 = 8;
@@ -264,8 +264,8 @@ class AscendingTableBuilderTests {
 
         Table table = tableBuilder
                 .setBoardType(boardType)
-                .setCheckInType(checkInType)
-                .setCheckoutType(checkoutType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
                 .setCheckouts(score1, checkouts1)
                 .setCheckouts(score2, checkouts2)
                 .build();
@@ -280,8 +280,8 @@ class AscendingTableBuilderTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(boardType, table.getBoardType()),
-                () -> Assertions.assertEquals(checkInType, table.getCheckInType()),
-                () -> Assertions.assertEquals(checkoutType, table.getCheckoutType()),
+                () -> Assertions.assertEquals(checkInMode, table.getCheckInMode()),
+                () -> Assertions.assertEquals(checkoutMode, table.getCheckoutMode()),
                 () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
                 () -> Assertions.assertEquals(namesPerCheckout1, storedNames1),
                 () -> Assertions.assertEquals(namesPerCheckout2, storedNames2)
@@ -304,8 +304,8 @@ class AscendingTableBuilderTests {
         Assertions.assertAll(
                 () -> Assertions.assertTrue(str.contains(tableBuilder.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
-                () -> Assertions.assertTrue(str.contains("checkInType")),
-                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("checkInMode")),
+                () -> Assertions.assertTrue(str.contains("checkoutMode")),
                 () -> Assertions.assertTrue(str.contains("checkoutMap"))
         );
     }

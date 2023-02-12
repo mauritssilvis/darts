@@ -20,14 +20,14 @@ class HtmlTableSerializerTests {
     void getAnHtmlTable() {
         TableType tableType = TableType.ASCENDING;
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 22;
@@ -65,14 +65,14 @@ class HtmlTableSerializerTests {
     @EnumSource(TableType.class)
     void getTheTableStart(TableType tableType) {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 2;

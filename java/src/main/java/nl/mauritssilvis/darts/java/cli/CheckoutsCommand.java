@@ -46,21 +46,21 @@ class CheckoutsCommand implements Runnable {
 
     @Option(
             names = {"-i", "--check-in"},
-            description = "The check-in type. Supported values: any, master, double.",
+            description = "The check-in mode. Supported values: any, master, double.",
             paramLabel = "<check-in>",
             defaultValue = "any",
             order = 1
     )
-    private CheckType checkInType;
+    private CheckMode checkInMode;
 
     @Option(
             names = {"-j", "--checkout"},
-            description = "The checkout type. Supported values: any, master, double.",
+            description = "The checkout mode. Supported values: any, master, double.",
             paramLabel = "<checkout>",
             defaultValue = "double",
             order = 2
     )
-    private CheckType checkoutType;
+    private CheckMode checkoutMode;
 
     @Option(
             names = {"-n", "--throws"},
@@ -125,7 +125,7 @@ class CheckoutsCommand implements Runnable {
     @Override
     public void run() {
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(minScore, maxScore);

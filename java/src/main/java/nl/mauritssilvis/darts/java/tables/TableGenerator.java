@@ -8,8 +8,8 @@ package nl.mauritssilvis.darts.java.tables;
 /**
  * A checkout table generator.
  * <p>
- * This functional interface does not fix the dartboard, check-in or checkout
- * types. Implementations can specify these properties.
+ * This functional interface does not fix the dartboard type, or check-in and
+ * checkout modes. Implementations can specify these properties.
  * <p>
  * Relevant design patterns: strategy, immutable interface.
  */

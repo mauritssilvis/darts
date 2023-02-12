@@ -19,14 +19,14 @@ class StringTableSerializerTests {
     @EnumSource(TableType.class)
     void includeTheTableName(TableType tableType) {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 2;
@@ -47,14 +47,14 @@ class StringTableSerializerTests {
     @EnumSource(TableType.class)
     void useTheStringRepresentation(TableType tableType) {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 3;
@@ -77,14 +77,14 @@ class StringTableSerializerTests {
     @EnumSource(TableType.class)
     void indentTheOutput(TableType tableType) {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 1;

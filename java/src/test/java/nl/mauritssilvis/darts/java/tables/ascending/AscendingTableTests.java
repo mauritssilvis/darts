@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.descending.GroupedCheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 import org.junit.jupiter.api.Assertions;
@@ -23,8 +23,8 @@ class AscendingTableTests {
     @Test
     void doNotStoreCheckoutsWithAnotherScore() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -40,15 +40,15 @@ class AscendingTableTests {
 
         Assertions.assertThrows(
                 IllegalArgumentException.class,
-                () -> AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap)
+                () -> AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap)
         );
     }
 
     @Test
     void storeAnIndependentCheckoutMap() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -63,7 +63,7 @@ class AscendingTableTests {
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         checkoutMap.clear();
 
@@ -80,8 +80,8 @@ class AscendingTableTests {
     @Test
     void storeIndependentCheckouts() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -96,7 +96,7 @@ class AscendingTableTests {
         Map<Integer, Collection<Checkout>> checkoutMap = new HashMap<>();
         checkoutMap.put(score, checkouts);
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         checkoutMap.get(score).clear();
 
@@ -113,8 +113,8 @@ class AscendingTableTests {
     @Test
     void storeCheckoutsInAscendingOrder() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -123,7 +123,7 @@ class AscendingTableTests {
         Map<Integer, Collection<Checkout>> checkoutMap = scores.stream()
                 .collect(Collectors.toMap(Function.identity(), i -> Collections.emptyList()));
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         List<Integer> storedScores = new ArrayList<>(storedCheckoutMap.keySet());
@@ -136,50 +136,50 @@ class AscendingTableTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Assertions.assertEquals(boardType, table.getBoardType());
     }
 
     @Test
-    void getTheCheckInType() {
+    void getTheCheckInMode() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
-        Assertions.assertEquals(checkInType, table.getCheckInType());
+        Assertions.assertEquals(checkInMode, table.getCheckInMode());
     }
 
     @Test
-    void getTheCheckoutType() {
+    void getTheCheckoutMode() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
-        Assertions.assertEquals(checkoutType, table.getCheckoutType());
+        Assertions.assertEquals(checkoutMode, table.getCheckoutMode());
     }
 
     @Test
     void getTheCheckoutMap() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -205,7 +205,7 @@ class AscendingTableTests {
                 score2, checkouts2
         );
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
 
@@ -225,13 +225,13 @@ class AscendingTableTests {
     @Test
     void getTheCheckoutMapWithAnEmptyMap() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Assertions.assertEquals(checkoutMap, table.getCheckoutMap());
     }
@@ -239,14 +239,14 @@ class AscendingTableTests {
     @Test
     void getTheCheckoutMapWithEmptyCheckouts() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
         Map<Integer, Collection<Checkout>> checkoutMap = Map.of(1, Collections.emptyList());
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Assertions.assertEquals(checkoutMap, table.getCheckoutMap());
     }
@@ -254,8 +254,8 @@ class AscendingTableTests {
     @Test
     void getAnImmutableCheckoutMap() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -271,7 +271,7 @@ class AscendingTableTests {
                 score, checkouts
         );
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
 
@@ -281,8 +281,8 @@ class AscendingTableTests {
     @Test
     void getImmutableCheckouts() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -299,7 +299,7 @@ class AscendingTableTests {
                 score, checkouts
         );
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
         Collection<Checkout> storedCheckouts = storedCheckoutMap.get(score);
@@ -310,8 +310,8 @@ class AscendingTableTests {
     @Test
     void getEqualTables() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -328,7 +328,7 @@ class AscendingTableTests {
                 score, checkouts1
         );
 
-        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap1);
 
         Collection<Checkout> checkouts2 = GroupedCheckoutTestUtils.getCheckouts(namesPerCheckout);
 
@@ -336,7 +336,7 @@ class AscendingTableTests {
                 score, checkouts2
         );
 
-        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(table1, table2),
@@ -347,8 +347,8 @@ class AscendingTableTests {
     @Test
     void getUnequalTables() {
         BoardType boardType1 = BoardType.LONDON;
-        CheckType checkInType1 = CheckType.DOUBLE;
-        CheckType checkoutType1 = CheckType.DOUBLE;
+        CheckMode checkInMode1 = CheckMode.DOUBLE;
+        CheckMode checkoutMode1 = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -361,11 +361,11 @@ class AscendingTableTests {
                 score1, checkouts1
         );
 
-        Table table1 = AscendingTable.of(boardType1, checkInType1, checkoutType1, numThrows, throwMode, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType1, checkInMode1, checkoutMode1, numThrows, throwMode, checkoutMap1);
 
         BoardType boardType2 = BoardType.QUADRO;
-        CheckType checkInType2 = CheckType.ANY;
-        CheckType checkoutType2 = CheckType.ANY;
+        CheckMode checkInMode2 = CheckMode.ANY;
+        CheckMode checkoutMode2 = CheckMode.ANY;
 
         int score2 = 80;
 
@@ -376,15 +376,15 @@ class AscendingTableTests {
                 score2, checkouts2
         );
 
-        Table table2 = AscendingTable.of(boardType2, checkInType2, checkoutType2, numThrows, throwMode, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType2, checkInMode2, checkoutMode2, numThrows, throwMode, checkoutMap2);
 
         Assertions.assertNotEquals(table1, table2);
     }
 
     @Test
     void getUnequalTablesForDifferentBoardTypes() {
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -398,18 +398,18 @@ class AscendingTableTests {
         );
 
         BoardType boardType1 = BoardType.LONDON;
-        Table table1 = AscendingTable.of(boardType1, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table1 = AscendingTable.of(boardType1, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         BoardType boardType2 = BoardType.YORKSHIRE;
-        Table table2 = AscendingTable.of(boardType2, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table2 = AscendingTable.of(boardType2, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
 
     @Test
-    void getUnequalTablesForDifferentCheckInTypes() {
+    void getUnequalTablesForDifferentCheckInModes() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -422,19 +422,19 @@ class AscendingTableTests {
                 score, checkouts
         );
 
-        CheckType checkInType1 = CheckType.DOUBLE;
-        Table table1 = AscendingTable.of(boardType, checkInType1, checkoutType, numThrows, throwMode, checkoutMap);
+        CheckMode checkInMode1 = CheckMode.DOUBLE;
+        Table table1 = AscendingTable.of(boardType, checkInMode1, checkoutMode, numThrows, throwMode, checkoutMap);
 
-        CheckType checkInType2 = CheckType.ANY;
-        Table table2 = AscendingTable.of(boardType, checkInType2, checkoutType, numThrows, throwMode, checkoutMap);
+        CheckMode checkInMode2 = CheckMode.ANY;
+        Table table2 = AscendingTable.of(boardType, checkInMode2, checkoutMode, numThrows, throwMode, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
 
     @Test
-    void getUnequalTablesForDifferentCheckoutTypes() {
+    void getUnequalTablesForDifferentCheckoutModes() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -447,11 +447,11 @@ class AscendingTableTests {
                 score, checkouts
         );
 
-        CheckType checkoutType1 = CheckType.MASTER;
-        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType1, numThrows, throwMode, checkoutMap);
+        CheckMode checkoutMode1 = CheckMode.MASTER;
+        Table table1 = AscendingTable.of(boardType, checkInMode, checkoutMode1, numThrows, throwMode, checkoutMap);
 
-        CheckType checkoutType2 = CheckType.DOUBLE;
-        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType2, numThrows, throwMode, checkoutMap);
+        CheckMode checkoutMode2 = CheckMode.DOUBLE;
+        Table table2 = AscendingTable.of(boardType, checkInMode, checkoutMode2, numThrows, throwMode, checkoutMap);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -459,8 +459,8 @@ class AscendingTableTests {
     @Test
     void getUnequalTablesForDifferentCheckoutMaps() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -473,7 +473,7 @@ class AscendingTableTests {
                 score1, checkouts1
         );
 
-        Table table1 = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap1);
+        Table table1 = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap1);
 
         int score2 = 60;
 
@@ -484,7 +484,7 @@ class AscendingTableTests {
                 score2, checkouts2
         );
 
-        Table table2 = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap2);
+        Table table2 = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap2);
 
         Assertions.assertNotEquals(table1, table2);
     }
@@ -492,8 +492,8 @@ class AscendingTableTests {
     @Test
     void convertToAString() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
@@ -511,15 +511,15 @@ class AscendingTableTests {
                 score, checkouts
         );
 
-        Table table = AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        Table table = AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
 
         String str = table.toString();
 
         Assertions.assertAll(
                 () -> Assertions.assertTrue(str.contains(table.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
-                () -> Assertions.assertTrue(str.contains("checkInType")),
-                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("checkInMode")),
+                () -> Assertions.assertTrue(str.contains("checkoutMode")),
                 () -> Assertions.assertTrue(str.contains("checkoutMap"))
         );
     }

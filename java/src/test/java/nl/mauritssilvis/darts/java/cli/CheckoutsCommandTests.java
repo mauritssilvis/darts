@@ -59,9 +59,9 @@ class CheckoutsCommandTests {
                 "Generate a darts checkout table.",
                 "The dartboard type.",
                 "<board>",
-                "The check-in type.",
+                "The check-in mode.",
                 "<check-in>",
-                "The checkout type.",
+                "The checkout mode.",
                 "<checkout>",
                 "The number of throws.",
                 "<throws>",
@@ -205,8 +205,8 @@ class CheckoutsCommandTests {
 
     @ParameterizedTest
     @MethodSource("withTheCheckInOption")
-    void processTheCheckInOption(String optionName, String checkInType, String output) {
-        String[] args = {"checkouts", optionName, checkInType, "-j", "any", "2", "3"};
+    void processTheCheckInOption(String optionName, String checkInMode, String output) {
+        String[] args = {"checkouts", optionName, checkInMode, "-j", "any", "2", "3"};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -251,7 +251,7 @@ class CheckoutsCommandTests {
                 ),
                 Arguments.of(
                         "-i",
-                        "checktype.DOUBLE",
+                        "checkmode.DOUBLE",
                         """
                                 | Score |  1 |  2 | # |
                                 |------:|---:|---:|--:|
@@ -265,8 +265,8 @@ class CheckoutsCommandTests {
 
     @ParameterizedTest
     @MethodSource("withTheCheckoutOption")
-    void processTheCheckoutOption(String optionName, String checkoutType, String output) {
-        String[] args = {"checkouts", optionName, checkoutType, "2", "3"};
+    void processTheCheckoutOption(String optionName, String checkoutMode, String output) {
+        String[] args = {"checkouts", optionName, checkoutMode, "2", "3"};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -300,7 +300,7 @@ class CheckoutsCommandTests {
                 ),
                 Arguments.of(
                         "--checkout",
-                        "CheckType.MASTER",
+                        "CheckMode.MASTER",
                         """
                                 | Score |  1 | # |
                                 |------:|---:|--:|

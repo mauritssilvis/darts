@@ -15,7 +15,7 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
@@ -38,9 +38,9 @@ public final class AscendingTableGenerator implements TableGenerator {
     @ToString.Include
     private final BoardType boardType;
     @ToString.Include
-    private final CheckType checkInType;
+    private final CheckMode checkInMode;
     @ToString.Include
-    private final CheckType checkoutType;
+    private final CheckMode checkoutMode;
     @ToString.Include
     private final int numThrows;
     @ToString.Include
@@ -57,47 +57,47 @@ public final class AscendingTableGenerator implements TableGenerator {
 
     private AscendingTableGenerator(
             BoardType boardType,
-            CheckType checkInType,
-            CheckType checkoutType,
+            CheckMode checkInMode,
+            CheckMode checkoutMode,
             int numThrows,
             ThrowMode throwMode,
             FinderType finderType
     ) {
         this.boardType = boardType;
-        this.checkInType = checkInType;
-        this.checkoutType = checkoutType;
+        this.checkInMode = checkInMode;
+        this.checkoutMode = checkoutMode;
         this.numThrows = numThrows;
         this.throwMode = throwMode;
         this.finderType = finderType;
 
         Board board = BoardFactory.create(boardType);
-        firstFields = getFields(board, checkInType);
-        middleFields = getFields(board, CheckType.ANY);
-        lastFields = getFields(board, checkoutType);
+        firstFields = getFields(board, checkInMode);
+        middleFields = getFields(board, CheckMode.ANY);
+        lastFields = getFields(board, checkoutMode);
     }
 
     /**
      * Returns a new {@code AscendingTableGenerator} with the specified
-     * dartboard, check-in, checkout and finder types.
+     * dartboard type, check-in and checkout modes, and finder type.
      *
      * @param boardType    the dartboard type
-     * @param checkInType  the check-in type
-     * @param checkoutType the checkout type
+     * @param checkInMode  the check-in mode
+     * @param checkoutMode the checkout mode
      * @param numThrows    the number of throws if fixed and -1 otherwise
      * @param throwMode    the throw mode
      * @param finderType   the checkout finder type
      * @return a new {@code AscendingTableGenerator} with the specified
-     * dartboard, check-in, checkout and finder types.
+     * dartboard type, check-in and checkout modes, and finder type.
      */
     public static TableGenerator of(
             BoardType boardType,
-            CheckType checkInType,
-            CheckType checkoutType,
+            CheckMode checkInMode,
+            CheckMode checkoutMode,
             int numThrows,
             ThrowMode throwMode,
             FinderType finderType
     ) {
-        return new AscendingTableGenerator(boardType, checkInType, checkoutType, numThrows, throwMode, finderType);
+        return new AscendingTableGenerator(boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType);
     }
 
     @Override
@@ -114,8 +114,8 @@ public final class AscendingTableGenerator implements TableGenerator {
 
         TableBuilder tableBuilder = AscendingTableBuilder.create()
                 .setBoardType(boardType)
-                .setCheckInType(checkInType)
-                .setCheckoutType(checkoutType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
                 .setNumThrows(numThrows)
                 .setThrowMode(throwMode);
 
@@ -124,20 +124,20 @@ public final class AscendingTableGenerator implements TableGenerator {
         return tableBuilder.build();
     }
 
-    private static List<Field> getFields(Board board, CheckType checkType) {
+    private static List<Field> getFields(Board board, CheckMode checkMode) {
         List<Field> fields = new ArrayList<>();
 
-        if (checkType == CheckType.ANY) {
+        if (checkMode == CheckMode.ANY) {
             fields.addAll(board.getFields(FieldType.SINGLE));
         }
 
         fields.addAll(board.getFields(FieldType.DOUBLE));
 
-        if (checkType != CheckType.DOUBLE) {
+        if (checkMode != CheckMode.DOUBLE) {
             fields.addAll(board.getFields(FieldType.TRIPLE));
         }
 
-        if (checkType == CheckType.ANY) {
+        if (checkMode == CheckMode.ANY) {
             fields.addAll(board.getFields(FieldType.QUADRUPLE));
         }
 

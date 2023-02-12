@@ -20,20 +20,20 @@ public interface TableSettingsBuilder {
     TableSettingsBuilder setBoardType(BoardType boardType);
 
     /**
-     * Sets the check-in type.
+     * Sets the check-in mode.
      *
-     * @param checkInType the check-in type
+     * @param checkInMode the check-in mode
      * @return this settings builder
      */
-    TableSettingsBuilder setCheckInType(CheckType checkInType);
+    TableSettingsBuilder setCheckInMode(CheckMode checkInMode);
 
     /**
-     * Sets the checkout type.
+     * Sets the checkout mode.
      *
-     * @param checkoutType the checkout type
+     * @param checkoutMode the checkout mode
      * @return this settings builder
      */
-    TableSettingsBuilder setCheckoutType(CheckType checkoutType);
+    TableSettingsBuilder setCheckoutMode(CheckMode checkoutMode);
 
     /**
      * Sets the number of throws.

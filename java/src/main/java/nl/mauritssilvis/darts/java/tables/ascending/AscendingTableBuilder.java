@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
@@ -28,8 +28,8 @@ import java.util.Map;
 @ToString
 public final class AscendingTableBuilder implements TableBuilder {
     private BoardType boardType = BoardType.LONDON;
-    private CheckType checkInType = CheckType.ANY;
-    private CheckType checkoutType = CheckType.DOUBLE;
+    private CheckMode checkInMode = CheckMode.ANY;
+    private CheckMode checkoutMode = CheckMode.DOUBLE;
     private int numThrows = -1;
     private ThrowMode throwMode = ThrowMode.OPTIMAL;
     private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
@@ -39,7 +39,7 @@ public final class AscendingTableBuilder implements TableBuilder {
 
     /**
      * Returns a new {@code AscendingTableBuilder} with default values for the
-     * dartboard, check-in and checkout types.
+     * dartboard type, check-in and checkout modes.
      *
      * @return a new {@code AscendingTableBuilder}
      */
@@ -54,8 +54,8 @@ public final class AscendingTableBuilder implements TableBuilder {
     }
 
     @Override
-    public TableBuilder setCheckInType(CheckType checkInType) {
-        this.checkInType = checkInType;
+    public TableBuilder setCheckInMode(CheckMode checkInMode) {
+        this.checkInMode = checkInMode;
         return this;
     }
 
@@ -72,8 +72,8 @@ public final class AscendingTableBuilder implements TableBuilder {
     }
 
     @Override
-    public TableBuilder setCheckoutType(CheckType checkoutType) {
-        this.checkoutType = checkoutType;
+    public TableBuilder setCheckoutMode(CheckMode checkoutMode) {
+        this.checkoutMode = checkoutMode;
         return this;
     }
 
@@ -85,6 +85,6 @@ public final class AscendingTableBuilder implements TableBuilder {
 
     @Override
     public Table build() {
-        return AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
+        return AscendingTable.of(boardType, checkInMode, checkoutMode, numThrows, throwMode, checkoutMap);
     }
 }

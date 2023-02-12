@@ -8,10 +8,10 @@ package nl.mauritssilvis.darts.java.settings;
 import lombok.ToString;
 
 /**
- * The type of check-in or checkout.
+ * The check-in or checkout mode.
  */
 @ToString
-public enum CheckType {
+public enum CheckMode {
     /**
      * A check of any field.
      */

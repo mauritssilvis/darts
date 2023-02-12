@@ -16,14 +16,14 @@ class TableGeneratorFactoryTests {
     void getAnAscendingTableGenerator() {
         TableType tableType = TableType.ASCENDING;
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Assertions.assertTrue(tableGenerator instanceof AscendingTableGenerator);

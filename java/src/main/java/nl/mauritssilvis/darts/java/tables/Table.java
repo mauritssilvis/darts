@@ -7,15 +7,15 @@ package nl.mauritssilvis.darts.java.tables;
 
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * A checkout table that contains checkouts for a specific dartboard, check-in
- * and checkout type.
+ * A checkout table that contains checkouts for a specific dartboard type,
+ * and check-in and checkout modes.
  * <p>
  * Relevant design patterns: immutable interface.
  */
@@ -28,18 +28,18 @@ public interface Table {
     BoardType getBoardType();
 
     /**
-     * Gets the check-in type of this checkout table.
+     * Gets the check-in mode of this checkout table.
      *
-     * @return the check-in type of this checkout table
+     * @return the check-in mode of this checkout table
      */
-    CheckType getCheckInType();
+    CheckMode getCheckInMode();
 
     /**
-     * Gets the checkout type of this checkout table.
+     * Gets the checkout mode of this checkout table.
      *
-     * @return the checkout type of this checkout table
+     * @return the checkout mode of this checkout table
      */
-    CheckType getCheckoutType();
+    CheckMode getCheckoutMode();
 
     /**
      * Gets the number of throws of this checkout table if fixed and -1 otherwise.

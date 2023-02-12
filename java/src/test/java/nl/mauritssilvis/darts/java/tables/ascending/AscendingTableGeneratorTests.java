@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
@@ -29,14 +29,14 @@ class AscendingTableGeneratorTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 0;
@@ -48,16 +48,16 @@ class AscendingTableGeneratorTests {
     }
 
     @Test
-    void getTheCheckInType() {
+    void getTheCheckInMode() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 0;
@@ -65,20 +65,20 @@ class AscendingTableGeneratorTests {
 
         Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(checkInType, table.getCheckInType());
+        Assertions.assertEquals(checkInMode, table.getCheckInMode());
     }
 
     @Test
-    void getTheCheckoutType() {
+    void getTheCheckoutMode() {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = 0;
@@ -86,19 +86,19 @@ class AscendingTableGeneratorTests {
 
         Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(checkoutType, table.getCheckoutType());
+        Assertions.assertEquals(checkoutMode, table.getCheckoutMode());
     }
 
     @ParameterizedTest
     @MethodSource("withoutCheckouts")
     void doNotGetCheckoutsWithTooLowScores(
-            BoardType boardType, CheckType checkInType, CheckType checkoutType, FinderType finderType
+            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, FinderType finderType
     ) {
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         int minScore = -2;
@@ -119,12 +119,12 @@ class AscendingTableGeneratorTests {
 
     private static Stream<Arguments> withoutCheckouts() {
         return Stream.of(
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, FinderType.CARTESIAN),
-                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.MASTER, FinderType.DESCENDING),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.MASTER, FinderType.CARTESIAN),
-                Arguments.of(BoardType.LONDON, CheckType.MASTER, CheckType.MASTER, FinderType.DESCENDING),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.MASTER, CheckType.ANY, FinderType.CARTESIAN),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.DOUBLE, CheckType.MASTER, FinderType.DESCENDING)
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, FinderType.CARTESIAN),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, FinderType.CARTESIAN),
+                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.MASTER, CheckMode.ANY, FinderType.CARTESIAN),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING)
         );
     }
 
@@ -135,14 +135,14 @@ class AscendingTableGeneratorTests {
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -220,14 +220,14 @@ class AscendingTableGeneratorTests {
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -296,14 +296,14 @@ class AscendingTableGeneratorTests {
             Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -361,14 +361,14 @@ class AscendingTableGeneratorTests {
             int totalMultiplicity
     ) {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -509,14 +509,14 @@ class AscendingTableGeneratorTests {
             int totalMultiplicity
     ) {
         BoardType boardType = BoardType.LONDON;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -594,14 +594,14 @@ class AscendingTableGeneratorTests {
             int totalMultiplicity
     ) {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.MASTER;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -718,7 +718,7 @@ class AscendingTableGeneratorTests {
     @ParameterizedTest
     @MethodSource("withDescendingLondonBoardHighScoreCheckouts")
     void countDescendingLondonBoardHighScoreCheckouts(
-            int score, CheckType checkInType, CheckType checkoutType, int totalMultiplicity
+            int score, CheckMode checkInMode, CheckMode checkoutMode, int totalMultiplicity
     ) {
         BoardType boardType = BoardType.LONDON;
         int numThrows = -1;
@@ -726,7 +726,7 @@ class AscendingTableGeneratorTests {
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -746,41 +746,41 @@ class AscendingTableGeneratorTests {
 
     private static Stream<Arguments> withDescendingLondonBoardHighScoreCheckouts() {
         return Stream.of(
-                Arguments.of(160, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(170, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(180, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(220, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(230, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(240, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(280, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(290, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(300, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(340, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(350, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(360, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(400, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(410, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(420, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(501, CheckType.ANY, CheckType.DOUBLE, 3944),
-                Arguments.of(501, CheckType.DOUBLE, CheckType.DOUBLE, 574),
-                Arguments.of(460, CheckType.DOUBLE, CheckType.DOUBLE, 1),
-                Arguments.of(470, CheckType.ANY, CheckType.DOUBLE, 1),
-                Arguments.of(480, CheckType.ANY, CheckType.ANY, 1),
-                Arguments.of(600, CheckType.ANY, CheckType.ANY, 1)
+                Arguments.of(160, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(170, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(180, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(220, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(230, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(240, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(280, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(290, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(300, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(340, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(350, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(360, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(400, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(410, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(420, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(501, CheckMode.ANY, CheckMode.DOUBLE, 3944),
+                Arguments.of(501, CheckMode.DOUBLE, CheckMode.DOUBLE, 574),
+                Arguments.of(460, CheckMode.DOUBLE, CheckMode.DOUBLE, 1),
+                Arguments.of(470, CheckMode.ANY, CheckMode.DOUBLE, 1),
+                Arguments.of(480, CheckMode.ANY, CheckMode.ANY, 1),
+                Arguments.of(600, CheckMode.ANY, CheckMode.ANY, 1)
         );
     }
 
     @ParameterizedTest
     @MethodSource("withoutFewDartCheckouts")
     void doNotReachACheckoutWithFewDarts(
-            BoardType boardType, CheckType checkInType, CheckType checkoutType, int score, int targetNumThrows
+            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, int score, int targetNumThrows
     ) {
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(score, score);
@@ -798,59 +798,59 @@ class AscendingTableGeneratorTests {
 
     private static Stream<Arguments> withoutFewDartCheckouts() {
         return Stream.of(
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 0, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 1, 1),
-                Arguments.of(BoardType.LONDON, CheckType.MASTER, CheckType.ANY, 1, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 3, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.MASTER, 3, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.DOUBLE, 5, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 9, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.MASTER, 9, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 21, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 23, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 25, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 25, 1),
-                Arguments.of(BoardType.LONDON, CheckType.DOUBLE, CheckType.ANY, 27, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 29, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 31, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 35, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 37, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 41, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 43, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.MASTER, 44, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 44, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 46, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 47, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 49, 1),
-                Arguments.of(BoardType.LONDON, CheckType.DOUBLE, CheckType.ANY, 51, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckType.ANY, CheckType.ANY, 51, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 52, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 61, 1),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 76, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 79, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 81, 1),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 99, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 102, 2),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 103, 2),
-                Arguments.of(BoardType.QUADRO, CheckType.DOUBLE, CheckType.DOUBLE, 104, 2),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.DOUBLE, 105, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 106, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 108, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 109, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 111, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.MASTER, 113, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 121, 2),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 161, 2),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 159, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 162, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 163, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 165, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 166, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 168, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 169, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.DOUBLE, 171, 3),
-                Arguments.of(BoardType.LONDON, CheckType.ANY, CheckType.ANY, 181, 3),
-                Arguments.of(BoardType.QUADRO, CheckType.ANY, CheckType.ANY, 241, 3)
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 0, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 1, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.ANY, 1, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 3, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 3, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 5, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 21, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 23, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 25, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 25, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 27, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 29, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 31, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 35, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 37, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 41, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 43, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.MASTER, 44, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 44, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 46, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 47, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 49, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 51, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 51, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 52, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 61, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 76, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 79, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 81, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 99, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 102, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 103, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 104, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 105, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 106, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 108, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 109, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 111, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, 113, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 121, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 161, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 159, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 162, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 163, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 165, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 166, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 168, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 169, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 171, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 181, 3),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 241, 3)
         );
     }
 
@@ -858,8 +858,8 @@ class AscendingTableGeneratorTests {
     @MethodSource("withMultipleElementCheckoutMaps")
     void getCheckoutMapsWithMultipleScores(
             BoardType boardType,
-            CheckType checkInType,
-            CheckType checkoutType,
+            CheckMode checkInMode,
+            CheckMode checkoutMode,
             FinderType finderType,
             int minScore,
             int maxScore,
@@ -870,7 +870,7 @@ class AscendingTableGeneratorTests {
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Table table = tableGenerator.generate(minScore, maxScore);
@@ -888,8 +888,8 @@ class AscendingTableGeneratorTests {
         return Stream.of(
                 Arguments.of(
                         BoardType.QUADRO,
-                        CheckType.ANY,
-                        CheckType.ANY,
+                        CheckMode.ANY,
+                        CheckMode.ANY,
                         FinderType.CARTESIAN,
                         1,
                         2,
@@ -907,8 +907,8 @@ class AscendingTableGeneratorTests {
                 ),
                 Arguments.of(
                         BoardType.QUADRO,
-                        CheckType.ANY,
-                        CheckType.ANY,
+                        CheckMode.ANY,
+                        CheckMode.ANY,
                         FinderType.DESCENDING,
                         50,
                         52,
@@ -925,8 +925,8 @@ class AscendingTableGeneratorTests {
                 ),
                 Arguments.of(
                         BoardType.YORKSHIRE,
-                        CheckType.ANY,
-                        CheckType.MASTER,
+                        CheckMode.ANY,
+                        CheckMode.MASTER,
                         FinderType.DESCENDING,
                         49,
                         50,
@@ -952,18 +952,18 @@ class AscendingTableGeneratorTests {
     @Test
     void getEqualTableGenerators() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Assertions.assertAll(
@@ -975,23 +975,23 @@ class AscendingTableGeneratorTests {
     @Test
     void getUnequalTableGenerators() {
         BoardType boardType1 = BoardType.YORKSHIRE;
-        CheckType checkInType1 = CheckType.DOUBLE;
-        CheckType checkoutType1 = CheckType.DOUBLE;
+        CheckMode checkInMode1 = CheckMode.DOUBLE;
+        CheckMode checkoutMode1 = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType1 = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType1, checkInType1, checkoutType1, numThrows, throwMode, finderType1
+                boardType1, checkInMode1, checkoutMode1, numThrows, throwMode, finderType1
         );
 
         BoardType boardType2 = BoardType.LONDON;
-        CheckType checkInType2 = CheckType.ANY;
-        CheckType checkoutType2 = CheckType.MASTER;
+        CheckMode checkInMode2 = CheckMode.ANY;
+        CheckMode checkoutMode2 = CheckMode.MASTER;
         FinderType finderType2 = FinderType.DESCENDING;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType2, checkInType2, checkoutType2, numThrows, throwMode, finderType2
+                boardType2, checkInMode2, checkoutMode2, numThrows, throwMode, finderType2
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -999,8 +999,8 @@ class AscendingTableGeneratorTests {
 
     @Test
     void getUnequalTableGeneratorsWithDifferentBoardTypes() {
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.DOUBLE;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
@@ -1008,59 +1008,59 @@ class AscendingTableGeneratorTests {
         BoardType boardType1 = BoardType.QUADRO;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType1, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType1, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         BoardType boardType2 = BoardType.LONDON;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType2, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType2, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalTableGeneratorsWithDifferentCheckInTypes() {
+    void getUnequalTableGeneratorsWithDifferentCheckInModes() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckType checkInType1 = CheckType.ANY;
+        CheckMode checkInMode1 = CheckMode.ANY;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType1, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode1, checkoutMode, numThrows, throwMode, finderType
         );
 
-        CheckType checkInType2 = CheckType.MASTER;
+        CheckMode checkInMode2 = CheckMode.MASTER;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType2, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode2, checkoutMode, numThrows, throwMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
     }
 
     @Test
-    void getUnequalTableGeneratorsWithDifferentCheckoutTypes() {
+    void getUnequalTableGeneratorsWithDifferentCheckoutModes() {
         BoardType boardType = BoardType.QUADRO;
-        CheckType checkInType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
-        CheckType checkoutType1 = CheckType.DOUBLE;
+        CheckMode checkoutMode1 = CheckMode.DOUBLE;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType1, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode1, numThrows, throwMode, finderType
         );
 
-        CheckType checkoutType2 = CheckType.ANY;
+        CheckMode checkoutMode2 = CheckMode.ANY;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType2, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode2, numThrows, throwMode, finderType
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -1069,21 +1069,21 @@ class AscendingTableGeneratorTests {
     @Test
     void getUnequalTableGeneratorsWithDifferentFinderTypes() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.ANY;
-        CheckType checkoutType = CheckType.MASTER;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.MASTER;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
 
         FinderType finderType1 = FinderType.DESCENDING;
 
         TableGenerator tableGenerator1 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType1
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType1
         );
 
         FinderType finderType2 = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator2 = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType2
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType2
         );
 
         Assertions.assertNotEquals(tableGenerator1, tableGenerator2);
@@ -1092,14 +1092,14 @@ class AscendingTableGeneratorTests {
     @Test
     void convertToAString() {
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckType checkInType = CheckType.DOUBLE;
-        CheckType checkoutType = CheckType.ANY;
+        CheckMode checkInMode = CheckMode.DOUBLE;
+        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = -1;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInType, checkoutType, numThrows, throwMode, finderType
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
         );
 
         String str = tableGenerator.toString();
@@ -1107,8 +1107,8 @@ class AscendingTableGeneratorTests {
         Assertions.assertAll(
                 () -> Assertions.assertTrue(str.contains(tableGenerator.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
-                () -> Assertions.assertTrue(str.contains("checkInType")),
-                () -> Assertions.assertTrue(str.contains("checkoutType")),
+                () -> Assertions.assertTrue(str.contains("checkInMode")),
+                () -> Assertions.assertTrue(str.contains("checkoutMode")),
                 () -> Assertions.assertTrue(str.contains("finderType"))
         );
     }

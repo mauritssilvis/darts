@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.tables;
 
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 
 import java.util.Collection;
@@ -27,12 +27,12 @@ public interface TableBuilder {
     TableBuilder setBoardType(BoardType boardType);
 
     /**
-     * Sets the check-in type.
+     * Sets the check-in mode.
      *
-     * @param checkInType the check-in type
+     * @param checkInMode the check-in mode
      * @return this checkout table builder
      */
-    TableBuilder setCheckInType(CheckType checkInType);
+    TableBuilder setCheckInMode(CheckMode checkInMode);
 
     /**
      * Sets the number of throws.
@@ -51,12 +51,12 @@ public interface TableBuilder {
     TableBuilder setThrowMode(ThrowMode throwMode);
 
     /**
-     * Sets the checkout type.
+     * Sets the checkout mode.
      *
-     * @param checkoutType the checkout type
+     * @param checkoutMode the checkout mode
      * @return this checkout table builder
      */
-    TableBuilder setCheckoutType(CheckType checkoutType);
+    TableBuilder setCheckoutMode(CheckMode checkoutMode);
 
     /**
      * Sets the checkouts for the specified score.
@@ -69,12 +69,12 @@ public interface TableBuilder {
 
     /**
      * Gets a new {@code Table} with the specified dartboard type, check-in
-     * type, checkout type and checkouts.
+     * mode, checkout mode and checkouts.
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@code Table} with the set dartboard type, check-in type,
-     * checkout type and checkouts.
+     * @return a new {@code Table} with the set dartboard type, check-in mode,
+     * checkout mode and checkouts.
      */
     Table build();
 }
