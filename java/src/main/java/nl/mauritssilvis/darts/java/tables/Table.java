@@ -8,18 +8,25 @@ package nl.mauritssilvis.darts.java.tables;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckMode;
+import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * A checkout table that contains checkouts for a specific dartboard type,
- * and check-in and checkout modes.
+ * A checkout table that contains checkouts with specific settings.
  * <p>
  * Relevant design patterns: immutable interface.
  */
 public interface Table {
+    /**
+     * Gets the settings of this checkout table.
+     *
+     * @return the settings of this checkout table
+     */
+    Settings getSettings();
+
     /**
      * Gets the dartboard type of this checkout table.
      *

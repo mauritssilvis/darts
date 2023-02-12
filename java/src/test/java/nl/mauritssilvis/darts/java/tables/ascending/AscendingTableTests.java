@@ -118,18 +118,13 @@ class AscendingTableTests {
     }
 
     @Test
-    void getTheBoardType() {
-        BoardType boardType = BoardType.LONDON;
-
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .build();
-
+    void getTheSettings() {
+        Settings settings = TableSettingsBuilder.create().build();
         Map<Integer, Collection<Checkout>> checkoutMap = Collections.emptyMap();
 
         Table table = AscendingTable.of(settings, checkoutMap);
 
-        Assertions.assertEquals(boardType, table.getBoardType());
+        Assertions.assertEquals(settings, table.getSettings());
     }
 
     @Test

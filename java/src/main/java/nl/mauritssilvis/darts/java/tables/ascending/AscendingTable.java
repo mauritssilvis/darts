@@ -68,6 +68,11 @@ public final class AscendingTable implements Table {
     }
 
     @Override
+    public Settings getSettings() {
+        return settings;
+    }
+
+    @Override
     public BoardType getBoardType() {
         return settings.getBoardType();
     }
