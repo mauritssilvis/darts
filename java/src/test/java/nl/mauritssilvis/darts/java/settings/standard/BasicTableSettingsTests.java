@@ -358,6 +358,30 @@ class BasicTableSettingsTests {
     }
 
     @Test
+    void getUnequalSettingsWithADifferentTableType() {
+        BoardType boardType = BoardType.LONDON;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
+        int numThrows = -1;
+        ThrowMode throwMode = ThrowMode.OPTIMAL;
+        FinderType finderType = FinderType.DESCENDING;
+
+        TableType tableType1 = null;
+
+        TableSettings tableSettings1 = BasicTableSettings.of(
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType1
+        );
+
+        TableType tableType2 = TableType.ASCENDING;
+
+        TableSettings tableSettings2 = BasicTableSettings.of(
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType2
+        );
+
+        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+    }
+
+    @Test
     void convertToAString() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
