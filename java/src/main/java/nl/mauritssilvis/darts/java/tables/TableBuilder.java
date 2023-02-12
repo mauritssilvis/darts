@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.java.tables;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 
 import java.util.Collection;
 
@@ -32,6 +33,22 @@ public interface TableBuilder {
      * @return this checkout table builder
      */
     TableBuilder setCheckInType(CheckType checkInType);
+
+    /**
+     * Sets the number of throws.
+     *
+     * @param numThrows the number of throws
+     * @return this checkout table builder
+     */
+    TableBuilder setNumThrows(int numThrows);
+
+    /**
+     * Sets the throw mode.
+     *
+     * @param throwMode the throw mode
+     * @return this checkout table builder
+     */
+    TableBuilder setThrowMode(ThrowMode throwMode);
 
     /**
      * Sets the checkout type.

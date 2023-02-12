@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.java.tables;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,20 @@ public interface Table {
      * @return the checkout type of this checkout table
      */
     CheckType getCheckoutType();
+
+    /**
+     * Gets the number of throws of this checkout table if fixed and -1 otherwise.
+     *
+     * @return the number of throws of this checkout table
+     */
+    int getNumThrows();
+
+    /**
+     * Gets the throw mode of this checkout table.
+     *
+     * @return the throw mode of this checkout table
+     */
+    ThrowMode getThrowMode();
 
     /**
      * Gets the checkout map of this checkout table.

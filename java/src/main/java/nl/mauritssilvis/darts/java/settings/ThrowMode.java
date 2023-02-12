@@ -18,7 +18,7 @@ public enum ThrowMode {
     OPTIMAL,
 
     /**
-     * Find all checkouts for a given number of throws.
+     * Find checkouts consisting of a fixed number of throws.
      */
-    ALL
+    FIXED
 }

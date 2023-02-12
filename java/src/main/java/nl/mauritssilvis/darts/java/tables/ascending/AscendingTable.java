@@ -10,6 +10,7 @@ import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.*;
@@ -27,12 +28,16 @@ public final class AscendingTable implements Table {
     private final BoardType boardType;
     private final CheckType checkInType;
     private final CheckType checkoutType;
+    private final int numThrows;
+    private final ThrowMode throwMode;
     private final Map<Integer, List<Checkout>> checkoutMap;
 
     private AscendingTable(
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
+            int numThrows,
+            ThrowMode throwMode,
             Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
         boolean hasOtherScore = checkoutMap.entrySet().stream()
@@ -49,6 +54,8 @@ public final class AscendingTable implements Table {
         this.boardType = boardType;
         this.checkInType = checkInType;
         this.checkoutType = checkoutType;
+        this.numThrows = numThrows;
+        this.throwMode = throwMode;
         this.checkoutMap = Collections.unmodifiableMap(
                 checkoutMap.entrySet().stream()
                         .collect(
@@ -66,6 +73,8 @@ public final class AscendingTable implements Table {
      * @param boardType    the dartboard type
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
+     * @param numThrows    the number of throws if fixed and -1 otherwise
+     * @param throwMode    the throw mode
      * @param checkoutMap  the checkout map
      * @return a new {@code AscendingTable} with the specified dartboard type,
      * check-in type, checkout type and checkout map.
@@ -77,9 +86,11 @@ public final class AscendingTable implements Table {
             BoardType boardType,
             CheckType checkInType,
             CheckType checkoutType,
+            int numThrows,
+            ThrowMode throwMode,
             Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
     ) {
-        return new AscendingTable(boardType, checkInType, checkoutType, checkoutMap);
+        return new AscendingTable(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
     }
 
     @Override
@@ -95,6 +106,16 @@ public final class AscendingTable implements Table {
     @Override
     public CheckType getCheckoutType() {
         return checkoutType;
+    }
+
+    @Override
+    public int getNumThrows() {
+        return numThrows;
+    }
+
+    @Override
+    public ThrowMode getThrowMode() {
+        return throwMode;
     }
 
     @Override

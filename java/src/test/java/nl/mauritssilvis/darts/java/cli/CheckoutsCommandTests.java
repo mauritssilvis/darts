@@ -415,8 +415,8 @@ class CheckoutsCommandTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withTheThrowOption")
-    void processTheThrowOption(String optionName, String throwMode, String output) {
+    @MethodSource("withTheModeOption")
+    void processTheModeOption(String optionName, String throwMode, String output) {
         String[] args = {"checkouts", "-n", "2", optionName, throwMode, "22", "22"};
 
         StringWriter out = new StringWriter();
@@ -431,12 +431,12 @@ class CheckoutsCommandTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.startsWith(output)),
+                () -> Assertions.assertEquals(output.strip(), outString.strip()),
                 () -> Assertions.assertTrue(errString.isEmpty())
         );
     }
 
-    private static Stream<Arguments> withTheThrowOption() {
+    private static Stream<Arguments> withTheModeOption() {
         return Stream.of(
                 Arguments.of(
                         "-m",
@@ -448,7 +448,7 @@ class CheckoutsCommandTests {
                 ),
                 Arguments.of(
                         "--mode",
-                        "ThrowMode.ALL",
+                        "ThrowMode.FIXED",
                         """
                                 | Score |               1 |               2 |  # |
                                 |------:|----------------:|----------------:|---:|

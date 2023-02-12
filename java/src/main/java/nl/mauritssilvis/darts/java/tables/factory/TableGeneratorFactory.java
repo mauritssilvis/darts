@@ -26,7 +26,7 @@ public final class TableGeneratorFactory {
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param throwMode   the finder mode
+     * @param throwMode    the throw mode
      * @param finderType   the checkout finder type
      * @return a new {@code TableGenerator} for tables of the specified type
      */

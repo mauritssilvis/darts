@@ -9,6 +9,7 @@ import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
 
@@ -29,6 +30,8 @@ public final class AscendingTableBuilder implements TableBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckType checkInType = CheckType.ANY;
     private CheckType checkoutType = CheckType.DOUBLE;
+    private int numThrows = -1;
+    private ThrowMode throwMode = ThrowMode.OPTIMAL;
     private final Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
     private AscendingTableBuilder() {
@@ -57,6 +60,18 @@ public final class AscendingTableBuilder implements TableBuilder {
     }
 
     @Override
+    public TableBuilder setNumThrows(int numThrows) {
+        this.numThrows = numThrows;
+        return this;
+    }
+
+    @Override
+    public TableBuilder setThrowMode(ThrowMode throwMode) {
+        this.throwMode = throwMode;
+        return this;
+    }
+
+    @Override
     public TableBuilder setCheckoutType(CheckType checkoutType) {
         this.checkoutType = checkoutType;
         return this;
@@ -70,6 +85,6 @@ public final class AscendingTableBuilder implements TableBuilder {
 
     @Override
     public Table build() {
-        return AscendingTable.of(boardType, checkInType, checkoutType, checkoutMap);
+        return AscendingTable.of(boardType, checkInType, checkoutType, numThrows, throwMode, checkoutMap);
     }
 }

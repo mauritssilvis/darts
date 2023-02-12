@@ -16,8 +16,8 @@ import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckType;
-import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
+import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -84,7 +84,7 @@ public final class AscendingTableGenerator implements TableGenerator {
      * @param checkInType  the check-in type
      * @param checkoutType the checkout type
      * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param throwMode   the finder mode
+     * @param throwMode    the throw mode
      * @param finderType   the checkout finder type
      * @return a new {@code AscendingTableGenerator} with the specified
      * dartboard, check-in, checkout and finder types.
@@ -115,7 +115,9 @@ public final class AscendingTableGenerator implements TableGenerator {
         TableBuilder tableBuilder = AscendingTableBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInType(checkInType)
-                .setCheckoutType(checkoutType);
+                .setCheckoutType(checkoutType)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode);
 
         checkoutMap.forEach(tableBuilder::setCheckouts);
 

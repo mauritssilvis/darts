@@ -43,9 +43,17 @@ abstract class TablePrinter {
 
         scoreWidth = getMaxScoreWidth(checkoutMap.keySet());
         numCheckouts = getMaxNumCheckouts(checkoutMap.values());
-        numThrows = getMaxNumThrows(checkouts);
-        throwSize = getMaxThrowSize(checkouts);
-        fieldWidth = getMaxFieldWidth(checkouts);
+
+        if (table.getNumThrows() == -1) {
+            numThrows = getMaxNumThrows(checkouts);
+            throwSize = getMaxThrowSize(checkouts);
+            fieldWidth = getMaxFieldWidth(checkouts);
+        } else {
+            numThrows = table.getNumThrows();
+            throwSize = Math.max(getMaxThrowSize(checkouts), 1);
+            fieldWidth = Math.max(getMaxFieldWidth(checkouts), String.valueOf(numThrows).length());
+        }
+
         multiplicityWidth = getMaxMultiplicityWidth(multiplicityMap.values());
     }
 
