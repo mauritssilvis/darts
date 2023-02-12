@@ -12,7 +12,6 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.settings.ThrowMode;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.*;
@@ -55,37 +54,16 @@ public final class AscendingTable implements Table {
     }
 
     /**
-     * Returns a new {@code AscendingTable} with the specified dartboard type,
-     * check-in mode, checkout mode and checkout map.
+     * Returns a new {@code AscendingTable} with the specified settings.
      *
-     * @param boardType    the dartboard type
-     * @param checkInMode  the check-in mode
-     * @param checkoutMode the checkout mode
-     * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param throwMode    the throw mode
-     * @param checkoutMap  the checkout map
-     * @return a new {@code AscendingTable} with the specified dartboard type,
-     * check-in mode, checkout mode and checkout map.
+     * @param settings    the checkout table settings
+     * @param checkoutMap the checkout map
+     * @return a new {@code AscendingTable} with the specified settings.
      * @throws IllegalArgumentException if some checkouts in the checkout map do
      *                                  not have the same score as their
      *                                  checkout map key
      */
-    public static Table of(
-            BoardType boardType,
-            CheckMode checkInMode,
-            CheckMode checkoutMode,
-            int numThrows,
-            ThrowMode throwMode,
-            Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
-    ) {
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .setThrowMode(throwMode)
-                .build();
-
+    public static Table of(Settings settings, Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap) {
         return new AscendingTable(settings, checkoutMap);
     }
 
