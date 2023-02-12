@@ -44,12 +44,12 @@ abstract class TablePrinter {
         scoreWidth = getMaxScoreWidth(checkoutMap.keySet());
         numCheckouts = getMaxNumCheckouts(checkoutMap.values());
 
-        if (table.getNumThrows() == -1) {
+        if (table.getSettings().getNumThrows() == -1) {
             numThrows = getMaxNumThrows(checkouts);
             throwSize = getMaxThrowSize(checkouts);
             fieldWidth = getMaxFieldWidth(checkouts);
         } else {
-            numThrows = table.getNumThrows();
+            numThrows = table.getSettings().getNumThrows();
             throwSize = Math.max(getMaxThrowSize(checkouts), 1);
             fieldWidth = Math.max(getMaxFieldWidth(checkouts), String.valueOf(numThrows).length());
         }

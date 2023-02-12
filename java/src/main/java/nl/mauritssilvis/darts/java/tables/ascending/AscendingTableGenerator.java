@@ -17,7 +17,6 @@ import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
-import nl.mauritssilvis.darts.java.tables.TableBuilder;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 
 import java.util.*;
@@ -45,6 +44,7 @@ public final class AscendingTableGenerator implements TableGenerator {
     private final ThrowMode throwMode;
     @ToString.Include
     private final FinderType finderType;
+    private final Settings settings;
 
     private final List<Field> firstFields;
     private final List<Field> middleFields;
@@ -53,20 +53,15 @@ public final class AscendingTableGenerator implements TableGenerator {
     private final Map<Integer, List<List<Field>>> fieldsPerThrowMap = new HashMap<>();
     private final Map<Integer, CheckoutFinder> checkoutFinderMap = new HashMap<>();
 
-    private AscendingTableGenerator(
-            BoardType boardType,
-            CheckMode checkInMode,
-            CheckMode checkoutMode,
-            int numThrows,
-            ThrowMode throwMode,
-            FinderType finderType
-    ) {
-        this.boardType = boardType;
-        this.checkInMode = checkInMode;
-        this.checkoutMode = checkoutMode;
-        this.numThrows = numThrows;
-        this.throwMode = throwMode;
-        this.finderType = finderType;
+    private AscendingTableGenerator(Settings settings) {
+        this.settings = settings;
+
+        boardType = settings.getBoardType();
+        checkInMode = settings.getCheckInMode();
+        checkoutMode = settings.getCheckoutMode();
+        numThrows = settings.getNumThrows();
+        throwMode = settings.getThrowMode();
+        finderType = settings.getFinderType();
 
         Board board = BoardFactory.create(boardType);
         firstFields = getFields(board, checkInMode);
@@ -95,7 +90,16 @@ public final class AscendingTableGenerator implements TableGenerator {
             ThrowMode throwMode,
             FinderType finderType
     ) {
-        return new AscendingTableGenerator(boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType);
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .setFinderType(finderType)
+                .build();
+
+        return new AscendingTableGenerator(settings);
     }
 
     @Override
@@ -116,6 +120,7 @@ public final class AscendingTableGenerator implements TableGenerator {
                 .setCheckoutMode(checkoutMode)
                 .setNumThrows(numThrows)
                 .setThrowMode(throwMode)
+                .setFinderType(finderType)
                 .build();
 
         return AscendingTable.of(settings, checkoutMap);

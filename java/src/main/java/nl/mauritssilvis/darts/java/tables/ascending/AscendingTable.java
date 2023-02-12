@@ -8,10 +8,7 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.ThrowMode;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.*;
@@ -70,31 +67,6 @@ public final class AscendingTable implements Table {
     @Override
     public Settings getSettings() {
         return settings;
-    }
-
-    @Override
-    public BoardType getBoardType() {
-        return settings.getBoardType();
-    }
-
-    @Override
-    public CheckMode getCheckInMode() {
-        return settings.getCheckInMode();
-    }
-
-    @Override
-    public CheckMode getCheckoutMode() {
-        return settings.getCheckoutMode();
-    }
-
-    @Override
-    public int getNumThrows() {
-        return settings.getNumThrows();
-    }
-
-    @Override
-    public ThrowMode getThrowMode() {
-        return settings.getThrowMode();
     }
 
     @Override

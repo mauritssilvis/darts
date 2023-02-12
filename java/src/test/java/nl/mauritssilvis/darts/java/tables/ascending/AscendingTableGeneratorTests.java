@@ -7,10 +7,8 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.ThrowMode;
+import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.TableTestUtils;
@@ -27,7 +25,7 @@ import java.util.stream.Stream;
 
 class AscendingTableGeneratorTests {
     @Test
-    void getTheBoardType() {
+    void getTheSettings() {
         BoardType boardType = BoardType.YORKSHIRE;
         CheckMode checkInMode = CheckMode.DOUBLE;
         CheckMode checkoutMode = CheckMode.ANY;
@@ -35,26 +33,14 @@ class AscendingTableGeneratorTests {
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
 
-        TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
-
-        int minScore = 0;
-        int maxScore = 0;
-
-        Table table = tableGenerator.generate(minScore, maxScore);
-
-        Assertions.assertEquals(boardType, table.getBoardType());
-    }
-
-    @Test
-    void getTheCheckInMode() {
-        BoardType boardType = BoardType.QUADRO;
-        CheckMode checkInMode = CheckMode.MASTER;
-        CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.DESCENDING;
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .setFinderType(finderType)
+                .build();
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
@@ -65,28 +51,7 @@ class AscendingTableGeneratorTests {
 
         Table table = tableGenerator.generate(minScore, maxScore);
 
-        Assertions.assertEquals(checkInMode, table.getCheckInMode());
-    }
-
-    @Test
-    void getTheCheckoutMode() {
-        BoardType boardType = BoardType.LONDON;
-        CheckMode checkInMode = CheckMode.ANY;
-        CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.CARTESIAN;
-
-        TableGenerator tableGenerator = AscendingTableGenerator.of(
-                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
-
-        int minScore = 0;
-        int maxScore = 0;
-
-        Table table = tableGenerator.generate(minScore, maxScore);
-
-        Assertions.assertEquals(checkoutMode, table.getCheckoutMode());
+        Assertions.assertEquals(settings, table.getSettings());
     }
 
     @ParameterizedTest
