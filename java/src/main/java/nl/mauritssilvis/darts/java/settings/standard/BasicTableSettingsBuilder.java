@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.settings.standard;
 
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.settings.*;
 
 /**
@@ -14,7 +15,16 @@ import nl.mauritssilvis.darts.java.settings.*;
  * <p>
  * Relevant design patterns: builder, static factory method.
  */
+@ToString
 public class BasicTableSettingsBuilder implements TableSettingsBuilder {
+    BoardType boardType = BoardType.LONDON;
+    CheckMode checkInMode = CheckMode.ANY;
+    CheckMode checkoutMode = CheckMode.DOUBLE;
+    int numThrows = -1;
+    ThrowMode throwMode = ThrowMode.OPTIMAL;
+    FinderType finderType = FinderType.DESCENDING;
+    TableType tableType = TableType.ASCENDING;
+
     private BasicTableSettingsBuilder() {
     }
 
@@ -30,41 +40,50 @@ public class BasicTableSettingsBuilder implements TableSettingsBuilder {
 
     @Override
     public TableSettingsBuilder setBoardType(BoardType boardType) {
-        return null;
+        this.boardType = boardType;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setCheckInMode(CheckMode checkInMode) {
-        return null;
+        this.checkInMode = checkInMode;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setCheckoutMode(CheckMode checkoutMode) {
-        return null;
+        this.checkoutMode = checkoutMode;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setNumThrows(int numThrows) {
-        return null;
+        this.numThrows = numThrows;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setThrowMode(ThrowMode throwMode) {
-        return null;
+        this.throwMode = throwMode;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setFinderType(FinderType finderType) {
-        return null;
+        this.finderType = finderType;
+        return this;
     }
 
     @Override
     public TableSettingsBuilder setTableType(TableType tableType) {
-        return null;
+        this.tableType = tableType;
+        return this;
     }
 
     @Override
     public TableSettings build() {
-        return null;
+        return BasicTableSettings.of(
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
+        );
     }
 }
