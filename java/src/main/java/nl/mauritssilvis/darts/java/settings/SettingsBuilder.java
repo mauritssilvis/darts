@@ -10,14 +10,14 @@ package nl.mauritssilvis.darts.java.settings;
  * <p>
  * Relevant design patterns: builder, fluent interface.
  */
-public interface TableSettingsBuilder {
+public interface SettingsBuilder {
     /**
      * Sets the dartboard type.
      *
      * @param boardType the dartboard type
      * @return this settings builder
      */
-    TableSettingsBuilder setBoardType(BoardType boardType);
+    SettingsBuilder setBoardType(BoardType boardType);
 
     /**
      * Sets the check-in mode.
@@ -25,7 +25,7 @@ public interface TableSettingsBuilder {
      * @param checkInMode the check-in mode
      * @return this settings builder
      */
-    TableSettingsBuilder setCheckInMode(CheckMode checkInMode);
+    SettingsBuilder setCheckInMode(CheckMode checkInMode);
 
     /**
      * Sets the checkout mode.
@@ -33,7 +33,7 @@ public interface TableSettingsBuilder {
      * @param checkoutMode the checkout mode
      * @return this settings builder
      */
-    TableSettingsBuilder setCheckoutMode(CheckMode checkoutMode);
+    SettingsBuilder setCheckoutMode(CheckMode checkoutMode);
 
     /**
      * Sets the number of throws.
@@ -44,7 +44,7 @@ public interface TableSettingsBuilder {
      * @param numThrows the number of throws
      * @return this settings builder
      */
-    TableSettingsBuilder setNumThrows(int numThrows);
+    SettingsBuilder setNumThrows(int numThrows);
 
     /**
      * Sets the throw mode.
@@ -52,7 +52,7 @@ public interface TableSettingsBuilder {
      * @param throwMode the throw mode
      * @return this settings builder
      */
-    TableSettingsBuilder setThrowMode(ThrowMode throwMode);
+    SettingsBuilder setThrowMode(ThrowMode throwMode);
 
     /**
      * Sets the finder type.
@@ -60,7 +60,7 @@ public interface TableSettingsBuilder {
      * @param finderType the finder type
      * @return this settings builder
      */
-    TableSettingsBuilder setFinderType(FinderType finderType);
+    SettingsBuilder setFinderType(FinderType finderType);
 
     /**
      * Sets the table type.
@@ -68,14 +68,14 @@ public interface TableSettingsBuilder {
      * @param tableType the table type
      * @return this settings builder
      */
-    TableSettingsBuilder setTableType(TableType tableType);
+    SettingsBuilder setTableType(TableType tableType);
 
     /**
-     * Gets a new {@code TableSettings} object with the specified properties.
+     * Gets a new {@code Settings} object with the specified properties.
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@code TableSettings} object with the specified properties.
+     * @return a new {@code Settings} object with the specified properties.
      */
-    TableSettings build();
+    Settings build();
 }

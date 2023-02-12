@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.standard;
+package nl.mauritssilvis.darts.java.settings.basic;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.settings.*;
 
 /**
- * An implementation of the {@code TableSettings} interface that can store
- * checkout table settings.
+ * An implementation of the {@code Settings} interface that can store checkout
+ * table settings.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
  */
 @ToString
 @EqualsAndHashCode
-final class BasicTableSettings implements TableSettings {
+final class BasicSettings implements Settings {
     private final BoardType boardType;
     private final CheckMode checkInMode;
     private final CheckMode checkoutMode;
@@ -26,7 +26,7 @@ final class BasicTableSettings implements TableSettings {
     private final FinderType finderType;
     private final TableType tableType;
 
-    private BasicTableSettings(
+    private BasicSettings(
             BoardType boardType,
             CheckMode checkInMode,
             CheckMode checkoutMode,
@@ -45,8 +45,7 @@ final class BasicTableSettings implements TableSettings {
     }
 
     /**
-     * Returns a new {@code BasicTableSettings} object with the specified
-     * properties.
+     * Returns a new {@code BasicSettings} object with the specified properties.
      *
      * @param boardType    the dartboard type
      * @param checkInMode  the check-in mode
@@ -56,7 +55,7 @@ final class BasicTableSettings implements TableSettings {
      * @param finderType   the finder type
      * @param tableType    the table type
      */
-    static TableSettings of(
+    static Settings of(
             BoardType boardType,
             CheckMode checkInMode,
             CheckMode checkoutMode,
@@ -65,7 +64,7 @@ final class BasicTableSettings implements TableSettings {
             FinderType finderType,
             TableType tableType
     ) {
-        return new BasicTableSettings(
+        return new BasicSettings(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
     }

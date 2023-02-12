@@ -10,7 +10,7 @@ package nl.mauritssilvis.darts.java.settings;
  * <p>
  * Relevant design patterns: immutable interface.
  */
-public interface TableSettings {
+public interface Settings {
     /**
      * Gets the dartboard type.
      *

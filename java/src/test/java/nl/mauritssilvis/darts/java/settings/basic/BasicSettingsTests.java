@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.standard;
+package nl.mauritssilvis.darts.java.settings.basic;
 
 import nl.mauritssilvis.darts.java.settings.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class BasicTableSettingsTests {
+class BasicSettingsTests {
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;
@@ -20,11 +20,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(boardType, tableSettings.getBoardType());
+        Assertions.assertEquals(boardType, settings.getBoardType());
     }
 
     @Test
@@ -37,11 +37,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(checkInMode, tableSettings.getCheckInMode());
+        Assertions.assertEquals(checkInMode, settings.getCheckInMode());
     }
 
     @Test
@@ -54,11 +54,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(checkoutMode, tableSettings.getCheckoutMode());
+        Assertions.assertEquals(checkoutMode, settings.getCheckoutMode());
     }
 
     @Test
@@ -71,11 +71,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(numThrows, tableSettings.getNumThrows());
+        Assertions.assertEquals(numThrows, settings.getNumThrows());
     }
 
     @Test
@@ -88,11 +88,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertFalse(tableSettings.hasFixedNumThrows());
+        Assertions.assertFalse(settings.hasFixedNumThrows());
     }
 
     @Test
@@ -105,11 +105,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertTrue(tableSettings.hasFixedNumThrows());
+        Assertions.assertTrue(settings.hasFixedNumThrows());
     }
 
     @Test
@@ -122,11 +122,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(throwMode, tableSettings.getThrowMode());
+        Assertions.assertEquals(throwMode, settings.getThrowMode());
     }
 
     @Test
@@ -139,11 +139,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.CARTESIAN;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(finderType, tableSettings.getFinderType());
+        Assertions.assertEquals(finderType, settings.getFinderType());
     }
 
     @Test
@@ -156,11 +156,11 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(tableType, tableSettings.getTableType());
+        Assertions.assertEquals(tableType, settings.getTableType());
     }
 
     @Test
@@ -173,15 +173,15 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertEquals(tableSettings1, tableSettings2);
+        Assertions.assertEquals(settings1, settings2);
     }
 
     @Test
@@ -194,7 +194,7 @@ class BasicTableSettingsTests {
         FinderType finderType1 = FinderType.DESCENDING;
         TableType tableType1 = TableType.ASCENDING;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType1, checkInMode1, checkoutMode1, numThrows1, throwMode1, finderType1, tableType1
         );
 
@@ -206,11 +206,11 @@ class BasicTableSettingsTests {
         FinderType finderType2 = FinderType.CARTESIAN;
         TableType tableType2 = TableType.ASCENDING;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType2, checkInMode2, checkoutMode2, numThrows2, throwMode2, finderType2, tableType2
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -224,17 +224,17 @@ class BasicTableSettingsTests {
 
         BoardType boardType1 = BoardType.YORKSHIRE;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType1, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
         BoardType boardType2 = BoardType.QUADRO;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType2, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -248,17 +248,17 @@ class BasicTableSettingsTests {
 
         CheckMode checkInMode1 = CheckMode.MASTER;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode1, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
         CheckMode checkInMode2 = CheckMode.DOUBLE;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode2, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -272,17 +272,17 @@ class BasicTableSettingsTests {
 
         CheckMode checkoutMode1 = CheckMode.MASTER;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode1, numThrows, throwMode, finderType, tableType
         );
 
         CheckMode checkoutMode2 = CheckMode.ANY;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode2, numThrows, throwMode, finderType, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -296,17 +296,17 @@ class BasicTableSettingsTests {
 
         int numThrows1 = 2;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows1, throwMode, finderType, tableType
         );
 
         int numThrows2 = 3;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows2, throwMode, finderType, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -320,17 +320,17 @@ class BasicTableSettingsTests {
 
         ThrowMode throwMode1 = ThrowMode.FIXED;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode1, finderType, tableType
         );
 
         ThrowMode throwMode2 = ThrowMode.OPTIMAL;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode2, finderType, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -344,17 +344,17 @@ class BasicTableSettingsTests {
 
         FinderType finderType1 = FinderType.CARTESIAN;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType1, tableType
         );
 
         FinderType finderType2 = FinderType.DESCENDING;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType2, tableType
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -368,17 +368,17 @@ class BasicTableSettingsTests {
 
         TableType tableType1 = null;
 
-        TableSettings tableSettings1 = BasicTableSettings.of(
+        Settings settings1 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType1
         );
 
         TableType tableType2 = TableType.ASCENDING;
 
-        TableSettings tableSettings2 = BasicTableSettings.of(
+        Settings settings2 = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType2
         );
 
-        Assertions.assertNotEquals(tableSettings1, tableSettings2);
+        Assertions.assertNotEquals(settings1, settings2);
     }
 
     @Test
@@ -391,14 +391,14 @@ class BasicTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = BasicTableSettings.of(
+        Settings settings = BasicSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
-        String str = tableSettings.toString();
+        String str = settings.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(tableSettings.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains(settings.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
                 () -> Assertions.assertTrue(str.contains("checkInMode")),
                 () -> Assertions.assertTrue(str.contains("checkoutMode")),
