@@ -20,7 +20,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -37,7 +37,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -54,7 +54,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -71,7 +71,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -88,7 +88,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -105,7 +105,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -122,7 +122,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -139,7 +139,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.CARTESIAN;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
@@ -156,7 +156,7 @@ class StandardTableSettingsTests {
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
-        TableSettings tableSettings = new StandardTableSettings(
+        TableSettings tableSettings = StandardTableSettings.of(
                 boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
         );
 
