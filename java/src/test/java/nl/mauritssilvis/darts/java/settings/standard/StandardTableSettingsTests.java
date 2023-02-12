@@ -162,4 +162,32 @@ class StandardTableSettingsTests {
 
         Assertions.assertEquals(tableType, tableSettings.getTableType());
     }
+
+    @Test
+    void convertToAString() {
+        BoardType boardType = BoardType.LONDON;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
+        int numThrows = -1;
+        ThrowMode throwMode = ThrowMode.OPTIMAL;
+        FinderType finderType = FinderType.DESCENDING;
+        TableType tableType = TableType.ASCENDING;
+
+        TableSettings tableSettings = StandardTableSettings.of(
+                boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
+        );
+
+        String str = tableSettings.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(tableSettings.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("boardType")),
+                () -> Assertions.assertTrue(str.contains("checkInMode")),
+                () -> Assertions.assertTrue(str.contains("checkoutMode")),
+                () -> Assertions.assertTrue(str.contains("numThrows")),
+                () -> Assertions.assertTrue(str.contains("throwMode")),
+                () -> Assertions.assertTrue(str.contains("finderType")),
+                () -> Assertions.assertTrue(str.contains("tableType"))
+        );
+    }
 }
