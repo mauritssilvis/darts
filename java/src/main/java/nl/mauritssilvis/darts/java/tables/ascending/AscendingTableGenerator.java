@@ -14,10 +14,8 @@ import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.ThrowMode;
+import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableBuilder;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -112,16 +110,15 @@ public final class AscendingTableGenerator implements TableGenerator {
             checkoutMap = getFixedThrowCheckoutMap(minScore, maxScore);
         }
 
-        TableBuilder tableBuilder = AscendingTableBuilder.create()
+        Settings settings = TableSettingsBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInMode(checkInMode)
                 .setCheckoutMode(checkoutMode)
                 .setNumThrows(numThrows)
-                .setThrowMode(throwMode);
+                .setThrowMode(throwMode)
+                .build();
 
-        checkoutMap.forEach(tableBuilder::setCheckouts);
-
-        return tableBuilder.build();
+        return AscendingTable.of(settings, checkoutMap);
     }
 
     private static List<Field> getFields(Board board, CheckMode checkMode) {
