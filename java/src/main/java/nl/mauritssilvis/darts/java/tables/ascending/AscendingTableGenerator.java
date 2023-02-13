@@ -15,7 +15,6 @@ import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.*;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 
@@ -44,6 +43,7 @@ public final class AscendingTableGenerator implements TableGenerator {
     private final ThrowMode throwMode;
     @ToString.Include
     private final FinderType finderType;
+    @ToString.Include
     private final Settings settings;
 
     private final List<Field> firstFields;
@@ -71,34 +71,13 @@ public final class AscendingTableGenerator implements TableGenerator {
 
     /**
      * Returns a new {@code AscendingTableGenerator} with the specified
-     * dartboard type, check-in and checkout modes, and finder type.
+     * settings.
      *
-     * @param boardType    the dartboard type
-     * @param checkInMode  the check-in mode
-     * @param checkoutMode the checkout mode
-     * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param throwMode    the throw mode
-     * @param finderType   the checkout finder type
+     * @param settings the table settings
      * @return a new {@code AscendingTableGenerator} with the specified
-     * dartboard type, check-in and checkout modes, and finder type.
+     * settings
      */
-    public static TableGenerator of(
-            BoardType boardType,
-            CheckMode checkInMode,
-            CheckMode checkoutMode,
-            int numThrows,
-            ThrowMode throwMode,
-            FinderType finderType
-    ) {
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .setThrowMode(throwMode)
-                .setFinderType(finderType)
-                .build();
-
+    public static TableGenerator of(Settings settings) {
         return new AscendingTableGenerator(settings);
     }
 
@@ -113,15 +92,6 @@ public final class AscendingTableGenerator implements TableGenerator {
         } else {
             checkoutMap = getFixedThrowCheckoutMap(minScore, maxScore);
         }
-
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .setThrowMode(throwMode)
-                .setFinderType(finderType)
-                .build();
 
         return AscendingTable.of(settings, checkoutMap);
     }

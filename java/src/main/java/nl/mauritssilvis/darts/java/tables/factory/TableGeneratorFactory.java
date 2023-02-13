@@ -6,6 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.factory;
 
 import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.ascending.AscendingTableGenerator;
 
@@ -39,10 +40,17 @@ public final class TableGeneratorFactory {
             ThrowMode throwMode,
             FinderType finderType
     ) {
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .setFinderType(finderType)
+                .build();
+
         return switch (tableType) {
-            case ASCENDING -> AscendingTableGenerator.of(
-                    boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-            );
+            case ASCENDING -> AscendingTableGenerator.of(settings);
         };
     }
 }

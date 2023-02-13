@@ -53,7 +53,7 @@ public final class AscendingTable implements Table {
     /**
      * Returns a new {@code AscendingTable} with the specified settings.
      *
-     * @param settings    the checkout table settings
+     * @param settings    the table settings
      * @param checkoutMap the checkout map
      * @return a new {@code AscendingTable} with the specified settings.
      * @throws IllegalArgumentException if some checkouts in the checkout map do
