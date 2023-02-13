@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.java.output.Formatter;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 /**
@@ -25,6 +26,8 @@ public class PrettyFormatter implements Formatter {
     private final Collection<Character> delimiters;
     private final int indentationSize;
     private final Deque<Character> brackets = new ArrayDeque<>();
+    private final Pattern doubleNewlines = Pattern.compile("\\n *\\n");
+
 
     private PrettyFormatter(
             Collection<Character> brackets,
@@ -95,7 +98,10 @@ public class PrettyFormatter implements Formatter {
             );
         }
 
-        return stringBuilder.toString();
+        String indentedStr = stringBuilder.toString();
+
+        return doubleNewlines.matcher(indentedStr)
+                .replaceAll("\n");
     }
 
     private static char getClosingBracket(char ch) {
