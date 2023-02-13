@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public class PrettyFormatter implements Formatter {
+public final class PrettyFormatter implements Formatter {
     private final Collection<Character> openingBrackets;
     private final Collection<Character> closingBrackets;
     private final Collection<Character> delimiters;

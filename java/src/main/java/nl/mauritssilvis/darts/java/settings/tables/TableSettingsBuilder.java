@@ -16,7 +16,7 @@ import nl.mauritssilvis.darts.java.settings.*;
  * Relevant design patterns: builder, static factory method.
  */
 @ToString
-public class TableSettingsBuilder implements SettingsBuilder {
+public final class TableSettingsBuilder implements SettingsBuilder {
     BoardType boardType = BoardType.LONDON;
     CheckMode checkInMode = CheckMode.ANY;
     CheckMode checkoutMode = CheckMode.DOUBLE;
