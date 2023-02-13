@@ -164,4 +164,98 @@ class PrettyFormatterTests {
 
         Assertions.assertEquals("(\n)(\n)", output);
     }
+
+    @Test
+    void getEqualFormatters() {
+        Collection<Character> brackets1 = List.of('{', '[');
+        Collection<Character> delimiters1 = List.of(';');
+        int indentationSize1 = 2;
+
+        Formatter formatter1 = PrettyFormatter.of(brackets1, delimiters1, indentationSize1);
+
+        Collection<Character> brackets2 = List.of('{', '[');
+        Collection<Character> delimiters2 = List.of(';');
+        int indentationSize2 = 2;
+
+        Formatter formatter2 = PrettyFormatter.of(brackets2, delimiters2, indentationSize2);
+
+        Assertions.assertEquals(formatter1, formatter2);
+    }
+
+    @Test
+    void getUnequalFormatters() {
+        Collection<Character> brackets1 = List.of('[');
+        Collection<Character> delimiters1 = List.of(',', ';');
+        int indentationSize1 = 4;
+
+        Formatter formatter1 = PrettyFormatter.of(brackets1, delimiters1, indentationSize1);
+
+        Collection<Character> brackets2 = List.of('{', '[');
+        Collection<Character> delimiters2 = List.of(';');
+        int indentationSize2 = 8;
+
+        Formatter formatter2 = PrettyFormatter.of(brackets2, delimiters2, indentationSize2);
+
+        Assertions.assertNotEquals(formatter1, formatter2);
+    }
+
+    @Test
+    void getUnequalFormattersForDifferentBrackets() {
+        Collection<Character> delimiters = List.of(',', ';');
+        int indentationSize = 2;
+
+        Collection<Character> brackets1 = List.of('[');
+        Formatter formatter1 = PrettyFormatter.of(brackets1, delimiters, indentationSize);
+
+        Collection<Character> brackets2 = List.of('{', '[');
+        Formatter formatter2 = PrettyFormatter.of(brackets2, delimiters, indentationSize);
+
+        Assertions.assertNotEquals(formatter1, formatter2);
+    }
+
+    @Test
+    void getUnequalFormattersForDifferentDelimiters() {
+        Collection<Character> brackets = List.of('(');
+        int indentationSize = 2;
+
+        Collection<Character> delimiters1 = List.of(',', ';');
+        Formatter formatter1 = PrettyFormatter.of(brackets, delimiters1, indentationSize);
+
+        Collection<Character> delimiters2 = List.of(',');
+        Formatter formatter2 = PrettyFormatter.of(brackets, delimiters2, indentationSize);
+
+        Assertions.assertNotEquals(formatter1, formatter2);
+    }
+
+    @Test
+    void getUnequalFormattersForDifferentIndentationSizes() {
+        Collection<Character> brackets = List.of('(');
+        Collection<Character> delimiters = List.of(',');
+
+        int indentationSize1 = 2;
+        Formatter formatter1 = PrettyFormatter.of(brackets, delimiters, indentationSize1);
+
+        int indentationSize2 = 4;
+        Formatter formatter2 = PrettyFormatter.of(brackets, delimiters, indentationSize2);
+
+        Assertions.assertNotEquals(formatter1, formatter2);
+    }
+
+    @Test
+    void convertToAString() {
+        Collection<Character> brackets = Collections.emptyList();
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 4;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String str = formatter.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(formatter.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("openingBrackets")),
+                () -> Assertions.assertTrue(str.contains("closingBrackets")),
+                () -> Assertions.assertTrue(str.contains("delimiters")),
+                () -> Assertions.assertTrue(str.contains("indentationSize"))
+        );
+    }
 }
