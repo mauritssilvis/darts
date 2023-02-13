@@ -9,11 +9,44 @@ import nl.mauritssilvis.darts.java.output.Formatter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 class PrettyFormatterTests {
+    @Test
+    void storeIndependentBrackets() {
+        Collection<Character> brackets = new ArrayList<>(List.of('('));
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 2;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+
+        brackets.clear();
+
+        String input = "()";
+        String output = formatter.format(input);
+
+        Assertions.assertEquals("(\n)", output);
+    }
+
+    @Test
+    void storeIndependentDelimiters() {
+        Collection<Character> brackets = Collections.emptyList();
+        Collection<Character> delimiters = new ArrayList<>(List.of(','));
+        int indentationSize = 2;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+
+        delimiters.clear();
+
+        String input = "a,b";
+        String output = formatter.format(input);
+
+        Assertions.assertEquals("a,\nb", output);
+    }
+
     @Test
     void doNotAcceptUnsupportedBrackets() {
         Collection<Character> brackets = List.of('a');
