@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 @EqualsAndHashCode
 @ToString
-public final class AscendingTable implements Table {
+final class AscendingTable implements Table {
     private final Settings settings;
     private final Map<Integer, List<Checkout>> checkoutMap;
 
