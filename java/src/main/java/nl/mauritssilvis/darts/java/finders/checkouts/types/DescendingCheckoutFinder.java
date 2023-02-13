@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
  * sequences of grouped fields that have non-increasing scores. Results are
  * returned in the form of a list of {@code GroupedCheckout} objects.
  * <p>
- * This implementation relies on the {@code DescendingPathFinder} class.
+ * This implementation relies on the {@code DescendingPathfinder} class.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
