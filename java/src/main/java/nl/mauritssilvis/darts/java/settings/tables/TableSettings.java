@@ -17,7 +17,7 @@ import nl.mauritssilvis.darts.java.settings.*;
  */
 @ToString
 @EqualsAndHashCode
-final class TableSettings implements Settings {
+public final class TableSettings implements Settings {
     private final BoardType boardType;
     private final CheckMode checkInMode;
     private final CheckMode checkoutMode;

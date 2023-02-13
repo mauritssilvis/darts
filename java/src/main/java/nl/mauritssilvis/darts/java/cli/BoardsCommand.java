@@ -28,7 +28,7 @@ import picocli.CommandLine.Spec;
         description = "Print a dartboard.",
         showDefaultValues = true
 )
-class BoardsCommand implements Runnable {
+public class BoardsCommand implements Runnable {
     @Spec
     private CommandSpec commandSpec;
 

@@ -31,7 +31,7 @@ import picocli.CommandLine.Spec;
         sortSynopsis = false,
         showDefaultValues = true
 )
-class CheckoutsCommand implements Runnable {
+public class CheckoutsCommand implements Runnable {
     @Spec
     private CommandSpec commandSpec;
 
