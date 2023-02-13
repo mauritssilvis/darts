@@ -22,12 +22,12 @@ import java.util.stream.IntStream;
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
 public final class PrettyFormatter implements Formatter {
+    private static final Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
+
     private final Collection<Character> openingBrackets;
     private final Collection<Character> closingBrackets;
     private final Collection<Character> delimiters;
     private final int indentationSize;
-    private final Deque<Character> brackets = new ArrayDeque<>();
-    private final Pattern doubleNewlines = Pattern.compile("\\n *\\n");
 
     private PrettyFormatter(
             Collection<Character> brackets,
@@ -71,6 +71,7 @@ public final class PrettyFormatter implements Formatter {
 
         int indentation = 0;
         int position = 0;
+        Deque<Character> brackets = new ArrayDeque<>();
 
         for (char ch : input.toCharArray()) {
             if (closingBrackets.contains(ch)) {
@@ -106,7 +107,7 @@ public final class PrettyFormatter implements Formatter {
 
         String indentedStr = stringBuilder.toString();
 
-        return doubleNewlines.matcher(indentedStr)
+        return DOUBLE_NEWLINES.matcher(indentedStr)
                 .replaceAll("\n");
     }
 
