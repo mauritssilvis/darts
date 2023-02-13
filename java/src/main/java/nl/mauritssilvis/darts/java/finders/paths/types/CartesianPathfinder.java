@@ -32,7 +32,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class CartesianPathfinder implements Pathfinder {
+final class CartesianPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
     private CartesianPathfinder(Collection<? extends Node> nodes) {
@@ -42,7 +42,7 @@ public final class CartesianPathfinder implements Pathfinder {
     /**
      * Returns a new {@code CartesianPathfinder} for the specified nodes.
      *
-     * @param nodes a list of nodes
+     * @param nodes a collection of nodes
      * @return a new {@code CartesianPathfinder} for the specified nodes
      */
     public static Pathfinder of(Collection<? extends Node> nodes) {

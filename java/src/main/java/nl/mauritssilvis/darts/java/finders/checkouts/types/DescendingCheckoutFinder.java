@@ -14,8 +14,9 @@ import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
 import nl.mauritssilvis.darts.java.finders.paths.Path;
 import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.finders.paths.types.DescendingNode;
-import nl.mauritssilvis.darts.java.finders.paths.types.DescendingPathfinder;
 import nl.mauritssilvis.darts.java.finders.paths.types.Node;
+import nl.mauritssilvis.darts.java.finders.paths.types.PathfinderFactory;
+import nl.mauritssilvis.darts.java.settings.FinderType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -42,11 +43,11 @@ final class DescendingCheckoutFinder implements CheckoutFinder {
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private DescendingCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
-        List<Node> nodes = fieldsPerThrow.stream()
+        Collection<Node> nodes = fieldsPerThrow.stream()
                 .map(DescendingCheckoutFinder::getNode)
                 .toList();
 
-        pathfinder = DescendingPathfinder.of(nodes);
+        pathfinder = PathfinderFactory.create(FinderType.DESCENDING, nodes);
 
         scoreMaps = fieldsPerThrow.stream()
                 .map(DescendingCheckoutFinder::getScoreMap)

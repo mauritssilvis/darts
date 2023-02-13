@@ -33,7 +33,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class DescendingPathfinder implements Pathfinder {
+final class DescendingPathfinder implements Pathfinder {
     private final List<? extends Node> nodes;
 
     private DescendingPathfinder(Collection<? extends Node> nodes) {
@@ -46,7 +46,7 @@ public final class DescendingPathfinder implements Pathfinder {
     /**
      * Returns a new {@code DescendingPathfinder} for the specified nodes.
      *
-     * @param nodes a list of nodes
+     * @param nodes a collection of nodes
      * @return a new {@code DescendingPathfinder} for the specified nodes
      */
     public static Pathfinder of(Collection<? extends Node> nodes) {

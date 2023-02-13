@@ -13,8 +13,9 @@ import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.finders.paths.Path;
 import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.finders.paths.types.BasicNode;
-import nl.mauritssilvis.darts.java.finders.paths.types.CartesianPathfinder;
 import nl.mauritssilvis.darts.java.finders.paths.types.Node;
+import nl.mauritssilvis.darts.java.finders.paths.types.PathfinderFactory;
+import nl.mauritssilvis.darts.java.settings.FinderType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -41,11 +42,11 @@ final class CartesianCheckoutFinder implements CheckoutFinder {
     private final List<Map<Integer, List<Field>>> scoreMaps;
 
     private CartesianCheckoutFinder(Collection<? extends Collection<? extends Field>> fieldsPerThrow) {
-        List<Node> nodes = fieldsPerThrow.stream()
+        Collection<Node> nodes = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getNode)
                 .toList();
 
-        pathfinder = CartesianPathfinder.of(nodes);
+        pathfinder = PathfinderFactory.create(FinderType.CARTESIAN, nodes);
 
         scoreMaps = fieldsPerThrow.stream()
                 .map(CartesianCheckoutFinder::getScoreMap)
