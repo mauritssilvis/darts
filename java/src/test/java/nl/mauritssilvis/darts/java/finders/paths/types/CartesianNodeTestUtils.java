@@ -22,7 +22,7 @@ final class CartesianNodeTestUtils {
      * @param weights a collection of weights per node
      * @return a list of nodes with the specified weights
      */
-    public static List<Node> getNodes(Collection<? extends Collection<Integer>> weights) {
+    static List<Node> getNodes(Collection<? extends Collection<Integer>> weights) {
         return weights.stream()
                 .map(CartesianNode::of)
                 .toList();
