@@ -109,10 +109,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastScore() {
-        }
-
-        @Override
         void startMultiplicity() {
             stringBuilder.append("<td class=\"m\">");
         }
@@ -147,10 +143,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void separateCheckout() {
-        }
-
-        @Override
-        void endLastCheckout() {
         }
 
         @Override
@@ -192,10 +184,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastThrow() {
-        }
-
-        @Override
         void addEmptyThrowAfter() {
             startThrow();
             String noField = "<span class=\"n\">" + String.format(fieldFormat, "-") + "</span>";
@@ -225,10 +213,6 @@ public final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void separateField() {
-        }
-
-        @Override
-        void endLastField() {
         }
 
         @Override

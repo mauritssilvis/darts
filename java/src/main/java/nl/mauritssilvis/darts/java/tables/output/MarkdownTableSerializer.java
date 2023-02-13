@@ -106,10 +106,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastScore() {
-        }
-
-        @Override
         void startMultiplicity() {
             stringBuilder.append("| ");
         }
@@ -143,10 +139,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void separateCheckout() {
-        }
-
-        @Override
-        void endLastCheckout() {
         }
 
         @Override
@@ -187,10 +179,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastThrow() {
-        }
-
-        @Override
         void addEmptyThrowAfter() {
             stringBuilder.append("| ")
                     .append(String.format(throwFormat, "-"))
@@ -219,10 +207,6 @@ public final class MarkdownTableSerializer implements Serializer<Table> {
         @Override
         void separateField() {
             stringBuilder.append(" / ");
-        }
-
-        @Override
-        void endLastField() {
         }
 
         @Override

@@ -96,9 +96,7 @@ abstract class TablePrinter {
             int score = scores.get(i);
             processScore(score);
 
-            if (i == scores.size() - 1) {
-                endLastScore();
-            } else {
+            if (i != scores.size() - 1) {
                 separateScore();
             }
         }
@@ -123,9 +121,7 @@ abstract class TablePrinter {
             Checkout checkout = checkouts.get(i);
             processCheckout(checkout);
 
-            if (i == checkouts.size() - 1) {
-                endLastCheckout();
-            } else {
+            if (i != checkouts.size() - 1) {
                 separateCheckout();
             }
         }
@@ -155,9 +151,7 @@ abstract class TablePrinter {
 
             processThrow(compoundThrow);
 
-            if (i == throwList.size() - 1) {
-                endLastThrow();
-            } else {
+            if (i != throwList.size() - 1) {
                 separateThrow();
             }
         }
@@ -183,9 +177,7 @@ abstract class TablePrinter {
 
             processField(field);
 
-            if (i == fields.size() - 1) {
-                endLastField();
-            } else {
+            if (i != fields.size() - 1) {
                 separateField();
             }
         }
@@ -213,8 +205,6 @@ abstract class TablePrinter {
 
     abstract void separateScore();
 
-    abstract void endLastScore();
-
     abstract void startCheckouts();
 
     abstract void endCheckouts();
@@ -224,8 +214,6 @@ abstract class TablePrinter {
     abstract void endCheckout();
 
     abstract void separateCheckout();
-
-    abstract void endLastCheckout();
 
     abstract void startCheckoutScore();
 
@@ -243,8 +231,6 @@ abstract class TablePrinter {
 
     abstract void separateThrow();
 
-    abstract void endLastThrow();
-
     abstract void addEmptyThrowAfter();
 
     abstract void addEmptyFieldBefore();
@@ -256,8 +242,6 @@ abstract class TablePrinter {
     abstract void endField();
 
     abstract void separateField();
-
-    abstract void endLastField();
 
     abstract void startCheckoutMultiplicity();
 

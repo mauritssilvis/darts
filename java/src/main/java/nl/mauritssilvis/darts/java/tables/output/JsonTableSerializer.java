@@ -80,10 +80,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastScore() {
-        }
-
-        @Override
         void startMultiplicity() {
             stringBuilder.append("\"multiplicity\": ");
         }
@@ -124,10 +120,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastCheckout() {
-        }
-
-        @Override
         void startCheckoutScore() {
         }
 
@@ -165,10 +157,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         }
 
         @Override
-        void endLastThrow() {
-        }
-
-        @Override
         void addEmptyThrowAfter() {
         }
 
@@ -194,10 +182,6 @@ public final class JsonTableSerializer implements Serializer<Table> {
         @Override
         void separateField() {
             stringBuilder.append(',');
-        }
-
-        @Override
-        void endLastField() {
         }
 
         @Override
