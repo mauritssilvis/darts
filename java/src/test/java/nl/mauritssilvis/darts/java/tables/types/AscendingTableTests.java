@@ -10,7 +10,7 @@ import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.finders.checkouts.types.GroupedCheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
+import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

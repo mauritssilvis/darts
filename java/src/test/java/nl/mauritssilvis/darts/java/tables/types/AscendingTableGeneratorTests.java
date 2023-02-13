@@ -11,7 +11,7 @@ import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
+import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.TableTestUtils;

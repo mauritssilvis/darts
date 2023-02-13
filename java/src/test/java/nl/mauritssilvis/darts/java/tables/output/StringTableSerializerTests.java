@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.tables.output;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.settings.TableType;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
+import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;

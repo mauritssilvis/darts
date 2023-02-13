@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings.tables;
+package nl.mauritssilvis.darts.java.settings.types;
 
 import nl.mauritssilvis.darts.java.settings.*;
 import org.junit.jupiter.api.Assertions;
