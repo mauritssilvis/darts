@@ -55,7 +55,7 @@ final class AscendingTable implements Table {
      *
      * @param settings    the table settings
      * @param checkoutMap the checkout map
-     * @return a new {@code AscendingTable} with the specified settings.
+     * @return a new {@code AscendingTable} with the specified settings
      * @throws IllegalArgumentException if some checkouts in the checkout map do
      *                                  not have the same score as their
      *                                  checkout map key

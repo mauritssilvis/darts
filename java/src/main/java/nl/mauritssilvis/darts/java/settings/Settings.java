@@ -35,7 +35,7 @@ public interface Settings {
     /**
      * Determines whether the number of throws was fixed.
      *
-     * @return a boolean that signals whether the number of throws was fixed.
+     * @return a boolean that signals whether the number of throws was fixed
      */
     boolean hasFixedNumThrows();
 

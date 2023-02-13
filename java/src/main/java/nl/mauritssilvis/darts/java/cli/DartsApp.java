@@ -50,7 +50,7 @@ public final class DartsApp implements App {
     /**
      * Returns a new {@code Darts} command-line application.
      *
-     * @return a new {@code Darts} command-line application.
+     * @return a new {@code Darts} command-line application
      */
     public static App create() {
         return new DartsApp();

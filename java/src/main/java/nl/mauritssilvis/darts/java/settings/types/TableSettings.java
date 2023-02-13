@@ -54,8 +54,9 @@ final class TableSettings implements Settings {
      * @param throwMode    the throw mode
      * @param finderType   the finder type
      * @param tableType    the table type
+     * @return a new {@code TableSettings} object with the specified properties
      */
-    static Settings of(
+    public static Settings of(
             BoardType boardType,
             CheckMode checkInMode,
             CheckMode checkoutMode,

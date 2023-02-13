@@ -75,7 +75,7 @@ public interface SettingsBuilder {
      * <p>
      * Non-null, default values have to be set for unspecified properties.
      *
-     * @return a new {@code Settings} object with the specified properties.
+     * @return a new {@code Settings} object with the specified properties
      */
     Settings build();
 }

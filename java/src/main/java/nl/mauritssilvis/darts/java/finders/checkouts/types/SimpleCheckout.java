@@ -37,11 +37,11 @@ final class SimpleCheckout implements Checkout {
     }
 
     /**
-     * Returns a new {@code SimpleCheckout} of simple throws with the specified
+     * Returns a new {@code SimpleCheckout} with simple throws of the specified
      * fields.
      *
      * @param fields a collection of fields
-     * @return a new {@code SimpleCheckout} of simple throws with the specified
+     * @return a new {@code SimpleCheckout} with simple throws of the specified
      * fields
      */
     public static Checkout of(Collection<? extends Field> fields) {
