@@ -13,11 +13,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-class BasicNodeTests {
+class CartesianNodeTests {
     @Test
     void storeIndependentWeights() {
         List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         weights.set(1, -2);
 
@@ -27,7 +27,7 @@ class BasicNodeTests {
     @Test
     void storeUniqueWeights() {
         Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         List<Integer> uniqueWeights = List.of(7, 8, 9);
 
@@ -37,7 +37,7 @@ class BasicNodeTests {
     @Test
     void getTheWeights() {
         Collection<Integer> weights = List.of(4, 5, 6);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -45,7 +45,7 @@ class BasicNodeTests {
     @Test
     void getTheWeightsWithSingletonInput() {
         Collection<Integer> weights = Collections.singletonList(3);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -53,7 +53,7 @@ class BasicNodeTests {
     @Test
     void getTheWeightsWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -61,7 +61,7 @@ class BasicNodeTests {
     @Test
     void getImmutableWeights() {
         Collection<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         List<Integer> storedWeights = node.getWeights();
 
@@ -71,7 +71,7 @@ class BasicNodeTests {
     @Test
     void getAConnectedNode() {
         Collection<Integer> weights = List.of(10, 8);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());
     }
@@ -79,7 +79,7 @@ class BasicNodeTests {
     @Test
     void getAConnectedNodeWithSingletonInput() {
         Collection<Integer> weights = Collections.singletonList(3);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());
     }
@@ -87,7 +87,7 @@ class BasicNodeTests {
     @Test
     void getADisconnectedNodeWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         Assertions.assertFalse(node.isConnected());
     }
@@ -95,10 +95,10 @@ class BasicNodeTests {
     @Test
     void getEqualNodes() {
         Collection<Integer> weights1 = List.of(-10, 10, 10);
-        Node node1 = BasicNode.of(weights1);
+        Node node1 = CartesianNode.of(weights1);
 
         Collection<Integer> weights2 = List.of(-10, 10);
-        Node node2 = BasicNode.of(weights2);
+        Node node2 = CartesianNode.of(weights2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(node1, node2),
@@ -109,10 +109,10 @@ class BasicNodeTests {
     @Test
     void getUnequalNodes() {
         Collection<Integer> weights1 = List.of(-10, 0, 10);
-        Node node1 = BasicNode.of(weights1);
+        Node node1 = CartesianNode.of(weights1);
 
         Collection<Integer> weights2 = List.of(-5, 0, 5);
-        Node node2 = BasicNode.of(weights2);
+        Node node2 = CartesianNode.of(weights2);
 
         Assertions.assertNotEquals(node1, node2);
     }
@@ -120,7 +120,7 @@ class BasicNodeTests {
     @Test
     void convertToAString() {
         Collection<Integer> weights = List.of(0, 1, 3);
-        Node node = BasicNode.of(weights);
+        Node node = CartesianNode.of(weights);
 
         String str = node.toString();
 

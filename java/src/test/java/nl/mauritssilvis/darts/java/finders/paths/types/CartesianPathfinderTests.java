@@ -24,7 +24,7 @@ class CartesianPathfinderTests {
     @Test
     void storeIndependentNodes() {
         Collection<Integer> weights = List.of(3, 5, 4);
-        Collection<Node> nodes = new ArrayList<>(BasicNodeTestUtils.getNodes(List.of(weights, weights)));
+        Collection<Node> nodes = new ArrayList<>(CartesianNodeTestUtils.getNodes(List.of(weights, weights)));
 
         int length = 6;
 
@@ -53,7 +53,7 @@ class CartesianPathfinderTests {
     @ParameterizedTest
     @MethodSource("withDisconnectedNodes")
     void handleDisconnectedNodes(Collection<? extends Collection<Integer>> weightsPerNode) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
         int length = 2;
 
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
@@ -85,7 +85,7 @@ class CartesianPathfinderTests {
     @ParameterizedTest
     @MethodSource("withAnUnreachableLength")
     void handleUnreachableLengths(Collection<? extends Collection<Integer>> weightsPerNode) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
 
         int length = -1;
@@ -124,7 +124,7 @@ class CartesianPathfinderTests {
             int length,
             Collection<? extends Collection<Integer>> stepsPerPath
     ) {
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
         List<Path> paths = pathfinder.find(length);
 
@@ -321,7 +321,7 @@ class CartesianPathfinderTests {
     @Test
     void getImmutablePaths() {
         Collection<Collection<Integer>> weightsPerNode = List.of(List.of(3, 4), List.of(6, 7));
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
 
         int length = 10;
@@ -334,11 +334,11 @@ class CartesianPathfinderTests {
     @Test
     void getEqualPathfinders() {
         Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
+        Collection<Node> nodes1 = CartesianNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = CartesianPathfinder.of(nodes1);
 
         Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
+        Collection<Node> nodes2 = CartesianNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = CartesianPathfinder.of(nodes2);
 
         Assertions.assertAll(
@@ -350,11 +350,11 @@ class CartesianPathfinderTests {
     @Test
     void getUnequalPathfinders() {
         Collection<Collection<Integer>> weightsPerNode1 = List.of(List.of(8, 7, 6));
-        Collection<Node> nodes1 = BasicNodeTestUtils.getNodes(weightsPerNode1);
+        Collection<Node> nodes1 = CartesianNodeTestUtils.getNodes(weightsPerNode1);
         Pathfinder pathfinder1 = CartesianPathfinder.of(nodes1);
 
         Collection<Collection<Integer>> weightsPerNode2 = List.of(List.of(6, 7, 8), List.of(6, 7, 8));
-        Collection<Node> nodes2 = BasicNodeTestUtils.getNodes(weightsPerNode2);
+        Collection<Node> nodes2 = CartesianNodeTestUtils.getNodes(weightsPerNode2);
         Pathfinder pathfinder2 = CartesianPathfinder.of(nodes2);
 
         Assertions.assertNotEquals(pathfinder1, pathfinder2);
@@ -363,7 +363,7 @@ class CartesianPathfinderTests {
     @Test
     void convertToAString() {
         Collection<Collection<Integer>> weightsPerNode = List.of(List.of(1, 2, 3), List.of(4, 5, 6));
-        Collection<Node> nodes = BasicNodeTestUtils.getNodes(weightsPerNode);
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
         Pathfinder pathfinder = CartesianPathfinder.of(nodes);
 
         String str = pathfinder.toString();

@@ -14,12 +14,12 @@ import java.util.Collections;
 
 class NodeFactoryTests {
     @Test
-    void getABasicNode() {
+    void getACartesianNode() {
         FinderType finderType = FinderType.CARTESIAN;
         Collection<Integer> weights = Collections.emptyList();
         Node pathfinder = NodeFactory.create(finderType, weights);
 
-        Assertions.assertTrue(pathfinder instanceof BasicNode);
+        Assertions.assertTrue(pathfinder instanceof CartesianNode);
     }
 
     @Test

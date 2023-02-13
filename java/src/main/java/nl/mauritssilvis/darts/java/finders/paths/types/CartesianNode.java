@@ -19,24 +19,24 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
-final class BasicNode implements Node {
+final class CartesianNode implements Node {
     private final List<Integer> weights;
 
-    private BasicNode(Collection<Integer> weights) {
+    private CartesianNode(Collection<Integer> weights) {
         this.weights = weights.stream()
                 .distinct()
                 .toList();
     }
 
     /**
-     * Returns a new {@code BasicNode} with unique edge weights in the order
+     * Returns a new {@code CartesianNode} with unique edge weights in the order
      * determined by the supplied collection.
      *
      * @param weights a collection of weights
-     * @return a new {@code BasicNode} with the specified weights
+     * @return a new {@code CartesianNode} with the specified weights
      */
     public static Node of(Collection<Integer> weights) {
-        return new BasicNode(weights);
+        return new CartesianNode(weights);
     }
 
     @Override

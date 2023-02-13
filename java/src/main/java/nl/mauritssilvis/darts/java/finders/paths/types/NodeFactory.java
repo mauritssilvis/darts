@@ -29,7 +29,7 @@ public final class NodeFactory {
      */
     public static Node create(FinderType finderType, Collection<Integer> weights) {
         return switch (finderType) {
-            case CARTESIAN -> BasicNode.of(weights);
+            case CARTESIAN -> CartesianNode.of(weights);
             case DESCENDING -> DescendingNode.of(weights);
         };
     }

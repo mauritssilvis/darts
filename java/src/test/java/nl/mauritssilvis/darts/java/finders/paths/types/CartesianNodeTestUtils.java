@@ -9,11 +9,11 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * A set of testing utilities that create (collections of) {@code BasicNode}
+ * A set of testing utilities that create (collections of) {@code CartesianNode}
  * objects.
  */
-final class BasicNodeTestUtils {
-    private BasicNodeTestUtils() {
+final class CartesianNodeTestUtils {
+    private CartesianNodeTestUtils() {
     }
 
     /**
@@ -24,7 +24,7 @@ final class BasicNodeTestUtils {
      */
     public static List<Node> getNodes(Collection<? extends Collection<Integer>> weights) {
         return weights.stream()
-                .map(BasicNode::of)
+                .map(CartesianNode::of)
                 .toList();
     }
 }
