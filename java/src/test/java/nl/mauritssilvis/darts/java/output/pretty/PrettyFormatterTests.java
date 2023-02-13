@@ -15,13 +15,60 @@ import java.util.List;
 
 class PrettyFormatterTests {
     @Test
-    void insertNewlinesAndIndentationAroundBrackets() {
-        Collection<Character> openingBrackets = List.of('{', '[');
-        Collection<Character> closingBrackets = Collections.emptyList();
+    void doNotAcceptUnsupportedBrackets() {
+        Collection<Character> brackets = List.of('a');
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 4;
+
+        Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> PrettyFormatter.of(brackets, delimiters, indentationSize)
+        );
+    }
+
+    @Test
+    void doNotAcceptMoreOpeningThanClosingBrackets() {
+        Collection<Character> brackets = List.of('{', '[');
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 3;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "{[";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
+    }
+
+    @Test
+    void doNotAcceptMoreClosingThanOpeningBrackets() {
+        Collection<Character> brackets = List.of('{', '[');
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 3;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "{[],[]]}}";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
+    }
+
+    @Test
+    void doNotAcceptMismatchingBrackets() {
+        Collection<Character> brackets = List.of('{', '(');
         Collection<Character> delimiters = Collections.emptyList();
         int indentationSize = 2;
 
-        Formatter formatter = PrettyFormatter.of(openingBrackets, closingBrackets, delimiters, indentationSize);
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "{(}";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
+    }
+
+    @Test
+    void insertNewlinesAndIndentationAroundBrackets() {
+        Collection<Character> brackets = List.of('{', '[');
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 2;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
         String input = "ab{cde[fghi]}";
 
         String output = formatter.format(input);
@@ -31,12 +78,11 @@ class PrettyFormatterTests {
 
     @Test
     void insertANewlineAfterDelimiters() {
-        Collection<Character> openingBrackets = Collections.emptyList();
-        Collection<Character> closingBrackets = Collections.emptyList();
+        Collection<Character> brackets = Collections.emptyList();
         Collection<Character> delimiters = List.of(',', ';');
         int indentationSize = 2;
 
-        Formatter formatter = PrettyFormatter.of(openingBrackets, closingBrackets, delimiters, indentationSize);
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
         String input = "a,bc,def";
 
         String output = formatter.format(input);
@@ -45,41 +91,16 @@ class PrettyFormatterTests {
     }
 
     @Test
-    void doNotAcceptMoreOpeningThanClosingBrackets() {
-        Collection<Character> openingBrackets = List.of('{', '[');
-        Collection<Character> closingBrackets = List.of(']', '}');
-        Collection<Character> delimiters = Collections.emptyList();
-        int indentationSize = 3;
+    void processBracketsAndDelimiters() {
+        Collection<Character> brackets = List.of('(');
+        Collection<Character> delimiters = List.of(',', ';');
+        int indentationSize = 4;
 
-        Formatter formatter = PrettyFormatter.of(openingBrackets, closingBrackets, delimiters, indentationSize);
-        String input = "{[";
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "A(B,C(D;E),F)";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
-    }
+        String output = formatter.format(input);
 
-    @Test
-    void doNotAcceptMoreClosingThanOpeningBrackets() {
-        Collection<Character> openingBrackets = List.of('{', '[');
-        Collection<Character> closingBrackets = List.of(']', '}');
-        Collection<Character> delimiters = Collections.emptyList();
-        int indentationSize = 3;
-
-        Formatter formatter = PrettyFormatter.of(openingBrackets, closingBrackets, delimiters, indentationSize);
-        String input = "{[],[]]}}";
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
-    }
-
-    @Test
-    void doNotAcceptMismatchingBrackets() {
-        Collection<Character> openingBrackets = List.of('{', '(');
-        Collection<Character> closingBrackets = List.of(')', '}');
-        Collection<Character> delimiters = Collections.emptyList();
-        int indentationSize = 2;
-
-        Formatter formatter = PrettyFormatter.of(openingBrackets, closingBrackets, delimiters, indentationSize);
-        String input = "{(}";
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> formatter.format(input));
+        Assertions.assertEquals("A(\n    B,\n    C(\n        D;\n        E\n    ),\n    F\n)", output);
     }
 }

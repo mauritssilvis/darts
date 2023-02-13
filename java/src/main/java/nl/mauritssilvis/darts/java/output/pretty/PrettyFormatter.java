@@ -7,7 +7,10 @@ package nl.mauritssilvis.darts.java.output.pretty;
 
 import nl.mauritssilvis.darts.java.output.Formatter;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Deque;
+import java.util.stream.IntStream;
 
 /**
  * An implementation of the {@code Formatter} interface that introduces newlines
@@ -17,34 +20,100 @@ import java.util.Collection;
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
 public class PrettyFormatter implements Formatter {
+    private final Collection<Character> openingBrackets;
+    private final Collection<Character> closingBrackets;
+    private final Collection<Character> delimiters;
+    private final int indentationSize;
+    private final Deque<Character> brackets = new ArrayDeque<>();
+
     private PrettyFormatter(
-            Collection<Character> openingBrackets,
-            Collection<Character> closingBrackets,
+            Collection<Character> brackets,
             Collection<Character> delimiters,
             int indentationSize
     ) {
+        openingBrackets = brackets;
+        closingBrackets = brackets.stream()
+                .map(PrettyFormatter::getClosingBracket)
+                .toList();
+
+        this.delimiters = delimiters;
+        this.indentationSize = indentationSize;
     }
 
     /**
      * Returns a new {@code PrettyFormatter} with the specified properties.
      *
-     * @param openingBrackets a collection of opening brackets
-     * @param closingBrackets a collection of closing brackets
+     * @param brackets        a collection of opening brackets
      * @param delimiters      a collection of delimiters
      * @param indentationSize the indentation size
      * @return a new {@code PrettyFormatter} with the specified properties
      */
     public static Formatter of(
-            Collection<Character> openingBrackets,
-            Collection<Character> closingBrackets,
+            Collection<Character> brackets,
             Collection<Character> delimiters,
             int indentationSize
     ) {
-        return new PrettyFormatter(openingBrackets, closingBrackets, delimiters, indentationSize);
+        return new PrettyFormatter(brackets, delimiters, indentationSize);
     }
 
     @Override
     public String format(String input) {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder(input.length());
+
+        int indentation = 0;
+        int position = 0;
+
+        for (char ch : input.toCharArray()) {
+            if (closingBrackets.contains(ch)) {
+                if (ch != brackets.pop()) {
+                    brackets.push('!');
+                    break;
+                }
+
+                indentation -= indentationSize;
+                addNewline(stringBuilder, indentation);
+            }
+
+            stringBuilder.append(ch);
+
+            if (openingBrackets.contains(ch)) {
+                char closingBracket = getClosingBracket(ch);
+                brackets.push(closingBracket);
+
+                indentation += indentationSize;
+                addNewline(stringBuilder, indentation);
+            } else if (delimiters.contains(ch)) {
+                addNewline(stringBuilder, indentation);
+            }
+
+            position++;
+        }
+
+        if (!brackets.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Bracket mismatch at position " + position
+            );
+        }
+
+        return stringBuilder.toString();
+    }
+
+    private static char getClosingBracket(char ch) {
+        return switch (ch) {
+            case '{' -> '}';
+            case '[' -> ']';
+            case '(' -> ')';
+            case '<' -> '>';
+            default -> throw new IllegalArgumentException(
+                    "Unsupported bracket '" + ch + "'"
+            );
+        };
+    }
+
+    private static void addNewline(StringBuilder stringBuilder, int indentation) {
+        stringBuilder.append('\n');
+
+        IntStream.range(0, indentation)
+                .forEach(i -> stringBuilder.append(' '));
     }
 }
