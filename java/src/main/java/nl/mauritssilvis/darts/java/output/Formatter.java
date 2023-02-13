@@ -16,5 +16,11 @@ package nl.mauritssilvis.darts.java.output;
  */
 @FunctionalInterface
 public interface Formatter {
+    /**
+     * Formats the input string.
+     *
+     * @param input the input string
+     * @return a formatted string
+     */
     String format(String input);
 }
