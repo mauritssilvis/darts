@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.output.pretty;
+package nl.mauritssilvis.darts.java.output.types;
 
 import nl.mauritssilvis.darts.java.output.Formatter;
 import org.junit.jupiter.api.Assertions;

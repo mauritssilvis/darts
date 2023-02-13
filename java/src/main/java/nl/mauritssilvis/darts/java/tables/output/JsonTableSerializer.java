@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Formatter;
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.output.pretty.PrettyFormatter;
+import nl.mauritssilvis.darts.java.output.types.PrettyFormatter;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.Collection;
