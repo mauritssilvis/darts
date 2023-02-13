@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.java.output.pretty;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.output.Formatter;
 
 import java.util.ArrayDeque;
@@ -21,6 +23,8 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
+@EqualsAndHashCode
+@ToString
 public final class PrettyFormatter implements Formatter {
     private static final Pattern DOUBLE_NEWLINES = Pattern.compile("\\n *\\n");
 
