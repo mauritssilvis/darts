@@ -83,10 +83,6 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void endLastType() {
-        }
-
-        @Override
         void startField() {
             stringBuilder.append('"');
         }
@@ -104,10 +100,6 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         @Override
         void separateField() {
             stringBuilder.append(',');
-        }
-
-        @Override
-        void endLastField() {
         }
 
         @Override

@@ -58,9 +58,7 @@ abstract class BoardPrinter {
             FieldType fieldType = fieldTypes.get(i);
             processType(fieldType);
 
-            if (i == fieldTypes.size() - 1) {
-                endLastType();
-            } else {
+            if (i != fieldTypes.size() - 1) {
                 separateType();
             }
         }
@@ -77,9 +75,7 @@ abstract class BoardPrinter {
             Field field = fields.get(i);
             processField(field);
 
-            if (i == fields.size() - 1) {
-                endLastField();
-            } else {
+            if (i != fields.size() - 1) {
                 separateField();
             }
         }
@@ -111,8 +107,6 @@ abstract class BoardPrinter {
 
     abstract void separateType();
 
-    abstract void endLastType();
-
     abstract void startField();
 
     abstract void addField(String name);
@@ -120,8 +114,6 @@ abstract class BoardPrinter {
     abstract void endField();
 
     abstract void separateField();
-
-    abstract void endLastField();
 
     abstract void startEmptyField();
 

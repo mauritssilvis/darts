@@ -91,10 +91,6 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
         }
 
         @Override
-        void endLastType() {
-        }
-
-        @Override
         void startField() {
             builderMap.get(row).append("| ");
         }
@@ -112,10 +108,6 @@ public final class MarkdownBoardSerializer implements Serializer<Board> {
 
         @Override
         void separateField() {
-        }
-
-        @Override
-        void endLastField() {
         }
 
         @Override
