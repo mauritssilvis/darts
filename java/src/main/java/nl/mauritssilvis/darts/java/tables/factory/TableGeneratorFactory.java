@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.tables.factory;
 
-import nl.mauritssilvis.darts.java.settings.*;
-import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
+import nl.mauritssilvis.darts.java.settings.Settings;
+import nl.mauritssilvis.darts.java.settings.TableType;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.ascending.AscendingTableGenerator;
 
@@ -20,35 +20,15 @@ public final class TableGeneratorFactory {
     }
 
     /**
-     * Returns a new {@code TableGenerator} for tables of the specified type.
+     * Returns a new {@code TableGenerator} for tables of the specified type
+     * with the specified settings.
      *
-     * @param tableType    the table type
-     * @param boardType    the dartboard type
-     * @param checkInMode  the check-in mode
-     * @param checkoutMode the checkout mode
-     * @param numThrows    the number of throws if fixed and -1 otherwise
-     * @param throwMode    the throw mode
-     * @param finderType   the checkout finder type
+     * @param tableType the table type
+     * @param settings  the table settings
      * @return a new {@code TableGenerator} for tables of the specified type
+     * with the specified settings
      */
-    public static TableGenerator create(
-            TableType tableType,
-            BoardType boardType,
-            CheckMode checkInMode,
-            CheckMode checkoutMode,
-            int numThrows,
-            ThrowMode throwMode,
-            FinderType finderType
-    ) {
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .setThrowMode(throwMode)
-                .setFinderType(finderType)
-                .build();
-
+    public static TableGenerator create(TableType tableType, Settings settings) {
         return switch (tableType) {
             case ASCENDING -> AscendingTableGenerator.of(settings);
         };

@@ -6,7 +6,11 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.BoardType;
+import nl.mauritssilvis.darts.java.settings.CheckMode;
+import nl.mauritssilvis.darts.java.settings.Settings;
+import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
@@ -20,15 +24,15 @@ class HtmlTableSerializerTests {
     void getAnHtmlTable() {
         TableType tableType = TableType.ASCENDING;
         BoardType boardType = BoardType.YORKSHIRE;
-        CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckoutMode(checkoutMode)
+                .setTableType(tableType)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
         int minScore = 22;
         int maxScore = 23;
@@ -64,16 +68,11 @@ class HtmlTableSerializerTests {
     @ParameterizedTest
     @EnumSource(TableType.class)
     void getTheTableStart(TableType tableType) {
-        BoardType boardType = BoardType.QUADRO;
-        CheckMode checkInMode = CheckMode.MASTER;
-        CheckMode checkoutMode = CheckMode.MASTER;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.CARTESIAN;
+        Settings settings = TableSettingsBuilder.create()
+                .setTableType(tableType)
+                .build();
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
         int minScore = 2;
         int maxScore = 2;

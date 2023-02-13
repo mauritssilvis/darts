@@ -7,6 +7,7 @@ package nl.mauritssilvis.darts.java.cli;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
@@ -124,9 +125,17 @@ public class CheckoutsCommand implements Runnable {
 
     @Override
     public void run() {
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .setFinderType(finderType)
+                .setTableType(tableType)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
         Table table = tableGenerator.generate(minScore, maxScore);
 

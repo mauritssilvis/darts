@@ -5,7 +5,9 @@
 
 package nl.mauritssilvis.darts.java.tables.factory;
 
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.Settings;
+import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.ascending.AscendingTableGenerator;
 import org.junit.jupiter.api.Assertions;
@@ -15,16 +17,12 @@ class TableGeneratorFactoryTests {
     @Test
     void getAnAscendingTableGenerator() {
         TableType tableType = TableType.ASCENDING;
-        BoardType boardType = BoardType.LONDON;
-        CheckMode checkInMode = CheckMode.ANY;
-        CheckMode checkoutMode = CheckMode.MASTER;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.DESCENDING;
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        Settings settings = TableSettingsBuilder.create()
+                .setTableType(tableType)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
         Assertions.assertTrue(tableGenerator instanceof AscendingTableGenerator);
     }

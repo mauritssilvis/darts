@@ -6,7 +6,9 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.settings.Settings;
+import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
@@ -18,16 +20,11 @@ class StringTableSerializerTests {
     @ParameterizedTest
     @EnumSource(TableType.class)
     void includeTheTableName(TableType tableType) {
-        BoardType boardType = BoardType.YORKSHIRE;
-        CheckMode checkInMode = CheckMode.DOUBLE;
-        CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.DESCENDING;
+        Settings settings = TableSettingsBuilder.create()
+                .setTableType(tableType)
+                .build();
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
         int minScore = 2;
         int maxScore = 2;
@@ -46,16 +43,12 @@ class StringTableSerializerTests {
     @ParameterizedTest
     @EnumSource(TableType.class)
     void useTheStringRepresentation(TableType tableType) {
-        BoardType boardType = BoardType.LONDON;
-        CheckMode checkInMode = CheckMode.ANY;
-        CheckMode checkoutMode = CheckMode.MASTER;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.CARTESIAN;
+        Settings settings = TableSettingsBuilder.create()
+                .setTableType(tableType)
+                .build();
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
 
         int minScore = 3;
         int maxScore = 3;
@@ -76,16 +69,12 @@ class StringTableSerializerTests {
     @ParameterizedTest
     @EnumSource(TableType.class)
     void indentTheOutput(TableType tableType) {
-        BoardType boardType = BoardType.QUADRO;
-        CheckMode checkInMode = CheckMode.ANY;
-        CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = -1;
-        ThrowMode throwMode = ThrowMode.OPTIMAL;
-        FinderType finderType = FinderType.DESCENDING;
+        Settings settings = TableSettingsBuilder.create()
+                .setTableType(tableType)
+                .build();
 
-        TableGenerator tableGenerator = TableGeneratorFactory.create(
-                tableType, boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType
-        );
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
 
         int minScore = 1;
         int maxScore = 1;
