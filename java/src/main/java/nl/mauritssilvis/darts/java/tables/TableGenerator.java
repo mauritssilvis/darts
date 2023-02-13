@@ -8,16 +8,16 @@ package nl.mauritssilvis.darts.java.tables;
 /**
  * A checkout table generator.
  * <p>
- * This functional interface does not fix the dartboard type, or check-in and
- * checkout modes. Implementations can specify these properties.
+ * This functional interface does not fix the checkout table settings.
+ * Implementations can specify these properties.
  * <p>
  * Relevant design patterns: strategy, immutable interface.
  */
 @FunctionalInterface
 public interface TableGenerator {
     /**
-     * Generates a table with checkouts with scores from the specified minimum
-     * score to the specified maximum score.
+     * Generates a checkout table with scores from the specified minimum score
+     * to the specified maximum score.
      *
      * @param minScore the minimum score
      * @param maxScore the maximum score
