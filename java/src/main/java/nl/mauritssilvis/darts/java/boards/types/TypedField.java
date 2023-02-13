@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.boards.common;
+package nl.mauritssilvis.darts.java.boards.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -18,7 +18,7 @@ import nl.mauritssilvis.darts.java.boards.FieldType;
  */
 @EqualsAndHashCode
 @ToString
-public final class TypedField implements Field {
+final class TypedField implements Field {
     private final FieldType fieldType;
     private final String name;
     private final int score;

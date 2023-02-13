@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.boards.output;
 
 import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
+import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import org.junit.jupiter.api.Assertions;

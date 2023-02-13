@@ -6,7 +6,7 @@
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
 import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
+import nl.mauritssilvis.darts.java.boards.types.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;

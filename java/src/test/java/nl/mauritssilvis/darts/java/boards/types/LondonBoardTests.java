@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.boards.quadro;
+package nl.mauritssilvis.darts.java.boards.types;
 
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
@@ -18,11 +18,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-class QuadroBoardTests {
+class LondonBoardTests {
     @ParameterizedTest
     @EnumSource(FieldType.class)
     void getImmutableFields(FieldType fieldType) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         Assertions.assertThrows(UnsupportedOperationException.class, () -> fields.remove(0));
@@ -31,7 +31,7 @@ class QuadroBoardTests {
     @ParameterizedTest
     @EnumSource(FieldType.class)
     void getFieldsOfOneType(FieldType fieldType) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         List<Field> otherFields = fields.stream()
@@ -44,7 +44,7 @@ class QuadroBoardTests {
     @ParameterizedTest
     @MethodSource("withTheFieldCount")
     void countTheFields(FieldType fieldType, int count) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         Assertions.assertEquals(count, fields.size());
@@ -55,14 +55,14 @@ class QuadroBoardTests {
                 Arguments.of(FieldType.SINGLE, 21),
                 Arguments.of(FieldType.DOUBLE, 21),
                 Arguments.of(FieldType.TRIPLE, 20),
-                Arguments.of(FieldType.QUADRUPLE, 20)
+                Arguments.of(FieldType.QUADRUPLE, 0)
         );
     }
 
     @ParameterizedTest
     @MethodSource("withTheMinimumScore")
     void getTheMinimumScore(FieldType fieldType, int expectedMinimum) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         int actualMinimum = fields.stream()
@@ -78,14 +78,14 @@ class QuadroBoardTests {
                 Arguments.of(FieldType.SINGLE, 1),
                 Arguments.of(FieldType.DOUBLE, 2),
                 Arguments.of(FieldType.TRIPLE, 3),
-                Arguments.of(FieldType.QUADRUPLE, 4)
+                Arguments.of(FieldType.QUADRUPLE, Integer.MAX_VALUE)
         );
     }
 
     @ParameterizedTest
     @MethodSource("withTheMaximumScore")
     void getTheMaximumScore(FieldType fieldType, int expectedMaximum) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         int actualMaximum = fields.stream()
@@ -101,14 +101,14 @@ class QuadroBoardTests {
                 Arguments.of(FieldType.SINGLE, 25),
                 Arguments.of(FieldType.DOUBLE, 50),
                 Arguments.of(FieldType.TRIPLE, 60),
-                Arguments.of(FieldType.QUADRUPLE, 80)
+                Arguments.of(FieldType.QUADRUPLE, Integer.MIN_VALUE)
         );
     }
 
     @ParameterizedTest
     @MethodSource("withTheSumOfScores")
     void getTheTotalScore(FieldType fieldType, int expectedSum) {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         List<Field> fields = board.getFields(fieldType);
 
         int actualSum = fields.stream()
@@ -123,14 +123,14 @@ class QuadroBoardTests {
                 Arguments.of(FieldType.SINGLE, 235),
                 Arguments.of(FieldType.DOUBLE, 470),
                 Arguments.of(FieldType.TRIPLE, 630),
-                Arguments.of(FieldType.QUADRUPLE, 840)
+                Arguments.of(FieldType.QUADRUPLE, 0)
         );
     }
 
     @Test
     void getEqualBoards() {
-        Board board1 = QuadroBoard.create();
-        Board board2 = QuadroBoard.create();
+        Board board1 = LondonBoard.create();
+        Board board2 = LondonBoard.create();
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(board1, board2),
@@ -140,7 +140,7 @@ class QuadroBoardTests {
 
     @Test
     void convertToAString() {
-        Board board = QuadroBoard.create();
+        Board board = LondonBoard.create();
         String str = board.toString();
 
         Assertions.assertAll(

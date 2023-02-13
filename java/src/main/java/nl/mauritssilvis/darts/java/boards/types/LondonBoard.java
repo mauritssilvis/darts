@@ -3,14 +3,13 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.boards.london;
+package nl.mauritssilvis.darts.java.boards.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
-import nl.mauritssilvis.darts.java.boards.common.TypedField;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +23,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class LondonBoard implements Board {
+final class LondonBoard implements Board {
     private static final int RANGE_MIN = 1;
     private static final int RANGE_MAX = 20;
     private static final int RANGE_EXTENSION = 25;

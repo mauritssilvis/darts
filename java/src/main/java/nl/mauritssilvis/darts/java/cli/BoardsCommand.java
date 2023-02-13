@@ -6,8 +6,8 @@
 package nl.mauritssilvis.darts.java.cli;
 
 import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
 import nl.mauritssilvis.darts.java.boards.output.BoardSerializerFactory;
+import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.OutputFormat;

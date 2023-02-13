@@ -10,7 +10,7 @@ import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.boards.FieldType;
-import nl.mauritssilvis.darts.java.boards.factory.BoardFactory;
+import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
 import nl.mauritssilvis.darts.java.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.checkouts.factory.CheckoutFinderFactory;

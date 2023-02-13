@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.java.checkouts.descending;
 
-import nl.mauritssilvis.darts.java.boards.common.TypedFieldTestUtils;
+import nl.mauritssilvis.darts.java.boards.types.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.checkouts.Throw;
 
 import java.util.Collection;

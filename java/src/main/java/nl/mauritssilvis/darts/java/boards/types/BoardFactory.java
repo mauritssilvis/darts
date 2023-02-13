@@ -3,12 +3,9 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.boards.factory;
+package nl.mauritssilvis.darts.java.boards.types;
 
 import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.london.LondonBoard;
-import nl.mauritssilvis.darts.java.boards.quadro.QuadroBoard;
-import nl.mauritssilvis.darts.java.boards.yorkshire.YorkshireBoard;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 
 /**
