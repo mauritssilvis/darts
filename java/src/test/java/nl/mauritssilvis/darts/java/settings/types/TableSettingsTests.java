@@ -79,7 +79,7 @@ class TableSettingsTests {
     }
 
     @Test
-    void doesNotHaveAFixedNumberOfThrows() {
+    void doNotGetAFixedNumberOfThrows() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
@@ -96,7 +96,7 @@ class TableSettingsTests {
     }
 
     @Test
-    void hasAFixedNumberOfThrows() {
+    void getAFixedNumberOfThrows() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
