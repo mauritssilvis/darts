@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.finders.paths.types;
 
+import nl.mauritssilvis.darts.java.finders.paths.Path;
 import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 class PathfinderFactoryTests {
     @Test
@@ -30,5 +32,21 @@ class PathfinderFactoryTests {
         Pathfinder pathfinder = PathfinderFactory.create(finderType, nodes);
 
         Assertions.assertTrue(pathfinder instanceof DescendingPathfinder);
+    }
+
+    @Test
+    void passOnTheNodes() {
+        FinderType finderType = FinderType.CARTESIAN;
+
+        Collection<Collection<Integer>> weightsPerNode = List.of(List.of(7));
+        Collection<Node> nodes = CartesianNodeTestUtils.getNodes(weightsPerNode);
+
+        Pathfinder pathfinder = PathfinderFactory.create(finderType, nodes);
+
+        int length = 7;
+
+        Collection<Path> paths = pathfinder.find(length);
+
+        Assertions.assertFalse(paths.isEmpty());
     }
 }
