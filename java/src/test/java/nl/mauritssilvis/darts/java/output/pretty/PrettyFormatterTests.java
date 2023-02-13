@@ -103,4 +103,32 @@ class PrettyFormatterTests {
 
         Assertions.assertEquals("A(\n    B,\n    C(\n        D;\n        E\n    ),\n    F\n)", output);
     }
+
+    @Test
+    void avoidDoubleNewlinesWithDelimitedBrackets() {
+        Collection<Character> brackets = List.of('(');
+        Collection<Character> delimiters = List.of(',');
+        int indentationSize = 2;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "(),()";
+
+        String output = formatter.format(input);
+
+        Assertions.assertEquals("(\n),\n(\n)", output);
+    }
+
+    @Test
+    void avoidDoubleNewlinesWithBackToBackBrackets() {
+        Collection<Character> brackets = List.of('(');
+        Collection<Character> delimiters = Collections.emptyList();
+        int indentationSize = 2;
+
+        Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+        String input = "()()";
+
+        String output = formatter.format(input);
+
+        Assertions.assertEquals("(\n)(\n)", output);
+    }
 }
