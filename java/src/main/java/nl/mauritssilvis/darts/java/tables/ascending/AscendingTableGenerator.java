@@ -31,17 +31,8 @@ import java.util.stream.IntStream;
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true)
 public final class AscendingTableGenerator implements TableGenerator {
-    @ToString.Include
-    private final BoardType boardType;
-    @ToString.Include
-    private final CheckMode checkInMode;
-    @ToString.Include
-    private final CheckMode checkoutMode;
-    @ToString.Include
     private final int numThrows;
-    @ToString.Include
     private final ThrowMode throwMode;
-    @ToString.Include
     private final FinderType finderType;
     @ToString.Include
     private final Settings settings;
@@ -56,14 +47,16 @@ public final class AscendingTableGenerator implements TableGenerator {
     private AscendingTableGenerator(Settings settings) {
         this.settings = settings;
 
-        boardType = settings.getBoardType();
-        checkInMode = settings.getCheckInMode();
-        checkoutMode = settings.getCheckoutMode();
         numThrows = settings.getNumThrows();
         throwMode = settings.getThrowMode();
         finderType = settings.getFinderType();
 
+        BoardType boardType = settings.getBoardType();
+        CheckMode checkInMode = settings.getCheckInMode();
+        CheckMode checkoutMode = settings.getCheckoutMode();
+
         Board board = BoardFactory.create(boardType);
+
         firstFields = getFields(board, checkInMode);
         middleFields = getFields(board, CheckMode.ANY);
         lastFields = getFields(board, checkoutMode);
@@ -85,7 +78,7 @@ public final class AscendingTableGenerator implements TableGenerator {
     public Table generate(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap;
 
-        if (numThrows == -1) {
+        if (!settings.hasFixedNumThrows()) {
             checkoutMap = getRegularCheckoutMap(minScore, maxScore);
         } else if (throwMode == ThrowMode.OPTIMAL) {
             checkoutMap = getMinimumThrowCheckoutMap(minScore, maxScore);
