@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.checkouts.descending;
+package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -24,7 +24,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class GroupedCheckout implements Checkout {
+final class GroupedCheckout implements Checkout {
     private final int score;
     private final List<Throw> throwList;
     private final List<Boolean> grouping;

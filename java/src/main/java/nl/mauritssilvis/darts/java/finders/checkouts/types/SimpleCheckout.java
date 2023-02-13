@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.checkouts.cartesian;
+package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
-public final class SimpleCheckout implements Checkout {
+final class SimpleCheckout implements Checkout {
     private final int score;
     private final List<Throw> throwList;
 

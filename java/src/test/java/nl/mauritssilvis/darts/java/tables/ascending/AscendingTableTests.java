@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 
 import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
-import nl.mauritssilvis.darts.java.finders.checkouts.descending.GroupedCheckoutTestUtils;
+import nl.mauritssilvis.darts.java.finders.checkouts.types.GroupedCheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;

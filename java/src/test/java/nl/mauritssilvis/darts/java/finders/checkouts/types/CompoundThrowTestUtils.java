@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.checkouts.descending;
+package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import nl.mauritssilvis.darts.java.boards.types.TypedFieldTestUtils;
 import nl.mauritssilvis.darts.java.finders.checkouts.Throw;

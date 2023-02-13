@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.checkouts.descending;
+package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
-public final class CompoundThrow implements Throw {
+final class CompoundThrow implements Throw {
     private final int score;
     private final List<Field> fields;
 

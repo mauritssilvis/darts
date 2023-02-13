@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.checkouts.descending;
+package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -36,7 +36,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class DescendingCheckoutFinder implements CheckoutFinder {
+final class DescendingCheckoutFinder implements CheckoutFinder {
     private final Pathfinder pathfinder;
     @ToString.Exclude
     private final List<Map<Integer, List<Field>>> scoreMaps;

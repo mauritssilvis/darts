@@ -13,7 +13,7 @@ import nl.mauritssilvis.darts.java.boards.FieldType;
 import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
 import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.finders.checkouts.factory.CheckoutFinderFactory;
+import nl.mauritssilvis.darts.java.finders.checkouts.types.CheckoutFinderFactory;
 import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
