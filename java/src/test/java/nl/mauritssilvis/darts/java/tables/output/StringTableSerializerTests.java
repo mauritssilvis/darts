@@ -49,7 +49,6 @@ class StringTableSerializerTests {
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
 
-
         int minScore = 3;
         int maxScore = 3;
 
@@ -74,7 +73,6 @@ class StringTableSerializerTests {
                 .build();
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
-
 
         int minScore = 1;
         int maxScore = 1;

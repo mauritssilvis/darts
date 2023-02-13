@@ -29,7 +29,6 @@ public final class PrettyFormatter implements Formatter {
     private final Deque<Character> brackets = new ArrayDeque<>();
     private final Pattern doubleNewlines = Pattern.compile("\\n *\\n");
 
-
     private PrettyFormatter(
             Collection<Character> brackets,
             Collection<Character> delimiters,

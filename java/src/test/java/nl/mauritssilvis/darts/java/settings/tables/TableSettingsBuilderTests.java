@@ -48,7 +48,6 @@ class TableSettingsBuilderTests {
         Assertions.assertEquals(boardType2, settings.getBoardType());
     }
 
-
     @Test
     void getTheCheckInMode() {
         CheckMode checkInMode = CheckMode.MASTER;
@@ -86,7 +85,6 @@ class TableSettingsBuilderTests {
 
         Assertions.assertEquals(checkInMode2, settings.getCheckInMode());
     }
-
 
     @Test
     void getTheCheckoutMode() {
@@ -126,7 +124,6 @@ class TableSettingsBuilderTests {
         Assertions.assertEquals(checkoutMode2, settings.getCheckoutMode());
     }
 
-
     @Test
     void getTheNumThrows() {
         int numThrows = 5;
@@ -164,7 +161,6 @@ class TableSettingsBuilderTests {
 
         Assertions.assertEquals(numThrows2, settings.getNumThrows());
     }
-
 
     @Test
     void getTheThrowMode() {
@@ -241,7 +237,6 @@ class TableSettingsBuilderTests {
 
         Assertions.assertEquals(finderType2, settings.getFinderType());
     }
-
 
     @Test
     void getTheTableType() {
