@@ -19,7 +19,7 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
-public final class BasicNode implements Node {
+final class BasicNode implements Node {
     private final List<Integer> weights;
 
     private BasicNode(Collection<Integer> weights) {

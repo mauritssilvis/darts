@@ -24,7 +24,7 @@ public final class CheckoutFinderFactory {
      * Returns a new {@code CheckoutFinder} of the specified type with the
      * specified fields per throw.
      *
-     * @param finderType     the checkout finder type
+     * @param finderType     the finder type
      * @param fieldsPerThrow a collection of available fields per throw
      * @return a new {@code CheckoutFinder} of the specified type with the
      * specified fields per throw

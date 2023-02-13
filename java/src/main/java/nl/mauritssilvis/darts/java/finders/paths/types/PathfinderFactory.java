@@ -23,7 +23,7 @@ public final class PathfinderFactory {
      * Returns a new {@code Pathfinder} of the specified type for the specified
      * nodes.
      *
-     * @param finderType the pathfinder type
+     * @param finderType the finder type
      * @param nodes      a collection of nodes
      * @return a new {@code Pathfinder} of the specified type for the specified
      * nodes

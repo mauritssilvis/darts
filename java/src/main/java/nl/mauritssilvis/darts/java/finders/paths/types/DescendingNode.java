@@ -20,7 +20,7 @@ import java.util.List;
  */
 @EqualsAndHashCode
 @ToString
-public final class DescendingNode implements Node {
+final class DescendingNode implements Node {
     private final List<Integer> weights;
 
     private DescendingNode(Collection<Integer> weights) {
