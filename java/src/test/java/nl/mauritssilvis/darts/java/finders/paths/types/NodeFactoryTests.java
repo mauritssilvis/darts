@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 class NodeFactoryTests {
     @Test
@@ -29,5 +30,14 @@ class NodeFactoryTests {
         Node pathfinder = NodeFactory.create(finderType, weights);
 
         Assertions.assertTrue(pathfinder instanceof DescendingNode);
+    }
+
+    @Test
+    void passOnTheWeights() {
+        FinderType finderType = FinderType.CARTESIAN;
+        Collection<Integer> weights = List.of(0, 2, 4);
+        Node node = NodeFactory.create(finderType, weights);
+
+        Assertions.assertEquals(weights, node.getWeights());
     }
 }
