@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.java.output.Formatter;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
@@ -34,12 +35,12 @@ public class PrettyFormatter implements Formatter {
             Collection<Character> delimiters,
             int indentationSize
     ) {
-        openingBrackets = brackets;
+        openingBrackets = List.copyOf(brackets);
         closingBrackets = brackets.stream()
                 .map(PrettyFormatter::getClosingBracket)
                 .toList();
 
-        this.delimiters = delimiters;
+        this.delimiters = List.copyOf(delimiters);
         this.indentationSize = indentationSize;
     }
 
@@ -68,7 +69,7 @@ public class PrettyFormatter implements Formatter {
 
         for (char ch : input.toCharArray()) {
             if (closingBrackets.contains(ch)) {
-                if (ch != brackets.pop()) {
+                if (brackets.isEmpty() || ch != brackets.pop()) {
                     brackets.push('!');
                     break;
                 }
