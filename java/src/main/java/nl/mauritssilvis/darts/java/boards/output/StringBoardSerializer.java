@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.java.boards.output;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.output.Formatter;
 import nl.mauritssilvis.darts.java.output.Serializer;
@@ -20,6 +22,8 @@ import java.util.List;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
+@EqualsAndHashCode
+@ToString
 final class StringBoardSerializer implements Serializer<Board> {
     private final Formatter formatter;
 

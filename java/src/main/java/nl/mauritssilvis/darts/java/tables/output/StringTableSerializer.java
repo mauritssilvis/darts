@@ -5,6 +5,8 @@
 
 package nl.mauritssilvis.darts.java.tables.output;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.output.Formatter;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.output.pretty.PrettyFormatter;
@@ -20,6 +22,8 @@ import java.util.List;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
+@ToString
+@EqualsAndHashCode
 final class StringTableSerializer implements Serializer<Table> {
     private final Formatter formatter;
 
