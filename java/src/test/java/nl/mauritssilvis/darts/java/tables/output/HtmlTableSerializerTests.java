@@ -13,7 +13,7 @@ import nl.mauritssilvis.darts.java.settings.TableType;
 import nl.mauritssilvis.darts.java.settings.tables.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
-import nl.mauritssilvis.darts.java.tables.factory.TableGeneratorFactory;
+import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

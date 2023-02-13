@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.tables.ascending;
+package nl.mauritssilvis.darts.java.tables.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -30,7 +30,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString(onlyExplicitlyIncluded = true)
-public final class AscendingTableGenerator implements TableGenerator {
+final class AscendingTableGenerator implements TableGenerator {
     private final int numThrows;
     private final ThrowMode throwMode;
     private final FinderType finderType;
