@@ -17,13 +17,13 @@ import nl.mauritssilvis.darts.java.settings.*;
  */
 @ToString
 public final class TableSettingsBuilder implements SettingsBuilder {
-    BoardType boardType = BoardType.LONDON;
-    CheckMode checkInMode = CheckMode.ANY;
-    CheckMode checkoutMode = CheckMode.DOUBLE;
-    int numThrows = -1;
-    ThrowMode throwMode = ThrowMode.OPTIMAL;
-    FinderType finderType = FinderType.DESCENDING;
-    TableType tableType = TableType.ASCENDING;
+    private BoardType boardType = BoardType.LONDON;
+    private CheckMode checkInMode = CheckMode.ANY;
+    private CheckMode checkoutMode = CheckMode.DOUBLE;
+    private int numThrows = -1;
+    private ThrowMode throwMode = ThrowMode.OPTIMAL;
+    private FinderType finderType = FinderType.DESCENDING;
+    private TableType tableType = TableType.ASCENDING;
 
     private TableSettingsBuilder() {
     }
