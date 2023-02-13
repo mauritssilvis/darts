@@ -110,7 +110,6 @@ public class PrettyFormatter implements Formatter {
             case '{' -> '}';
             case '[' -> ']';
             case '(' -> ')';
-            case '<' -> '>';
             default -> throw new IllegalArgumentException(
                     "Unsupported bracket '" + ch + "'"
             );
