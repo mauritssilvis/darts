@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class MarkdownBoardSerializer implements Serializer<Board> {
+final class MarkdownBoardSerializer implements Serializer<Board> {
     private MarkdownBoardSerializer() {
     }
 

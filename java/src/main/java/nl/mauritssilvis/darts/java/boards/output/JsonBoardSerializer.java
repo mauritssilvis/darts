@@ -21,7 +21,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class JsonBoardSerializer implements Serializer<Board> {
+final class JsonBoardSerializer implements Serializer<Board> {
     private JsonBoardSerializer() {
     }
 
