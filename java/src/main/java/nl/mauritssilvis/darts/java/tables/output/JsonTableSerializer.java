@@ -5,8 +5,14 @@
 
 package nl.mauritssilvis.darts.java.tables.output;
 
+import nl.mauritssilvis.darts.java.output.Formatter;
 import nl.mauritssilvis.darts.java.output.Serializer;
+import nl.mauritssilvis.darts.java.output.pretty.PrettyFormatter;
 import nl.mauritssilvis.darts.java.tables.Table;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * An implementation of the generic {@code Serializer} interface that serializes
@@ -34,14 +40,21 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
     private static class JsonTablePrinter extends TablePrinter {
         private final StringBuilder stringBuilder = new StringBuilder();
+        private final Formatter formatter;
 
         JsonTablePrinter(Table table) {
             super(table);
+
+            int indentationSize = 4;
+            Collection<Character> brackets = List.of('{', '[', '(');
+            Collection<Character> delimiters = Collections.singleton(',');
+
+            formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
         }
 
         @Override
         void startTable() {
-            stringBuilder.append("{\n");
+            stringBuilder.append('{');
         }
 
         @Override
@@ -51,29 +64,28 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void startScore(int score, int numCheckouts) {
-            stringBuilder.append("    \"")
+            stringBuilder.append('"')
                     .append(score)
-                    .append("\": {\n");
+                    .append("\": {");
         }
 
         @Override
         void endScore() {
-            stringBuilder.append("    }");
+            stringBuilder.append('}');
         }
 
         @Override
         void separateScore() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastScore() {
-            stringBuilder.append('\n');
         }
 
         @Override
         void startMultiplicity() {
-            stringBuilder.append("        \"multiplicity\": ");
+            stringBuilder.append("\"multiplicity\": ");
         }
 
         @Override
@@ -83,37 +95,36 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void endMultiplicity() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void startCheckouts() {
-            stringBuilder.append("        \"checkouts\": [\n");
+            stringBuilder.append("\"checkouts\": [");
         }
 
         @Override
         void endCheckouts() {
-            stringBuilder.append("        ]\n");
+            stringBuilder.append(']');
         }
 
         @Override
         void startCheckout() {
-            stringBuilder.append("            {\n");
+            stringBuilder.append('{');
         }
 
         @Override
         void endCheckout() {
-            stringBuilder.append("            }");
+            stringBuilder.append('}');
         }
 
         @Override
         void separateCheckout() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastCheckout() {
-            stringBuilder.append('\n');
         }
 
         @Override
@@ -130,32 +141,31 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void startThrows() {
-            stringBuilder.append("                \"throws\": [\n");
+            stringBuilder.append("\"throws\": [");
         }
 
         @Override
         void endThrows() {
-            stringBuilder.append("                ],\n");
+            stringBuilder.append("],");
         }
 
         @Override
         void startThrow() {
-            stringBuilder.append("                    [\n");
+            stringBuilder.append('[');
         }
 
         @Override
         void endThrow() {
-            stringBuilder.append("                    ]");
+            stringBuilder.append(']');
         }
 
         @Override
         void separateThrow() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastThrow() {
-            stringBuilder.append('\n');
         }
 
         @Override
@@ -168,7 +178,7 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void startField() {
-            stringBuilder.append("                        \"");
+            stringBuilder.append('"');
         }
 
         @Override
@@ -178,22 +188,21 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void endField() {
-            stringBuilder.append("\"");
+            stringBuilder.append('"');
         }
 
         @Override
         void separateField() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastField() {
-            stringBuilder.append('\n');
         }
 
         @Override
         void startCheckoutMultiplicity() {
-            stringBuilder.append("                \"multiplicity\": ");
+            stringBuilder.append("\"multiplicity\": ");
         }
 
         @Override
@@ -203,12 +212,11 @@ public final class JsonTableSerializer implements Serializer<Table> {
 
         @Override
         void endCheckoutMultiplicity() {
-            stringBuilder.append('\n');
         }
 
         @Override
         String getString() {
-            return stringBuilder.toString();
+            return formatter.format(stringBuilder.toString());
         }
     }
 }

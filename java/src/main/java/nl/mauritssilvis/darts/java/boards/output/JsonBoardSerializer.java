@@ -7,7 +7,13 @@ package nl.mauritssilvis.darts.java.boards.output;
 
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.FieldType;
+import nl.mauritssilvis.darts.java.output.Formatter;
 import nl.mauritssilvis.darts.java.output.Serializer;
+import nl.mauritssilvis.darts.java.output.pretty.PrettyFormatter;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * An implementation of the generic {@code Serializer} interface that serializes
@@ -35,14 +41,21 @@ public final class JsonBoardSerializer implements Serializer<Board> {
 
     private static class JsonBoardPrinter extends BoardPrinter {
         private final StringBuilder stringBuilder = new StringBuilder();
+        private final Formatter formatter;
 
         JsonBoardPrinter(Board board) {
             super(board);
+
+            int indentationSize = 4;
+            Collection<Character> brackets = List.of('{', '[', '(');
+            Collection<Character> delimiters = Collections.singleton(',');
+
+            formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
         }
 
         @Override
         void startBoard() {
-            stringBuilder.append("{\n");
+            stringBuilder.append('{');
         }
 
         @Override
@@ -54,29 +67,28 @@ public final class JsonBoardSerializer implements Serializer<Board> {
         void startType(FieldType fieldType) {
             String typeName = getTypeName(fieldType);
 
-            stringBuilder.append("    \"")
+            stringBuilder.append('"')
                     .append(typeName)
-                    .append("\": [\n");
+                    .append("\": [");
         }
 
         @Override
         void endType() {
-            stringBuilder.append("    ]");
+            stringBuilder.append(']');
         }
 
         @Override
         void separateType() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastType() {
-            stringBuilder.append('\n');
         }
 
         @Override
         void startField() {
-            stringBuilder.append("        \"");
+            stringBuilder.append('"');
         }
 
         @Override
@@ -91,12 +103,11 @@ public final class JsonBoardSerializer implements Serializer<Board> {
 
         @Override
         void separateField() {
-            stringBuilder.append(",\n");
+            stringBuilder.append(',');
         }
 
         @Override
         void endLastField() {
-            stringBuilder.append('\n');
         }
 
         @Override
@@ -113,7 +124,7 @@ public final class JsonBoardSerializer implements Serializer<Board> {
 
         @Override
         String getString() {
-            return stringBuilder.toString();
+            return formatter.format(stringBuilder.toString());
         }
 
         private static String getTypeName(FieldType fieldType) {
