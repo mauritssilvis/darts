@@ -3,9 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.cartesian;
-
-import nl.mauritssilvis.darts.java.finders.paths.common.Node;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
  * A set of testing utilities that create (collections of) {@code BasicNode}
  * objects.
  */
-public final class BasicNodeTestUtils {
+final class BasicNodeTestUtils {
     private BasicNodeTestUtils() {
     }
 

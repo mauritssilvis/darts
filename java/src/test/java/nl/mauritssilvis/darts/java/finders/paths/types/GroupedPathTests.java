@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.descending;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import nl.mauritssilvis.darts.java.finders.paths.Path;
 import org.junit.jupiter.api.Assertions;

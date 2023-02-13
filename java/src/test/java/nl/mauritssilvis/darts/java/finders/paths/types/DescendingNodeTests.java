@@ -3,9 +3,8 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.cartesian;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
-import nl.mauritssilvis.darts.java.finders.paths.common.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,39 +13,49 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-class BasicNodeTests {
+class DescendingNodeTests {
     @Test
     void storeIndependentWeights() {
-        List<Integer> weights = new ArrayList<>(List.of(-1, 0, 2));
-        Node node = BasicNode.of(weights);
+        List<Integer> weights = new ArrayList<>(List.of(2, 0, -2));
+        Node node = DescendingNode.of(weights);
 
-        weights.set(1, -2);
+        weights.set(1, 1);
 
         Assertions.assertNotEquals(weights, node.getWeights());
     }
 
     @Test
     void storeUniqueWeights() {
-        Collection<Integer> weights = List.of(7, 7, 8, 8, 9);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = List.of(5, 5, 6, 8, 6);
+        Node node = DescendingNode.of(weights);
 
-        List<Integer> uniqueWeights = List.of(7, 8, 9);
+        List<Integer> uniqueWeights = List.of(8, 6, 5);
 
         Assertions.assertEquals(uniqueWeights, node.getWeights());
     }
 
     @Test
+    void storeStrictlyDescendingWeights() {
+        Collection<Integer> weights = List.of(1, 4, 5, 5, 4, -1);
+        Node node = DescendingNode.of(weights);
+
+        List<Integer> descendingWeights = List.of(5, 4, 1, -1);
+
+        Assertions.assertEquals(descendingWeights, node.getWeights());
+    }
+
+    @Test
     void getTheWeights() {
-        Collection<Integer> weights = List.of(4, 5, 6);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = List.of(7, 6, 5);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
 
     @Test
     void getTheWeightsWithSingletonInput() {
-        Collection<Integer> weights = Collections.singletonList(3);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = Collections.singletonList(9);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
@@ -54,33 +63,33 @@ class BasicNodeTests {
     @Test
     void getTheWeightsWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
-        Node node = BasicNode.of(weights);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertEquals(weights, node.getWeights());
     }
 
     @Test
     void getImmutableWeights() {
-        Collection<Integer> weights = new ArrayList<>(List.of(4, 5, 6));
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = new ArrayList<>(List.of(8, 9, 10));
+        Node node = DescendingNode.of(weights);
 
         List<Integer> storedWeights = node.getWeights();
 
-        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(2, 1));
+        Assertions.assertThrows(UnsupportedOperationException.class, () -> storedWeights.set(0, 7));
     }
 
     @Test
     void getAConnectedNode() {
-        Collection<Integer> weights = List.of(10, 8);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = List.of(3, 4);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());
     }
 
     @Test
     void getAConnectedNodeWithSingletonInput() {
-        Collection<Integer> weights = Collections.singletonList(3);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = Collections.singletonList(8);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertTrue(node.isConnected());
     }
@@ -88,18 +97,18 @@ class BasicNodeTests {
     @Test
     void getADisconnectedNodeWithEmptyInput() {
         Collection<Integer> weights = Collections.emptyList();
-        Node node = BasicNode.of(weights);
+        Node node = DescendingNode.of(weights);
 
         Assertions.assertFalse(node.isConnected());
     }
 
     @Test
     void getEqualNodes() {
-        Collection<Integer> weights1 = List.of(-10, 10, 10);
-        Node node1 = BasicNode.of(weights1);
+        Collection<Integer> weights1 = List.of(3, 4, 4, 5);
+        Node node1 = DescendingNode.of(weights1);
 
-        Collection<Integer> weights2 = List.of(-10, 10);
-        Node node2 = BasicNode.of(weights2);
+        Collection<Integer> weights2 = List.of(5, 4, 3);
+        Node node2 = DescendingNode.of(weights2);
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(node1, node2),
@@ -109,19 +118,19 @@ class BasicNodeTests {
 
     @Test
     void getUnequalNodes() {
-        Collection<Integer> weights1 = List.of(-10, 0, 10);
-        Node node1 = BasicNode.of(weights1);
+        Collection<Integer> weights1 = List.of(4, 5, 5, 6);
+        Node node1 = DescendingNode.of(weights1);
 
-        Collection<Integer> weights2 = List.of(-5, 0, 5);
-        Node node2 = BasicNode.of(weights2);
+        Collection<Integer> weights2 = List.of(4, 6);
+        Node node2 = DescendingNode.of(weights2);
 
         Assertions.assertNotEquals(node1, node2);
     }
 
     @Test
     void convertToAString() {
-        Collection<Integer> weights = List.of(0, 1, 3);
-        Node node = BasicNode.of(weights);
+        Collection<Integer> weights = List.of(10, 5, 0, -5);
+        Node node = DescendingNode.of(weights);
 
         String str = node.toString();
 

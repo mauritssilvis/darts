@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.descending;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -23,7 +23,7 @@ import java.util.stream.IntStream;
  */
 @EqualsAndHashCode
 @ToString
-public final class GroupedPath implements Path {
+final class GroupedPath implements Path {
     private final List<Integer> steps;
     private final List<Boolean> grouping;
 

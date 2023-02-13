@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.common;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import java.util.List;
 

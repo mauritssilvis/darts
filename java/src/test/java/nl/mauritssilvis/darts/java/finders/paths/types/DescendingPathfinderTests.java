@@ -3,13 +3,11 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.descending;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import nl.mauritssilvis.darts.java.finders.paths.Path;
 import nl.mauritssilvis.darts.java.finders.paths.PathTestUtils;
 import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
-import nl.mauritssilvis.darts.java.finders.paths.cartesian.BasicNodeTestUtils;
-import nl.mauritssilvis.darts.java.finders.paths.common.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

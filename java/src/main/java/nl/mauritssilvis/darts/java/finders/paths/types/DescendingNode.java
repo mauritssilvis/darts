@@ -3,11 +3,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.finders.paths.descending;
+package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.finders.paths.common.Node;
 
 import java.util.Collection;
 import java.util.Comparator;

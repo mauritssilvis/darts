@@ -12,9 +12,9 @@ import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.finders.paths.Path;
 import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
-import nl.mauritssilvis.darts.java.finders.paths.cartesian.BasicNode;
-import nl.mauritssilvis.darts.java.finders.paths.cartesian.CartesianPathfinder;
-import nl.mauritssilvis.darts.java.finders.paths.common.Node;
+import nl.mauritssilvis.darts.java.finders.paths.types.BasicNode;
+import nl.mauritssilvis.darts.java.finders.paths.types.CartesianPathfinder;
+import nl.mauritssilvis.darts.java.finders.paths.types.Node;
 
 import java.util.*;
 import java.util.stream.Collectors;
