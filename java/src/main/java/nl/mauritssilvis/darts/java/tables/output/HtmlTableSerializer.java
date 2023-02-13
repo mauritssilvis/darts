@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class HtmlTableSerializer implements Serializer<Table> {
+final class HtmlTableSerializer implements Serializer<Table> {
     private HtmlTableSerializer() {
     }
 

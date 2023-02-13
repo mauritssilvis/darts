@@ -20,7 +20,7 @@ import java.util.List;
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
-public final class StringTableSerializer implements Serializer<Table> {
+final class StringTableSerializer implements Serializer<Table> {
     private final Formatter formatter;
 
     private StringTableSerializer() {
