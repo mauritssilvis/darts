@@ -21,6 +21,7 @@ public interface Formatter {
      *
      * @param input the input string
      * @return a formatted string
+     * @throws IllegalArgumentException if the input string cannot be processed
      */
     String format(String input);
 }

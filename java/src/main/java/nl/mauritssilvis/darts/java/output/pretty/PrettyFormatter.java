@@ -51,6 +51,8 @@ public final class PrettyFormatter implements Formatter {
      * @param delimiters      a collection of delimiters
      * @param indentationSize the indentation size
      * @return a new {@code PrettyFormatter} with the specified properties
+     * @throws IllegalArgumentException if other characters than {, [ or ( are
+     *                                  passed as opening brackets
      */
     public static Formatter of(
             Collection<Character> brackets,
@@ -60,6 +62,10 @@ public final class PrettyFormatter implements Formatter {
         return new PrettyFormatter(brackets, delimiters, indentationSize);
     }
 
+    /**
+     * @throws IllegalArgumentException if opening and closing brackets in the
+     *                                  input string do not match
+     */
     @Override
     public String format(String input) {
         StringBuilder stringBuilder = new StringBuilder(input.length());
