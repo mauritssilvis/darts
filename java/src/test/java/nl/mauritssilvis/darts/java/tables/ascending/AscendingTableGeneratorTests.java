@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.tables.ascending;
 
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import nl.mauritssilvis.darts.java.settings.CheckMode;
 import nl.mauritssilvis.darts.java.settings.FinderType;

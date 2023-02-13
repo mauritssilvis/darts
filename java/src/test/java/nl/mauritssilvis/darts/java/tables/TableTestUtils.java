@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.tables;
 
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
 
 import java.util.List;
 import java.util.Map;

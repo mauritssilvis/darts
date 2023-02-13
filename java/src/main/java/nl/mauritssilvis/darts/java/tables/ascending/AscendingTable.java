@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.tables.ascending;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.tables.Table;
 

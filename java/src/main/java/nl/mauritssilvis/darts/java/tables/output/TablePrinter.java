@@ -6,8 +6,8 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.checkouts.Throw;
+import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.Collection;
