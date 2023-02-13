@@ -10,6 +10,7 @@ import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.BoardType;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -53,6 +54,25 @@ class StringBoardSerializerTests {
         String indentation = "(\n  ";
 
         Assertions.assertTrue(output.contains(indentation));
+    }
+
+    @Test
+    void getEqualSerializers() {
+        Serializer<Board> serializer1 = StringBoardSerializer.create();
+        Serializer<Board> serializer2 = StringBoardSerializer.create();
+
+        Assertions.assertEquals(serializer1, serializer2);
+    }
+
+    @Test
+    void convertToAString() {
+        Serializer<Board> serializer = StringBoardSerializer.create();
+        String str = serializer.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(serializer.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("formatter"))
+        );
     }
 
     private static String getBoardName(BoardType boardType) {

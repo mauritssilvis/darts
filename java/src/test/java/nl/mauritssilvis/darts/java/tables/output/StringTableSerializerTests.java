@@ -13,6 +13,7 @@ import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
@@ -86,6 +87,25 @@ class StringTableSerializerTests {
         String indentation = "(\n  ";
 
         Assertions.assertTrue(output.contains(indentation));
+    }
+
+    @Test
+    void getEqualSerializers() {
+        Serializer<Table> serializer1 = StringTableSerializer.create();
+        Serializer<Table> serializer2 = StringTableSerializer.create();
+
+        Assertions.assertEquals(serializer1, serializer2);
+    }
+
+    @Test
+    void convertToAString() {
+        Serializer<Table> serializer = StringTableSerializer.create();
+        String str = serializer.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.contains(serializer.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("formatter"))
+        );
     }
 
     private static String getTableName(TableType tableType) {
