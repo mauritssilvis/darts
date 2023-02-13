@@ -6,6 +6,8 @@
 package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import nl.mauritssilvis.darts.java.boards.Field;
+import nl.mauritssilvis.darts.java.boards.types.TypedFieldTestUtils;
+import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.settings.FinderType;
 import org.junit.jupiter.api.Assertions;
@@ -13,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 class CheckoutFinderFactoryTests {
     @Test
@@ -31,5 +34,21 @@ class CheckoutFinderFactoryTests {
         CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(finderType, fieldsPerThrow);
 
         Assertions.assertTrue(checkoutFinder instanceof DescendingCheckoutFinder);
+    }
+
+    @Test
+    void passOnTheFieldsPerThrow() {
+        FinderType finderType = FinderType.CARTESIAN;
+
+        Collection<Collection<String>> namesPerThrow = List.of(List.of("1"));
+        Collection<List<Field>> fieldsPerThrow = TypedFieldTestUtils.getFieldsPerThrow(namesPerThrow);
+
+        CheckoutFinder checkoutFinder = CheckoutFinderFactory.create(finderType, fieldsPerThrow);
+
+        int score = 1;
+
+        Collection<Checkout> checkouts = checkoutFinder.find(score);
+
+        Assertions.assertFalse(checkouts.isEmpty());
     }
 }
