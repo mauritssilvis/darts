@@ -21,12 +21,14 @@ import java.util.List;
  * Relevant design patterns: strategy, immutable object, static factory method.
  */
 public final class StringTableSerializer implements Serializer<Table> {
-    private static final int indentationSize = 2;
-    private final Collection<Character> brackets = List.of('{', '[', '(');
-    private final Collection<Character> delimiters = Collections.singleton(',');
-    private final Formatter formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
+    private final Formatter formatter;
 
     private StringTableSerializer() {
+        int indentationSize = 2;
+        Collection<Character> brackets = List.of('{', '[', '(');
+        Collection<Character> delimiters = Collections.singleton(',');
+
+        formatter = PrettyFormatter.of(brackets, delimiters, indentationSize);
     }
 
     /**
