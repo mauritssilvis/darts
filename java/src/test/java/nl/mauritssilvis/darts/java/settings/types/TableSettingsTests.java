@@ -8,8 +8,27 @@ package nl.mauritssilvis.darts.java.settings.types;
 import nl.mauritssilvis.darts.java.settings.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class TableSettingsTests {
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -2, -5, -10})
+    void doNotAcceptANegativeNumberOfThrows() {
+        BoardType boardType = BoardType.LONDON;
+        CheckMode checkInMode = CheckMode.ANY;
+        CheckMode checkoutMode = CheckMode.DOUBLE;
+        int numThrows = -1;
+        ThrowMode throwMode = ThrowMode.OPTIMAL;
+        FinderType finderType = FinderType.DESCENDING;
+        TableType tableType = TableType.ASCENDING;
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> TableSettings.of(
+                        boardType, checkInMode, checkoutMode, numThrows, throwMode, finderType, tableType
+                )
+        );
+    }
+
     @Test
     void getTheBoardType() {
         BoardType boardType = BoardType.QUADRO;

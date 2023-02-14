@@ -35,6 +35,12 @@ final class TableSettings implements Settings {
             FinderType finderType,
             TableType tableType
     ) {
+        if (numThrows < 0) {
+            throw new IllegalArgumentException(
+                    "The number of throws cannot be negative."
+            );
+        }
+
         this.boardType = boardType;
         this.checkInMode = checkInMode;
         this.checkoutMode = checkoutMode;
@@ -55,6 +61,7 @@ final class TableSettings implements Settings {
      * @param finderType   the finder type
      * @param tableType    the table type
      * @return a new {@code TableSettings} object with the specified properties
+     * @throws IllegalArgumentException if the number of throws is negative
      */
     public static Settings of(
             BoardType boardType,
