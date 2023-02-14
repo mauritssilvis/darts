@@ -135,7 +135,7 @@ class DescendingNodeTests {
         String str = node.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(node.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(node.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("weights")),
                 () -> Assertions.assertTrue(str.contains("connected"))
         );

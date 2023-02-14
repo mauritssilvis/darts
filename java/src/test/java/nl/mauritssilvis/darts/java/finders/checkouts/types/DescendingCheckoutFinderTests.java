@@ -2344,7 +2344,7 @@ class DescendingCheckoutFinderTests {
         String str = checkoutFinder.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(checkoutFinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(checkoutFinder.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("pathfinder"))
         );
     }

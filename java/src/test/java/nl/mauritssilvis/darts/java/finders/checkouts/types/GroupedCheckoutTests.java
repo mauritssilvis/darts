@@ -576,7 +576,7 @@ class GroupedCheckoutTests {
         String str = checkout.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(checkout.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(checkout.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("score")),
                 () -> Assertions.assertTrue(str.contains("throw")),
                 () -> Assertions.assertTrue(str.contains("multiplicity"))

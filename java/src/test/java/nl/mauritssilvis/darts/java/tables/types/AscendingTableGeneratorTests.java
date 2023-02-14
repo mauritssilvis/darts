@@ -1241,7 +1241,7 @@ class AscendingTableGeneratorTests {
         String str = tableGenerator.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(tableGenerator.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(tableGenerator.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("settings"))
         );
     }

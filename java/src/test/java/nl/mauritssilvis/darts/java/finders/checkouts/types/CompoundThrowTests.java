@@ -165,7 +165,7 @@ class CompoundThrowTests {
         String str = compoundThrow.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(compoundThrow.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(compoundThrow.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("score")),
                 () -> Assertions.assertTrue(str.contains("field"))
         );

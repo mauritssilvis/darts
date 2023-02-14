@@ -468,7 +468,7 @@ class GroupedPathTests {
         String str = path.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(path.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(path.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("length")),
                 () -> Assertions.assertTrue(str.contains("steps")),
                 () -> Assertions.assertTrue(str.contains("grouping")),

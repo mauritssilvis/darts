@@ -369,7 +369,7 @@ class CartesianPathfinderTests {
         String str = pathfinder.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(pathfinder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(pathfinder.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("nodes"))
         );
     }

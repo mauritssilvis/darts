@@ -290,7 +290,7 @@ class TableSettingsBuilderTests {
         String str = settingsBuilder.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(settingsBuilder.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(settingsBuilder.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("boardType")),
                 () -> Assertions.assertTrue(str.contains("checkInMode")),
                 () -> Assertions.assertTrue(str.contains("checkoutMode")),

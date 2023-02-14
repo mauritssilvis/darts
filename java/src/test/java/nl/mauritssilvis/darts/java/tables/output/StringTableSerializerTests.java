@@ -103,7 +103,7 @@ class StringTableSerializerTests {
         String str = serializer.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(serializer.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(serializer.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("formatter"))
         );
     }

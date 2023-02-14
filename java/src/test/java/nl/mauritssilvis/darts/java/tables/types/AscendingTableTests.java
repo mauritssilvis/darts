@@ -394,7 +394,7 @@ class AscendingTableTests {
         String str = table.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(table.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(table.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("settings")),
                 () -> Assertions.assertTrue(str.contains("checkoutMap"))
         );

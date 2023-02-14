@@ -86,7 +86,7 @@ class SimpleThrowTests {
         String str = simpleThrow.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(simpleThrow.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(simpleThrow.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("score")),
                 () -> Assertions.assertTrue(str.contains("field"))
         );

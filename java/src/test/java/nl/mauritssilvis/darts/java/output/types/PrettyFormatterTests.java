@@ -251,7 +251,7 @@ class PrettyFormatterTests {
         String str = formatter.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(str.contains(formatter.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.startsWith(formatter.getClass().getSimpleName())),
                 () -> Assertions.assertTrue(str.contains("openingBrackets")),
                 () -> Assertions.assertTrue(str.contains("closingBrackets")),
                 () -> Assertions.assertTrue(str.contains("delimiters")),
