@@ -7,10 +7,7 @@ package nl.mauritssilvis.darts.java.tables.types;
 
 import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
-import nl.mauritssilvis.darts.java.settings.FinderType;
-import nl.mauritssilvis.darts.java.settings.Settings;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -20,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Collection;
 import java.util.List;
@@ -41,10 +39,41 @@ class AscendingTableGeneratorTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withoutCheckouts")
-    void doNotGetCheckoutsWithTooLowScores(
-            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, FinderType finderType
+    @MethodSource("withInvertedScores")
+    void doNotGetCheckoutsWithInvertedScores(int numThrows, ThrowMode throwMode, int minScore, int maxScore) {
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(minScore, maxScore);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+
+        Assertions.assertEquals(0, storedCheckoutMap.size());
+    }
+
+    private static Stream<Arguments> withInvertedScores() {
+        return Stream.of(
+                Arguments.of(-1, ThrowMode.OPTIMAL, 10, 9),
+                Arguments.of(-1, ThrowMode.FIXED, 2, 1),
+                Arguments.of(1, ThrowMode.OPTIMAL, 10, 5),
+                Arguments.of(3, ThrowMode.FIXED, 100, 1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withCartesianLondonBoardMasterInMasterOutCheckouts")
+    void getCartesianLondonBoardMasterInMasterOutCheckouts(
+            int score,
+            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
     ) {
+        BoardType boardType = BoardType.LONDON;
+        CheckMode checkInMode = CheckMode.MASTER;
+        CheckMode checkoutMode = CheckMode.MASTER;
+        FinderType finderType = FinderType.CARTESIAN;
+
         Settings settings = TableSettingsBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInMode(checkInMode)
@@ -54,30 +83,62 @@ class AscendingTableGeneratorTests {
 
         TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
 
-        int minScore = -2;
-        int maxScore = 1;
+        Table table = tableGenerator.generate(score, score);
 
-        Table table = tableGenerator.generate(minScore, maxScore);
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
 
-        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+        int totalMultiplicity = namesPerCheckout.size();
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(4, checkoutMap.size()),
-                () -> Assertions.assertTrue(checkoutMap.get(-2).isEmpty()),
-                () -> Assertions.assertTrue(checkoutMap.get(-1).isEmpty()),
-                () -> Assertions.assertTrue(checkoutMap.get(0).isEmpty()),
-                () -> Assertions.assertTrue(checkoutMap.get(1).isEmpty())
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
+                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
+                () -> Assertions.assertEquals(
+                        totalMultiplicity,
+                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
+                )
         );
     }
 
-    private static Stream<Arguments> withoutCheckouts() {
+    private static Stream<Arguments> withCartesianLondonBoardMasterInMasterOutCheckouts() {
         return Stream.of(
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, FinderType.CARTESIAN),
-                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, FinderType.CARTESIAN),
-                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.MASTER, FinderType.DESCENDING),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.MASTER, CheckMode.ANY, FinderType.CARTESIAN),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING)
+                Arguments.of(2, List.of(List.of(List.of("D1")))),
+                Arguments.of(
+                        6,
+                        List.of(
+                                List.of(List.of("D3")),
+                                List.of(List.of("T2"))
+                        )
+                ),
+                Arguments.of(
+                        18,
+                        List.of(
+                                List.of(List.of("D9")),
+                                List.of(List.of("T6"))
+                        )
+                ),
+                Arguments.of(48, List.of(List.of(List.of("T16")))),
+                Arguments.of(57, List.of(List.of(List.of("T19")))),
+                Arguments.of(60, List.of(List.of(List.of("T20")))),
+                Arguments.of(
+                        117,
+                        List.of(
+                                List.of(List.of("T19"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T19"))
+                        )
+                ),
+                Arguments.of(120, List.of(List.of(List.of("T20"), List.of("T20")))),
+                Arguments.of(
+                        177,
+                        List.of(
+                                List.of(List.of("T19"), List.of("T20"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T19"), List.of("T20")),
+                                List.of(List.of("T20"), List.of("T20"), List.of("T19"))
+                        )
+                ),
+                Arguments.of(180, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T20"))))
         );
     }
 
@@ -166,85 +227,6 @@ class AscendingTableGeneratorTests {
                         )
                 ),
                 Arguments.of(240, List.of(List.of(List.of("Q20"), List.of("Q20"), List.of("Q20"))))
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("withCartesianLondonBoardMasterInMasterOutCheckouts")
-    void getCartesianLondonBoardMasterInMasterOutCheckouts(
-            int score,
-            Collection<? extends Collection<? extends Collection<String>>> namesPerCheckout
-    ) {
-        BoardType boardType = BoardType.LONDON;
-        CheckMode checkInMode = CheckMode.MASTER;
-        CheckMode checkoutMode = CheckMode.MASTER;
-        FinderType finderType = FinderType.CARTESIAN;
-
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .setFinderType(finderType)
-                .build();
-
-        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
-
-        Table table = tableGenerator.generate(score, score);
-
-        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
-        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
-        Collection<List<List<String>>> storedNames = CheckoutTestUtils.getAllNames(storedCheckouts);
-
-        int totalMultiplicity = namesPerCheckout.size();
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
-                () -> Assertions.assertEquals(score, CheckoutTestUtils.getAvgScore(storedCheckouts)),
-                () -> Assertions.assertEquals(namesPerCheckout, storedNames),
-                () -> Assertions.assertEquals(
-                        totalMultiplicity,
-                        CheckoutTestUtils.getTotalMultiplicity(storedCheckouts)
-                )
-        );
-    }
-
-    private static Stream<Arguments> withCartesianLondonBoardMasterInMasterOutCheckouts() {
-        return Stream.of(
-                Arguments.of(2, List.of(List.of(List.of("D1")))),
-                Arguments.of(
-                        6,
-                        List.of(
-                                List.of(List.of("D3")),
-                                List.of(List.of("T2"))
-                        )
-                ),
-                Arguments.of(
-                        18,
-                        List.of(
-                                List.of(List.of("D9")),
-                                List.of(List.of("T6"))
-                        )
-                ),
-                Arguments.of(48, List.of(List.of(List.of("T16")))),
-                Arguments.of(57, List.of(List.of(List.of("T19")))),
-                Arguments.of(60, List.of(List.of(List.of("T20")))),
-                Arguments.of(
-                        117,
-                        List.of(
-                                List.of(List.of("T19"), List.of("T20")),
-                                List.of(List.of("T20"), List.of("T19"))
-                        )
-                ),
-                Arguments.of(120, List.of(List.of(List.of("T20"), List.of("T20")))),
-                Arguments.of(
-                        177,
-                        List.of(
-                                List.of(List.of("T19"), List.of("T20"), List.of("T20")),
-                                List.of(List.of("T20"), List.of("T19"), List.of("T20")),
-                                List.of(List.of("T20"), List.of("T20"), List.of("T19"))
-                        )
-                ),
-                Arguments.of(180, List.of(List.of(List.of("T20"), List.of("T20"), List.of("T20"))))
         );
     }
 
@@ -922,6 +904,298 @@ class AscendingTableGeneratorTests {
                                 50, 1L
                         )
                 )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutLowScoreOptimalCheckouts")
+    void doNotGetLowScoreOptimalCheckouts(
+            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, FinderType finderType
+    ) {
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .setFinderType(finderType)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        int minScore = -2;
+        int maxScore = 1;
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(4, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(0, storedCheckoutMap.get(-2).size()),
+                () -> Assertions.assertEquals(0, storedCheckoutMap.get(-1).size()),
+                () -> Assertions.assertEquals(0, storedCheckoutMap.get(0).size()),
+                () -> Assertions.assertEquals(0, storedCheckoutMap.get(1).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutLowScoreOptimalCheckouts() {
+        return Stream.of(
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, FinderType.CARTESIAN),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, FinderType.CARTESIAN),
+                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.MASTER, FinderType.DESCENDING),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.MASTER, CheckMode.ANY, FinderType.CARTESIAN),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.DOUBLE, CheckMode.MASTER, FinderType.DESCENDING)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withOptimalCheckouts")
+    void getOptimalCheckouts(int minScore, int maxScore, int minNumThrows, int maxNumThrows) {
+        Settings settings = TableSettingsBuilder.create().build();
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(minScore);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(maxScore);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts1.stream().allMatch(checkout -> checkout.getThrows().size() == minNumThrows)
+                ),
+                () -> Assertions.assertTrue(
+                        storedCheckouts2.stream().allMatch(checkout -> checkout.getThrows().size() == maxNumThrows)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withOptimalCheckouts() {
+        return Stream.of(
+                Arguments.of(22, 23, 1, 2),
+                Arguments.of(50, 51, 1, 2),
+                Arguments.of(169, 170, 4, 3)
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 23, 180})
+    void doNotGetOptimalZeroThrowCheckouts(int score) {
+        CheckMode checkoutMode = CheckMode.ANY;
+        int numThrows = 0;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutLowScoreOptimalFixedThrowCheckouts")
+    void doNotGetLowScoreOptimalFixedThrowCheckouts(int numThrows, int score) {
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutLowScoreOptimalFixedThrowCheckouts() {
+        return Stream.of(
+                Arguments.of(1, 0),
+                Arguments.of(1, 1),
+                Arguments.of(1, 3),
+                Arguments.of(2, 0),
+                Arguments.of(2, 1),
+                Arguments.of(2, 2)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutLowThrowOptimalCheckouts")
+    void doNotGetLowThrowOptimalCheckouts(int numThrows, int minScore, int maxScore) {
+        CheckMode checkoutMode = CheckMode.ANY;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(minScore, maxScore);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(maxScore - minScore + 1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(minScore).size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(maxScore).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutLowThrowOptimalCheckouts() {
+        return Stream.of(
+                Arguments.of(2, 0, 1),
+                Arguments.of(2, 1, 2),
+                Arguments.of(2, 3, 4),
+                Arguments.of(2, 21, 22),
+                Arguments.of(2, 50, 51),
+                Arguments.of(3, 50, 51),
+                Arguments.of(3, 120, 120)
+        );
+    }
+
+    @Test
+    void findOptimalFixedThrowCheckouts() {
+        CheckMode checkoutMode = CheckMode.ANY;
+        int numThrows = 2;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        int minScore = 22;
+        int maxScore = 23;
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(minScore);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(maxScore);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
+                () -> Assertions.assertEquals(0, storedCheckouts1.size()),
+                () -> Assertions.assertNotEquals(0, storedCheckouts2.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts2.stream().allMatch(checkout -> checkout.getThrows().size() == numThrows)
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 1, 2, 23, 180})
+    void doNotGetZeroThrowCheckouts(int score) {
+        CheckMode checkoutMode = CheckMode.ANY;
+        int numThrows = 0;
+        ThrowMode throwMode = ThrowMode.FIXED;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutLowScoreFixedThrowCheckouts")
+    void doNotGetLowScoreFixedThrowCheckouts(int numThrows, int score) {
+        ThrowMode throwMode = ThrowMode.FIXED;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutLowScoreFixedThrowCheckouts() {
+        return Stream.of(
+                Arguments.of(1, 0),
+                Arguments.of(1, 1),
+                Arguments.of(1, 3),
+                Arguments.of(2, 0),
+                Arguments.of(2, 1),
+                Arguments.of(2, 2),
+                Arguments.of(3, 0),
+                Arguments.of(3, 1),
+                Arguments.of(3, 2),
+                Arguments.of(3, 3)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withFixedThrowCheckouts")
+    void findAllFixedThrowCheckouts(int numThrows, int minScore, int maxScore) {
+        CheckMode checkoutMode = CheckMode.ANY;
+        ThrowMode throwMode = ThrowMode.FIXED;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+
+        Collection<Checkout> storedCheckouts1 = storedCheckoutMap.get(minScore);
+        Collection<Checkout> storedCheckouts2 = storedCheckoutMap.get(maxScore);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2, storedCheckoutMap.size()),
+                () -> Assertions.assertNotEquals(0, storedCheckouts1.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts1.stream().allMatch(checkout -> checkout.getThrows().size() == numThrows)
+                ),
+                () -> Assertions.assertNotEquals(0, storedCheckouts2.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts2.stream().allMatch(checkout -> checkout.getThrows().size() == numThrows)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withFixedThrowCheckouts() {
+        return Stream.of(
+                Arguments.of(2, 6, 7),
+                Arguments.of(2, 22, 23),
+                Arguments.of(2, 50, 51),
+                Arguments.of(3, 3, 4)
         );
     }
 
