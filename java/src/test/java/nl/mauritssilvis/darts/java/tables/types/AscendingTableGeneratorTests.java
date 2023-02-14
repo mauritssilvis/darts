@@ -726,90 +726,6 @@ class AscendingTableGeneratorTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withoutFewDartCheckouts")
-    void doNotReachACheckoutWithFewDarts(
-            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, int score, int targetNumThrows
-    ) {
-        Settings settings = TableSettingsBuilder.create()
-                .setBoardType(boardType)
-                .setCheckInMode(checkInMode)
-                .setCheckoutMode(checkoutMode)
-                .build();
-
-        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
-
-        Table table = tableGenerator.generate(score, score);
-
-        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
-        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
-                () -> Assertions.assertTrue(
-                        storedCheckouts.stream().noneMatch(checkout -> checkout.getThrows().size() == targetNumThrows)
-                )
-        );
-    }
-
-    private static Stream<Arguments> withoutFewDartCheckouts() {
-        return Stream.of(
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 0, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 1, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.ANY, 1, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 3, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 3, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 5, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 9, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 9, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 21, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 23, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 25, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 25, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 27, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 29, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 31, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 35, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 37, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 41, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 43, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.MASTER, 44, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 44, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 46, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 47, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 49, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 51, 1),
-                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 51, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 52, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 61, 1),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 76, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 79, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 81, 1),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 99, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 102, 2),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 103, 2),
-                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 104, 2),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 105, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 106, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 108, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 109, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 111, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, 113, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 121, 2),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 161, 2),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 159, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 162, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 163, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 165, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 166, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 168, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 169, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 171, 3),
-                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 181, 3),
-                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 241, 3)
-        );
-    }
-
-    @ParameterizedTest
     @MethodSource("withMultipleElementCheckoutMaps")
     void getCheckoutMapsWithMultipleScores(
             BoardType boardType,
@@ -948,6 +864,90 @@ class AscendingTableGeneratorTests {
     }
 
     @ParameterizedTest
+    @MethodSource("withoutHighScoreLowThrowOptimalCheckouts")
+    void doNotGetHighScoreLowThrowOptimalCheckouts(
+            BoardType boardType, CheckMode checkInMode, CheckMode checkoutMode, int score, int targetNumThrows
+    ) {
+        Settings settings = TableSettingsBuilder.create()
+                .setBoardType(boardType)
+                .setCheckInMode(checkInMode)
+                .setCheckoutMode(checkoutMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> storedCheckoutMap = table.getCheckoutMap();
+        List<Checkout> storedCheckouts = storedCheckoutMap.get(score);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, storedCheckoutMap.size()),
+                () -> Assertions.assertTrue(
+                        storedCheckouts.stream().noneMatch(checkout -> checkout.getThrows().size() == targetNumThrows)
+                )
+        );
+    }
+
+    private static Stream<Arguments> withoutHighScoreLowThrowOptimalCheckouts() {
+        return Stream.of(
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 0, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 1, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.MASTER, CheckMode.ANY, 1, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 3, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 3, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 5, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.MASTER, 9, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 21, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 23, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 25, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 25, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 27, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 29, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 31, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 35, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 37, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 41, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 43, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.MASTER, 44, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 44, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 46, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 47, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 49, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.DOUBLE, CheckMode.ANY, 51, 1),
+                Arguments.of(BoardType.YORKSHIRE, CheckMode.ANY, CheckMode.ANY, 51, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 52, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 61, 1),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 76, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 79, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 81, 1),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 99, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 102, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 103, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.DOUBLE, CheckMode.DOUBLE, 104, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.DOUBLE, 105, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 106, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 108, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 109, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 111, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.MASTER, 113, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 121, 2),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 161, 2),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 159, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 162, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 163, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 165, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 166, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 168, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 169, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.DOUBLE, 171, 3),
+                Arguments.of(BoardType.LONDON, CheckMode.ANY, CheckMode.ANY, 181, 3),
+                Arguments.of(BoardType.QUADRO, CheckMode.ANY, CheckMode.ANY, 241, 3)
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("withOptimalCheckouts")
     void getOptimalCheckouts(int minScore, int maxScore, int minNumThrows, int maxNumThrows) {
         Settings settings = TableSettingsBuilder.create().build();
@@ -1003,13 +1003,17 @@ class AscendingTableGeneratorTests {
                 Arguments.of(1, 3),
                 Arguments.of(2, 0),
                 Arguments.of(2, 1),
-                Arguments.of(2, 2)
+                Arguments.of(2, 2),
+                Arguments.of(3, 0),
+                Arguments.of(3, 1),
+                Arguments.of(3, 2),
+                Arguments.of(3, 3)
         );
     }
 
     @ParameterizedTest
     @MethodSource("withoutLowThrowOptimalCheckouts")
-    void doNotGetLowThrowOptimalCheckouts(int numThrows, int minScore, int maxScore) {
+    void ignoreLowThrowOptimalCheckouts(int numThrows, int minScore, int maxScore) {
         CheckMode checkoutMode = CheckMode.ANY;
 
         Settings settings = TableSettingsBuilder.create()
@@ -1031,13 +1035,40 @@ class AscendingTableGeneratorTests {
 
     private static Stream<Arguments> withoutLowThrowOptimalCheckouts() {
         return Stream.of(
-                Arguments.of(2, 0, 1),
                 Arguments.of(2, 1, 2),
                 Arguments.of(2, 3, 4),
                 Arguments.of(2, 21, 22),
                 Arguments.of(2, 50, 51),
                 Arguments.of(3, 50, 51),
                 Arguments.of(3, 120, 120)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withoutHighThrowOptimalCheckouts")
+    void ignoreHighTrowOptimalCheckouts(int numThrows, int score) {
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutHighThrowOptimalCheckouts() {
+        return Stream.of(
+                Arguments.of(1, 9),
+                Arguments.of(1, 23),
+                Arguments.of(1, 44),
+                Arguments.of(1, 80),
+                Arguments.of(2, 170)
         );
     }
 
@@ -1109,6 +1140,37 @@ class AscendingTableGeneratorTests {
     }
 
     @ParameterizedTest
+    @MethodSource("withoutHighScoreFixedThrowCheckouts")
+    void doNotGetHighScoreFixedThrowCheckouts(int numThrows, int score) {
+        ThrowMode throwMode = ThrowMode.FIXED;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
+        Table table = tableGenerator.generate(score, score);
+
+        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1, checkoutMap.size()),
+                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
+        );
+    }
+
+    private static Stream<Arguments> withoutHighScoreFixedThrowCheckouts() {
+        return Stream.of(
+                Arguments.of(1, 9),
+                Arguments.of(1, 49),
+                Arguments.of(1, 51),
+                Arguments.of(2, 99),
+                Arguments.of(2, 170)
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("withFixedThrowCheckouts")
     void findAllFixedThrowCheckouts(int numThrows, int minScore, int maxScore) {
         CheckMode checkoutMode = CheckMode.ANY;
@@ -1144,9 +1206,12 @@ class AscendingTableGeneratorTests {
     private static Stream<Arguments> withFixedThrowCheckouts() {
         return Stream.of(
                 Arguments.of(2, 6, 7),
+                Arguments.of(2, 8, 9),
                 Arguments.of(2, 22, 23),
                 Arguments.of(2, 50, 51),
-                Arguments.of(3, 3, 4)
+                Arguments.of(2, 48, 49),
+                Arguments.of(3, 3, 4),
+                Arguments.of(3, 120, 121)
         );
     }
 
