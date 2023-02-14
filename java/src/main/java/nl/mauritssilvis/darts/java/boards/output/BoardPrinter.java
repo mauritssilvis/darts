@@ -26,7 +26,7 @@ abstract class BoardPrinter {
     private final int fieldWidth;
 
     /**
-     * Creates a new {@code BoardPrinter}.
+     * Creates a new {@code BoardPrinter} for the specified dartboard.
      *
      * @param board a dartboard
      */
@@ -38,8 +38,8 @@ abstract class BoardPrinter {
         fieldsMap = fieldTypes.stream()
                 .collect(Collectors.toMap(Function.identity(), board::getFields, (e1, e2) -> e1, LinkedHashMap::new));
 
-        numFields = determineMaxNumFields(fieldsMap.values());
-        fieldWidth = determineFieldWidth(fieldsMap.values());
+        numFields = getMaxNumFields(fieldsMap.values());
+        fieldWidth = getMaxFieldWidth(fieldsMap.values());
     }
 
     /**
@@ -54,11 +54,11 @@ abstract class BoardPrinter {
     }
 
     /**
-     * Gets the field character width.
+     * Gets the maximum field character width.
      * <p>
      * This property can be used for formatting purposes.
      *
-     * @return the field character width
+     * @return the maximum field character width
      */
     int getFieldWidth() {
         return fieldWidth;
@@ -151,14 +151,14 @@ abstract class BoardPrinter {
      */
     abstract String getString();
 
-    private static int determineMaxNumFields(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+    private static int getMaxNumFields(Collection<? extends Collection<? extends Field>> fieldsPerType) {
         return fieldsPerType.stream()
                 .mapToInt(Collection::size)
                 .max()
                 .orElse(0);
     }
 
-    private static int determineFieldWidth(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+    private static int getMaxFieldWidth(Collection<? extends Collection<? extends Field>> fieldsPerType) {
         return fieldsPerType.stream()
                 .flatMap(Collection::stream)
                 .map(Field::getName)

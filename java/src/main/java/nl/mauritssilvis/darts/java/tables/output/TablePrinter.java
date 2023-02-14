@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.java.tables.output;
 import nl.mauritssilvis.darts.java.boards.Field;
 import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
 import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
+import nl.mauritssilvis.darts.java.settings.Settings;
 import nl.mauritssilvis.darts.java.tables.Table;
 
 import java.util.Collection;
@@ -32,6 +33,11 @@ abstract class TablePrinter {
     private final int fieldWidth;
     private final int multiplicityWidth;
 
+    /**
+     * Creates a new {@code TablePrinter} for the specified checkout table.
+     *
+     * @param table a checkout table
+     */
     TablePrinter(Table table) {
         checkoutMap = table.getCheckoutMap();
 
@@ -44,8 +50,10 @@ abstract class TablePrinter {
         scoreWidth = getMaxScoreWidth(checkoutMap.keySet());
         numCheckouts = getMaxNumCheckouts(checkoutMap.values());
 
-        if (table.getSettings().hasFixedNumThrows()) {
-            numThrows = table.getSettings().getNumThrows();
+        Settings settings = table.getSettings();
+
+        if (settings.hasFixedNumThrows()) {
+            numThrows = settings.getNumThrows();
             throwSize = Math.max(getMaxThrowSize(checkouts), 1);
             fieldWidth = Math.max(getMaxFieldWidth(checkouts), String.valueOf(numThrows).length());
         } else {
@@ -57,36 +65,326 @@ abstract class TablePrinter {
         multiplicityWidth = getMaxMultiplicityWidth(multiplicityMap.values());
     }
 
+    /**
+     * Gets the maximum score character width.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum score character width
+     */
     int getScoreWidth() {
         return scoreWidth;
     }
 
+    /**
+     * Gets the maximum number of checkouts per score.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum number of checkouts per score
+     */
     int getNumCheckouts() {
         return numCheckouts;
     }
 
+    /**
+     * Gets the maximum number of throws per checkout.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum number of throws per checkout
+     */
     int getNumThrows() {
         return numThrows;
     }
 
+    /**
+     * Gets the maximum number of fields per throw.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum number of fields per throw
+     */
     int getThrowSize() {
         return throwSize;
     }
 
+    /**
+     * Gets the maximum field character width.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum field character width
+     */
     int getFieldWidth() {
         return fieldWidth;
     }
 
+    /**
+     * Gets the maximum multiplicity character width.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum multiplicity character width
+     */
     int getMultiplicityWidth() {
         return multiplicityWidth;
     }
 
+    /**
+     * Returns a string representation of the stored checkout table.
+     * <p>
+     * This method directly and indirectly relies on abstract template methods
+     * that have to be implemented by child classes.
+     *
+     * @return a string representation of the stored checkout table
+     */
     String print() {
         startTable();
         processScores();
         endTable();
 
         return getString();
+    }
+
+    /**
+     * Starts the string representation of the stored checkout table.
+     */
+    abstract void startTable();
+
+    /**
+     * Ends the string representation of the stored checkout table.
+     */
+    abstract void endTable();
+
+    /**
+     * Starts the string representation of a score.
+     *
+     * @param score        the score
+     * @param numCheckouts the number of checkouts for this score
+     */
+    abstract void startScore(int score, int numCheckouts);
+
+    /**
+     * Ends the string representation of a score.
+     */
+    abstract void endScore();
+
+    /**
+     * Separates the string representations of different scores.
+     */
+    abstract void separateScore();
+
+    /**
+     * Starts the string representation of a collection of checkouts.
+     */
+    abstract void startCheckouts();
+
+    /**
+     * Ends the string representation of a collection of checkouts.
+     */
+    abstract void endCheckouts();
+
+    /**
+     * Starts the string representation of a checkout.
+     */
+    abstract void startCheckout();
+
+    /**
+     * Ends the string representation of a checkout.
+     */
+    abstract void endCheckout();
+
+    /**
+     * Separates the string representations of different checkouts.
+     */
+    abstract void separateCheckout();
+
+    /**
+     * Starts the string representation of a checkout score.
+     */
+    abstract void startCheckoutScore();
+
+    /**
+     * Adds the string representation of a checkout score.
+     *
+     * @param score the checkout score
+     */
+    abstract void addCheckoutScore(int score);
+
+    /**
+     * Ends the string representation of a checkout score.
+     */
+    abstract void endCheckoutScore();
+
+    /**
+     * Starts the string representation of a collection of throws.
+     */
+    abstract void startThrows();
+
+    /**
+     * Ends the string representation of a collection of throws.
+     */
+    abstract void endThrows();
+
+    /**
+     * Starts the string representation of a throw.
+     */
+    abstract void startThrow();
+
+    /**
+     * Ends the string representation of a throw.
+     */
+    abstract void endThrow();
+
+    /**
+     * Separates the string representations of different throws.
+     */
+    abstract void separateThrow();
+
+    /**
+     * Adds the string representation of a missing throw after adding present
+     * throws.
+     */
+    abstract void addEmptyThrowAfter();
+
+    /**
+     * Adds the string representation of a missing field before adding present
+     * fields.
+     */
+    abstract void addEmptyFieldBefore();
+
+    /**
+     * Starts the string representation of a field.
+     */
+    abstract void startField();
+
+    /**
+     * Adds the string representation of a field.
+     *
+     * @param name the field name
+     */
+    abstract void addField(String name);
+
+    /**
+     * Ends the string representation of a field.
+     */
+    abstract void endField();
+
+    /**
+     * Separates the string representations of different fields.
+     */
+    abstract void separateField();
+
+    /**
+     * Starts the string representation of a checkout multiplicity.
+     */
+    abstract void startCheckoutMultiplicity();
+
+    /**
+     * Adds the string representation of a checkout multiplicity.
+     *
+     * @param multiplicity the checkout multiplicity
+     */
+    abstract void addCheckoutMultiplicity(long multiplicity);
+
+    /**
+     * Ends the string representation of a checkout multiplicity.
+     */
+    abstract void endCheckoutMultiplicity();
+
+    /**
+     * Starts the string representation of the total checkout multiplicity for a
+     * score.
+     */
+    abstract void startMultiplicity();
+
+    /**
+     * Adds the string representation of the total checkout multiplicity for a
+     * score.
+     *
+     * @param multiplicity the total multiplicity
+     */
+    abstract void addMultiplicity(long multiplicity);
+
+    /**
+     * Ends the string representation of the total checkout multiplicity for a
+     * score.
+     */
+    abstract void endMultiplicity();
+
+    /**
+     * Gets the current string representation of the stored checkout table.
+     *
+     * @return the current string representation of the stored checkout table
+     */
+    abstract String getString();
+
+    private static Map<Integer, Long> getMultiplicityMap(
+            Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
+    ) {
+        return checkoutMap.entrySet().stream()
+                .collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,
+                                e -> e.getValue().stream()
+                                        .mapToLong(Checkout::getMultiplicity)
+                                        .sum()
+                        )
+                );
+    }
+
+    private static int getMaxScoreWidth(Collection<Integer> scores) {
+        return scores.stream()
+                .map(String::valueOf)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxNumCheckouts(Collection<? extends Collection<? extends Checkout>> checkoutsPerScore) {
+        return checkoutsPerScore.stream()
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxNumThrows(Collection<? extends Checkout> checkouts) {
+        return checkouts.stream()
+                .map(Checkout::getThrows)
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxThrowSize(Collection<? extends Checkout> checkouts) {
+        return checkouts.stream()
+                .map(Checkout::getThrows)
+                .flatMap(Collection::stream)
+                .map(Throw::getFields)
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxFieldWidth(Collection<? extends Checkout> checkouts) {
+        return checkouts.stream()
+                .map(Checkout::getThrows)
+                .flatMap(Collection::stream)
+                .map(Throw::getFields)
+                .flatMap(Collection::stream)
+                .map(Field::getName)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
+    }
+
+    private static int getMaxMultiplicityWidth(Collection<Long> multiplicities) {
+        return multiplicities.stream()
+                .map(String::valueOf)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
     }
 
     private void processScores() {
@@ -193,134 +491,5 @@ abstract class TablePrinter {
         startCheckoutMultiplicity();
         addCheckoutMultiplicity(multiplicity);
         endCheckoutMultiplicity();
-    }
-
-    abstract void startTable();
-
-    abstract void endTable();
-
-    abstract void startScore(int score, int numCheckouts);
-
-    abstract void endScore();
-
-    abstract void separateScore();
-
-    abstract void startCheckouts();
-
-    abstract void endCheckouts();
-
-    abstract void startCheckout();
-
-    abstract void endCheckout();
-
-    abstract void separateCheckout();
-
-    abstract void startCheckoutScore();
-
-    abstract void addCheckoutScore(int score);
-
-    abstract void endCheckoutScore();
-
-    abstract void startThrows();
-
-    abstract void endThrows();
-
-    abstract void startThrow();
-
-    abstract void endThrow();
-
-    abstract void separateThrow();
-
-    abstract void addEmptyThrowAfter();
-
-    abstract void addEmptyFieldBefore();
-
-    abstract void startField();
-
-    abstract void addField(String name);
-
-    abstract void endField();
-
-    abstract void separateField();
-
-    abstract void startCheckoutMultiplicity();
-
-    abstract void addCheckoutMultiplicity(long multiplicity);
-
-    abstract void endCheckoutMultiplicity();
-
-    abstract void startMultiplicity();
-
-    abstract void addMultiplicity(long multiplicity);
-
-    abstract void endMultiplicity();
-
-    abstract String getString();
-
-    private static Map<Integer, Long> getMultiplicityMap(
-            Map<Integer, ? extends Collection<? extends Checkout>> checkoutMap
-    ) {
-        return checkoutMap.entrySet().stream()
-                .collect(
-                        Collectors.toMap(
-                                Map.Entry::getKey,
-                                e -> e.getValue().stream()
-                                        .mapToLong(Checkout::getMultiplicity)
-                                        .sum()
-                        )
-                );
-    }
-
-    private static int getMaxScoreWidth(Collection<Integer> scores) {
-        return scores.stream()
-                .map(String::valueOf)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
-    }
-
-    private static int getMaxNumCheckouts(Collection<? extends Collection<? extends Checkout>> checkoutsPerScore) {
-        return checkoutsPerScore.stream()
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
-    }
-
-    private static int getMaxNumThrows(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .map(Checkout::getThrows)
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
-    }
-
-    private static int getMaxThrowSize(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .map(Checkout::getThrows)
-                .flatMap(Collection::stream)
-                .map(Throw::getFields)
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
-    }
-
-    private static int getMaxFieldWidth(Collection<? extends Checkout> checkouts) {
-        return checkouts.stream()
-                .map(Checkout::getThrows)
-                .flatMap(Collection::stream)
-                .map(Throw::getFields)
-                .flatMap(Collection::stream)
-                .map(Field::getName)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
-    }
-
-    private static int getMaxMultiplicityWidth(Collection<Long> multiplicities) {
-        return multiplicities.stream()
-                .map(String::valueOf)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
     }
 }
