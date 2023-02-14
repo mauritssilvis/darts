@@ -45,6 +45,13 @@ jar {
     }
 }
 
+shadowJar {
+    dependencies {
+        // Exclude the picocli module descriptor
+        exclude "META-INF/versions/9/module-info.class"
+    }
+}
+
 tasks.register('createStartScripts', CreateStartScripts) {
     outputDir = file('.')
     mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
