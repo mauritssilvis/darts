@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 
 class BoardsCommandTests {
     @Test
-    void getAnErrorMessage() {
+    void getHelpWithoutArguments() {
         String[] args = {"boards"};
 
         StringWriter out = new StringWriter();
@@ -38,9 +38,10 @@ class BoardsCommandTests {
         );
     }
 
-    @Test
-    void getHelp() {
-        String[] args = {"help", "boards"};
+    @ParameterizedTest
+    @MethodSource("withHelpRequests")
+    void getHelpWithArguments(String command, String argument) {
+        String[] args = {command, argument};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();
@@ -70,6 +71,14 @@ class BoardsCommandTests {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(elements.size(), count),
                 () -> Assertions.assertEquals(0, errString.length())
+        );
+    }
+
+    private static Stream<Arguments> withHelpRequests() {
+        return Stream.of(
+                Arguments.of("help", "boards"),
+                Arguments.of("boards", "-h"),
+                Arguments.of("boards", "--help")
         );
     }
 

@@ -27,7 +27,7 @@ class DartsAppTests {
     }
 
     @Test
-    void getAnErrorMessage() {
+    void getHelpWithoutArguments() {
         String[] args = {};
 
         StringWriter out = new StringWriter();
@@ -49,7 +49,7 @@ class DartsAppTests {
 
     @ParameterizedTest
     @ValueSource(strings = {"-h", "--help", "help"})
-    void getHelp(String arg) {
+    void getHelpWithArguments(String arg) {
         String[] args = {arg};
 
         StringWriter out = new StringWriter();
