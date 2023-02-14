@@ -62,7 +62,7 @@ class TableSettingsTests {
     }
 
     @Test
-    void getTheNumThrows() {
+    void getTheNumberOfThrows() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;

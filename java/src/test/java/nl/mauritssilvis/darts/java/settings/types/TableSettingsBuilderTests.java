@@ -125,7 +125,7 @@ class TableSettingsBuilderTests {
     }
 
     @Test
-    void getTheNumThrows() {
+    void getTheNumberOfThrows() {
         int numThrows = 5;
 
         SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
@@ -138,7 +138,7 @@ class TableSettingsBuilderTests {
     }
 
     @Test
-    void getTheDefaultNumThrows() {
+    void getTheDefaultNumberOfThrows() {
         SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
@@ -148,7 +148,7 @@ class TableSettingsBuilderTests {
     }
 
     @Test
-    void overrideTheNumThrows() {
+    void overrideTheNumberOfThrows() {
         int numThrows1 = 5;
         int numThrows2 = 3;
 
