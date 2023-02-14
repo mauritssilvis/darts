@@ -79,11 +79,11 @@ final class AscendingTableGenerator implements TableGenerator {
         Map<Integer, List<Checkout>> checkoutMap;
 
         if (!settings.hasFixedNumThrows()) {
-            checkoutMap = getRegularCheckoutMap(minScore, maxScore);
+            checkoutMap = getOptimalCheckouts(minScore, maxScore);
         } else if (throwMode == ThrowMode.OPTIMAL) {
-            checkoutMap = getMinimumThrowCheckoutMap(minScore, maxScore);
+            checkoutMap = getOptimalFixedThrowCheckouts(minScore, maxScore);
         } else {
-            checkoutMap = getFixedThrowCheckoutMap(minScore, maxScore);
+            checkoutMap = getAllFixedThrowCheckouts(minScore, maxScore);
         }
 
         return AscendingTable.of(settings, checkoutMap);
@@ -109,7 +109,7 @@ final class AscendingTableGenerator implements TableGenerator {
         return fields;
     }
 
-    private Map<Integer, List<Checkout>> getRegularCheckoutMap(int minScore, int maxScore) {
+    private Map<Integer, List<Checkout>> getOptimalCheckouts(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
         for (int i = minScore; i <= maxScore; i++) {
@@ -118,7 +118,7 @@ final class AscendingTableGenerator implements TableGenerator {
             List<Checkout> checkouts = Collections.emptyList();
 
             while (true) {
-                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(throwCount);
+                Collection<List<Field>> fieldsPerThrow = getFieldsPerThrow(throwCount);
 
                 if (getMinScore(fieldsPerThrow) > i) {
                     break;
@@ -143,14 +143,14 @@ final class AscendingTableGenerator implements TableGenerator {
         return checkoutMap;
     }
 
-    private Map<Integer, List<Checkout>> getMinimumThrowCheckoutMap(int minScore, int maxScore) {
+    private Map<Integer, List<Checkout>> getOptimalFixedThrowCheckouts(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
         for (int i = minScore; i <= maxScore; i++) {
             List<Checkout> checkouts = Collections.emptyList();
 
             for (int j = 1; j < numThrows; j++) {
-                List<List<Field>> fieldsPerThrow = getFieldsPerThrow(j);
+                Collection<List<Field>> fieldsPerThrow = getFieldsPerThrow(j);
 
                 if (getMinScore(fieldsPerThrow) > i) {
                     break;
@@ -171,7 +171,7 @@ final class AscendingTableGenerator implements TableGenerator {
                 continue;
             }
 
-            List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
+            Collection<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
             CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
 
             checkouts = checkoutFinder.find(i);
@@ -181,11 +181,11 @@ final class AscendingTableGenerator implements TableGenerator {
         return checkoutMap;
     }
 
-    private Map<Integer, List<Checkout>> getFixedThrowCheckoutMap(int minScore, int maxScore) {
+    private Map<Integer, List<Checkout>> getAllFixedThrowCheckouts(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap = new HashMap<>();
 
         for (int i = minScore; i <= maxScore; i++) {
-            List<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
+            Collection<List<Field>> fieldsPerThrow = getFieldsPerThrow(numThrows);
             CheckoutFinder checkoutFinder = getCheckoutFinder(fieldsPerThrow);
 
             List<Checkout> checkouts = checkoutFinder.find(i);
