@@ -78,12 +78,15 @@ final class AscendingTableGenerator implements TableGenerator {
     public Table generate(int minScore, int maxScore) {
         Map<Integer, List<Checkout>> checkoutMap;
 
-        if (!settings.hasFixedNumThrows()) {
+        if (maxScore < minScore) {
+            checkoutMap = Collections.emptyMap();
+        } else if (!settings.hasFixedNumThrows()) {
             checkoutMap = getOptimalCheckouts(minScore, maxScore);
-        } else if (throwMode == ThrowMode.OPTIMAL) {
-            checkoutMap = getOptimalFixedThrowCheckouts(minScore, maxScore);
         } else {
-            checkoutMap = getAllFixedThrowCheckouts(minScore, maxScore);
+            checkoutMap = switch (throwMode) {
+                case OPTIMAL -> getOptimalFixedThrowCheckouts(minScore, maxScore);
+                case FIXED -> getAllFixedThrowCheckouts(minScore, maxScore);
+            };
         }
 
         return AscendingTable.of(settings, checkoutMap);
