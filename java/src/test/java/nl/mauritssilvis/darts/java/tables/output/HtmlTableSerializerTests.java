@@ -116,7 +116,7 @@ class HtmlTableSerializerTests {
                         ThrowMode.OPTIMAL,
                         """
                                 <table>
-                                  <tr class="h"><th>Score</th><th class="m">#</th></tr>
+                                  <tr class="h"><th>                             Score</th><th class="m">#</th></tr>
                                 </table>
                                 """
                 ),
@@ -125,7 +125,7 @@ class HtmlTableSerializerTests {
                         ThrowMode.FIXED,
                         """
                                 <table>
-                                  <tr class="h"><th>Score</th><th class="m">#</th></tr>
+                                  <tr class="h"><th>                             Score</th><th class="m">#</th></tr>
                                 </table>
                                 """
                 ),
@@ -134,7 +134,7 @@ class HtmlTableSerializerTests {
                         ThrowMode.OPTIMAL,
                         """
                                 <table>
-                                  <tr class="h"><th>Score</th><th class="t">1</th><th class="m">#</th></tr>
+                                  <tr class="h"><th>                             Score</th><th class="t">                       1</th><th class="m">#</th></tr>
                                 </table>
                                 """
                 ),
@@ -143,7 +143,7 @@ class HtmlTableSerializerTests {
                         ThrowMode.FIXED,
                         """
                                 <table>
-                                  <tr class="h"><th>Score</th><th class="t">1</th><th class="t">2</th><th class="m">#</th></tr>
+                                  <tr class="h"><th>                             Score</th><th class="t">                       1</th><th class="t">                       2</th><th class="m">#</th></tr>
                                 </table>
                                 """
                 )
