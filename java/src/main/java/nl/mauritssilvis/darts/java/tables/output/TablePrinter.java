@@ -44,7 +44,7 @@ abstract class TablePrinter {
         scoreWidth = getMaxScoreWidth(checkoutMap.keySet());
         numCheckouts = getMaxNumCheckouts(checkoutMap.values());
 
-        if (table.getSettings().getNumThrows() == -1) {
+        if (!table.getSettings().hasFixedNumThrows()) {
             numThrows = getMaxNumThrows(checkouts);
             throwSize = getMaxThrowSize(checkouts);
             fieldWidth = getMaxFieldWidth(checkouts);
