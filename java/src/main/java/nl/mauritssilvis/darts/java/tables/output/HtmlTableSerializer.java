@@ -57,7 +57,7 @@ final class HtmlTableSerializer implements Serializer<Table> {
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + (fieldWidth > 0 ? fieldWidth : 1) + "s";
             emptyFieldFormat = throwSize > 0 ? "%1$" + (throwWidth / throwSize) + "s" : "%1$1s";
-            multiplicityFormat = "%1$" + getMultiplicityWidth() + "s";
+            multiplicityFormat = "%1$" + Math.max(getMultiplicityWidth(), "#".length()) + "s";
 
             numThrows = getNumThrows();
         }

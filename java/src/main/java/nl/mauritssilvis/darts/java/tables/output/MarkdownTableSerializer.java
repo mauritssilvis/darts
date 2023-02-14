@@ -50,7 +50,7 @@ final class MarkdownTableSerializer implements Serializer<Table> {
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + getFieldWidth() + "s";
-            multiplicityFormat = "%1$" + getMultiplicityWidth() + "s";
+            multiplicityFormat = "%1$" + Math.max(getMultiplicityWidth(), "#".length()) + "s";
 
             numThrows = getNumThrows();
         }
