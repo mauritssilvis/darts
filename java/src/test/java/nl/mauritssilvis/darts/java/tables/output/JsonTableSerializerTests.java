@@ -211,8 +211,8 @@ class JsonTableSerializerTests {
     }
 
     @ParameterizedTest
-    @MethodSource("withAnEmptyJsonTable")
-    void getAnEmptyJsonTable(int numThrows, ThrowMode throwMode) {
+    @MethodSource("withAnEmptySerializedObject")
+    void getAnEmptySerializedObject(int numThrows, ThrowMode throwMode) {
         TableType tableType = TableType.ASCENDING;
 
         Settings settings = TableSettingsBuilder.create()
@@ -232,12 +232,52 @@ class JsonTableSerializerTests {
         Assertions.assertEquals("{\n}\n", serializer.serialize(table));
     }
 
-    private static Stream<Arguments> withAnEmptyJsonTable() {
+    private static Stream<Arguments> withAnEmptySerializedObject() {
         return Stream.of(
                 Arguments.of(0, ThrowMode.OPTIMAL),
                 Arguments.of(0, ThrowMode.FIXED),
                 Arguments.of(1, ThrowMode.OPTIMAL),
                 Arguments.of(2, ThrowMode.FIXED)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withAnEmptySerializedSubObject")
+    void getAnEmptySerializedSubObject(int numThrows, ThrowMode throwMode) {
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int score = 0;
+
+        Table table = tableGenerator.generate(score, score);
+
+        Serializer<Table> serializer = JsonTableSerializer.create();
+
+        String output = """
+                {
+                    "0": {
+                        "multiplicity": 0,
+                        "checkouts": [
+                        ]
+                    }
+                }
+                """;
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withAnEmptySerializedSubObject() {
+        return Stream.of(
+                Arguments.of(0, ThrowMode.OPTIMAL),
+                Arguments.of(0, ThrowMode.FIXED),
+                Arguments.of(1, ThrowMode.OPTIMAL),
+                Arguments.of(10, ThrowMode.FIXED)
         );
     }
 }

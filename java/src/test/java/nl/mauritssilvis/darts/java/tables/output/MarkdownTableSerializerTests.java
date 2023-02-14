@@ -144,4 +144,66 @@ class MarkdownTableSerializerTests {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withAnEmptySerializedRow")
+    void getAnEmptySerializedRow(int numThrows, ThrowMode throwMode, String output) {
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int score = 0;
+
+        Table table = tableGenerator.generate(score, score);
+
+        Serializer<Table> serializer = MarkdownTableSerializer.create();
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withAnEmptySerializedRow() {
+        return Stream.of(
+                Arguments.of(
+                        0,
+                        ThrowMode.OPTIMAL,
+                        """
+                                | Score | # |
+                                |------:|--:|
+                                |     0 | 0 |
+                                """
+                ),
+                Arguments.of(
+                        0,
+                        ThrowMode.FIXED,
+                        """
+                                | Score | # |
+                                |------:|--:|
+                                |     0 | 0 |
+                                """
+                ),
+                Arguments.of(
+                        1,
+                        ThrowMode.OPTIMAL,
+                        """
+                                | Score | 1 | # |
+                                |------:|--:|--:|
+                                |     0 | * | 0 |
+                                """
+                ),
+                Arguments.of(
+                        4,
+                        ThrowMode.FIXED,
+                        """
+                                | Score | 1 | 2 | 3 | 4 | # |
+                                |------:|--:|--:|--:|--:|--:|
+                                |     0 | * | * | * | * | 0 |
+                                """
+                )
+        );
+    }
 }

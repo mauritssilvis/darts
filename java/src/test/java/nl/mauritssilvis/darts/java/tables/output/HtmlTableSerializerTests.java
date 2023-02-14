@@ -149,4 +149,70 @@ class HtmlTableSerializerTests {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withAnEmptySerializedRow")
+    void getAnEmptySerializedRow(int numThrows, ThrowMode throwMode, String output) {
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int score = 0;
+
+        Table table = tableGenerator.generate(score, score);
+
+        Serializer<Table> serializer = HtmlTableSerializer.create();
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withAnEmptySerializedRow() {
+        return Stream.of(
+                Arguments.of(
+                        0,
+                        ThrowMode.OPTIMAL,
+                        """
+                                <table>
+                                  <tr class="h"><th>                             Score</th><th class="m">#</th></tr>
+                                  <tr class="s"><th rowspan="1" scope="rowgroup">    0</th><td class="m">0</td></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        0,
+                        ThrowMode.FIXED,
+                        """
+                                <table>
+                                  <tr class="h"><th>                             Score</th><th class="m">#</th></tr>
+                                  <tr class="s"><th rowspan="1" scope="rowgroup">    0</th><td class="m">0</td></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        2,
+                        ThrowMode.OPTIMAL,
+                        """
+                                <table>
+                                  <tr class="h"><th>                             Score</th><th class="t">                       1</th><th class="t">                       2</th><th class="m">#</th></tr>
+                                  <tr class="s"><th rowspan="1" scope="rowgroup">    0</th><td class="t"><span class="e">*</span></td><td class="t"><span class="e">*</span></td><td class="m">0</td></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        3,
+                        ThrowMode.FIXED,
+                        """
+                                <table>
+                                  <tr class="h"><th>                             Score</th><th class="t">                       1</th><th class="t">                       2</th><th class="t">                       3</th><th class="m">#</th></tr>
+                                  <tr class="s"><th rowspan="1" scope="rowgroup">    0</th><td class="t"><span class="e">*</span></td><td class="t"><span class="e">*</span></td><td class="t"><span class="e">*</span></td><td class="m">0</td></tr>
+                                </table>
+                                """
+                )
+        );
+    }
 }
