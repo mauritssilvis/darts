@@ -37,7 +37,7 @@ class DartsAppTests {
         String errString = err.toString();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(outString.isEmpty()),
+                () -> Assertions.assertEquals(0, outString.length()),
                 () -> Assertions.assertTrue(errString.contains("Usage"))
         );
     }
@@ -73,7 +73,7 @@ class DartsAppTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(elements.size(), count),
-                () -> Assertions.assertTrue(errString.isEmpty())
+                () -> Assertions.assertEquals(0, errString.length())
         );
     }
 
@@ -105,7 +105,7 @@ class DartsAppTests {
 
         Assertions.assertAll(
                 () -> Assertions.assertEquals(elements.size(), count),
-                () -> Assertions.assertTrue(errString.isEmpty())
+                () -> Assertions.assertEquals(0, errString.length())
         );
     }
 }
