@@ -142,7 +142,7 @@ class TableSettingsBuilderTests {
         SettingsBuilder settingsBuilder = TableSettingsBuilder.create();
         Settings settings = settingsBuilder.build();
 
-        int numThrows = -1;
+        int numThrows = 0;
 
         Assertions.assertEquals(numThrows, settings.getNumThrows());
     }

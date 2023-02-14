@@ -56,8 +56,8 @@ class AscendingTableGeneratorTests {
 
     private static Stream<Arguments> withInvertedScores() {
         return Stream.of(
-                Arguments.of(-1, ThrowMode.OPTIMAL, 10, 9),
-                Arguments.of(-1, ThrowMode.FIXED, 2, 1),
+                Arguments.of(0, ThrowMode.OPTIMAL, 10, 9),
+                Arguments.of(0, ThrowMode.FIXED, 2, 1),
                 Arguments.of(1, ThrowMode.OPTIMAL, 10, 5),
                 Arguments.of(3, ThrowMode.FIXED, 100, 1)
         );

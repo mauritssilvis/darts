@@ -15,7 +15,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.QUADRO;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -32,7 +32,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.MASTER;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -49,7 +49,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -83,7 +83,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -117,7 +117,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.FIXED;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -134,7 +134,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.CARTESIAN;
         TableType tableType = TableType.ASCENDING;
@@ -151,7 +151,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -168,7 +168,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -189,7 +189,7 @@ class TableSettingsTests {
         BoardType boardType1 = BoardType.LONDON;
         CheckMode checkInMode1 = CheckMode.ANY;
         CheckMode checkoutMode1 = CheckMode.DOUBLE;
-        int numThrows1 = -1;
+        int numThrows1 = 0;
         ThrowMode throwMode1 = ThrowMode.OPTIMAL;
         FinderType finderType1 = FinderType.DESCENDING;
         TableType tableType1 = TableType.ASCENDING;
@@ -217,7 +217,7 @@ class TableSettingsTests {
     void getUnequalSettingsWithDifferentBoardTypes() {
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -241,7 +241,7 @@ class TableSettingsTests {
     void getUnequalSettingsWithDifferentCheckInModes() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -265,7 +265,7 @@ class TableSettingsTests {
     void getUnequalSettingsWithDifferentCheckoutModes() {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
@@ -314,7 +314,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
 
@@ -338,7 +338,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         TableType tableType = TableType.ASCENDING;
 
@@ -362,7 +362,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
 
@@ -386,7 +386,7 @@ class TableSettingsTests {
         BoardType boardType = BoardType.LONDON;
         CheckMode checkInMode = CheckMode.ANY;
         CheckMode checkoutMode = CheckMode.DOUBLE;
-        int numThrows = -1;
+        int numThrows = 0;
         ThrowMode throwMode = ThrowMode.OPTIMAL;
         FinderType finderType = FinderType.DESCENDING;
         TableType tableType = TableType.ASCENDING;
