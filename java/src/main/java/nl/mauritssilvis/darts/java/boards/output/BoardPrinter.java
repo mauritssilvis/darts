@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * An abstract class that defines an algorithm for getting string
- * representations of boards.
+ * representations of dartboards.
  * <p>
  * Relevant design patterns: template method.
  */
@@ -25,6 +25,11 @@ abstract class BoardPrinter {
     private final int numFields;
     private final int fieldWidth;
 
+    /**
+     * Creates a new {@code BoardPrinter}.
+     *
+     * @param board a dartboard
+     */
     BoardPrinter(Board board) {
         fieldTypes = Arrays.stream(FieldType.values())
                 .filter(fieldType -> !board.getFields(fieldType).isEmpty())
@@ -33,24 +38,133 @@ abstract class BoardPrinter {
         fieldsMap = fieldTypes.stream()
                 .collect(Collectors.toMap(Function.identity(), board::getFields, (e1, e2) -> e1, LinkedHashMap::new));
 
-        numFields = determineNumFields(fieldsMap.values());
+        numFields = determineMaxNumFields(fieldsMap.values());
         fieldWidth = determineFieldWidth(fieldsMap.values());
     }
 
+    /**
+     * Gets the maximum number of fields per field type.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the maximum number of fields per field type
+     */
     int getNumFields() {
         return numFields;
     }
 
+    /**
+     * Gets the field character width.
+     * <p>
+     * This property can be used for formatting purposes.
+     *
+     * @return the field character width
+     */
     int getFieldWidth() {
         return fieldWidth;
     }
 
+    /**
+     * Returns a string representation of the stored dartboard.
+     * <p>
+     * This method directly and indirectly relies on abstract template methods
+     * that have to be implemented by child classes.
+     *
+     * @return a string representation of the stored dartboard
+     */
     String print() {
         startBoard();
         processTypes();
         endBoard();
 
         return getString();
+    }
+
+    /**
+     * Starts the string representation of the stored dartboard.
+     */
+    abstract void startBoard();
+
+    /**
+     * Ends the string representation of the stored dartboard.
+     */
+    abstract void endBoard();
+
+    /**
+     * Starts the string representation of a field type.
+     *
+     * @param fieldType the field type
+     */
+    abstract void startType(FieldType fieldType);
+
+    /**
+     * Ends the string representation of a field type.
+     */
+    abstract void endType();
+
+    /**
+     * Separates the string representations of different field types.
+     */
+    abstract void separateType();
+
+    /**
+     * Starts the string representation of a field.
+     */
+    abstract void startField();
+
+    /**
+     * Adds the string representation of a field.
+     *
+     * @param name the field name
+     */
+    abstract void addField(String name);
+
+    /**
+     * Ends the string representation of a field.
+     */
+    abstract void endField();
+
+    /**
+     * Separates the string representations of different fields.
+     */
+    abstract void separateField();
+
+    /**
+     * Starts the string representation of a missing field.
+     */
+    abstract void startEmptyField();
+
+    /**
+     * Adds the string representation of a missing field.
+     */
+    abstract void addEmptyField();
+
+    /**
+     * Ends the string representation of a missing field.
+     */
+    abstract void endEmptyField();
+
+    /**
+     * Gets the current string representation of the stored dartboard.
+     *
+     * @return the current string representation of the stored dartboard
+     */
+    abstract String getString();
+
+    private static int determineMaxNumFields(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+        return fieldsPerType.stream()
+                .mapToInt(Collection::size)
+                .max()
+                .orElse(0);
+    }
+
+    private static int determineFieldWidth(Collection<? extends Collection<? extends Field>> fieldsPerType) {
+        return fieldsPerType.stream()
+                .flatMap(Collection::stream)
+                .map(Field::getName)
+                .mapToInt(String::length)
+                .max()
+                .orElse(0);
     }
 
     private void processTypes() {
@@ -95,47 +209,5 @@ abstract class BoardPrinter {
         startEmptyField();
         addEmptyField();
         endEmptyField();
-    }
-
-    abstract void startBoard();
-
-    abstract void endBoard();
-
-    abstract void startType(FieldType fieldType);
-
-    abstract void endType();
-
-    abstract void separateType();
-
-    abstract void startField();
-
-    abstract void addField(String name);
-
-    abstract void endField();
-
-    abstract void separateField();
-
-    abstract void startEmptyField();
-
-    abstract void addEmptyField();
-
-    abstract void endEmptyField();
-
-    abstract String getString();
-
-    private static int determineNumFields(Collection<? extends Collection<? extends Field>> fieldsPerType) {
-        return fieldsPerType.stream()
-                .mapToInt(Collection::size)
-                .max()
-                .orElse(0);
-    }
-
-    private static int determineFieldWidth(Collection<? extends Collection<? extends Field>> fieldsPerType) {
-        return fieldsPerType.stream()
-                .flatMap(Collection::stream)
-                .map(Field::getName)
-                .mapToInt(String::length)
-                .max()
-                .orElse(0);
     }
 }
