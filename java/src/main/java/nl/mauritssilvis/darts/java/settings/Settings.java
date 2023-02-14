@@ -43,7 +43,7 @@ public interface Settings {
      * Gets the number of throws.
      * <p>
      * If the number of throws was fixed, the return value is 1 or more.
-     * Otherwise, the return value is -1.
+     * Otherwise, the return value is 0.
      *
      * @return the number of throws
      */

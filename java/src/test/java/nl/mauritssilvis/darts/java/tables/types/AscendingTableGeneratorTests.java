@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Collection;
 import java.util.List;
@@ -980,29 +979,6 @@ class AscendingTableGeneratorTests {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 23, 180})
-    void doNotGetOptimalZeroThrowCheckouts(int score) {
-        CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = 0;
-
-        Settings settings = TableSettingsBuilder.create()
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .build();
-
-        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
-
-        Table table = tableGenerator.generate(score, score);
-
-        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, checkoutMap.size()),
-                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
-        );
-    }
-
-    @ParameterizedTest
     @MethodSource("withoutLowScoreOptimalFixedThrowCheckouts")
     void doNotGetLowScoreOptimalFixedThrowCheckouts(int numThrows, int score) {
         Settings settings = TableSettingsBuilder.create()
@@ -1093,31 +1069,6 @@ class AscendingTableGeneratorTests {
                 () -> Assertions.assertTrue(
                         storedCheckouts2.stream().allMatch(checkout -> checkout.getThrows().size() == numThrows)
                 )
-        );
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 2, 23, 180})
-    void doNotGetZeroThrowCheckouts(int score) {
-        CheckMode checkoutMode = CheckMode.ANY;
-        int numThrows = 0;
-        ThrowMode throwMode = ThrowMode.FIXED;
-
-        Settings settings = TableSettingsBuilder.create()
-                .setCheckoutMode(checkoutMode)
-                .setNumThrows(numThrows)
-                .setThrowMode(throwMode)
-                .build();
-
-        TableGenerator tableGenerator = AscendingTableGenerator.of(settings);
-
-        Table table = tableGenerator.generate(score, score);
-
-        Map<Integer, List<Checkout>> checkoutMap = table.getCheckoutMap();
-
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(1, checkoutMap.size()),
-                () -> Assertions.assertEquals(0, checkoutMap.get(score).size())
         );
     }
 

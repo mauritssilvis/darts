@@ -87,7 +87,7 @@ final class TableSettings implements Settings {
 
     @Override
     public boolean hasFixedNumThrows() {
-        return numThrows != -1;
+        return numThrows != 0;
     }
 
     @Override

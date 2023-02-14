@@ -20,7 +20,7 @@ public final class TableSettingsBuilder implements SettingsBuilder {
     private BoardType boardType = BoardType.LONDON;
     private CheckMode checkInMode = CheckMode.ANY;
     private CheckMode checkoutMode = CheckMode.DOUBLE;
-    private int numThrows = -1;
+    private int numThrows = 0;
     private ThrowMode throwMode = ThrowMode.OPTIMAL;
     private FinderType finderType = FinderType.DESCENDING;
     private TableType tableType = TableType.ASCENDING;

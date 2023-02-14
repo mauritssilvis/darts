@@ -196,10 +196,6 @@ final class AscendingTableGenerator implements TableGenerator {
     }
 
     private List<List<Field>> getFieldsPerThrow(int throwCount) {
-        if (throwCount == 0) {
-            return Collections.emptyList();
-        }
-
         if (fieldsPerThrowMap.containsKey(throwCount)) {
             return fieldsPerThrowMap.get(throwCount);
         }

@@ -38,7 +38,7 @@ public interface SettingsBuilder {
     /**
      * Sets the number of throws.
      * <p>
-     * The value -1 can be used to signal that the number of throws was not
+     * The value 0 can be used to signal that the number of throws was not
      * fixed.
      *
      * @param numThrows the number of throws
