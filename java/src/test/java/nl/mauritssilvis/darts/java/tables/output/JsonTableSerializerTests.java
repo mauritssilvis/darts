@@ -6,10 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -17,11 +14,15 @@ import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 class JsonTableSerializerTests {
     @Test
-    void getAJsonTable() {
+    void getASerializedTable() {
         TableType tableType = TableType.ASCENDING;
         BoardType boardType = BoardType.YORKSHIRE;
         CheckMode checkoutMode = CheckMode.ANY;
@@ -207,5 +208,36 @@ class JsonTableSerializerTests {
         String output = serializer.serialize(table);
 
         Assertions.assertTrue(output.startsWith("{\n    \"2\": {"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("withAnEmptyJsonTable")
+    void getAnEmptyJsonTable(int numThrows, ThrowMode throwMode) {
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int minScore = 1;
+        int maxScore = 0;
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+
+        Serializer<Table> serializer = JsonTableSerializer.create();
+
+        Assertions.assertEquals("{\n}\n", serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withAnEmptyJsonTable() {
+        return Stream.of(
+                Arguments.of(0, ThrowMode.OPTIMAL),
+                Arguments.of(0, ThrowMode.FIXED),
+                Arguments.of(1, ThrowMode.OPTIMAL),
+                Arguments.of(2, ThrowMode.FIXED)
+        );
     }
 }

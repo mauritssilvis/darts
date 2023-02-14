@@ -6,10 +6,7 @@
 package nl.mauritssilvis.darts.java.tables.output;
 
 import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.CheckMode;
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
 import nl.mauritssilvis.darts.java.tables.Table;
 import nl.mauritssilvis.darts.java.tables.TableGenerator;
@@ -17,11 +14,15 @@ import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 class HtmlTableSerializerTests {
     @Test
-    void getAnHtmlTable() {
+    void getASerializedTable() {
         TableType tableType = TableType.ASCENDING;
         BoardType boardType = BoardType.YORKSHIRE;
         CheckMode checkoutMode = CheckMode.ANY;
@@ -84,5 +85,68 @@ class HtmlTableSerializerTests {
         String output = serializer.serialize(table);
 
         Assertions.assertTrue(output.startsWith("<table>\n  <tr class=\"h\"><th> "));
+    }
+
+    @ParameterizedTest
+    @MethodSource("withAnEmptySerializedTable")
+    void getAnEmptySerializedTable(int numThrows, ThrowMode throwMode, String output) {
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setNumThrows(numThrows)
+                .setThrowMode(throwMode)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int minScore = 1;
+        int maxScore = 0;
+
+        Table table = tableGenerator.generate(minScore, maxScore);
+
+        Serializer<Table> serializer = HtmlTableSerializer.create();
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withAnEmptySerializedTable() {
+        return Stream.of(
+                Arguments.of(
+                        0,
+                        ThrowMode.OPTIMAL,
+                        """
+                                <table>
+                                  <tr class="h"><th>Score</th><th class="m">#</th></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        0,
+                        ThrowMode.FIXED,
+                        """
+                                <table>
+                                  <tr class="h"><th>Score</th><th class="m">#</th></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        1,
+                        ThrowMode.OPTIMAL,
+                        """
+                                <table>
+                                  <tr class="h"><th>Score</th><th class="t">1</th><th class="m">#</th></tr>
+                                </table>
+                                """
+                ),
+                Arguments.of(
+                        2,
+                        ThrowMode.FIXED,
+                        """
+                                <table>
+                                  <tr class="h"><th>Score</th><th class="t">1</th><th class="t">2</th><th class="m">#</th></tr>
+                                </table>
+                                """
+                )
+        );
     }
 }
