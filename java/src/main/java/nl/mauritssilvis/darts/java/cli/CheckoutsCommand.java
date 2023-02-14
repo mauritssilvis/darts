@@ -13,11 +13,8 @@ import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.output.TableSerializerFactory;
 import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import picocli.CommandLine;
-import picocli.CommandLine.Command;
+import picocli.CommandLine.*;
 import picocli.CommandLine.Model.CommandSpec;
-import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
-import picocli.CommandLine.Spec;
 
 /**
  * The command-line interface for the {@code checkouts} subcommand. This command
@@ -69,6 +66,7 @@ class CheckoutsCommand implements Runnable {
             paramLabel = "<throws>",
             defaultValue = "0",
             showDefaultValue = CommandLine.Help.Visibility.NEVER,
+            converter = ThrowsConverter.class,
             order = 3
     )
     private int numThrows;
@@ -143,5 +141,25 @@ class CheckoutsCommand implements Runnable {
         String output = serializer.serialize(table);
 
         commandSpec.commandLine().getOut().println(output.strip());
+    }
+
+    private static class ThrowsConverter implements ITypeConverter<Integer> {
+        public Integer convert(String value) {
+            int number;
+
+            try {
+                number = Integer.parseInt(value);
+            } catch (NumberFormatException ignore) {
+                throw new TypeConversionException(String.format("'%s' is not an int", value));
+            }
+
+            if (number < 0) {
+                throw new TypeConversionException(
+                        String.format("must be a non-negative integer but was '%d'", number)
+                );
+            }
+
+            return number;
+        }
     }
 }

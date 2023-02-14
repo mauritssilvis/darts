@@ -324,6 +324,70 @@ class CheckoutsCommandTests {
     }
 
     @ParameterizedTest
+    @MethodSource("withANonIntegerThrowsOption")
+    void doNotAcceptANonIntegerThrowsOption(String optionName, String numThrows) {
+        String[] args = {"checkouts", optionName, numThrows, "1", "2"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(0, outString.length()),
+                () -> Assertions.assertTrue(errString.contains("Invalid value for option")),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
+    }
+
+    private static Stream<Arguments> withANonIntegerThrowsOption() {
+        return Stream.of(
+                Arguments.of("-n", "1.6"),
+                Arguments.of("-n", "d"),
+                Arguments.of("--throws", "Aaa"),
+                Arguments.of("--throws", "00a")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("withANegativeThrowsOption")
+    void doNotAcceptANegativeThrowsOption(String optionName, String numThrows) {
+        String[] args = {"checkouts", optionName, numThrows, "1", "2"};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(0, outString.length()),
+                () -> Assertions.assertTrue(errString.contains("Invalid value for option")),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
+    }
+
+    private static Stream<Arguments> withANegativeThrowsOption() {
+        return Stream.of(
+                Arguments.of("-n", "-1"),
+                Arguments.of("-n", "-10"),
+                Arguments.of("--throws", "-5"),
+                Arguments.of("--throws", "-50")
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("withTheThrowsOption")
     void processTheThrowsOption(String optionName, String numThrows, String minScore, String maxScore, String output) {
         String[] args = {"checkouts", optionName, numThrows, minScore, maxScore};
