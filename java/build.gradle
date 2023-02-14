@@ -34,6 +34,12 @@ test {
     useJUnitPlatform()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 application {
     applicationName = 'darts'
     mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
