@@ -10,15 +10,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.List;
 
 class DartsAppTests {
     @Test
     void startTheApplication() {
+        PrintStream standardOut = System.out;
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
         String[] args = {"-V"};
         Assertions.assertDoesNotThrow(() -> DartsApp.main(args));
+
+        System.setOut(standardOut);
     }
 
     @Test
