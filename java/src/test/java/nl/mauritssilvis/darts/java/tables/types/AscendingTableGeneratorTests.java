@@ -1074,11 +1074,9 @@ class AscendingTableGeneratorTests {
 
     @Test
     void findOptimalFixedThrowCheckouts() {
-        CheckMode checkoutMode = CheckMode.ANY;
         int numThrows = 2;
 
         Settings settings = TableSettingsBuilder.create()
-                .setCheckoutMode(checkoutMode)
                 .setNumThrows(numThrows)
                 .build();
 
