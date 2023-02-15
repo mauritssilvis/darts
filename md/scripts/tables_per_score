@@ -93,8 +93,8 @@ do
     subtitle="Checkout tables for ${mode} darts games with the ${board}"
 
     {
-        echo -e "# $title\n"
-        echo -e "> $subtitle\n"
+        echo -e "# ${title}\n"
+        echo -e "> ${subtitle}\n"
 
         echo -e "## Introduction\n"
 
