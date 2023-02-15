@@ -25,6 +25,7 @@ import picocli.CommandLine.Spec;
  */
 @Command(
         name = "boards",
+        mixinStandardHelpOptions = true,
         description = "Print a dartboard.",
         showDefaultValues = true
 )
