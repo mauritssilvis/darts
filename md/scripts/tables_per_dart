@@ -6,59 +6,70 @@ dir="../tables2/"
 
 paths=(
     "london/London_any_in_any_out.md"
-    # "london/London_any_in_master_out.md"
-    # "london/London_any_in_double_out.md"
-    # "quadro/Quadro_any_in_any_out.md"
-    # "quadro/Quadro_any_in_master_out.md"
-    # "quadro/Quadro_any_in_double_out.md"
+    "london/London_any_in_master_out.md"
+    "london/London_any_in_double_out.md"
+    "quadro/Quadro_any_in_any_out.md"
+    "quadro/Quadro_any_in_master_out.md"
+    "quadro/Quadro_any_in_double_out.md"
 )
 
 boards=(
     "London dartboard"
-    # "London dartboard"
-    # "London dartboard"
-    # "Quadro 240 board"
-    # "Quadro 240 board"
-    # "Quadro 240 board"
-
+    "London dartboard"
+    "London dartboard"
+    "Quadro 240 board"
+    "Quadro 240 board"
+    "Quadro 240 board"
 )
 
 modes=(
     "any-in, any-out"
-    # "any-in, master-out"
-    # "any-in, double-out"
-    # "any-in, any-out"
-    # "any-in, master-out"
-    # "any-in, double-out"
+    "any-in, master-out"
+    "any-in, double-out"
+    "any-in, any-out"
+    "any-in, master-out"
+    "any-in, double-out"
 )
 
 selected_min_scores=(
-    "1 1 1 1 1 1"
-    # "1 1 60"
-    # "1 1 60"
-    # "1 1 80"
-    # "1 1 80"
-    # "1 1 80"
+    "  1  23 103 163 223 283 343 403 463"
+    "  1   5 103 163 223 283 343 403 463"
+    "  1   3  99 159 219 279 339 399 459"
+    "  1  23 135 215 295 375 455 535 615"
+    "  1   5 135 215 295 375 455 535 615"
+    "  1   3  99 185 265 345 425 505 585"
 )
 
 selected_max_scores=(
-    "60 120 180 240 300 360"
-    # "60 120 180"
-    # "60 120 180"
-    # "80 160 240"
-    # "80 160 240"
-    # "80 160 240"
+    "60 120 180 240 300 360 420 480 540"
+    "60 120 180 240 300 360 420 480 540"
+    "50 110 170 230 290 350 410 470 530"
+    "80 160 240 320 400 480 560 640 720"
+    "60 140 220 300 380 460 540 620 700"
+    "50 130 210 290 370 450 530 610 690"
 )
 
 script_path="../../java/"
 
 commands=(
     "checkouts -j any"
-    # "checkouts -j master"
-    # "checkouts"
-    # "checkouts -b quadro -j any"
-    # "checkouts -b quadro -j master"
-    # "checkouts -b quadro"
+    "checkouts -j master"
+    "checkouts"
+    "checkouts -b quadro -j any"
+    "checkouts -b quadro -j master"
+    "checkouts -b quadro"
+)
+
+darts=(
+    "One"
+    "Two"
+    "Three"
+    "Four"
+    "Five"
+    "Six"
+    "Seven"
+    "Eight"
+    "Nine"
 )
 
 for i in "${!paths[@]}"
@@ -90,7 +101,7 @@ do
         shell_command=("./${script_path}darts" ${command})
 
         {
-            echo -e "## ${min_score} - ${max_score}\n";
+            echo -e "## ${darts[j]}-dart checkouts\n";
             "${shell_command[@]}"
             echo -e "\nThis table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n";
         } >> "$file"
