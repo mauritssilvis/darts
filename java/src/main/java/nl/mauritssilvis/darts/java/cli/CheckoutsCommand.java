@@ -78,9 +78,9 @@ class CheckoutsCommand implements Runnable {
     private int numThrows;
 
     @Option(
-            names = {"-m", "--mode"},
+            names = {"-m", "--throw-mode"},
             description = "The throw mode. Supported values: optimal, fixed. The latter value only applies when the number of throws is fixed.",
-            paramLabel = "<mode>",
+            paramLabel = "<throw mode>",
             defaultValue = "optimal",
             order = 4
     )

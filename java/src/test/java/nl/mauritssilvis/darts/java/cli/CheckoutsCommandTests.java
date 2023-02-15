@@ -67,7 +67,7 @@ class CheckoutsCommandTests {
                 "The number of throws.",
                 "<throws>",
                 "The throw mode.",
-                "<mode>",
+                "<throw mode>",
                 "The checkout finder type.",
                 "<finder>",
                 // "The checkout table type.",
@@ -520,7 +520,7 @@ class CheckoutsCommandTests {
                                 |    22 | * | * | 0 |"""
                 ),
                 Arguments.of(
-                        "--mode",
+                        "--throw-mode",
                         "ThrowMode.FIXED",
                         """
                                 | Score |               1 |               2 |  # |
