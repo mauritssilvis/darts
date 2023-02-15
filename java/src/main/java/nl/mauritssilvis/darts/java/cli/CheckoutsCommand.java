@@ -161,5 +161,17 @@ class CheckoutsCommand implements Runnable {
                     )
             );
         }
+
+        if (maxScore < minScore) {
+            throw new ParameterException(
+                    commandSpec.commandLine(),
+                    String.format(
+                            """
+                                    Invalid value for positional parameter at index 1 (<maximum>): must not be smaller \
+                                    than positional parameter at index 0 (<minimum>) but was '%d'""",
+                            maxScore
+                    )
+            );
+        }
     }
 }
