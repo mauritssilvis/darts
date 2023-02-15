@@ -664,6 +664,39 @@ class CheckoutsCommandTests {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("withAnInvertedScoreRange")
+    void doNotAcceptAnInvertedScoreRange(String minScore, String maxScore) {
+        String[] args = {"checkouts", minScore, maxScore};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(0, outString.length()),
+                () -> Assertions.assertTrue(errString.contains("Invalid value for positional parameter")),
+                () -> Assertions.assertTrue(errString.contains("Usage"))
+        );
+    }
+
+    private static Stream<Arguments> withAnInvertedScoreRange() {
+        return Stream.of(
+                Arguments.of("1", "0"),
+                Arguments.of("10", "0"),
+                Arguments.of("10", "1"),
+                Arguments.of("10", "5"),
+                Arguments.of("10", "9")
+        );
+    }
+
     @Test
     void getATableString() {
         String[] args = {
