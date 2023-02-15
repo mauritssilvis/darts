@@ -99,6 +99,7 @@ class CheckoutsCommand implements Runnable {
             names = {"-t", "--table"},
             description = "The checkout table type. Supported values: ascending.",
             paramLabel = "<table>",
+            hidden = true,
             defaultValue = "ascending",
             order = 6
     )
