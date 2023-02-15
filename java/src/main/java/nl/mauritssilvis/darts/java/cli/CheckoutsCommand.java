@@ -72,7 +72,6 @@ class CheckoutsCommand implements Runnable {
             paramLabel = "<throws>",
             defaultValue = "0",
             showDefaultValue = CommandLine.Help.Visibility.NEVER,
-            converter = ThrowsConverter.class,
             order = 3
     )
     private int numThrows;
@@ -130,6 +129,8 @@ class CheckoutsCommand implements Runnable {
 
     @Override
     public void run() {
+        validate();
+
         Settings settings = TableSettingsBuilder.create()
                 .setBoardType(boardType)
                 .setCheckInMode(checkInMode)
@@ -150,39 +151,15 @@ class CheckoutsCommand implements Runnable {
         commandSpec.commandLine().getOut().println(output.strip());
     }
 
-    private static class IntegerConverter implements ITypeConverter<Integer> {
-        @Override
-        public Integer convert(String value) {
-            try {
-                return Integer.parseInt(value);
-            } catch (NumberFormatException ignore) {
-                throw new TypeConversionException(String.format("'%s' is not an int", value));
-            }
-        }
-    }
-
-    private static class ThrowsConverter extends IntegerConverter {
-        @Override
-        public Integer convert(String value) {
-            int numThrows = super.convert(value);
-
-            if (numThrows < 0) {
-                throw new TypeConversionException(
-                        String.format("must be a non-negative integer but was '%d'", numThrows)
-                );
-            }
-
-            return numThrows;
-        }
-    }
-
-            if (number < 0) {
-                throw new TypeConversionException(
-                        String.format("must be a non-negative integer but was '%d'", number)
-                );
-            }
-
-            return number;
+    private void validate() {
+        if (numThrows < 0) {
+            throw new ParameterException(
+                    commandSpec.commandLine(),
+                    String.format(
+                            "Invalid value for option '--throws': must be a non-negative integer but was '%d'",
+                            numThrows
+                    )
+            );
         }
     }
 }
