@@ -122,7 +122,7 @@ do
         {
             echo -e "## ${score}\n";
             "${shell_command[@]}"
-            echo -e "This table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n";
+            echo -e "\nThis table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n";
         } >> "$file"
     done
 
