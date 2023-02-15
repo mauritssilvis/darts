@@ -26,8 +26,13 @@ import picocli.CommandLine.Spec;
 @Command(
         name = "boards",
         mixinStandardHelpOptions = true,
-        description = "Print a dartboard.",
-        showDefaultValues = true
+        header = {"Print a dartboard.", ""},
+        // description = "%nPrint a dartboard.",
+        parameterListHeading = "%nParameters:%n",
+        optionListHeading = "%nOptions:%n",
+        showDefaultValues = true,
+        footerHeading = "%n",
+        footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
 class BoardsCommand implements Runnable {
     @Spec

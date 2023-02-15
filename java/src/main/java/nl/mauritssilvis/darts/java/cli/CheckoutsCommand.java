@@ -26,9 +26,14 @@ import picocli.CommandLine.Model.CommandSpec;
 @Command(
         name = "checkouts",
         mixinStandardHelpOptions = true,
-        description = "Generate a darts checkout table.",
+        header = {"Generate a darts checkout table.", ""},
+        // description = "Generate a darts checkout table.",
+        parameterListHeading = "%nParameters:%n",
+        optionListHeading = "%nOptions:%n",
         sortSynopsis = false,
-        showDefaultValues = true
+        showDefaultValues = true,
+        footerHeading = "%n",
+        footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
 class CheckoutsCommand implements Runnable {
     @Spec
