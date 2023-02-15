@@ -1,0 +1,104 @@
+#!/bin/sh
+
+# Generate Markdown checkout tables for selected dartboards, game modes, number of throws and scores
+
+dir="../tables2/"
+
+paths=(
+    "london/London_any_in_any_out.md"
+    # "london/London_any_in_master_out.md"
+    # "london/London_any_in_double_out.md"
+    # "quadro/Quadro_any_in_any_out.md"
+    # "quadro/Quadro_any_in_master_out.md"
+    # "quadro/Quadro_any_in_double_out.md"
+)
+
+boards=(
+    "London dartboard"
+    # "London dartboard"
+    # "London dartboard"
+    # "Quadro 240 board"
+    # "Quadro 240 board"
+    # "Quadro 240 board"
+
+)
+
+modes=(
+    "any-in, any-out"
+    # "any-in, master-out"
+    # "any-in, double-out"
+    # "any-in, any-out"
+    # "any-in, master-out"
+    # "any-in, double-out"
+)
+
+selected_min_scores=(
+    "1 1 1 1 1 1"
+    # "1 1 60"
+    # "1 1 60"
+    # "1 1 80"
+    # "1 1 80"
+    # "1 1 80"
+)
+
+selected_max_scores=(
+    "60 120 180 240 300 360"
+    # "60 120 180"
+    # "60 120 180"
+    # "80 160 240"
+    # "80 160 240"
+    # "80 160 240"
+)
+
+script_path="../../java/"
+
+commands=(
+    "checkouts -j any"
+    # "checkouts -j master"
+    # "checkouts"
+    # "checkouts -b quadro -j any"
+    # "checkouts -b quadro -j master"
+    # "checkouts -b quadro"
+)
+
+for i in "${!paths[@]}"
+do
+    path="${paths[i]}"
+    file="${dir}${path}"
+    board="${boards[i]}"
+    mode="${modes[i]}"
+
+    title="${board} ${mode} checkouts"
+    subtitle="Checkout tables for ${mode} darts games with the ${board}"
+
+    {
+        echo -e "# $title\n";
+        echo -e "> $subtitle\n";
+
+        echo -e "## Introduction\n";
+
+        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode.\n";
+    } > "$file"
+
+    IFS=' ' read -ra min_scores <<< "${selected_min_scores[i]}"
+    IFS=' ' read -ra max_scores <<< "${selected_max_scores[i]}"
+
+    for j in "${!min_scores[@]}"; do
+        min_score=${min_scores[j]}
+        max_score=${max_scores[j]}
+        command="${commands[i]} -n $((j + 1)) ${min_score} ${max_score}"
+        shell_command=("./${script_path}darts" ${command})
+
+        {
+            echo -e "## ${min_score} - ${max_score}\n";
+            "${shell_command[@]}"
+            echo -e "\nThis table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n";
+        } >> "$file"
+    done
+
+    {
+        echo -e "## License\n";
+        echo -e "Copyright © 2023 Maurits Silvis\n";
+        echo -e "This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../../../LICENSE.md), or later.";
+    } >> "$file"
+done
