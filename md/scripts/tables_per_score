@@ -65,8 +65,6 @@ selected_scores=(
     "        301 701"
 )
 
-script_path="../../java/"
-
 commands=(
     "checkouts -j any"
     "checkouts -j master"
@@ -81,6 +79,8 @@ commands=(
     "checkouts -b quadro -i master"
     "checkouts -b quadro -i double"
 )
+
+script_path="../../java/"
 
 for i in "${!paths[@]}"
 do
