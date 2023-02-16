@@ -66,8 +66,7 @@ darts=(
     "Three"
 )
 
-for i in "${!paths[@]}"
-do
+for i in "${!paths[@]}"; do
     path="${paths[i]}"
     file="${dir}${path}"
     board="${boards[i]}"
