@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Generate Markdown checkout tables for selected dartboards, game modes, ranges of scores and numbers of throws
+# Generate Markdown checkout tables for any-in games
 
 dir="../tables/"
 
