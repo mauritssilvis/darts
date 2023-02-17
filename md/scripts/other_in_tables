@@ -1,20 +1,14 @@
 #!/bin/sh
 
-# Generate Markdown checkout tables for selected dartboards, game modes and scores
+# Generate Markdown checkout tables for double-in and master-in games
 
 dir="../tables/"
 
 paths=(
-    "london/London_any_in_any_out.md"
-    "london/London_any_in_master_out.md"
     "london/London_master_in_master_out.md"
-    "london/London_any_in_double_out.md"
     "london/London_master_in_double_out.md"
     "london/London_double_in_double_out.md"
-    "quadro/Quadro_any_in_any_out.md"
-    "quadro/Quadro_any_in_master_out.md"
     "quadro/Quadro_master_in_master_out.md"
-    "quadro/Quadro_any_in_double_out.md"
     "quadro/Quadro_master_in_double_out.md"
     "quadro/Quadro_double_in_double_out.md"
 )
@@ -23,12 +17,6 @@ boards=(
     "London dartboard"
     "London dartboard"
     "London dartboard"
-    "London dartboard"
-    "London dartboard"
-    "London dartboard"
-    "Quadro 240 board"
-    "Quadro 240 board"
-    "Quadro 240 board"
     "Quadro 240 board"
     "Quadro 240 board"
     "Quadro 240 board"
@@ -36,46 +24,28 @@ boards=(
 )
 
 modes=(
-    "any-in, any-out"
-    "any-in, master-out"
     "master-in, master-out"
-    "any-in, double-out"
     "master-in, double-out"
     "double-in, double-out"
-    "any-in, any-out"
-    "any-in, master-out"
     "master-in, master-out"
-    "any-in, double-out"
     "master-in, double-out"
     "double-in, double-out"
 )
 
 selected_scores=(
     "101         401         701         1001"
-    "101         401         701         1001"
-    "101         401         701         1001"
-    "101         401 501     701         1001"
     "101         401 501     701         1001"
     "    201         501         801         "
-    "    201             601             1001"
-    "    201             601             1001"
-    "101             501             901     "
     "101             501             901     "
     "101             501             901     "
     "        301 701"
 )
 
 commands=(
-    "checkouts -j any"
-    "checkouts -j master"
     "checkouts -i master -j master"
-    "checkouts"
     "checkouts -i master"
     "checkouts -i double"
-    "checkouts -b quadro -j any"
-    "checkouts -b quadro -j master"
     "checkouts -b quadro -i master -j master"
-    "checkouts -b quadro"
     "checkouts -b quadro -i master"
     "checkouts -b quadro -i double"
 )
