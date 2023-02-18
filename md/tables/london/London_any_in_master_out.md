@@ -10,7 +10,7 @@ However, they also apply to [master-in, master-out](London_master_in_master_out.
 
 In master-out games with the London dartboard, the last dart can score between 2 and 60 points.
 The last two darts can reach 120 points, and 180 points can be scored with the last three.
-The following table shows which checkout tables are provided for these ranges of scores.
+The following table shows which checkout tables are provided for these scores.
 
 |                 Scores |                        Darts |
 |-----------------------:|-----------------------------:|
@@ -20,7 +20,7 @@ The following table shows which checkout tables are provided for these ranges of
 |                        |   [3](#three-dart-checkouts) |
 | [121 – 180](#121--180) | [3](#three-dart-checkouts-1) |
 
-As for any-in, master-out games, the following can be observed.
+As for any-in, master-out checkouts, the following can be observed.
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in London dartboard any-in, master-out games.
 In addition, the corresponding number of possible checkouts is shown.

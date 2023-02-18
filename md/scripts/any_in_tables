@@ -153,7 +153,7 @@ for i in "${!paths[@]}"; do
     {
         echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${min_scores[0]} and ${max_scores[0]} points."
         echo -e "The last two darts can reach ${max_scores[2]} points, and ${max_scores[4]} points can be scored with the last three."
-        echo -e "The following table shows which checkout tables are provided for these ranges of scores.\n"
+        echo -e "The following table shows which checkout tables are provided for these scores.\n"
 
         echo -e "|                 Scores |                        Darts |"
         echo -e "|-----------------------:|-----------------------------:|"
@@ -181,7 +181,7 @@ for i in "${!paths[@]}"; do
     {
         echo -e ""
 
-        echo -e "As for ${mode} games, the following can be observed."
+        echo -e "As for ${mode} checkouts, the following can be observed."
         echo -e "Darts games commonly require players to score x01 points, where x is an integer."
         echo -e "The following table shows the required number of darts to reach such scores in ${board} ${mode} games."
         echo -e "In addition, the corresponding number of possible checkouts is shown.\n"

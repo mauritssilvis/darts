@@ -9,9 +9,9 @@ These tables are valid for games where the first (in) and last (out) darts must 
 
 In double-out games with the Quadro 240 board, the last dart can score between 2 and 50 points.
 The last two darts can reach 110 points, and 170 points can be scored with the last three.
-As long as a double has been thrown, the extensive [any-in, double-out checkout tables](Quadro_any_in_double_out.md) apply to these ranges of scores.
+As long as a double has been thrown, the extensive [any-in, double-out checkout tables](Quadro_any_in_double_out.md) apply to these scores.
 
-As for complete double-in, double-out checkouts, the following can be observed.
+As for double-in, double-out checkouts, the following can be observed.
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in Quadro 240 board double-in, double-out games.
 In addition, the corresponding number of possible checkouts is shown.

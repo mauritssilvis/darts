@@ -10,7 +10,7 @@ However, they also apply to [master-in, double-out](London_master_in_double_out.
 
 In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
 The last two darts can reach 110 points, and 170 points can be scored with the last three.
-The following table shows which checkout tables are provided for these ranges of scores.
+The following table shows which checkout tables are provided for these scores.
 
 |                 Scores |                        Darts |
 |-----------------------:|-----------------------------:|
@@ -20,7 +20,7 @@ The following table shows which checkout tables are provided for these ranges of
 |                        |   [3](#three-dart-checkouts) |
 | [111 – 170](#111--170) | [3](#three-dart-checkouts-1) |
 
-As for any-in, double-out games, the following can be observed.
+As for any-in, double-out checkouts, the following can be observed.
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in London dartboard any-in, double-out games.
 In addition, the corresponding number of possible checkouts is shown.
