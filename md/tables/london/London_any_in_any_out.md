@@ -8,7 +8,9 @@ This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](..
 These tables are valid for games without requirements on the first or last darts.
 However, they also apply to double-in, any-out and master-in, any-out games after the required double or triple has been thrown.
 
-The following table shows which checkout tables are provided first.
+In any-out darts games with the London dartboard, the last dart can score between 1 and 60 points.
+The last two darts can reach 120 points, and 180 points can be scored with the last three.
+The following table shows which checkout tables are provided for these ranges of scores.
 
 |                 Scores |                        Darts |
 |-----------------------:|-----------------------------:|
@@ -18,6 +20,7 @@ The following table shows which checkout tables are provided first.
 |                        |   [3](#three-dart-checkouts) |
 | [121 – 180](#121--180) | [3](#three-dart-checkouts-1) |
 
+As for any-in, any-out darts games, the following can be observed.
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in London dartboard any-in, any-out games.
 In addition, the corresponding number of possible checkouts is shown.
