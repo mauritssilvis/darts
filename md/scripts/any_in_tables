@@ -113,8 +113,7 @@ anchors=(
 
 script_path="../../java/"
 
-for i in "${!paths[@]}"
-do
+for i in "${!paths[@]}"; do
     path="${paths[i]}"
     file="${dir}${path}"
 
@@ -155,8 +154,7 @@ do
         echo -e "|-----------------------:|-----------------------------:|"
     } >> "${file}"
 
-    for j in "${!throws[@]}"
-    do
+    for j in "${!throws[@]}"; do
         min_score="${min_scores[j]}"
         max_score="${max_scores[j]}"
         num_throws="${throws[j]}"
@@ -191,8 +189,7 @@ do
         echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
     } >> "${file}"
 
-    for j in "${!min_scores[@]}"
-    do
+    for j in "${!min_scores[@]}"; do
         min_score="${min_scores[j]}"
         max_score="${max_scores[j]}"
 
