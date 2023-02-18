@@ -5,8 +5,9 @@
 ## Introduction
 
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in any-in, any-out mode.
-These tables are valid for games in which there are no requirements on the first or last darts.
+These tables are valid for games without requirements on the first or last darts.
 However, they also apply to double-in, any-out and master-in, any-out games after the required double or triple has been thrown.
+
 The following table shows which checkout tables are provided first.
 
 |                 Scores |                        Darts |
