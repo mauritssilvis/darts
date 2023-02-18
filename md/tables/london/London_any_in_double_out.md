@@ -6,7 +6,7 @@
 
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in any-in, double-out mode.
 These tables are valid for games without requirements on the first dart.
-However, they also apply to [master-in, double-out](London_master_in_double_out.md) and [double-in, double-out](London_double_in_double_out.md) games after the required double has been thrown.
+However, they also apply to [master-in, double-out](London_master_in_double_out.md) and [double-in, double-out](London_double_in_double_out.md) games after the required double or triple has been thrown.
 
 In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
 The last two darts can reach 110 points, and 170 points can be scored with the last three.
