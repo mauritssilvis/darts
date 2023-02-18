@@ -3666,7 +3666,7 @@ darts checkouts -b quadro -j any -n 3 135 160
 |       |       Q18 |       Q17 |         T20 / Q15 |  12 |
 |       |       Q18 |       Q16 |               Q16 |   3 |
 |       |       Q17 |       Q17 |               Q16 |   3 |
-|   201 | <a name="201"></a>* |         * |                 * |  21 |
+|   201 |         * |         * |                 * |  21 |
 |       |       Q20 |       Q19 |               T15 |   6 |
 |       |       Q20 |       Q16 |               T19 |   6 |
 |       |       Q19 |       Q17 |               T19 |   6 |
@@ -3790,6 +3790,22 @@ This table was generated using the command:
 
 ```shell
 darts checkouts -b quadro -j any -n 3 161 240
+```
+
+## 201
+
+| Score |   1 |   2 |   3 |  # |
+|------:|----:|----:|----:|---:|
+|   201 |   * |   * |   * | 21 |
+|       | Q20 | Q19 | T15 |  6 |
+|       | Q20 | Q16 | T19 |  6 |
+|       | Q19 | Q17 | T19 |  6 |
+|       | Q18 | Q18 | T19 |  3 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -b quadro -j any 201 201
 ```
 
 ## 601

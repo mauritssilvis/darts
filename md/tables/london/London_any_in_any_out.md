@@ -36,7 +36,7 @@ In addition, the corresponding number of possible checkouts is shown.
 | [1001](#1001) |    17 |        13,872 |
 
 The most exciting games will be those with relatively few possible checkouts.
-Checkout tables for these scores are given below.
+Checkout tables for these scores are given at the end of this document.
 Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 ## 1 – 60
@@ -772,7 +772,7 @@ darts checkouts -j any -n 2 23 60
 |   100 |         * |            * |  3 |
 |       |       T20 |          D20 |  2 |
 |       |       D25 |          D25 |  1 |
-|   101 | <a name="101"></a>* |            * |  2 |
+|   101 |         * |            * |  2 |
 |       |       T17 |          D25 |  2 |
 |   102 |         * |            * |  7 |
 |       |       T20 |          T14 |  2 |
@@ -2596,6 +2596,19 @@ This table was generated using the command:
 
 ```shell
 darts checkouts -j any -n 3 121 180
+```
+
+## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 2 |
+|       | T17 | D25 | 2 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j any 101 101
 ```
 
 ## 401

@@ -918,7 +918,7 @@ darts checkouts -n 2 3 50
 |   100 |            * |   * |  2 |
 |       |          T20 | D20 |  1 |
 |       |          D25 | D25 |  1 |
-|   101 | <a name="101"></a>* |   * |  1 |
+|   101 |            * |   * |  1 |
 |       |          T17 | D25 |  1 |
 |   102 |            * |   * |  0 |
 |   103 |            * |   * |  0 |
@@ -3665,6 +3665,19 @@ This table was generated using the command:
 
 ```shell
 darts checkouts -n 3 111 170
+```
+
+## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 1 |
+|       | T17 | D25 | 1 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts 101 101
 ```
 
 ## 401

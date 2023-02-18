@@ -1184,7 +1184,7 @@ darts checkouts -j master -n 2 5 60
 |       |          T20 |       D20 |  1 |
 |       |          D25 |       D25 |  1 |
 |       |          D20 |       T20 |  1 |
-|   101 | <a name="101"></a>* |         * |  2 |
+|   101 |            * |         * |  2 |
 |       |          T17 |       D25 |  1 |
 |       |          D25 |       T17 |  1 |
 |   102 |            * |         * |  7 |
@@ -5731,6 +5731,20 @@ This table was generated using the command:
 
 ```shell
 darts checkouts -j master -n 3 121 180
+```
+
+## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 2 |
+|       | T17 | D25 | 1 |
+|       | D25 | T17 | 1 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -j master 101 101
 ```
 
 ## 401

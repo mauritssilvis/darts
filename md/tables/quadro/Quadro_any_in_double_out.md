@@ -1047,7 +1047,7 @@ darts checkouts -b quadro -n 2 3 50
 |       |               Q16 | D18 |  1 |
 |       |         T20 / Q15 | D20 |  2 |
 |       |               D25 | D25 |  1 |
-|   101 | <a name="101"></a>* |   * |  1 |
+|   101 |                 * |   * |  1 |
 |       |               T17 | D25 |  1 |
 |   102 |                 * |   * |  6 |
 |       |               Q20 | D11 |  1 |
@@ -6467,6 +6467,19 @@ This table was generated using the command:
 
 ```shell
 darts checkouts -b quadro -n 3 131 210
+```
+
+## 101
+
+| Score |   1 |   2 | # |
+|------:|----:|----:|--:|
+|   101 |   * |   * | 1 |
+|       | T17 | D25 | 1 |
+
+This table was generated using the command:
+
+```shell
+darts checkouts -b quadro 101 101
 ```
 
 ## 501
