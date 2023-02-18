@@ -23,7 +23,7 @@ In addition, the corresponding number of possible checkouts is shown.
 |           901 |    16 | 202,771,392 |
 | [1001](#1001) |    17 |         816 |
 
-The most exciting games will be those with a comparatively small number of possible checkouts.
+The most exciting games will be those with relatively few possible checkouts.
 Checkout tables for these scores are given below.
 A checkout table for 501 points was included as it is a typical score in darts games.
 Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.

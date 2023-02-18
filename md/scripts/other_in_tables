@@ -77,7 +77,7 @@ do
         echo -e "|         Score | Darts |      Checkouts |"
         echo -e "|--------------:|------:|---------------:|\n"
 
-        echo -e "The most exciting games will be those with a comparatively small number of possible checkouts."
+        echo -e "The most exciting games will be those with relatively few possible checkouts."
         echo -e "Checkout tables for these scores are given below."
         echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
     } > "$file"
