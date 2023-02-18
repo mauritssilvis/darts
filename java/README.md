@@ -2,11 +2,7 @@
 
 > A Java-based computational toolbox aimed at the game of darts
 
-## Introduction
-
-## Installation
-
-## Usage
+## Coming soon!
 
 ## License
 
