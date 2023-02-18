@@ -8,7 +8,7 @@ This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](..
 These tables are valid for games where the first (in) and last (out) darts must land on a double field.
 
 In double-out games with the Quadro 240 board, the last dart can score between 2 and 50 points.
-The last two darts can reach 110 points, and 170 points can be scored with the last three.
+The last two darts can reach 130 points, and 210 points can be scored with the last three.
 As long as a double has been thrown, the extensive [any-in, double-out checkout tables](Quadro_any_in_double_out.md) apply to these scores.
 
 As for double-in, double-out checkouts, the following can be observed.
