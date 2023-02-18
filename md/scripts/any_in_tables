@@ -43,12 +43,12 @@ dart_phrases=(
 )
 
 other_mode_phrases=(
-    "master-in, any-out and double-in, any-out"
-    "master-in, master-out and double-in, master-out"
-    "master-in, double-out and double-in, double-out"
-    "master-in, any-out and double-in, any-out"
-    "master-in, master-out and double-in, master-out"
-    "master-in, double-out and double-in, double-out"
+    ""
+    "[master-in, master-out](London_master_in_master_out.md)"
+    "[master-in, double-out](London_master_in_double_out.md) and [double-in, double-out](London_double_in_double_out.md)"
+    ""
+    "[master-in, master-out](Quadro_master_in_master_out.md)"
+    "[master-in, double-out](Quadro_master_in_double_out.md) and [double-in, double-out](Quadro_double_in_double_out.md)"
 )
 
 other_field_phrases=(
@@ -137,7 +137,12 @@ for i in "${!paths[@]}"; do
 
         echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
         echo -e "These tables are valid for games without requirements on the ${dart_phrase}."
-        echo -e "However, they also apply to ${other_mode_phrase} games after the required ${other_dart_phrase} has been thrown.\n"
+
+        if [ "${other_mode_phrase}" != "" ]; then
+            echo -e "However, they also apply to ${other_mode_phrase} games after the required ${other_dart_phrase} has been thrown.\n"
+        else
+            echo ""
+        fi
     } > "${file}"
 
     last_max_score="0"

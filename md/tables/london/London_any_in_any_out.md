@@ -6,7 +6,6 @@
 
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in any-in, any-out mode.
 These tables are valid for games without requirements on the first or last darts.
-However, they also apply to master-in, any-out and double-in, any-out games after the required double or triple has been thrown.
 
 In any-out games with the London dartboard, the last dart can score between 1 and 60 points.
 The last two darts can reach 120 points, and 180 points can be scored with the last three.
