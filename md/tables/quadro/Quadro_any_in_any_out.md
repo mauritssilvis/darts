@@ -5,7 +5,22 @@
 ## Introduction
 
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the Quadro 240 board played in any-in, any-out mode.
+These tables are valid for games without requirements on the first or last darts.
+However, they also apply to master-in, any-out and double-in, any-out games after the required double or triple has been thrown.
 
+In any-out games with the Quadro 240 board, the last dart can score between 1 and 80 points.
+The last two darts can reach 160 points, and 240 points can be scored with the last three.
+The following table shows which checkout tables are provided for these ranges of scores.
+
+|                 Scores |                        Darts |
+|-----------------------:|-----------------------------:|
+|       [1 – 80](#1--80) |     [1](#one-dart-checkouts) |
+|                        |     [2](#two-dart-checkouts) |
+|   [81 – 160](#81--160) |   [2](#two-dart-checkouts-1) |
+|                        |   [3](#three-dart-checkouts) |
+| [161 – 240](#161--240) | [3](#three-dart-checkouts-1) |
+
+As for any-in, any-out games, the following can be observed.
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in Quadro 240 board any-in, any-out games.
 In addition, the corresponding number of possible checkouts is shown.
@@ -24,7 +39,7 @@ In addition, the corresponding number of possible checkouts is shown.
 | [1001](#1001) |    13 |     17,901 |
 
 The most exciting games will be those with relatively few possible checkouts.
-Checkout tables for these scores are given below.
+Checkout tables for these scores are given at the end of this document.
 Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
 ## 1 – 80
