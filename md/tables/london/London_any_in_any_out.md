@@ -9,13 +9,13 @@ These tables are valid for games in which there are no requirements on the first
 However, they also apply to double-in, any-out and master-in, any-out games after the required double or triple has been thrown.
 The following table shows which checkout tables are provided first.
 
-|             Score range | Darts |
-|------------------------:|------:|
-|       [1 – 60](#1---60) |     1 |
-|                         |     2 |
-|   [61 – 120](#61---120) |     2 |
-|                         |     3 |
-| [121 – 180](#121---180) |     3 |
+|            Score range | Darts |
+|-----------------------:|------:|
+|       [1 – 60](#1--60) |     1 |
+|                        |     2 |
+|   [61 – 120](#61--120) |     2 |
+|                        |     3 |
+| [121 – 180](#121--180) |     3 |
 
 Darts games commonly require players to score x01 points, where x is an integer.
 The following table shows the required number of darts to reach such scores in London dartboard any-in, any-out games.
