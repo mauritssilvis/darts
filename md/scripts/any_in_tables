@@ -106,7 +106,7 @@ do
 
         if [ "${j}" -lt "${#throws[@]}" ]; then
             if [ "${max_score}" != "${last_max_score}" ]; then
-                headings="## ${min_score} - ${max_score}\n\n"
+                headings="## ${min_score} – ${max_score}\n\n"
             else
                 headings=""
             fi

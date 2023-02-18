@@ -27,7 +27,7 @@ The most exciting games will be those with a comparatively small number of possi
 Checkout tables for these scores are given below.
 Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
-## 1 - 50
+## 1 – 50
 
 ### One-dart checkouts
 
@@ -486,7 +486,7 @@ This table was generated using the command:
 darts checkouts -b quadro -n 2 3 50
 ```
 
-## 51 - 130
+## 51 – 130
 
 ### Two-dart checkouts
 
@@ -3852,7 +3852,7 @@ This table was generated using the command:
 darts checkouts -b quadro -n 3 99 130
 ```
 
-## 131 - 210
+## 131 – 210
 
 ### Three-dart checkouts
 

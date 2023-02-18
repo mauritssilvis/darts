@@ -28,7 +28,7 @@ Checkout tables for these scores are given below.
 A checkout table for 501 points was included as it is a typical score in darts games.
 Additional tables can be generated using the `darts` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.
 
-## 1 - 50
+## 1 – 50
 
 ### One-dart checkouts
 
@@ -485,7 +485,7 @@ This table was generated using the command:
 darts checkouts -n 2 3 50
 ```
 
-## 51 - 110
+## 51 – 110
 
 ### Two-dart checkouts
 
@@ -1916,7 +1916,7 @@ This table was generated using the command:
 darts checkouts -n 3 99 110
 ```
 
-## 111 - 170
+## 111 – 170
 
 ### Three-dart checkouts
 
