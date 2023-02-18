@@ -51,7 +51,7 @@ other_mode_phrases=(
     "master-in, double-out and double-in, double-out"
 )
 
-other_dart_phrases=(
+other_field_phrases=(
     "double or triple"
     "double or triple"
     "double"
@@ -126,7 +126,7 @@ for i in "${!paths[@]}"; do
 
     dart_phrase="${dart_phrases[i]}"
     other_mode_phrase="${other_mode_phrases[i]}"
-    other_dart_phrase="${other_dart_phrases[i]}"
+    other_dart_phrase="${other_field_phrases[i]}"
 
     {
         echo -e "# ${title}\n"
