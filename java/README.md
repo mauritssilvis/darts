@@ -79,7 +79,7 @@ You can build the `darts` toolbox as follows:
 
 #### 3.1.1 The `install` command was not found
 
-While trying to install `darts`, you may encounter the following errors:
+While trying to build `darts`, you may encounter the following errors:
 
 ```text
 install: command not found
@@ -107,7 +107,7 @@ To solve these problems, take the following steps:
 
 #### 3.1.2 Java was not installed or found
 
-While trying to install or execute `darts`, you may encounter the following errors:
+While trying to build or execute `darts`, you may encounter the following errors:
 
 ```text
 JAVA_HOME is not set and no 'java' command could be found in your PATH.
@@ -169,6 +169,22 @@ To solve these problems, take the following steps:
 - Install `darts` by following the [installation instructions](#1-installation).
 - Navigate to the `darts/java` directory.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
+
+### 3.3 Other issues
+
+#### 3.3.1 Building `darts` failed
+
+While trying to build `darts`, you may encounter another error than those listed above.
+Such an error may contain a message like:
+
+```text
+FAILURE: Build failed with an exception.
+...
+BUILD FAILED in XXs
+...
+```
+
+Should this situation occur, please [report an issue](https://github.com/mauritssilvis/darts/issues), documenting exactly how your issue can be reproduced.
 
 ## License
 
