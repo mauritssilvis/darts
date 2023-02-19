@@ -23,6 +23,15 @@ If you are interested in exploring extensive checkout tables for different types
 
 ## Installation
 
+To use `darts`, you have to execute the following two steps.
+
+### Install Java 17+
+
+`darts` requires the installation of Java 17 or higher.
+You can download the latest version of the Java Development Kit (JDK) from https://jdk.java.net/.
+
+### Build `darts`
+
 ## Usage
 
 ### Generate darts checkout tables
