@@ -17,7 +17,7 @@ This project focuses on the following questions:
 
 To answer these questions, this project presents a computational toolbox going by the name of `darts`.
 
-## Toolbox
+## Features
 
 `darts` can determine all possible darts checkouts and generate checkout tables for any range of scores.
 This toolbox supports several dartboards, including the ‘standard’ London dartboard and the Quadro 240 board.
