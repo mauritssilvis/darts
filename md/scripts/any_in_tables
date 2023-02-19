@@ -140,7 +140,7 @@ for i in "${!paths[@]}"; do
         echo -e "These tables are valid for games ${requirements_phrase}."
 
         if [ "${other_mode_phrase}" != "" ]; then
-            echo -e "However, they also apply to ${other_mode_phrase} games after the required ${other_field_phrase} has been thrown.\n"
+            echo -e "However, these tables also apply to ${other_mode_phrase} games after the required ${other_field_phrase} has been thrown.\n"
         else
             echo ""
         fi
