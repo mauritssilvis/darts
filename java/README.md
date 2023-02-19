@@ -74,6 +74,86 @@ You can build the `darts` toolbox as follows:
 
 ## Troubleshooting
 
+### The `darts` command was not found
+
+While trying to execute `darts`, you may encounter the following errors:
+
+```text
+darts: command not found
+```
+
+```text
+'darts' is not recognized as an internal or external command, operable program or batch file.
+```
+
+```text
+darts : The term 'darts' is not recognized as the name of a cmdlet, function, script file, or operable program.
+```
+
+To solve these problems, take the following steps:
+
+- Install `darts` by following the [installation instructions](#installation).
+- Navigate to the `darts/java` directory.
+- Prefix the `darts` command with `./` (Bash) or `\.` (PowerShell).
+
+### The `darts` toolbox was not built
+
+While trying to execute `darts`, you may encounter the following error:
+
+```text
+Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
+Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
+```
+
+To solve this problem, [build](#build-darts) the `darts` toolbox.
+
+### The `install` command was not found
+
+While trying to install `darts`, you may encounter the following errors:
+
+```text
+install: command not found
+```
+
+```text
+'install' is not recognized as an internal or external command, operable program or batch file.
+```
+
+```text
+install : The term 'install' is not recognized as the name of a cmdlet, function, script file, or operable program.
+```
+
+To solve these problems, take the following steps:
+
+- Ensure you navigated to the `darts/java` directory.
+- Prefix the `install` command with `./` (Bash) or `\.` (PowerShell).
+
+
+### Java was not installed or found
+
+While trying to install or execute `darts`, you may encounter the following errors:
+
+```text
+JAVA_HOME is not set and no 'java' command could be found in your PATH.
+```
+
+```text
+JAVA_HOME is set to an invalid directory: ...
+```
+
+To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
+
+### Java is not up-to-date
+
+While trying to execute `darts`, you may encounter the following error:
+
+```text
+Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
+        java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to XX.X
+```
+
+To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
+
 ## License
 
 Copyright © 2023 Maurits Silvis
