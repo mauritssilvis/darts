@@ -12,8 +12,8 @@ What percentage of my darts successfully hit a double?
 
 This project focuses on the following questions:
 
-* How can I reach zero in a game of darts?
-* How many of these so-called checkouts are there?
+- How can I reach zero in a game of darts?
+- How many of these so-called checkouts are there?
 
 To answer these questions, this project presents a computational toolbox going by the name of `darts`.
 
@@ -27,10 +27,6 @@ Finally, `darts` can provide output in several formats: easily readable Markdown
 Currently, `darts` is available as a Java-based command-line application.
 More information about the installation and use of this app can be found in the [darts > Java](java) readme.
 If you are interested in checking out those checkout tables, refer to the [darts > Markdown](md) readme.
-
-[//]: # (Read on to learn more about the observations that can be made using `darts`.)
-
-[//]: # (## Observations)
 
 ## License
 
