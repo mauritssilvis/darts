@@ -33,13 +33,13 @@ out_modes=(
     "double-out"
 )
 
-dart_phrases=(
-    "first or last darts"
-    "first dart"
-    "first dart"
-    "first or last darts"
-    "first dart"
-    "first dart"
+requirements=(
+    "without requirements on the first or last darts"
+    "without requirements on the first dart"
+    "without requirements on the first dart"
+    "without requirements on the first or last darts"
+    "without requirements on the first dart"
+    "without requirements on the first dart"
 )
 
 other_mode_phrases=(
@@ -124,7 +124,8 @@ for i in "${!paths[@]}"; do
     title="${board} ${mode} checkouts"
     subtitle="Checkout tables for ${mode} darts games with the ${board}"
 
-    dart_phrase="${dart_phrases[i]}"
+    requirements_phrase="${requirements[i]}"
+
     other_mode_phrase="${other_mode_phrases[i]}"
     other_field_phrase="${other_field_phrases[i]}"
 
@@ -136,7 +137,7 @@ for i in "${!paths[@]}"; do
         echo -e "## Introduction\n"
 
         echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
-        echo -e "These tables are valid for games without requirements on the ${dart_phrase}."
+        echo -e "These tables are valid for games ${requirements_phrase}."
 
         if [ "${other_mode_phrase}" != "" ]; then
             echo -e "However, they also apply to ${other_mode_phrase} games after the required ${other_field_phrase} has been thrown.\n"

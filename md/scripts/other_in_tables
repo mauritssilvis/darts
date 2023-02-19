@@ -41,13 +41,13 @@ out_modes=(
     "double-out"
 )
 
-dart_phrases=(
-    "the first (in) and last (out) darts must land on a double or triple"
-    "the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
-    "the first (in) and last (out) darts must land on a double"
-    "the first (in) and last (out) darts must land on a double or triple"
-    "the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
-    "the first (in) and last (out) darts must land on a double"
+requirements=(
+    "where the first (in) and last (out) darts must land on a double or triple"
+    "where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
+    "where the first (in) and last (out) darts must land on a double"
+    "where the first (in) and last (out) darts must land on a double or triple"
+    "where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
+    "where the first (in) and last (out) darts must land on a double"
 )
 
 score_ranges=(
@@ -100,8 +100,8 @@ script_path="../../java/"
 for i in "${!paths[@]}"; do
     path="${paths[i]}"
     file="${dir}${path}"
-    board="${boards[i]}"
 
+    board="${boards[i]}"
     in_mode=${in_modes[i]}
     out_mode=${out_modes[i]}
     mode="${in_mode}, ${out_mode}"
@@ -109,7 +109,7 @@ for i in "${!paths[@]}"; do
     title="${board} ${mode} checkouts"
     subtitle="Checkout tables for ${mode} darts games with the ${board}"
 
-    dart_phrase="${dart_phrases[i]}"
+    requirements_phrase="${requirements[i]}"
 
     IFS=' ' read -ra score_range <<< "${score_ranges[i]}"
 
@@ -124,7 +124,7 @@ for i in "${!paths[@]}"; do
         echo -e "## Introduction\n"
 
         echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
-        echo -e "These tables are valid for games where ${dart_phrase}.\n"
+        echo -e "These tables are valid for games ${requirements_phrase}.\n"
 
         echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
         echo -e "The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
