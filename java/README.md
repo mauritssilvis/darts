@@ -94,7 +94,7 @@ To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#installation).
 - Navigate to the `darts/java` directory.
-- Prefix the `darts` command with `./` (Bash) or `\.` (PowerShell).
+- Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell).
 
 ### The `darts` toolbox was not built
 
@@ -126,7 +126,7 @@ install : The term 'install' is not recognized as the name of a cmdlet, function
 To solve these problems, take the following steps:
 
 - Ensure you navigated to the `darts/java` directory.
-- Prefix the `install` command with `./` (Bash) or `\.` (PowerShell).
+- Prefix the `install` command with `./` (Bash) or `.\` (PowerShell).
 
 
 ### Java was not installed or found
