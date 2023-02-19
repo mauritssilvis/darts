@@ -99,7 +99,8 @@ Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation.
 ```
 
-- Install Java 17+ and ensure the `JAVA_HOME` environment variable points to the Java installation location.
+- Install Java 17+.
+- Ensure the `JAVA_HOME` environment variable points to the Java installation location.
 
 ### Java is not up-to-date
 
@@ -129,4 +130,5 @@ Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.jav
         java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 59.0
 ```
 
-- Install Java 17+ and ensure the `JAVA_HOME` environment variable points to the Java installation location.
+- Install Java 17+.
+- Ensure the `JAVA_HOME` environment variable points to the Java installation location.
