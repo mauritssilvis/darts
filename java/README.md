@@ -49,9 +49,9 @@ You can build the `darts` toolbox as follows:
 
 ## 2. Usage
 
-### Generate darts checkout tables
+### Generate a darts checkout table
 
-#### Introduction
+#### Choose the scores
 
 #### Default settings
 
@@ -65,13 +65,13 @@ You can build the `darts` toolbox as follows:
 
 #### Change the checkout finder
 
-### Print dartboards
+### Print a dartboard
 
 #### Choose the dartboard
 
 #### Change the output format
 
-### Getting help
+### Get help
 
 ## 3. Troubleshooting
 
@@ -107,7 +107,7 @@ To solve these problems, take the following steps:
 
 #### 3.1.2 Java was not installed or found
 
-While trying to build or execute `darts`, you may encounter the following errors:
+While building or executing `darts`, you may encounter the following errors:
 
 ```text
 JAVA_HOME is not set and no 'java' command could be found in your PATH.
@@ -121,7 +121,7 @@ To solve these problems, follow the instructions for [installing Java 17+](#inst
 
 #### 3.1.3 The `darts` toolbox was not built
 
-While trying to execute `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following error:
 
 ```text
 Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
@@ -132,7 +132,7 @@ To solve this problem, [build](#build-darts) the `darts` toolbox.
 
 #### 3.1.4 Java is not up-to-date
 
-While trying to execute `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following error:
 
 ```text
 Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
@@ -142,7 +142,7 @@ Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.jav
         class file versions up to XX.X
 ```
 
-To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
+To solve this problem, follow the instructions for [installing Java 17+](#install-java-17).
 
 ### 3.2 Execution
 
@@ -170,11 +170,87 @@ To solve these problems, take the following steps:
 - Navigate to the `darts/java` directory.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
+#### 3.2.2 Missing required subcommand
+
+While executing `darts`, you may encounter the following error:
+
+```text
+Missing required subcommand
+```
+
+To solve this problem, execute `darts` with a subcommand:
+
+- `darts help` for [getting help](#get-help).
+- `darts boards` for [printing a dartboard](#print-a-dartboard).
+- `darts checkouts` for [generating a darts checkout table](#generate-a-darts-checkout-table).
+
+#### 3.2.3 Missing required `board` parameter
+
+While executing the `darts boards` subcommand, you may encounter the following error:
+
+```text
+Missing required parameter: '<board>'
+```
+
+To solve this problem, [specify the dartboard](#choose-the-dartboard) that you would like to print.
+
+#### 3.2.4 Missing required `minimum` and/or `maximum` parameters
+
+While executing the `darts checkouts` subcommand, you may encounter the following errors:
+
+```text
+Missing required parameters: '<minimum>', '<maximum>'
+```
+
+```text
+Missing required parameter: '<maximum>'
+```
+
+To solve these problems, [choose the scores](#choose-the-scores) for which you would like to generate a checkout table.
+
+#### 3.2.5 Invalid value
+
+While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following errors:
+
+```text
+Invalid value for positional parameter at index ...: expected one of ... but was '...'
+```
+
+```text
+Invalid value for positional parameter at index ...: '...' is not an int
+```
+
+```text
+Invalid value for option '...': expected one of ... but was '...'
+```
+
+To solve these problems, refer to the [usage instructions](#2-usage) to pick valid parameters.
+
+#### 3.2.6 Missing required option parameter
+
+While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following error:
+
+```text
+Missing required parameter for option '...'
+```
+
+To solve this problem, refer to the [usage instructions](#2-usage) to provide the option with a valid parameter.
+
+#### 3.2.7 Unknown option
+
+While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following error:
+
+```text
+Unknown option: '...'
+```
+
+To solve this problem, pick an existing subcommand option from the [usage instructions](#2-usage).
+
 ### 3.3 Other issues
 
 #### 3.3.1 Building `darts` failed
 
-While trying to build `darts`, you may encounter another error than those listed above.
+While building `darts`, you may encounter another error than those listed above.
 Such an error may contain a message like:
 
 ```text
