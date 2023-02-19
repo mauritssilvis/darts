@@ -4,6 +4,23 @@
 
 ## Introduction
 
+This part of the [darts](https://github.com/mauritssilvis/darts) project provides a Java-based computational toolbox aimed at the game of darts.
+This command-line toolbox, which will be referred to as `darts` in what follows, can:
+
+- Determine all possible darts checkouts.
+- Generate checkout tables for any range of scores.
+
+Additionally, `darts` lets you:
+
+- Choose the dartboard type.
+- Select the game mode.
+- Set the number of darts.
+- Pick the output format.
+
+In what follows, the [installation](#installation) and [usage](#usage) of `darts` are discussed.
+For solutions to commonly occurring problems, refer to the [troubleshooting](#troubleshooting) section.
+If you are interested in exploring extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
+
 ## Installation
 
 ## Usage
@@ -12,11 +29,13 @@
 
 #### Introduction
 
+#### Default settings
+
 #### Change the dartboard
 
 #### Change the game mode
 
-#### Fix the number of throws
+#### Select the number of throws
 
 #### Change the output format
 
