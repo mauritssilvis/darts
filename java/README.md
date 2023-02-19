@@ -23,14 +23,28 @@ If you are interested in exploring extensive checkout tables for different types
 
 ## Installation
 
-To use `darts`, you have to execute the following two steps.
+To use `darts`, you have to execute the following steps.
 
 ### Install Java 17+
 
 `darts` requires the installation of Java 17 or higher.
-You can download the latest version of the Java Development Kit (JDK) from https://jdk.java.net/.
+
+You can install the latest version of Java as follows:
+
+- Go to https://jdk.java.net/.
+- Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 19.
+- From the builds section, download the archive matching your system.
+- Extract the archive to a convenient location.
+- Set the `JAVA_HOME` environment variable point to the full path of the extracted `jdk-XX.X.X` folder.
 
 ### Build `darts`
+
+You can build the `darts` toolbox as follows:
+
+- Clone or download the `darts` code from https://github.com/mauritssilvis/darts.
+- If necessary, extract the code to a convenient location.
+- Navigate to the `darts/java` folder.
+- Run the `install` command.
 
 ## Usage
 
