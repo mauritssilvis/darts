@@ -17,11 +17,11 @@ Additionally, `darts` lets you:
 - Set the number of darts.
 - Pick the output format.
 
-In what follows, the [installation](#installation) and [usage](#usage) of `darts` are discussed.
-For solutions to commonly occurring problems, refer to the [troubleshooting](#troubleshooting) section.
+In what follows, the [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed.
+For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
 If you are interested in exploring extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
 
-## Installation
+## 1. Installation
 
 To use `darts`, you have to execute the following steps.
 
@@ -46,7 +46,7 @@ You can build the `darts` toolbox as follows:
 - Navigate to the `darts/java` folder.
 - Run the `install` command.
 
-## Usage
+## 2. Usage
 
 ### Generate darts checkout tables
 
@@ -72,7 +72,7 @@ You can build the `darts` toolbox as follows:
 
 ### Getting help
 
-## Troubleshooting
+## 3. Troubleshooting
 
 ### The `darts` command was not found
 
@@ -92,7 +92,7 @@ darts : The term 'darts' is not recognized as the name of a cmdlet, function, sc
 
 To solve these problems, take the following steps:
 
-- Install `darts` by following the [installation instructions](#installation).
+- Install `darts` by following the [installation instructions](#1-installation).
 - Navigate to the `darts/java` directory.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell).
 
