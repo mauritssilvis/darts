@@ -49,29 +49,29 @@ You can build the `darts` toolbox as follows:
 
 ## 2. Usage
 
-### Generate a darts checkout table
+### 2.1 Generate a darts checkout table
 
-#### Choose the scores
+#### 2.1.1 Choose the scores
 
-#### Default settings
+#### 2.1.2 Default settings
 
-#### Change the dartboard
+#### 2.1.3 Change the dartboard
 
-#### Change the game mode
+#### 2.1.4 Change the game mode
 
-#### Select the number of throws
+#### 2.1.5 Select the number of throws
 
-#### Change the output format
+#### 2.1.6 Change the output format
 
-#### Change the checkout finder
+#### 2.1.7 Change the checkout finder
 
-### Print a dartboard
+### 2.2 Print a dartboard
 
-#### Choose the dartboard
+#### 2.2.1 Choose the dartboard
 
-#### Change the output format
+#### 2.2.2 Change the output format
 
-### Get help
+### 2.3 Get help
 
 ## 3. Troubleshooting
 
@@ -180,9 +180,9 @@ Missing required subcommand
 
 To solve this problem, execute `darts` with a subcommand:
 
-- `darts help` for [getting help](#get-help).
-- `darts boards` for [printing a dartboard](#print-a-dartboard).
-- `darts checkouts` for [generating a darts checkout table](#generate-a-darts-checkout-table).
+- `darts help` for [getting help](#23-get-help).
+- `darts boards` for [printing a dartboard](#22-print-a-dartboard).
+- `darts checkouts` for [generating a darts checkout table](#21-generate-a-darts-checkout-table).
 
 #### 3.2.3 Missing required `board` parameter
 
@@ -192,7 +192,7 @@ While executing the `darts boards` subcommand, you may encounter the following e
 Missing required parameter: '<board>'
 ```
 
-To solve this problem, [specify the dartboard](#choose-the-dartboard) that you would like to print.
+To solve this problem, [specify the dartboard](#221-choose-the-dartboard) that you would like to print.
 
 #### 3.2.4 Missing required `minimum` and/or `maximum` parameters
 
@@ -206,7 +206,7 @@ Missing required parameters: '<minimum>', '<maximum>'
 Missing required parameter: '<maximum>'
 ```
 
-To solve these problems, [choose the scores](#choose-the-scores) for which you would like to generate a checkout table.
+To solve these problems, [choose the scores](#211-choose-the-scores) for which you would like to generate a checkout table.
 
 #### 3.2.5 Invalid value
 
