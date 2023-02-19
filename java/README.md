@@ -2,7 +2,35 @@
 
 > A Java-based computational toolbox aimed at the game of darts
 
-## Coming soon!
+## Introduction
+
+## Installation
+
+## Usage
+
+### Generate darts checkout tables
+
+#### Introduction
+
+#### Change the dartboard
+
+#### Change the game mode
+
+#### Fix the number of throws
+
+#### Change the output format
+
+#### Change the checkout finder
+
+### Print dartboards
+
+#### Choose the dartboard
+
+#### Change the output format
+
+### Getting help
+
+## Troubleshooting
 
 ## License
 
