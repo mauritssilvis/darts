@@ -5,7 +5,7 @@
 ## Introduction
 
 This part of the [darts](https://github.com/mauritssilvis/darts) project provides a Java-based computational toolbox aimed at the game of darts.
-This command-line toolbox, which will be referred to as `darts` in what follows, can:
+This command-line toolbox, referred to as `darts` in what follows, can:
 
 - Determine all possible darts checkouts.
 - Generate checkout tables for any range of scores.
