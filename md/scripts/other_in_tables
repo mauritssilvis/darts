@@ -128,7 +128,7 @@ for i in "${!paths[@]}"; do
 
         echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
         echo -e "The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
-        echo -e "As long as a ${first_dart_phrase} has been thrown, the extensive [any-in, ${out_mode} checkout tables](${other_path}) apply to these scores.\n"
+        echo -e "After a ${first_dart_phrase} has been thrown, the extensive [any-in, ${out_mode} checkout tables](${other_path}) apply to these scores.\n"
 
         echo -e "As for ${mode} checkouts, the following can be observed."
         echo -e "Darts games commonly require players to score x01 points, where x is an integer."
