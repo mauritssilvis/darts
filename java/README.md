@@ -180,21 +180,11 @@ Missing required subcommand
 
 To solve this problem, execute `darts` with a subcommand:
 
-- `darts help` for [getting help](#23-get-help).
-- `darts boards` for [printing a dartboard](#22-print-a-dartboard).
 - `darts checkouts` for [generating a darts checkout table](#21-generate-a-darts-checkout-table).
+- `darts boards` for [printing a dartboard](#22-print-a-dartboard).
+- `darts help` for [getting help](#23-get-help).
 
-#### 3.2.3 Missing required `board` parameter
-
-While executing the `darts boards` subcommand, you may encounter the following error:
-
-```text
-Missing required parameter: '<board>'
-```
-
-To solve this problem, [specify the dartboard](#221-choose-the-dartboard) that you would like to print.
-
-#### 3.2.4 Missing required `minimum` and/or `maximum` parameters
+#### 3.2.3 Missing required `minimum` and/or `maximum` parameters
 
 While executing the `darts checkouts` subcommand, you may encounter the following errors:
 
@@ -208,13 +198,19 @@ Missing required parameter: '<maximum>'
 
 To solve these problems, [choose the scores](#211-choose-the-scores) for which you would like to generate a checkout table.
 
-#### 3.2.5 Invalid value
+#### 3.2.4 Missing required `board` parameter
 
-While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following errors:
+While executing the `darts boards` subcommand, you may encounter the following error:
 
 ```text
-Invalid value for positional parameter at index ...: expected one of ... but was '...'
+Missing required parameter: '<board>'
 ```
+
+To solve this problem, [specify the dartboard](#221-choose-the-dartboard) that you would like to print.
+
+#### 3.2.5 Invalid value
+
+While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following errors:
 
 ```text
 Invalid value for positional parameter at index ...: '...' is not an int
@@ -224,11 +220,15 @@ Invalid value for positional parameter at index ...: '...' is not an int
 Invalid value for option '...': expected one of ... but was '...'
 ```
 
+```text
+Invalid value for positional parameter at index ...: expected one of ... but was '...'
+```
+
 To solve these problems, refer to the [usage instructions](#2-usage) to pick valid parameters.
 
 #### 3.2.6 Missing required option parameter
 
-While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following error:
+While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following error:
 
 ```text
 Missing required parameter for option '...'
@@ -238,7 +238,7 @@ To solve this problem, refer to the [usage instructions](#2-usage) to provide th
 
 #### 3.2.7 Unknown option
 
-While executing the `darts boards` or `darts checkouts` subcommands, you may encounter the following error:
+While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following error:
 
 ```text
 Unknown option: '...'
