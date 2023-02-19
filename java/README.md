@@ -77,7 +77,7 @@ You can build the `darts` toolbox as follows:
 
 ### 3.1 Installation
 
-### 3.1.1 The `install` command was not found
+#### 3.1.1 The `install` command was not found
 
 While trying to install `darts`, you may encounter the following errors:
 
@@ -100,7 +100,7 @@ To solve these problems, take the following steps:
 - Ensure you navigated to the `darts/java` folder.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
-### 3.1.2 Java was not installed or found
+#### 3.1.2 Java was not installed or found
 
 While trying to install or execute `darts`, you may encounter the following errors:
 
@@ -114,7 +114,7 @@ JAVA_HOME is set to an invalid directory: ...
 
 To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
 
-### 3.1.3 The `darts` toolbox was not built
+#### 3.1.3 The `darts` toolbox was not built
 
 While trying to execute `darts`, you may encounter the following error:
 
@@ -125,7 +125,7 @@ Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.Dar
 
 To solve this problem, [build](#build-darts) the `darts` toolbox.
 
-### 3.1.4 Java is not up-to-date
+#### 3.1.4 Java is not up-to-date
 
 While trying to execute `darts`, you may encounter the following error:
 
