@@ -95,6 +95,11 @@ install : The term 'install' is not recognized as the name of a cmdlet,
 function, script file, or operable program.
 ```
 
+```text
+install: missing file operand
+Try 'install --help' for more information.
+```
+
 To solve these problems, take the following steps:
 
 - Ensure you navigated to the `darts/java` folder.
