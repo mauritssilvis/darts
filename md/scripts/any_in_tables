@@ -34,12 +34,12 @@ out_modes=(
 )
 
 requirements=(
-    "without requirements on the first or last darts"
-    "without requirements on the first dart"
-    "without requirements on the first dart"
-    "without requirements on the first or last darts"
-    "without requirements on the first dart"
-    "without requirements on the first dart"
+    "without requirements on the first (in) or last (out) darts"
+    "without requirements on the first (in) dart, whereas the last (out) dart must land on a double or a triple"
+    "without requirements on the first (in) dart, whereas the last (out) dart must land on a double"
+    "without requirements on the first (in) or last (out) darts"
+    "without requirements on the first (in) dart, whereas the last (out) dart must land on a double or a triple"
+    "without requirements on the first (in) dart, whereas the last (out) dart must land on a double"
 )
 
 other_mode_phrases=(
