@@ -35,7 +35,7 @@ You can install the latest version of Java as follows:
 - Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 19.
 - From the builds section, download the archive matching your system.
 - Extract the archive to a convenient location.
-- Set the `JAVA_HOME` environment variable point to the full path of the extracted `jdk-XX.X.X` folder.
+- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XX.X.X` folder.
 
 ### Build `darts`
 
@@ -45,6 +45,7 @@ You can build the `darts` toolbox as follows:
 - If necessary, extract the code to a convenient location.
 - Navigate to the `darts/java` folder.
 - Run the `install` command.
+- Test execution of the `darts` toolbox by running the `darts` command.
 
 ## 2. Usage
 
@@ -74,40 +75,9 @@ You can build the `darts` toolbox as follows:
 
 ## 3. Troubleshooting
 
-### The `darts` command was not found
+### 3.1 Installation
 
-While trying to execute `darts`, you may encounter the following errors:
-
-```text
-darts: command not found
-```
-
-```text
-'darts' is not recognized as an internal or external command, operable program or batch file.
-```
-
-```text
-darts : The term 'darts' is not recognized as the name of a cmdlet, function, script file, or operable program.
-```
-
-To solve these problems, take the following steps:
-
-- Install `darts` by following the [installation instructions](#1-installation).
-- Navigate to the `darts/java` directory.
-- Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell).
-
-### The `darts` toolbox was not built
-
-While trying to execute `darts`, you may encounter the following error:
-
-```text
-Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
-Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
-```
-
-To solve this problem, [build](#build-darts) the `darts` toolbox.
-
-### The `install` command was not found
+### 3.1.1 The `install` command was not found
 
 While trying to install `darts`, you may encounter the following errors:
 
@@ -116,20 +86,21 @@ install: command not found
 ```
 
 ```text
-'install' is not recognized as an internal or external command, operable program or batch file.
+'install' is not recognized as an internal or external command, operable program
+or batch file.
 ```
 
 ```text
-install : The term 'install' is not recognized as the name of a cmdlet, function, script file, or operable program.
+install : The term 'install' is not recognized as the name of a cmdlet,
+function, script file, or operable program.
 ```
 
 To solve these problems, take the following steps:
 
-- Ensure you navigated to the `darts/java` directory.
-- Prefix the `install` command with `./` (Bash) or `.\` (PowerShell).
+- Ensure you navigated to the `darts/java` folder.
+- Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
-
-### Java was not installed or found
+### 3.1.2 Java was not installed or found
 
 While trying to install or execute `darts`, you may encounter the following errors:
 
@@ -143,16 +114,56 @@ JAVA_HOME is set to an invalid directory: ...
 
 To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
 
-### Java is not up-to-date
+### 3.1.3 The `darts` toolbox was not built
+
+While trying to execute `darts`, you may encounter the following error:
+
+```text
+Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
+Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
+```
+
+To solve this problem, [build](#build-darts) the `darts` toolbox.
+
+### 3.1.4 Java is not up-to-date
 
 While trying to execute `darts`, you may encounter the following error:
 
 ```text
 Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
-        java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to XX.X
+        java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp
+        has been compiled by a more recent version of the Java Runtime (class
+        file version 61.0), this version of the Java Runtime only recognizes 
+        class file versions up to XX.X
 ```
 
 To solve these problems, follow the instructions for [installing Java 17+](#install-java-17).
+
+### 3.2 Execution
+
+#### 3.2.1 The `darts` command was not found
+
+While trying to execute `darts`, you may encounter the following errors:
+
+```text
+darts: command not found
+```
+
+```text
+'darts' is not recognized as an internal or external command, operable program 
+or batch file.
+```
+
+```text
+darts : The term 'darts' is not recognized as the name of a cmdlet, function, 
+script file, or operable program.
+```
+
+To solve these problems, take the following steps:
+
+- Install `darts` by following the [installation instructions](#1-installation).
+- Navigate to the `darts/java` directory.
+- Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 ## License
 
