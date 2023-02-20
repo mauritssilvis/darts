@@ -175,8 +175,8 @@ To solve this problem, follow the instructions for [installing Java 17+](#11-ins
 
 #### 3.1.5 Building `darts` failed
 
-While building `darts`, you may encounter another error than those listed above.
-Such an error may contain a message like:
+While building `darts`, you may encounter other errors than those listed above.
+Such errors may contain a message like:
 
 ```text
 FAILURE: Build failed with an exception.
@@ -185,7 +185,7 @@ BUILD FAILED in XXs
 ...
 ```
 
-Should this situation occur, please [report an issue](https://github.com/mauritssilvis/darts/issues), documenting exactly how your issue can be reproduced.
+Should the build fail, please [report an issue](https://github.com/mauritssilvis/darts/issues) and document the error and how it can be reproduced.
 
 ### 3.2 Execution
 
