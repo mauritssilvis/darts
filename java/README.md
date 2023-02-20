@@ -19,7 +19,7 @@ Additionally, `darts` lets you:
 
 In what follows, the [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
-If you are interested in exploring extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
+If you would like to explore extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
 
 ## 1. Installation
 
@@ -74,7 +74,7 @@ With the PowerShell:
 
 #### 1.2.2 Troubleshooting
 
-Should any problems occur during building `darts`, please refer to the [troubleshooting](#3-troubleshooting) section.
+Should any problems occur while building `darts`, please refer to the [troubleshooting](#3-troubleshooting) section.
 
 ## 2. Usage
 
@@ -213,7 +213,7 @@ To solve this problem, execute `darts` with a subcommand:
 - `darts boards` for [printing a dartboard](#22-print-a-dartboard).
 - `darts help` for [getting help](#23-get-help).
 
-#### 3.2.3 Missing required `minimum` and/or `maximum` parameters
+#### 3.2.3 Missing required `minimum` or `maximum` parameters
 
 While executing the `darts checkouts` subcommand, you may encounter the following errors:
 
