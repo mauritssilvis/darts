@@ -253,7 +253,7 @@ Invalid value for option '...': expected one of ... but was '...'
 Invalid value for positional parameter at index ...: expected one of ... but was '...'
 ```
 
-To solve these problems, refer to the [usage instructions](#2-usage) to pick valid parameters.
+To solve these problems, choose valid parameters from the [usage instructions](#2-usage).
 
 #### 3.2.6 Missing required option parameter
 
@@ -263,7 +263,7 @@ While executing the `darts checkouts` or `darts boards` subcommands, you may enc
 Missing required parameter for option '...'
 ```
 
-To solve this problem, refer to the [usage instructions](#2-usage) to provide the option with a valid parameter.
+To solve this problem, choose a valid option parameter from the [usage instructions](#2-usage).
 
 #### 3.2.7 Unknown option
 
@@ -273,7 +273,7 @@ While executing the `darts checkouts` or `darts boards` subcommands, you may enc
 Unknown option: '...'
 ```
 
-To solve this problem, pick an existing subcommand option from the [usage instructions](#2-usage).
+To solve this problem, choose an existing subcommand option from the [usage instructions](#2-usage).
 
 ### 3.3 Other issues
 
