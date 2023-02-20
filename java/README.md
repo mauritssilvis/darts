@@ -173,6 +173,20 @@ Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.jav
 
 To solve this problem, follow the instructions for [installing Java 17+](#11-install-java-17).
 
+#### 3.1.5 Building `darts` failed
+
+While building `darts`, you may encounter another error than those listed above.
+Such an error may contain a message like:
+
+```text
+FAILURE: Build failed with an exception.
+...
+BUILD FAILED in XXs
+...
+```
+
+Should this situation occur, please [report an issue](https://github.com/mauritssilvis/darts/issues), documenting exactly how your issue can be reproduced.
+
 ### 3.2 Execution
 
 #### 3.2.1 The `darts` command was not found
@@ -274,22 +288,6 @@ Unknown option: '...'
 ```
 
 To solve this problem, choose an existing subcommand option from the [usage instructions](#2-usage).
-
-### 3.3 Other issues
-
-#### 3.3.1 Building `darts` failed
-
-While building `darts`, you may encounter another error than those listed above.
-Such an error may contain a message like:
-
-```text
-FAILURE: Build failed with an exception.
-...
-BUILD FAILED in XXs
-...
-```
-
-Should this situation occur, please [report an issue](https://github.com/mauritssilvis/darts/issues), documenting exactly how your issue can be reproduced.
 
 ## License
 
