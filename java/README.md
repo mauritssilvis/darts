@@ -43,9 +43,38 @@ You can build the `darts` toolbox as follows:
 
 - Clone or download the `darts` code from https://github.com/mauritssilvis/darts.
 - If necessary, extract the code to a convenient location.
-- Navigate to the `darts/java` folder.
+- Navigate to the `java` folder that is part of the code.
 - Run the `install` command.
 - Test execution of the `darts` toolbox by running the `darts` command.
+
+#### 1.2.1 Command execution
+
+On Unix-like systems, the `install` and `darts` commands can be executed as follows:
+
+- Open a terminal.
+- Navigate to the `java` folder that is part of the `darts` code.
+- Run the `install` command by executing `./install`.
+- Run the `darts` command by executing `./darts`.
+
+On Windows systems, the `install` and `darts` commands can be executed using the command prompt or the PowerShell.
+
+With the command prompt:
+
+- Open the command prompt, for example, by pushing the `Windows key`, typing `cmd` and hitting `Enter`.
+- Navigate to the `java` folder that is part of the `darts` code.
+- Run the `install` command by executing `install`.
+- Run the `darts` command by executing `darts`.
+
+With the PowerShell:
+
+- Open the PowerShell, for example, by pushing the `Windows key`, typing `powershell` and hitting `Enter`.
+- Navigate to the `java` folder that is part of the `darts` code.
+- Run the `install` command by executing `.\install`.
+- Run the `darts` command by executing `.\darts`.
+
+#### 1.2.2 Troubleshooting
+
+Should any problems occur during building `darts`, please refer to the [troubleshooting](#3-troubleshooting) section.
 
 ## 2. Usage
 
@@ -102,7 +131,7 @@ Try 'install --help' for more information.
 
 To solve these problems, take the following steps:
 
-- Ensure you navigated to the `darts/java` folder.
+- Ensure you navigated to the `java` folder that is part of the `darts` code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
@@ -167,7 +196,7 @@ script file, or operable program.
 To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
-- Navigate to the `darts/java` directory.
+- Navigate to the `java` folder that is part of the `darts` code.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.2.2 Missing required subcommand
