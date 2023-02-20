@@ -17,7 +17,7 @@ Additionally, `darts` lets you:
 - Set the number of darts.
 - Pick the output format.
 
-In what follows, the [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed.
+The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed, in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
 If you would like to explore extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
 
@@ -56,16 +56,16 @@ On Unix-like systems, the `install` and `darts` commands can be executed as foll
 - Run the `install` command by executing `./install`.
 - Run the `darts` command by executing `./darts`.
 
-On Windows systems, the `install` and `darts` commands can be executed using the command prompt or the PowerShell.
+On Windows, the `install` and `darts` commands can be executed using the command prompt or the PowerShell.
 
-With the command prompt:
+With the command prompt, the execution of commands works as follows:
 
 - Open the command prompt, for example, by pushing the `Windows key`, typing `cmd` and hitting `Enter`.
 - Navigate to the `java` folder that is part of the `darts` code.
 - Run the `install` command by executing `install`.
 - Run the `darts` command by executing `darts`.
 
-With the PowerShell:
+With the PowerShell, execution works as follows:
 
 - Open the PowerShell, for example, by pushing the `Windows key`, typing `powershell` and hitting `Enter`.
 - Navigate to the `java` folder that is part of the `darts` code.
