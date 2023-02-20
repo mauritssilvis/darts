@@ -78,6 +78,13 @@ Should any problems occur while building `darts`, please refer to the [troublesh
 
 ## 2. Usage
 
+The `darts` command-line toolbox offers three subcommands.
+These subcommands are described in detail in what follows:
+
+- [Generate a darts checkout table](#21-generate-a-darts-checkout-table) using `darts checkouts`.
+- [Print a supported dartboard](#22-print-a-dartboard) using `darts boards`.
+- [Get help](#23-get-help) using `darts help`.
+
 ### 2.1 Generate a darts checkout table
 
 #### 2.1.1 Choose the scores
