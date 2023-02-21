@@ -1,4 +1,4 @@
-# darts > Markdown
+# darts > Tables > Markdown
 
 > Darts checkout tables in the Markdown format
 
