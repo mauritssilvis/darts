@@ -258,14 +258,14 @@ darts checkouts 1 4 -o html
 
 ```html
 <table>
-    <tr class="h"><th>                             Score</th><th class="t">                        1</th><th class="t">                        2</th><th class="m">#</th></tr>
-    <tr class="s"><th rowspan="1" scope="rowgroup">    1</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">0</td></tr>
-    <tr class="s"><th rowspan="2" scope="rowgroup">    2</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
-    <tr class="c">                                           <td class="t"><span class="f">D1</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
-    <tr class="s"><th rowspan="2" scope="rowgroup">    3</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
-    <tr class="c">                                           <td class="t"><span class="f"> 1</span></td><td class="t"><span class="f">D1</span></td><td class="m">1</td></tr>
-    <tr class="s"><th rowspan="2" scope="rowgroup">    4</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
-    <tr class="c">                                           <td class="t"><span class="f">D2</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
+  <tr class="h"><th>                             Score</th><th class="t">                        1</th><th class="t">                        2</th><th class="m">#</th></tr>
+  <tr class="s"><th rowspan="1" scope="rowgroup">    1</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">0</td></tr>
+  <tr class="s"><th rowspan="2" scope="rowgroup">    2</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+  <tr class="c">                                           <td class="t"><span class="f">D1</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
+  <tr class="s"><th rowspan="2" scope="rowgroup">    3</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+  <tr class="c">                                           <td class="t"><span class="f"> 1</span></td><td class="t"><span class="f">D1</span></td><td class="m">1</td></tr>
+  <tr class="s"><th rowspan="2" scope="rowgroup">    4</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+  <tr class="c">                                           <td class="t"><span class="f">D2</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
 </table>
 ```
 
