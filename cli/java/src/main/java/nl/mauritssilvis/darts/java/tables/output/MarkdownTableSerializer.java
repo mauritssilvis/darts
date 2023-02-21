@@ -53,7 +53,10 @@ final class MarkdownTableSerializer implements Serializer<Table> {
             scoreFormat = "%1$" + Math.max(getScoreWidth(), "Score".length()) + "s";
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + getFieldWidth() + "s";
-            multiplicityFormat = "%1$" + Math.max(getMultiplicityWidth(), "#".length()) + "s";
+
+            int multiplicityWidth = getMultiplicityWidth();
+            int formattedWidth = multiplicityWidth + (multiplicityWidth - 1) / 3;
+            multiplicityFormat = "%1$" + Math.max(formattedWidth, "#".length()) + "s";
 
             numThrows = getNumThrows();
         }
@@ -115,7 +118,8 @@ final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void addMultiplicity(long multiplicity) {
-            stringBuilder.append(String.format(multiplicityFormat, multiplicity));
+            String formattedMultiplicity = String.format("%,d", multiplicity);
+            stringBuilder.append(String.format(multiplicityFormat, formattedMultiplicity));
         }
 
         @Override

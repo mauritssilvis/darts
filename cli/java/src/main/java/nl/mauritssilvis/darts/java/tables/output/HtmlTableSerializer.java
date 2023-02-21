@@ -60,7 +60,10 @@ final class HtmlTableSerializer implements Serializer<Table> {
             throwFormat = "%1$" + throwWidth + "s";
             fieldFormat = "%1$" + (fieldWidth > 0 ? fieldWidth : 1) + "s";
             emptyFieldFormat = throwSize > 0 ? "%1$" + (throwWidth / throwSize) + "s" : "%1$1s";
-            multiplicityFormat = "%1$" + Math.max(getMultiplicityWidth(), "#".length()) + "s";
+
+            int multiplicityWidth = getMultiplicityWidth();
+            int formattedWidth = multiplicityWidth + (multiplicityWidth - 1) / 3;
+            multiplicityFormat = "%1$" + Math.max(formattedWidth, "#".length()) + "s";
 
             numThrows = getNumThrows();
         }
@@ -118,7 +121,8 @@ final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void addMultiplicity(long multiplicity) {
-            stringBuilder.append(String.format(multiplicityFormat, multiplicity));
+            String formattedMultiplicity = String.format("%,d", multiplicity);
+            stringBuilder.append(String.format(multiplicityFormat, formattedMultiplicity));
         }
 
         @Override
