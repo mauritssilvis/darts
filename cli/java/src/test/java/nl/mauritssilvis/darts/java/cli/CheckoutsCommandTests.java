@@ -773,4 +773,25 @@ class CheckoutsCommandTests {
                 () -> Assertions.assertEquals(0, errString.length())
         );
     }
+
+    @Test
+    void convertToAString() {
+        Runnable runnable = new CheckoutsCommand();
+        String str = runnable.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.startsWith(runnable.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("commandSpec")),
+                () -> Assertions.assertTrue(str.contains("boardType")),
+                () -> Assertions.assertTrue(str.contains("checkInMode")),
+                () -> Assertions.assertTrue(str.contains("checkoutMode")),
+                () -> Assertions.assertTrue(str.contains("numThrows")),
+                () -> Assertions.assertTrue(str.contains("throwMode")),
+                () -> Assertions.assertTrue(str.contains("finderType")),
+                () -> Assertions.assertTrue(str.contains("tableType")),
+                () -> Assertions.assertTrue(str.contains("outputFormat")),
+                () -> Assertions.assertTrue(str.contains("minScore")),
+                () -> Assertions.assertTrue(str.contains("maxScore"))
+        );
+    }
 }

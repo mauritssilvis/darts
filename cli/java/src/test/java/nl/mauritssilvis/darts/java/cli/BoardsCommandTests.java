@@ -176,4 +176,17 @@ class BoardsCommandTests {
                 Arguments.of("--output", "OutputFormat.strIng", "London", "London")
         );
     }
+
+    @Test
+    void convertToAString() {
+        Runnable runnable = new BoardsCommand();
+        String str = runnable.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.startsWith(runnable.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("commandSpec")),
+                () -> Assertions.assertTrue(str.contains("outputFormat")),
+                () -> Assertions.assertTrue(str.contains("boardType"))
+        );
+    }
 }

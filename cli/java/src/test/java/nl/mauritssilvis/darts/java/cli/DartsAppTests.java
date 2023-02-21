@@ -114,4 +114,15 @@ class DartsAppTests {
                 () -> Assertions.assertEquals(0, errString.length())
         );
     }
+
+    @Test
+    void convertToAString() {
+        App app = DartsApp.create();
+        String str = app.toString();
+
+        Assertions.assertAll(
+                () -> Assertions.assertTrue(str.startsWith(app.getClass().getSimpleName())),
+                () -> Assertions.assertTrue(str.contains("commandLine"))
+        );
+    }
 }
