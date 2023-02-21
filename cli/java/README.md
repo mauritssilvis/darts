@@ -89,37 +89,358 @@ These subcommands are described in detail in what follows:
 
 #### 2.1.1 Choose the scores
 
+```shell
+darts checkouts 1 4
+```
+
+```markdown
+| Score |  1 |  2 | # |
+|------:|---:|---:|--:|
+|     1 |  * |  * | 0 |
+|     2 |  * |  * | 1 |
+|       | D1 |  - | 1 |
+|     3 |  * |  * | 1 |
+|       |  1 | D1 | 1 |
+|     4 |  * |  * | 1 |
+|       | D2 |  - | 1 |
+```
+
+```shell
+darts checkouts 20 21
+```
+
+```markdown
+| Score |         1 |         2 |  # |
+|------:|----------:|----------:|---:|
+|    20 |         * |         * |  1 |
+|       |       D10 |         - |  1 |
+|    21 |         * |         * | 13 |
+|       |        19 |        D1 |  1 |
+|       |        17 |        D2 |  1 |
+|       |       ... |       ... |  1 |
+|       |   3 /  T1 |        D9 |  2 |
+|       |         1 |       D10 |  1 |
+```
+
+```shell
+darts checkouts 501 501
+```
+
+```markdown
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |     # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|------:|
+|   501 |   * |   * |   * |   * |   * |   * |   * |   * |   * | 3,944 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D12 |     8 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T17 | D15 |     8 |
+|       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T15 | D18 |     8 |
+|       | ... | ... | ... | ... | ... | ... | ... | ... | ... |   ... |
+|       | T20 | T20 | T20 | T20 | T19 | T18 | D25 | D25 | D25 |   840 |
+|       | T20 | T20 | T20 | T19 | T19 | T19 | T19 | T19 | D18 |    56 |
+|       | T20 | T20 | T20 | T19 | T19 | T19 | D25 | D25 | D25 |   560 |
+```
+
 #### 2.1.2 Default parameters
 
 - The dartboard type: London.
 - The check-in mode: any.
 - The checkout mode: double.
-- The number of throws: 0.
+- The number of throws: 0 (not fixed).
 - The throw mode: optimal.
 - The checkout finder type: descending.
 - The output format: Markdown.
 
 ```shell
-darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown <minimum> <maximum>
+darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown 1 4
 ````
 
-#### 2.1.3 Change the dartboard
+#### 2.1.3 Change the game mode
 
-#### 2.1.4 Change the game mode
+```shell
+darts checkouts -j any 1 4
+```
 
-#### 2.1.5 Select the number of throws
+```markdown
+| Score |       1 | # |
+|------:|--------:|--:|
+|     1 |       * | 1 |
+|       |       1 | 1 |
+|     2 |       * | 2 |
+|       |  2 / D1 | 2 |
+|     3 |       * | 2 |
+|       |  3 / T1 | 2 |
+|     4 |       * | 2 |
+|       |  4 / D2 | 2 |
+```
 
-#### 2.1.6 Change the output format
+```shell
+darts checkouts -j master 20 21
+```
+
+```markdown
+| Score |   1 | # |
+|------:|----:|--:|
+|    20 |   * | 1 |
+|       | D10 | 1 |
+|    21 |   * | 1 |
+|       |  T7 | 1 |
+```
+
+```shell
+darts checkouts -i double 501 501
+```
+
+```markdown
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |   # |
+|------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
+|   501 |   * |   * |   * |   * |   * |   * |   * |   * |   * | 574 |
+|       | D25 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D17 |   7 |
+|       | D25 | T20 | T20 | T20 | T20 | T20 | T20 | T17 | D20 |   7 |
+|       | D25 | T20 | T20 | T20 | T20 | T20 | T19 | T18 | D20 |  42 |
+|       | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+|       | D20 | T20 | T20 | T20 | T20 | T20 | T19 | T18 | D25 |  42 |
+|       | D20 | T20 | T20 | T20 | T20 | T19 | T19 | T19 | D25 |  35 |
+|       | D17 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D25 |   7 |
+```
+
+```shell
+darts checkouts -i master -j master 501 501
+```
+
+```markdown
+| Score |         1 |         2 |         3 |         4 |         5 |         6 |         7 |         8 |         9 |       # |
+|------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|----------:|--------:|
+|   501 |         * |         * |         * |         * |         * |         * |         * |         * |         * | 223,026 |
+|       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |        T7 |       1 |
+|       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 | D12 /  T8 |      14 |
+|       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T18 |        T9 |       7 |
+|       |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |     ... | 
+|       | D12 /  T8 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 |       2 |
+|       | D12 /  T8 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 |       T20 |      14 |
+|       |        T7 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       1 |
+```
+
+#### 2.1.4 Select the number of throws
+
+```shell
+darts checkouts 1 4 -n 2
+```
+
+```markdown
+| Score |  1 |  2 | # |
+|------:|---:|---:|--:|
+|     1 |  * |  * | 0 |
+|     2 |  * |  * | 0 |
+|     3 |  * |  * | 1 |
+|       |  1 | D1 | 1 |
+|     4 |  * |  * | 0 |
+```
+
+```shell
+darts checkouts 1 4 -n 2 -m fixed
+```
+
+```markdown
+| Score |       1 |       2 | # |
+|------:|--------:|--------:|--:|
+|     1 |       * |       * | 0 |
+|     2 |       * |       * | 0 |
+|     3 |       * |       * | 1 |
+|       |       1 |      D1 | 1 |
+|     4 |       * |       * | 2 |
+|       |  2 / D1 |      D1 | 2 |
+```
+
+#### 2.1.5 Change the output format
+
+```shell
+darts checkouts 1 4 -o html
+```
+
+```html
+<table>
+    <tr class="h"><th>                             Score</th><th class="t">                        1</th><th class="t">                        2</th><th class="m">#</th></tr>
+    <tr class="s"><th rowspan="1" scope="rowgroup">    1</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">0</td></tr>
+    <tr class="s"><th rowspan="2" scope="rowgroup">    2</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+    <tr class="c">                                           <td class="t"><span class="f">D1</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
+    <tr class="s"><th rowspan="2" scope="rowgroup">    3</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+    <tr class="c">                                           <td class="t"><span class="f"> 1</span></td><td class="t"><span class="f">D1</span></td><td class="m">1</td></tr>
+    <tr class="s"><th rowspan="2" scope="rowgroup">    4</th><td class="t"><span class="e"> *</span></td><td class="t"><span class="e"> *</span></td><td class="m">1</td></tr>
+    <tr class="c">                                           <td class="t"><span class="f">D2</span></td><td class="t"><span class="n"> -</span></td><td class="m">1</td></tr>
+</table>
+```
+
+```shell
+darts checkouts 1 4 -o json
+```
+
+```json
+{
+    "1": {
+        "multiplicity": 0,
+        "checkouts": [
+        ]
+    },
+    "2": {
+        "multiplicity": 1,
+        "checkouts": [
+            {
+                "throws": [
+                    [
+                        "D1"
+                    ]
+                ],
+                "multiplicity": 1
+            }
+        ]
+    },
+    "3": {
+        "multiplicity": 1,
+        "checkouts": [
+            {
+                "throws": [
+                    [
+                        "1"
+                    ],
+                    [
+                        "D1"
+                    ]
+                ],
+                "multiplicity": 1
+            }
+        ]
+    },
+    "4": {
+        "multiplicity": 1,
+        "checkouts": [
+            {
+                "throws": [
+                    [
+                        "D2"
+                    ]
+                ],
+                "multiplicity": 1
+            }
+        ]
+    }
+}
+```
+
+#### 2.1.6 Change the dartboard
+
+```shell
+darts checkouts -b quadro 501 501
+```
+
+```markdown
+| Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
+|------:|----:|----:|----:|----:|----:|----:|----:|--:|
+|   501 |   * |   * |   * |   * |   * |   * |   * | 6 |
+|       | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D25 | 6 |
+```
 
 #### 2.1.7 Change the checkout finder
+
+```shell
+darts checkouts -f Cartesian 20 21
+```
+
+```markdown
+| Score |   1 |   2 |  # |
+|------:|----:|----:|---:|
+|    20 |   * |   * |  1 |
+|       | D10 |   - |  1 |
+|    21 |   * |   * | 13 |
+|       |   1 | D10 |  1 |
+|       |   3 |  D9 |  1 |
+|       |  T1 |  D9 |  1 |
+|       | ... | ... | .. |
+|       |  T5 |  D3 |  1 |
+|       |  17 |  D2 |  1 |
+|       |  19 |  D1 |  1 |
+```
 
 ### 2.2 Print a dartboard
 
 #### 2.2.1 Choose the dartboard
 
+```shell
+darts boards london
+```
+
+```markdown
+|   S |   D |   T |
+|----:|----:|----:|
+|   1 |  D1 |  T1 |
+|   2 |  D2 |  T2 |
+|   3 |  D3 |  T3 |
+| ... | ... | ... |
+|  19 | D19 | T19 |
+|  20 | D20 | T20 |
+|  25 | D25 |   - |
+```
+
 #### 2.2.2 Change the output format
 
+```shell
+darts boards london -o html
+````
+
+```html
+<table>
+  <tr><th>  S</th><th>  D</th><th>  T</th></tr>
+  <tr><td>  1</td><td> D1</td><td> T1</td></tr>
+  <tr><td>  2</td><td> D2</td><td> T2</td></tr>
+  <tr><td>  3</td><td> D3</td><td> T3</td></tr>
+  <tr><td>...</td><td>...</td><td>...</td></tr>
+  <tr><td> 19</td><td>D19</td><td>T19</td></tr>
+  <tr><td> 20</td><td>D20</td><td>T20</td></tr>
+  <tr><td> 25</td><td>D25</td><td>  -</td></tr>
+</table>
+```
+
+```shell
+darts boards london -o json
+````
+
+```json
+{
+    "singles": [
+        "1",
+        "2",
+        // ...
+        "20",
+        "25"
+    ], 
+    "doubles": [
+        "D1",
+        "D2",
+        // ...
+        "D20",
+        "D25"
+    ],
+    "triples": [
+        "T1",
+        "T2",
+        // ...
+        "T19",
+        "T20"
+    ]
+}
+```
+
 ### 2.3 Get help
+
+```shell
+darts help
+```
+
+```shell
+darts help checkouts
+```
+
+```shell
+darts help boards
+```
 
 ## 3. Troubleshooting
 
