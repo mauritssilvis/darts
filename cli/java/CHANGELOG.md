@@ -9,11 +9,6 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-#### Pathfinders
-
-- Create a brute-force pathfinder that considers all combinations of weighted edges between nodes (`CartesianPathfinder`).
-- Create an optimized pathfinder that considers sequences of edges with non-increasing weights (`DescendingPathfinder`).
-
 #### Dartboards
 
 - Add single, double, triple and quadruple dartboard fields (`TypedField`).
@@ -22,8 +17,13 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add the Yorkshire dartboard (`YorkshireBoard`).
 - Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
 - Add a Markdown serializer for dartboards (`MarkdownBoardSerializer`).
-- Add a JSON serializer for dartboards (`JsonBoardSerializer`).
 - Add an HTML serializer for dartboards (`HtmlBoardSerializer`).
+- Add a JSON serializer for dartboards (`JsonBoardSerializer`).
+
+#### Pathfinders
+
+- Create a brute-force pathfinder that considers all combinations of weighted edges between nodes (`CartesianPathfinder`).
+- Create an optimized pathfinder that considers sequences of edges with non-increasing weights (`DescendingPathfinder`).
 
 #### Checkout finders
 
@@ -36,8 +36,8 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add support for master and double check-ins and checkouts (`CheckMode`).
 - Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
 - Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
-- Add a JSON serializer for checkout tables (`JsonTableSerializer`).
 - Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
+- Add a JSON serializer for checkout tables (`JsonTableSerializer`).
 
 #### Command-line interface
 
