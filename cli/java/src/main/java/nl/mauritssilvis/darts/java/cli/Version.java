@@ -7,9 +7,9 @@ package nl.mauritssilvis.darts.java.cli;
 
 import picocli.CommandLine.IVersionProvider;
 
-public class Version implements IVersionProvider {
+class Version implements IVersionProvider {
     @Override
-    public String[] getVersion() throws Exception {
+    public String[] getVersion() {
         return new String[]{
                 "darts 0.1.0",
                 "Copyright © 2023 Maurits Silvis",
