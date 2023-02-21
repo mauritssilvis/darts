@@ -2,7 +2,7 @@
 
 # Generate Markdown checkout tables for double-in and master-in games
 
-dir="../tables/"
+dir="../"
 
 paths=(
     "london/London_master_in_master_out.md"
@@ -95,7 +95,7 @@ commands=(
     "checkouts -b quadro -i double"
 )
 
-script_path="../../java/"
+script_path="../../../java/"
 
 for i in "${!paths[@]}"; do
     path="${paths[i]}"
