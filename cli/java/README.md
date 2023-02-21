@@ -111,9 +111,10 @@ The corresponding output looks as follows:
 |       | D2 |  - | 1 |
 ```
 
-This table shows how scores from 1 to 4 can be reached for a specific type of darts game.
+This checkout table shows how scores from 1 to 4 can be reached for a specific type of darts game.
 Specifically, the table applies to a double-out game with the ‘standard’ London dartboard.
 There are no restrictions on the first dart.
+Note that no one-point checkouts are shown since 1 is less than the minimal final score — a double 1 (D1).
 
 Similarly, the command
 
@@ -231,13 +232,13 @@ The corresponding output is:
 
 Now, single final scores are also accepted, and a finish of 1 is possible.
 
-To allow for master (double or triple) checkouts, use a command like:
+To allow for master, i.e., double or triple, checkouts, use a command like:
 
 ```shell
 darts checkouts -j master 20 21
 ```
 
-In this case, the number of darts that is required to reach 21 reduces to one:
+In master-out games, only one dart is required to reduce a score of 21 to zero:
 
 ```markdown
 | Score |   1 | # |
@@ -250,6 +251,7 @@ In this case, the number of darts that is required to reach 21 reduces to one:
 
 By default, the `darts checkouts` subcommand does not impose restrictions on the first dart and, thus, assumes an any-in game.
 The check-in mode can, however, be set to `any`, `master` and `double`.
+To that end, use the `-i` or `--check-in` option.
 
 For example, to find the 501-point checkouts of a double-in, double-out darts game, run the following command:
 
@@ -272,14 +274,14 @@ The resulting (truncated) table shows there are 574 nine-dart checkouts in such 
 |       | D17 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D25 |   7 |
 ```
 
-You can also set the check-in and checkout modes simultaneously.
+You can also set both the check-in and checkout modes.
 For example, a master-in, master-out game would require a command of the form:
 
 ```shell
 darts checkouts -i master -j master 501 501
 ```
 
-When truncated from 1,262 lines representing more than 200,000 possible checkouts, the output looks as follows:
+When truncated from 1,262 lines representing more than 200,000 (!) possible checkouts, the output looks as follows:
 
 ```markdown
 | Score |         1 |         2 |         3 |         4 |         5 |         6 |         7 |         8 |         9 |       # |
@@ -296,9 +298,20 @@ When truncated from 1,262 lines representing more than 200,000 possible checkout
 
 #### 2.1.4 Select the number of throws
 
+By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
+That is, this command finds checkouts consisting of the minimum required number of darts.
+Using `darts`, you can, however, fix the number of throws.
+Two different modes of fixing the number of throws exist.
+
+First, you can look for optimal checkouts with a fixed number of darts.
+To that end, pass the desired number to the `-n` or `--throws` option.
+For example:
+
 ```shell
 darts checkouts 1 4 -n 2
 ```
+
+The resulting output is as follows:
 
 ```markdown
 | Score |  1 |  2 | # |
@@ -310,9 +323,19 @@ darts checkouts 1 4 -n 2
 |     4 |  * |  * | 0 |
 ```
 
+Here, only the checkouts that require a minimum of two darts are shown.
+Specifically, scores of 2 and 4 can be reached by hitting one double.
+Therefore, these checkouts are not shown.
+
+Secondly, you can find all checkouts for a fixed number of darts.
+To that end, specify the number of darts and use the `-m` or `--throw-mode` option to change the throw mode from the default `optimal` to `fixed`.
+For example:
+
 ```shell
 darts checkouts 1 4 -n 2 -m fixed
 ```
+
+The corresponding checkout table looks as follows:
 
 ```markdown
 | Score |       1 |       2 | # |
@@ -324,6 +347,10 @@ darts checkouts 1 4 -n 2 -m fixed
 |     4 |       * |       * | 2 |
 |       |  2 / D1 |      D1 | 2 |
 ```
+
+Note that the minimum two-dart score in a double-out game is 3.
+Therefore, no checkouts are shown for the scores 1 and 2.
+Additionally, note that a two-dart four-point checkout is shown, even if a one-dart checkout exists.
 
 #### 2.1.5 Change the output format
 
