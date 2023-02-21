@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project are documented in this file.
+All notable changes to the [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.) project are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).

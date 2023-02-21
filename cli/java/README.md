@@ -1,10 +1,10 @@
-# darts > Java
+# darts > CLI > Java
 
-> A Java-based computational toolbox aimed at the game of darts
+> A Java-based command-line toolbox aimed at the game of darts
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) project provides a Java-based computational toolbox aimed at the game of darts.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line toolbox aimed at the game of darts.
 This command-line toolbox, referred to as `darts` in what follows, can:
 
 - Determine all possible darts checkouts.
