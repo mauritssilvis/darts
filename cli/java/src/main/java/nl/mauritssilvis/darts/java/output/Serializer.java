@@ -15,7 +15,6 @@ package nl.mauritssilvis.darts.java.output;
  * Relevant design patterns: strategy, immutable interface.
  *
  * @param <T> the type of object to be serialized
- *
  * @author Maurits Silvis
  * @since 0.1.0
  */
