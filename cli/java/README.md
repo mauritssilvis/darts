@@ -89,9 +89,15 @@ These subcommands are described in detail in what follows:
 
 #### 2.1.1 Choose the scores
 
+Generating a darts checkout table using `darts` is as simple as choosing a minimum and a maximum score and passing these to the `darts checkouts` subcommand.
+
+For example, to create a checkout table with scores from 1 to 4, execute the following command:
+
 ```shell
 darts checkouts 1 4
 ```
+
+The corresponding output looks as follows:
 
 ```markdown
 | Score |  1 |  2 | # |
@@ -105,9 +111,17 @@ darts checkouts 1 4
 |       | D2 |  - | 1 |
 ```
 
+This table shows how the scores 1 to 4 can be reached for a specific type of darts game.
+Specifically, the table applies to an any-in, double-out game with the ‘standard’ London dartboard.
+
+Similarly, the command
+
 ```shell
 darts checkouts 20 21
 ```
+
+produces a checkout table for the scores 20 to 21 in such a game.
+In truncated form, this table looks as follows:
 
 ```markdown
 | Score |         1 |         2 |  # |
@@ -122,9 +136,17 @@ darts checkouts 20 21
 |       |         1 |       D10 |  1 |
 ```
 
+Note that a single 3 and a triple 1 (T1) have the same score.
+For brevity, checkouts involving different throws of the same score are summarized.
+
+It is also possible, to use `darts` to generate a checkout table for a single score.
+For example, to generate a table with 501-point checkouts, pass the same value as the minimum and maximum score:
+
 ```shell
 darts checkouts 501 501
 ```
+
+The resulting output shows that there are 3944 different nine-dart checkouts in a 501-point double-out darts game:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |     # |
@@ -138,6 +160,9 @@ darts checkouts 501 501
 |       | T20 | T20 | T20 | T19 | T19 | T19 | T19 | T19 | D18 |    56 |
 |       | T20 | T20 | T20 | T19 | T19 | T19 | D25 | D25 | D25 |   560 |
 ```
+
+Note that it doesn't matter in which order the first eight darts are thrown.
+Therefore, each row of the table represents multiple checkouts.
 
 #### 2.1.2 Default parameters
 
