@@ -77,7 +77,6 @@ class CheckoutsCommand implements Runnable {
             description = "The number of throws. Set this value if you want to find checkouts with a fixed number of throws.",
             paramLabel = "<throws>",
             defaultValue = "0",
-            showDefaultValue = CommandLine.Help.Visibility.NEVER,
             order = 3
     )
     private int numThrows;
