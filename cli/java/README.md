@@ -402,7 +402,7 @@ darts boards london -o html
 darts boards london -o json
 ````
 
-```json
+```json5
 {
     "singles": [
         "1",
