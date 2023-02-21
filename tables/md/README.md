@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](..) project provides extensive Markdown checkout tables for darts games with different dartboards and game modes.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) project provides extensive Markdown checkout tables for darts games with different dartboards and game modes.
 These checkout tables apply to the ‘standard’ London dartboard or the Quadro 240 board.
 Furthermore, they satisfy various requirements on the first (in) and last (out) darts.
 
@@ -33,4 +33,4 @@ Additional tables can be generated using the `darts` toolbox of the [darts](http
 
 Copyright © 2023 Maurits Silvis
 
-This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../../LICENSE.md), or later.
+This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](LICENSE.md), or later.
