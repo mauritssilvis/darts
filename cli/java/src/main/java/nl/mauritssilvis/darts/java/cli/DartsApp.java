@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
+import lombok.ToString;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -38,6 +39,7 @@ import java.io.PrintWriter;
         footerHeading = "%n",
         footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
+@ToString
 public final class DartsApp implements App {
     private CommandLine commandLine;
 

@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.settings.*;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
@@ -39,6 +40,7 @@ import picocli.CommandLine.Model.CommandSpec;
         footerHeading = "%n",
         footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
+@ToString
 class CheckoutsCommand implements Runnable {
     @Spec
     private CommandSpec commandSpec;

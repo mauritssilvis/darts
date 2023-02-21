@@ -5,6 +5,7 @@
 
 package nl.mauritssilvis.darts.java.cli;
 
+import lombok.ToString;
 import nl.mauritssilvis.darts.java.boards.Board;
 import nl.mauritssilvis.darts.java.boards.output.BoardSerializerFactory;
 import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
@@ -38,6 +39,7 @@ import picocli.CommandLine.Spec;
         footerHeading = "%n",
         footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
 )
+@ToString
 class BoardsCommand implements Runnable {
     @Spec
     private CommandSpec commandSpec;
