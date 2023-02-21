@@ -89,7 +89,19 @@ These subcommands are described in detail in what follows:
 
 #### 2.1.1 Choose the scores
 
-#### 2.1.2 Default settings
+#### 2.1.2 Default parameters
+
+- The dartboard type: London.
+- The check-in mode: any.
+- The checkout mode: double.
+- The number of throws: 0.
+- The throw mode: optimal.
+- The checkout finder type: descending.
+- The output format: Markdown.
+
+```shell
+darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown <minimum> <maximum>
+````
 
 #### 2.1.3 Change the dartboard
 
