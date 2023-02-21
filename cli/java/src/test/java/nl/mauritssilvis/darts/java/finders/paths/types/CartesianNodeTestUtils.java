@@ -11,6 +11,9 @@ import java.util.List;
 /**
  * A set of testing utilities that create (collections of) {@code CartesianNode}
  * objects.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class CartesianNodeTestUtils {
     private CartesianNodeTestUtils() {

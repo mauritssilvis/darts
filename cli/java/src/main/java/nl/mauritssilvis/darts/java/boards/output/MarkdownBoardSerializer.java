@@ -20,6 +20,9 @@ import java.util.stream.IntStream;
  * {@code Board} objects to Markdown.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class MarkdownBoardSerializer implements Serializer<Board> {
     private MarkdownBoardSerializer() {

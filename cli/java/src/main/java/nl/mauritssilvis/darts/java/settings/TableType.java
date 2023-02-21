@@ -9,6 +9,9 @@ import lombok.ToString;
 
 /**
  * The type of checkout table.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @ToString
 public enum TableType {

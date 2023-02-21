@@ -17,6 +17,9 @@ import java.io.PrintWriter;
  * This command-line interface was implemented using picocli.
  * <p>
  * Relevant design patterns: static factory method, lazy initialization.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @Command(
         name = "darts",

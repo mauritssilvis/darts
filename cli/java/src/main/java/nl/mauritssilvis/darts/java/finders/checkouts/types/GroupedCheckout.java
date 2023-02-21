@@ -21,6 +21,9 @@ import java.util.stream.IntStream;
  * sequence of throws, namely, one for each permutation of the grouped throws.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

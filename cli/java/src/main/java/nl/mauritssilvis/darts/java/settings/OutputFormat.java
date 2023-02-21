@@ -9,6 +9,9 @@ import lombok.ToString;
 
 /**
  * The output format.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @ToString
 public enum OutputFormat {

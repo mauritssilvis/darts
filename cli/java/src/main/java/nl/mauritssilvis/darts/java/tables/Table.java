@@ -15,6 +15,9 @@ import java.util.Map;
  * A checkout table that contains checkouts with specific settings.
  * <p>
  * Relevant design patterns: immutable interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public interface Table {
     /**

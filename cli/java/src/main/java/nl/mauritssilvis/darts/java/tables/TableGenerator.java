@@ -12,6 +12,9 @@ package nl.mauritssilvis.darts.java.tables;
  * Implementations can specify these properties.
  * <p>
  * Relevant design patterns: strategy, immutable interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @FunctionalInterface
 public interface TableGenerator {

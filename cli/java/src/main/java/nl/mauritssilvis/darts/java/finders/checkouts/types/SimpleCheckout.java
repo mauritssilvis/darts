@@ -19,6 +19,9 @@ import java.util.List;
  * sequence of ungrouped, simple throws.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

@@ -34,6 +34,9 @@ import java.util.stream.IntStream;
  * This implementation relies on the {@code DescendingPathfinder} class.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

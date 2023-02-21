@@ -17,6 +17,9 @@ import java.util.List;
  * An implementation of the {@code Throw} interface that stores a single field.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

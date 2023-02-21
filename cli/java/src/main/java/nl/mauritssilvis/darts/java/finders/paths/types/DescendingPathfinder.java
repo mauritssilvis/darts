@@ -30,6 +30,9 @@ import java.util.stream.IntStream;
  * Relevant design patterns: strategy, immutable object, static factory method.
  * <p>
  * Relevant terminology: Subset sum problem.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

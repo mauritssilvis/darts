@@ -11,6 +11,9 @@ import java.io.PrintWriter;
  * A command-line application.
  * <p>
  * Relevant design patterns: fluent interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public interface App {
     /**

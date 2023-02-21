@@ -22,6 +22,9 @@ import java.util.stream.IntStream;
  * representations of tables.
  * <p>
  * Relevant design patterns: template method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 abstract class TablePrinter {
     private final Map<Integer, List<Checkout>> checkoutMap;

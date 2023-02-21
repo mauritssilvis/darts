@@ -13,6 +13,9 @@ import java.util.List;
 /**
  * A set of testing utilities for processing collections of {@code Throw}
  * objects.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public final class ThrowTestUtils {
     private ThrowTestUtils() {

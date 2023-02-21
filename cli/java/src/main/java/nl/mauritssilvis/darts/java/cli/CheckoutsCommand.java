@@ -22,6 +22,9 @@ import picocli.CommandLine.Model.CommandSpec;
  * in various output formats.
  * <p>
  * The {@code checkouts} command was implemented using picocli.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @Command(
         name = "checkouts",

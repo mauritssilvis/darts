@@ -14,6 +14,9 @@ import java.util.List;
 /**
  * A set of testing utilities that create (collections of) {@code CompoundThrow}
  * objects.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class CompoundThrowTestUtils {
     private CompoundThrowTestUtils() {

@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 
 /**
  * A set of testing utilities for processing {@code Table} objects.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public final class TableTestUtils {
     private TableTestUtils() {

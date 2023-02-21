@@ -18,6 +18,9 @@ import java.util.stream.Collectors;
  * representations of dartboards.
  * <p>
  * Relevant design patterns: template method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 abstract class BoardPrinter {
     private final List<FieldType> fieldTypes;

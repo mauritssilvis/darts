@@ -11,6 +11,9 @@ import java.util.List;
 /**
  * A set of testing utilities for processing collections of {@code Path}
  * objects.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public final class PathTestUtils {
     private PathTestUtils() {

@@ -14,6 +14,9 @@ import nl.mauritssilvis.darts.java.settings.*;
  * unspecified properties.
  * <p>
  * Relevant design patterns: builder, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @ToString
 public final class TableSettingsBuilder implements SettingsBuilder {

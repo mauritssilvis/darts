@@ -19,6 +19,9 @@ import java.util.List;
  * grouped elements.
  * <p>
  * Relevant design patterns: immutable interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public interface Checkout {
     /**

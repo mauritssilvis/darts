@@ -21,6 +21,9 @@ import java.util.List;
  * {@code Table} objects using their Java string representation.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @ToString
 @EqualsAndHashCode

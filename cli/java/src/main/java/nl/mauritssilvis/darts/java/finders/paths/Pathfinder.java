@@ -14,6 +14,9 @@ import java.util.List;
  * for paths. Implementations can specify the data structures they apply to.
  * <p>
  * Relevant design patterns: strategy, immutable interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @FunctionalInterface
 public interface Pathfinder {

@@ -20,6 +20,9 @@ import java.util.stream.IntStream;
  * or clock dartboard.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

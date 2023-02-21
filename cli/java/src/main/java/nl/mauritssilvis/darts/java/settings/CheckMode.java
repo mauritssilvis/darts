@@ -9,6 +9,9 @@ import lombok.ToString;
 
 /**
  * The check-in or checkout mode.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @ToString
 public enum CheckMode {

@@ -16,6 +16,9 @@ import java.util.List;
  * be unique, however.
  * <p>
  * Relevant design patterns: immutable interface.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 public interface Node {
     /**

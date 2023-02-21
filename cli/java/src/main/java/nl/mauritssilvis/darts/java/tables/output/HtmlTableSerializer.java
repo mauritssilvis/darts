@@ -15,6 +15,9 @@ import java.util.stream.IntStream;
  * {@code Table} objects to HTML.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class HtmlTableSerializer implements Serializer<Table> {
     private HtmlTableSerializer() {

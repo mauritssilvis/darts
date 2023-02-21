@@ -16,6 +16,9 @@ import java.util.List;
  * weights in the order in which they are supplied.
  * <p>
  * Relevant design patterns: immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @EqualsAndHashCode
 @ToString

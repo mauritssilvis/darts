@@ -22,6 +22,9 @@ import picocli.CommandLine.Spec;
  * used to print dartboards to the console in various output formats.
  * <p>
  * The {@code boards} command was implemented using picocli.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 @Command(
         name = "boards",

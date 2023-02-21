@@ -20,6 +20,9 @@ import java.util.stream.IntStream;
  * {@code Board} objects to HTML.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class HtmlBoardSerializer implements Serializer<Board> {
     private HtmlBoardSerializer() {

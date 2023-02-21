@@ -19,6 +19,9 @@ import java.util.List;
  * {@code Table} objects to JSON.
  * <p>
  * Relevant design patterns: strategy, immutable object, static factory method.
+ *
+ * @author Maurits Silvis
+ * @since 0.1.0
  */
 final class JsonTableSerializer implements Serializer<Table> {
     private JsonTableSerializer() {
