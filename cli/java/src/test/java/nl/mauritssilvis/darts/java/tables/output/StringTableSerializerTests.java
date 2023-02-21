@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
+import java.util.Locale;
+
 class StringTableSerializerTests {
     @ParameterizedTest
     @EnumSource(TableType.class)
@@ -115,6 +117,6 @@ class StringTableSerializerTests {
         char first = shortName.charAt(0);
         String rest = shortName.substring(1);
 
-        return first + rest.toLowerCase();
+        return first + rest.toLowerCase(Locale.US);
     }
 }

@@ -8,6 +8,7 @@ package nl.mauritssilvis.darts.java.tables.output;
 import nl.mauritssilvis.darts.java.output.Serializer;
 import nl.mauritssilvis.darts.java.tables.Table;
 
+import java.util.Locale;
 import java.util.stream.IntStream;
 
 /**
@@ -118,7 +119,7 @@ final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void addMultiplicity(long multiplicity) {
-            String multiplicityStr = "%,d".formatted(multiplicity);
+            String multiplicityStr = String.format(Locale.US, "%,d", multiplicity);
             stringBuilder.append(multiplicityFormat.formatted(multiplicityStr));
         }
 

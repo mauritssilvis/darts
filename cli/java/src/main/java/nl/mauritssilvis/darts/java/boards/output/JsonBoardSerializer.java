@@ -14,6 +14,7 @@ import nl.mauritssilvis.darts.java.output.types.PrettyFormatter;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * An implementation of the generic {@code Serializer} interface that serializes
@@ -125,7 +126,7 @@ final class JsonBoardSerializer implements Serializer<Board> {
         private static String getTypeName(FieldType fieldType) {
             String fullName = fieldType.toString();
             String shortName = fullName.split("\\.")[1];
-            return shortName.toLowerCase() + "s";
+            return shortName.toLowerCase(Locale.US) + "s";
         }
     }
 }
