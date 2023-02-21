@@ -111,7 +111,7 @@ anchors=(
     "three-dart-checkouts-1"
 )
 
-script_path="../../../java/"
+script_path="../../../cli/java/"
 
 for i in "${!paths[@]}"; do
     path="${paths[i]}"
