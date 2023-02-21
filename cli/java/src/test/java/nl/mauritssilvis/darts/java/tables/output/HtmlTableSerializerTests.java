@@ -95,6 +95,7 @@ class HtmlTableSerializerTests {
         Settings settings = TableSettingsBuilder.create()
                 .setNumThrows(numThrows)
                 .setThrowMode(throwMode)
+                .setTableType(tableType)
                 .build();
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
@@ -158,6 +159,7 @@ class HtmlTableSerializerTests {
         Settings settings = TableSettingsBuilder.create()
                 .setNumThrows(numThrows)
                 .setThrowMode(throwMode)
+                .setTableType(tableType)
                 .build();
 
         TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
