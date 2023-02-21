@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](../..) > [Markdown](..) project provides checkout tables for darts games with the London dartboard played in any-in, any-out mode.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [Markdown](..) project provides checkout tables for darts games with the London dartboard played in any-in, any-out mode.
 These tables are valid for games without requirements on the first (in) or last (out) darts.
 
 In any-out games with the London dartboard, the last dart can score between 1 and 60 points.
@@ -2662,4 +2662,4 @@ darts checkouts -j any 1001 1001
 
 Copyright © 2023 Maurits Silvis
 
-This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../../../LICENSE.md), or later.
+This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later.
