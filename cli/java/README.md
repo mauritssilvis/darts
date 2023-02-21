@@ -19,7 +19,7 @@ Additionally, `darts` lets you:
 
 The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed, in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
-If you would like to explore extensive checkout tables for different types of darts games, refer to the [darts > Markdown](../md) readme.
+If you would like to explore extensive checkout tables for different types of darts games, refer to the [Markdown checkout tables](https://github.com/mauritssilvis/darts/tree/main/tables/md).
 
 ## 1. Installation
 
@@ -300,4 +300,4 @@ To solve this problem, choose an existing subcommand option from the [usage inst
 
 Copyright © 2023 Maurits Silvis
 
-This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later.
+This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../../LICENSE.md), or later.
