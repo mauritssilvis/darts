@@ -303,7 +303,7 @@ That is, this command finds checkouts consisting of the minimum required number 
 Using `darts`, you can, however, fix the number of throws.
 Two different modes of fixing the number of throws exist.
 
-First, you can look for optimal checkouts with a fixed number of darts.
+First, you can look for *optimal* checkouts with a fixed number of darts.
 To that end, pass the desired number to the `-n` or `--throws` option.
 For example:
 
@@ -327,7 +327,7 @@ Here, only the checkouts that require a minimum of two darts are shown.
 Specifically, scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
-Secondly, you can find all checkouts for a fixed number of darts.
+Secondly, you can find *all* checkouts for a fixed number of darts.
 To that end, specify the number of darts and use the `-m` or `--throw-mode` option to change the throw mode from the default `optimal` to `fixed`.
 For example:
 
