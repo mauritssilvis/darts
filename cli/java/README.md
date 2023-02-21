@@ -365,9 +365,22 @@ With the fixed throw mode, all possible checkouts for a given number of darts ar
 
 #### 2.1.5 Change the output format
 
+By default, the `darts checkouts` subcommand outputs checkout tables in the Markdown format.
+To change the output format, use the `-o` or `--output` options.
+The following output formats are supported:
+
+- `Markdown` for an easily readable Markdown table (default);
+- `HTML` for HTML tables for web pages;
+- `JSON` for JSON objects for computer processing;
+- `string` for output based on Java's string representation of objects.
+
+To generate an HTML checkout table, use a command like:
+
 ```shell
 darts checkouts 1 4 -o html
 ```
+
+The output will look like:
 
 ```html
 <table>
@@ -382,9 +395,29 @@ darts checkouts 1 4 -o html
 </table>
 ```
 
+Here, `th` elements are used for both the column headers and the scores in the first column.
+The score headers span multiple rows to correspond to all checkouts of that score.
+All elements have their own CSS class for (potential) custom styling.
+Specifically, the following classes are used:
+
+- `h` for the header row;
+- `s` for a score row;
+- `c` for a checkout row;
+- `t` for a cell in a throw column;
+- `e` for the content of a score-throw cell;
+- `f` for a dart field in a checkout-throw cell;
+- `n` for a missing dart field in a checkout-throw cell;
+- `m` for a cell in the multiplicity column.
+
+Of course, classes can be renamed or dropped at will after retrieving the HTML output.
+
+To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
+
 ```shell
 darts checkouts 1 4 -o json
 ```
+
+The output will look as follows:
 
 ```json
 {
