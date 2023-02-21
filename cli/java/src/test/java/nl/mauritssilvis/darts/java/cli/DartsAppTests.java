@@ -82,9 +82,10 @@ class DartsAppTests {
         );
     }
 
-    @Test
-    void getVersion() {
-        String[] args = {"-V"};
+    @ParameterizedTest
+    @ValueSource(strings = {"-V", "--version"})
+    void getTheVersion(String arg) {
+        String[] args = {arg};
 
         StringWriter out = new StringWriter();
         StringWriter err = new StringWriter();

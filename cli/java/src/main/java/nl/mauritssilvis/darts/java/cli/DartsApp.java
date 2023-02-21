@@ -28,7 +28,7 @@ import java.io.PrintWriter;
                 BoardsCommand.class,
                 CheckoutsCommand.class
         },
-        version = {"darts 0.1.0", "Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"},
+        versionProvider = Version.class,
         mixinStandardHelpOptions = true,
         header = {"darts -- A computational toolbox aimed at the game of darts", ""},
         // description = "%nDescription.",

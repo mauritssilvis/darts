@@ -28,6 +28,7 @@ import picocli.CommandLine.Spec;
  */
 @Command(
         name = "boards",
+        versionProvider = Version.class,
         mixinStandardHelpOptions = true,
         header = {"Print a dartboard.", ""},
         // description = "%nPrint a dartboard.",

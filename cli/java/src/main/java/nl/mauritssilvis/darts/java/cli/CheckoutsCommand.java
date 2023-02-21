@@ -28,6 +28,7 @@ import picocli.CommandLine.Model.CommandSpec;
  */
 @Command(
         name = "checkouts",
+        versionProvider = Version.class,
         mixinStandardHelpOptions = true,
         header = {"Generate a darts checkout table.", ""},
         // description = "Generate a darts checkout table.",

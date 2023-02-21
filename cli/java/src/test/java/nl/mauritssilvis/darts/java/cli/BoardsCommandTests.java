@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -79,6 +80,39 @@ class BoardsCommandTests {
                 Arguments.of("help", "boards"),
                 Arguments.of("boards", "-h"),
                 Arguments.of("boards", "--help")
+        );
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"-V", "--version"})
+    void getTheVersion(String arg) {
+        String[] args = {"boards", arg};
+
+        StringWriter out = new StringWriter();
+        StringWriter err = new StringWriter();
+
+        DartsApp.create()
+                .setOut(new PrintWriter(out))
+                .setErr(new PrintWriter(err))
+                .execute(args);
+
+        String outString = out.toString();
+        String errString = err.toString();
+
+        List<String> elements = List.of(
+                "darts",
+                "Copyright",
+                "Maurits Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
+        );
+
+        long count = elements.stream()
+                .filter(outString::contains)
+                .count();
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(elements.size(), count),
+                () -> Assertions.assertEquals(0, errString.length())
         );
     }
 
