@@ -203,11 +203,11 @@ The following sections explain how the default parameters can be changed.
 
 By default, the `darts checkouts` subcommand looks for checkouts for a double-out darts game.
 To change the checkout mode, use the `-j` or `--checkout` option.
-Supported values are:
+The supported checkout modes are:
 
-- `any` for darts of any score;
-- `master` for double or triple scores;
-- `double` for a double score.
+- `any` for final darts of any score;
+- `master` for double or triple finishes;
+- `double` for a double checkout (default).
 
 For example, to allow final darts of any score, use the following command:
 
@@ -250,8 +250,12 @@ In master-out games, only one dart is required to reduce a score of 21 to zero:
 ```
 
 By default, the `darts checkouts` subcommand does not impose restrictions on the first dart and, thus, assumes an any-in game.
-The check-in mode can, however, be set to `any`, `master` and `double`.
-To that end, use the `-i` or `--check-in` option.
+The check-in mode can, however, be changed using the `-i` or `--check-in` option.
+The supported check-in modes are:
+
+- `any` for an unrestricted initial throw (default);
+- `master` for a double or triple check-in;
+- `double` for an initial double score.
 
 For example, to find the 501-point checkouts of a double-in, double-out darts game, run the following command:
 
@@ -303,7 +307,7 @@ That is, this command finds checkouts consisting of the minimum required number 
 Using `darts`, you can, however, fix the number of throws.
 Two different modes of fixing the number of throws exist.
 
-First, you can look for *optimal* checkouts with a fixed number of darts.
+First, you can look for all *optimal* checkouts with a fixed number of darts.
 To that end, pass the desired number to the `-n` or `--throws` option.
 For example:
 
@@ -328,7 +332,13 @@ Specifically, scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
 Secondly, you can find *all* checkouts for a fixed number of darts.
-To that end, specify the number of darts and use the `-m` or `--throw-mode` option to change the throw mode from the default `optimal` to `fixed`.
+To that end, specify the number of darts and change the `-m` or `--throw-mode` option.
+The throw mode supports two values:
+
+- `optimal` for finding optimal checkouts (default);
+- `fixed` for finding all checkouts for a given number of throws.
+
+Here, `fixed` is needed.
 For example:
 
 ```shell
@@ -351,6 +361,7 @@ The corresponding checkout table looks as follows:
 Note that the minimum two-dart score in a double-out game is 3.
 Therefore, no checkouts are shown for the scores 1 and 2.
 Additionally, note that a two-dart four-point checkout is shown, even if a one-dart checkout exists.
+With the fixed throw mode, all possible checkouts for a given number of darts are found.
 
 #### 2.1.5 Change the output format
 
