@@ -208,4 +208,41 @@ class MarkdownTableSerializerTests {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withThousandSeparators")
+    void getThousandSeparators(String output) {
+        CheckMode checkoutMode = CheckMode.ANY;
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setTableType(tableType)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int score = 701;
+
+        Table table = tableGenerator.generate(score, score);
+
+        Serializer<Table> serializer = MarkdownTableSerializer.create();
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withThousandSeparators() {
+        return Stream.of(
+                Arguments.of(
+                        """
+                                | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |  10 |  11 |  12 |     # |
+                                |------:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|------:|
+                                |   701 |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * |   * | 3,432 |
+                                |       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T17 | D25 |   132 |
+                                |       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T18 | D25 | 1,320 |
+                                |       | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | T19 | T19 | D25 | 1,980 |
+                                """
+                )
+        );
+    }
 }

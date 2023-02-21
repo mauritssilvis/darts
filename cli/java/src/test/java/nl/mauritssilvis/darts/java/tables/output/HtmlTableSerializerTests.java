@@ -217,4 +217,42 @@ class HtmlTableSerializerTests {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("withThousandSeparators")
+    void getThousandSeparators(String output) {
+        CheckMode checkoutMode = CheckMode.ANY;
+        TableType tableType = TableType.ASCENDING;
+
+        Settings settings = TableSettingsBuilder.create()
+                .setCheckoutMode(checkoutMode)
+                .setTableType(tableType)
+                .build();
+
+        TableGenerator tableGenerator = TableGeneratorFactory.create(tableType, settings);
+
+        int score = 701;
+
+        Table table = tableGenerator.generate(score, score);
+
+        Serializer<Table> serializer = HtmlTableSerializer.create();
+
+        Assertions.assertEquals(output, serializer.serialize(table));
+    }
+
+    private static Stream<Arguments> withThousandSeparators() {
+        return Stream.of(
+                Arguments.of(
+                        """
+                                <table>
+                                  <tr class="h"><th>                             Score</th><th class="t">                         1</th><th class="t">                         2</th><th class="t">                         3</th><th class="t">                         4</th><th class="t">                         5</th><th class="t">                         6</th><th class="t">                         7</th><th class="t">                         8</th><th class="t">                         9</th><th class="t">                        10</th><th class="t">                        11</th><th class="t">                        12</th><th class="m">    #</th></tr>
+                                  <tr class="s"><th rowspan="4" scope="rowgroup">  701</th><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="t"><span class="e">  *</span></td><td class="m">3,432</td></tr>
+                                  <tr class="c">                                           <td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T17</span></td><td class="t"><span class="f">D25</span></td><td class="m">  132</td></tr>
+                                  <tr class="c">                                           <td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T19</span></td><td class="t"><span class="f">T18</span></td><td class="t"><span class="f">D25</span></td><td class="m">1,320</td></tr>
+                                  <tr class="c">                                           <td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T20</span></td><td class="t"><span class="f">T19</span></td><td class="t"><span class="f">T19</span></td><td class="t"><span class="f">T19</span></td><td class="t"><span class="f">D25</span></td><td class="m">1,980</td></tr>
+                                </table>
+                                """
+                )
+        );
+    }
 }
