@@ -111,8 +111,9 @@ The corresponding output looks as follows:
 |       | D2 |  - | 1 |
 ```
 
-This table shows how the scores 1 to 4 can be reached for a specific type of darts game.
-Specifically, the table applies to an any-in, double-out game with the ‘standard’ London dartboard.
+This table shows how scores from 1 to 4 can be reached for a specific type of darts game.
+Specifically, the table applies to a double-out game with the ‘standard’ London dartboard.
+There are no restrictions on the first dart.
 
 Similarly, the command
 
@@ -139,8 +140,8 @@ In truncated form, this table looks as follows:
 Note that a single 3 and a triple 1 (T1) have the same score.
 For brevity, checkouts involving different throws of the same score are summarized.
 
-It is also possible, to use `darts` to generate a checkout table for a single score.
-For example, to generate a table with 501-point checkouts, pass the same value as the minimum and maximum score:
+The `darts` toolbox can also be used to generate a checkout table for a single score.
+For example, to find 501-point checkouts, pass the same value as the minimum and maximum score:
 
 ```shell
 darts checkouts 501 501
@@ -166,17 +167,36 @@ Therefore, each row of the table represents multiple checkouts.
 
 #### 2.1.2 Default parameters
 
-- The dartboard type: London.
-- The check-in mode: any.
-- The checkout mode: double.
-- The number of throws: 0 (not fixed).
-- The throw mode: optimal.
-- The checkout finder type: descending.
-- The output format: Markdown.
+As was hinted at above, the `darts checkouts` subcommand has several default parameters.
+Specifically, when left unspecified, the following options are set:
+
+- The [dartboard type](#216-change-the-dartboard): London.
+- The [check-in mode](#213-change-the-game-mode): any.
+- The [checkout mode](#213-change-the-game-mode): double.
+- The [number of throws](#214-select-the-number-of-throws): 0 (not fixed).
+- The [throw mode](#214-select-the-number-of-throws): optimal.
+- The [checkout finder type](#217-change-the-checkout-finder): descending.
+- The [output format](#215-change-the-output-format): Markdown.
+
+In other words, the command
+
+```shell
+darts checkouts 1 4
+```
+
+is equivalent to
 
 ```shell
 darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown 1 4
 ````
+
+With full-length versions of the one-letter flags, this command can be expanded to:
+
+```shell
+darts checkouts --board London --check-in any --checkout double --throws 0 --throw-mode optimal --finder descending --output Markdown 1 4
+````
+
+The following sections explain how the default parameters can be changed.
 
 #### 2.1.3 Change the game mode
 
