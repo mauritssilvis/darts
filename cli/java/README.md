@@ -147,7 +147,7 @@ For example, to find 501-point checkouts, pass the same value as the minimum and
 darts checkouts 501 501
 ```
 
-The resulting output shows that there are 3944 different nine-dart checkouts in a 501-point double-out darts game:
+The resulting output, which is truncated for brevity, shows that there are 3,944 different nine-dart checkouts in a 501-point double-out darts game:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |     # |
@@ -200,9 +200,21 @@ The following sections explain how the default parameters can be changed.
 
 #### 2.1.3 Change the game mode
 
+By default, the `darts checkouts` subcommand looks for checkouts for a double-out darts game.
+To change the checkout mode, use the `-j` or `--checkout` option.
+Supported values are:
+
+- `any` for darts of any score;
+- `master` for double or triple scores;
+- `double` for a double score.
+
+For example, to allow final darts of any score, use the following command:
+
 ```shell
 darts checkouts -j any 1 4
 ```
+
+The corresponding output is:
 
 ```markdown
 | Score |       1 | # |
@@ -217,9 +229,15 @@ darts checkouts -j any 1 4
 |       |  4 / D2 | 2 |
 ```
 
+Now, single final scores are also accepted, and a finish of 1 is possible.
+
+To allow for master (double or triple) checkouts, use a command like:
+
 ```shell
 darts checkouts -j master 20 21
 ```
+
+In this case, the number of darts that is required to reach 21 reduces to one:
 
 ```markdown
 | Score |   1 | # |
@@ -230,9 +248,16 @@ darts checkouts -j master 20 21
 |       |  T7 | 1 |
 ```
 
+By default, the `darts checkouts` subcommand does not impose restrictions on the first dart and, thus, assumes an any-in game.
+The check-in mode can, however, be set to `any`, `master` and `double`.
+
+For example, to find the 501-point checkouts of a double-in, double-out darts game, run the following command:
+
 ```shell
 darts checkouts -i double 501 501
 ```
+
+The resulting (truncated) table shows there are 574 nine-dart checkouts in such a game:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |   # |
@@ -247,9 +272,14 @@ darts checkouts -i double 501 501
 |       | D17 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D25 |   7 |
 ```
 
+You can also set the check-in and checkout modes simultaneously.
+For example, a master-in, master-out game would require a command of the form:
+
 ```shell
 darts checkouts -i master -j master 501 501
 ```
+
+When truncated from 1,262 lines representing more than 200,000 possible checkouts, the output looks as follows:
 
 ```markdown
 | Score |         1 |         2 |         3 |         4 |         5 |         6 |         7 |         8 |         9 |       # |
