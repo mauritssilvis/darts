@@ -159,22 +159,18 @@ class CheckoutsCommand implements Runnable {
         if (numThrows < 0) {
             throw new ParameterException(
                     commandSpec.commandLine(),
-                    String.format(
-                            "Invalid value for option '--throws': must be a non-negative integer but was '%d'",
-                            numThrows
-                    )
+                    "Invalid value for option '--throws': must be a non-negative integer but was '%d'"
+                            .formatted(numThrows)
             );
         }
 
         if (maxScore < minScore) {
             throw new ParameterException(
                     commandSpec.commandLine(),
-                    String.format(
-                            """
-                                    Invalid value for positional parameter at index 1 (<maximum>): must not be smaller \
-                                    than positional parameter at index 0 (<minimum>) but was '%d'""",
-                            maxScore
-                    )
+                    """
+                            Invalid value for positional parameter at index 1 (<maximum>): must not be smaller \
+                            than positional parameter at index 0 (<minimum>) but was '%d'"""
+                            .formatted(maxScore)
             );
         }
     }

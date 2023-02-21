@@ -64,27 +64,27 @@ final class MarkdownTableSerializer implements Serializer<Table> {
         @Override
         void startTable() {
             stringBuilder.append("| ")
-                    .append(String.format(scoreFormat, "Score"))
+                    .append(scoreFormat.formatted("Score"))
                     .append(" ");
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, i + 1))
+                    .mapToObj(i -> throwFormat.formatted(i + 1))
                     .forEach(str -> stringBuilder.append("| ").append(str).append(" "));
 
             stringBuilder.append("| ")
-                    .append(String.format(multiplicityFormat, "#"))
+                    .append(multiplicityFormat.formatted("#"))
                     .append(" |\n");
 
             stringBuilder.append("|-")
-                    .append(String.format(scoreFormat, "").replace(' ', '-'))
+                    .append(scoreFormat.formatted("").replace(' ', '-'))
                     .append(":");
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, "").replace(' ', '-'))
+                    .mapToObj(i -> throwFormat.formatted("").replace(' ', '-'))
                     .forEach(str -> stringBuilder.append("|-").append(str).append(":"));
 
             stringBuilder.append("|-")
-                    .append(String.format(multiplicityFormat, "").replace(' ', '-'))
+                    .append(multiplicityFormat.formatted("").replace(' ', '-'))
                     .append(":|\n");
         }
 
@@ -95,11 +95,11 @@ final class MarkdownTableSerializer implements Serializer<Table> {
         @Override
         void startScore(int score, int numCheckouts) {
             stringBuilder.append("| ")
-                    .append(String.format(scoreFormat, score))
+                    .append(scoreFormat.formatted(score))
                     .append(' ');
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, "*"))
+                    .mapToObj(i -> throwFormat.formatted("*"))
                     .forEach(str -> stringBuilder.append("| ").append(str).append(' '));
         }
 
@@ -118,8 +118,8 @@ final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void addMultiplicity(long multiplicity) {
-            String formattedMultiplicity = String.format("%,d", multiplicity);
-            stringBuilder.append(String.format(multiplicityFormat, formattedMultiplicity));
+            String multiplicityStr = "%,d".formatted(multiplicity);
+            stringBuilder.append(multiplicityFormat.formatted(multiplicityStr));
         }
 
         @Override
@@ -155,7 +155,7 @@ final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void addCheckoutScore(int score) {
-            stringBuilder.append(String.format(scoreFormat, ""));
+            stringBuilder.append(scoreFormat.formatted(""));
         }
 
         @Override
@@ -188,7 +188,7 @@ final class MarkdownTableSerializer implements Serializer<Table> {
         @Override
         void addEmptyThrowAfter() {
             stringBuilder.append("| ")
-                    .append(String.format(throwFormat, "-"))
+                    .append(throwFormat.formatted("-"))
                     .append(' ');
         }
 
@@ -204,7 +204,7 @@ final class MarkdownTableSerializer implements Serializer<Table> {
 
         @Override
         void addField(String name) {
-            stringBuilder.append(String.format(fieldFormat, name));
+            stringBuilder.append(fieldFormat.formatted(name));
         }
 
         @Override

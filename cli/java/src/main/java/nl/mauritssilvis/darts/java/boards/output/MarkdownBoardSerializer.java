@@ -72,14 +72,14 @@ final class MarkdownBoardSerializer implements Serializer<Board> {
 
             builderMap.get(row)
                     .append("| ")
-                    .append(String.format(columnFormat, typeInitial))
+                    .append(columnFormat.formatted(typeInitial))
                     .append(' ');
 
             nextRow();
 
             builderMap.get(row)
                     .append("|-")
-                    .append(String.format(columnFormat, "").replace(' ', '-'))
+                    .append(columnFormat.formatted("").replace(' ', '-'))
                     .append(':');
 
             nextRow();
@@ -100,7 +100,7 @@ final class MarkdownBoardSerializer implements Serializer<Board> {
 
         @Override
         void addField(String name) {
-            builderMap.get(row).append(String.format(columnFormat, name));
+            builderMap.get(row).append(columnFormat.formatted(name));
         }
 
         @Override

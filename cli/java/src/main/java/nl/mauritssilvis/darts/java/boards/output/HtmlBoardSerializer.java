@@ -73,7 +73,7 @@ final class HtmlBoardSerializer implements Serializer<Board> {
 
             builderMap.get(row)
                     .append("<th>")
-                    .append(String.format(columnFormat, typeInitial))
+                    .append(columnFormat.formatted(typeInitial))
                     .append("</th>");
 
             nextRow();
@@ -94,7 +94,7 @@ final class HtmlBoardSerializer implements Serializer<Board> {
 
         @Override
         void addField(String name) {
-            builderMap.get(row).append(String.format(columnFormat, name));
+            builderMap.get(row).append(columnFormat.formatted(name));
         }
 
         @Override

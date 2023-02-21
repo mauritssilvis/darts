@@ -72,16 +72,16 @@ final class HtmlTableSerializer implements Serializer<Table> {
         void startTable() {
             stringBuilder.append("<table>\n")
                     .append("  <tr class=\"h\"><th>")
-                    .append(String.format(preScoreFormat, ""))
-                    .append(String.format(scoreFormat, "Score"))
+                    .append(preScoreFormat.formatted(""))
+                    .append(scoreFormat.formatted("Score"))
                     .append("</th>");
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, i + 1))
+                    .mapToObj(i -> throwFormat.formatted(i + 1))
                     .forEach(str -> stringBuilder.append("<th class=\"t\">").append(str).append("</th>"));
 
             stringBuilder.append("<th class=\"m\">")
-                    .append(String.format(multiplicityFormat, "#"))
+                    .append(multiplicityFormat.formatted("#"))
                     .append("</th></tr>\n");
         }
 
@@ -95,14 +95,14 @@ final class HtmlTableSerializer implements Serializer<Table> {
             String preScore = "rowspan=\"" + (numCheckouts + 1) + "\" scope=\"rowgroup\">";
 
             stringBuilder.append("  <tr class=\"s\"><th ")
-                    .append(String.format(preScoreFormat, preScore))
-                    .append(String.format(scoreFormat, score))
+                    .append(preScoreFormat.formatted(preScore))
+                    .append(scoreFormat.formatted(score))
                     .append("</th>");
 
-            String starField = "<span class=\"e\">" + String.format(fieldFormat, "*") + "</span>";
+            String starField = "<span class=\"e\">" + fieldFormat.formatted("*") + "</span>";
 
             IntStream.range(0, numThrows)
-                    .mapToObj(i -> String.format(throwFormat, starField))
+                    .mapToObj(i -> throwFormat.formatted(starField))
                     .forEach(str -> stringBuilder.append("<td class=\"t\">").append(str).append("</td>"));
         }
 
@@ -121,8 +121,8 @@ final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void addMultiplicity(long multiplicity) {
-            String formattedMultiplicity = String.format("%,d", multiplicity);
-            stringBuilder.append(String.format(multiplicityFormat, formattedMultiplicity));
+            String multiplicityStr = "%,d".formatted(multiplicity);
+            stringBuilder.append(multiplicityFormat.formatted(multiplicityStr));
         }
 
         @Override
@@ -155,12 +155,12 @@ final class HtmlTableSerializer implements Serializer<Table> {
         @Override
         void startCheckoutScore() {
             stringBuilder.append("    ")
-                    .append(String.format(preScoreFormat, ""));
+                    .append(preScoreFormat.formatted(""));
         }
 
         @Override
         void addCheckoutScore(int score) {
-            stringBuilder.append(String.format(scoreFormat, ""));
+            stringBuilder.append(scoreFormat.formatted(""));
         }
 
         @Override
@@ -193,14 +193,14 @@ final class HtmlTableSerializer implements Serializer<Table> {
         @Override
         void addEmptyThrowAfter() {
             startThrow();
-            String noField = "<span class=\"n\">" + String.format(fieldFormat, "-") + "</span>";
-            stringBuilder.append(String.format(throwFormat, noField));
+            String noField = "<span class=\"n\">" + fieldFormat.formatted("-") + "</span>";
+            stringBuilder.append(throwFormat.formatted(noField));
             endThrow();
         }
 
         @Override
         void addEmptyFieldBefore() {
-            stringBuilder.append(String.format(emptyFieldFormat, ""));
+            stringBuilder.append(emptyFieldFormat.formatted(""));
         }
 
         @Override
@@ -210,7 +210,7 @@ final class HtmlTableSerializer implements Serializer<Table> {
 
         @Override
         void addField(String name) {
-            stringBuilder.append(String.format(fieldFormat, name));
+            stringBuilder.append(fieldFormat.formatted(name));
         }
 
         @Override
