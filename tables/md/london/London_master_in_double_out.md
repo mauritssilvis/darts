@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the London dartboard played in master-in, double-out mode.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](../..) > [Markdown](..) project provides checkout tables for darts games with the London dartboard played in master-in, double-out mode.
 These tables are valid for games where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double.
 
 In double-out games with the London dartboard, the last dart can score between 2 and 50 points.

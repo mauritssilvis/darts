@@ -26,7 +26,7 @@ Finally, `darts` can provide output in several formats: easily readable Markdown
 
 Currently, `darts` is available as a Java-based command-line application.
 More information about the installation and use of this app can be found in the [darts > Java](java) readme.
-If you are interested in checking out those checkout tables, refer to the [darts > Markdown](md) readme.
+If you are interested in checking out those checkout tables, refer to the [Markdown checkout tables](tables/md).
 
 ## License
 

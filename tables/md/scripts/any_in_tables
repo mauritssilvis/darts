@@ -2,7 +2,7 @@
 
 # Generate Markdown checkout tables for any-in games
 
-dir="../tables/"
+dir="../"
 
 paths=(
     "london/London_any_in_any_out.md"
@@ -111,7 +111,7 @@ anchors=(
     "three-dart-checkouts-1"
 )
 
-script_path="../../java/"
+script_path="../../../java/"
 
 for i in "${!paths[@]}"; do
     path="${paths[i]}"
@@ -136,7 +136,7 @@ for i in "${!paths[@]}"; do
 
         echo -e "## Introduction\n"
 
-        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Markdown](../..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](../..) > [Markdown](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
         echo -e "These tables are valid for games ${requirements_phrase}."
 
         if [ "${other_mode_phrase}" != "" ]; then
