@@ -11,7 +11,7 @@ class Version implements IVersionProvider {
     @Override
     public String[] getVersion() {
         return new String[]{
-                "darts 0.1.0",
+                "java-darts-cli 0.1.0",
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         };

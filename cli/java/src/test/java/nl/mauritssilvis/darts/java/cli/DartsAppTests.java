@@ -99,7 +99,7 @@ class DartsAppTests {
         String errString = err.toString();
 
         List<String> elements = List.of(
-                "darts",
+                "java-darts-cli",
                 "Copyright",
                 "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
