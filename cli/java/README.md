@@ -171,13 +171,13 @@ Therefore, each row of the table represents multiple checkouts.
 As was hinted at above, the `darts checkouts` subcommand has several default parameters.
 Specifically, when left unspecified, the following options are set:
 
-- The [dartboard type](#216-change-the-dartboard): London.
+- The [dartboard type](#the-dartboard-type): London.
 - The [check-in mode](#the-check-in-mode): any.
 - The [checkout mode](#the-checkout-mode): double.
 - The [number of throws](#the-number-of-throws): 0 (not fixed).
 - The [throw mode](#the-throw-mode): optimal.
-- The [checkout finder type](#217-change-the-checkout-finder): descending.
-- The [output format](#215-change-the-output-format): Markdown.
+- The [checkout finder type](#the-checkout-finder): descending.
+- The [output format](#the-output-format): Markdown.
 
 In other words, the command
 
@@ -382,6 +382,8 @@ With the fixed throw mode, all possible checkouts for a given number of darts ar
 
 #### 2.1.5 Change the output format
 
+##### The output format
+
 By default, the `darts checkouts` subcommand outputs checkout tables in the Markdown format.
 To change the output format, use the `-o` or `--output` options.
 The following output formats are supported:
@@ -499,6 +501,8 @@ Since this feature mostly exists for debugging, it is not discussed further, her
 
 #### 2.1.6 Change the dartboard
 
+##### The dartboard type
+
 By default, the `darts checkouts` subcommand generates checkout tables for the London dartboard.
 You can change the dartboard type using the `-b` or `--board` option.
 This option has the following possible values:
@@ -551,6 +555,8 @@ The resulting (truncated) checkout table is:
 ```
 
 #### 2.1.7 Change the checkout finder
+
+##### The checkout finder
 
 By default, the `darts checkouts` subcommand makes use of an optimized descending checkout finder.
 The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
