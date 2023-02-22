@@ -114,7 +114,7 @@ The corresponding output looks as follows:
 This checkout table shows how scores from 1 to 4 can be reached for a specific type of darts game.
 Specifically, the table applies to a double-out game with the ‘standard’ London dartboard.
 There are no restrictions on the first dart.
-Note that no one-point checkouts are shown since 1 is less than the minimal final score — a double 1 (D1).
+Note that no one-point checkouts were found since 1 is less than the minimal final score — a double 1 (D1).
 
 Similarly, the command
 
@@ -122,8 +122,8 @@ Similarly, the command
 darts checkouts 20 21
 ```
 
-produces a checkout table for the scores 20 to 21 in such a game.
-In truncated form, this table looks as follows:
+produces a checkout table for the scores 20 to 21.
+This table, which is truncated for brevity, looks as follows:
 
 ```markdown
 | Score |         1 |         2 |  # |
@@ -148,7 +148,7 @@ For example, to find 501-point checkouts, pass the same value as the minimum and
 darts checkouts 501 501
 ```
 
-The resulting output, which is truncated for brevity, shows that there are 3,944 different nine-dart checkouts in a 501-point double-out darts game:
+The resulting (truncated) output shows that there are 3,944 different nine-dart checkouts in a 501-point double-out darts game:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 |   8 |   9 |     # |
@@ -331,6 +331,7 @@ These throw modes are represented by the two values the `-m` or `--throw-mode` o
 ##### Optimal
 
 To look for all *optimal* checkouts with a fixed number of darts, simply pass the desired number to the `-n` or `--throws` option.
+The throw mode will then take its default `optimal` value.
 For example:
 
 ```shell
@@ -350,7 +351,7 @@ The resulting output is as follows:
 ```
 
 Here, only the checkouts that require a minimum of two darts are shown.
-Specifically, scores of 2 and 4 can be reached by hitting one double.
+Scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
 ##### Fixed
@@ -378,13 +379,13 @@ The corresponding checkout table looks as follows:
 Note that the minimum two-dart score in a double-out game is 3.
 Therefore, no checkouts are shown for the scores 1 and 2.
 Additionally, note that a two-dart four-point checkout is shown even if a one-dart checkout exists.
-With the fixed throw mode, all possible checkouts for a given number of darts are found.
+With the fixed-throw mode, all possible checkouts for a given number of darts are found.
 
 #### 2.1.5 Change the output format
 
 ##### The output format
 
-By default, the `darts checkouts` subcommand outputs checkout tables in the Markdown format.
+By default, the `darts checkouts` subcommand creates checkout tables in the Markdown format.
 To change the output format, use the `-o` or `--output` options.
 The following output formats are supported:
 
@@ -416,9 +417,9 @@ The output will look like:
 </table>
 ```
 
-Here, `th` elements are used for both the column headers and the scores in the first column.
-The score headers span multiple rows to correspond to all checkouts of that score.
-All elements have their own CSS class for (potential) custom styling.
+Here, header cell elements (`th`) are used for both the column headers and cells with scores in the first column.
+The header cells with scores span multiple rows to correspond to all checkouts of that score.
+All checkout table ingredients have their own CSS class for (potential) custom styling.
 Specifically, the following classes are used:
 
 - `h` for the header row;
@@ -514,7 +515,7 @@ This option has the following possible values:
 ##### Quadro
 
 The Quadro 240 board is a dartboard that has quadruple fields in addition to the usual single, double and triple fields.
-The following command can be used to generate a checkout table for a double-out darts game using the Quadro board:
+The following command can be used to generate a checkout table for a double-out darts game using this board:
 
 ```shell
 darts checkouts -b quadro 501 501
@@ -595,7 +596,7 @@ In checkout tables generated using the Cartesian checkout finder, checkouts are 
 Additionally, checkouts are not summarized.
 That is, each possible checkout is represented using its own row.
 As a consequence, checkout tables can become very long when many checkouts exist.
-Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than 5 darts.
+Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than five darts.
 
 ### 2.2 Print a dartboard
 
