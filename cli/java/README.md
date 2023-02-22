@@ -176,7 +176,7 @@ Specifically, when left unspecified, the following options are set:
 - The [checkout mode](#the-checkout-mode): double.
 - The [number of throws](#the-number-of-throws): 0 (not fixed).
 - The [throw mode](#the-throw-mode): optimal.
-- The [checkout finder type](#the-checkout-finder): descending.
+- The [checkout finder type](#the-checkout-finder-type): descending.
 - The [output format](#the-output-format): Markdown.
 
 In other words, the command
@@ -556,7 +556,7 @@ The resulting (truncated) checkout table is:
 
 #### 2.1.7 Change the checkout finder
 
-##### The checkout finder
+##### The checkout finder type
 
 By default, the `darts checkouts` subcommand makes use of an optimized descending checkout finder.
 The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
