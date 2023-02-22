@@ -258,7 +258,7 @@ In master-out games, only one dart is required to reduce a score of 21 to zero:
 ##### The check-in mode
 
 By default, the `darts checkouts` subcommand does not impose restrictions on the first dart and, thus, assumes an any-in game.
-The check-in mode can, however, be changed using the `-i` or `--check-in` option.
+The check-in mode can, however, be changed using the `-i` and `--check-in` options.
 The supported check-in modes are:
 
 - `any` for an unrestricted initial throw (default);
@@ -318,12 +318,12 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
 That is, this command finds checkouts consisting of the minimum required number of darts.
-Using `darts`, you can however, fix the number of throws with the `-n` or `--throws` option.
+Using `darts`, you can however, fix the number of throws with the `-n` and `--throws` options.
 
 ##### The throw mode
 
 Two different modes of fixing the number of throws exist.
-These throw modes are represented by the two values the `-m` or `--throw-mode` option can take:
+These throw modes are represented by the two values the `-m` and `--throw-mode` options can take:
 
 - `optimal` for finding all [optimal](#optimal) checkouts (default);
 - `fixed` for finding [all](#fixed) checkouts for a given number of throws.
@@ -386,12 +386,12 @@ With the fixed-throw mode, all possible checkouts for a given number of darts ar
 ##### The output format
 
 By default, the `darts checkouts` subcommand creates checkout tables in the Markdown format.
-To change the output format, use the `-o` or `--output` options.
+To change the output format, use the `-o` or `--output` option.
 The following output formats are supported:
 
 - `Markdown` for an easily readable Markdown table (default);
-- `HTML` for [HTML](#html) tables for web pages;
-- `JSON` for [JSON](#json) objects for computer processing;
+- `HTML` for an [HTML](#html) table for web pages;
+- `JSON` for a [JSON](#json) object for computer processing;
 - `string` for output based on Java's [string](#string) representation of objects.
 
 ##### HTML
@@ -505,7 +505,7 @@ Since this feature mostly exists for debugging, it is not discussed further, her
 ##### The dartboard type
 
 By default, the `darts checkouts` subcommand generates checkout tables for the London dartboard.
-You can change the dartboard type using the `-b` or `--board` option.
+You can change the dartboard type using the `-b` and `--board` options.
 This option has the following possible values:
 
 - `London` for the London dartboard (default);
@@ -602,9 +602,26 @@ Moreover, the brute-force search method used by the Cartesian checkout finder te
 
 #### 2.2.1 Choose the dartboard
 
+In addition to generating checkout tables, `darts` can print the dartboards it supports.
+To that end, use the `darts boards` subcommand and supply it with the dartboard type.
+
+##### The dartboard type
+
+The three types of supported dartboards are designated using the following parameters:
+
+- `London` for the [London](#london) dartboard;
+- `Quadro` for the [Quadro 240](#quadro-1) board;
+- `Yorkshire` for the [Yorkshire](#yorkshire-1) dartboard.
+
+##### London
+
+To see which fields the London dartboard consists of, use the command:
+
 ```shell
 darts boards london
 ```
+
+The output, which is truncated for brevity, looks as follows:
 
 ```markdown
 |   S |   D |   T |
@@ -618,11 +635,72 @@ darts boards london
 |  25 | D25 |   - |
 ```
 
+##### Quadro
+
+Similarly, the Quadro 240 board can be inspected using the command:
+
+```shell
+darts boards quadro
+```
+
+The output of this command will look similar to:
+
+```markdown
+|   S |   D |   T |   Q |
+|----:|----:|----:|----:|
+|   1 |  D1 |  T1 |  Q1 |
+|   2 |  D2 |  T2 |  Q2 |
+|   3 |  D3 |  T3 |  Q3 |
+| ... | ... | ... | ... |
+|  19 | D19 | T19 | Q19 |
+|  20 | D20 | T20 | Q20 |
+|  25 | D25 |   - |   - |
+```
+
+##### Yorkshire
+
+The Yorkshire board can be printed with the following command:
+
+```shell
+darts boards yorkshire
+```
+
+As remarked [before](#yorkshire), this dartboard has no single bull and no triples:
+
+```markdown
+|   S |   D |
+|----:|----:|
+|   1 |  D1 |
+|   2 |  D2 |
+|   3 |  D3 |
+| ... | ... |
+|  19 | D19 |
+|  20 | D20 |
+|   - | D25 |
+```
+
 #### 2.2.2 Change the output format
+
+##### The output format
+
+By default, the `darts boards` subcommand prints dartboards in the form of a Markdown table.
+The output format can be changed using the `-o` and `--output` options.
+The following output formats are supported:
+
+- `Markdown` for an easily readable Markdown table (default);
+- `HTML` for an [HTML](#html-1) table for web pages;
+- `JSON` for a [JSON](#json-1) object for computer processing;
+- `string` for output based on Java's [string](#string-1) representation of objects.
+
+##### HTML
+
+The following command shows how that `darts boards` subcommand can generate HTML output:
 
 ```shell
 darts boards london -o html
 ````
+
+The (truncated) output looks as follows:
 
 ```html
 <table>
@@ -637,9 +715,15 @@ darts boards london -o html
 </table>
 ```
 
+##### JSON
+
+To retrieve a dartboard in the JSON format, use a command like:
+
 ```shell
 darts boards london -o json
 ````
+
+The output will be of the following form:
 
 ```json5
 {
@@ -666,6 +750,11 @@ darts boards london -o json
     ]
 }
 ```
+
+##### String
+
+Dartboards can also be printed in the form of a string that shows the internals of the used Java objects.
+This feature exists mostly for debugging purposes and is not discussed further, here.
 
 ### 2.3 Get help
 
