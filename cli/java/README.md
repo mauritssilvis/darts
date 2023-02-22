@@ -309,7 +309,7 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 |       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |        T7 |       1 |
 |       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 | D12 /  T8 |      14 |
 |       |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T18 |        T9 |       7 |
-|       |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |     ... | 
+|       |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |       ... |     ... |
 |       | D12 /  T8 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 |       2 |
 |       | D12 /  T8 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T19 |       T20 |      14 |
 |       |        T7 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       T20 |       1 |
@@ -544,7 +544,7 @@ This dartboard doesn't have a single bull or triples (see [Print a dartboard](#2
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
-darts checkouts -b yorkshire 20 21 
+darts checkouts -b yorkshire 20 21
 ```
 
 The resulting (truncated) checkout table is:
@@ -740,7 +740,7 @@ The output will be of the following form:
         // ...
         "20",
         "25"
-    ], 
+    ],
     "doubles": [
         "D1",
         "D2",
@@ -856,7 +856,7 @@ While executing `darts`, you may encounter the following error:
 Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
         java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp
         has been compiled by a more recent version of the Java Runtime (class
-        file version 61.0), this version of the Java Runtime only recognizes 
+        file version 61.0), this version of the Java Runtime only recognizes
         class file versions up to XX.X
 ```
 
@@ -887,12 +887,12 @@ darts: command not found
 ```
 
 ```text
-'darts' is not recognized as an internal or external command, operable program 
+'darts' is not recognized as an internal or external command, operable program
 or batch file.
 ```
 
 ```text
-darts : The term 'darts' is not recognized as the name of a cmdlet, function, 
+darts : The term 'darts' is not recognized as the name of a cmdlet, function,
 script file, or operable program.
 ```
 
