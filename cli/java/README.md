@@ -188,13 +188,13 @@ darts checkouts 1 4
 is equivalent to
 
 ```shell
-darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown 1 4
+darts checkouts -b london -i any -j double -n 0 -m optimal -f descending -o markdown 1 4
 ````
 
 With full-length versions of the one-letter flags, this command reads:
 
 ```shell
-darts checkouts --board London --check-in any --checkout double --throws 0 --throw-mode optimal --finder descending --output Markdown 1 4
+darts checkouts --board london --check-in any --checkout double --throws 0 --throw-mode optimal --finder descending --output markdown 1 4
 ````
 
 The following sections explain how the default parameters can be changed.
@@ -513,7 +513,7 @@ darts checkouts -b quadro 501 501
 #### 2.1.7 Change the checkout finder
 
 ```shell
-darts checkouts -f Cartesian 20 21
+darts checkouts -f cartesian 20 21
 ```
 
 ```markdown
