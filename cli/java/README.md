@@ -758,17 +758,31 @@ This feature exists mostly for debugging purposes and is not discussed further, 
 
 ### 2.3 Get help
 
-```shell
-darts help
-```
+In addition to consulting this online documentation, it is possible to request help regarding `darts` on the command line.
+
+To receive general information about `darts` or to see which subcommands are available, simply execute:
 
 ```shell
-darts help checkouts
+darts
 ```
 
+Alternatively, run any of the following commands: `darts help`, `darts -h` or `darts --help`.
+
+You can receive help with the `darts checkouts` subcommand by executing:
+
 ```shell
-darts help boards
+darts checkouts
 ```
+
+Otherwise, execute `darts help checkouts`, `darts checkouts -h` or `darts checkouts --help`.
+
+The `darts boards' command returns help with the following command:
+
+```shell
+darts boards
+```
+
+It is also possible to run `darts help boards`, `darts boards -h` or `darts boards --help`.
 
 ## 3. Troubleshooting
 
