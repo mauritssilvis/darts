@@ -776,7 +776,7 @@ darts checkouts
 
 Otherwise, execute `darts help checkouts`, `darts checkouts -h` or `darts checkouts --help`.
 
-The `darts boards' command returns help with the following command:
+The `darts boards` command returns help when it isn't passed (valid) parameters:
 
 ```shell
 darts boards
