@@ -172,10 +172,10 @@ As was hinted at above, the `darts checkouts` subcommand has several default par
 Specifically, when left unspecified, the following options are set:
 
 - The [dartboard type](#216-change-the-dartboard): London.
-- The [check-in mode](#213-change-the-game-mode): any.
-- The [checkout mode](#213-change-the-game-mode): double.
-- The [number of throws](#214-select-the-number-of-throws): 0 (not fixed).
-- The [throw mode](#214-select-the-number-of-throws): optimal.
+- The [check-in mode](#the-check-in-mode): any.
+- The [checkout mode](#the-checkout-mode): double.
+- The [number of throws](#the-number-of-throws): 0 (not fixed).
+- The [throw mode](#the-throw-mode): optimal.
 - The [checkout finder type](#217-change-the-checkout-finder): descending.
 - The [output format](#215-change-the-output-format): Markdown.
 
@@ -191,7 +191,7 @@ is equivalent to
 darts checkouts -b London -i any -j double -n 0 -m optimal -f descending -o Markdown 1 4
 ````
 
-With full-length versions of the one-letter flags, this command can be expanded to:
+With full-length versions of the one-letter flags, this command reads:
 
 ```shell
 darts checkouts --board London --check-in any --checkout double --throws 0 --throw-mode optimal --finder descending --output Markdown 1 4
@@ -201,15 +201,19 @@ The following sections explain how the default parameters can be changed.
 
 #### 2.1.3 Change the game mode
 
+##### The checkout mode
+
 By default, the `darts checkouts` subcommand looks for checkouts for a double-out darts game.
 To change the checkout mode, use the `-j` or `--checkout` option.
 The supported checkout modes are:
 
-- `any` for final darts of any score;
-- `master` for double or triple finishes;
+- `any` for final darts of [any](#any-out) score;
+- `master` for [double or triple](#master-out) finishes;
 - `double` for a double checkout (default).
 
-For example, to allow final darts of any score, use the following command:
+##### Any out
+
+To allow for final darts of any score, use the following command:
 
 ```shell
 darts checkouts -j any 1 4
@@ -232,6 +236,8 @@ The corresponding output is:
 
 Now, single final scores are also accepted, and a finish of 1 is possible.
 
+##### Master out
+
 To allow for master, i.e., double or triple, checkouts, use a command like:
 
 ```shell
@@ -249,13 +255,17 @@ In master-out games, only one dart is required to reduce a score of 21 to zero:
 |       |  T7 | 1 |
 ```
 
+##### The check-in mode
+
 By default, the `darts checkouts` subcommand does not impose restrictions on the first dart and, thus, assumes an any-in game.
 The check-in mode can, however, be changed using the `-i` or `--check-in` option.
 The supported check-in modes are:
 
 - `any` for an unrestricted initial throw (default);
-- `master` for a double or triple check-in;
-- `double` for an initial double score.
+- `master` for a [double or triple](#master-in-master-out) check-in;
+- `double` for an initial [double](#double-in-double-out) score.
+
+##### Double in, double out
 
 For example, to find the 501-point checkouts of a double-in, double-out darts game, run the following command:
 
@@ -277,6 +287,8 @@ The resulting (truncated) table shows there are 574 nine-dart checkouts in such 
 |       | D20 | T20 | T20 | T20 | T20 | T19 | T19 | T19 | D25 |  35 |
 |       | D17 | T20 | T20 | T20 | T20 | T20 | T20 | T19 | D25 |   7 |
 ```
+
+##### Master in, master out
 
 You can also set both the check-in and checkout modes.
 For example, a master-in, master-out game would require a command of the form:
@@ -302,13 +314,23 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 
 #### 2.1.4 Select the number of throws
 
+##### The number of throws
+
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
 That is, this command finds checkouts consisting of the minimum required number of darts.
-Using `darts`, you can, however, fix the number of throws.
-Two different modes of fixing the number of throws exist.
+Using `darts`, you can however, fix the number of throws with the `-n` or `--throws` option.
 
-First, you can look for all *optimal* checkouts with a fixed number of darts.
-To that end, pass the desired number to the `-n` or `--throws` option.
+##### The throw mode
+
+Two different modes of fixing the number of throws exist.
+These throw modes are represented by the two values the `-m` or `--throw-mode` option can take:
+
+- `optimal` for finding all [optimal](#optimal) checkouts (default);
+- `fixed` for finding [all](#fixed) checkouts for a given number of throws.
+
+##### Optimal
+
+To look for all *optimal* checkouts with a fixed number of darts, simply pass the desired number to the `-n` or `--throws` option.
 For example:
 
 ```shell
@@ -331,14 +353,9 @@ Here, only the checkouts that require a minimum of two darts are shown.
 Specifically, scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
-Secondly, you can find *all* checkouts for a fixed number of darts.
-To that end, specify the number of darts and change the `-m` or `--throw-mode` option.
-The throw mode supports two values:
+##### Fixed
 
-- `optimal` for finding optimal checkouts (default);
-- `fixed` for finding all checkouts for a given number of throws.
-
-Here, `fixed` is needed.
+You can find *all* checkouts for a fixed number of darts by specify that number and changing the `-m` or `--throw-mode` option from its default value to `fixed`.
 For example:
 
 ```shell
@@ -360,7 +377,7 @@ The corresponding checkout table looks as follows:
 
 Note that the minimum two-dart score in a double-out game is 3.
 Therefore, no checkouts are shown for the scores 1 and 2.
-Additionally, note that a two-dart four-point checkout is shown, even if a one-dart checkout exists.
+Additionally, note that a two-dart four-point checkout is shown even if a one-dart checkout exists.
 With the fixed throw mode, all possible checkouts for a given number of darts are found.
 
 #### 2.1.5 Change the output format
@@ -370,9 +387,11 @@ To change the output format, use the `-o` or `--output` options.
 The following output formats are supported:
 
 - `Markdown` for an easily readable Markdown table (default);
-- `HTML` for HTML tables for web pages;
-- `JSON` for JSON objects for computer processing;
-- `string` for output based on Java's string representation of objects.
+- `HTML` for [HTML](#html) tables for web pages;
+- `JSON` for [JSON](#json) objects for computer processing;
+- `string` for output based on Java's [string](#string) representation of objects.
+
+##### HTML
 
 To generate an HTML checkout table, use a command like:
 
@@ -410,6 +429,8 @@ Specifically, the following classes are used:
 - `m` for a cell in the multiplicity column.
 
 Of course, classes can be renamed or dropped at will after retrieving the HTML output.
+
+##### JSON
 
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
@@ -470,6 +491,11 @@ The output will look as follows:
     }
 }
 ```
+
+##### String
+
+`darts` can also return checkout tables in the form of a string that shows the internal representation of the used Java objects.
+Since this feature mostly exists for debugging, it is not discussed further, here.
 
 #### 2.1.6 Change the dartboard
 
