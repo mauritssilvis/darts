@@ -263,9 +263,9 @@ The supported check-in modes are:
 
 - `any` for an unrestricted initial throw (default);
 - `master` for a [double or triple](#master-in-master-out) check-in;
-- `double` for an initial [double](#double-in-double-out) score.
+- `double` for an initial [double](#double-in) score.
 
-##### Double in, double out
+##### Double in
 
 For example, to find the 501-point checkouts of a double-in, double-out darts game, run the following command:
 
@@ -499,15 +499,55 @@ Since this feature mostly exists for debugging, it is not discussed further, her
 
 #### 2.1.6 Change the dartboard
 
+By default, the `darts checkouts` subcommand generates checkout tables for the London dartboard.
+You can change the dartboard type using the `-b` or `--board` option.
+This option has the following possible values:
+
+- `London` for the London dartboard (default);
+- `Quadro` for the [Quadro 240](#quadro) board;
+- `Yorkshire` for the [Yorkshire](#yorkshire) dartboard.
+
+##### Quadro
+
+The Quadro 240 board is a dartboard that has quadruple fields in addition to the usual single, double and triple fields.
+The following command can be used to generate a checkout table for a double-out darts game using the Quadro board:
+
 ```shell
 darts checkouts -b quadro 501 501
 ```
+
+The result output shows there are six seven-dart checkouts for a score of 501 points:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
 |------:|----:|----:|----:|----:|----:|----:|----:|--:|
 |   501 |   * |   * |   * |   * |   * |   * |   * | 6 |
 |       | Q20 | Q20 | Q20 | Q20 | Q20 | T17 | D25 | 6 |
+```
+
+##### Yorkshire
+
+`darts` also supports the legacy Yorkshire dartboard.
+This dartboard doesn't have a single bull or triples.
+To find checkouts for games with the Yorkshire board, use a command like:
+
+```shell
+darts checkouts -b yorkshire 20 21 
+```
+
+The resulting (truncated) checkout table is:
+
+```markdown
+| Score |   1 |   2 |  # |
+|------:|----:|----:|---:|
+|    20 |   * |   * |  1 |
+|       | D10 |   - |  1 |
+|    21 |   * |   * | 10 |
+|       |  19 |  D1 |  1 |
+|       |  17 |  D2 |  1 |
+|       | ... | ... | .. |
+|       |   3 |  D9 |  1 |
+|       |   1 | D10 |  1 |
 ```
 
 #### 2.1.7 Change the checkout finder
