@@ -115,6 +115,8 @@ This checkout table shows how scores from 1 to 4 can be reached for a specific t
 Specifically, the table applies to a double-out game with the ‘standard’ London dartboard.
 There are no restrictions on the first dart.
 Note that no one-point checkouts were found since 1 is less than the minimal final score — a double 1 (D1).
+Otherwise, all rows have a multiplicity of one.
+That is, they represent a single checkout, which can only be attained by hitting the fields in the order in which they are listed.
 
 Similarly, the command
 
@@ -139,7 +141,8 @@ This table, which is truncated for brevity, looks as follows:
 ```
 
 Note that a single 3 and a triple 1 (T1) have the same score.
-For brevity, checkouts involving different throws of the same score are summarized.
+Therefore, these fields are listed together and the row they are in has a multiplicity of two.
+That is, this row represents two checkouts.
 
 The `darts` toolbox can also be used to generate a checkout table for a single score.
 For example, to find 501-point checkouts, pass the same value as the minimum and maximum score:
@@ -213,7 +216,7 @@ The supported checkout modes are:
 
 ##### Any out
 
-To allow for final darts of any score, use the following command:
+To allow for final darts of any score, use a command of the following form:
 
 ```shell
 darts checkouts -j any 1 4
@@ -234,7 +237,7 @@ The corresponding output is:
 |       |  4 / D2 | 2 |
 ```
 
-Now, single final scores are also accepted, and a finish of 1 is possible.
+With the selected checkout mode, single final scores are accepted and a finish of 1 is possible.
 
 ##### Master out
 
@@ -244,7 +247,7 @@ To allow for master, i.e., double or triple, checkouts, use a command like:
 darts checkouts -j master 20 21
 ```
 
-In master-out games, only one dart is required to reduce a score of 21 to zero:
+The resulting output shows only one dart is required to reduce a score of 21 to zero in master-out games:
 
 ```markdown
 | Score |   1 | # |
@@ -319,10 +322,14 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
 That is, this command finds checkouts consisting of the minimum required number of darts.
 Using `darts`, you can however, fix the number of throws with the `-n` and `--throws` options.
+This option takes a non-negative integer as a parameter:
+
+- zero (`0`) will not fix the number of throws (default);
+- a non-zero, positive integer (`1`, `2`, `3`, etc.) fixes the number of throws.
 
 ##### The throw mode
 
-Two different modes of fixing the number of throws exist.
+If the number of throws is fixed, two different throw modes can be used.
 These throw modes are represented by the two values the `-m` and `--throw-mode` options can take:
 
 - `optimal` for finding all [optimal](#optimal) checkouts (default);
@@ -350,13 +357,13 @@ The resulting output is as follows:
 |     4 |  * |  * | 0 |
 ```
 
-Here, only the checkouts that require a minimum of two darts are shown.
+Here, only the checkouts that require a minimum of two darts are found.
 Scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
 ##### Fixed
 
-You can find *all* checkouts for a fixed number of darts by specify that number and changing the `-m` or `--throw-mode` option from its default value to `fixed`.
+You can find *all* checkouts for a fixed number of darts by specifying that number and changing the `-m` or `--throw-mode` option from its default value to `fixed`.
 For example:
 
 ```shell
@@ -378,7 +385,7 @@ The corresponding checkout table looks as follows:
 
 Note that the minimum two-dart score in a double-out game is 3.
 Therefore, no checkouts are shown for the scores 1 and 2.
-Additionally, note that a two-dart four-point checkout is shown even if a one-dart checkout exists.
+Furthermore, a two-dart four-point checkout is shown even if a one-dart checkout exists.
 With the fixed-throw mode, all possible checkouts for a given number of darts are found.
 
 #### 2.1.5 Change the output format
@@ -514,14 +521,14 @@ This option has the following possible values:
 
 ##### Quadro
 
-The Quadro 240 board is a dartboard that has quadruple fields in addition to the usual single, double and triple fields.
+The Quadro 240 board is a dartboard that has quadruple fields in addition to the usual single, double and triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 The following command can be used to generate a checkout table for a double-out darts game using this board:
 
 ```shell
 darts checkouts -b quadro 501 501
 ```
 
-The result output shows there are six seven-dart checkouts for a score of 501 points:
+The resulting output shows there are six seven-dart checkouts for a score of 501 points:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
@@ -533,7 +540,7 @@ The result output shows there are six seven-dart checkouts for a score of 501 po
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard doesn't have a single bull or triples.
+This dartboard doesn't have a single bull or triples (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -694,7 +701,7 @@ The following output formats are supported:
 
 ##### HTML
 
-The following command shows how that `darts boards` subcommand can generate HTML output:
+The following command shows how the `darts boards` subcommand can generate HTML output:
 
 ```shell
 darts boards -o html london
