@@ -335,7 +335,7 @@ The throw mode will then take its default `optimal` value.
 For example:
 
 ```shell
-darts checkouts 1 4 -n 2
+darts checkouts -n 2 1 4
 ```
 
 The resulting output is as follows:
@@ -360,7 +360,7 @@ You can find *all* checkouts for a fixed number of darts by specify that number 
 For example:
 
 ```shell
-darts checkouts 1 4 -n 2 -m fixed
+darts checkouts -n 2 -m fixed 1 4
 ```
 
 The corresponding checkout table looks as follows:
@@ -399,7 +399,7 @@ The following output formats are supported:
 To generate an HTML checkout table, use a command like:
 
 ```shell
-darts checkouts 1 4 -o html
+darts checkouts -o html 1 4
 ```
 
 The output will look like:
@@ -438,7 +438,7 @@ Of course, classes can be renamed or dropped at will after retrieving the HTML o
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
-darts checkouts 1 4 -o json
+darts checkouts -o json 1 4
 ```
 
 The output will look as follows:
@@ -697,7 +697,7 @@ The following output formats are supported:
 The following command shows how that `darts boards` subcommand can generate HTML output:
 
 ```shell
-darts boards london -o html
+darts boards -o html london
 ````
 
 The (truncated) output looks as follows:
@@ -720,7 +720,7 @@ The (truncated) output looks as follows:
 To retrieve a dartboard in the JSON format, use a command like:
 
 ```shell
-darts boards london -o json
+darts boards -o json london
 ````
 
 The output will be of the following form:
