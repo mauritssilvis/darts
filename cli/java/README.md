@@ -17,7 +17,7 @@ Additionally, `darts` lets you:
 - Set the number of darts.
 - Pick the output format.
 
-The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed, in what follows.
+The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
 If you would like to explore extensive checkout tables for different types of darts games, refer to the [Markdown checkout tables](https://github.com/mauritssilvis/darts/tree/main/tables/md).
 
@@ -45,7 +45,7 @@ You can build the `darts` toolbox as follows:
 - If necessary, extract the code to a convenient location.
 - Navigate to the `java` folder that is part of the code.
 - Run the `install` command.
-- Test execution of the `darts` toolbox by running the `darts` command.
+- Test the execution of the `darts` toolbox by running the `darts` command.
 
 #### 1.2.1 Command execution
 
@@ -114,9 +114,9 @@ The corresponding output looks as follows:
 This checkout table shows how scores from 1 to 4 can be reached for a specific type of darts game.
 Specifically, the table applies to a double-out game with the ‘standard’ London dartboard.
 There are no restrictions on the first dart.
-Note that no one-point checkouts were found since 1 is less than the minimal final score — a double 1 (D1).
+No one-point checkouts were found since 1 is less than the minimal final score — a double 1 (D1).
 Otherwise, all rows have a multiplicity of one.
-That is, they represent a single checkout, which can only be attained by hitting the fields in the order in which they are listed.
+They represent a single checkout, which can only be attained by hitting the fields in their listed order.
 
 Similarly, the command
 
@@ -141,10 +141,10 @@ This table, which is truncated for brevity, looks as follows:
 ```
 
 Note that a single 3 and a triple 1 (T1) have the same score.
-Therefore, these fields are listed together and the row they are in has a multiplicity of two.
-That is, this row represents two checkouts.
+Therefore, these fields are listed together, and their row has a multiplicity of two.
+In other words, this row represents two checkouts.
 
-The `darts` toolbox can also be used to generate a checkout table for a single score.
+The `darts` toolbox can also generate a checkout table for a single score.
 For example, to find 501-point checkouts, pass the same value as the minimum and maximum score:
 
 ```shell
@@ -166,13 +166,13 @@ The resulting (truncated) output shows that there are 3,944 different nine-dart 
 |       | T20 | T20 | T20 | T19 | T19 | T19 | D25 | D25 | D25 |   560 |
 ```
 
-Note that it doesn't matter in which order the first eight darts are thrown.
+It does not matter in which order the first eight darts are thrown.
 Therefore, each row of the table represents multiple checkouts.
 
 #### 2.1.2 Default parameters
 
 As was hinted at above, the `darts checkouts` subcommand has several default parameters.
-Specifically, when left unspecified, the following options are set:
+When left unspecified, the following options are set:
 
 - The [dartboard type](#the-dartboard-type): London.
 - The [check-in mode](#the-check-in-mode): any.
@@ -237,7 +237,7 @@ The corresponding output is:
 |       |  4 / D2 | 2 |
 ```
 
-With the selected checkout mode, single final scores are accepted and a finish of 1 is possible.
+Single final scores are accepted with the selected checkout mode, and a finish of 1 is possible.
 
 ##### Master out
 
@@ -247,7 +247,7 @@ To allow for master, i.e., double or triple, checkouts, use a command like:
 darts checkouts -j master 20 21
 ```
 
-The resulting output shows only one dart is required to reduce a score of 21 to zero in master-out games:
+The resulting output shows that only one dart is required to reduce a score of 21 to zero in master-out games:
 
 ```markdown
 | Score |   1 | # |
@@ -320,8 +320,8 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 ##### The number of throws
 
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
-That is, this command finds checkouts consisting of the minimum required number of darts.
-Using `darts`, you can however, fix the number of throws with the `-n` and `--throws` options.
+That is, this command finds checkouts with the minimum required number of darts.
+Using `darts`, you can, however, fix the number of throws with the `-n` and `--throws` options.
 This option takes a non-negative integer as a parameter:
 
 - zero (`0`) will not fix the number of throws (default);
@@ -329,7 +329,7 @@ This option takes a non-negative integer as a parameter:
 
 ##### The throw mode
 
-If the number of throws is fixed, two different throw modes can be used.
+Two different throw modes can be used if the number of throws is fixed.
 These throw modes are represented by the two values the `-m` and `--throw-mode` options can take:
 
 - `optimal` for finding all [optimal](#optimal) checkouts (default);
@@ -337,8 +337,8 @@ These throw modes are represented by the two values the `-m` and `--throw-mode` 
 
 ##### Optimal
 
-To look for all *optimal* checkouts with a fixed number of darts, simply pass the desired number to the `-n` or `--throws` option.
-The throw mode will then take its default `optimal` value.
+To look for all *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
+The throw mode will then take its default value, `optimal`.
 For example:
 
 ```shell
@@ -384,7 +384,7 @@ The corresponding checkout table looks as follows:
 ```
 
 Note that the minimum two-dart score in a double-out game is 3.
-Therefore, no checkouts are shown for the scores 1 and 2.
+Therefore, no checkouts are shown for scores 1 and 2.
 Furthermore, a two-dart four-point checkout is shown even if a one-dart checkout exists.
 With the fixed-throw mode, all possible checkouts for a given number of darts are found.
 
@@ -409,7 +409,7 @@ To generate an HTML checkout table, use a command like:
 darts checkouts -o html 1 4
 ```
 
-The output will look like:
+The output will look as follows:
 
 ```html
 <table>
@@ -424,7 +424,7 @@ The output will look like:
 </table>
 ```
 
-Here, header cell elements (`th`) are used for both the column headers and cells with scores in the first column.
+Here, header cell elements (`th`) are used for column headers and cells with scores in the first column.
 The header cells with scores span multiple rows to correspond to all checkouts of that score.
 All checkout table ingredients have their own CSS class for (potential) custom styling.
 Specifically, the following classes are used:
@@ -504,8 +504,8 @@ The output will look as follows:
 
 ##### String
 
-`darts` can also return checkout tables in the form of a string that shows the internal representation of the used Java objects.
-Since this feature mostly exists for debugging, it is not discussed further, here.
+`darts` can also print checkout tables as a string showing the internal representation of the used Java objects.
+Since this feature mainly exists for debugging, it is not discussed further here.
 
 #### 2.1.6 Change the dartboard
 
@@ -521,7 +521,7 @@ This option has the following possible values:
 
 ##### Quadro
 
-The Quadro 240 board is a dartboard that has quadruple fields in addition to the usual single, double and triple fields (see [Print a dartboard](#22-print-a-dartboard)).
+The Quadro 240 board is a dartboard with quadruple fields in addition to the usual single, double and triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 The following command can be used to generate a checkout table for a double-out darts game using this board:
 
 ```shell
@@ -540,7 +540,7 @@ The resulting output shows there are six seven-dart checkouts for a score of 501
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard doesn't have a single bull or triples (see [Print a dartboard](#22-print-a-dartboard)).
+This dartboard does not have a single bull or triples (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -566,7 +566,7 @@ The resulting (truncated) checkout table is:
 
 ##### The checkout finder type
 
-By default, the `darts checkouts` subcommand makes use of an optimized descending checkout finder.
+By default, the `darts checkouts` subcommand uses an optimized descending checkout finder.
 The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
 In rare cases, you may want to change the checkout finder.
 To that end, use the `-f` or `--finder` option, which supports the following values:
@@ -602,7 +602,7 @@ The resulting checkout table looks as follows:
 In checkout tables generated using the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
 Additionally, checkouts are not summarized.
 That is, each possible checkout is represented using its own row.
-As a consequence, checkout tables can become very long when many checkouts exist.
+Consequently, checkout tables can become very long when many checkouts exist.
 Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than five darts.
 
 ### 2.2 Print a dartboard
@@ -690,7 +690,7 @@ As remarked [before](#yorkshire), this dartboard has no single bull and no tripl
 
 ##### The output format
 
-By default, the `darts boards` subcommand prints dartboards in the form of a Markdown table.
+By default, the `darts boards` subcommand prints dartboards as a Markdown table.
 The output format can be changed using the `-o` and `--output` options.
 The following output formats are supported:
 
@@ -760,14 +760,14 @@ The output will be of the following form:
 
 ##### String
 
-Dartboards can also be printed in the form of a string that shows the internals of the used Java objects.
-This feature exists mostly for debugging purposes and is not discussed further, here.
+Dartboards can also be printed as a string showing the internals of the used Java objects.
+This feature mainly exists for debugging purposes and is not discussed further here.
 
 ### 2.3 Get help
 
-In addition to consulting this online documentation, it is possible to request help regarding `darts` on the command line.
+In addition to consulting this online documentation, requesting command-line help regarding `darts` is possible.
 
-To receive general information about `darts` or to see which subcommands are available, simply execute:
+To receive general information about `darts` or to see which subcommands are available, execute:
 
 ```shell
 darts
@@ -783,7 +783,7 @@ darts checkouts
 
 Otherwise, execute `darts help checkouts`, `darts checkouts -h` or `darts checkouts --help`.
 
-The `darts boards` subcommand returns help when it isn't passed (valid) parameters:
+The `darts boards` subcommand returns help when it is not passed (valid) parameters:
 
 ```shell
 darts boards
@@ -938,7 +938,7 @@ While executing the `darts boards` subcommand, you may encounter the following e
 Missing required parameter: '<board>'
 ```
 
-To solve this problem, [specify the dartboard](#221-choose-the-dartboard) that you would like to print.
+To solve this problem, [specify the dartboard](#221-choose-the-dartboard) you would like to print.
 
 #### 3.2.5 Invalid value
 
