@@ -552,9 +552,23 @@ The resulting (truncated) checkout table is:
 
 #### 2.1.7 Change the checkout finder
 
+By default, the `darts checkouts` subcommand makes use of an optimized descending checkout finder.
+The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
+In rare cases, you may want to change the checkout finder.
+To that end, use the `-f` or `--finder` option, which supports the following values:
+
+- `descending` for an optimized descending checkout finder (default);
+- `Cartesian` for a brute-force [Cartesian](#cartesian) checkout finder.
+
+##### Cartesian
+
+To use the Cartesian checkout finder, execute a command like:
+
 ```shell
 darts checkouts -f cartesian 20 21
 ```
+
+The resulting checkout table looks as follows:
 
 ```markdown
 | Score |   1 |   2 |  # |
@@ -570,6 +584,12 @@ darts checkouts -f cartesian 20 21
 |       |  17 |  D2 |  1 |
 |       |  19 |  D1 |  1 |
 ```
+
+In checkout tables generated using the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
+Additionally, checkouts are not summarized.
+That is, each possible checkout is represented using its own row.
+As a consequence, checkout tables can become very long when many checkouts exist.
+Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than 5 darts.
 
 ### 2.2 Print a dartboard
 
