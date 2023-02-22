@@ -32,12 +32,23 @@ import picocli.CommandLine.Spec;
         versionProvider = Version.class,
         mixinStandardHelpOptions = true,
         header = {"Print a dartboard.", ""},
-        // description = "%nPrint a dartboard.",
+        descriptionHeading = "%n",
+        description = {
+                "Print one of the supported dartboards.",
+                "",
+                "  darts boards london",
+                "  darts boards -o json quadro"
+        },
         parameterListHeading = "%nParameters:%n",
         optionListHeading = "%nOptions:%n",
         showDefaultValues = true,
         footerHeading = "%n",
-        footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
+        footer = {
+                "Online documentation: https://github.com/mauritssilvis/darts/tree/main/cli/java",
+                "",
+                "Copyright © 2023 Maurits Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
+        }
 )
 @ToString
 class BoardsCommand implements Runnable {

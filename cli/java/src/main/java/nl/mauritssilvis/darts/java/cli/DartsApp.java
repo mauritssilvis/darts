@@ -32,12 +32,30 @@ import java.io.PrintWriter;
         versionProvider = Version.class,
         mixinStandardHelpOptions = true,
         header = {"darts -- A computational toolbox aimed at the game of darts", ""},
-        // description = "%nDescription.",
+        descriptionHeading = "%n",
+        description = {
+                "Determine all possible darts checkouts and generate checkout tables for any range of scores.",
+                "",
+                "  darts checkouts 20 21",
+                "  darts checkouts -i double -j double 501 501",
+                "  darts checkouts -o html 1 4",
+                "  darts checkouts -b quadro 901 901",
+                "",
+                "Print one of the supported dartboards.",
+                "",
+                "  darts boards london",
+                "  darts boards -o json quadro"
+        },
         optionListHeading = "%nOptions:%n",
         showDefaultValues = true,
         commandListHeading = "%nCommands:%n",
         footerHeading = "%n",
-        footer = {"Copyright © 2023 Maurits Silvis", "SPDX-License-Identifier: GPL-3.0-or-later"}
+        footer = {
+                "Online documentation: https://github.com/mauritssilvis/darts/tree/main/cli/java",
+                "",
+                "Copyright © 2023 Maurits Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
+        }
 )
 @ToString
 public final class DartsApp implements App {
