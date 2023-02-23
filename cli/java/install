@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Copyright © 2023 Maurits Silvis
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# darts build script
+./gradlew clean build
