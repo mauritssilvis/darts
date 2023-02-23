@@ -918,7 +918,25 @@ To solve this problem, execute `darts` with a subcommand:
 - `darts boards` for [printing a dartboard](#22-print-a-dartboard).
 - `darts help` for [getting help](#23-get-help).
 
-#### 3.2.3 Missing required `minimum` or `maximum` parameters
+#### 3.2.3 Unmatched argument
+
+While executing `darts`, you may encounter the following errors:
+
+```text
+Unmatched argument at index 0: 'board'
+```
+
+```text
+Unmatched argument at index 0: 'checkout'
+```
+
+To solve this problem, use one of the existing subcommands of `darts`:
+
+- `darts checkouts` for [generating a darts checkout table](#21-generate-a-darts-checkout-table).
+- `darts boards` for [printing a dartboard](#22-print-a-dartboard).
+- `darts help` for [getting help](#23-get-help).
+
+#### 3.2.4 Missing required `minimum` or `maximum` parameters
 
 While executing the `darts checkouts` subcommand, you may encounter the following errors:
 
@@ -932,7 +950,7 @@ Missing required parameter: '<maximum>'
 
 To solve these problems, [choose the scores](#211-choose-the-scores) for which you would like to generate a checkout table.
 
-#### 3.2.4 Missing required `board` parameter
+#### 3.2.5 Missing required `board` parameter
 
 While executing the `darts boards` subcommand, you may encounter the following error:
 
@@ -942,7 +960,7 @@ Missing required parameter: '<board>'
 
 To solve this problem, [specify the dartboard](#221-choose-the-dartboard) you would like to print.
 
-#### 3.2.5 Invalid value
+#### 3.2.6 Invalid value
 
 While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following errors:
 
@@ -960,7 +978,7 @@ Invalid value for positional parameter at index ...: expected one of ... but was
 
 To solve these problems, choose valid parameters from the [usage instructions](#2-usage).
 
-#### 3.2.6 Missing required option parameter
+#### 3.2.7 Missing required option parameter
 
 While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following error:
 
@@ -970,7 +988,7 @@ Missing required parameter for option '...'
 
 To solve this problem, choose a valid option parameter from the [usage instructions](#2-usage).
 
-#### 3.2.7 Unknown option
+#### 3.2.8 Unknown option
 
 While executing the `darts checkouts` or `darts boards` subcommands, you may encounter the following error:
 
