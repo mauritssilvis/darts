@@ -664,6 +664,8 @@ The output of this command will look similar to:
 |  25 | D25 |   - |   - |
 ```
 
+As can be observed, the Quadro board is a dartboard with quadruple fields in addition to the usual single, double and triple fields.
+
 ##### Yorkshire
 
 The Yorkshire board can be printed with the following command:
@@ -672,7 +674,7 @@ The Yorkshire board can be printed with the following command:
 darts boards yorkshire
 ```
 
-As remarked [before](#yorkshire), this dartboard has no single bull and no triples:
+This dartboard has no single bull and no triples:
 
 ```markdown
 |   S |   D |
