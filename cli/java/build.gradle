@@ -5,7 +5,6 @@
 
 plugins {
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group 'nl.mauritssilvis.darts.java'
@@ -54,26 +53,5 @@ application {
 jar {
     manifest {
         attributes 'Main-Class': 'nl.mauritssilvis.darts.java.cli.DartsApp'
-    }
-}
-
-shadowJar {
-    dependencies {
-        // Exclude the picocli module descriptor
-        exclude 'META-INF/versions/9/module-info.class'
-    }
-}
-
-tasks.register('createStartScripts', CreateStartScripts) {
-    outputDir = file('.')
-    mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
-    applicationName = 'darts'
-    classpath = files(project.name + '-' + version + '-all.jar')
-}
-
-createStartScripts {
-    doLast {
-        unixScript.text = unixScript.text.replace('/lib/', '/java/build/libs/')
-        windowsScript.text = windowsScript.text.replace('\\lib\\', '\\java\\build\\libs\\')
     }
 }
