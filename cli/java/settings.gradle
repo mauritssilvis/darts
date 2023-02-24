@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-rootProject.name = 'java-darts-cli'
+rootProject.name = "java-darts-cli"
 
