@@ -4,28 +4,28 @@
  */
 
 plugins {
-    id 'application'
+    id "application"
 }
 
-group 'nl.mauritssilvis.darts.java'
-version '0.1.0-SNAPSHOT'
+group "nl.mauritssilvis.darts.java"
+version "0.1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.24'
+    compileOnly "org.projectlombok:lombok:1.18.24"
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'info.picocli:picocli-codegen:4.7.1'
+    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    annotationProcessor "info.picocli:picocli-codegen:4.7.1"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.1"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.9.1"
 
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.9.1"
 
-    implementation 'info.picocli:picocli:4.7.1'
+    implementation "info.picocli:picocli:4.7.1"
 }
 
 test {
@@ -46,12 +46,12 @@ javadoc {
 }
 
 application {
-    applicationName = 'darts'
-    mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
+    applicationName = "darts"
+    mainClass = "nl.mauritssilvis.darts.java.cli.DartsApp"
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': 'nl.mauritssilvis.darts.java.cli.DartsApp'
+        attributes "Main-Class": "nl.mauritssilvis.darts.java.cli.DartsApp"
     }
 }
