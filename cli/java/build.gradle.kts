@@ -37,10 +37,6 @@ java {
     withJavadocJar()
 }
 
-tasks.javadoc {
-    options.memberLevel = JavadocMemberLevel.PACKAGE
-}
-
 application {
     applicationName = "darts"
     mainClass.set("nl.mauritssilvis.darts.java.cli.DartsApp")
@@ -54,4 +50,8 @@ tasks.jar {
     manifest {
         attributes("Main-Class" to "nl.mauritssilvis.darts.java.cli.DartsApp")
     }
+}
+
+tasks.javadoc {
+    options.memberLevel = JavadocMemberLevel.PACKAGE
 }
