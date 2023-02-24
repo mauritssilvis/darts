@@ -4,7 +4,7 @@
  */
 
 plugins {
-    id("application")
+    application
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -28,13 +28,9 @@ dependencies {
     implementation("info.picocli:picocli:4.7.1")
 }
 
-test {
-    useJUnitPlatform()
-}
-
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 
     withSourcesJar()
@@ -47,7 +43,11 @@ javadoc {
 
 application {
     applicationName = "darts"
-    mainClass = "nl.mauritssilvis.darts.java.cli.DartsApp"
+    mainClass.set("nl.mauritssilvis.darts.java.cli.DartsApp")
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
 }
 
 jar {
