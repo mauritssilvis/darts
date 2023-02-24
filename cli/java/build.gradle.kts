@@ -42,7 +42,7 @@ application {
     mainClass.set("nl.mauritssilvis.darts.java.cli.DartsApp")
 }
 
-tasks.named<Test>("test") {
+tasks.test {
     useJUnitPlatform()
 }
 
