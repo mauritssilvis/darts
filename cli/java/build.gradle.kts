@@ -50,8 +50,8 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
-jar {
+tasks.jar {
     manifest {
-        attributes("Main-Class": "nl.mauritssilvis.darts.java.cli.DartsApp")
+        attributes("Main-Class" to "nl.mauritssilvis.darts.java.cli.DartsApp")
     }
 }
