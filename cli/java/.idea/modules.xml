@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-darts-cli.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-darts-cli.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nl.mauritssilvis.darts.java.java-darts-cli.main.iml" filepath="$PROJECT_DIR$/.idea/modules/nl.mauritssilvis.darts.java.java-darts-cli.main.iml" />
     </modules>
   </component>
 </project>
