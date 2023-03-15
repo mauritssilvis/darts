@@ -5,6 +5,30 @@ All notable changes to the `java-darts-cli` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2023-03-15
+
+### Changed
+
+#### Documentation
+
+- Document changes in the usage of `darts`.
+
+#### Installation
+
+- Change the `darts` installation location.
+
+#### Dependencies
+
+- Update the Gradle version to 8.0.2.
+- Update the Lombok version to 1.18.26.
+- Update the JUnit version to 5.9.2.
+
+### Removed
+
+#### Execution
+
+- Remove scripts to run `darts` from the project folder.
+
 ## [0.1.0] - 2023-03-15
 
 ### Added
@@ -15,9 +39,12 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Document the usage of the `darts` command-line interface.
 - Document potential problems with the installation or usage of `darts`.
 
-#### Execution
+#### Installation
 
 - Add scripts to install `darts` in the project folder (`install`).
+ 
+#### Execution
+
 - Add scripts to run `darts` from the project folder (`darts`).
 
 #### Command-line interface
