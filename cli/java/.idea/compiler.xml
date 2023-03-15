@@ -6,11 +6,11 @@
         <outputRelativeToContentRoot value="true" />
         <option name="project" value="nl.mauritssilvis.darts.java/java-darts-cli" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.26/8f8cf0372abf564913e9796623aac4c8ea44025a/lombok-1.18.26.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/info.picocli/picocli-codegen/4.7.1/8432df2dd8f0065beb54f2dd4a30b36532ab997d/picocli-codegen-4.7.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/info.picocli/picocli/4.7.1/7ac5efc1f895a237eb3d8e77375d7c7a7dbbaae7/picocli-4.7.1.jar" />
         </processorPath>
-        <module name="nl.mauritssilvis.darts.java.java-darts-cli.main" />
+        <module name="java-darts-cli.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />

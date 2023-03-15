@@ -15,15 +15,15 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.24")
+    compileOnly("org.projectlombok:lombok:1.18.26")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.26")
     annotationProcessor("info.picocli:picocli-codegen:4.7.1")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.2")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     implementation("info.picocli:picocli:4.7.1")
 }
