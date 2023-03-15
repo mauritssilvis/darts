@@ -39,11 +39,18 @@ You can install the latest version of Java as follows:
 
 ### 1.2 Build `darts`
 
-You can build the `darts` toolbox as follows:
+To build the `darts` toolbox, first follow the following steps:
 
-- Clone or download the `darts` code from https://github.com/mauritssilvis/darts.
+- Download the `java-darts-cli` code.
+    - You can download the latest `java-darts-cli` release from https://github.com/mauritssilvis/darts/releases.
+    - Alternatively, clone or download the full `darts` code from https://github.com/mauritssilvis/darts.
 - If necessary, extract the code to a convenient location.
+
+You can then build the `darts` toolbox as follows:
+
 - Navigate to the folder containing the `darts` installation and execution scripts.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
 - Run the `install` command.
 - Test the execution of the `darts` toolbox by running the `darts` command.
 
