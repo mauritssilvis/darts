@@ -62,4 +62,13 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
+
+    installDist {
+        doLast {
+            copy {
+                from(destinationDir)
+                into(".")
+            }
+        }
+    }
 }
