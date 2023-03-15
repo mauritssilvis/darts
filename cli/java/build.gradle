@@ -66,7 +66,7 @@ shadowJar {
 }
 
 tasks.register('createStartScripts', CreateStartScripts) {
-    outputDir = file('.')
+    outputDir = file('build/scripts')
     mainClass = 'nl.mauritssilvis.darts.java.cli.DartsApp'
     applicationName = 'darts'
     classpath = files(project.name + '-' + version + '-all.jar')
@@ -74,7 +74,7 @@ tasks.register('createStartScripts', CreateStartScripts) {
 
 createStartScripts {
     doLast {
-        unixScript.text = unixScript.text.replace('/lib/', '/java/build/libs/')
-        windowsScript.text = windowsScript.text.replace('\\lib\\', '\\java\\build\\libs\\')
+        unixScript.text = unixScript.text.replace('$APP_HOME/lib/', 'build/libs/')
+        windowsScript.text = windowsScript.text.replace('%APP_HOME%\\lib\\', 'build\\libs\\')
     }
 }
