@@ -835,6 +835,10 @@ install: missing file operand
 Try 'install --help' for more information.
 ```
 
+```text
+./install: No such file or directory
+```
+
 To solve these problems, take the following steps:
 
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
@@ -913,6 +917,10 @@ or batch file.
 ```text
 darts : The term 'darts' is not recognized as the name of a cmdlet, function,
 script file, or operable program.
+```
+
+```text
+./darts: No such file or directory
 ```
 
 To solve these problems, take the following steps:
