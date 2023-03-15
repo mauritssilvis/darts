@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\java\build\libs\java-darts-cli-0.1.0-SNAPSHOT-all.jar
+set CLASSPATH=build\libs\java-darts-cli-0.1.0-SNAPSHOT-all.jar
 
 
 @rem Execute darts
