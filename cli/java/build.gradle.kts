@@ -71,4 +71,11 @@ tasks {
             }
         }
     }
+
+    clean {
+        doLast {
+            file("bin").deleteRecursively()
+            file("lib").deleteRecursively()
+        }
+    }
 }
