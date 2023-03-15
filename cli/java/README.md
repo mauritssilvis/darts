@@ -48,35 +48,43 @@ To install the `darts` toolbox, first follow the following steps:
 
 You can then install the `darts` toolbox as follows:
 
-- Navigate to the folder containing the `darts` installation and execution scripts.
-    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
-    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
-- Run the `install` command to install `darts` in the current folder.
+- Navigate to the folder containing the `darts` installation scripts, `install` and `install.bat`.
+    - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
+- Run the `install` command to install `darts` in the `bin` folder.
+- Navigate to the newly created `bin` folder.
 - Test the execution of the `darts` toolbox by running the `darts` command.
 
 #### 1.2.1 Command execution
 
+##### Unix-like systems
+
 On Unix-like systems, the `install` and `darts` commands can be executed as follows:
 
 - Open a terminal.
-- Navigate to the folder containing the `darts` installation and execution scripts.
+- Navigate to the folder containing the `darts` installation script, `install`.
 - Run the `install` command by executing `./install`.
+- Navigate to the newly created `bin` folder.
 - Run the `darts` command by executing `./darts`.
+
+##### Windows
 
 On Windows, the `install` and `darts` commands can be executed using the command prompt or the PowerShell.
 
 With the command prompt, the execution of commands works as follows:
 
 - Open the command prompt, for example, by pushing the `Windows key`, typing `cmd` and hitting `Enter`.
-- Navigate to the folder containing the `darts` installation and execution scripts.
+- Navigate to the folder containing the `darts` installation script, `install.bat`.
 - Run the `install` command by executing `install`.
+- Navigate to the newly created `bin` folder.
 - Run the `darts` command by executing `darts`.
 
 With the PowerShell, execution works as follows:
 
 - Open the PowerShell, for example, by pushing the `Windows key`, typing `powershell` and hitting `Enter`.
-- Navigate to the folder containing the `darts` installation and execution scripts.
+- Navigate to the folder containing the `darts` installation script, `install.bat`.
 - Run the `install` command by executing `.\install`.
+- Navigate to the newly created `bin` folder.
 - Run the `darts` command by executing `.\darts`.
 
 #### 1.2.2 Troubleshooting
@@ -829,9 +837,9 @@ Try 'install --help' for more information.
 
 To solve these problems, take the following steps:
 
-- Ensure you navigated to the folder containing the `darts` installation and script.
-    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
-    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
+- Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
+    - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
@@ -910,9 +918,10 @@ script file, or operable program.
 To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
-- Navigate to the folder containing the `darts` execution script.
-    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
-    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
+- Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
+    - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
+- Navigate to the `bin` folder.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.2.2 Missing required subcommand
