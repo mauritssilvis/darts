@@ -11,7 +11,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Installation
 
-- Let Gradle install `darts` in the `bin` folder.
+- Change the `darts` installation location.
 
 ### Removed
 
