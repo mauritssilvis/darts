@@ -37,14 +37,21 @@ You can install the latest version of Java as follows:
 - Extract the archive to a convenient location.
 - Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XX.X.X` folder.
 
-### 1.2 Build `darts`
+### 1.2 Install `darts`
 
-You can build the `darts` toolbox as follows:
+To install the `darts` toolbox, first follow the following steps:
 
-- Clone or download the `darts` code from https://github.com/mauritssilvis/darts.
+- Download the `java-darts-cli` code.
+    - You can download the latest `java-darts-cli` release from https://github.com/mauritssilvis/darts/releases.
+    - Alternatively, clone or download the full `darts` code from https://github.com/mauritssilvis/darts.
 - If necessary, extract the code to a convenient location.
-- Navigate to the `java` folder that is part of the code.
-- Run the `install` command.
+
+You can then install the `darts` toolbox as follows:
+
+- Navigate to the folder containing the `darts` installation and execution scripts.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
+- Run the `install` command to install `darts` in the current folder.
 - Test the execution of the `darts` toolbox by running the `darts` command.
 
 #### 1.2.1 Command execution
@@ -52,7 +59,7 @@ You can build the `darts` toolbox as follows:
 On Unix-like systems, the `install` and `darts` commands can be executed as follows:
 
 - Open a terminal.
-- Navigate to the `java` folder that is part of the `darts` code.
+- Navigate to the folder containing the `darts` installation and execution scripts.
 - Run the `install` command by executing `./install`.
 - Run the `darts` command by executing `./darts`.
 
@@ -61,20 +68,20 @@ On Windows, the `install` and `darts` commands can be executed using the command
 With the command prompt, the execution of commands works as follows:
 
 - Open the command prompt, for example, by pushing the `Windows key`, typing `cmd` and hitting `Enter`.
-- Navigate to the `java` folder that is part of the `darts` code.
+- Navigate to the folder containing the `darts` installation and execution scripts.
 - Run the `install` command by executing `install`.
 - Run the `darts` command by executing `darts`.
 
 With the PowerShell, execution works as follows:
 
 - Open the PowerShell, for example, by pushing the `Windows key`, typing `powershell` and hitting `Enter`.
-- Navigate to the `java` folder that is part of the `darts` code.
+- Navigate to the folder containing the `darts` installation and execution scripts.
 - Run the `install` command by executing `.\install`.
 - Run the `darts` command by executing `.\darts`.
 
 #### 1.2.2 Troubleshooting
 
-Should any problems occur while building `darts`, please refer to the [troubleshooting](#3-troubleshooting) section.
+Should any problems occur while installing `darts`, please refer to the [troubleshooting](#3-troubleshooting) section.
 
 ## 2. Usage
 
@@ -799,7 +806,7 @@ It is also possible to run `darts help boards`, `darts boards -h` or `darts boar
 
 #### 3.1.1 The `install` command was not found
 
-While trying to build `darts`, you may encounter the following errors:
+While trying to install `darts`, you may encounter the following errors:
 
 ```text
 install: command not found
@@ -822,12 +829,14 @@ Try 'install --help' for more information.
 
 To solve these problems, take the following steps:
 
-- Ensure you navigated to the `java` folder that is part of the `darts` code.
+- Ensure you navigated to the folder containing the `darts` installation and script.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
 
-While building or executing `darts`, you may encounter the following errors:
+While installing or executing `darts`, you may encounter the following errors:
 
 ```text
 JAVA_HOME is not set and no 'java' command could be found in your PATH.
@@ -848,7 +857,7 @@ Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsAp
 Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
 ```
 
-To solve this problem, [build](#12-build-darts) the `darts` toolbox.
+To solve this problem, [install](#12-install-darts) the `darts` toolbox.
 
 #### 3.1.4 Java is not up-to-date
 
@@ -864,10 +873,10 @@ Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.jav
 
 To solve this problem, follow the instructions for [installing Java 17+](#11-install-java-17).
 
-#### 3.1.5 Building `darts` failed
+#### 3.1.5 Installing `darts` failed
 
-While building `darts`, you may encounter other errors than those listed above.
-Such errors may contain a message like:
+While installing `darts`, you may encounter other errors than those listed above.
+Such errors may contain a Gradle failure message like:
 
 ```text
 FAILURE: Build failed with an exception.
@@ -876,7 +885,7 @@ BUILD FAILED in XXs
 ...
 ```
 
-Should the build fail, please [report an issue](https://github.com/mauritssilvis/darts/issues) and document the error and how it can be reproduced.
+Should the Gradle build fail, please [report an issue](https://github.com/mauritssilvis/darts/issues) and document the error and how it can be reproduced.
 
 ### 3.2 Execution
 
@@ -901,7 +910,9 @@ script file, or operable program.
 To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
-- Navigate to the `java` folder that is part of the `darts` code.
+- Navigate to the folder containing the `darts` execution script.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.2.2 Missing required subcommand
