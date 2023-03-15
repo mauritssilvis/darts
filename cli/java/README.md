@@ -829,7 +829,9 @@ Try 'install --help' for more information.
 
 To solve these problems, take the following steps:
 
-- Ensure you navigated to the folder containing the `darts` installation and execution scripts.
+- Ensure you navigated to the folder containing the `darts` installation and script.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
@@ -908,7 +910,9 @@ script file, or operable program.
 To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
-- Navigate to the folder containing the `darts` installation and execution scripts.
+- Navigate to the folder containing the `darts` execution script.
+    - If you downloaded the latest `java-darts-cli` release, navigate to the extracted folder.
+    - If you downloaded the full `darts` code, navigate to the `cli/java` folder that is part of that code.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.2.2 Missing required subcommand
