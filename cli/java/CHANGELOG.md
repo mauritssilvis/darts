@@ -1,13 +1,30 @@
 # Changelog
 
-All notable changes to the [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.) project are documented in this file.
+All notable changes to the `java-darts-cli` project (see [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.)) are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.1.0] - 2023-03-15
 
 ### Added
+
+#### Documentation
+
+- Describe the installation of `darts`.
+- Document the usage of the `darts` command-line interface.
+- Document potential problems with the installation or usage of `darts`.
+
+#### Execution
+
+- Add scripts to install `darts` in the project folder (`install`).
+- Add scripts to run `darts` from the project folder (`darts`).
+
+#### Command-line interface
+
+- Add a command-line interface (`DartsApp`).
+- Add a command to print dartboards (`BoardsCommand`).
+- Add a command to generate darts checkout tables (`CheckoutsCommand`).
 
 #### Dartboards
 
@@ -39,9 +56,3 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
 - Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
 - Add a JSON serializer for checkout tables (`JsonTableSerializer`).
-
-#### Command-line interface
-
-- Add a command-line interface (`DartsApp`).
-- Add a command to print dartboards (`BoardsCommand`).
-- Add a command to generate darts checkout tables (`CheckoutsCommand`).
