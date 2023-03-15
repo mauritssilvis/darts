@@ -74,7 +74,7 @@ tasks.register('createStartScripts', CreateStartScripts) {
 
 createStartScripts {
     doLast {
-        unixScript.text = unixScript.text.replace('/lib/', '/java/build/libs/')
-        windowsScript.text = windowsScript.text.replace('\\lib\\', '\\java\\build\\libs\\')
+        unixScript.text = unixScript.text.replace('$APP_HOME/lib/', 'build/libs/')
+        windowsScript.text = windowsScript.text.replace('%APP_HOME%\\lib\\', 'build\\libs\\')
     }
 }
