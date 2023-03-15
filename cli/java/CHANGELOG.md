@@ -17,6 +17,12 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Change the `darts` installation location.
 
+#### Dependencies
+
+- Update the Gradle version to 8.0.2.
+- Update the Lombok version to 1.18.26.
+- Update the JUnit version to 5.9.2.
+
 ### Removed
 
 #### Execution
