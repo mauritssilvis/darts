@@ -9,6 +9,17 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+#### Documentation
+
+- Describe the installation of `darts`.
+- Document the usage of the `darts` command-line interface.
+- Document potential problems with the installation or usage of `darts`.
+
+#### Execution
+
+- Add scripts to install `darts` in the project folder (`install`).
+- Add scripts to run `darts` from the project folder (`darts`).
+
 #### Dartboards
 
 - Add single, double, triple and quadruple dartboard fields (`TypedField`).
