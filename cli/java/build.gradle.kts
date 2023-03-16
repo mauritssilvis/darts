@@ -84,6 +84,16 @@ publishing {
             name = "buildFolder"
             url = uri(layout.buildDirectory.dir("repo"))
         }
+
+        maven {
+            // Sonatype snapshot repository
+            name = "sonatypeSnapshot"
+            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            credentials {
+                username = project.property("ossrhUsername") as String
+                password = project.property("ossrhPassword") as String
+            }
+        }
     }
 }
 
