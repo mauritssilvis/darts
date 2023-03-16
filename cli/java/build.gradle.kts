@@ -6,6 +6,7 @@
 plugins {
     application
     `maven-publish`
+    signing
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -57,6 +58,11 @@ publishing {
             url = uri(layout.buildDirectory.dir("repo"))
         }
     }
+}
+
+signing {
+    useGpgCmd() // Use the local gpg command
+    sign(publishing.publications["mavenJava"])
 }
 
 tasks {
