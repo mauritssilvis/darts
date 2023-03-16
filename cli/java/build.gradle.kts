@@ -46,14 +46,14 @@ application {
 
 publishing {
     publications {
-        create<MavenPublication>("javaDartsCli") {
+        create<MavenPublication>("mavenJava") {
             from(components["java"])
         }
     }
 
     repositories {
         maven {
-            name = "local"
+            name = "localMaven"
             url = uri(layout.buildDirectory.dir("repo"))
         }
     }
