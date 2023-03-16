@@ -5,6 +5,7 @@
 
 plugins {
     application
+    `maven-publish`
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -41,6 +42,21 @@ java {
 application {
     applicationName = "darts"
     mainClass.set("nl.mauritssilvis.darts.java.cli.DartsApp")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("javaDartsCli") {
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        maven {
+            name = "local"
+            url = uri(layout.buildDirectory.dir("repo"))
+        }
+    }
 }
 
 tasks {
