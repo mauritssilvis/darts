@@ -54,7 +54,7 @@ publishing {
 
     repositories {
         maven {
-            name = "localMaven"
+            name = "buildFolder"
             url = uri(layout.buildDirectory.dir("repo"))
         }
     }
