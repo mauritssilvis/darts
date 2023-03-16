@@ -89,9 +89,13 @@ publishing {
             // Sonatype snapshot repository
             name = "sonatypeSnapshot"
             url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+
             credentials {
-                username = project.property("ossrhUsername") as String
-                password = project.property("ossrhPassword") as String
+                val ossrhUsername: String by project
+                val ossrhPassword: String by project
+
+                username = ossrhUsername
+                password = ossrhPassword
             }
         }
     }
