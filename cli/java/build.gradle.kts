@@ -79,6 +79,13 @@ publishing {
             }
         }
     }
+
+    repositories {
+        maven {
+            name = "buildFolder"
+            url = uri(layout.buildDirectory.dir("repo"))
+        }
+    }
 }
 
 nexusPublishing {
