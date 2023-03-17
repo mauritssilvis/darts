@@ -5,6 +5,14 @@ All notable changes to the `java-darts-cli` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2023-03-17
+
+### Added
+
+#### Deployment
+
+- Set up Maven Central deployment.
+
 ## [0.2.0] - 2023-03-15
 
 ### Changed
