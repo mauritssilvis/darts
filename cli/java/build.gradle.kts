@@ -123,11 +123,9 @@ tasks {
             }
         }
     }
+}
 
-    clean {
-        doLast {
-            file("bin").deleteRecursively()
-            file("lib").deleteRecursively()
-        }
-    }
+tasks.register<Delete>("cleanDist") {
+    file("bin").deleteRecursively()
+    file("lib").deleteRecursively()
 }
