@@ -1,5 +1,5 @@
 plugins {
-    java
+    `java-library`
 }
 
 group = "nl.mauritssilvis.darts.java"
