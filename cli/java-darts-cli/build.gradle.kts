@@ -28,6 +28,7 @@ dependencies {
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
+    implementation(project(":java-darts-api"))
     implementation("info.picocli:picocli:4.7.1")
 }
 
