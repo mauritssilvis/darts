@@ -9,7 +9,7 @@ import nl.mauritssilvis.darts.java.api.boards.Board;
 import nl.mauritssilvis.darts.java.api.boards.FieldType;
 import nl.mauritssilvis.darts.java.api.output.Formatter;
 import nl.mauritssilvis.darts.java.api.output.Serializer;
-import nl.mauritssilvis.darts.java.output.types.PrettyFormatter;
+import nl.mauritssilvis.darts.java.output.PrettyFormatter;
 
 import java.util.Collection;
 import java.util.Collections;

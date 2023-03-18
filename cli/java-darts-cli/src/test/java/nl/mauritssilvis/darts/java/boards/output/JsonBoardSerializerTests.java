@@ -8,7 +8,7 @@ package nl.mauritssilvis.darts.java.boards.output;
 import nl.mauritssilvis.darts.java.api.boards.Board;
 import nl.mauritssilvis.darts.java.api.output.Serializer;
 import nl.mauritssilvis.darts.java.api.settings.BoardType;
-import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
+import nl.mauritssilvis.darts.java.boards.BoardFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
