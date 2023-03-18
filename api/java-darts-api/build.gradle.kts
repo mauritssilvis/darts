@@ -74,6 +74,11 @@ publishing {
     }
 }
 
+signing {
+    useGpgCmd() // Use the local gpg command
+    sign(publishing.publications["mavenJava"])
+}
+
 if (project == rootProject) {
     apply(plugin = "io.github.gradle-nexus.publish-plugin")
 
@@ -85,11 +90,6 @@ if (project == rootProject) {
             }
         }
     }
-}
-
-signing {
-    useGpgCmd() // Use the local gpg command
-    sign(publishing.publications["mavenJava"])
 }
 
 tasks {

@@ -89,6 +89,11 @@ publishing {
     }
 }
 
+signing {
+    useGpgCmd() // Use the local gpg command
+    sign(publishing.publications["mavenJava"])
+}
+
 nexusPublishing {
     repositories {
         sonatype {
@@ -96,11 +101,6 @@ nexusPublishing {
             snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
-}
-
-signing {
-    useGpgCmd() // Use the local gpg command
-    sign(publishing.publications["mavenJava"])
 }
 
 tasks {
