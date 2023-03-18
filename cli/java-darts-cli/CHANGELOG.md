@@ -29,13 +29,13 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-#### Documentation
-
-- Document changes in the usage of `darts`.
-
 #### Installation
 
 - Change the `darts` installation location.
+
+#### Documentation
+
+- Document changes in the usage of `darts`.
 
 #### Dependencies
 
