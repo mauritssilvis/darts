@@ -18,8 +18,11 @@ import picocli.CommandLine.IVersionProvider;
 class Version implements IVersionProvider {
     @Override
     public String[] getVersion() {
+        String title = getClass().getPackage().getImplementationTitle();
+        String version = getClass().getPackage().getImplementationVersion();
+
         return new String[]{
-                "java-darts-cli 0.3.0",
+                title + " " + version,
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         };
