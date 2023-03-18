@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.boards.output;
 
-import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.OutputFormat;
+import nl.mauritssilvis.darts.java.api.boards.Board;
+import nl.mauritssilvis.darts.java.api.output.Serializer;
+import nl.mauritssilvis.darts.java.api.settings.OutputFormat;
 
 /**
  * A dartboard serializer factory.

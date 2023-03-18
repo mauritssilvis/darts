@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.tables.types;
 
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.TableType;
-import nl.mauritssilvis.darts.java.tables.TableGenerator;
+import nl.mauritssilvis.darts.java.api.settings.Settings;
+import nl.mauritssilvis.darts.java.api.settings.TableType;
+import nl.mauritssilvis.darts.java.api.tables.TableGenerator;
 
 /**
  * A checkout table generator factory.

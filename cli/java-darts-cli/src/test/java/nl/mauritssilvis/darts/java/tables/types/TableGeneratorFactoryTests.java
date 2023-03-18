@@ -5,11 +5,11 @@
 
 package nl.mauritssilvis.darts.java.tables.types;
 
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.settings.TableType;
+import nl.mauritssilvis.darts.java.api.settings.Settings;
+import nl.mauritssilvis.darts.java.api.settings.TableType;
+import nl.mauritssilvis.darts.java.api.tables.Table;
+import nl.mauritssilvis.darts.java.api.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
-import nl.mauritssilvis.darts.java.tables.Table;
-import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

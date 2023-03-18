@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.settings.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.api.settings.*;
 
 /**
  * An implementation of the {@code Settings} interface that stores checkout

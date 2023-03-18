@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.boards.types;
 
-import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldType;
+import nl.mauritssilvis.darts.java.api.boards.Board;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.boards.FieldType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

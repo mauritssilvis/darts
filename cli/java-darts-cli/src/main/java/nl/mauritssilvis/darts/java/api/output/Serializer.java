@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.output;
+package nl.mauritssilvis.darts.java.api.output;
 
 /**
  * A serializer.

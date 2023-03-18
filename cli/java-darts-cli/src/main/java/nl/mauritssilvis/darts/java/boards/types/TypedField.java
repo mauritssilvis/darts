@@ -7,8 +7,8 @@ package nl.mauritssilvis.darts.java.boards.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldType;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.boards.FieldType;
 
 /**
  * An implementation of the {@code Field} interface that can represent fields of

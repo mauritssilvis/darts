@@ -7,9 +7,9 @@ package nl.mauritssilvis.darts.java.tables.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.settings.Settings;
+import nl.mauritssilvis.darts.java.api.tables.Table;
 
 import java.util.*;
 import java.util.stream.Collectors;

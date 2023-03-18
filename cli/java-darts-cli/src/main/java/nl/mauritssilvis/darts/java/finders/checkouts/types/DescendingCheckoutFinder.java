@@ -7,16 +7,16 @@ package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
-import nl.mauritssilvis.darts.java.finders.paths.Path;
-import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Throw;
+import nl.mauritssilvis.darts.java.api.finders.paths.Path;
+import nl.mauritssilvis.darts.java.api.finders.paths.Pathfinder;
+import nl.mauritssilvis.darts.java.api.settings.FinderType;
 import nl.mauritssilvis.darts.java.finders.paths.types.Node;
 import nl.mauritssilvis.darts.java.finders.paths.types.NodeFactory;
 import nl.mauritssilvis.darts.java.finders.paths.types.PathfinderFactory;
-import nl.mauritssilvis.darts.java.settings.FinderType;
 
 import java.util.*;
 import java.util.stream.Collectors;

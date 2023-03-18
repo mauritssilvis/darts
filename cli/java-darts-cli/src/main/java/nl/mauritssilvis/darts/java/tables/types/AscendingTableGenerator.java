@@ -7,16 +7,16 @@ package nl.mauritssilvis.darts.java.tables.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldType;
+import nl.mauritssilvis.darts.java.api.boards.Board;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.boards.FieldType;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.api.settings.*;
+import nl.mauritssilvis.darts.java.api.tables.Table;
+import nl.mauritssilvis.darts.java.api.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
 import nl.mauritssilvis.darts.java.finders.checkouts.types.CheckoutFinderFactory;
-import nl.mauritssilvis.darts.java.settings.*;
-import nl.mauritssilvis.darts.java.tables.Table;
-import nl.mauritssilvis.darts.java.tables.TableGenerator;
 
 import java.util.*;
 import java.util.stream.IntStream;

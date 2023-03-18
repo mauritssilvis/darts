@@ -6,11 +6,11 @@
 package nl.mauritssilvis.darts.java.cli;
 
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.api.output.Serializer;
+import nl.mauritssilvis.darts.java.api.settings.*;
+import nl.mauritssilvis.darts.java.api.tables.Table;
+import nl.mauritssilvis.darts.java.api.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
-import nl.mauritssilvis.darts.java.tables.Table;
-import nl.mauritssilvis.darts.java.tables.TableGenerator;
 import nl.mauritssilvis.darts.java.tables.output.TableSerializerFactory;
 import nl.mauritssilvis.darts.java.tables.types.TableGeneratorFactory;
 import picocli.CommandLine;

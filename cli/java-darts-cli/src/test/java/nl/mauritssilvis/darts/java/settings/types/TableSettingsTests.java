@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.java.settings.types;
 
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.api.settings.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

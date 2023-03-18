@@ -5,13 +5,13 @@
 
 package nl.mauritssilvis.darts.java.tables.types;
 
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutTestUtils;
-import nl.mauritssilvis.darts.java.settings.*;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.CheckoutTestUtils;
+import nl.mauritssilvis.darts.java.api.settings.*;
+import nl.mauritssilvis.darts.java.api.tables.Table;
+import nl.mauritssilvis.darts.java.api.tables.TableGenerator;
+import nl.mauritssilvis.darts.java.api.tables.TableTestUtils;
 import nl.mauritssilvis.darts.java.settings.types.TableSettingsBuilder;
-import nl.mauritssilvis.darts.java.tables.Table;
-import nl.mauritssilvis.darts.java.tables.TableGenerator;
-import nl.mauritssilvis.darts.java.tables.TableTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

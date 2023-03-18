@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.finders.paths.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.finders.paths.Path;
+import nl.mauritssilvis.darts.java.api.finders.paths.Path;
 
 import java.util.Collection;
 import java.util.List;

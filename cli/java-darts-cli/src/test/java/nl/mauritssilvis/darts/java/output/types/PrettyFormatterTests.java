@@ -5,7 +5,7 @@
 
 package nl.mauritssilvis.darts.java.output.types;
 
-import nl.mauritssilvis.darts.java.output.Formatter;
+import nl.mauritssilvis.darts.java.api.output.Formatter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

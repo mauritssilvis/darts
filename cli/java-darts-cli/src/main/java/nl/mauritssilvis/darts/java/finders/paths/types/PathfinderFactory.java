@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.finders.paths.types;
 
-import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
-import nl.mauritssilvis.darts.java.settings.FinderType;
+import nl.mauritssilvis.darts.java.api.finders.paths.Pathfinder;
+import nl.mauritssilvis.darts.java.api.settings.FinderType;
 
 import java.util.Collection;
 

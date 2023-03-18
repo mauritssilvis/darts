@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.finders.checkouts.CheckoutFinder;
-import nl.mauritssilvis.darts.java.settings.FinderType;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.CheckoutFinder;
+import nl.mauritssilvis.darts.java.api.settings.FinderType;
 
 import java.util.Collection;
 

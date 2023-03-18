@@ -7,8 +7,8 @@ package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Throw;
 
 import java.util.Collection;
 import java.util.List;

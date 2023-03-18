@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.boards.types;
 
-import nl.mauritssilvis.darts.java.boards.Board;
-import nl.mauritssilvis.darts.java.settings.BoardType;
+import nl.mauritssilvis.darts.java.api.boards.Board;
+import nl.mauritssilvis.darts.java.api.settings.BoardType;
 
 /**
  * A dartboard factory.

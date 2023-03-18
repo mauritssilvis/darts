@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.boards.types;
 
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldType;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.boards.FieldType;
 
 import java.util.Collection;
 import java.util.List;

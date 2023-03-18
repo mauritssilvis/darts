@@ -5,8 +5,8 @@
 
 package nl.mauritssilvis.darts.java.tables.output;
 
-import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.api.output.Serializer;
+import nl.mauritssilvis.darts.java.api.tables.Table;
 
 import java.util.Locale;
 import java.util.stream.IntStream;

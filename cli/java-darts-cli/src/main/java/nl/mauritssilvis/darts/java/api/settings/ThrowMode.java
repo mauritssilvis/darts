@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.settings;
+package nl.mauritssilvis.darts.java.api.settings;
 
 import lombok.ToString;
 

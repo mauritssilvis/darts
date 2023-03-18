@@ -5,11 +5,11 @@
 
 package nl.mauritssilvis.darts.java.tables.output;
 
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
-import nl.mauritssilvis.darts.java.settings.Settings;
-import nl.mauritssilvis.darts.java.tables.Table;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Throw;
+import nl.mauritssilvis.darts.java.api.settings.Settings;
+import nl.mauritssilvis.darts.java.api.tables.Table;
 
 import java.util.Collection;
 import java.util.List;

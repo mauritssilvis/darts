@@ -7,7 +7,7 @@ package nl.mauritssilvis.darts.java.output.types;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.output.Formatter;
+import nl.mauritssilvis.darts.java.api.output.Formatter;
 
 import java.util.ArrayDeque;
 import java.util.Collection;

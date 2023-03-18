@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-package nl.mauritssilvis.darts.java.tables;
+package nl.mauritssilvis.darts.java.api.tables;
 
 /**
  * A checkout table generator.

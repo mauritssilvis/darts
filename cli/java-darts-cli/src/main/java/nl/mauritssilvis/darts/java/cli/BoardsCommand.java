@@ -6,12 +6,12 @@
 package nl.mauritssilvis.darts.java.cli;
 
 import lombok.ToString;
-import nl.mauritssilvis.darts.java.boards.Board;
+import nl.mauritssilvis.darts.java.api.boards.Board;
+import nl.mauritssilvis.darts.java.api.output.Serializer;
+import nl.mauritssilvis.darts.java.api.settings.BoardType;
+import nl.mauritssilvis.darts.java.api.settings.OutputFormat;
 import nl.mauritssilvis.darts.java.boards.output.BoardSerializerFactory;
 import nl.mauritssilvis.darts.java.boards.types.BoardFactory;
-import nl.mauritssilvis.darts.java.output.Serializer;
-import nl.mauritssilvis.darts.java.settings.BoardType;
-import nl.mauritssilvis.darts.java.settings.OutputFormat;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Option;

@@ -5,10 +5,10 @@
 
 package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
-import nl.mauritssilvis.darts.java.boards.Field;
-import nl.mauritssilvis.darts.java.boards.FieldTestUtils;
+import nl.mauritssilvis.darts.java.api.boards.Field;
+import nl.mauritssilvis.darts.java.api.boards.FieldTestUtils;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Throw;
 import nl.mauritssilvis.darts.java.boards.types.TypedFieldTestUtils;
-import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

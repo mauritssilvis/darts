@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.finders.paths.types;
 
-import nl.mauritssilvis.darts.java.finders.paths.Path;
-import nl.mauritssilvis.darts.java.finders.paths.Pathfinder;
-import nl.mauritssilvis.darts.java.settings.FinderType;
+import nl.mauritssilvis.darts.java.api.finders.paths.Path;
+import nl.mauritssilvis.darts.java.api.finders.paths.Pathfinder;
+import nl.mauritssilvis.darts.java.api.settings.FinderType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

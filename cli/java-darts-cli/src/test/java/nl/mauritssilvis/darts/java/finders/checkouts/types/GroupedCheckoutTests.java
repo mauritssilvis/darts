@@ -5,9 +5,9 @@
 
 package nl.mauritssilvis.darts.java.finders.checkouts.types;
 
-import nl.mauritssilvis.darts.java.finders.checkouts.Checkout;
-import nl.mauritssilvis.darts.java.finders.checkouts.Throw;
-import nl.mauritssilvis.darts.java.finders.checkouts.ThrowTestUtils;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Checkout;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.Throw;
+import nl.mauritssilvis.darts.java.api.finders.checkouts.ThrowTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
