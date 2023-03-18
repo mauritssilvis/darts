@@ -11,7 +11,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Command-line interface
 
-- Load the `darts` version from the project manifest file.
+- Load the version from the project manifest file.
 
 #### General
 
@@ -57,7 +57,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Describe the installation of `darts`.
 - Document the usage of the `darts` command-line interface.
-- Document potential problems with the installation or usage of `darts`.
+- Document potential problems with the installation and usage of `darts`.
 
 #### Installation
 
