@@ -15,7 +15,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### General
 
-- Split the code in CLI, API and core packages.
+- Split the code into CLI, API and core packages.
 
 ## [0.3.0] - 2023-03-17
 
@@ -62,7 +62,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 #### Installation
 
 - Add scripts to install `darts` in the project folder (`install`).
- 
+
 #### Execution
 
 - Add scripts to run `darts` from the project folder (`darts`).
