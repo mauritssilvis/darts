@@ -50,7 +50,7 @@ You can then install the `darts` toolbox as follows:
 
 - Navigate to the folder containing the `darts` installation scripts, `install` and `install.bat`.
     - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Run the `install` command to install `darts` in the `bin` folder.
 - Navigate to the newly created `bin` folder.
 - Test the execution of the `darts` toolbox by running the `darts` command.
@@ -843,7 +843,7 @@ To solve these problems, take the following steps:
 
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
     - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
@@ -928,7 +928,7 @@ To solve these problems, take the following steps:
 - Install `darts` by following the [installation instructions](#1-installation).
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
     - If you downloaded the latest `java-darts-cli` release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java` folder of that code.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Navigate to the `bin` folder.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 

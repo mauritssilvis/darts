@@ -10,7 +10,7 @@ This part of the [darts](https://github.com/mauritssilvis/darts) project provide
 
 Currently, command-line interfaces are available in the following languages:
 
-- [Java](java)
+- [Java](java-darts-cli)
 
 ## License
 
