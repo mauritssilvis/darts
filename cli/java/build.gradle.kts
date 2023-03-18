@@ -114,7 +114,11 @@ tasks {
 
     jar {
         manifest {
-            attributes("Main-Class" to "nl.mauritssilvis.darts.java.cli.DartsApp")
+            attributes(
+                    "Implementation-Title" to "${project.name}",
+                    "Implementation-Version" to "${project.version}",
+                    "Main-Class" to "nl.mauritssilvis.darts.java.cli.DartsApp"
+            )
         }
     }
 
