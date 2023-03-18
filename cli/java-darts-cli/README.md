@@ -1,4 +1,4 @@
-# darts > CLI > Java
+# java-darts-cli
 
 > A Java-based command-line toolbox aimed at the game of darts
 
