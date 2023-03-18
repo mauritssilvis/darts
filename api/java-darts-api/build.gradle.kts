@@ -74,14 +74,18 @@ publishing {
     }
 }
 
-//nexusPublishing {
-//    repositories {
-//        sonatype {
-//            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-//            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-//        }
-//    }
-//}
+if (project == rootProject) {
+    apply(plugin = "io.github.gradle-nexus.publish-plugin")
+
+    configure<io.github.gradlenexus.publishplugin.NexusPublishExtension> {
+        repositories {
+            sonatype {
+                nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+                snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            }
+        }
+    }
+}
 
 signing {
     useGpgCmd() // Use the local gpg command
