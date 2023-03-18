@@ -25,7 +25,7 @@ In addition, several game modes are supported, including modes that require play
 Finally, `darts` can provide output in several formats: easily readable Markdown tables, HTML tables for web pages and JSON objects for computer processing.
 
 Currently, `darts` is available as a Java-based command-line application.
-More information about the installation and use of this app can be found in the [Java command-line toolbox](cli/java) readme.
+More information about the installation and use of this app can be found in the [Java command-line toolbox](cli/java-darts-cli) readme.
 If you are interested in checking out those checkout tables, refer to the [Markdown checkout tables](tables/md).
 
 ## License
