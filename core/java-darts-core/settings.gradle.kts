@@ -5,3 +5,9 @@
 
 rootProject.name = "java-darts-core"
 
+val apiDir = "../../api/java-darts-api"
+
+if (file(apiDir).isDirectory) {
+    includeBuild(apiDir)
+}
+
