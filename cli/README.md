@@ -1,14 +1,14 @@
-# darts > CLI
+# CLIs
 
 > Command-line interfaces for the `darts` toolbox
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) project provides command-line interfaces (CLIs) for `darts`, a computational toolbox aimed at the game of darts
+This part of the [darts](https://github.com/mauritssilvis/darts) project provides command-line interfaces (CLIs) for `darts`, a computational toolbox aimed at the game of darts.
 
 ## Overview
 
-Currently, CLIs are available in the following languages:
+Currently, command-line interfaces are available in the following languages:
 
 - [Java](java-darts-cli)
 

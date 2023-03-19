@@ -1,6 +1,6 @@
-# darts > API
+# APIs
 
-> Application programming interfaces for the `darts` toolbox
+> APIs for the `darts` toolbox
 
 ## Introduction
 
