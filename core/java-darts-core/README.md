@@ -17,7 +17,7 @@ Additionally, this implementation lets you:
 - Set the number of darts.
 - Pick the output format.
 
-To explore the Java implementation of `darts`, dive into the code under [src](src).
+To explore the Java implementation of `darts`, dive into the code.
 Alternatively, you can download the latest `java-darts-core` release from https://github.com/mauritssilvis/darts/releases.
 
 If you would like to generate checkout tables using a command-line application, refer to the [CLI overview](https://github.com/mauritssilvis/darts/tree/main/cli).

@@ -97,6 +97,10 @@ nexusPublishing {
 }
 
 tasks {
+    processResources {
+        dependsOn("copyReadme")
+    }
+
     test {
         useJUnitPlatform()
     }
@@ -113,4 +117,10 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
+}
+
+tasks.register<Copy>("copyReadme") {
+    from(projectDir)
+    into(sourceSets.main.get().output.resourcesDir.toString())
+    include("README.md")
 }
