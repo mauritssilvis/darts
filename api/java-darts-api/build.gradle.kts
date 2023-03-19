@@ -7,7 +7,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0" apply false
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -79,15 +79,11 @@ signing {
     sign(publishing.publications["mavenJava"])
 }
 
-if (project == rootProject) {
-    apply(plugin = "io.github.gradle-nexus.publish-plugin")
-
-    configure<io.github.gradlenexus.publishplugin.NexusPublishExtension> {
-        repositories {
-            sonatype {
-                nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-                snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            }
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
         }
     }
 }

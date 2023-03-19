@@ -9,6 +9,11 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
 }
 
-include("java-darts-api")
-project(":java-darts-api").projectDir = file("../../api/java-darts-api")
+val apiDir = "../../api/java-darts-api"
 
+if (file(apiDir).isDirectory) {
+    includeBuild(apiDir)
+    println("Included build in directory '${apiDir}'")
+} else {
+    println("Directory '${apiDir}' not found")
+}
