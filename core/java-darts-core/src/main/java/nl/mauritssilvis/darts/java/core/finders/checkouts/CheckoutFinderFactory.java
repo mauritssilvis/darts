@@ -17,7 +17,7 @@ import java.util.Collection;
  * Relevant design patterns: helper, parameterized static factory method.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 public final class CheckoutFinderFactory {
     private CheckoutFinderFactory() {

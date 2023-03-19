@@ -16,7 +16,7 @@ import java.util.List;
  * {@code GroupedCheckout} objects.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 public final class GroupedCheckoutTestUtils {
     private GroupedCheckoutTestUtils() {

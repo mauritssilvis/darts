@@ -16,7 +16,7 @@ package nl.mauritssilvis.darts.java.api.output;
  *
  * @param <T> the type of object to be serialized
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 @FunctionalInterface
 public interface Serializer<T> {

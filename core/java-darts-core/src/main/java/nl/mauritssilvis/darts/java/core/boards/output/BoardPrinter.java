@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * Relevant design patterns: template method.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 abstract class BoardPrinter {
     private final List<FieldType> fieldTypes;

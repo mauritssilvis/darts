@@ -14,7 +14,7 @@ import nl.mauritssilvis.darts.java.api.settings.BoardType;
  * Relevant design patterns: helper, parameterized static factory method.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 public final class BoardFactory {
     private BoardFactory() {

@@ -15,7 +15,7 @@ package nl.mauritssilvis.darts.java.api.output;
  * Relevant design patterns: strategy, immutable interface.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 @FunctionalInterface
 public interface Formatter {

@@ -11,7 +11,7 @@ import lombok.ToString;
  * The type of checkout finder.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 @ToString
 public enum FinderType {

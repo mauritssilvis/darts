@@ -15,7 +15,7 @@ import java.util.List;
  * objects.
  *
  * @author Maurits Silvis
- * @since 0.1.0
+ * @since 0.5.0
  */
 public final class ThrowTestUtils {
     private ThrowTestUtils() {
