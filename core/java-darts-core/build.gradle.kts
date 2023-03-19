@@ -98,7 +98,7 @@ nexusPublishing {
 
 tasks {
     processResources {
-        dependsOn("copyReadme")
+        dependsOn("copyResources")
     }
 
     test {
@@ -119,8 +119,8 @@ tasks {
     }
 }
 
-tasks.register<Copy>("copyReadme") {
+tasks.register<Copy>("copyResources") {
     from(projectDir)
     into(sourceSets.main.get().output.resourcesDir.toString())
-    include("README.md")
+    include("LICENSE.md", "README.md")
 }
