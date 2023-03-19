@@ -1,10 +1,10 @@
 # darts > Core
 
-> Implementations of `darts`
+> Implementations of the `darts` toolbox
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) project provides implementations of the `darts` toolbox.
+This part of the [darts](https://github.com/mauritssilvis/darts) project provides implementations of `darts`, a computational toolbox aimed at the game of darts.
 
 ## Overview
 
