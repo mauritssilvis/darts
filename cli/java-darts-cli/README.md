@@ -1,11 +1,11 @@
-# java-darts-cli
+# Java darts CLI
 
-> A Java-based command-line toolbox aimed at the game of darts
+> A Java-based command-line interface for the `darts` toolbox
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line toolbox aimed at the game of darts.
-This command-line toolbox, referred to as `darts` in what follows, can:
+This part of the [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line interface for `darts` , a computational toolbox aimed at the game of darts.
+This command-line interface, referred to as `darts` in what follows, can be used to:
 
 - Determine all possible darts checkouts.
 - Generate checkout tables for any range of scores.
@@ -19,7 +19,7 @@ Additionally, `darts` lets you:
 
 The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
-If you would like to explore extensive checkout tables for different types of darts games, refer to the [Markdown checkout tables](https://github.com/mauritssilvis/darts/tree/main/tables/md).
+If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables).
 
 ## 1. Installation
 

@@ -1,9 +1,33 @@
 # Changelog
 
-All notable changes to the `java-darts-cli` project (see [darts](https://github.com/mauritssilvis/darts) > [CLI](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.)) are documented in this file.
+All notable changes to the `java-darts-cli` project (see [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.)) are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.5.0] - 2023-03-19
+
+### Removed
+
+#### Dartboards
+
+- Move the dartboard API to the `java-darts-api` project.
+- Move the dartboard implementations and serializers to the `java-darts-core` project.
+
+#### Pathfinders
+
+- Move the pathfinder API to the `java-darts-api` project.
+- Move the pathfinder implementations to the `java-darts-core` project.
+
+#### Checkout finders
+
+- Move the checkout finder API to the `java-darts-api` project.
+- Move the checkout finder implementations to the `java-darts-core` project.
+
+#### Checkout tables
+
+- Move the checkout table API to the `java-darts-api` project.
+- Move the checkout table implementations and serializers to the `java-darts-core` project.
 
 ## [0.4.0] - 2023-03-18
 
@@ -15,7 +39,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### General
 
-- Split the code in CLI, API and core packages.
+- Split the code into CLI, API and core packages.
 
 ## [0.3.0] - 2023-03-17
 
@@ -62,7 +86,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 #### Installation
 
 - Add scripts to install `darts` in the project folder (`install`).
- 
+
 #### Execution
 
 - Add scripts to run `darts` from the project folder (`darts`).
@@ -75,10 +99,13 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dartboards
 
+- Add support for multiple dartboard field types (`FieldType`).
 - Add single, double, triple and quadruple dartboard fields (`TypedField`).
+- Add support for multiple dartboard types (`BoardType`).
 - Add the London dartboard (`LondonBoard`).
 - Add the Quadro dartboard (`QuadroBoard`).
 - Add the Yorkshire dartboard (`YorkshireBoard`).
+- Add support for multiple dartboard output formats (`OutputFormat`).
 - Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
 - Add a Markdown serializer for dartboards (`MarkdownBoardSerializer`).
 - Add an HTML serializer for dartboards (`HtmlBoardSerializer`).
@@ -86,19 +113,22 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Pathfinders
 
+- Add support for multiple pathfinder types (`FinderType`).
 - Create a brute-force pathfinder that considers all combinations of weighted edges between nodes (`CartesianPathfinder`).
 - Create an optimized pathfinder that considers sequences of edges with non-increasing weights (`DescendingPathfinder`).
 
 #### Checkout finders
 
+- Add support for multiple checkout finder types (`FinderType`).
 - Create a brute-force checkout finder that considers all combinations of dartboard fields (`CartesianCheckoutFinder`).
 - Create an optimized checkout finder that considers sequences of dartboard fields with non-increasing scores (`DescendingCheckoutFinder`).
 
 #### Checkout tables
 
+- Add support for multiple check-in and checkout modes (`CheckMode`).
+- Add support for multiple throw modes (`ThrowMode`).
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
-- Add support for master and double check-ins and checkouts (`CheckMode`).
-- Add support for fixing the number of throws (`ThrowMode`).
+- Add support for multiple checkout table output formats (`OutputFormat`).
 - Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
 - Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
 - Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
