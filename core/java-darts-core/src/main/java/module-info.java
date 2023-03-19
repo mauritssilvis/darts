@@ -12,7 +12,7 @@
 module nl.mauritssilvis.darts.java.core {
     requires static lombok;
 
-    requires nl.mauritssilvis.darts.java.api;
+    requires transitive nl.mauritssilvis.darts.java.api;
 
     exports nl.mauritssilvis.darts.java.core.boards;
     exports nl.mauritssilvis.darts.java.core.boards.output;
