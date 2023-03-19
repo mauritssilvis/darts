@@ -75,10 +75,13 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dartboards
 
+- Add support for multiple dartboard field types (`FieldType`).
 - Add single, double, triple and quadruple dartboard fields (`TypedField`).
+- Add support for multiple dartboard types (`BoardType`).
 - Add the London dartboard (`LondonBoard`).
 - Add the Quadro dartboard (`QuadroBoard`).
 - Add the Yorkshire dartboard (`YorkshireBoard`).
+- Add support for multiple dartboard output formats (`OutputFormat`).
 - Add a string-representation-based serializer for dartboards (`StringBoardSerializer`).
 - Add a Markdown serializer for dartboards (`MarkdownBoardSerializer`).
 - Add an HTML serializer for dartboards (`HtmlBoardSerializer`).
@@ -86,19 +89,22 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Pathfinders
 
+- Add support for multiple pathfinder types (`FinderType`).
 - Create a brute-force pathfinder that considers all combinations of weighted edges between nodes (`CartesianPathfinder`).
 - Create an optimized pathfinder that considers sequences of edges with non-increasing weights (`DescendingPathfinder`).
 
 #### Checkout finders
 
+- Add support for multiple checkout finder types (`FinderType`).
 - Create a brute-force checkout finder that considers all combinations of dartboard fields (`CartesianCheckoutFinder`).
 - Create an optimized checkout finder that considers sequences of dartboard fields with non-increasing scores (`DescendingCheckoutFinder`).
 
 #### Checkout tables
 
+- Add support for multiple check-in and checkout modes (`CheckMode`).
+- Add support for multiple throw modes (`ThrowMode`).
 - Create an ascending checkout table generator (`AscendingTableGenerator`).
-- Add support for master and double check-ins and checkouts (`CheckMode`).
-- Add support for fixing the number of throws (`ThrowMode`).
+- Add support for multiple checkout table output formats (`OutputFormat`).
 - Add a string-representation-based serializer for checkout tables (`StringTableSerializer`).
 - Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
 - Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
