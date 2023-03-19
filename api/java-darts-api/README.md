@@ -1,4 +1,4 @@
-# java-darts-api
+# Java darts API
 
 > A Java API for the `darts` toolbox
 

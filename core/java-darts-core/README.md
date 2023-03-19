@@ -1,4 +1,4 @@
-# java-darts-core
+# Java darts core
 
 > A Java implementation of the `darts` toolbox
 

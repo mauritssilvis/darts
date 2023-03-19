@@ -1,4 +1,4 @@
-# java-darts-cli
+# Java darts CLI
 
 > A Java-based command-line interface for the `darts` toolbox
 
