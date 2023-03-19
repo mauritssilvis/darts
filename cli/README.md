@@ -4,11 +4,11 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) project provides command-line interfaces for the `darts` toolbox.
+This part of the [darts](https://github.com/mauritssilvis/darts) project provides command-line interfaces (CLIs) for the `darts` toolbox.
 
 ## Overview
 
-Currently, command-line interfaces are available in the following languages:
+Currently, CLIs are available in the following languages:
 
 - [Java](java-darts-cli)
 
