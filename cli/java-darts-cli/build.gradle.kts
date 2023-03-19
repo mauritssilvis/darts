@@ -29,6 +29,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     implementation("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
+    implementation("nl.mauritssilvis.darts.java:java-darts-core:${project.version}")
     implementation("info.picocli:picocli:4.7.1")
 }
 
