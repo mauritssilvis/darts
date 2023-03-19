@@ -46,8 +46,8 @@ publishing {
             from(components["java"])
 
             pom {
-                name.set("Java darts API")
-                description.set("A Java API for darts, a computational toolbox aimed at the game of darts")
+                name.set("Java darts core")
+                description.set("A Java implementation of darts, a computational toolbox aimed at the game of darts")
                 url.set("https://github.com/mauritssilvis/darts")
 
                 licenses {

@@ -55,7 +55,7 @@ publishing {
 
             pom {
                 name.set("Java darts CLI")
-                description.set("A Java-based command-line toolbox aimed at the game of darts")
+                description.set("A Java-based command-line interface for darts, a computational toolbox aimed at the game of darts")
                 url.set("https://github.com/mauritssilvis/darts")
 
                 licenses {
