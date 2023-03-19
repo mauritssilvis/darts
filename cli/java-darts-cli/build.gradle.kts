@@ -45,6 +45,7 @@ java {
 
 application {
     applicationName = "darts"
+    mainModule.set("nl.mauritssilvis.darts.java.cli")
     mainClass.set("nl.mauritssilvis.darts.java.cli.DartsApp")
 }
 
