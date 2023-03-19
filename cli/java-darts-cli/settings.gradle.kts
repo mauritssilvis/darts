@@ -13,7 +13,10 @@ val apiDir = "../../api/java-darts-api"
 
 if (file(apiDir).isDirectory) {
     includeBuild(apiDir)
-    println("Included build in directory '${apiDir}'")
-} else {
-    println("Directory '${apiDir}' not found")
+}
+
+val coreDir = "../../core/java-darts-core"
+
+if (file(coreDir).isDirectory) {
+    includeBuild(coreDir)
 }
