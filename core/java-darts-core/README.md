@@ -5,12 +5,12 @@
 ## Introduction
 
 This part of the [darts](https://github.com/mauritssilvis/darts) > [Core](https://github.com/mauritssilvis/darts/tree/main/core) project provides a Java implementation of `darts`, a computational toolbox aimed at the game of darts.
-This implementation, referred to as `darts` in what follows, can:
+This implementation can:
 
 - Determine all possible darts checkouts.
 - Generate checkout tables for any range of scores.
 
-Additionally, `darts` lets you:
+Additionally, this implementation lets you:
 
 - Choose the dartboard type.
 - Select the game mode.
