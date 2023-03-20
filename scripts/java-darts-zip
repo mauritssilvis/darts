@@ -15,19 +15,13 @@ if [ "${branch}" != "main" ]; then
     echo "Warning: Not on main branch."
 fi
 
+# Get properties
+. ./java-darts-properties
+
 # Clone repository
 cd ..
 git clone . "../darts-${version}" 2>/dev/null
 cd "../darts-${version}" || exit
-
-# Set properties
-label_prefix="java-darts"
-
-labels=(
-    "api"
-    "core"
-    "cli"
-)
 
 # Zip
 echo -n "" > "zip.log"
@@ -36,21 +30,21 @@ for i in "${!labels[@]}"; do
     label="${labels[i]}"
     project="${label_prefix}-${label}"
     path="${label}/${project}"
-    name="${project}-${version}"
+    file="${project}-${version}"
 
     mv "${path}" "${project}" 2>/dev/null
     rm -rf "${label}"
     rm -rf "${project}/.idea"
 
     # .tar.gz
-    rm -f "${name}.tar.gz"
-    7z a "${name}.tar" "./${project}/*" >> "zip.log" 2>> "zip.log"
-    7z a -mx9 "${name}.tar.gz" "${name}.tar" >> "zip.log" 2>> "zip.log"
-    rm -f "${name}.tar"
+    rm -f "${file}.tar.gz"
+    7z a "${file}.tar" "./${project}/*" >> "zip.log" 2>> "zip.log"
+    7z a -mx9 "${file}.tar.gz" "${file}.tar" >> "zip.log" 2>> "zip.log"
+    rm -f "${file}.tar"
 
     # .zip
-    rm -f "${name}.zip"
-    7z a -mx9 "${name}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
+    rm -f "${file}.zip"
+    7z a -mx9 "${file}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
 done
 
 # Check zip

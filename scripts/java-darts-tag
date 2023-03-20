@@ -16,26 +16,12 @@ if [ "${branch}" != "main" ]; then
     exit
 fi
 
-# Set properties
-name_prefix="Java darts"
-
-names=(
-    "API"
-    "core"
-    "CLI"
-)
-
-label_prefix="java-darts"
-
-labels=(
-    "api"
-    "core"
-    "cli"
-)
+# Get properties
+. ./java-darts-properties
 
 # Tag
 for i in "${!names[@]}"; do
-    name="${name_prefix} ${names[i]} ${version}"
-    label="${label_prefix}-${labels[i]}-${version}"
-    git tag -am "\"${name}\"" "${label}"
+    message="${name_prefix} ${names[i]} ${version}"
+    tag="${label_prefix}-${labels[i]}-${version}"
+    git tag -am "\"${message}\"" "${tag}"
 done

@@ -1,13 +1,7 @@
 #!/bin/sh
 
-# Set properties
-label_prefix="java-darts"
-
-labels=(
-    "api"
-    "core"
-    "cli"
-)
+# Get properties
+. ./java-darts-properties
 
 # Publish
 cd ..
