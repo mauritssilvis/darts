@@ -34,18 +34,21 @@ echo -n "" > "zip.log"
 
 for i in "${!labels[@]}"; do
     label="${labels[i]}"
-    path="./${label}/${label_prefix}-${label}"
+    project="${label_prefix}-${label}"
+    path="${label}/${project}"
     name="${label_prefix}-${label}-${version}"
 
-    rm -rf "${path}/.idea"
+    mv "${path}" "${project}"
+    rm -rf "${label}"
+    rm -rf "${project}/.idea"
 
     # .tar.gz
     rm -f "${name}.tar.gz"
-    7z a "${name}.tar" "${path}/*" >> "zip.log"
+    7z a "${name}.tar" "./${project}/*" >> "zip.log"
     7z a "${name}.tar.gz" "${name}.tar" >> "zip.log"
     rm -f "${name}.tar"
 
     # .zip
     rm -f "${name}.zip"
-    7z a "${name}.zip" "${path}/*" >> "zip.log"
+    7z a "${name}.zip" "./${project}/*" >> "zip.log"
 done
