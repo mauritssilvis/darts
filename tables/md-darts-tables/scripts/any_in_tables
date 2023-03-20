@@ -60,6 +60,15 @@ other_field_phrases=(
     "double or triple"
 )
 
+score_ranges=(
+    "1 60 120 180"
+    "2 60 120 180"
+    "2 50 110 170"
+    "1 80 160 240"
+    "2 60 140 220"
+    "2 50 130 210"
+)
+
 selected_min_scores=(
     "  1  23  61 103 121 101     401         701     1001"
     "  1   5  61 103 121 101     401         701     1001"
@@ -78,29 +87,12 @@ selected_max_scores=(
     " 50  50 130 130 210 101         501         901     "
 )
 
-commands=(
-    "checkouts -j any"
-    "checkouts -j master"
-    "checkouts"
-    "checkouts -b quadro -j any"
-    "checkouts -b quadro -j master"
-    "checkouts -b quadro"
-)
-
 throws=(
     "1"
     "2"
     "2"
     "3"
     "3"
-)
-
-labels=(
-    "One"
-    "Two"
-    "Two"
-    "Three"
-    "Three"
 )
 
 anchors=(
@@ -111,7 +103,108 @@ anchors=(
     "three-dart-checkouts-1"
 )
 
-script_path="../../../cli/java/"
+tables=(
+    "|         Score | Darts |     Checkouts |
+|--------------:|------:|--------------:|
+|   [101](#101) |     2 |             2 |
+|           201 |     4 |           772 |
+|           301 |     6 |        66,144 |
+|   [401](#401) |     7 |           392 |
+|           501 |     9 |       223,026 |
+|           601 |    11 |    24,066,702 |
+|   [701](#701) |    12 |         3,432 |
+|           801 |    14 |    10,666,320 |
+|           901 |    16 | 1,821,306,720 |
+| [1001](#1001) |    17 |        13,872 |"
+    "|         Score | Darts |     Checkouts |
+|--------------:|------:|--------------:|
+|   [101](#101) |     2 |             2 |
+|           201 |     4 |           772 |
+|           301 |     6 |        65,007 |
+|   [401](#401) |     7 |           392 |
+|           501 |     9 |       223,026 |
+|           601 |    11 |    24,032,174 |
+|   [701](#701) |    12 |         3,432 |
+|           801 |    14 |    10,666,320 |
+|           901 |    16 | 1,820,922,471 |
+| [1001](#1001) |    17 |        13,872 |"
+    "|         Score | Darts |   Checkouts |
+|--------------:|------:|------------:|
+|   [101](#101) |     2 |           1 |
+|           201 |     4 |          73 |
+|           301 |     6 |      15,681 |
+|   [401](#401) |     7 |          56 |
+|   [501](#501) |     9 |       3,944 |
+|           601 |    11 |   3,658,382 |
+|   [701](#701) |    12 |         286 |
+|           801 |    14 |      38,740 |
+|           901 |    16 | 202,772,073 |
+| [1001](#1001) |    17 |         816 |"
+    "|         Score | Darts |  Checkouts |
+|--------------:|------:|-----------:|
+|           101 |     2 |         12 |
+|   [201](#201) |     3 |         21 |
+|           301 |     5 |     62,970 |
+|           401 |     6 |     56,952 |
+|           501 |     7 |     21,301 |
+|   [601](#601) |     8 |      1,736 |
+|           701 |    10 | 67,297,690 |
+|           801 |    11 | 15,375,723 |
+|           901 |    12 |  1,306,680 |
+| [1001](#1001) |    13 |     17,901 |"
+    "|         Score | Darts |  Checkouts |
+|--------------:|------:|-----------:|
+|           101 |     2 |          6 |
+|   [201](#201) |     3 |          7 |
+|           301 |     5 |     21,061 |
+|           401 |     6 |     13,631 |
+|           501 |     7 |      3,553 |
+|   [601](#601) |     8 |        217 |
+|           701 |    10 | 10,595,757 |
+|           801 |    11 |  1,789,517 |
+|           901 |    12 |    117,085 |
+| [1001](#1001) |    13 |      1,377 |"
+    "|       Score | Darts |   Checkouts |
+|------------:|------:|------------:|
+| [101](#101) |     2 |           1 |
+|         201 |     4 |       3,244 |
+|         301 |     5 |       3,412 |
+|         401 |     6 |         820 |
+| [501](#501) |     7 |           6 |
+|         601 |     9 |   4,207,648 |
+|         701 |    10 |     642,234 |
+|         801 |    11 |      21,300 |
+| [901](#901) |    12 |          11 |
+|        1001 |    14 | 449,392,814 |"
+)
+
+other_table_scores=(
+    ""
+    ""
+    "501"
+    ""
+    ""
+    ""
+)
+
+labels=(
+    "One"
+    "Two"
+    "Two"
+    "Three"
+    "Three"
+)
+
+commands=(
+    "checkouts -j any"
+    "checkouts -j master"
+    "checkouts"
+    "checkouts -b quadro -j any"
+    "checkouts -b quadro -j master"
+    "checkouts -b quadro"
+)
+
+script_path="../../../cli/java-darts-cli/bin/"
 
 for i in "${!paths[@]}"; do
     path="${paths[i]}"
@@ -148,12 +241,13 @@ for i in "${!paths[@]}"; do
 
     last_max_score="0"
 
+    IFS=' ' read -ra score_range <<< "${score_ranges[i]}"
     IFS=' ' read -ra min_scores <<< "${selected_min_scores[i]}"
     IFS=' ' read -ra max_scores <<< "${selected_max_scores[i]}"
 
     {
-        echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${min_scores[0]} and ${max_scores[0]} points."
-        echo -e "The last two darts can reach ${max_scores[2]} points, and ${max_scores[4]} points can be scored with the last three."
+        echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
+        echo -e "The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
         echo -e "The following table shows which checkout tables are provided for these scores.\n"
 
         echo -e "|                 Scores |                        Darts |"
@@ -179,6 +273,9 @@ for i in "${!paths[@]}"; do
         last_max_score=${max_score}
     done
 
+    table="${tables[i]}"
+    other_table_score="${other_table_scores[i]}"
+
     {
         echo -e ""
 
@@ -187,11 +284,15 @@ for i in "${!paths[@]}"; do
         echo -e "The following table shows the required number of darts to reach such scores in ${board} ${mode} games."
         echo -e "In addition, the corresponding number of possible checkouts is shown.\n"
 
-        echo -e "|         Score | Darts |     Checkouts |"
-        echo -e "|--------------:|------:|--------------:|\n"
+        echo -e "${table}\n"
 
         echo -e "The most exciting games will be those with relatively few possible checkouts."
         echo -e "Checkout tables for these scores are given at the end of this document."
+
+        if [ "${other_table_score}" != "" ]; then
+            echo -e "A checkout table for ${other_table_score} points was included as it is a typical score in darts games."
+        fi
+
         echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
     } >> "${file}"
 

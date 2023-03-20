@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Project names
+name_prefix="Markdown darts"
+
+names=(
+    "tables"
+)
+
+# Project labels
+label_prefix="md-darts"
+
+labels=(
+    "tables"
+)
