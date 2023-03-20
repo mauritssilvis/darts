@@ -17,7 +17,7 @@ fi
 
 # Clone repository
 cd ..
-git clone . "../darts-${version}"
+git clone . "../darts-${version}" 2>/dev/null
 cd "../darts-${version}" || exit
 
 # Set properties
@@ -38,17 +38,17 @@ for i in "${!labels[@]}"; do
     path="${label}/${project}"
     name="${label_prefix}-${label}-${version}"
 
-    mv "${path}" "${project}"
+    mv "${path}" "${project}" 2>/dev/null
     rm -rf "${label}"
     rm -rf "${project}/.idea"
 
     # .tar.gz
     rm -f "${name}.tar.gz"
-    7z a "${name}.tar" "./${project}/*" >> "zip.log"
-    7z a "${name}.tar.gz" "${name}.tar" >> "zip.log"
+    7z a "${name}.tar" "./${project}/*" >> "zip.log" 2>> "zip.log"
+    7z a "${name}.tar.gz" "${name}.tar" >> "zip.log" 2>> "zip.log"
     rm -f "${name}.tar"
 
     # .zip
     rm -f "${name}.zip"
-    7z a "${name}.zip" "./${project}/*" >> "zip.log"
+    7z a "${name}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
 done
