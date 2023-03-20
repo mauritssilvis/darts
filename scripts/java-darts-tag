@@ -1,11 +1,18 @@
 #!/bin/sh
 
 if [ $# -eq 0 ]; then
-    echo "No version supplied."
+    echo "Error: No version supplied."
     exit
 fi
 
 version=${1}
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${branch}" != "main" ]; then
+    echo "Error: Not on main branch."
+    exit
+fi
 
 name_prefix="Java darts"
 
