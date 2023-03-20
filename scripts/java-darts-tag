@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Check version
 if [ $# -eq 0 ]; then
     echo "Error: No version supplied."
     exit
@@ -7,6 +8,7 @@ fi
 
 version=${1}
 
+# Check branch
 branch=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "${branch}" != "main" ]; then
@@ -14,6 +16,7 @@ if [ "${branch}" != "main" ]; then
     exit
 fi
 
+# Set properties
 name_prefix="Java darts"
 
 names=(
@@ -30,6 +33,7 @@ labels=(
     "cli"
 )
 
+# Tag
 for i in "${!names[@]}"; do
     name="${name_prefix} ${names[i]} ${version}"
     label="${label_prefix}-${labels[i]}-${version}"
