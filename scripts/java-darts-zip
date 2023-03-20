@@ -27,7 +27,7 @@ cd "../darts-${version}" || exit
 rm -rf .git
 rm -rf scripts
 rm -rf tables
-find . -name "*.md" -delete
+find . -maxdepth 1 -name "*.md" -delete
 
 # Zip
 echo -n "" > "zip.log"
