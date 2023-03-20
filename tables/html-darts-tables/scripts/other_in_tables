@@ -204,34 +204,48 @@ for i in "${!paths[@]}"; do
     other_table_score="${other_table_scores[i]}"
 
     {
-        echo -e "# ${title}\n"
+        echo "<!DOCTYPE html>"
+        echo "<html lang="en-US">"
+        echo "  <head>"
+        echo "    <title>${title}</title>"
+        echo "  </head>"
+        echo "  <body>"
+        echo "    <h1>${title}</h1>"
 
-        echo -e "> ${subtitle}\n"
+        echo "    <blockquote>${subtitle}</blockquote>"
 
-        echo -e "## Introduction\n"
+        echo "    <h2>Introduction</h2>"
 
-        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [HTML](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
-        echo -e "These tables are valid for games ${requirements_phrase}.\n"
+        echo "    <p>"
+        echo "      This part of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> > <a href=\"https://github.com/mauritssilvis/darts/tree/main/tables\">Tables</a> > <a href=\"..\">HTML</a> project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo "      These tables are valid for games ${requirements_phrase}."
+        echo "    </p>"
 
-        echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
-        echo -e "The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
-        echo -e "After a ${first_dart_phrase} has been thrown, the extensive [any-in, ${out_mode} checkout tables](${other_path}) apply to these scores.\n"
+        echo "    <p>"
+        echo "      In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
+        echo "      The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
+        echo "      After a ${first_dart_phrase} has been thrown, the extensive <a href=\"${other_path}\">any-in, ${out_mode} checkout tables</a> apply to these scores."
+        echo "    </p>"
 
-        echo -e "As for ${mode} checkouts, the following can be observed."
-        echo -e "Darts games commonly require players to score x01 points, where x is an integer."
-        echo -e "The following table shows the required number of darts to reach such scores in ${board} ${mode} games."
-        echo -e "In addition, the corresponding number of possible checkouts is shown.\n"
+        echo "    <p>"
+        echo "      As for ${mode} checkouts, the following can be observed."
+        echo "      Darts games commonly require players to score x01 points, where x is an integer."
+        echo "      The following table shows the required number of darts to reach such scores in ${board} ${mode} games."
+        echo "      In addition, the corresponding number of possible checkouts is shown."
+        echo "    </p>"
 
-        echo -e "${table}\n"
+        echo "${table}"
 
-        echo -e "The most exciting games will be those with relatively few possible checkouts."
-        echo -e "Checkout tables for these scores are given below."
+        echo "    <p>"
+        echo "      The most exciting games will be those with relatively few possible checkouts."
+        echo "      Checkout tables for these scores are given below."
 
         if [ "${other_table_score}" != "" ]; then
-            echo -e "A checkout table for ${other_table_score} points was included as it is a typical score in darts games."
+            echo "      A checkout table for ${other_table_score} points was included as it is a typical score in darts games."
         fi
 
-        echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
+        echo "      Additional tables can be generated using the <code>darts</code> toolbox of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> project."
+        echo "    </p>"
     } > "${file}"
 
     IFS=' ' read -ra scores <<< "${selected_scores[i]}"
@@ -242,15 +256,24 @@ for i in "${!paths[@]}"; do
         shell_command=("./${script_path}darts" ${command})
 
         {
-            echo -e "## ${score}\n"
+            echo "    <h2>${score}</h2>"
             "${shell_command[@]}"
-            echo -e "\nThis table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n"
+            echo "    <p>"
+            echo "      This table was generated using the command:"
+            echo "    </p>"
+            echo "    <pre>darts ${command}</pre>"
         } >> "${file}"
     done
 
     {
-        echo -e "## License\n"
-        echo -e "Copyright © 2023 Maurits Silvis\n"
-        echo -e "This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later."
+        echo "    <h2>License</h2>"
+
+        echo "    <p>"
+        echo "      Copyright © 2023 Maurits Silvis<br>"
+        echo "      This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href=\"../LICENSE.md\">LICENSE.md</a>, or later."
+        echo "    </p>"
+
+        echo "  </body>"
+        echo "</html>"
     } >> "${file}"
 done
