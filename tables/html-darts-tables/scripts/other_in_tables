@@ -215,7 +215,7 @@ for i in "${!paths[@]}"; do
         echo "    <div class=\"container\">"
         echo "      <h1>${title}</h1>"
 
-        echo "      <blockquote>${subtitle}</blockquote>"
+        echo "      <blockquote class=\"text-secondary\">${subtitle}</blockquote>"
 
         echo "      <h2>Introduction</h2>"
 
