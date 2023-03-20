@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Check version
+if [ $# -eq 0 ]; then
+    echo "Error: No version supplied."
+    exit
+fi
+
+version=${1}
+
+# Check branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${branch}" != "main" ]; then
+    echo "Error: Not on main branch."
+    exit
+fi
+
+# Clone repository
+cd ..
+git clone . "../darts-${version}"
+cd "../darts-${version}" || exit
+
+# Set properties
+label_prefix="java-darts"
+
+labels=(
+    "api"
+    "core"
+    "cli"
+)
+
+# Zip
+echo -n "" > "zip.log"
+
+for i in "${!labels[@]}"; do
+    label="${labels[i]}"
+    path="./${label}/${label_prefix}-${label}"
+    name="${label_prefix}-${label}-${version}"
+
+    rm -rf "${path}/.idea"
+
+    # .tar.gz
+    rm -f "${name}.tar.gz"
+    7z a "${name}.tar" "${path}/*" >> "zip.log"
+    7z a "${name}.tar.gz" "${name}.tar" >> "zip.log"
+    rm -f "${name}.tar"
+
+    # .zip
+    rm -f "${name}.zip"
+    7z a "${name}.zip" "${path}/*" >> "zip.log"
+done
