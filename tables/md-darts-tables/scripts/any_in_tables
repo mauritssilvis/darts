@@ -78,29 +78,12 @@ selected_max_scores=(
     " 50  50 130 130 210 101         501         901     "
 )
 
-commands=(
-    "checkouts -j any"
-    "checkouts -j master"
-    "checkouts"
-    "checkouts -b quadro -j any"
-    "checkouts -b quadro -j master"
-    "checkouts -b quadro"
-)
-
 throws=(
     "1"
     "2"
     "2"
     "3"
     "3"
-)
-
-labels=(
-    "One"
-    "Two"
-    "Two"
-    "Three"
-    "Three"
 )
 
 anchors=(
@@ -184,6 +167,23 @@ tables=(
 |         801 |    11 |      21,300 |
 | [901](#901) |    12 |          11 |
 |        1001 |    14 | 449,392,814 |"
+)
+
+labels=(
+    "One"
+    "Two"
+    "Two"
+    "Three"
+    "Three"
+)
+
+commands=(
+    "checkouts -j any"
+    "checkouts -j master"
+    "checkouts"
+    "checkouts -b quadro -j any"
+    "checkouts -b quadro -j master"
+    "checkouts -b quadro"
 )
 
 script_path="../../../cli/java-darts-cli/bin/"
