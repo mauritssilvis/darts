@@ -97,10 +97,6 @@ nexusPublishing {
 }
 
 tasks {
-    processResources {
-        dependsOn("copyResources")
-    }
-
     test {
         useJUnitPlatform()
     }
@@ -117,10 +113,4 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
-}
-
-tasks.register<Copy>("copyResources") {
-    from(projectDir)
-    into(sourceSets.main.get().output.resourcesDir.toString())
-    include("LICENSE.md", "README.md")
 }
