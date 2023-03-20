@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Set properties
+label_prefix="java-darts"
+
+labels=(
+    "api"
+    "core"
+    "cli"
+)
+
+# Close and release
+cd ..
+
+for i in "${!labels[@]}"; do
+    label="${labels[i]}"
+    project="${label_prefix}-${label}"
+    path="${label}/${project}"
+
+    echo "${project}"
+    cd "${path}" || exit
+
+    ./gradlew findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository
+
+    cd ../..
+    echo ""
+done
