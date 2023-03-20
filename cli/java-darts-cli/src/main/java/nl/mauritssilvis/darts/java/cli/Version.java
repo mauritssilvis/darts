@@ -7,6 +7,12 @@ package nl.mauritssilvis.darts.java.cli;
 
 import picocli.CommandLine.IVersionProvider;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.jar.Attributes;
+import java.util.jar.Manifest;
+
 /**
  * An implementation of the {@code IVersionProvider} class that returns the
  * current version of the Java-based command-line toolbox {@code darts} with a
@@ -18,15 +24,14 @@ import picocli.CommandLine.IVersionProvider;
 class Version implements IVersionProvider {
     @Override
     public String[] getVersion() {
-        String title = getClass().getPackage().getImplementationTitle();
-        String version = getClass().getPackage().getImplementationVersion();
+        String title = "java-darts-cli";
+        String version = "";
 
-        if (title == null) {
-            title = "java-darts-cli";
-        }
+        Attributes attributes = getManifestAttributes(title);
 
-        if (version == null) {
-            version = "";
+        if (attributes != null) {
+            title = attributes.getValue("Implementation-Title");
+            version = attributes.getValue("Implementation-Version");
         }
 
         return new String[]{
@@ -34,5 +39,33 @@ class Version implements IVersionProvider {
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         };
+    }
+
+    private Attributes getManifestAttributes(String project) {
+        Enumeration<URL> resources;
+
+        try {
+            resources = getClass().getClassLoader().getResources("META-INF/MANIFEST.MF");
+        } catch (IOException ignore) {
+            return null;
+        }
+
+        Attributes attributes;
+
+        while (resources.hasMoreElements()) {
+            URL url = resources.nextElement();
+
+            try {
+                Manifest manifest = new Manifest(url.openStream());
+                attributes = manifest.getMainAttributes();
+
+                if (project.equals(attributes.getValue("Implementation-Title"))) {
+                    return attributes;
+                }
+            } catch (IOException ignore) {
+            }
+        }
+
+        return null;
     }
 }
