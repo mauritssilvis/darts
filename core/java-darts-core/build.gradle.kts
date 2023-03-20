@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.5.0"
+version = "0.6.0"
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ dependencies {
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
-    implementation("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
+    api("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
 }
 
 java {
@@ -97,10 +97,6 @@ nexusPublishing {
 }
 
 tasks {
-    processResources {
-        dependsOn("copyResources")
-    }
-
     test {
         useJUnitPlatform()
     }
@@ -117,10 +113,4 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
-}
-
-tasks.register<Copy>("copyResources") {
-    from(projectDir)
-    into(sourceSets.main.get().output.resourcesDir.toString())
-    include("LICENSE.md", "README.md")
 }

@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.5.0"
+version = "0.6.0"
 
 repositories {
     mavenCentral()
@@ -90,10 +90,6 @@ nexusPublishing {
 }
 
 tasks {
-    processResources {
-        dependsOn("copyResources")
-    }
-
     jar {
         manifest {
             attributes(
@@ -106,10 +102,4 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
-}
-
-tasks.register<Copy>("copyResources") {
-    from(projectDir)
-    into(sourceSets.main.get().output.resourcesDir.toString())
-    include("LICENSE.md", "README.md")
 }
