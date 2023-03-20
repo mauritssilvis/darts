@@ -262,7 +262,7 @@ for i in "${!paths[@]}"; do
 
         {
             echo "      <h2 id=\"${score}\">${score}</h2>"
-            "${shell_command[@]}"
+            "${shell_command[@]}" | sed "s|<table>|<table class=\"table w-auto\">|g" | sed "s| class=\"\\w\"||g" | sed -r "s|</?span>||g" | sed -r "s|> +|>|g"
             echo "      <p>"
             echo "        This table was generated using the command:"
             echo "      </p>"
