@@ -23,6 +23,12 @@ cd ..
 git clone . "../darts-${version}" 2>/dev/null
 cd "../darts-${version}" || exit
 
+# Clean up
+rm -rf .git
+rm -rf scripts
+rm -rf tables
+find . -name "*.md" -delete
+
 # Zip
 echo -n "" > "zip.log"
 
