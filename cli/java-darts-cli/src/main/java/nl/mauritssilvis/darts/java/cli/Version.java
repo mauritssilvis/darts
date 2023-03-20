@@ -29,7 +29,7 @@ class Version implements IVersionProvider {
 
         Attributes attributes = getManifestAttributes(title);
 
-        if (attributes != null) {
+        if (!attributes.isEmpty()) {
             title = attributes.getValue("Implementation-Title");
             version = attributes.getValue("Implementation-Version");
         }
@@ -42,30 +42,29 @@ class Version implements IVersionProvider {
     }
 
     private Attributes getManifestAttributes(String title) {
+        Attributes emptyAttributes = new Attributes();
         Enumeration<URL> resources;
 
         try {
             resources = getClass().getClassLoader().getResources("META-INF/MANIFEST.MF");
         } catch (IOException ignore) {
-            return null;
+            return emptyAttributes;
         }
-
-        Attributes attributes;
 
         while (resources.hasMoreElements()) {
             URL url = resources.nextElement();
 
             try {
                 Manifest manifest = new Manifest(url.openStream());
-                attributes = manifest.getMainAttributes();
+                Attributes mainAttributes = manifest.getMainAttributes();
 
-                if (title.equals(attributes.getValue("Implementation-Title"))) {
-                    return attributes;
+                if (title.equals(mainAttributes.getValue("Implementation-Title"))) {
+                    return mainAttributes;
                 }
             } catch (IOException ignore) {
             }
         }
 
-        return null;
+        return emptyAttributes;
     }
 }
