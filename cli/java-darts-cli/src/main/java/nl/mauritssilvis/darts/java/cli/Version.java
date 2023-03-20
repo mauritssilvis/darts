@@ -21,6 +21,14 @@ class Version implements IVersionProvider {
         String title = getClass().getPackage().getImplementationTitle();
         String version = getClass().getPackage().getImplementationVersion();
 
+        if (title == null) {
+            title = "java-darts-cli";
+        }
+
+        if (version == null) {
+            version = "";
+        }
+
         return new String[]{
                 title + " " + version,
                 "Copyright © 2023 Maurits Silvis",
