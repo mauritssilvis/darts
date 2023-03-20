@@ -1,0 +1,256 @@
+#!/bin/sh
+
+# Generate Markdown checkout tables for double-in and master-in games
+
+dir="../"
+
+paths=(
+    "london/London_master_in_master_out.md"
+    "london/London_master_in_double_out.md"
+    "london/London_double_in_double_out.md"
+    "quadro/Quadro_master_in_master_out.md"
+    "quadro/Quadro_master_in_double_out.md"
+    "quadro/Quadro_double_in_double_out.md"
+)
+
+boards=(
+    "London dartboard"
+    "London dartboard"
+    "London dartboard"
+    "Quadro 240 board"
+    "Quadro 240 board"
+    "Quadro 240 board"
+
+)
+
+in_modes=(
+    "master-in"
+    "master-in"
+    "double-in"
+    "master-in"
+    "master-in"
+    "double-in"
+)
+
+out_modes=(
+    "master-out"
+    "double-out"
+    "double-out"
+    "master-out"
+    "double-out"
+    "double-out"
+)
+
+requirements=(
+    "where the first (in) and last (out) darts must land on a double or triple"
+    "where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
+    "where the first (in) and last (out) darts must land on a double"
+    "where the first (in) and last (out) darts must land on a double or triple"
+    "where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double"
+    "where the first (in) and last (out) darts must land on a double"
+)
+
+score_ranges=(
+    "2 60 120 180"
+    "2 50 110 170"
+    "2 50 110 170"
+    "2 60 140 220"
+    "2 50 130 210"
+    "2 50 130 210"
+)
+
+first_dart_phrases=(
+    "double or triple"
+    "double or triple"
+    "double"
+    "double or triple"
+    "double or triple"
+    "double"
+)
+
+other_paths=(
+    "London_any_in_master_out.md"
+    "London_any_in_double_out.md"
+    "London_any_in_double_out.md"
+    "Quadro_any_in_master_out.md"
+    "Quadro_any_in_double_out.md"
+    "Quadro_any_in_double_out.md"
+)
+
+tables=(
+    "|         Score | Darts |     Checkouts |
+|--------------:|------:|--------------:|
+|   [101](#101) |     2 |             2 |
+|           201 |     4 |           772 |
+|           301 |     6 |        63,870 |
+|   [401](#401) |     7 |           392 |
+|           501 |     9 |       223,026 |
+|           601 |    11 |    23,997,646 |
+|   [701](#701) |    12 |         3,432 |
+|           801 |    14 |    10,666,320 |
+|           901 |    16 | 1,820,538,222 |
+| [1001](#1001) |    17 |        13,872 |"
+    "|         Score | Darts |   Checkouts |
+|--------------:|------:|------------:|
+|   [101](#101) |     2 |           1 |
+|           201 |     4 |          73 |
+|           301 |     6 |      15,645 |
+|   [401](#401) |     7 |          56 |
+|   [501](#501) |     9 |       3,944 |
+|           601 |    11 |   3,658,161 |
+|   [701](#701) |    12 |         286 |
+|           801 |    14 |      38,740 |
+|           901 |    16 | 202,771,392 |
+| [1001](#1001) |    17 |         816 |"
+    "|       Score | Darts |     Checkouts |
+|------------:|------:|--------------:|
+|         101 |     3 |            98 |
+| [201](#201) |     4 |            14 |
+|         301 |     6 |         2,544 |
+|         401 |     8 |       380,228 |
+| [501](#501) |     9 |           574 |
+|         601 |    11 |       319,586 |
+|         701 |    13 |    64,693,283 |
+| [801](#801) |    14 |         4,184 |
+|         901 |    16 |    12,139,768 |
+|        1001 |    18 | 3,400,574,560 |"
+    "|       Score | Darts |   Checkouts |
+|------------:|------:|------------:|
+| [101](#101) |     2 |           2 |
+|         201 |     4 |       5,384 |
+|         301 |     5 |       5,795 |
+|         401 |     6 |       1,950 |
+| [501](#501) |     7 |         172 |
+|         601 |     9 |   5,237,514 |
+|         701 |    10 |   1,028,526 |
+|         801 |    11 |      83,056 |
+| [901](#901) |    12 |       1,492 |
+|        1001 |    14 | 557,589,546 |"
+    "|       Score | Darts |  Checkouts |
+|------------:|------:|-----------:|
+| [101](#101) |     2 |          1 |
+|         201 |     4 |      1,428 |
+|         301 |     5 |      1,084 |
+|         401 |     6 |        172 |
+| [501](#501) |     7 |          1 |
+|         601 |     9 |    763,923 |
+|         701 |    10 |     85,068 |
+|         801 |    11 |      2,148 |
+| [901](#901) |    12 |          1 |
+|        1001 |    14 | 46,245,501 |"
+    "|       Score | Darts |   Checkouts |
+|------------:|------:|------------:|
+|         101 |     3 |          98 |
+|         201 |     4 |         190 |
+| [301](#301) |     5 |          45 |
+|         401 |     7 |     758,455 |
+|         501 |     8 |     310,486 |
+|         601 |     9 |      46,676 |
+| [701](#701) |    10 |       1,880 |
+|         801 |    12 | 277,420,080 |
+|         901 |    13 |  34,829,663 |
+|        1001 |    14 |   1,752,252 |"
+)
+
+other_table_scores=(
+    ""
+    "501"
+    ""
+    ""
+    ""
+    ""
+)
+
+selected_scores=(
+    "101         401         701         1001"
+    "101         401 501     701         1001"
+    "    201         501         801         "
+    "101             501             901     "
+    "101             501             901     "
+    "        301 701"
+)
+
+commands=(
+    "checkouts -i master -j master"
+    "checkouts -i master"
+    "checkouts -i double"
+    "checkouts -b quadro -i master -j master"
+    "checkouts -b quadro -i master"
+    "checkouts -b quadro -i double"
+)
+
+script_path="../../../cli/java-darts-cli/bin/"
+
+for i in "${!paths[@]}"; do
+    path="${paths[i]}"
+    file="${dir}${path}"
+
+    board="${boards[i]}"
+    in_mode=${in_modes[i]}
+    out_mode=${out_modes[i]}
+    mode="${in_mode}, ${out_mode}"
+
+    title="${board} ${mode} checkouts"
+    subtitle="Checkout tables for ${mode} darts games with the ${board}"
+
+    requirements_phrase="${requirements[i]}"
+
+    IFS=' ' read -ra score_range <<< "${score_ranges[i]}"
+
+    first_dart_phrase="${first_dart_phrases[i]}"
+    other_path="${other_paths[i]}"
+
+    table="${tables[i]}"
+    other_table_score="${other_table_scores[i]}"
+
+    {
+        echo -e "# ${title}\n"
+
+        echo -e "> ${subtitle}\n"
+
+        echo -e "## Introduction\n"
+
+        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [Markdown](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo -e "These tables are valid for games ${requirements_phrase}.\n"
+
+        echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
+        echo -e "The last two darts can reach ${score_range[2]} points, and ${score_range[3]} points can be scored with the last three."
+        echo -e "After a ${first_dart_phrase} has been thrown, the extensive [any-in, ${out_mode} checkout tables](${other_path}) apply to these scores.\n"
+
+        echo -e "As for ${mode} checkouts, the following can be observed."
+        echo -e "Darts games commonly require players to score x01 points, where x is an integer."
+        echo -e "The following table shows the required number of darts to reach such scores in ${board} ${mode} games."
+        echo -e "In addition, the corresponding number of possible checkouts is shown.\n"
+
+        echo -e "${table}\n"
+
+        echo -e "The most exciting games will be those with relatively few possible checkouts."
+        echo -e "Checkout tables for these scores are given below."
+
+        if [ "${other_table_score}" != "" ]; then
+            echo -e "A checkout table for ${other_table_score} points was included as it is a typical score in darts games."
+        fi
+
+        echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
+    } > "${file}"
+
+    IFS=' ' read -ra scores <<< "${selected_scores[i]}"
+
+    for j in "${!scores[@]}"; do
+        score=${scores[j]}
+        command="${commands[i]} ${score} ${score}"
+        shell_command=("./${script_path}darts" ${command})
+
+        {
+            echo -e "## ${score}\n"
+            "${shell_command[@]}"
+            echo -e "\nThis table was generated using the command:\n\n\`\`\`shell\ndarts ${command}\n\`\`\`\n"
+        } >> "${file}"
+    done
+
+    {
+        echo -e "## License\n"
+        echo -e "Copyright © 2023 Maurits Silvis\n"
+        echo -e "This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](../LICENSE.md), or later."
+    } >> "${file}"
+done
