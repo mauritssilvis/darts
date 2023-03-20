@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ../cli/java-darts-cli || exit
+./gradlew build

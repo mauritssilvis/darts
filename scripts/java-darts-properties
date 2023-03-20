@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Project names
+name_prefix="Java darts"
+
+names=(
+    "API"
+    "core"
+    "CLI"
+)
+
+# Project labels
+label_prefix="java-darts"
+
+labels=(
+    "api"
+    "core"
+    "cli"
+)

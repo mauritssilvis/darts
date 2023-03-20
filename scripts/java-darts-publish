@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Get properties
+. ./java-darts-properties
+
+# Publish
+cd ..
+
+for i in "${!labels[@]}"; do
+    label="${labels[i]}"
+    project="${label_prefix}-${label}"
+    path="${label}/${project}"
+
+    echo "${project}"
+    cd "${path}" || exit
+
+    ./gradlew publishToSonatype
+
+    cd ../..
+    echo ""
+done
