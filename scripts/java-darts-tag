@@ -33,10 +33,5 @@ labels=(
 for i in "${!names[@]}"; do
     name="${name_prefix} ${names[i]} ${version}"
     label="${label_prefix}-${labels[i]}-${version}"
-
-    echo "${name}"
-    echo "${label}"
-
-    echo git tag -am "\"${name}\"" "${label}"
     git tag -am "\"${name}\"" "${label}"
 done
