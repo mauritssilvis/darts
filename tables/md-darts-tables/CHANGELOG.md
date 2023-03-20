@@ -10,7 +10,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Correct the relative path to the Java darts CLI.
-- Ensure no information gets lost when generation checkout tables.
+- Ensure existing data do not get lost when generating checkout tables.
 
 ## [0.1.0] - 2023-02-23
 
