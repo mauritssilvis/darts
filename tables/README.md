@@ -10,7 +10,7 @@ This part of the [darts](https://github.com/mauritssilvis/darts) project provide
 
 Currently, checkout tables are available in the following formats:
 
-- [Markdown](md)
+- [Markdown](md-darts-tables)
 
 ## License
 
