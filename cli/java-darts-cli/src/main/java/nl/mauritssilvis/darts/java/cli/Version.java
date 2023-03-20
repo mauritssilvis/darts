@@ -30,12 +30,20 @@ class Version implements IVersionProvider {
         Attributes attributes = getManifestAttributes(title);
 
         if (!attributes.isEmpty()) {
-            title = attributes.getValue("Implementation-Title");
-            version = attributes.getValue("Implementation-Version");
+            String implementationTitle = attributes.getValue("Implementation-Title");
+            String implementationVersion = attributes.getValue("Implementation-Version");
+
+            if (implementationTitle != null) {
+                title = implementationTitle;
+            }
+
+            if (implementationVersion != null) {
+                version = "-" + implementationVersion;
+            }
         }
 
         return new String[]{
-                title + " " + version,
+                title + version,
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         };
