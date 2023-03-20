@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check version
 if [ $# -eq 0 ]; then
