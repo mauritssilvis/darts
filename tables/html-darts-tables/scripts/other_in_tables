@@ -1,16 +1,16 @@
 #!/bin/sh
 
-# Generate Markdown checkout tables for double-in and master-in games
+# Generate HTML checkout tables for double-in and master-in games
 
 dir="../"
 
 paths=(
-    "london/London_master_in_master_out.md"
-    "london/London_master_in_double_out.md"
-    "london/London_double_in_double_out.md"
-    "quadro/Quadro_master_in_master_out.md"
-    "quadro/Quadro_master_in_double_out.md"
-    "quadro/Quadro_double_in_double_out.md"
+    "london/London_master_in_master_out.html"
+    "london/London_master_in_double_out.html"
+    "london/London_double_in_double_out.html"
+    "quadro/Quadro_master_in_master_out.html"
+    "quadro/Quadro_master_in_double_out.html"
+    "quadro/Quadro_double_in_double_out.html"
 )
 
 boards=(
@@ -69,12 +69,12 @@ first_dart_phrases=(
 )
 
 other_paths=(
-    "London_any_in_master_out.md"
-    "London_any_in_double_out.md"
-    "London_any_in_double_out.md"
-    "Quadro_any_in_master_out.md"
-    "Quadro_any_in_double_out.md"
-    "Quadro_any_in_double_out.md"
+    "London_any_in_master_out.html"
+    "London_any_in_double_out.html"
+    "London_any_in_double_out.html"
+    "Quadro_any_in_master_out.html"
+    "Quadro_any_in_double_out.html"
+    "Quadro_any_in_double_out.html"
 )
 
 tables=(
@@ -210,7 +210,7 @@ for i in "${!paths[@]}"; do
 
         echo -e "## Introduction\n"
 
-        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [Markdown](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [HTML](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
         echo -e "These tables are valid for games ${requirements_phrase}.\n"
 
         echo -e "In ${out_mode} games with the ${board}, the last dart can score between ${score_range[0]} and ${score_range[1]} points."
@@ -238,7 +238,7 @@ for i in "${!paths[@]}"; do
 
     for j in "${!scores[@]}"; do
         score=${scores[j]}
-        command="${commands[i]} ${score} ${score}"
+        command="${commands[i]} -o html ${score} ${score}"
         shell_command=("./${script_path}darts" ${command})
 
         {

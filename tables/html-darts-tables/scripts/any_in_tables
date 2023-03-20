@@ -1,16 +1,16 @@
 #!/bin/sh
 
-# Generate Markdown checkout tables for any-in games
+# Generate HTML checkout tables for any-in games
 
 dir="../"
 
 paths=(
-    "london/London_any_in_any_out.md"
-    "london/London_any_in_master_out.md"
-    "london/London_any_in_double_out.md"
-    "quadro/Quadro_any_in_any_out.md"
-    "quadro/Quadro_any_in_master_out.md"
-    "quadro/Quadro_any_in_double_out.md"
+    "london/London_any_in_any_out.html"
+    "london/London_any_in_master_out.html"
+    "london/London_any_in_double_out.html"
+    "quadro/Quadro_any_in_any_out.html"
+    "quadro/Quadro_any_in_master_out.html"
+    "quadro/Quadro_any_in_double_out.html"
 )
 
 boards=(
@@ -44,11 +44,11 @@ requirements=(
 
 other_mode_phrases=(
     ""
-    "[master-in, master-out](London_master_in_master_out.md)"
-    "[master-in, double-out](London_master_in_double_out.md) and [double-in, double-out](London_double_in_double_out.md)"
+    "[master-in, master-out](London_master_in_master_out.html)"
+    "[master-in, double-out](London_master_in_double_out.html) and [double-in, double-out](London_double_in_double_out.html)"
     ""
-    "[master-in, master-out](Quadro_master_in_master_out.md)"
-    "[master-in, double-out](Quadro_master_in_double_out.md) and [double-in, double-out](Quadro_double_in_double_out.md)"
+    "[master-in, master-out](Quadro_master_in_master_out.html)"
+    "[master-in, double-out](Quadro_master_in_double_out.html) and [double-in, double-out](Quadro_double_in_double_out.html)"
 )
 
 other_field_phrases=(
@@ -229,7 +229,7 @@ for i in "${!paths[@]}"; do
 
         echo -e "## Introduction\n"
 
-        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [Markdown](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo -e "This part of the [darts](https://github.com/mauritssilvis/darts) > [Tables](https://github.com/mauritssilvis/darts/tree/main/tables) > [HTML](..) project provides checkout tables for darts games with the ${board} played in ${mode} mode."
         echo -e "These tables are valid for games ${requirements_phrase}."
 
         if [ "${other_mode_phrase}" != "" ]; then
@@ -311,10 +311,10 @@ for i in "${!paths[@]}"; do
             headings="${headings}### ${label}-dart checkouts"
 
             num_throws="${throws[j]}"
-            command="${commands[i]} -n ${num_throws} ${min_score} ${max_score}"
+            command="${commands[i]} -n ${num_throws} -o html ${min_score} ${max_score}"
         else
             headings="## ${min_score}"
-            command="${commands[i]} ${min_score} ${max_score}"
+            command="${commands[i]} -o html ${min_score} ${max_score}"
         fi
 
         shell_command=("./${script_path}darts" ${command})
