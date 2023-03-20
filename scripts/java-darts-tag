@@ -23,5 +23,5 @@ fi
 for i in "${!names[@]}"; do
     message="${name_prefix} ${names[i]} ${version}"
     tag="${label_prefix}-${labels[i]}-${version}"
-    git tag -am "\"${message}\"" "${tag}"
+    git tag -am "${message}" "${tag}"
 done
