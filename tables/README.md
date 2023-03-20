@@ -1,4 +1,4 @@
-# darts > Tables
+# Checkout tables
 
 > Darts checkout tables in different formats
 
