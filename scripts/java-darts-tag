@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+    echo "No version supplied."
+    exit
+fi
+
+version=${1}
+
+name_prefix="Java darts"
+
+names=(
+    "API"
+    "core"
+    "CLI"
+)
+
+label_prefix="java-darts"
+
+labels=(
+    "api"
+    "core"
+    "cli"
+)
+
+for i in "${!names[@]}"; do
+    name="${name_prefix} ${names[i]} ${version}"
+    label="${label_prefix}-${labels[i]}-${version}"
+
+    echo "${name}"
+    echo "${label}"
+
+    echo git tag -am "\"${name}\"" "${label}"
+    git tag -am "\"${name}\"" "${label}"
+done
