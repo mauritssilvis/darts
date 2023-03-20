@@ -169,6 +169,15 @@ tables=(
 |        1001 |    14 | 449,392,814 |"
 )
 
+other_table_scores=(
+    ""
+    ""
+    "501"
+    ""
+    ""
+    ""
+)
+
 labels=(
     "One"
     "Two"
@@ -255,6 +264,7 @@ for i in "${!paths[@]}"; do
     done
 
     table="${tables[i]}"
+    other_table_score="${other_table_scores[i]}"
 
     {
         echo -e ""
@@ -268,6 +278,11 @@ for i in "${!paths[@]}"; do
 
         echo -e "The most exciting games will be those with relatively few possible checkouts."
         echo -e "Checkout tables for these scores are given at the end of this document."
+
+        if [ "${other_table_score}" != "" ]; then
+            echo -e "A checkout table for ${other_table_score} points was included as it is a typical score in darts games."
+        fi
+
         echo -e "Additional tables can be generated using the \`darts\` toolbox of the [darts](https://github.com/mauritssilvis/darts) project.\n"
     } >> "${file}"
 
