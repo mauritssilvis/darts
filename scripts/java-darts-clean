@@ -1,0 +1,33 @@
+#!/bin/sh
+
+cd ..
+
+prefix="java-darts"
+
+labels=(
+    "api"
+    "core"
+    "cli"
+)
+
+tasks=(
+    "clean"
+    "clean"
+    "clean cleanDist"
+)
+
+for i in "${!labels[@]}"; do
+    label="${labels[i]}"
+    project="${prefix}-${label}"
+    path="${label}/${project}"
+    task="${tasks[i]}"
+
+    echo ":${project}:${task}"
+    cd "${path}" || exit
+
+    # shellcheck disable=SC2086
+    ./gradlew ${task}
+
+    cd ../..
+    echo ""
+done
