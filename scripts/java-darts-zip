@@ -45,12 +45,12 @@ for i in "${!labels[@]}"; do
     # .tar.gz
     rm -f "${name}.tar.gz"
     7z a "${name}.tar" "./${project}/*" >> "zip.log" 2>> "zip.log"
-    7z a "${name}.tar.gz" "${name}.tar" >> "zip.log" 2>> "zip.log"
+    7z a -mx9 "${name}.tar.gz" "${name}.tar" >> "zip.log" 2>> "zip.log"
     rm -f "${name}.tar"
 
     # .zip
     rm -f "${name}.zip"
-    7z a "${name}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
+    7z a -mx9 "${name}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
 done
 
 # Check zip
