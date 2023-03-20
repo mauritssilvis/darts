@@ -52,3 +52,11 @@ for i in "${!labels[@]}"; do
     rm -f "${name}.zip"
     7z a "${name}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
 done
+
+# Check zip
+archives=$(grep "Everything is Ok" zip.log -c)
+
+if [ "${archives}" -ne 9 ]; then
+    echo "Error: Not all archives were created successfully."
+    exit
+fi
