@@ -12,8 +12,7 @@ version=${1}
 branch=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "${branch}" != "main" ]; then
-    echo "Error: Not on main branch."
-    exit
+    echo "Warning: Not on main branch."
 fi
 
 # Clone repository
