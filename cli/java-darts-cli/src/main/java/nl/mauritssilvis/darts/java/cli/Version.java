@@ -41,7 +41,7 @@ class Version implements IVersionProvider {
         };
     }
 
-    private Attributes getManifestAttributes(String project) {
+    private Attributes getManifestAttributes(String title) {
         Enumeration<URL> resources;
 
         try {
@@ -59,7 +59,7 @@ class Version implements IVersionProvider {
                 Manifest manifest = new Manifest(url.openStream());
                 attributes = manifest.getMainAttributes();
 
-                if (project.equals(attributes.getValue("Implementation-Title"))) {
+                if (title.equals(attributes.getValue("Implementation-Title"))) {
                     return attributes;
                 }
             } catch (IOException ignore) {
