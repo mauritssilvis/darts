@@ -20,24 +20,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>London dartboard double-in, double-out checkouts</h1>
-    <blockquote class="text-secondary">Checkout tables for double-in, double-out darts games with the London dartboard</blockquote>
-    <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
-    <p>
-      This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the London dartboard played in double-in, double-out mode.
-      These tables are valid for games where the first (in) and last (out) darts must land on a double.
-    </p>
-    <p>
-      In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
-      The last two darts can reach 110 points, and 170 points can be scored with the last three.
-      After a double has been thrown, the extensive <a href="London_any_in_double_out.html">any-in, double-out checkout tables</a> apply to these scores.
-    </p>
-    <p>
-      As for double-in, double-out checkouts, the following can be observed.
-      Darts games commonly require players to score x01 points, where x is an integer.
-      The following table shows the required number of darts to reach such scores in London dartboard double-in, double-out games.
-      In addition, the corresponding number of possible checkouts is shown.
-    </p>
+    <section>
+      <h1>London dartboard double-in, double-out checkouts</h1>
+      <blockquote class="text-secondary">Checkout tables for double-in, double-out darts games with the London dartboard</blockquote>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
+        <p>
+          This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the London dartboard played in double-in, double-out mode.
+          These tables are valid for games where the first (in) and last (out) darts must land on a double.
+        </p>
+        <p>
+          In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
+          The last two darts can reach 110 points, and 170 points can be scored with the last three.
+          After a double has been thrown, the extensive <a href="London_any_in_double_out.html">any-in, double-out checkout tables</a> apply to these scores.
+        </p>
+        <p>
+          As for double-in, double-out checkouts, the following can be observed.
+          Darts games commonly require players to score x01 points, where x is an integer.
+          The following table shows the required number of darts to reach such scores in London dartboard double-in, double-out games.
+          In addition, the corresponding number of possible checkouts is shown.
+        </p>
 <table class="table w-auto">
   <tr><th>               Score    </th><th>Darts</th><th>    Checkouts</th></tr>
   <tr><td>                 101    </td><td>    3</td><td>           98</td></tr>
@@ -51,13 +53,15 @@
   <tr><td>                 901    </td><td>   16</td><td>   12,139,768</td></tr>
   <tr><td>                1001    </td><td>   18</td><td>3,400,574,560</td></tr>
 </table>
-    <p>
-      The most exciting games will be those with relatively few possible checkouts.
-      Checkout tables for these scores are given below.
-      Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
-    </p>
-    <h2 id="201" class="pb-1 border-bottom mb-3">201</h2>
-    <div class="table-responsive mb-3">
+        <p>
+          The most exciting games will be those with relatively few possible checkouts.
+          Checkout tables for these scores are given below.
+          Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
+        </p>
+      </section>
+      <section>
+        <h2 id="201" class="pb-1 border-bottom mb-3">201</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>#</th></tr>
   <tr><th rowspan="8" scope="rowgroup">201</th><td>*</td><td>*</td><td>*</td><td>*</td><td>14</td></tr>
@@ -69,13 +73,15 @@
   <tr><td>D20</td><td>T19</td><td>T18</td><td>D25</td><td>2</td></tr>
   <tr><td>D17</td><td>T20</td><td>T19</td><td>D25</td><td>2</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -i double -o html 201 201</pre>
-    <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -i double -o html 201 201</pre>
+      </section>
+      <section>
+        <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>#</th></tr>
   <tr><th rowspan="12" scope="rowgroup">501</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>574</td></tr>
@@ -91,13 +97,15 @@
   <tr><td>D20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>35</td></tr>
   <tr><td>D17</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>D25</td><td>7</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -i double -o html 501 501</pre>
-    <h2 id="801" class="pb-1 border-bottom mb-3">801</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -i double -o html 501 501</pre>
+      </section>
+      <section>
+        <h2 id="801" class="pb-1 border-bottom mb-3">801</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>#</th></tr>
   <tr><th rowspan="12" scope="rowgroup">801</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>4,184</td></tr>
@@ -113,18 +121,22 @@
   <tr><td>D20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>220</td></tr>
   <tr><td>D17</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>D25</td><td>12</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -i double -o html 801 801</pre>
-    <h2 class="pb-1 border-bottom mb-3">License</h2>
-    <p>
-      Copyright © 2023 Maurits Silvis
-    </p>
-    <p>
-      This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
-    </p>
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -i double -o html 801 801</pre>
+      </section>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">License</h2>
+        <p>
+          Copyright © 2023 Maurits Silvis
+        </p>
+        <p>
+          This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
+        </p>
+      </section>
+    </section>
   </div>
 </body>
 </html>

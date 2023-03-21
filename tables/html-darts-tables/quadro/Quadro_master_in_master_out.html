@@ -20,24 +20,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>Quadro 240 board master-in, master-out checkouts</h1>
-    <blockquote class="text-secondary">Checkout tables for master-in, master-out darts games with the Quadro 240 board</blockquote>
-    <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
-    <p>
-      This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the Quadro 240 board played in master-in, master-out mode.
-      These tables are valid for games where the first (in) and last (out) darts must land on a double or triple.
-    </p>
-    <p>
-      In master-out games with the Quadro 240 board, the last dart can score between 2 and 60 points.
-      The last two darts can reach 140 points, and 220 points can be scored with the last three.
-      After a double or triple has been thrown, the extensive <a href="Quadro_any_in_master_out.html">any-in, master-out checkout tables</a> apply to these scores.
-    </p>
-    <p>
-      As for master-in, master-out checkouts, the following can be observed.
-      Darts games commonly require players to score x01 points, where x is an integer.
-      The following table shows the required number of darts to reach such scores in Quadro 240 board master-in, master-out games.
-      In addition, the corresponding number of possible checkouts is shown.
-    </p>
+    <section>
+      <h1>Quadro 240 board master-in, master-out checkouts</h1>
+      <blockquote class="text-secondary">Checkout tables for master-in, master-out darts games with the Quadro 240 board</blockquote>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
+        <p>
+          This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the Quadro 240 board played in master-in, master-out mode.
+          These tables are valid for games where the first (in) and last (out) darts must land on a double or triple.
+        </p>
+        <p>
+          In master-out games with the Quadro 240 board, the last dart can score between 2 and 60 points.
+          The last two darts can reach 140 points, and 220 points can be scored with the last three.
+          After a double or triple has been thrown, the extensive <a href="Quadro_any_in_master_out.html">any-in, master-out checkout tables</a> apply to these scores.
+        </p>
+        <p>
+          As for master-in, master-out checkouts, the following can be observed.
+          Darts games commonly require players to score x01 points, where x is an integer.
+          The following table shows the required number of darts to reach such scores in Quadro 240 board master-in, master-out games.
+          In addition, the corresponding number of possible checkouts is shown.
+        </p>
 <table class="table w-auto">
   <tr><th>               Score    </th><th>Darts</th><th>  Checkouts</th></tr>
   <tr><td><a href="#101">  101</a></td><td>    2</td><td>          2</td></tr>
@@ -51,25 +53,29 @@
   <tr><td><a href="#901">  901</a></td><td>   12</td><td>      1,492</td></tr>
   <tr><td>                1001    </td><td>   14</td><td>557,589,546</td></tr>
 </table>
-    <p>
-      The most exciting games will be those with relatively few possible checkouts.
-      Checkout tables for these scores are given below.
-      Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
-    </p>
-    <h2 id="101" class="pb-1 border-bottom mb-3">101</h2>
-    <div class="table-responsive mb-3">
+        <p>
+          The most exciting games will be those with relatively few possible checkouts.
+          Checkout tables for these scores are given below.
+          Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
+        </p>
+      </section>
+      <section>
+        <h2 id="101" class="pb-1 border-bottom mb-3">101</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
   <tr><th rowspan="2" scope="rowgroup">101</th><td>*</td><td>*</td><td>2</td></tr>
   <tr><td>T17</td><td>D25</td><td>2</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -b quadro -i master -j master -o html 101 101</pre>
-    <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -b quadro -i master -j master -o html 101 101</pre>
+      </section>
+      <section>
+        <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>#</th></tr>
   <tr><th rowspan="19" scope="rowgroup">501</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>172</td></tr>
@@ -92,13 +98,15 @@
   <tr><td>T16</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q19</td><td>T19</td><td>5</td></tr>
   <tr><td>T15</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q19</td><td>T20</td><td>5</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -b quadro -i master -j master -o html 501 501</pre>
-    <h2 id="901" class="pb-1 border-bottom mb-3">901</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -b quadro -i master -j master -o html 501 501</pre>
+      </section>
+      <section>
+        <h2 id="901" class="pb-1 border-bottom mb-3">901</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>#</th></tr>
   <tr><th rowspan="19" scope="rowgroup">901</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>1,492</td></tr>
@@ -121,18 +129,22 @@
   <tr><td>T16</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q19</td><td>T19</td><td>10</td></tr>
   <tr><td>T15</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q20</td><td>Q19</td><td>T20</td><td>10</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -b quadro -i master -j master -o html 901 901</pre>
-    <h2 class="pb-1 border-bottom mb-3">License</h2>
-    <p>
-      Copyright © 2023 Maurits Silvis
-    </p>
-    <p>
-      This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
-    </p>
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -b quadro -i master -j master -o html 901 901</pre>
+      </section>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">License</h2>
+        <p>
+          Copyright © 2023 Maurits Silvis
+        </p>
+        <p>
+          This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
+        </p>
+      </section>
+    </section>
   </div>
 </body>
 </html>
