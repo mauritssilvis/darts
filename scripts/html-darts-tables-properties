@@ -1,14 +1,14 @@
 #!/bin/sh
 
 # Project names
-name_prefix="Markdown darts"
+name_prefix="HTML darts"
 
 names=(
     "tables"
 )
 
 # Project labels
-label_prefix="md-darts"
+label_prefix="html-darts"
 
 labels=(
     "tables"
@@ -20,4 +20,3 @@ other_files=(
     "cli"
     "core"
 )
-
