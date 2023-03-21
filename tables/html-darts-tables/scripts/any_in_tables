@@ -285,7 +285,7 @@ for i in "${!paths[@]}"; do
                 echo -n "  <tr><td></td>"
             fi
 
-            echo "<td><a href=\"#${anchor}\">${num_throws}</td></tr>"
+            echo "<td><a href=\"#${anchor}\">${num_throws}</a></td></tr>"
         } >> "${file}"
 
         last_max_score=${max_score}
