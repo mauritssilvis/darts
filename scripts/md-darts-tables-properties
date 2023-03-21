@@ -13,3 +13,11 @@ label_prefix="md-darts"
 labels=(
     "tables"
 )
+
+# Other files
+other_files=(
+    "api"
+    "cli"
+    "core"
+)
+
