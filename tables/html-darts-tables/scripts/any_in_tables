@@ -115,6 +115,14 @@ anchors=(
     "three-dart-checkouts-1"
 )
 
+row_spans=(
+    "2"
+    ""
+    "2"
+    ""
+    ""
+)
+
 tables=(
     '  <tr><th>                Score    </th><th>Darts</th><th>    Checkouts</th></tr>
   <tr><td> <a href="#101">  101</a></td><td>    2</td><td>            2</td></tr>
@@ -277,12 +285,19 @@ for i in "${!paths[@]}"; do
         max_score="${max_scores[j]}"
         num_throws="${throws[j]}"
         anchor="${anchors[j]}"
+        row_span="${row_spans[j]}"
 
         {
+            echo -n "  <tr>"
+
             if [ "${max_score}" != "${last_max_score}" ]; then
-                echo -n "  <tr><td><a href=\"#${min_score}--${max_score}\">${min_score} – ${max_score}</a></td>"
-            else
-                echo -n "  <tr><td></td>"
+                if [ "${row_span}" != "" ]; then
+                    echo -n "<th rowspan=\"${row_span}\" scope=\"rowgroup\" class=\"fw-normal\">"
+                else
+                    echo -n "<th class=\"fw-normal\">"
+                fi
+
+                echo -n "<a href=\"#${min_score}--${max_score}\">${min_score} – ${max_score}</a></th>"
             fi
 
             echo "<td><a href=\"#${anchor}\">${num_throws}</a></td></tr>"
