@@ -9,4 +9,17 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a checkout table overview.
+- Add checkout table generation scripts.
+- Add London dartboard any-in, any-out checkout tables.
+- Add London dartboard any-in, master-out checkout tables.
+- Add London dartboard any-in, double-out checkout tables.
+- Add London dartboard master-in, master-out checkout tables.
+- Add London dartboard master-in, double-out checkout tables.
+- Add London dartboard double-in, double-out checkout tables.
+- Add Quadro 240 board any-in, any-out checkout tables.
+- Add Quadro 240 board any-in, master-out checkout tables.
+- Add Quadro 240 board any-in, double-out checkout tables.
+- Add Quadro 240 board master-in, master-out checkout tables.
+- Add Quadro 240 board master-in, double-out checkout tables.
+- Add Quadro 240 board double-in, double-out checkout tables.
+- Add checkout table overviews.
