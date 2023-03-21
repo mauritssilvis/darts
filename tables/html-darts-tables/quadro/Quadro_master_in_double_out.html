@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title>Quadro 240 board master-in, double-out checkouts</title>
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    th,
+    td {
+      text-align: right;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quadro 240 board master-in, double-out checkouts</h1>
+    <blockquote class="text-secondary">Checkout tables for master-in, double-out darts games with the Quadro 240 board</blockquote>
+    <h2 class="pb-1 border-bottom">Introduction</h2>
+    <p>
+      This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the Quadro 240 board played in master-in, double-out mode.
+      These tables are valid for games where the first (in) dart must land on a double or a triple, and the last (out) dart must land on a double.
+    </p>
+    <p>
+      In double-out games with the Quadro 240 board, the last dart can score between 2 and 50 points.
+      The last two darts can reach 130 points, and 210 points can be scored with the last three.
+      After a double or triple has been thrown, the extensive <a href="Quadro_any_in_double_out.html">any-in, double-out checkout tables</a> apply to these scores.
+    </p>
+    <p>
+      As for master-in, double-out checkouts, the following can be observed.
+      Darts games commonly require players to score x01 points, where x is an integer.
+      The following table shows the required number of darts to reach such scores in Quadro 240 board master-in, double-out games.
+      In addition, the corresponding number of possible checkouts is shown.
+    </p>
+<table class="table w-auto">
+  <tr><th>               Score    </th><th>Darts</th><th> Checkouts</th></tr>
+  <tr><td><a href="#101">  101</a></td><td>    2</td><td>         1</td></tr>
+  <tr><td>                 201    </td><td>    4</td><td>     1,428</td></tr>
+  <tr><td>                 301    </td><td>    5</td><td>     1,084</td></tr>
+  <tr><td>                 401    </td><td>    6</td><td>       172</td></tr>
+  <tr><td><a href="#501">  501</a></td><td>    7</td><td>         1</td></tr>
+  <tr><td>                 601    </td><td>    9</td><td>   763,923</td></tr>
+  <tr><td>                 701    </td><td>   10</td><td>    85,068</td></tr>
+  <tr><td>                 801    </td><td>   11</td><td>     2,148</td></tr>
+  <tr><td><a href="#901">  901</a></td><td>   12</td><td>         1</td></tr>
+  <tr><td>                1001    </td><td>   14</td><td>46,245,501</td></tr>
+</table>
+    <p>
+      The most exciting games will be those with relatively few possible checkouts.
+      Checkout tables for these scores are given below.
+      Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
+    </p>
+    <h2 id="101" class="pb-1 border-bottom">101</h2>
+    <div class="table-responsive mb-3">
+    </div>
+    <p>
+      This table was generated using the command:
+    </p>
+    <pre>darts checkouts -b quadro -i master -o html 101 101</pre>
+    <h2 id="501" class="pb-1 border-bottom">501</h2>
+    <div class="table-responsive mb-3">
+    </div>
+    <p>
+      This table was generated using the command:
+    </p>
+    <pre>darts checkouts -b quadro -i master -o html 501 501</pre>
+    <h2 id="901" class="pb-1 border-bottom">901</h2>
+    <div class="table-responsive mb-3">
+    </div>
+    <p>
+      This table was generated using the command:
+    </p>
+    <pre>darts checkouts -b quadro -i master -o html 901 901</pre>
+    <h2 class="pb-1 border-bottom">License</h2>
+    <p>
+      Copyright © 2023 Maurits Silvis
+    </p>
+    <p>
+      This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
+    </p>
+  </div>
+</body>
+</html>
