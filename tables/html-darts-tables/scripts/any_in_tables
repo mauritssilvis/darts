@@ -242,7 +242,7 @@ for i in "${!paths[@]}"; do
 
         echo "    <blockquote class=\"text-secondary\">${subtitle}</blockquote>"
 
-        echo "    <h2 class=\"pb-1 border-bottom\">Introduction</h2>"
+        echo "    <h2 class=\"pb-1 border-bottom mb-3\">Introduction</h2>"
 
         echo "    <p>"
         echo "      This part of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> > <a href=\"https://github.com/mauritssilvis/darts/tree/main/tables\">Tables</a> > <a href=\"..\">HTML</a> project provides checkout tables for darts games with the ${board} played in ${mode} mode."
@@ -328,7 +328,7 @@ for i in "${!paths[@]}"; do
 
         if [ "${j}" -lt "${#throws[@]}" ]; then
             if [ "${max_score}" != "${last_max_score}" ]; then
-                headings="    <h2 id=\"${min_score}--${max_score}\" class=\"pb-1 border-bottom\">${min_score} – ${max_score}</h2>\n"
+                headings="    <h2 id=\"${min_score}--${max_score}\" class=\"pb-1 border-bottom mb-3\">${min_score} – ${max_score}</h2>\n"
             else
                 headings=""
             fi
@@ -340,7 +340,7 @@ for i in "${!paths[@]}"; do
             num_throws="${throws[j]}"
             command="${commands[i]} -n ${num_throws} -o html ${min_score} ${max_score}"
         else
-            headings="    <h2 id=\"${min_score}\" class=\"pb-1 border-bottom\">${min_score}</h2>"
+            headings="    <h2 id=\"${min_score}\" class=\"pb-1 border-bottom mb-3\">${min_score}</h2>"
             command="${commands[i]} -o html ${min_score} ${max_score}"
         fi
 
@@ -361,7 +361,7 @@ for i in "${!paths[@]}"; do
     done
 
     {
-        echo "    <h2 class=\"pb-1 border-bottom\">License</h2>"
+        echo "    <h2 class=\"pb-1 border-bottom mb-3\">License</h2>"
 
         echo "    <p>"
         echo "      Copyright © 2023 Maurits Silvis"

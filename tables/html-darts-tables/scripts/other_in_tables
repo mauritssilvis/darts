@@ -223,7 +223,7 @@ for i in "${!paths[@]}"; do
 
         echo "    <blockquote class=\"text-secondary\">${subtitle}</blockquote>"
 
-        echo "    <h2 class=\"pb-1 border-bottom\">Introduction</h2>"
+        echo "    <h2 class=\"pb-1 border-bottom mb-3\">Introduction</h2>"
 
         echo "    <p>"
         echo "      This part of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> > <a href=\"https://github.com/mauritssilvis/darts/tree/main/tables\">Tables</a> > <a href=\"..\">HTML</a> project provides checkout tables for darts games with the ${board} played in ${mode} mode."
@@ -267,7 +267,7 @@ for i in "${!paths[@]}"; do
         shell_command=("./${script_path}darts" ${command})
 
         {
-            echo "    <h2 id=\"${score}\" class=\"pb-1 border-bottom\">${score}</h2>"
+            echo "    <h2 id=\"${score}\" class=\"pb-1 border-bottom mb-3\">${score}</h2>"
             echo "    <div class=\"table-responsive mb-3\">"
             "${shell_command[@]}" | sed "s|<table>|<table class=\"table w-auto mb-0\">|g" | sed "s| class=\"\\w\"||g" | sed -r "s|</span><span> *| / |g" | sed -r "s|</?span>||g" | sed -r "s|> +|>|g"
             echo "    </div>"
@@ -279,7 +279,7 @@ for i in "${!paths[@]}"; do
     done
 
     {
-        echo "    <h2 class=\"pb-1 border-bottom\">License</h2>"
+        echo "    <h2 class=\"pb-1 border-bottom mb-3\">License</h2>"
 
         echo "    <p>"
         echo "      Copyright © 2023 Maurits Silvis"
