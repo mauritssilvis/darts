@@ -274,7 +274,9 @@ for i in "${!paths[@]}"; do
             echo "    <p>"
             echo "      This table was generated using the command:"
             echo "    </p>"
-            echo "    <pre>darts ${command}</pre>"
+            echo "    <pre>"
+            echo "      darts ${command}"
+            echo "    </pre>"
         } >> "${file}"
     done
 
