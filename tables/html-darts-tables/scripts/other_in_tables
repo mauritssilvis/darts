@@ -269,7 +269,7 @@ for i in "${!paths[@]}"; do
         {
             echo "    <h2 id=\"${score}\" class=\"pb-1 border-bottom\">${score}</h2>"
             echo "    <div class=\"table-responsive mb-3\">"
-            "${shell_command[@]}" | sed "s|<table>|<table class=\"table w-auto mb-0\">|g" | sed "s| class=\"\\w\"||g" | sed -r "s|</?span>||g" | sed -r "s|> +|>|g"
+            "${shell_command[@]}" | sed "s|<table>|<table class=\"table w-auto mb-0\">|g" | sed "s| class=\"\\w\"||g" | sed -r "s|</span><span> *| / |g" | sed -r "s|</?span>||g" | sed -r "s|> +|>|g"
             echo "    </div>"
             echo "    <p>"
             echo "      This table was generated using the command:"
