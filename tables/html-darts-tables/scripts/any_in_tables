@@ -258,7 +258,7 @@ for i in "${!paths[@]}"; do
         echo "        <h2 class=\"pb-1 border-bottom mb-3\">Introduction</h2>"
 
         echo "        <p>"
-        echo "          This part of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> > <a href=\"https://github.com/mauritssilvis/darts/tree/main/tables\">Tables</a> > <a href=\"..\">HTML</a> project provides checkout tables for darts games with the ${board} played in ${mode} mode."
+        echo "          This part of the <a href=\"https://github.com/mauritssilvis/darts\">darts</a> > <a href=\"https://github.com/mauritssilvis/darts/tree/main/tables\">Tables</a> > <a href=\"../index.html\">HTML</a> project provides checkout tables for darts games with the ${board} played in ${mode} mode."
         echo "          These tables are valid for games ${requirements_phrase}."
 
         if [ "${other_mode_phrase}" != "" ]; then
