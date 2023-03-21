@@ -20,19 +20,21 @@
 </head>
 <body>
   <div class="container">
-    <h1>London dartboard any-in, double-out checkouts</h1>
-    <blockquote class="text-secondary">Checkout tables for any-in, double-out darts games with the London dartboard</blockquote>
-    <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
-    <p>
-      This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the London dartboard played in any-in, double-out mode.
-      These tables are valid for games without requirements on the first (in) dart, whereas the last (out) dart must land on a double.
-      However, these tables also apply to <a href="London_master_in_double_out.html">master-in, double-out</a> and <a href="London_double_in_double_out.html">double-in, double-out</a> games after the required double or triple has been thrown.
-    </p>
-    <p>
-      In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
-      The last two darts can reach 110 points, and 170 points can be scored with the last three.
-      The following table shows which checkout tables are provided for these scores.
-    </p>
+    <section>
+      <h1>London dartboard any-in, double-out checkouts</h1>
+      <blockquote class="text-secondary">Checkout tables for any-in, double-out darts games with the London dartboard</blockquote>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">Introduction</h2>
+        <p>
+          This part of the <a href="https://github.com/mauritssilvis/darts">darts</a> > <a href="https://github.com/mauritssilvis/darts/tree/main/tables">Tables</a> > <a href="..">HTML</a> project provides checkout tables for darts games with the London dartboard played in any-in, double-out mode.
+          These tables are valid for games without requirements on the first (in) dart, whereas the last (out) dart must land on a double.
+          However, these tables also apply to <a href="London_master_in_double_out.html">master-in, double-out</a> and <a href="London_double_in_double_out.html">double-in, double-out</a> games after the required double or triple has been thrown.
+        </p>
+        <p>
+          In double-out games with the London dartboard, the last dart can score between 2 and 50 points.
+          The last two darts can reach 110 points, and 170 points can be scored with the last three.
+          The following table shows which checkout tables are provided for these scores.
+        </p>
 <table class="table w-auto">
   <tr><th>Scores</th><th>Darts</th></tr>
   <tr><th rowspan="2" scope="rowgroup" class="fw-normal"><a href="#1--50">1 – 50</a></th><td><a href="#one-dart-checkouts">1</a></td></tr>
@@ -41,12 +43,12 @@
   <tr><td><a href="#three-dart-checkouts">3</a></td></tr>
   <tr><th class="fw-normal"><a href="#111--170">111 – 170</a></th><td><a href="#three-dart-checkouts-1">3</a></td></tr>
 </table>
-    <p>
-      As for any-in, double-out checkouts, the following can be observed.
-      Darts games commonly require players to score x01 points, where x is an integer.
-      The following table shows the required number of darts to reach such scores in London dartboard any-in, double-out games.
-      In addition, the corresponding number of possible checkouts is shown.
-    </p>
+        <p>
+          As for any-in, double-out checkouts, the following can be observed.
+          Darts games commonly require players to score x01 points, where x is an integer.
+          The following table shows the required number of darts to reach such scores in London dartboard any-in, double-out games.
+          In addition, the corresponding number of possible checkouts is shown.
+        </p>
 <table class="table w-auto">
   <tr><th>                Score    </th><th>Darts</th><th>  Checkouts</th></tr>
   <tr><td> <a href="#101">  101</a></td><td>    2</td><td>          1</td></tr>
@@ -60,15 +62,18 @@
   <tr><td>                  901    </td><td>   16</td><td>202,772,073</td></tr>
   <tr><td><a href="#1001"> 1001</a></td><td>   17</td><td>        816</td></tr>
 </table>
-    <p>
-      The most exciting games will be those with relatively few possible checkouts.
-      Checkout tables for these scores are given at the end of this document.
-      A checkout table for 501 points was included as it is a typical score in darts games.
-      Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
-    </p>
-    <h2 id="1--50" class="pb-1 border-bottom mb-3">1 – 50</h2>
-    <h3 id="one-dart-checkouts">One-dart checkouts</h3>
-    <div class="table-responsive mb-3">
+        <p>
+          The most exciting games will be those with relatively few possible checkouts.
+          Checkout tables for these scores are given at the end of this document.
+          A checkout table for 501 points was included as it is a typical score in darts games.
+          Additional tables can be generated using the <code>darts</code> toolbox of the <a href="https://github.com/mauritssilvis/darts">darts</a> project.
+        </p>
+      </section>
+      <section>
+        <h2 id="1--50" class="pb-1 border-bottom mb-3">1 – 50</h2>
+        <section>
+          <h3 id="one-dart-checkouts">One-dart checkouts</h3>
+          <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>#</th></tr>
   <tr><th rowspan="1" scope="rowgroup">1</th><td>*</td><td>0</td></tr>
@@ -143,13 +148,15 @@
   <tr><th rowspan="2" scope="rowgroup">50</th><td>*</td><td>1</td></tr>
   <tr><td>D25</td><td>1</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -n 1 -o html 1 50</pre>
-    <h3 id="two-dart-checkouts">Two-dart checkouts</h3>
-    <div class="table-responsive mb-3">
+          </div>
+          <p>
+            This table was generated using the command:
+          </p>
+          <pre>darts checkouts -n 1 -o html 1 50</pre>
+        </section>
+        <section>
+          <h3 id="two-dart-checkouts">Two-dart checkouts</h3>
+          <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
   <tr><th rowspan="2" scope="rowgroup">3</th><td>*</td><td>*</td><td>1</td></tr>
@@ -515,14 +522,18 @@
   <tr><td>9 / T3</td><td>D20</td><td>2</td></tr>
   <tr><th rowspan="1" scope="rowgroup">50</th><td>*</td><td>*</td><td>0</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -n 2 -o html 3 50</pre>
-    <h2 id="51--110" class="pb-1 border-bottom mb-3">51 – 110</h2>
-    <h3 id="two-dart-checkouts-1">Two-dart checkouts</h3>
-    <div class="table-responsive mb-3">
+          </div>
+          <p>
+            This table was generated using the command:
+          </p>
+          <pre>darts checkouts -n 2 -o html 3 50</pre>
+        </section>
+      </section>
+      <section>
+        <h2 id="51--110" class="pb-1 border-bottom mb-3">51 – 110</h2>
+        <section>
+          <h3 id="two-dart-checkouts-1">Two-dart checkouts</h3>
+          <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
   <tr><th rowspan="13" scope="rowgroup">51</th><td>*</td><td>*</td><td>13</td></tr>
@@ -967,13 +978,15 @@
   <tr><th rowspan="2" scope="rowgroup">110</th><td>*</td><td>*</td><td>1</td></tr>
   <tr><td>T20</td><td>D25</td><td>1</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -n 2 -o html 51 110</pre>
-    <h3 id="three-dart-checkouts">Three-dart checkouts</h3>
-    <div class="table-responsive mb-3">
+          </div>
+          <p>
+            This table was generated using the command:
+          </p>
+          <pre>darts checkouts -n 2 -o html 51 110</pre>
+        </section>
+        <section>
+          <h3 id="three-dart-checkouts">Three-dart checkouts</h3>
+          <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>#</th></tr>
   <tr><th rowspan="156" scope="rowgroup">99</th><td>*</td><td>*</td><td>*</td><td>430</td></tr>
@@ -1943,14 +1956,18 @@
   <tr><td>D16</td><td>T9</td><td>D25</td><td>2</td></tr>
   <tr><th rowspan="1" scope="rowgroup">110</th><td>*</td><td>*</td><td>*</td><td>0</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -n 3 -o html 99 110</pre>
-    <h2 id="111--170" class="pb-1 border-bottom mb-3">111 – 170</h2>
-    <h3 id="three-dart-checkouts-1">Three-dart checkouts</h3>
-    <div class="table-responsive mb-3">
+          </div>
+          <p>
+            This table was generated using the command:
+          </p>
+          <pre>darts checkouts -n 3 -o html 99 110</pre>
+        </section>
+      </section>
+      <section>
+        <h2 id="111--170" class="pb-1 border-bottom mb-3">111 – 170</h2>
+        <section>
+          <h3 id="three-dart-checkouts-1">Three-dart checkouts</h3>
+          <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>#</th></tr>
   <tr><th rowspan="94" scope="rowgroup">111</th><td>*</td><td>*</td><td>*</td><td>226</td></tr>
@@ -3692,25 +3709,30 @@
   <tr><th rowspan="2" scope="rowgroup">170</th><td>*</td><td>*</td><td>*</td><td>1</td></tr>
   <tr><td>T20</td><td>T20</td><td>D25</td><td>1</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -n 3 -o html 111 170</pre>
-    <h2 id="101" class="pb-1 border-bottom mb-3">101</h2>
-    <div class="table-responsive mb-3">
+          </div>
+          <p>
+            This table was generated using the command:
+          </p>
+          <pre>darts checkouts -n 3 -o html 111 170</pre>
+        </section>
+      </section>
+      <section>
+        <h2 id="101" class="pb-1 border-bottom mb-3">101</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
   <tr><th rowspan="2" scope="rowgroup">101</th><td>*</td><td>*</td><td>1</td></tr>
   <tr><td>T17</td><td>D25</td><td>1</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -o html 101 101</pre>
-    <h2 id="401" class="pb-1 border-bottom mb-3">401</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -o html 101 101</pre>
+      </section>
+      <section>
+        <h2 id="401" class="pb-1 border-bottom mb-3">401</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>#</th></tr>
   <tr><th rowspan="4" scope="rowgroup">401</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>56</td></tr>
@@ -3718,13 +3740,15 @@
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T18</td><td>D25</td><td>30</td></tr>
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>20</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -o html 401 401</pre>
-    <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -o html 401 401</pre>
+      </section>
+      <section>
+        <h2 id="501" class="pb-1 border-bottom mb-3">501</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>#</th></tr>
   <tr><th rowspan="23" scope="rowgroup">501</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>3,944</td></tr>
@@ -3751,13 +3775,15 @@
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>T19</td><td>T19</td><td>D18</td><td>56</td></tr>
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>D25</td><td>D25</td><td>560</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -o html 501 501</pre>
-    <h2 id="701" class="pb-1 border-bottom mb-3">701</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -o html 501 501</pre>
+      </section>
+      <section>
+        <h2 id="701" class="pb-1 border-bottom mb-3">701</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>#</th></tr>
   <tr><th rowspan="4" scope="rowgroup">701</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>286</td></tr>
@@ -3765,13 +3791,15 @@
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T18</td><td>D25</td><td>110</td></tr>
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>165</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -o html 701 701</pre>
-    <h2 id="1001" class="pb-1 border-bottom mb-3">1001</h2>
-    <div class="table-responsive mb-3">
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -o html 701 701</pre>
+      </section>
+      <section>
+        <h2 id="1001" class="pb-1 border-bottom mb-3">1001</h2>
+        <div class="table-responsive mb-3">
 <table class="table w-auto mb-0">
   <tr><th>Score</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>#</th></tr>
   <tr><th rowspan="4" scope="rowgroup">1001</th><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>*</td><td>816</td></tr>
@@ -3779,18 +3807,22 @@
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T18</td><td>D25</td><td>240</td></tr>
   <tr><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T20</td><td>T19</td><td>T19</td><td>T19</td><td>D25</td><td>560</td></tr>
 </table>
-    </div>
-    <p>
-      This table was generated using the command:
-    </p>
-    <pre>darts checkouts -o html 1001 1001</pre>
-    <h2 class="pb-1 border-bottom mb-3">License</h2>
-    <p>
-      Copyright © 2023 Maurits Silvis
-    </p>
-    <p>
-      This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
-    </p>
+        </div>
+        <p>
+          This table was generated using the command:
+        </p>
+        <pre>darts checkouts -o html 1001 1001</pre>
+      </section>
+      <section>
+        <h2 class="pb-1 border-bottom mb-3">License</h2>
+        <p>
+          Copyright © 2023 Maurits Silvis
+        </p>
+        <p>
+          This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file <a href="../LICENSE.md">LICENSE.md</a>, or later.
+        </p>
+      </section>
+    </section>
   </div>
 </body>
 </html>
