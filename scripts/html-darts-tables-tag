@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Check version
+if [ $# -eq 0 ]; then
+    echo "Error: No version supplied."
+    exit
+fi
+
+version=${1}
+
+# Check branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${branch}" != "main" ]; then
+    echo "Error: Not on main branch."
+    exit
+fi
+
+# Get properties
+. ./html-darts-tables-properties
+
+# Tag
+for i in "${!names[@]}"; do
+    message="${name_prefix} ${names[i]} ${version}"
+    tag="${label_prefix}-${labels[i]}-${version}"
+    git tag -am "${message}" "${tag}"
+done

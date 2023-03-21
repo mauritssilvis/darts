@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Check version
+if [ $# -eq 0 ]; then
+    echo "Error: No version supplied."
+    exit
+fi
+
+version=${1}
+
+# Check branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${branch}" != "main" ]; then
+    echo "Warning: Not on main branch."
+fi
+
+# Get properties
+. ./html-darts-tables-properties
+
+# Clone repository
+cd ..
+git clone . "../darts-${version}" 2>/dev/null
+cd "../darts-${version}" || exit
+
+# Clean up
+rm -rf .git
+rm -rf api
+rm -rf cli
+rm -rf core
+rm -rf scripts
+find . -maxdepth 1 -name "*.md" -delete
+
+# Zip
+echo -n "" > "zip.log"
+
+for i in "${!labels[@]}"; do
+    label="${labels[i]}"
+    project="${label_prefix}-${label}"
+    path="${label}/${project}"
+    file="${project}-${version}"
+
+    mv "${path}" "${project}" 2>/dev/null
+    rm -rf "${label}"
+    rm -rf "${project}/.idea"
+
+    # .tar.gz
+    rm -f "${file}.tar.gz"
+    7z a "${file}.tar" "./${project}/*" >> "zip.log" 2>> "zip.log"
+    7z a -mx9 "${file}.tar.gz" "${file}.tar" >> "zip.log" 2>> "zip.log"
+    rm -f "${file}.tar"
+
+    # .zip
+    rm -f "${file}.zip"
+    7z a -mx9 "${file}.zip" "./${project}/*" >> "zip.log" 2>> "zip.log"
+done
+
+# Check zip
+archives=$(grep "Everything is Ok" zip.log -c)
+
+if [ "${archives}" -ne 3 ]; then
+    echo "Error: Not all archives were created successfully."
+    exit
+fi
