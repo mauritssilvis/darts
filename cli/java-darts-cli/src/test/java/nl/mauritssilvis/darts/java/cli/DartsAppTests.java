@@ -67,7 +67,7 @@ class DartsAppTests {
                 "Usage",
                 "darts",
                 "A computational toolbox aimed at the game of darts",
-                "Copyright",
+                "Copyright ©",
                 "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         );
@@ -100,7 +100,7 @@ class DartsAppTests {
 
         List<String> elements = List.of(
                 "java-darts-cli",
-                "Copyright",
+                "Copyright ©",
                 "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         );
