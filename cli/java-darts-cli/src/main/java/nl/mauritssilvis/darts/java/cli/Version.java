@@ -22,6 +22,12 @@ import java.util.jar.Manifest;
  * @since 0.1.0
  */
 class Version implements IVersionProvider {
+    /**
+     * Creates a new {@code Version} object.
+     */
+    Version() {
+    }
+
     @Override
     public String[] getVersion() {
         String title = "java-darts-cli";

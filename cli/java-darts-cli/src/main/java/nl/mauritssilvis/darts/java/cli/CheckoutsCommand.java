@@ -145,6 +145,12 @@ class CheckoutsCommand implements Runnable {
     )
     private int maxScore;
 
+    /**
+     * Creates a new {@code CheckoutsCommand} object.
+     */
+    CheckoutsCommand() {
+    }
+
     @Override
     public void run() {
         validate();

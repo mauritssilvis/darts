@@ -69,6 +69,12 @@ class BoardsCommand implements Runnable {
     )
     private BoardType boardType;
 
+    /**
+     * Creates a new {@code BoardsCommand} object.
+     */
+    BoardsCommand() {
+    }
+
     public void run() {
         Board board = BoardFactory.create(boardType);
 
