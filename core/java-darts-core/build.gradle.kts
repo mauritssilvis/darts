@@ -97,6 +97,14 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+
     test {
         useJUnitPlatform()
     }
@@ -111,6 +119,7 @@ tasks {
     }
 
     javadoc {
+        options.encoding = "UTF-8"
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
 }

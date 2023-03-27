@@ -90,6 +90,10 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
     jar {
         manifest {
             attributes(
@@ -100,6 +104,7 @@ tasks {
     }
 
     javadoc {
+        options.encoding = "UTF-8"
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
 }
