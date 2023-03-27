@@ -13,7 +13,7 @@ import nl.mauritssilvis.darts.java.api.settings.*;
  * {@code TableSettings} objects. Default values are provided for
  * unspecified properties.
  * <p>
- * Relevant design patterns: builder, static factory method.
+ * Relevant design patterns: builder, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

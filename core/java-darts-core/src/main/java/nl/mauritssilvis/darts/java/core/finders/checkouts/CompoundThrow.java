@@ -17,7 +17,7 @@ import java.util.List;
  * An implementation of the {@code Throw} interface that can store multiple,
  * unique fields of a certain score.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

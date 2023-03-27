@@ -32,7 +32,7 @@ import java.util.stream.IntStream;
  * <p>
  * This implementation relies on the {@code CartesianPathfinder} class.
  * <p>
- * Relevant design patterns: strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

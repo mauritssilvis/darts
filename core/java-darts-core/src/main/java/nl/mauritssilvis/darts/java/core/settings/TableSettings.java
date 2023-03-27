@@ -13,7 +13,7 @@ import nl.mauritssilvis.darts.java.api.settings.*;
  * An implementation of the {@code Settings} interface that stores checkout
  * table settings.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0
