@@ -78,7 +78,10 @@ class CheckoutsCommandTests {
                 "The minimum score",
                 "<minimum>",
                 "The maximum score",
-                "<maximum>"
+                "<maximum>",
+                "Copyright ©",
+                "Maurits Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
         );
 
         long count = elements.stream()
