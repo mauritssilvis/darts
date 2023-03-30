@@ -25,14 +25,14 @@ If you would like to explore extensive checkout tables for different types of da
 
 To use `darts`, you have to execute the following steps.
 
-### 1.1 Install Java 17+
+### 1.1 Install Java 20+
 
-`darts` requires the installation of Java 17 or higher.
+`darts` requires the installation of Java 20 or higher.
 
 You can install the latest version of Java as follows:
 
 - Go to https://jdk.java.net/.
-- Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 19.
+- Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 20.
 - From the builds section, download the archive matching your system.
 - Extract the archive to a convenient location.
 - Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XX.X.X` folder.
@@ -858,7 +858,7 @@ JAVA_HOME is not set and no 'java' command could be found in your PATH.
 JAVA_HOME is set to an invalid directory: ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 17+](#11-install-java-17).
+To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
 
 #### 3.1.3 The `darts` toolbox was not built
 
@@ -883,7 +883,7 @@ Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.jav
         class file versions up to XX.X
 ```
 
-To solve this problem, follow the instructions for [installing Java 17+](#11-install-java-17).
+To solve this problem, follow the instructions for [installing Java 20+](#11-install-java-20).
 
 #### 3.1.5 Installing `darts` failed
 
