@@ -31,11 +31,11 @@ To use `darts`, you have to execute the following steps.
 
 You can install the latest version of Java as follows:
 
-- Go to https://jdk.java.net/.
-- Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 20.
-- From the builds section, download the archive matching your system.
+- Go to https://adoptium.net/temurin/releases/.
+- Select the latest release version, currently Java 20.
+- Download the archive or installer matching your system.
 - Extract the archive to a convenient location.
-- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XX.X.X` folder.
+- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
 
 ### 1.2 Install `darts`
 
