@@ -873,14 +873,21 @@ To solve this problem, [install](#12-install-darts) the `darts` toolbox.
 
 #### 3.1.4 Java is not up-to-date
 
-While executing `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following errors:
 
 ```text
 Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
         java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp
         has been compiled by a more recent version of the Java Runtime (class
-        file version 61.0), this version of the Java Runtime only recognizes
-        class file versions up to XX.X
+        file version ...), this version of the Java Runtime only recognizes
+        class file versions up to ...
+```
+
+```text
+Error occurred during initialization of boot layer
+java.lang.module.FindException: Error reading module: ...lib/java-darts-cli-....jar
+Caused by: java.lang.module.InvalidModuleDescriptorException: Unsupported
+major.minor version ...
 ```
 
 To solve this problem, follow the instructions for [installing Java 20+](#11-install-java-20).
