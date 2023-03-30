@@ -7,11 +7,8 @@ package nl.mauritssilvis.darts.java.cli;
 
 import picocli.CommandLine.IVersionProvider;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
+import java.lang.module.ModuleDescriptor;
+import java.util.Optional;
 
 /**
  * An implementation of the {@code IVersionProvider} class that returns the
@@ -33,52 +30,20 @@ class Version implements IVersionProvider {
         String title = "java-darts-cli";
         String version = "";
 
-        Attributes attributes = getManifestAttributes(title);
+        ModuleDescriptor moduleDescriptor = getClass().getModule().getDescriptor();
 
-        if (!attributes.isEmpty()) {
-            String implementationTitle = attributes.getValue("Implementation-Title");
-            String implementationVersion = attributes.getValue("Implementation-Version");
+        if (moduleDescriptor != null) {
+            Optional<ModuleDescriptor.Version> optional = moduleDescriptor.version();
 
-            if (implementationTitle != null) {
-                title = implementationTitle;
-            }
-
-            if (implementationVersion != null) {
-                version = "-" + implementationVersion;
+            if (optional.isPresent()) {
+                version = optional.get().toString();
             }
         }
 
         return new String[]{
-                title + version,
+                title + (!version.isBlank() ? "-" : "") + version,
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         };
-    }
-
-    private Attributes getManifestAttributes(String title) {
-        Attributes emptyAttributes = new Attributes();
-        Enumeration<URL> resources;
-
-        try {
-            resources = getClass().getClassLoader().getResources("META-INF/MANIFEST.MF");
-        } catch (IOException ignore) {
-            return emptyAttributes;
-        }
-
-        while (resources.hasMoreElements()) {
-            URL url = resources.nextElement();
-
-            try {
-                Manifest manifest = new Manifest(url.openStream());
-                Attributes mainAttributes = manifest.getMainAttributes();
-
-                if (title.equals(mainAttributes.getValue("Implementation-Title"))) {
-                    return mainAttributes;
-                }
-            } catch (IOException ignore) {
-            }
-        }
-
-        return emptyAttributes;
     }
 }
