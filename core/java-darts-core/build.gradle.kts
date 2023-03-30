@@ -97,6 +97,10 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.javaModuleVersion.set("${project.version}")
+    }
+
     test {
         useJUnitPlatform()
     }

@@ -90,6 +90,10 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.javaModuleVersion.set("${project.version}")
+    }
+
     jar {
         manifest {
             attributes(
