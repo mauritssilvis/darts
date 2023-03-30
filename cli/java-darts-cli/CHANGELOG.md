@@ -5,6 +5,15 @@ All notable changes to the `java-darts-cli` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+#### Dependencies
+
+- Update the Java version to 20.
+- Update the Gradle version to 8.1-RC2.
+
 ## [0.6.0] - 2023-03-20
 
 ### Changed
