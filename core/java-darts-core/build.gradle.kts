@@ -22,12 +22,13 @@ dependencies {
 
     annotationProcessor("org.projectlombok:lombok:1.18.26")
 
+    api("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.2")
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
-    api("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
 }
 
 java {
