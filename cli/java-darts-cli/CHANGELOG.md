@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the `java-darts-cli` project (see [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](.)) are documented in this file.
+All notable changes to the `java-darts-cli` project (see [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) > [Java](https://github.com/mauritssilvis/darts/tree/main/cli/java-darts-cli)) are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
