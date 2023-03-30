@@ -7,7 +7,7 @@ plugins {
     application
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    id("io.github.gradle-nexus.publish-plugin")
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -18,19 +18,19 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.26")
+    compileOnly(libs.lombok)
 
-    annotationProcessor("org.projectlombok:lombok:1.18.26")
-    annotationProcessor("info.picocli:picocli-codegen:4.7.1")
+    annotationProcessor(libs.lombok)
+    annotationProcessor(libs.picocli.codegen)
 
     implementation("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
     implementation("nl.mauritssilvis.darts.java:java-darts-core:${project.version}")
-    implementation("info.picocli:picocli:4.7.1")
+    implementation(libs.picocli)
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.2")
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 java {
