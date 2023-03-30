@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.7.0-SNAPSHOT"
+version = libs.versions.java.darts.get()
 
 repositories {
     mavenCentral()
@@ -22,7 +22,7 @@ dependencies {
 
     annotationProcessor(libs.lombok)
 
-    api("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
+    api(libs.java.darts.api)
 
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.params)
