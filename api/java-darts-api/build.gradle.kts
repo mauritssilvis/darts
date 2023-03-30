@@ -7,7 +7,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    id("io.github.gradle-nexus.publish-plugin")
 }
 
 group = "nl.mauritssilvis.darts.java"
@@ -18,9 +18,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.26")
+    compileOnly(libs.lombok)
 
-    annotationProcessor("org.projectlombok:lombok:1.18.26")
+    annotationProcessor(libs.lombok)
 }
 
 java {
