@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.7.0-SNAPSHOT"
+version = libs.versions.java.darts.get()
 
 repositories {
     mavenCentral()
