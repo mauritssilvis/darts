@@ -126,7 +126,6 @@ tasks {
     }
 
     javadoc {
-        options.encoding = "UTF-8"
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
 
