@@ -455,6 +455,18 @@ Specifically, the following classes are used:
 
 Of course, classes can be renamed or dropped at will after retrieving the HTML output.
 
+A command containing one or more of the following lines can be used to sanitize the HTML output:
+
+```shell
+darts checkouts -o html 1 4 \
+  `# Remove superfluous whitespace` \
+  | sed -r "s|> +|>|g" \
+  `# Remove all class attributes` \
+  | sed "s| class=\"\\w\"||g" \
+  `# Remove all span tags` \
+  | sed -r "s|</span><span( class=\"\\w\")?>| / |g" | sed -r "s|</?span( class=\"\\w\")?>||g"
+```
+
 ##### JSON
 
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
