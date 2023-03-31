@@ -7,7 +7,7 @@ plugins {
     application
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin")
+    alias(libs.plugins.io.github.gradle.nexus.publish.plugin)
 }
 
 group = "nl.mauritssilvis.darts.java"

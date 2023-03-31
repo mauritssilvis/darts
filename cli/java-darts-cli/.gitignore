@@ -172,3 +172,6 @@ gradle-app.setting
 ### Gradle installDist ###
 bin/
 lib/
+
+### Gradle refreshVersions ###
+versions.properties
