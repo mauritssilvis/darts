@@ -197,7 +197,7 @@ When left unspecified, the following options are set:
 - The [checkout finder type](#the-checkout-finder-type): descending.
 - The [output format](#the-output-format): Markdown.
 
-In other words, the command
+As such, the command
 
 ```shell
 darts checkouts 1 4
@@ -441,7 +441,7 @@ The output will look as follows:
 
 Here, header cell elements (`th`) are used for column headers and cells with scores in the first column.
 The header cells with scores span multiple rows to correspond to all checkouts of that score.
-All checkout table ingredients have their own CSS class for (potential) custom styling.
+All checkout table elements have their own CSS class for (potential) custom styling.
 Specifically, the following classes are used:
 
 - `h` for the header row;
@@ -555,7 +555,7 @@ The resulting output shows there are six seven-dart checkouts for a score of 501
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard does not have a single bull or triples (see [Print a dartboard](#22-print-a-dartboard)).
+This dartboard does not have a single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -689,7 +689,7 @@ The Yorkshire board can be printed with the following command:
 darts boards yorkshire
 ```
 
-This dartboard has no single bull and no triples:
+This dartboard has no single bull and no triple fields:
 
 ```markdown
 |   S |   D |
@@ -782,7 +782,7 @@ This feature mainly exists for debugging purposes and is not discussed further h
 
 ### 2.3 Get help
 
-In addition to consulting this online documentation, requesting command-line help regarding `darts` is possible.
+In addition to consulting this online documentation, one can request command-line help from `darts` itself.
 
 To receive general information about `darts` or to see which subcommands are available, execute:
 
