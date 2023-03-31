@@ -905,7 +905,7 @@ Such errors may contain a Gradle failure message like:
 ```text
 FAILURE: Build failed with an exception.
 ...
-BUILD FAILED in XXs
+BUILD FAILED in ...s
 ...
 ```
 
