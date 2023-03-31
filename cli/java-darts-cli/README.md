@@ -895,7 +895,7 @@ Caused by: java.lang.module.InvalidModuleDescriptorException: Unsupported
 major.minor version ...
 ```
 
-To solve this problem, follow the instructions for [installing Java 20+](#11-install-java-20).
+To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
 
 #### 3.1.5 Installing `darts` failed
 
@@ -970,7 +970,7 @@ Unmatched argument at index 0: 'board'
 Unmatched argument at index 0: 'checkout'
 ```
 
-To solve this problem, use one of the existing subcommands of `darts`:
+To solve these problems, use one of the existing subcommands of `darts`:
 
 - `darts checkouts` for [generating a darts checkout table](#21-generate-a-darts-checkout-table).
 - `darts boards` for [printing a dartboard](#22-print-a-dartboard).
