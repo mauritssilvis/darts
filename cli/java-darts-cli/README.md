@@ -34,7 +34,7 @@ You can install the latest version of Java as follows:
 - Go to https://adoptium.net/temurin/releases/.
 - Select the latest release version, currently Java 20.
 - Download the archive or installer matching your system.
-- Extract the archive to a convenient location.
+- Extract or install the files in a convenient location.
 - Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
 
 ### 1.2 Install `darts`
