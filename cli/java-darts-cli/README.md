@@ -862,14 +862,19 @@ To solve these problems, follow the instructions for [installing Java 20+](#11-i
 
 #### 3.1.3 The `darts` toolbox was not built
 
-While executing `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following errors:
 
 ```text
 Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
 Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
 ```
 
-To solve this problem, [install](#12-install-darts) the `darts` toolbox.
+```text
+Error occurred during initialization of boot layer
+java.lang.module.FindException: Module nl.mauritssilvis.darts.java.cli not found
+```
+
+To solve these problems, [install](#12-install-darts) the `darts` toolbox.
 
 #### 3.1.4 Java is not up-to-date
 
