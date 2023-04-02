@@ -464,7 +464,8 @@ darts checkouts -o html 1 4 \
   `# Remove all class attributes` \
   | sed "s| class=\"\\w\"||g" \
   `# Remove all span tags` \
-  | sed -r "s|</span><span( class=\"\\w\")?>| / |g" | sed -r "s|</?span( class=\"\\w\")?>||g"
+  | sed -r "s|</span><span( class=\"\\w\")?>| / |g" \
+  | sed -r "s|</?span( class=\"\\w\")?>||g"
 ```
 
 ##### JSON
