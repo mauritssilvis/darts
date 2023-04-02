@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * An implementation of the {@code Table} interface that stores checkouts in
  * ascending order.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
  * An implementation of the {@code Checkout} interface that represents multiple
  * sequence of throws, namely, one for each permutation of the grouped throws.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

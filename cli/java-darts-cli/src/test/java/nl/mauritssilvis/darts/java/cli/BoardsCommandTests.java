@@ -62,7 +62,10 @@ class BoardsCommandTests {
                 "The output format.",
                 "<output>",
                 "The dartboard type.",
-                "<board>"
+                "<board>",
+                "Copyright ©",
+                "Maurits Silvis",
+                "SPDX-License-Identifier: GPL-3.0-or-later"
         );
 
         long count = elements.stream()
@@ -101,7 +104,7 @@ class BoardsCommandTests {
 
         List<String> elements = List.of(
                 "java-darts-cli",
-                "Copyright",
+                "Copyright ©",
                 "Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
         );
