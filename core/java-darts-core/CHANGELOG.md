@@ -1,9 +1,18 @@
 # Changelog
 
-All notable changes to the `java-darts-core` project (see [darts](https://github.com/mauritssilvis/darts) > [Core](https://github.com/mauritssilvis/darts/tree/main/core) > [Java](.)) are documented in this file.
+All notable changes to the `java-darts-core` project (see [darts](https://github.com/mauritssilvis/darts) > [Core](https://github.com/mauritssilvis/darts/tree/main/core) > [Java](https://github.com/mauritssilvis/darts/tree/main/core/java-darts-core)) are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.7.0] - 2023-04-02
+
+### Changed
+
+#### Dependencies
+
+- Update the Java version to 20.
+- Update the Gradle version to 8.1-RC2.
 
 ## [0.6.0] - 2023-03-20
 

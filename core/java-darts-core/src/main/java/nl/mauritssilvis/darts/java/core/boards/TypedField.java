@@ -14,7 +14,7 @@ import nl.mauritssilvis.darts.java.api.boards.FieldType;
  * An implementation of the {@code Field} interface that can represent fields of
  * all predefined types.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

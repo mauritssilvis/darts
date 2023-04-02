@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
  * An implementation of the generic {@code Serializer} interface that serializes
  * {@code Board} objects to Markdown.
  * <p>
- * Relevant design patterns: strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

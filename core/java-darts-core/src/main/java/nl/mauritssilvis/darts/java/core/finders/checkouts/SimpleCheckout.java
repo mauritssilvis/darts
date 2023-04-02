@@ -18,7 +18,7 @@ import java.util.List;
  * An implementation of the {@code Checkout} interface that represents a single
  * sequence of ungrouped, simple throws.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

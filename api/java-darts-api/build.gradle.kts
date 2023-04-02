@@ -7,25 +7,25 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    alias(libs.plugins.io.github.gradle.nexus.publish.plugin)
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.6.0"
+version = libs.versions.java.darts.get()
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.26")
+    compileOnly(libs.lombok)
 
-    annotationProcessor("org.projectlombok:lombok:1.18.26")
+    annotationProcessor(libs.lombok)
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(20))
         vendor.set(JvmVendorSpec.ADOPTIUM)
     }
 
@@ -90,6 +90,10 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.javaModuleVersion.set("${project.version}")
+    }
+
     jar {
         manifest {
             attributes(
@@ -102,4 +106,12 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType<Javadoc> {
+    options.encoding = "UTF-8"
 }

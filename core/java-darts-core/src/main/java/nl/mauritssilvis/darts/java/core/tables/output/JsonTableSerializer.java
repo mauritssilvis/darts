@@ -18,7 +18,7 @@ import java.util.List;
  * An implementation of the generic {@code Serializer} interface that serializes
  * {@code Table} objects to JSON.
  * <p>
- * Relevant design patterns: strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

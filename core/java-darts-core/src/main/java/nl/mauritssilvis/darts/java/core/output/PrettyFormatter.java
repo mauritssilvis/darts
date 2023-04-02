@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * and indentation in strings based on specified opening and closing brackets,
  * and delimiters.
  * <p>
- * Relevant design patterns: strategy, immutable object, static factory method.
+ * Relevant design patterns: strategy, immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

@@ -47,7 +47,8 @@ import picocli.CommandLine.Model.CommandSpec;
         showDefaultValues = true,
         footerHeading = "%n",
         footer = {
-                "Online documentation: https://github.com/mauritssilvis/darts/tree/main/cli/java-darts-cli",
+                "Online documentation:",
+                "  https://mauritssilvis.nl/darts/cli/java-darts-cli",
                 "",
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
@@ -144,6 +145,12 @@ class CheckoutsCommand implements Runnable {
             showDefaultValue = CommandLine.Help.Visibility.NEVER
     )
     private int maxScore;
+
+    /**
+     * Creates a new {@code CheckoutsCommand} object.
+     */
+    CheckoutsCommand() {
+    }
 
     @Override
     public void run() {

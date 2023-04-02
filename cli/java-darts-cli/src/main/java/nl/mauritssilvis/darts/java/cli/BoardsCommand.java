@@ -44,7 +44,8 @@ import picocli.CommandLine.Spec;
         showDefaultValues = true,
         footerHeading = "%n",
         footer = {
-                "Online documentation: https://github.com/mauritssilvis/darts/tree/main/cli/java-darts-cli",
+                "Online documentation:",
+                "  https://mauritssilvis.nl/darts/cli/java-darts-cli",
                 "",
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"
@@ -68,6 +69,12 @@ class BoardsCommand implements Runnable {
             paramLabel = "<board>"
     )
     private BoardType boardType;
+
+    /**
+     * Creates a new {@code BoardsCommand} object.
+     */
+    BoardsCommand() {
+    }
 
     public void run() {
         Board board = BoardFactory.create(boardType);

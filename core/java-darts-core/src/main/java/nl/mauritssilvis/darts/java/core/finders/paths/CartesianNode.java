@@ -15,7 +15,7 @@ import java.util.List;
  * An implementation of the {@code Node} interface that stores unique edge
  * weights in the order in which they are supplied.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

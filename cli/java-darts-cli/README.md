@@ -25,17 +25,17 @@ If you would like to explore extensive checkout tables for different types of da
 
 To use `darts`, you have to execute the following steps.
 
-### 1.1 Install Java 17+
+### 1.1 Install Java 20+
 
-`darts` requires the installation of Java 17 or higher.
+`darts` requires the installation of Java 20 or higher.
 
 You can install the latest version of Java as follows:
 
-- Go to https://jdk.java.net/.
-- Navigate to the page with the latest ready-to-use version of the Java Development Kit (JDK), currently JDK 19.
-- From the builds section, download the archive matching your system.
-- Extract the archive to a convenient location.
-- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XX.X.X` folder.
+- Go to https://adoptium.net/temurin/releases/.
+- Select the latest release version, currently Java 20.
+- Download the archive or installer matching your system.
+- Extract or install the files in a convenient location.
+- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
 
 ### 1.2 Install `darts`
 
@@ -197,7 +197,7 @@ When left unspecified, the following options are set:
 - The [checkout finder type](#the-checkout-finder-type): descending.
 - The [output format](#the-output-format): Markdown.
 
-In other words, the command
+As such, the command
 
 ```shell
 darts checkouts 1 4
@@ -441,7 +441,7 @@ The output will look as follows:
 
 Here, header cell elements (`th`) are used for column headers and cells with scores in the first column.
 The header cells with scores span multiple rows to correspond to all checkouts of that score.
-All checkout table ingredients have their own CSS class for (potential) custom styling.
+All checkout table elements have their own CSS class for (potential) custom styling.
 Specifically, the following classes are used:
 
 - `h` for the header row;
@@ -454,6 +454,19 @@ Specifically, the following classes are used:
 - `m` for a cell in the multiplicity column.
 
 Of course, classes can be renamed or dropped at will after retrieving the HTML output.
+
+A command containing one or more of the following lines can be used to sanitize the HTML output:
+
+```shell
+darts checkouts -o html 1 4 \
+  `# Remove superfluous whitespace` \
+  | sed -r "s|> +|>|g" \
+  `# Remove all class attributes` \
+  | sed "s| class=\"\\w\"||g" \
+  `# Remove all span tags` \
+  | sed -r "s|</span><span( class=\"\\w\")?>| / |g" \
+  | sed -r "s|</?span( class=\"\\w\")?>||g"
+```
 
 ##### JSON
 
@@ -555,7 +568,7 @@ The resulting output shows there are six seven-dart checkouts for a score of 501
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard does not have a single bull or triples (see [Print a dartboard](#22-print-a-dartboard)).
+This dartboard does not have a single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -689,7 +702,7 @@ The Yorkshire board can be printed with the following command:
 darts boards yorkshire
 ```
 
-This dartboard has no single bull and no triples:
+This dartboard has no single bull and no triple fields:
 
 ```markdown
 |   S |   D |
@@ -782,7 +795,7 @@ This feature mainly exists for debugging purposes and is not discussed further h
 
 ### 2.3 Get help
 
-In addition to consulting this online documentation, requesting command-line help regarding `darts` is possible.
+In addition to consulting this online documentation, one can request command-line help from `darts` itself.
 
 To receive general information about `darts` or to see which subcommands are available, execute:
 
@@ -858,32 +871,44 @@ JAVA_HOME is not set and no 'java' command could be found in your PATH.
 JAVA_HOME is set to an invalid directory: ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 17+](#11-install-java-17).
+To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
 
 #### 3.1.3 The `darts` toolbox was not built
 
-While executing `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following errors:
 
 ```text
 Error: Could not find or load main class nl.mauritssilvis.darts.java.cli.DartsApp
 Caused by: java.lang.ClassNotFoundException: nl.mauritssilvis.darts.java.cli.DartsApp
 ```
 
-To solve this problem, [install](#12-install-darts) the `darts` toolbox.
+```text
+Error occurred during initialization of boot layer
+java.lang.module.FindException: Module nl.mauritssilvis.darts.java.cli not found
+```
+
+To solve these problems, [install](#12-install-darts) the `darts` toolbox.
 
 #### 3.1.4 Java is not up-to-date
 
-While executing `darts`, you may encounter the following error:
+While executing `darts`, you may encounter the following errors:
 
 ```text
 Error: LinkageError occurred while loading main class nl.mauritssilvis.darts.java.cli.DartsApp
         java.lang.UnsupportedClassVersionError: nl/mauritssilvis/darts/java/cli/DartsApp
         has been compiled by a more recent version of the Java Runtime (class
-        file version 61.0), this version of the Java Runtime only recognizes
-        class file versions up to XX.X
+        file version ...), this version of the Java Runtime only recognizes
+        class file versions up to ...
 ```
 
-To solve this problem, follow the instructions for [installing Java 17+](#11-install-java-17).
+```text
+Error occurred during initialization of boot layer
+java.lang.module.FindException: Error reading module: ...lib/java-darts-cli-....jar
+Caused by: java.lang.module.InvalidModuleDescriptorException: Unsupported
+major.minor version ...
+```
+
+To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
 
 #### 3.1.5 Installing `darts` failed
 
@@ -893,7 +918,7 @@ Such errors may contain a Gradle failure message like:
 ```text
 FAILURE: Build failed with an exception.
 ...
-BUILD FAILED in XXs
+BUILD FAILED in ...s
 ...
 ```
 
@@ -958,7 +983,7 @@ Unmatched argument at index 0: 'board'
 Unmatched argument at index 0: 'checkout'
 ```
 
-To solve this problem, use one of the existing subcommands of `darts`:
+To solve these problems, use one of the existing subcommands of `darts`:
 
 - `darts checkouts` for [generating a darts checkout table](#21-generate-a-darts-checkout-table).
 - `darts boards` for [printing a dartboard](#22-print-a-dartboard).

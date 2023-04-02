@@ -7,32 +7,32 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    alias(libs.plugins.io.github.gradle.nexus.publish.plugin)
 }
 
 group = "nl.mauritssilvis.darts.java"
-version = "0.6.0"
+version = libs.versions.java.darts.get()
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.26")
+    compileOnly(libs.lombok)
 
-    annotationProcessor("org.projectlombok:lombok:1.18.26")
+    annotationProcessor(libs.lombok)
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.2")
+    api(libs.java.darts.api)
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
 
-    api("nl.mauritssilvis.darts.java:java-darts-api:${project.version}")
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(20))
         vendor.set(JvmVendorSpec.ADOPTIUM)
     }
 
@@ -97,6 +97,10 @@ nexusPublishing {
 }
 
 tasks {
+    compileJava {
+        options.javaModuleVersion.set("${project.version}")
+    }
+
     test {
         useJUnitPlatform()
     }
@@ -113,4 +117,12 @@ tasks {
     javadoc {
         options.memberLevel = JavadocMemberLevel.PACKAGE
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType<Javadoc> {
+    options.encoding = "UTF-8"
 }

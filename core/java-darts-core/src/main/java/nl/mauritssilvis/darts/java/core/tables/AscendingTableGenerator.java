@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
  * {@code AscendingTable} objects.
  * <p>
  * Relevant design patterns: strategy, lazy initialization, immutable object,
- * static factory method.
+ * simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0

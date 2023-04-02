@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  * <p>
  * This command-line interface was implemented using picocli.
  * <p>
- * Relevant design patterns: static factory method, lazy initialization.
+ * Relevant design patterns: simple factory, lazy initialization.
  *
  * @author Maurits Silvis
  * @since 0.1.0
@@ -51,7 +51,8 @@ import java.io.PrintWriter;
         commandListHeading = "%nCommands:%n",
         footerHeading = "%n",
         footer = {
-                "Online documentation: https://github.com/mauritssilvis/darts/tree/main/cli/java-darts-cli",
+                "Online documentation:",
+                "  https://mauritssilvis.nl/darts/cli/java-darts-cli",
                 "",
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"

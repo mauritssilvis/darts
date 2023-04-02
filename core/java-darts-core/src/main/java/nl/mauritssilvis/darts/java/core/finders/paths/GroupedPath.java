@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
  * sequences of integer steps, namely, one for each permutation of the grouped
  * elements.
  * <p>
- * Relevant design patterns: immutable object, static factory method.
+ * Relevant design patterns: immutable object, simple factory.
  *
  * @author Maurits Silvis
  * @since 0.5.0
