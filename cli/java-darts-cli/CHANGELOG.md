@@ -11,8 +11,8 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dependencies
 
-- Update the Gradle version to 8.1-RC-3.
-- Update the picocli version to 4.7.3.
+- Update the Gradle version from 8.1-RC-2 to 8.1-RC-3.
+- Update the picocli version from 4.7.1 to 4.7.2.
 
 ## [0.7.0] - 2023-04-02
 
@@ -20,8 +20,8 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dependencies
 
-- Update the Java version to 20.
-- Update the Gradle version to 8.1-RC2.
+- Update the Java version from 17 to 20.
+- Update the Gradle version from 8.0.2 to 8.1-RC-2.
 
 ## [0.6.0] - 2023-03-20
 
@@ -89,9 +89,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dependencies
 
-- Update the Gradle version to 8.0.2.
-- Update the Lombok version to 1.18.26.
-- Update the JUnit version to 5.9.2.
+- Update the Gradle version from 8.0 to 8.0.2.
+- Update the Lombok version from 1.18.24 to 1.18.26.
+- Update the JUnit version from 5.9.1 to 5.9.2.
 
 ### Removed
 
