@@ -6,7 +6,9 @@ io-github-gradle-nexus-publish-plugin = { id = "io.github.gradle-nexus.publish-p
 
 [versions]
 
-java-darts = "0.7.0"
+java-jdk = "20"
+
+java-darts = "0.7.1"
 
 junit-jupiter = "5.9.2"
 

@@ -5,14 +5,28 @@ All notable changes to the `java-darts-core` project (see [darts](https://github
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2023-04-10
+
+### Changed
+
+#### Dependencies
+
+- Update the Gradle version from 8.1-RC-2 to 8.1-RC-3.
+
+### Fixed
+
+#### Dependencies
+
+- Fix the line endings of the build batch script.
+
 ## [0.7.0] - 2023-04-02
 
 ### Changed
 
 #### Dependencies
 
-- Update the Java version to 20.
-- Update the Gradle version to 8.1-RC2.
+- Update the Java version from 17 to 20.
+- Update the Gradle version from 8.0.2 to 8.1-RC-2.
 
 ## [0.6.0] - 2023-03-20
 

@@ -5,14 +5,33 @@ All notable changes to the `java-darts-cli` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.1] - 2023-04-10
+
+### Changed
+
+#### Dependencies
+
+- Update the Gradle version from 8.1-RC-2 to 8.1-RC-3.
+- Update the picocli version from 4.7.1 to 4.7.2.
+
+### Fixed
+
+#### Installation
+
+- Fix the line endings of the installation batch script.
+
+#### Dependencies
+
+- Fix the line endings of the build batch script.
+
 ## [0.7.0] - 2023-04-02
 
 ### Changed
 
 #### Dependencies
 
-- Update the Java version to 20.
-- Update the Gradle version to 8.1-RC2.
+- Update the Java version from 17 to 20.
+- Update the Gradle version from 8.0.2 to 8.1-RC-2.
 
 ## [0.6.0] - 2023-03-20
 
@@ -80,9 +99,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dependencies
 
-- Update the Gradle version to 8.0.2.
-- Update the Lombok version to 1.18.26.
-- Update the JUnit version to 5.9.2.
+- Update the Gradle version from 8.0 to 8.0.2.
+- Update the Lombok version from 1.18.24 to 1.18.26.
+- Update the JUnit version from 5.9.1 to 5.9.2.
 
 ### Removed
 
