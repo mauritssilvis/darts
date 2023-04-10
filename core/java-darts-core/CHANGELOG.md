@@ -13,6 +13,12 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Update the Gradle version from 8.1-RC-2 to 8.1-RC-3.
 
+### Fixed
+
+#### Dependencies
+
+- Fix the line endings of the build batch script.
+
 ## [0.7.0] - 2023-04-02
 
 ### Changed
