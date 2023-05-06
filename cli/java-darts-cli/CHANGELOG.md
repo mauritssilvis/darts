@@ -5,6 +5,16 @@ All notable changes to the `java-darts-cli` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.2] - 2023-05-06
+
+### Changed
+
+#### Dependencies
+
+- Update the Gradle version from 8.1-RC-3 to 8.1.1.
+- Update the picocli version from 4.7.2 to 4.7.3.
+- Update the JUnit version from 5.9.2 to 5.9.3.
+
 ## [0.7.1] - 2023-04-10
 
 ### Changed
