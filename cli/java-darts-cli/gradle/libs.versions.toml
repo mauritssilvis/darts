@@ -10,19 +10,21 @@ java-jdk = "20"
 
 java-darts = "0.7.2-SNAPSHOT"
 
+picocli = "4.7.3"
+
 junit-jupiter = "5.9.3"
 
 [libraries]
 
 lombok = "org.projectlombok:lombok:1.18.26"
 
-picocli-codegen = "info.picocli:picocli-codegen:4.7.3"
+picocli-codegen = { group = "info.picocli", name = "picocli-codegen", version.ref = "picocli" }
 
 java-darts-api = { group = "nl.mauritssilvis.darts.java", name = "java-darts-api", version.ref = "java-darts" }
 
 java-darts-core = { group = "nl.mauritssilvis.darts.java", name = "java-darts-core", version.ref = "java-darts" }
 
-picocli = "info.picocli:picocli:4.7.3"
+picocli = { group = "info.picocli", name = "picocli", version.ref = "picocli" }
 
 junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit-jupiter" }
 
