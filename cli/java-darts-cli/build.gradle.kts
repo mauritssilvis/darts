@@ -30,6 +30,7 @@ dependencies {
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.params)
 
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
