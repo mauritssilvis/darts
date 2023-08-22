@@ -16,7 +16,7 @@ junit-jupiter = "5.9.3"
 
 [libraries]
 
-lombok = "org.projectlombok:lombok:1.18.26"
+lombok = "org.projectlombok:lombok:1.18.28"
 
 picocli-codegen = { group = "info.picocli", name = "picocli-codegen", version.ref = "picocli" }
 
