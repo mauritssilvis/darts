@@ -12,7 +12,7 @@ java-darts = "0.7.3-SNAPSHOT"
 
 picocli = "4.7.3"
 
-junit-jupiter = "5.9.3"
+junit-jupiter = "5.10.0"
 
 [libraries]
 
