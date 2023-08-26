@@ -19,7 +19,7 @@ Additionally, `darts` lets you:
 
 The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
-If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables).
+If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables/md-darts-tables).
 
 ## 1. Installation
 
