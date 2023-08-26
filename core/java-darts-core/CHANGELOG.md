@@ -5,6 +5,18 @@ All notable changes to the `java-darts-core` project (see [darts](https://github
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+#### Dependencies
+
+- Update the Gradle version from 8.1.1 to 8.3.
+- Update the Foojay resolver convention version from 0.4.0 to 0.7.0.
+- Update the refreshVersions version from 0.51 to 0.60.
+- Update the Lombok version from 1.18.26 to 1.18.28.
+- Update the JUnit version from 5.9.3 to 5.10.0.
+
 ## [0.7.2] - 2023-05-06
 
 ### Changed
