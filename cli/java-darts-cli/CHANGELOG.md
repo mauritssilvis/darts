@@ -15,7 +15,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Update the Foojay resolver convention version from 0.4.0 to 0.7.0.
 - Update the refreshVersions version from 0.51 to 0.60.
 - Update the Lombok version from 1.18.26 to 1.18.28.
-- Update the picocli version from 4.7.3 to 4.7.4.
+- Update the picocli version from 4.7.3 to 4.7.5.
 - Update the JUnit version from 5.9.3 to 5.10.0.
 
 ## [0.7.2] - 2023-05-06

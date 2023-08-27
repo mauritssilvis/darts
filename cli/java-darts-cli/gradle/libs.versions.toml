@@ -10,7 +10,7 @@ java-jdk = "20"
 
 java-darts = "0.7.3-SNAPSHOT"
 
-picocli = "4.7.4"
+picocli = "4.7.5"
 
 junit-jupiter = "5.10.0"
 
