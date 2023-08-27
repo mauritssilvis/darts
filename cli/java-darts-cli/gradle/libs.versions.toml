@@ -8,15 +8,15 @@ io-github-gradle-nexus-publish-plugin = { id = "io.github.gradle-nexus.publish-p
 
 java-jdk = "20"
 
-java-darts = "0.7.2"
+java-darts = "0.7.3"
 
-picocli = "4.7.3"
+picocli = "4.7.5"
 
-junit-jupiter = "5.9.3"
+junit-jupiter = "5.10.0"
 
 [libraries]
 
-lombok = "org.projectlombok:lombok:1.18.26"
+lombok = "org.projectlombok:lombok:1.18.28"
 
 picocli-codegen = { group = "info.picocli", name = "picocli-codegen", version.ref = "picocli" }
 
@@ -31,3 +31,5 @@ junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", v
 junit-jupiter-params = { group = "org.junit.jupiter", name = "junit-jupiter-params", version.ref = "junit-jupiter" }
 
 junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit-jupiter" }
+
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }

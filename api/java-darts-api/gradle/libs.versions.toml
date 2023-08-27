@@ -8,8 +8,8 @@ io-github-gradle-nexus-publish-plugin = { id = "io.github.gradle-nexus.publish-p
 
 java-jdk = "20"
 
-java-darts = "0.7.2"
+java-darts = "0.7.3"
 
 [libraries]
 
-lombok = "org.projectlombok:lombok:1.18.26"
+lombok = "org.projectlombok:lombok:1.18.28"
