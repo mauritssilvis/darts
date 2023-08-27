@@ -5,6 +5,14 @@ All notable changes to the `java-darts-api` project (see [darts](https://github.
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+#### Documentation
+
+- Change the release name.
+
 ## [0.7.3] - 2023-08-27
 
 ### Changed
