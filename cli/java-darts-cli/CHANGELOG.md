@@ -78,23 +78,23 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dartboards
 
-- Move the dartboard API to the Java darts API project.
-- Move the dartboard implementations and serializers to the Java darts core project.
+- Move the dartboard API to the [Java darts API](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api) project.
+- Move the dartboard implementations and serializers to the [Java darts core](https://github.com/mauritssilvis/darts/tree/main/core/java-darts-core) project.
 
 #### Pathfinders
 
-- Move the pathfinder API to the Java darts API project.
-- Move the pathfinder implementations to the Java darts core project.
+- Move the pathfinder API to the [Java darts API](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api) project.
+- Move the pathfinder implementations to the [Java darts core](https://github.com/mauritssilvis/darts/tree/main/core/java-darts-core) project.
 
 #### Checkout finders
 
-- Move the checkout finder API to the Java darts API project.
-- Move the checkout finder implementations to the Java darts core project.
+- Move the checkout finder API to the [Java darts API](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api) project.
+- Move the checkout finder implementations to the [Java darts core](https://github.com/mauritssilvis/darts/tree/main/core/java-darts-core) project.
 
 #### Checkout tables
 
-- Move the checkout table API to the Java darts API project.
-- Move the checkout table implementations and serializers to the Java darts core project.
+- Move the checkout table API to the [Java darts API](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api) project.
+- Move the checkout table implementations and serializers to the [Java darts core](https://github.com/mauritssilvis/darts/tree/main/core/java-darts-core) project.
 
 ## [0.4.0] - 2023-03-18
 
