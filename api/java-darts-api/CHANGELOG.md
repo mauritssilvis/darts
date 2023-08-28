@@ -1,9 +1,17 @@
 # Changelog
 
-All notable changes to the `java-darts-api` project (see [darts](https://github.com/mauritssilvis/darts) > [APIs](https://github.com/mauritssilvis/darts/tree/main/api) > [Java](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api)) are documented in this file.
+All notable changes to the [Java darts API](https://github.com/mauritssilvis/darts/tree/main/api/java-darts-api) project are documented in this file.
 
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.8.0] - 2023-08-28
+
+### Changed
+
+#### Documentation
+
+- Change the release name.
 
 ## [0.7.3] - 2023-08-27
 
