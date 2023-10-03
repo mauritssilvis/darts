@@ -12,4 +12,4 @@ java-darts = "0.8.0"
 
 [libraries]
 
-lombok = "org.projectlombok:lombok:1.18.28"
+lombok = "org.projectlombok:lombok:1.18.30"

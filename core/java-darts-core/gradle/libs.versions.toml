@@ -14,7 +14,7 @@ junit-jupiter = "5.10.0"
 
 [libraries]
 
-lombok = "org.projectlombok:lombok:1.18.28"
+lombok = "org.projectlombok:lombok:1.18.30"
 
 java-darts-api = { group = "nl.mauritssilvis.darts.java", name = "java-darts-api", version.ref = "java-darts" }
 
