@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line interface for `darts` , a computational toolbox aimed at the game of darts.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line interface for `darts`, a computational toolbox aimed at the game of darts.
 This command-line interface, referred to as `darts` in what follows, can be used to:
 
 - Determine all possible darts checkouts.
