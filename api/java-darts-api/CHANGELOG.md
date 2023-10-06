@@ -21,7 +21,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 - Update the Gradle version from 8.1.1 to 8.3.
 - Update the Foojay resolver convention version from 0.4.0 to 0.7.0.
-- Update the refreshVersions version from 0.51 to 0.60.
+- Update the refreshVersions version from 0.51.0 to 0.60.0.
 - Update the Lombok version from 1.18.26 to 1.18.28.
 
 ## [0.7.2] - 2023-05-06
