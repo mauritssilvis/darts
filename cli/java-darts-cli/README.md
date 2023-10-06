@@ -27,14 +27,16 @@ If you would like to explore extensive checkout tables for different types of da
 
 To use `darts`, you have to execute the following steps.
 
-### 1.1 Install Java 20+
+### 1.1 Install Java 21+
 
-`darts` requires the installation of Java 20 or higher.
+`darts` requires the installation of Java 21 or higher.
+
+<!-- TODO: Wait for Eclipse to release its JDK 21. -->
 
 You can install the latest version of Java as follows:
 
 - Go to https://adoptium.net/temurin/releases/.
-- Select the latest release version, currently Java 20.
+- Select the latest release version, currently Java 21.
 - Download the archive or installer matching your system.
 - Extract or install the files in a convenient location.
 - Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
@@ -873,7 +875,7 @@ JAVA_HOME is not set and no 'java' command could be found in your PATH.
 JAVA_HOME is set to an invalid directory: ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
+To solve these problems, follow the instructions for [installing Java 21+](#11-install-java-21).
 
 #### 3.1.3 The `darts` toolbox was not built
 
@@ -910,7 +912,7 @@ Caused by: java.lang.module.InvalidModuleDescriptorException: Unsupported
 major.minor version ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
+To solve these problems, follow the instructions for [installing Java 21+](#11-install-java-21).
 
 #### 3.1.5 Installing `darts` failed
 
