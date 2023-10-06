@@ -5,6 +5,17 @@ All notable changes to the [Java darts core](https://github.com/mauritssilvis/da
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+#### Dependencies
+
+- Update the Java version from 20 to 21.
+- Update the Gradle version from 8.3 to 8.4.
+- Update the refreshVersions version from 0.60.0 to 0.60.3.
+- Update the Lombok version from 1.18.28 to 1.18.30.
+
 ## [0.8.0] - 2023-08-28
 
 ### Changed
