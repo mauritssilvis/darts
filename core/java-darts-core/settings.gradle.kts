@@ -15,4 +15,3 @@ val apiDir = "../../api/java-darts-api"
 if (file(apiDir).isDirectory) {
     includeBuild(apiDir)
 }
-

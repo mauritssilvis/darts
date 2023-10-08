@@ -9,4 +9,3 @@ plugins {
 }
 
 rootProject.name = "java-darts-api"
-
