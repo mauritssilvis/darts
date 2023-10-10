@@ -36,7 +36,7 @@ To use `darts`, you have to execute the following steps.
 You can install the latest version of Java as follows:
 
 - Go to https://adoptium.net/temurin/releases/.
-- Select the latest release version, currently Java 21.
+- Select the latest long-term support (LTS) version of Java, currently Java 21.
 - Download the archive or installer matching your system.
 - Extract or install the files in a convenient location.
 - Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
