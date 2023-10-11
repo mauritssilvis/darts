@@ -26,8 +26,7 @@ dependencies {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(libs.versions.java.jdk.get()))
-        // TODO: Reset to JvmVendorSpec.ADOPTIUM
-        vendor.set(JvmVendorSpec.ORACLE)
+        vendor.set(JvmVendorSpec.ADOPTIUM)
     }
 
     withSourcesJar()
