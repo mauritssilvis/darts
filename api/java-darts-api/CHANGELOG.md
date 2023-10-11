@@ -9,6 +9,10 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+#### Documentation
+
+- Improve the project documentation.
+
 #### Dependencies
 
 - Update the Java version from 20 to 21.
