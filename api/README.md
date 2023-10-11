@@ -1,4 +1,4 @@
-# APIs
+# darts APIs
 
 > APIs for the `darts` toolbox
 

@@ -1,4 +1,4 @@
-# CLIs
+# darts CLIs
 
 > Command-line interfaces for the `darts` toolbox
 

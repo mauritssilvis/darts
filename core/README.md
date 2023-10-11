@@ -1,4 +1,4 @@
-# Core
+# darts core
 
 > Implementations of the `darts` toolbox
 
