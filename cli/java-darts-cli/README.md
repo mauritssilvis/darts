@@ -613,9 +613,8 @@ The resulting (truncated) checkout table is:
 ##### The checkout finder type
 
 By default, the `darts checkouts` subcommand uses an optimized descending checkout finder.
-The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
-In rare cases, you may want to change the checkout finder.
-To that end, use the `-f` or `--finder` option, which supports the following values:
+The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method to find checkouts and sorts results differently.
+If you want to change the checkout finder, use the `-f` or `--finder` option, which supports the following values:
 
 - `descending` for an optimized descending checkout finder (default);
 - `Cartesian` for a brute-force [Cartesian](#cartesian) checkout finder.
@@ -645,11 +644,14 @@ The resulting checkout table looks as follows:
 |       |  19 |  D1 |  1 |
 ```
 
-In checkout tables generated using the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
+Checkout tables generated using the Cartesian checkout finder look different than tables produced by the (default) descending checkout finder.
+With the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
 Additionally, checkouts are not summarized.
 That is, each possible checkout is represented using its own row.
 Consequently, checkout tables can become very long when many checkouts exist.
-Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than five darts.
+
+The Cartesian checkout finder looks for checkouts with a brute-force method that scans all possible combinations of available dartboard fields.
+Therefore, this checkout finder tends to be slow for scores that require more than five darts.
 
 ### 2.2 Print a dartboard
 
