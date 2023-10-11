@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) project provides application programming interfaces (APIs) for `darts`, a computational toolbox aimed at the game of darts.
+This part of the [darts](..) project provides application programming interfaces (APIs) for `darts`, a computational toolbox aimed at the game of darts.
 
 ## Overview
 
