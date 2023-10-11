@@ -17,7 +17,7 @@ Additionally, this implementation lets you:
 - Set the number of darts.
 - Pick the output format.
 
-To explore the Java implementation of `darts`, dive into the code.
+To explore the Java implementation of `darts`, dive into the [code](src).
 Alternatively, you can download the latest Java darts core release from https://github.com/mauritssilvis/darts/releases.
 The release history of the Java darts core project is contained in the [changelog](CHANGELOG.md).
 
