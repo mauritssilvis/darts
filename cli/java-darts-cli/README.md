@@ -31,8 +31,6 @@ To use `darts`, you have to execute the following steps.
 
 `darts` requires the installation of Java 21 or higher.
 
-<!-- TODO: Wait for Eclipse to release its JDK 21. -->
-
 You can install the latest version of Java as follows:
 
 - Go to https://adoptium.net/temurin/releases/.
