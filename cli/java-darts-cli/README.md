@@ -258,7 +258,7 @@ Single final scores are accepted with the selected checkout mode, and a finish o
 
 ##### Master out
 
-To allow for master, i.e., double or triple, checkouts, use a command like:
+To select master, i.e., double or triple, checkouts, use a command like:
 
 ```shell
 darts checkouts -j master 20 21
@@ -470,9 +470,25 @@ darts checkouts -o html 1 4 \
   | sed -r "s|</?span( class=\"\\w\")?>||g"
 ```
 
+This command has the following output:
+
+```html
+<table>
+  <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
+  <tr><th rowspan="1" scope="rowgroup">1</th><td>*</td><td>*</td><td>0</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">2</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>D1</td><td>-</td><td>1</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">3</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>1</td><td>D1</td><td>1</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">4</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>D2</td><td>-</td><td>1</td></tr>
+</table>
+```
+
 ##### JSON
 
-To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
+Markdown and HTML output aren't very suitable for computer processing.
+To instead obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
 darts checkouts -o json 1 4
