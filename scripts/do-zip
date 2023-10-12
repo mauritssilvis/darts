@@ -32,14 +32,18 @@ fi
 # shellcheck source=java-darts-properties
 . "./${id}-properties"
 
+# Process the version
+version_label=$(echo ${version,,} | tr " " "-")
+
 # Clone repository
 cd ..
-git clone . "../darts-${version}" 2>/dev/null
-cd "../darts-${version}" || exit
+git clone . "../${label}-${version_label}" 2>/dev/null
+cd "../${label}-${version_label}" || exit
 
 # Clean up
 rm -rf .git
 rm -rf scripts
+rm -f .gitattributes
 find . -maxdepth 1 -name "*.md" -delete
 
 for i in "${!other_files[@]}"; do
@@ -54,7 +58,7 @@ for i in "${!labels[@]}"; do
     label="${labels[i]}"
     project="${label_prefix}-${label}"
     path="${label}/${project}"
-    file="${project}-${version}"
+    file="${project}-${version_label}"
 
     mv "${path}" "${project}" 2>/dev/null
     rm -rf "${label}"

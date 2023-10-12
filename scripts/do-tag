@@ -33,9 +33,12 @@ fi
 # shellcheck source=java-darts-properties
 . "./${id}-properties"
 
+# Process the version
+version_label=$(echo ${version,,} | tr " " "-")
+
 # Tag
 for i in "${!names[@]}"; do
     message="${name_prefix} ${names[i]} ${version}"
-    tag="${label_prefix}-${labels[i]}-${version}"
+    tag="${label_prefix}-${labels[i]}-${version_label}"
     git tag -am "${message}" "${tag}"
 done
