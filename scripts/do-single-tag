@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Check project identifier
+if [ $# -eq 0 ] || [ "${1}" = "" ]; then
+    echo "Error: No project identifier supplied."
+    exit
+fi
+
+id=${1}
+
+if [ ! -f "${id}-properties" ]; then
+    echo "Error: No properties found for project identifier ${id}."
+    exit
+fi
+
+# Check version
+if [ $# -eq 0 ] || [ "${2}" = "" ]; then
+    echo "Error: No version supplied."
+    exit
+fi
+
+version=${2}
+
+# Check branch
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "${branch}" != "main" ]; then
+    echo "Error: Not on main branch."
+    exit
+fi
+
+# Get properties
+# shellcheck source=java-darts-properties
+. "./${id}-properties"
+
+# Tag
+message="${name} ${version}"
+tag="${label}-${version}"
+git tag -am "${message}" "${tag}"

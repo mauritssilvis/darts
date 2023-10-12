@@ -1,6 +1,12 @@
 #!/bin/sh
 
-# Project names
+# Project name
+name="Java darts"
+
+# Project label
+label="java-darts"
+
+# Subproject names
 name_prefix="Java darts"
 
 names=(
@@ -9,7 +15,7 @@ names=(
     "CLI"
 )
 
-# Project labels
+# Subproject labels
 label_prefix="java-darts"
 
 labels=(

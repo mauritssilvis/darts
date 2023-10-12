@@ -4,4 +4,4 @@
 id="java-darts"
 
 # Tag
-./do-tag "${id}" "${1}"
+./do-single-tag "${id}" "${1}"
