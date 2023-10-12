@@ -875,7 +875,7 @@ darts checkouts
 
 Otherwise, execute `darts help checkouts`, `darts checkouts -h` or `darts checkouts --help`.
 
-The corresponding output looks as follows:
+The corresponding (truncated) output looks as follows:
 
 ```text
 Generate a darts checkout table.
@@ -940,7 +940,7 @@ darts boards
 
 It is also possible to run `darts help boards`, `darts boards -h` or `darts boards --help`.
 
-These commands return the following output:
+These commands return the following (truncated) output:
 
 ```text
 Print a dartboard.
