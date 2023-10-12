@@ -161,7 +161,7 @@ Note that a single 3 and a triple 1 (T1) have the same score.
 By default, these fields are listed together, and their row has a multiplicity of two.
 In other words, this row represents two checkouts.
 With the default configuration, checkouts for a given score are sorted in descending order.
-That is, checkouts that start with high-value fields are listed before checkouts that start with lower scores.
+That is, for a given score, checkouts that start with high-value fields are listed before checkouts that start with lower scores.
 
 The `darts` toolbox can also generate a checkout table for a single score.
 For example, to find 501-point checkouts, pass the same value as the minimum and maximum score:
