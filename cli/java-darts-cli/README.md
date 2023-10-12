@@ -37,7 +37,7 @@ You can install the latest version of Java as follows:
 - Select the latest long-term support (LTS) version of Java, currently Java 21.
 - Download the archive or installer matching your system.
 - Extract or install the files in a convenient location.
-- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
+- Set the `JAVA_HOME` environment variable to the full path of the created `jdk-X+Y` folder. Here, `X` and `Y` are placeholders for version numbers.
 
 ### 1.2 Install `darts`
 
