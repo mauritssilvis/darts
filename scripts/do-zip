@@ -60,6 +60,7 @@ for i in "${!labels[@]}"; do
     file="${project}-${version_label}"
 
     mv "${path}" "${project}" 2>/dev/null
+    rm -f .gitattributes
     rm -rf "${label}"
     rm -rf "${project}/.idea"
 
