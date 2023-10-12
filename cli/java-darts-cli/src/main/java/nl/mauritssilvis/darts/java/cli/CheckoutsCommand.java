@@ -48,7 +48,7 @@ import picocli.CommandLine.Model.CommandSpec;
         footerHeading = "%n",
         footer = {
                 "Online documentation:",
-                "  https://mauritssilvis.nl/darts/cli/java-darts-cli",
+                "  https://mauritssilvis.nl/software/darts/cli/java-darts-cli",
                 "",
                 "Copyright © 2023 Maurits Silvis",
                 "SPDX-License-Identifier: GPL-3.0-or-later"

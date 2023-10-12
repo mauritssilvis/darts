@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This part of the [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line interface for `darts` , a computational toolbox aimed at the game of darts.
+This part of the [darts](https://github.com/mauritssilvis/darts) > [CLIs](https://github.com/mauritssilvis/darts/tree/main/cli) project provides a Java-based command-line interface for `darts`, a computational toolbox aimed at the game of darts.
 This command-line interface, referred to as `darts` in what follows, can be used to:
 
 - Determine all possible darts checkouts.
@@ -27,17 +27,17 @@ If you would like to explore extensive checkout tables for different types of da
 
 To use `darts`, you have to execute the following steps.
 
-### 1.1 Install Java 20+
+### 1.1 Install Java 21+
 
-`darts` requires the installation of Java 20 or higher.
+`darts` requires the installation of Java 21 or higher.
 
 You can install the latest version of Java as follows:
 
 - Go to https://adoptium.net/temurin/releases/.
-- Select the latest release version, currently Java 20.
+- Select the latest long-term support (LTS) version of Java, currently Java 21.
 - Download the archive or installer matching your system.
 - Extract or install the files in a convenient location.
-- Set the `JAVA_HOME` environment variable to the full path of the extracted `jdk-XY+Z` folder.
+- Set the `JAVA_HOME` environment variable to the full path of the created `jdk-X+Y` folder. Here, `X` and `Y` are placeholders for version numbers.
 
 ### 1.2 Install `darts`
 
@@ -158,8 +158,10 @@ This table, which is truncated for brevity, looks as follows:
 ```
 
 Note that a single 3 and a triple 1 (T1) have the same score.
-Therefore, these fields are listed together, and their row has a multiplicity of two.
+By default, these fields are listed together, and their row has a multiplicity of two.
 In other words, this row represents two checkouts.
+With the default configuration, checkouts for a given score are sorted in descending order.
+That is, for a given score, checkouts that start with higher throws are listed before checkouts that start with lower scores.
 
 The `darts` toolbox can also generate a checkout table for a single score.
 For example, to find 501-point checkouts, pass the same value as the minimum and maximum score:
@@ -258,7 +260,7 @@ Single final scores are accepted with the selected checkout mode, and a finish o
 
 ##### Master out
 
-To allow for master, i.e., double or triple, checkouts, use a command like:
+To select master, i.e., double or triple, checkouts, use a command like:
 
 ```shell
 darts checkouts -j master 20 21
@@ -349,12 +351,12 @@ This option takes a non-negative integer as a parameter:
 Two different throw modes can be used if the number of throws is fixed.
 These throw modes are represented by the two values the `-m` and `--throw-mode` options can take:
 
-- `optimal` for finding all [optimal](#optimal) checkouts (default);
+- `optimal` for finding only [optimal](#optimal) checkouts (default);
 - `fixed` for finding [all](#fixed) checkouts for a given number of throws.
 
 ##### Optimal
 
-To look for all *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
+To find only the *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
 The throw mode will then take its default value, `optimal`.
 For example:
 
@@ -374,7 +376,7 @@ The resulting output is as follows:
 |     4 |  * |  * | 0 |
 ```
 
-Here, only the checkouts that require a minimum of two darts are found.
+Here, only the checkouts that require two darts are found.
 Scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
@@ -470,8 +472,24 @@ darts checkouts -o html 1 4 \
   | sed -r "s|</?span( class=\"\\w\")?>||g"
 ```
 
+This command has the following output:
+
+```html
+<table>
+  <tr><th>Score</th><th>1</th><th>2</th><th>#</th></tr>
+  <tr><th rowspan="1" scope="rowgroup">1</th><td>*</td><td>*</td><td>0</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">2</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>D1</td><td>-</td><td>1</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">3</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>1</td><td>D1</td><td>1</td></tr>
+  <tr><th rowspan="2" scope="rowgroup">4</th><td>*</td><td>*</td><td>1</td></tr>
+  <tr><td>D2</td><td>-</td><td>1</td></tr>
+</table>
+```
+
 ##### JSON
 
+Markdown and HTML tables aren't very suitable for computer processing.
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
@@ -558,7 +576,7 @@ The following command can be used to generate a checkout table for a double-out 
 darts checkouts -b quadro 501 501
 ```
 
-The resulting output shows there are six seven-dart checkouts for a score of 501 points:
+The resulting output shows there are six seven-dart checkouts with a Quadro board for a score of 501 points:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
@@ -597,9 +615,8 @@ The resulting (truncated) checkout table is:
 ##### The checkout finder type
 
 By default, the `darts checkouts` subcommand uses an optimized descending checkout finder.
-The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method that scans all possible combinations of available dartboard fields.
-In rare cases, you may want to change the checkout finder.
-To that end, use the `-f` or `--finder` option, which supports the following values:
+The `darts` toolbox, however, also provides a Cartesian checkout finder, which uses a brute-force method to find checkouts and sorts results differently.
+If you want to change the checkout finder, use the `-f` or `--finder` option, which supports the following values:
 
 - `descending` for an optimized descending checkout finder (default);
 - `Cartesian` for a brute-force [Cartesian](#cartesian) checkout finder.
@@ -629,11 +646,14 @@ The resulting checkout table looks as follows:
 |       |  19 |  D1 |  1 |
 ```
 
-In checkout tables generated using the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
+Checkout tables generated using the Cartesian checkout finder look different than tables produced by the descending checkout finder.
+With the Cartesian checkout finder, checkouts for a given score are sorted by throw score (in ascending order) and type (single, double, triple, quadruple).
 Additionally, checkouts are not summarized.
 That is, each possible checkout is represented using its own row.
 Consequently, checkout tables can become very long when many checkouts exist.
-Moreover, the brute-force search method used by the Cartesian checkout finder tends to be slow for scores that require more than five darts.
+
+The Cartesian checkout finder looks for checkouts with a brute-force method that scans all possible combinations of available dartboard fields.
+Therefore, this checkout finder tends to be slow for scores that require more than five darts.
 
 ### 2.2 Print a dartboard
 
@@ -797,7 +817,9 @@ This feature mainly exists for debugging purposes and is not discussed further h
 
 ### 2.3 Get help
 
-In addition to consulting this online documentation, one can request command-line help from `darts` itself.
+In addition to consulting the [online documentation](https://mauritssilvis.nl/software/darts/cli/java-darts-cli), one can request command-line help from `darts` itself.
+
+#### 2.3.1 General command-line help
 
 To receive general information about `darts` or to see which subcommands are available, execute:
 
@@ -807,6 +829,44 @@ darts
 
 Alternatively, run any of the following commands: `darts help`, `darts -h` or `darts --help`.
 
+`darts` then returns the following information:
+
+```text
+darts -- A computational toolbox aimed at the game of darts
+
+Usage: darts [-hV] [COMMAND]
+
+Determine all possible darts checkouts and generate checkout tables for any
+range of scores.
+
+  darts checkouts 20 21
+  darts checkouts -i double -j double 501 501
+  darts checkouts -o html 1 4
+  darts checkouts -b quadro 901 901
+
+Print one of the supported dartboards.
+
+  darts boards london
+  darts boards -o json quadro
+
+Options:
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+
+Commands:
+  help       Display help information about the specified command.
+  boards     Print a dartboard.
+  checkouts  Generate a darts checkout table.
+
+Online documentation:
+  https://mauritssilvis.nl/software/darts/cli/java-darts-cli
+
+Copyright © 2023 Maurits Silvis
+SPDX-License-Identifier: GPL-3.0-or-later
+```
+
+#### 2.3.2 `darts checkouts` command-line help
+
 You can receive help with the `darts checkouts` subcommand by executing:
 
 ```shell
@@ -815,6 +875,63 @@ darts checkouts
 
 Otherwise, execute `darts help checkouts`, `darts checkouts -h` or `darts checkouts --help`.
 
+The corresponding (truncated) output looks as follows:
+
+```text
+Generate a darts checkout table.
+
+Usage: darts checkouts [-hV] [-b=<board>] [-i=<check-in>] [-j=<checkout>]
+                       [-n=<throws>] [-m=<throw mode>] [-f=<finder>]
+                       [-o=<output>] <minimum> <maximum>
+
+Determine all possible darts checkouts and generate checkout tables for any
+range of scores.
+
+  darts checkouts 20 21
+  darts checkouts -i double -j double 501 501
+  darts checkouts -o html 1 4
+  darts checkouts -b quadro 901 901
+
+Parameters:
+      <minimum>           The minimum score that should be part of the checkout
+                            table.
+      <maximum>           The maximum score that should be part of the checkout
+                            table.
+
+Options:
+  -b, --board=<board>     The dartboard type. Supported values: London, Quadro,
+                            Yorkshire.
+                            Default: London
+  -f, --finder=<finder>   The checkout finder type. Supported values:
+                            descending, Cartesian.
+                            Default: descending
+  -h, --help              Show this help message and exit.
+  -i, --check-in=<check-in>
+                          The check-in mode. Supported values: any, master,
+                            double.
+                            Default: any
+  -j, --checkout=<checkout>
+                          The checkout mode. Supported values: any, master,
+                            double.
+                            Default: double
+  -m, --throw-mode=<throw mode>
+                          The throw mode. Supported values: optimal, fixed. The
+                            latter value only applies when the number of throws
+                            is fixed.
+                            Default: optimal
+  -n, --throws=<throws>   The number of throws. Set this value if you want to
+                            find checkouts with a fixed number of throws.
+                            Default: 0
+  -o, --output=<output>   The output format. Supported values: Markdown, JSON,
+                            HTML, string.
+                            Default: Markdown
+  -V, --version           Print version information and exit.
+
+...
+```
+
+#### 2.3.3 `darts boards` command-line help
+
 The `darts boards` subcommand returns help when it is not passed (valid) parameters:
 
 ```shell
@@ -822,6 +939,32 @@ darts boards
 ```
 
 It is also possible to run `darts help boards`, `darts boards -h` or `darts boards --help`.
+
+These commands return the following (truncated) output:
+
+```text
+Print a dartboard.
+
+Usage: darts boards [-hV] [-o=<output>] <board>
+
+Print one of the supported dartboards.
+
+  darts boards london
+  darts boards -o json quadro
+
+Parameters:
+      <board>             The dartboard type. Supported values: London, Quadro,
+                            Yorkshire.
+
+Options:
+  -h, --help              Show this help message and exit.
+  -o, --output=<output>   The output format. Supported values: Markdown, JSON,
+                            HTML, string.
+                            Default: Markdown
+  -V, --version           Print version information and exit.
+
+...
+```
 
 ## 3. Troubleshooting
 
@@ -873,7 +1016,7 @@ JAVA_HOME is not set and no 'java' command could be found in your PATH.
 JAVA_HOME is set to an invalid directory: ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
+To solve these problems, follow the instructions for [installing Java 21+](#11-install-java-21).
 
 #### 3.1.3 The `darts` toolbox was not built
 
@@ -910,7 +1053,7 @@ Caused by: java.lang.module.InvalidModuleDescriptorException: Unsupported
 major.minor version ...
 ```
 
-To solve these problems, follow the instructions for [installing Java 20+](#11-install-java-20).
+To solve these problems, follow the instructions for [installing Java 21+](#11-install-java-21).
 
 #### 3.1.5 Installing `darts` failed
 
@@ -1057,4 +1200,4 @@ To solve this problem, choose an existing subcommand option from the [usage inst
 
 Copyright © 2023 Maurits Silvis
 
-This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](LICENSE.md), or later.
+This source code package is subject to the terms and conditions defined in the [GNU General Public License v3.0](LICENSE.md) or later.

@@ -21,15 +21,15 @@ To answer these questions, this project presents a computational toolbox going b
 
 `darts` can determine all possible darts checkouts and generate checkout tables for any range of scores.
 This toolbox supports several dartboards, including the ‘standard’ London dartboard and the Quadro 240 board.
-In addition, several game modes are supported, including modes that require players to start or end with double or triple fields.
+In addition, several game modes are supported, including modes that require players to start or end with double or triple scores.
 Finally, `darts` can provide output in several formats: easily readable Markdown tables, HTML tables for web pages and JSON objects for computer processing.
 
 Currently, `darts` is available as a Java-based command-line application.
 More information about the installation and use of this app can be found in the [Java-based command-line interface](cli/java-darts-cli) readme.
-You can also check out those [checkout tables](tables/md-darts-tables).
+You can also check out an extensive set of [checkout tables](tables/md-darts-tables) generated using `darts`.
 
 ## License
 
 Copyright © 2023 Maurits Silvis
 
-This source code package is subject to the terms and conditions defined in the GNU General Public License v3.0, which can be found in the file [LICENSE.md](LICENSE.md), or later.
+This source code package is subject to the terms and conditions defined in the [GNU General Public License v3.0](LICENSE.md) or later.
