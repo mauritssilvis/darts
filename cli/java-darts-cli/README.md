@@ -817,7 +817,7 @@ This feature mainly exists for debugging purposes and is not discussed further h
 
 ### 2.3 Get help
 
-In addition to consulting this online documentation, one can request command-line help from `darts` itself.
+In addition to consulting the [online documentation](https://mauritssilvis.nl/software/darts/cli/java-darts-cli), one can request command-line help from `darts` itself.
 
 #### 2.3.1 General command-line help
 
