@@ -927,11 +927,7 @@ Options:
                             Default: Markdown
   -V, --version           Print version information and exit.
 
-Online documentation:
-  https://mauritssilvis.nl/software/darts/cli/java-darts-cli
-
-Copyright © 2023 Maurits Silvis
-SPDX-License-Identifier: GPL-3.0-or-later
+...
 ```
 
 #### 2.3.3 `darts boards` command-line help
@@ -967,11 +963,7 @@ Options:
                             Default: Markdown
   -V, --version           Print version information and exit.
 
-Online documentation:
-  https://mauritssilvis.nl/software/darts/cli/java-darts-cli
-
-Copyright © 2023 Maurits Silvis
-SPDX-License-Identifier: GPL-3.0-or-later
+...
 ```
 
 ## 3. Troubleshooting
