@@ -376,7 +376,7 @@ The resulting output is as follows:
 |     4 |  * |  * | 0 |
 ```
 
-Here, only the checkouts that require a minimum of two darts are found.
+Here, only the checkouts that require two darts are found.
 Scores of 2 and 4 can be reached by hitting one double.
 Therefore, these checkouts are not shown.
 
@@ -489,8 +489,8 @@ This command has the following output:
 
 ##### JSON
 
-Markdown and HTML output aren't very suitable for computer processing.
-To instead obtain a JSON object that contains all checkouts for a range of scores, use a command like:
+Markdown and HTML tables aren't very suitable for computer processing.
+To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
 darts checkouts -o json 1 4
@@ -576,7 +576,7 @@ The following command can be used to generate a checkout table for a double-out 
 darts checkouts -b quadro 501 501
 ```
 
-The resulting output shows there are six seven-dart checkouts for a score of 501 points:
+The resulting output shows there are six seven-dart checkouts with a Quadro board for a score of 501 points:
 
 ```markdown
 | Score |   1 |   2 |   3 |   4 |   5 |   6 |   7 | # |
