@@ -646,8 +646,8 @@ The resulting checkout table looks as follows:
 |       |  19 |  D1 |  1 |
 ```
 
-Checkout tables generated using the Cartesian checkout finder look different than tables produced by the (default) descending checkout finder.
-With the Cartesian checkout finder, checkouts are sorted by dartboard field score (in ascending order) and type (single, double, triple, quadruple).
+Checkout tables generated using the Cartesian checkout finder look different than tables produced by the descending checkout finder.
+With the Cartesian checkout finder, checkouts for a given score are sorted by throw score (in ascending order) and type (single, double, triple, quadruple).
 Additionally, checkouts are not summarized.
 That is, each possible checkout is represented using its own row.
 Consequently, checkout tables can become very long when many checkouts exist.
