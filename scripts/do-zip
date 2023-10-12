@@ -37,8 +37,8 @@ version_label=$(echo ${version,,} | tr " " "-")
 
 # Clone repository
 cd ..
-git clone . "../darts-${version_label}" 2>/dev/null
-cd "../darts-${version_label}" || exit
+git clone . "../${label}-${version_label}" 2>/dev/null
+cd "../${label}-${version_label}" || exit
 
 # Clean up
 rm -rf .git
