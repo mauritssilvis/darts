@@ -35,5 +35,5 @@ fi
 
 # Tag
 message="${name} ${version}"
-tag="${label}-${version}"
+tag="${label,,}-${version,,}"
 git tag -am "${message}" "${tag}"
