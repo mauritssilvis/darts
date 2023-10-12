@@ -43,6 +43,7 @@ cd "../darts-${version_label}" || exit
 # Clean up
 rm -rf .git
 rm -rf scripts
+rm -f .gitattributes
 find . -maxdepth 1 -name "*.md" -delete
 
 for i in "${!other_files[@]}"; do
@@ -60,7 +61,6 @@ for i in "${!labels[@]}"; do
     file="${project}-${version_label}"
 
     mv "${path}" "${project}" 2>/dev/null
-    rm -f .gitattributes
     rm -rf "${label}"
     rm -rf "${project}/.idea"
 
