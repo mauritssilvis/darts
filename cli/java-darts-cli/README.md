@@ -351,12 +351,12 @@ This option takes a non-negative integer as a parameter:
 Two different throw modes can be used if the number of throws is fixed.
 These throw modes are represented by the two values the `-m` and `--throw-mode` options can take:
 
-- `optimal` for finding all [optimal](#optimal) checkouts (default);
+- `optimal` for finding only [optimal](#optimal) checkouts (default);
 - `fixed` for finding [all](#fixed) checkouts for a given number of throws.
 
 ##### Optimal
 
-To look for all *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
+To find only the *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
 The throw mode will then take its default value, `optimal`.
 For example:
 
