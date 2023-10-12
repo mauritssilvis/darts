@@ -1,13 +1,19 @@
 #!/bin/sh
 
-# Project names
+# Project name
+name="HTML darts tables"
+
+# Project label
+label="html-darts-tables"
+
+# Subproject names
 name_prefix="HTML darts"
 
 names=(
     "tables"
 )
 
-# Project labels
+# Subproject labels
 label_prefix="html-darts"
 
 labels=(

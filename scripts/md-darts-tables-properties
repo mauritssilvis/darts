@@ -1,13 +1,19 @@
 #!/bin/sh
 
-# Project names
+# Project name
+name="Markdown darts tables"
+
+# Project label
+label="md-darts-tables"
+
+# Subproject names
 name_prefix="Markdown darts"
 
 names=(
     "tables"
 )
 
-# Project labels
+# Subproject labels
 label_prefix="md-darts"
 
 labels=(
@@ -20,4 +26,3 @@ other_files=(
     "cli"
     "core"
 )
-
