@@ -3,9 +3,6 @@
 # Project name
 name="Java darts"
 
-# Project label
-label="java-darts"
-
 # Subproject names
 name_prefix="Java darts"
 

@@ -33,7 +33,11 @@ fi
 # shellcheck source=java-darts-properties
 . "./${id}-properties"
 
+# Create tag components
+name_label=$(echo ${name,,} | tr " " "-")
+version_label=$(echo ${version,,} | tr " " "-")
+
 # Tag
 message="${name} ${version}"
-tag="${label,,}-${version,,}"
+tag="${name_label}-${version_label}"
 git tag -am "${message}" "${tag}"
