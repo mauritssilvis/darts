@@ -5,7 +5,7 @@ All notable changes to the [Java darts API](https://github.com/mauritssilvis/dar
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0-RC1] - 2023-10-12
 
 ### Changed
 
