@@ -2,3 +2,9 @@
 * text eol=lf
 
 *.bat text eol=crlf
+
+# https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github
+tables/html-darts-tables/london/*.html linguist-generated=true
+tables/html-darts-tables/quadro/*.html linguist-generated=true
+tables/md-darts-tables/london/*.md linguist-generated=true
+tables/md-darts-tables/quadro/*.md linguist-generated=true
