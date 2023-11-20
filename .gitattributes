@@ -2,6 +2,7 @@
 * text eol=lf
 
 *.bat text eol=crlf
+*.jar binary
 
 # https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github
 tables/html-darts-tables/london/*.html linguist-generated=true
