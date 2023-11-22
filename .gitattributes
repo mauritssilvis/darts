@@ -1,9 +1,10 @@
 # Created by https://gitattributes.io/api/common
+# Adapted according to https://stackoverflow.com/a/42135910/12911324
 
 # Common settings that generally should always be used with your language specific settings
 
 # Auto detect text files and perform LF normalization
-*          text=auto
+*          text=auto eol=lf
 
 #
 # The above will handle all files NOT found below
