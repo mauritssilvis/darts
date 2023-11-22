@@ -21,7 +21,7 @@ The [installation](#1-installation) and [usage](#2-usage) of `darts` are discuss
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
 
 To explore `darts`, you can also dive into the [code](src).
-Alternatively, you can download the latest Java darts release from https://github.com/mauritssilvis/darts/releases.
+Alternatively, you can download the Java darts CLI code from the latest Java darts release at https://github.com/mauritssilvis/darts/releases.
 The release history of the Java darts CLI project is contained in the [changelog](CHANGELOG.md). 
 
 If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables/md-darts-tables).
@@ -47,14 +47,14 @@ You can install the latest version of Java as follows:
 To install the `darts` toolbox, first follow the following steps:
 
 - Download the Java darts CLI code.
-    - You can download the latest Java darts CLI release from https://github.com/mauritssilvis/darts/releases.
+    - You can download the Java darts CLI code from the latest Java darts release at https://github.com/mauritssilvis/darts/releases.
     - Alternatively, clone or download the full `darts` code from https://github.com/mauritssilvis/darts.
 - If necessary, extract the code to a convenient location.
 
 You can then install the `darts` toolbox as follows:
 
 - Navigate to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
     - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Run the `install` command to install `darts` in the `bin` folder.
 - Navigate to the newly created `bin` folder.
@@ -1003,7 +1003,7 @@ Try 'install --help' for more information.
 To solve these problems, take the following steps:
 
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
     - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
@@ -1100,7 +1100,7 @@ To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
     - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
 - Navigate to the `bin` folder.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
