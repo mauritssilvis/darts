@@ -20,7 +20,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Documentation
 
-- Extend the project documentation.
+- Extend and improve the project documentation.
 
 #### Dependencies
 
