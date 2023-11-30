@@ -421,7 +421,7 @@ The following output formats are supported:
 - `Markdown` for an easily readable Markdown table (default);
 - `HTML` for an [HTML](#html) table for web pages;
 - `JSON` for a [JSON](#json) object for computer processing;
-- `string` for output based on Java's [string](#string) representation of objects.
+- `string` for output based on Java’s [string](#string) representation of objects.
 
 ##### HTML
 
@@ -492,7 +492,7 @@ This command has the following output:
 
 ##### JSON
 
-Markdown and HTML tables aren't very suitable for computer processing.
+Markdown and HTML tables are not very suitable for computer processing.
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
@@ -752,7 +752,7 @@ The following output formats are supported:
 - `Markdown` for an easily readable Markdown table (default);
 - `HTML` for an [HTML](#html-1) table for web pages;
 - `JSON` for a [JSON](#json-1) object for computer processing;
-- `string` for output based on Java's [string](#string-1) representation of objects.
+- `string` for output based on Java’s [string](#string-1) representation of objects.
 
 ##### HTML
 
