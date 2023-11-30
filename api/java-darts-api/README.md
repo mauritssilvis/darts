@@ -12,7 +12,7 @@ Alternatively, you can download the Java darts API code from the latest Java dar
 The release history of the Java darts API project is contained in the [changelog](CHANGELOG.md).
 
 If you would like to generate checkout tables using a command-line application, refer to the [Java-based command-line interface](https://github.com/mauritssilvis/darts/tree/main/cli/java-darts-cli).
-If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables/md-darts-tables).
+If you want to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables/md-darts-tables).
 
 ## License
 
