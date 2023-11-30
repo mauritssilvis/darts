@@ -20,7 +20,10 @@ Additionally, `darts` lets you:
 The [installation](#1-installation) and [usage](#2-usage) of `darts` are discussed in what follows.
 For solutions to commonly occurring problems, refer to the [troubleshooting](#3-troubleshooting) section.
 
+To explore `darts`, you can also dive into the [code](src).
+Alternatively, you can download the Java darts CLI code from the latest Java darts release at https://github.com/mauritssilvis/darts/releases.
 The release history of the Java darts CLI project is contained in the [changelog](CHANGELOG.md). 
+
 If you would like to explore extensive checkout tables for different types of darts games, refer to the [checkout table overview](https://github.com/mauritssilvis/darts/tree/main/tables/md-darts-tables).
 
 ## 1. Installation
@@ -44,15 +47,15 @@ You can install the latest version of Java as follows:
 To install the `darts` toolbox, first follow the following steps:
 
 - Download the Java darts CLI code.
-    - You can download the latest Java darts CLI release from https://github.com/mauritssilvis/darts/releases.
+    - You can download the Java darts CLI code from the latest Java darts release at https://github.com/mauritssilvis/darts/releases.
     - Alternatively, clone or download the full `darts` code from https://github.com/mauritssilvis/darts.
 - If necessary, extract the code to a convenient location.
 
 You can then install the `darts` toolbox as follows:
 
 - Navigate to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder.
 - Run the `install` command to install `darts` in the `bin` folder.
 - Navigate to the newly created `bin` folder.
 - Test the execution of the `darts` toolbox by running the `darts` command.
@@ -190,7 +193,7 @@ Therefore, each row of the table represents multiple checkouts.
 
 #### 2.1.2 Default parameters
 
-As was hinted at above, the `darts checkouts` subcommand has several default parameters.
+As hinted at above, the `darts checkouts` subcommand has several default parameters.
 When left unspecified, the following options are set:
 
 - The [dartboard type](#the-dartboard-type): London.
@@ -340,10 +343,10 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
 That is, this command finds checkouts with the minimum required number of darts.
-Using `darts`, you can, however, fix the number of throws with the `-n` and `--throws` options.
+You can, however, use `darts` to fix the number of throws with the `-n` and `--throws` options.
 This option takes a non-negative integer as a parameter:
 
-- zero (`0`) will not fix the number of throws (default);
+- zero (`0`) does not fix the number of throws (default);
 - a non-zero, positive integer (`1`, `2`, `3`, etc.) fixes the number of throws.
 
 ##### The throw mode
@@ -357,7 +360,7 @@ These throw modes are represented by the two values the `-m` and `--throw-mode` 
 ##### Optimal
 
 To find only the *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
-The throw mode will then take its default value, `optimal`.
+The throw mode then takes its default value, `optimal`.
 For example:
 
 ```shell
@@ -418,7 +421,7 @@ The following output formats are supported:
 - `Markdown` for an easily readable Markdown table (default);
 - `HTML` for an [HTML](#html) table for web pages;
 - `JSON` for a [JSON](#json) object for computer processing;
-- `string` for output based on Java's [string](#string) representation of objects.
+- `string` for output based on Java’s [string](#string) representation of objects.
 
 ##### HTML
 
@@ -428,7 +431,7 @@ To generate an HTML checkout table, use a command like:
 darts checkouts -o html 1 4
 ```
 
-The output will look as follows:
+The output looks as follows:
 
 ```html
 <table>
@@ -489,14 +492,14 @@ This command has the following output:
 
 ##### JSON
 
-Markdown and HTML tables aren't very suitable for computer processing.
+Markdown and HTML tables are not very suitable for computer processing.
 To obtain a JSON object that contains all checkouts for a range of scores, use a command like:
 
 ```shell
 darts checkouts -o json 1 4
 ```
 
-The output will look as follows:
+The output looks as follows:
 
 ```json
 {
@@ -588,7 +591,7 @@ The resulting output shows there are six seven-dart checkouts with a Quadro boar
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard does not have a single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
+This dartboard has no single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -700,7 +703,7 @@ Similarly, the Quadro 240 board can be inspected using the command:
 darts boards quadro
 ```
 
-The output of this command will look similar to:
+The output of this command looks similar to:
 
 ```markdown
 |   S |   D |   T |   Q |
@@ -749,7 +752,7 @@ The following output formats are supported:
 - `Markdown` for an easily readable Markdown table (default);
 - `HTML` for an [HTML](#html-1) table for web pages;
 - `JSON` for a [JSON](#json-1) object for computer processing;
-- `string` for output based on Java's [string](#string-1) representation of objects.
+- `string` for output based on Java’s [string](#string-1) representation of objects.
 
 ##### HTML
 
@@ -782,7 +785,7 @@ To retrieve a dartboard in the JSON format, use a command like:
 darts boards -o json london
 ````
 
-The output will be of the following form:
+The output is of the following form:
 
 ```json5
 {
@@ -919,8 +922,8 @@ Options:
                             latter value only applies when the number of throws
                             is fixed.
                             Default: optimal
-  -n, --throws=<throws>   The number of throws. Set this value if you want to
-                            find checkouts with a fixed number of throws.
+  -n, --throws=<throws>   The number of throws. Set this value to find
+                            checkouts with a fixed number of throws.
                             Default: 0
   -o, --output=<output>   The output format. Supported values: Markdown, JSON,
                             HTML, string.
@@ -1000,8 +1003,8 @@ Try 'install --help' for more information.
 To solve these problems, take the following steps:
 
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder.
 - Prefix the `install` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
 #### 3.1.2 Java was not installed or found
@@ -1097,8 +1100,8 @@ To solve these problems, take the following steps:
 
 - Install `darts` by following the [installation instructions](#1-installation).
 - Ensure you navigated to the folder containing the `darts` installation scripts, `install` and `install.bat`.
-    - If you downloaded the latest Java darts CLI release, these scripts can be found in the extracted folder.
-    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder of that code.
+    - If you downloaded the Java darts CLI code, these scripts can be found in the extracted folder.
+    - If you downloaded the full `darts` code, these scripts can be found in the `cli/java-darts-cli` folder.
 - Navigate to the `bin` folder.
 - Prefix the `darts` command with `./` (Bash) or `.\` (PowerShell) before execution.
 
@@ -1146,7 +1149,7 @@ Missing required parameters: '<minimum>', '<maximum>'
 Missing required parameter: '<maximum>'
 ```
 
-To solve these problems, [choose the scores](#211-choose-the-scores) for which you would like to generate a checkout table.
+To solve these problems, [choose the scores](#211-choose-the-scores) for which you want to generate a checkout table.
 
 #### 3.2.5 Missing required `board` parameter
 

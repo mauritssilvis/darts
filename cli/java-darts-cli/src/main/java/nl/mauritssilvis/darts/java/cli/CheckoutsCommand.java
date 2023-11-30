@@ -88,7 +88,7 @@ class CheckoutsCommand implements Runnable {
 
     @Option(
             names = {"-n", "--throws"},
-            description = "The number of throws. Set this value if you want to find checkouts with a fixed number of throws.",
+            description = "The number of throws. Set this value to find checkouts with a fixed number of throws.",
             paramLabel = "<throws>",
             defaultValue = "0",
             order = 3

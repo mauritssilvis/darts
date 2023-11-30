@@ -5,6 +5,19 @@ All notable changes to the [Java darts core](https://github.com/mauritssilvis/da
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0-RC2] - 2023-11-30
+
+### Changed
+
+#### Documentation
+
+- Improve the project documentation.
+
+#### Dependencies
+
+- Update the Gradle version from 8.4 to 8.5.
+- Update the JUnit version from 5.10.0 to 5.10.1.
+
 ## [1.0.0-RC1] - 2023-10-12
 
 ### Changed
@@ -116,3 +129,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Add a Markdown serializer for checkout tables (`MarkdownTableSerializer`).
 - Add an HTML serializer for checkout tables (`HtmlTableSerializer`).
 - Add a JSON serializer for checkout tables (`JsonTableSerializer`).
+
+## License
+
+Copyright © 2023 Maurits Silvis
+
+This source code package is subject to the terms and conditions defined in the [GNU General Public License v3.0](LICENSE.md) or later.

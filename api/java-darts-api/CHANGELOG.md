@@ -5,6 +5,18 @@ All notable changes to the [Java darts API](https://github.com/mauritssilvis/dar
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0-RC2] - 2023-11-30
+
+### Changed
+
+#### Documentation
+
+- Improve the project documentation.
+
+#### Dependencies
+
+- Update the Gradle version from 8.4 to 8.5.
+
 ## [1.0.0-RC1] - 2023-10-12
 
 ### Changed
@@ -123,3 +135,9 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 - Define serializers (`Serializer`).
 - Define output formatters (`Formatter`).
 - Define multiple output formats (`OutputFormat`).
+
+## License
+
+Copyright © 2023 Maurits Silvis
+
+This source code package is subject to the terms and conditions defined in the [GNU General Public License v3.0](LICENSE.md) or later.
