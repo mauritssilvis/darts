@@ -11,7 +11,7 @@ and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0
 
 #### Dependencies
 
-- Update the Gradle version from 8.4 to 8.5-RC-3.
+- Update the Gradle version from 8.4 to 8.5.
 
 ## [1.0.0-RC1] - 2023-10-12
 
