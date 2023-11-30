@@ -193,7 +193,7 @@ Therefore, each row of the table represents multiple checkouts.
 
 #### 2.1.2 Default parameters
 
-As was hinted at above, the `darts checkouts` subcommand has several default parameters.
+As hinted at above, the `darts checkouts` subcommand has several default parameters.
 When left unspecified, the following options are set:
 
 - The [dartboard type](#the-dartboard-type): London.
@@ -343,10 +343,10 @@ When truncated from 1,262 lines representing more than 200,000 (!) possible chec
 
 By default, the `darts checkouts` subcommand does not fix the number of throws and finds ‘optimal’ checkouts.
 That is, this command finds checkouts with the minimum required number of darts.
-Using `darts`, you can, however, fix the number of throws with the `-n` and `--throws` options.
+You can, however, use `darts` to fix the number of throws with the `-n` and `--throws` options.
 This option takes a non-negative integer as a parameter:
 
-- zero (`0`) will not fix the number of throws (default);
+- zero (`0`) does not fix the number of throws (default);
 - a non-zero, positive integer (`1`, `2`, `3`, etc.) fixes the number of throws.
 
 ##### The throw mode
@@ -360,7 +360,7 @@ These throw modes are represented by the two values the `-m` and `--throw-mode` 
 ##### Optimal
 
 To find only the *optimal* checkouts with a fixed number of darts, pass the desired number to the `-n` or `--throws` option.
-The throw mode will then take its default value, `optimal`.
+The throw mode then takes its default value, `optimal`.
 For example:
 
 ```shell
@@ -431,7 +431,7 @@ To generate an HTML checkout table, use a command like:
 darts checkouts -o html 1 4
 ```
 
-The output will look as follows:
+The output looks as follows:
 
 ```html
 <table>
@@ -499,7 +499,7 @@ To obtain a JSON object that contains all checkouts for a range of scores, use a
 darts checkouts -o json 1 4
 ```
 
-The output will look as follows:
+The output looks as follows:
 
 ```json
 {
@@ -591,7 +591,7 @@ The resulting output shows there are six seven-dart checkouts with a Quadro boar
 ##### Yorkshire
 
 `darts` also supports the legacy Yorkshire dartboard.
-This dartboard does not have a single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
+This dartboard has no single bull or triple fields (see [Print a dartboard](#22-print-a-dartboard)).
 To find checkouts for games with the Yorkshire board, use a command like:
 
 ```shell
@@ -703,7 +703,7 @@ Similarly, the Quadro 240 board can be inspected using the command:
 darts boards quadro
 ```
 
-The output of this command will look similar to:
+The output of this command looks similar to:
 
 ```markdown
 |   S |   D |   T |   Q |
@@ -785,7 +785,7 @@ To retrieve a dartboard in the JSON format, use a command like:
 darts boards -o json london
 ````
 
-The output will be of the following form:
+The output is of the following form:
 
 ```json5
 {
@@ -922,8 +922,8 @@ Options:
                             latter value only applies when the number of throws
                             is fixed.
                             Default: optimal
-  -n, --throws=<throws>   The number of throws. Set this value if you want to
-                            find checkouts with a fixed number of throws.
+  -n, --throws=<throws>   The number of throws. Set this value to find
+                            checkouts with a fixed number of throws.
                             Default: 0
   -o, --output=<output>   The output format. Supported values: Markdown, JSON,
                             HTML, string.
@@ -1149,7 +1149,7 @@ Missing required parameters: '<minimum>', '<maximum>'
 Missing required parameter: '<maximum>'
 ```
 
-To solve these problems, [choose the scores](#211-choose-the-scores) for which you would like to generate a checkout table.
+To solve these problems, [choose the scores](#211-choose-the-scores) for which you want to generate a checkout table.
 
 #### 3.2.5 Missing required `board` parameter
 
