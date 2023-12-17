@@ -8,7 +8,7 @@ io-github-gradle-nexus-publish-plugin = { id = "io.github.gradle-nexus.publish-p
 
 java-jdk = "21"
 
-java-darts = "1.0.0-SNAPSHOT"
+java-darts = "1.0.0"
 
 [libraries]
 
