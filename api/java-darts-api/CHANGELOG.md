@@ -5,6 +5,21 @@ All notable changes to the [Java darts API](https://github.com/mauritssilvis/dar
 The file format is based on [keep a changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [semantic versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+#### Documentation
+
+- Improve the project documentation.
+
+#### Dependencies
+
+- Update the Java version from 20 to 21.
+- Update the Gradle version from 8.3 to 8.5.
+- Update the refreshVersions version from 0.60.0 to 0.60.3.
+- Update the Lombok version from 1.18.28 to 1.18.30.
+
 ## [1.0.0-RC2] - 2023-11-30
 
 ### Changed
